@@ -1,18 +1,18 @@
 Name,Branche,Ort,Adresse,Telefon,Website-Hinweis,Digitale_Prioritaet,Status,Naechster_Schritt,Datum,Notizen
-TheSalonNiki,Beautysalon,Pfullendorf,Alte Postgasse 18,,"Nur Buchungsseite auf mytreatwell-Subdomain, keine eigene Website erkennbar",Hoch,Neu,Vor Ort besuchen + GBP-Check,,Starkes Signal fuer fehlenden eigenen Webauftritt
-"Isolde Keune Nagel- und Kosmetikstudio",Beautysalon,Pfullendorf,St.-Katharinen-Str. 6,,"Nur auf Branchenverzeichnissen (11880/golocal) gelistet",Hoch,Neu,Anrufen + GBP-Check,,Kein eigener Domainauftritt gefunden
+TheSalonNiki,Beautysalon,Pfullendorf,Alte Postgasse 18,0151 11622116,"Nur Buchungsseite auf mytreatwell-Subdomain, keine eigene Website erkennbar",Hoch,Neu,Anrufen,,Starkes Signal fuer fehlenden eigenen Webauftritt
+"Isolde Keune Nagel- und Kosmetikstudio",Beautysalon,Pfullendorf,St.-Katharinen-Str. 6,07552 4780,"Nur auf Branchenverzeichnissen (11880/golocal) gelistet",Hoch,Neu,Anrufen,,Kein eigener Domainauftritt gefunden
 Bleaching Lounge,Beautysalon,Pfullendorf,Metzgergasse 5,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
 Cosmetic Stauffenberg,Beautysalon,"Wald bei Pfullendorf",Dampferweg 6,07578-933222,"Eigene Domain vorhanden, Qualitaet/Ads-Status pruefen",Mittel,Neu,Website+GBP pruefen,,Leicht ausserhalb Pfullendorf
-"Dr. Sarah Schottelius (Zahnheilkunde)",Zahnarzt,Pfullendorf,Bahnhofstr. 7,07552 3959310,"Hauptsaechlich auf 11880 gelistet, eigene Website unklar",Hoch,Neu,Website pruefen + anrufen,,
+"Dr. Sarah Schottelius (Zahnheilkunde)",Zahnarzt,Pfullendorf,Bahnhofstr. 7,07552 3959310,"Hauptsaechlich auf 11880 gelistet, eigene Website unklar",Hoch,Neu,Anrufen,,
 "Zahnaerztliche Gemeinschaftspraxis Boehmer/Reuschl",Zahnarzt,Pfullendorf,Bergwaldstr. 1,07552 409951,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
 "Dres. Christian und Daniela Kugler",Zahnarzt,Pfullendorf,Ueberlinger Str. 9,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
 "Kieferorthopaedie Dr. Christian Weiger",Zahnarzt,Pfullendorf,Hauptstr. 31,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
 Zahnarztpraxis Pfullendorf,Zahnarzt,Pfullendorf,Hauptstrasse 15,07552 4333,"Eigene Website vorhanden (zahnarztpraxis-pfullendorf.de), eher niedrige Prioritaet",Niedrig,Neu,Nur falls Ads/GBP schwach,,Hat bereits Webauftritt
-"FITNESS-CLUB fit4life GmbH",Fitnessstudio,Pfullendorf,Bergwaldstr. 4,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
-Sportcenter Barz,Fitnessstudio,Pfullendorf,Otterswanger Str. 1,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
+"FITNESS-CLUB fit4life GmbH",Fitnessstudio,Pfullendorf,Bergwaldstr. 4,,"Nur rudimentaere chayns-Baukastenseite (fit4life-pfullendorf.chayns.site), kein richtiger Webauftritt",Hoch,Neu,"Telefon vor Ort/Anruf verifizieren (gefundene Nummer war identisch mit MC Shape - vermutlich Verwechslung, nicht uebernommen)",,Gute Chance trotz fehlender verifizierter Telefonnummer
+Sportcenter Barz,Fitnessstudio,Pfullendorf,Otterswanger Str. 1,07552 409640,"Kein eigener Webauftritt gefunden, nur Facebook-Seite und Branchenverzeichnisse",Hoch,Neu,Anrufen,,"Seit 1982 etabliert, aber digital praktisch nicht sichtbar"
 MC Shape Pfullendorf,Fitnessstudio,Pfullendorf,,07552 3824090,Franchise mit zentralem Marketing,Niedrig,Neu,Nur falls lokale Ads fehlen,,Franchise - Entscheidung liegt evtl. nicht lokal
 "StyleBoxx Friseur Markt-Center",Friseur,Pfullendorf,Bergwaldstrasse 4,07552 9280559,"Teil einer Kette (StyleBoxx/Klier) - vermutlich zentrales Marketing",Niedrig,Neu,Website/GBP pruefen,,"Kettenbetrieb, Entscheidung evtl. nicht lokal"
-"Guemues Saadet Friseur",Friseur,Pfullendorf,Bahnhofstr. 4,,Noch nicht geprueft,Hoch,Neu,Website/GBP pruefen + anrufen,,Kleiner Einzelsalon - guter Kandidat
-"Boll Manfred Der Haarschneider",Friseur,Pfullendorf,Andreas-Rogg-Gasse 6,,Noch nicht geprueft,Hoch,Neu,Website/GBP pruefen + anrufen,,Kleiner Einzelsalon - guter Kandidat
-"Schmauder Rainer Herrensalon",Friseur,Pfullendorf,Sigmaringer Str. 7,,Noch nicht geprueft,Hoch,Neu,Website/GBP pruefen + anrufen,,Kleiner Einzelsalon - guter Kandidat
+"Guemues Saadet Friseur",Friseur,Pfullendorf,Bahnhofstr. 4,,Noch keine Telefonnummer gefunden,Hoch,Neu,Vor Ort besuchen oder Telefonnummer recherchieren,,Kleiner Einzelsalon - guter Kandidat
+"Boll Manfred Der Haarschneider",Friseur,Pfullendorf,Andreas-Rogg-Gasse 6,07552 91000,Noch nicht geprueft,Hoch,Neu,Anrufen,,Kleiner Einzelsalon - guter Kandidat
+"Schmauder Rainer Herrensalon",Friseur,Pfullendorf,Sigmaringer Str. 7,,Noch keine Telefonnummer gefunden,Hoch,Neu,Vor Ort besuchen oder Telefonnummer recherchieren,,Kleiner Einzelsalon - guter Kandidat
 RESTLE,Friseur,Pfullendorf,Otterswanger Str. 5,+49 7552 9386633,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
