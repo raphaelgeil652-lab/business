@@ -39,10 +39,33 @@ Kurz: Ich bin das Backoffice (Recherche, Material, Tracking), du bist der Vertri
 Realistisch bei 5-8h/Woche:
 
 - **1x pro Woche (z. B. Montag, 30 Min.)**: `leads/leads.csv` durchgehen, 3-5 Leads für die Woche auswählen, bei Bedarf neue Leads nachrecherchieren lassen.
-- **Über die Woche verteilt**: die ausgewählten Leads anrufen/besuchen, Ergebnis direkt in `leads.csv` notieren (Status, nächster Schritt, Datum).
+- **Über die Woche verteilt**: die ausgewählten Leads anrufen/besuchen, Ergebnis direkt in `leads.csv` eintragen (siehe unten, wie genau).
 - **1x pro Woche (z. B. Freitag, 15 Min.)**: kurzer Rückblick — wie viele Kontakte, wie viele Termine, was hat funktioniert.
 
 Ziel in den ersten 4-6 Wochen: nicht Abschlüsse, sondern **Gesprächstermine**. Ein Gespräch pro Woche ist am Anfang schon ein guter Wert.
+
+### Wie du Fortschritt in `leads.csv` einträgst
+
+Vier Spalten dafür, mit klarer Aufgabenteilung:
+
+- **Status**: der aktuelle Zustand — `Neu` → `Kontaktiert` → `Termin vereinbart` → `Kunde` (oder `Kein Interesse`, wenn abgelehnt).
+- **Naechster_Schritt**: was konkret als Nächstes ansteht, z. B. „Rückruf Freitag 14 Uhr" oder „Angebot per WhatsApp schicken".
+- **Datum**: wann du diesen Lead zuletzt bearbeitet hast (Format egal, z. B. `16.07.`).
+- **Kontaktverlauf**: ein kurzes, anwachsendes Protokoll aller Kontakte — neue Einträge einfach hinten anhängen, ältere nicht löschen. Das ist bewusst getrennt von der Spalte `Notizen` (die enthält nur die ursprüngliche Recherche-Einschätzung, nicht deinen Verlauf).
+
+**Beispiel** — nach einem Anruf bei TheSalonNiki, der zu einem Rückruftermin führt:
+- `Status`: `Kontaktiert`
+- `Naechster_Schritt`: `Rückruf Fr 14 Uhr`
+- `Datum`: `16.07.`
+- `Kontaktverlauf`: `16.07.: angerufen, Chefin nicht da, Rückruf vereinbart`
+
+Nächste Woche, nach dem Rückruf mit Terminvereinbarung:
+- `Status`: `Termin vereinbart`
+- `Naechster_Schritt`: `Termin 22.07., 16 Uhr vor Ort`
+- `Datum`: `18.07.`
+- `Kontaktverlauf`: `16.07.: angerufen, Chefin nicht da, Rückruf vereinbart | 18.07.: Rückruf erhalten, Termin für 22.07. vereinbart`
+
+Einfach in Excel/Numbers/Google Sheets öffnen (CSV-Datei) oder direkt als Text bearbeiten — beides funktioniert, solange die Kommas innerhalb von Freitext in Anführungszeichen stehen.
 
 ## 4. Automatisierte Erinnerung (optional)
 
@@ -50,9 +73,11 @@ Ich kann eine wiederkehrende Routine einrichten, die dich z. B. jeden Montag in 
 
 ## 5. Erste konkrete Leads
 
-15 reale Betriebe in Pfullendorf sind bereits in `leads/leads.csv` erfasst (Zahnärzte, Beauty/Kosmetik, Physiotherapie, Fitness), inkl. erster Einschätzung, ob ein eigener Webauftritt erkennbar ist. Priorität "Hoch" = kein eigener Webauftritt gefunden, bester Ansatzpunkt für den ersten Testimonial-Kunden:
-- **TheSalonNiki** (Beauty) — nur eine Buchungsseite auf fremder Plattform, keine eigene Website
-- **Isolde Keune Nagel- und Kosmetikstudio** — nur in Branchenverzeichnissen gelistet
-- **Dr. Sarah Schottelius (Zahnheilkunde)** — Webauftritt unklar, prüfen
+17 reale Betriebe in Pfullendorf sind bereits in `leads/leads.csv` erfasst, aufgeteilt auf die vier Nischen-Branchen (Zahnärzte, Fitnessstudios, Beautysalons, Friseure), inkl. erster Einschätzung, ob ein eigener Webauftritt erkennbar ist. Priorität "Hoch" = kein eigener Webauftritt gefunden bzw. nur Branchenverzeichnis/Fremdplattform, bester Ansatzpunkt für den ersten Testimonial-Kunden pro Branche:
+- **TheSalonNiki** (Beautysalon) — nur eine Buchungsseite auf fremder Plattform, keine eigene Website
+- **Isolde Keune Nagel- und Kosmetikstudio** (Beautysalon) — nur in Branchenverzeichnissen gelistet
+- **Dr. Sarah Schottelius** (Zahnarzt) — Webauftritt unklar, prüfen
+- **Sportcenter Barz** (Fitnessstudio) — seit 1982 etabliert, aber kein eigener Webauftritt gefunden
+- **Boll Manfred Der Haarschneider** (Friseur) — kleiner Einzelsalon, guter Kandidat
 
 Nächster Recherche-Schritt: Website + Google-Unternehmensprofil jedes Leads einzeln prüfen (kann ich übernehmen), um die Liste von "vermutet schwach" auf "bestätigt schwach" zu bringen, bevor du anrufst.
