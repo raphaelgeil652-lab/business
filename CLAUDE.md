@@ -23,6 +23,17 @@ Standort: Pfullendorf / Landkreis Sigmaringen (Bodensee-Nord).
 - **Nicht** klassisches Handwerk (Elektriker, Dachdecker, Sanitär) als erste Nische – wegen Fachkräftemangel meist schon ausgebucht, Ads bringen dort kaum messbaren Mehrwert.
 - **Empfohlene Erstnische**: Gesundheit/Beauty/Wellness (Zahnärzte, Physio, Kosmetikstudios, Fitnessstudios) sowie Gastronomie/Tourismus rund um den Bodensee (Ferienwohnungen, Hotels, Restaurants) – konsumentennahe Entscheidungen, kaum digitale Konkurrenz vor Ort, gut kopierbares Muster nach dem ersten Referenzprojekt.
 
+## Fahrplan
+
+Ausgangslage: nebenbei (Job/Schule parallel), beide Kern-Skills (Website-Bau, Ads) noch neu, kein bestehendes Netzwerk mit potenziellen Kunden. Realistischer Zeithorizont: die ersten 3-6 Monate sind überwiegend Lernen + unbezahlte Beweisprojekte, bevor echtes Geld reinkommt – das ist der Normalfall, kein Scheitern.
+
+1. **Skills aufbauen** (parallel, ca. 1-3 Monate): No-Code-Website-Tool lernen (Webflow oder WordPress/Elementor); Google-Skillshop- und Meta-Blueprint-Zertifizierungen (kostenlos); eigenes Ads-Testbudget (50-100€) einmal wirklich selbst schalten.
+2. **Beweis bauen, bevor verkauft wird**: 1-2 kostenlose/sehr günstige Projekte für echte Kontakte (Nachbarschaft, Verein, Familie) für ein zeigbares Ergebnis + Testimonial. Daraus eigene Portfolio-Seite ableiten.
+3. **Erste zahlende Kunden ohne Netzwerk**: lokale Nische (siehe unten) über Google Maps/direkte Ansprache vor Ort, nicht E-Mail-Spam. Alternativ Fiverr/Upwork als Trainingsrad.
+4. **Wiederkehrendes Einkommen**: Website ist der Foot-in-the-door, die monatliche Ads-Betreuung + Wartung ist der eigentliche Hebel für skalierbares Einkommen.
+
 ## Struktur dieses Repos
 
-Noch offen – wird erweitert, sobald konkrete Artefakte entstehen (z.B. eigene Portfolio-/Agentur-Website, wiederverwendbares Website-Template für Kunden, Angebots-/Preisunterlagen). Diese Datei bei größeren Entscheidungen (Nischenwechsel, neue Angebote, Repo-Struktur) aktuell halten.
+- `CLAUDE.md` – dieser Überblick: Geschäftsmodell, Stand, Zielnische, Fahrplan. Bei jeder größeren Entscheidung (Nischenwechsel, neue Angebote, Repo-Struktur) aktuell halten.
+- `docs/` – tiefere Recherchen und Playbooks (z.B. `docs/playbook-landingpages-ads.md` zu High-Converting Landingpages/Ads für die Zielnische).
+- Konvention: Erkenntnisse, Recherchen und Entscheidungen aus Sessions werden hier im Repo festgehalten (nicht nur im Chat-Verlauf), damit zukünftige Sessions direkt darauf aufbauen können.
