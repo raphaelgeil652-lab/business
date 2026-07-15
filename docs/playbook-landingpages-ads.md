@@ -1,6 +1,6 @@
 # Playbook: High-Converting Landingpages & Google/Meta Ads für Zielnische
 
-Research-Zusammenfassung für die Zielnische aus CLAUDE.md (Gesundheit/Beauty/Wellness/Fitness + Gastronomie/Tourismus Bodensee). Basis für zukünftige Angebote/Templates bei echten Kundenprojekten.
+Research-Zusammenfassung für die festgelegte Nische aus CLAUDE.md: **Zahnärzte, Fitnessstudios, Beautysalons, Friseure**. Basis für zukünftige Angebote/Templates bei echten Kundenprojekten. Physio und Gastronomie/Tourismus wurden früher mitrecherchiert (Abschnitte unten als Referenz belassen), sind aber aktuell nicht Teil der aktiven Nische.
 
 ## 1. Universelle Landingpage-Prinzipien (branchenübergreifend)
 
@@ -51,7 +51,14 @@ Research-Zusammenfassung für die Zielnische aus CLAUDE.md (Gesundheit/Beauty/We
 - Lead-Magnete mit niedriger Einstiegshürde funktionieren gut ("3 Kurse für 29€" statt direkt Jahresvertrag) – Pricing-Psychologie: Commitment durch kleine Zahlung, nicht durch großes Versprechen.
 - FAQ-Sektion auf der Landingpage nimmt typische Einwände vorweg (Vertragsbindung, Öffnungszeiten).
 
-### Gastronomie / Tourismus (Bodensee)
+### Friseure
+- Eigene Landingpage pro Anlass/Leistung statt Sammelseite: „Damenhaarschnitt" ≠ „Hochsteckfrisur Hochzeit" ≠ „Herrensalon" – unterschiedliche Suchintention, unterschiedliche Zielgruppe.
+- **Standort-Keywords sind der stärkste Hebel**: „Friseur [Ort] + in der Nähe/near me"-Suchen konvertieren nachweislich besser als generische Begriffe ohne Ortsbezug.
+- Konversionsrate bei guter Landingpage/Ads-Kombination realistisch 10-30% – deutlich höher als bei vielen anderen Branchen, weil Entscheidung + Buchung oft spontan/kurzfristig erfolgt.
+- Online-Terminbuchung direkt von der Landingpage aus ist Pflicht, kein Rückruf-Umweg – sonst verpufft ein Großteil der Klicks.
+- Conversion-Tracking sauber trennen: Tracking-Tag auf einer separaten „Danke"-Seite nach Buchung, nicht auf der Landingpage selbst – sonst zählt jeder Seitenaufruf fälschlich als Conversion.
+
+### Gastronomie / Tourismus (Bodensee) — Referenz, aktuell nicht Fokus
 - Meta Ads für Inspiration/Sichtbarkeit priorisieren, Google Ads für konkrete Buchungsintention ("Ferienwohnung Bodensee Juli").
 - Saisonalität aktiv bespielen (Tagesausflügler-Zielgruppe aus Stuttgart/Zürich-Raum im Umkreis targetieren).
 - Content-Schwerpunkt: Atmosphäre/Emotion (Fotos/Videos vor Ort) statt reiner Verkaufstext.

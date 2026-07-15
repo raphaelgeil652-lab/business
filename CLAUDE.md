@@ -1,5 +1,9 @@
 # business
 
+## Auf einen Blick
+
+Website + Ads-Retainer für vier lokale Branchen in Pfullendorf/Sigmaringen. Der Kreislauf: Leads recherchieren → Erstkontakt (Anruf/vor Ort) → 1-2 kostenlose/günstige Referenzprojekte → daraus zahlende Kunden in derselben Nische → monatliche Ads-Betreuung als eigentliches Einkommen. Was automatisiert läuft (Recherche, Vorlagen, Lead-Tracking, wöchentliche Erinnerung) vs. was nur der Nutzer selbst tun kann (Anrufe, Vertrauen, Vertragsabschluss) steht in `docs/konzept-akquise-system.md`.
+
 ## Kontext
 
 Dieses Repo ist die Basis für den Aufbau einer Agentur, die zwei Leistungen kombiniert:
@@ -21,7 +25,7 @@ Standort: Pfullendorf / Landkreis Sigmaringen (Bodensee-Nord).
 
 - **Nicht** die großen Industriearbeitgeber der Region (Geberit, Kramer-Werke, Schwörer Haus, Fürst-von-Hohenzollern-Gruppe) als Zielkunden – eigene Marketingabteilungen, lange B2B-Zyklen, kein Fit.
 - **Nicht** klassisches Handwerk (Elektriker, Dachdecker, Sanitär) als erste Nische – wegen Fachkräftemangel meist schon ausgebucht, Ads bringen dort kaum messbaren Mehrwert.
-- **Empfohlene Erstnische**: Gesundheit/Beauty/Wellness (Zahnärzte, Physio, Kosmetikstudios, Fitnessstudios) sowie Gastronomie/Tourismus rund um den Bodensee (Ferienwohnungen, Hotels, Restaurants) – konsumentennahe Entscheidungen, kaum digitale Konkurrenz vor Ort, gut kopierbares Muster nach dem ersten Referenzprojekt.
+- **Festgelegte Nische (4 Branchen)**: Zahnärzte, Fitnessstudios, Beautysalons (Kosmetik/Nagelstudios) und Friseure – konsumentennahe, wiederkehrende Entscheidungen, kaum digitale Konkurrenz vor Ort, gut kopierbares Muster nach dem ersten Referenzprojekt pro Branche. Physio und Gastronomie/Tourismus wurden als frühere Kandidaten geprüft (siehe `docs/playbook-landingpages-ads.md`), sind aber aktuell **nicht** Fokus – Recherche/Ansprache konzentriert sich auf die vier genannten Branchen.
 
 ## Fahrplan
 

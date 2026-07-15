@@ -1,16 +1,18 @@
 Name,Branche,Ort,Adresse,Telefon,Website-Hinweis,Digitale_Prioritaet,Status,Naechster_Schritt,Datum,Notizen
-TheSalonNiki,Beauty/Kosmetik,Pfullendorf,Alte Postgasse 18,,"Nur Buchungsseite auf mytreatwell-Subdomain, keine eigene Website erkennbar",Hoch,Neu,Vor Ort besuchen + GBP-Check,,Starkes Signal fuer fehlenden eigenen Webauftritt
-"Isolde Keune Nagel- und Kosmetikstudio",Beauty/Kosmetik,Pfullendorf,St.-Katharinen-Str. 6,,"Nur auf Branchenverzeichnissen (11880/golocal) gelistet",Hoch,Neu,Anrufen + GBP-Check,,Kein eigener Domainauftritt gefunden
-Bleaching Lounge,Beauty/Kosmetik,Pfullendorf,Metzgergasse 5,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
-Cosmetic Stauffenberg,Beauty/Kosmetik,"Wald bei Pfullendorf",Dampferweg 6,07578-933222,"Eigene Domain vorhanden, Qualitaet/Ads-Status pruefen",Mittel,Neu,Website+GBP pruefen,,Leicht ausserhalb Pfullendorf
-"Dr. Sarah Schottelius (Zahnheilkunde)",Gesundheit/Zahnarzt,Pfullendorf,Bahnhofstr. 7,07552 3959310,"Hauptsaechlich auf 11880 gelistet, eigene Website unklar",Hoch,Neu,Website pruefen + anrufen,,
-"Zahnaerztliche Gemeinschaftspraxis Boehmer/Reuschl",Gesundheit/Zahnarzt,Pfullendorf,Bergwaldstr. 1,07552 409951,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
-"Dres. Christian und Daniela Kugler",Gesundheit/Zahnarzt,Pfullendorf,Ueberlinger Str. 9,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
-"Kieferorthopaedie Dr. Christian Weiger",Gesundheit/Zahnarzt,Pfullendorf,Hauptstr. 31,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
-Zahnarztpraxis Pfullendorf,Gesundheit/Zahnarzt,Pfullendorf,Hauptstrasse 15,07552 4333,"Eigene Website vorhanden (zahnarztpraxis-pfullendorf.de), eher niedrige Prioritaet",Niedrig,Neu,Nur falls Ads/GBP schwach,,Hat bereits Webauftritt
-Physiotherapie-Yardim,Gesundheit/Physio,Pfullendorf,Friedhofstrasse 4,07552 9388499,"Eigene, sehr einfache Website vorhanden, Qualitaet pruefen",Mittel,Neu,Website+GBP pruefen,,
-Physio-Pfullendorf,Gesundheit/Physio,Pfullendorf,Muehlweg 6a,07552 5302,"Eigene Website vorhanden, Qualitaet pruefen",Mittel,Neu,Website+GBP pruefen,,
-"FITNESS-CLUB fit4life GmbH",Fitness,Pfullendorf,Bergwaldstr. 4,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
-Sportcenter Barz,Fitness,Pfullendorf,Otterswanger Str. 1,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
-"Recovery Pfullendorf (SAMINA)",Fitness/Wellness,Pfullendorf,"Otterswanger Str. 1/1",,"Eigene Website vorhanden, Qualitaet pruefen",Niedrig,Neu,Website+GBP pruefen,,"Eher Nischenkonzept, ggf. spannend fuer Wellness-Angebot"
-MC Shape Pfullendorf,Fitness,Pfullendorf,,07552 3824090,Franchise mit zentralem Marketing,Niedrig,Neu,Nur falls lokale Ads fehlen,,Franchise - Entscheidung liegt evtl. nicht lokal
+TheSalonNiki,Beautysalon,Pfullendorf,Alte Postgasse 18,,"Nur Buchungsseite auf mytreatwell-Subdomain, keine eigene Website erkennbar",Hoch,Neu,Vor Ort besuchen + GBP-Check,,Starkes Signal fuer fehlenden eigenen Webauftritt
+"Isolde Keune Nagel- und Kosmetikstudio",Beautysalon,Pfullendorf,St.-Katharinen-Str. 6,,"Nur auf Branchenverzeichnissen (11880/golocal) gelistet",Hoch,Neu,Anrufen + GBP-Check,,Kein eigener Domainauftritt gefunden
+Bleaching Lounge,Beautysalon,Pfullendorf,Metzgergasse 5,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
+Cosmetic Stauffenberg,Beautysalon,"Wald bei Pfullendorf",Dampferweg 6,07578-933222,"Eigene Domain vorhanden, Qualitaet/Ads-Status pruefen",Mittel,Neu,Website+GBP pruefen,,Leicht ausserhalb Pfullendorf
+"Dr. Sarah Schottelius (Zahnheilkunde)",Zahnarzt,Pfullendorf,Bahnhofstr. 7,07552 3959310,"Hauptsaechlich auf 11880 gelistet, eigene Website unklar",Hoch,Neu,Website pruefen + anrufen,,
+"Zahnaerztliche Gemeinschaftspraxis Boehmer/Reuschl",Zahnarzt,Pfullendorf,Bergwaldstr. 1,07552 409951,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
+"Dres. Christian und Daniela Kugler",Zahnarzt,Pfullendorf,Ueberlinger Str. 9,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
+"Kieferorthopaedie Dr. Christian Weiger",Zahnarzt,Pfullendorf,Hauptstr. 31,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
+Zahnarztpraxis Pfullendorf,Zahnarzt,Pfullendorf,Hauptstrasse 15,07552 4333,"Eigene Website vorhanden (zahnarztpraxis-pfullendorf.de), eher niedrige Prioritaet",Niedrig,Neu,Nur falls Ads/GBP schwach,,Hat bereits Webauftritt
+"FITNESS-CLUB fit4life GmbH",Fitnessstudio,Pfullendorf,Bergwaldstr. 4,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
+Sportcenter Barz,Fitnessstudio,Pfullendorf,Otterswanger Str. 1,,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
+MC Shape Pfullendorf,Fitnessstudio,Pfullendorf,,07552 3824090,Franchise mit zentralem Marketing,Niedrig,Neu,Nur falls lokale Ads fehlen,,Franchise - Entscheidung liegt evtl. nicht lokal
+"StyleBoxx Friseur Markt-Center",Friseur,Pfullendorf,Bergwaldstrasse 4,07552 9280559,"Teil einer Kette (StyleBoxx/Klier) - vermutlich zentrales Marketing",Niedrig,Neu,Website/GBP pruefen,,"Kettenbetrieb, Entscheidung evtl. nicht lokal"
+"Guemues Saadet Friseur",Friseur,Pfullendorf,Bahnhofstr. 4,,Noch nicht geprueft,Hoch,Neu,Website/GBP pruefen + anrufen,,Kleiner Einzelsalon - guter Kandidat
+"Boll Manfred Der Haarschneider",Friseur,Pfullendorf,Andreas-Rogg-Gasse 6,,Noch nicht geprueft,Hoch,Neu,Website/GBP pruefen + anrufen,,Kleiner Einzelsalon - guter Kandidat
+"Schmauder Rainer Herrensalon",Friseur,Pfullendorf,Sigmaringer Str. 7,,Noch nicht geprueft,Hoch,Neu,Website/GBP pruefen + anrufen,,Kleiner Einzelsalon - guter Kandidat
+RESTLE,Friseur,Pfullendorf,Otterswanger Str. 5,+49 7552 9386633,Noch nicht geprueft,Mittel,Neu,Website/GBP pruefen,,
