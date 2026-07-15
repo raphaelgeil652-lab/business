@@ -2,6 +2,15 @@
 
 Research-Zusammenfassung für die festgelegte Nische aus CLAUDE.md: **Zahnärzte, Fitnessstudios, Beautysalons, Friseure**. Basis für zukünftige Angebote/Templates bei echten Kundenprojekten. Physio und Gastronomie/Tourismus wurden früher mitrecherchiert (Abschnitte unten als Referenz belassen), sind aber aktuell nicht Teil der aktiven Nische.
 
+## 0. Homepage vs. Landingpage – zwei verschiedene Dinge im selben Projekt
+
+Pro Kundenprojekt entstehen zwei unterschiedliche Seiten, nicht eine:
+
+- **Homepage**: die eigentliche Firmenwebsite (Start, Leistungen, Team, Kontakt, Öffnungszeiten). Muss für alle Besucherarten funktionieren – organische Google-Suche, Google Maps, Mundpropaganda. Braucht Navigation und mehrere Unterseiten.
+- **Landingpage**: eine schlanke Spezialseite pro beworbener Leistung, auf die *ausschließlich* die Ads zeigen (siehe Abschnitt 1). Keine Navigation, ein CTA, exaktes Message Match zur Anzeige.
+
+Beide liegen meist auf derselben Domain (z. B. `praxis.de` = Homepage, `praxis.de/zahnreinigung` = Landingpage dafür), sind aber unterschiedliche Seiten mit unterschiedlichem Zweck – die Landingpage ist i. d. R. nicht in der Hauptnavigation verlinkt. Ads-Traffic auf die normale Homepage statt auf eine dedizierte Landingpage zu schicken kostet die 2-3x höhere Conversion aus Abschnitt 1. Die Templates in `templates/` sind bewusst nur die Landingpage-Hälfte – die Homepage ist pro Kunde individueller und weniger schematisierbar (Team-Fotos, Firmengeschichte etc.).
+
 ## 1. Universelle Landingpage-Prinzipien (branchenübergreifend)
 
 - **Eine Seite = ein Angebot = ein CTA.** Keine Navigation, keine Ablenkung. Dedizierte Landingpages statt Traffic auf die normale Homepage schicken bringt in der Praxis 2-3x höhere Conversion (teils bis ~10% vs. 2-3%).
