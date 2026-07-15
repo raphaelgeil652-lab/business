@@ -1,0 +1,153 @@
+<!--
+  Anzeigenvorschau (Mockup) für das Responsive Search Ad aus google-ads-copy.md.
+  Zeigt eine mögliche Kombination der Headlines/Descriptions, wie Google Ads sie
+  zusammenstellen könnte. Google rotiert die Kombinationen automatisch (RSA) —
+  das hier ist eine plausible, keine garantierte Ausspielung.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anzeigenvorschau – Zahnreinigung Pfullendorf</title>
+<style>
+  :root {
+    --page-bg: #EDEFF2;
+    --page-text: #1B1F23;
+    --serp-bg: #FFFFFF;
+    --serp-border: #E4E7EB;
+    --url-text: #202124;
+    --ad-badge: #1B1F23;
+    --headline: #1A0DAB;
+    --headline-visited: #609;
+    --desc-text: #4D5156;
+    --sitelink-desc: #4D5156;
+    --divider: #EBEBEB;
+    --note-bg: #FFFFFF;
+    --note-border: #DCE3DC;
+    --note-accent: #2F6F5E;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: var(--sans); background: var(--page-bg); color: var(--page-text);
+    padding: clamp(1.5rem, 4vw, 3rem) 1rem 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 1.3rem; margin: 0 0 0.3em; }
+  .sub { color: #5B6572; font-size: 0.92rem; margin: 0 0 2rem; }
+
+  .device-label {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #5B6572; margin: 2rem 0 0.6rem;
+  }
+
+  /* SERP card */
+  .serp {
+    background: var(--serp-bg); border: 1px solid var(--serp-border); border-radius: 8px;
+    padding: 1.1rem 1.2rem 1rem; font-family: arial, sans-serif;
+  }
+  .ad-top { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.15rem; }
+  .ad-badge {
+    font-size: 0.72rem; font-weight: 700; color: var(--ad-badge);
+    border: 1px solid #7c8085; border-radius: 3px; padding: 0.05em 0.4em; line-height: 1.5;
+  }
+  .ad-url { font-size: 0.8rem; color: var(--url-text); }
+  .ad-url .path { color: #4D5156; }
+  .ad-headline { font-size: 1.15rem; color: var(--headline); line-height: 1.35; margin: 0.15rem 0 0.25rem; cursor: pointer; }
+  .ad-headline:hover { text-decoration: underline; }
+  .ad-desc { font-size: 0.9rem; color: var(--desc-text); line-height: 1.45; max-width: 62ch; margin: 0 0 0.7rem; }
+
+  .sitelinks { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 1.5rem; padding-top: 0.6rem; border-top: 1px solid var(--divider); }
+  @media (max-width: 480px) { .sitelinks { grid-template-columns: 1fr; } }
+  .sitelink-title { font-size: 0.92rem; color: var(--headline); margin: 0 0 0.1em; cursor: pointer; }
+  .sitelink-title:hover { text-decoration: underline; }
+  .sitelink-desc { font-size: 0.8rem; color: var(--sitelink-desc); margin: 0; }
+
+  .call-row { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.7rem; font-size: 0.88rem; color: var(--url-text); }
+  .call-row svg { width: 1rem; height: 1rem; stroke: #4D5156; }
+
+  /* Mobile frame */
+  .phone {
+    width: 320px; margin: 0 auto; background: var(--serp-bg); border: 1px solid var(--serp-border);
+    border-radius: 22px; padding: 1rem 1rem 1.2rem; font-family: arial, sans-serif;
+  }
+  .phone .ad-headline { font-size: 1.02rem; }
+  .phone .ad-desc { font-size: 0.85rem; }
+  .phone .call-btn {
+    display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.8rem;
+    background: #1A0DAB; color: #fff; font-size: 0.82rem; font-weight: 600;
+    padding: 0.55em 0.9em; border-radius: 6px;
+  }
+
+  .note {
+    background: var(--note-bg); border: 1px solid var(--note-border); border-radius: 12px;
+    padding: 1.1rem 1.3rem; margin-top: 2rem; font-size: 0.88rem; color: #384038;
+  }
+  .note strong { color: var(--note-accent); }
+  .note ul { margin: 0.5em 0 0; padding-left: 1.2em; }
+  .note li { margin-bottom: 0.3em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Anzeigenvorschau: Professionelle Zahnreinigung Pfullendorf</h1>
+  <p class="sub">Eine mögliche Kombination aus <code>google-ads-copy.md</code> — so oder so ähnlich könnte die Anzeige in der Google-Suche erscheinen.</p>
+
+  <div class="device-label">Desktop</div>
+  <div class="serp">
+    <div class="ad-top">
+      <span class="ad-badge">Anzeige</span>
+      <span class="ad-url">www.zahnarztpraxis-seeblick.de <span class="path">› zahnreinigung</span></span>
+    </div>
+    <div class="ad-headline">Zahnreinigung Pfullendorf | Termin in 24 Std. sichern | Schmerzfrei mit Gel</div>
+    <p class="ad-desc">Zahnstein &amp; Verfärbungen entfernt – schmerzfrei mit Betäubungsgel. Termin in 24 Std. Bewertung 4,9 von 5 bei 210+ Patienten.</p>
+    <div class="call-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 8.9 8.9 0 0 0 2.8.45 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A15 15 0 0 1 3 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 8.9 8.9 0 0 0 .45 2.8 1 1 0 0 1-.25 1z"/></svg>
+      07552 12 34 56
+    </div>
+    <div class="sitelinks">
+      <div>
+        <div class="sitelink-title">Preise ansehen</div>
+        <p class="sitelink-desc">89 € pro Sitzung, transparent & ohne Papierkram.</p>
+      </div>
+      <div>
+        <div class="sitelink-title">Häufige Fragen</div>
+        <p class="sitelink-desc">Schmerzen, Dauer, Kassenzuschuss – kurz erklärt.</p>
+      </div>
+      <div>
+        <div class="sitelink-title">Bewertungen lesen</div>
+        <p class="sitelink-desc">210+ Patient:innen aus Pfullendorf &amp; Umgebung.</p>
+      </div>
+      <div>
+        <div class="sitelink-title">Termin online anfragen</div>
+        <p class="sitelink-desc">Formular ausfüllen, Rückruf meist am selben Tag.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="device-label">Mobil</div>
+  <div class="phone">
+    <div class="ad-top">
+      <span class="ad-badge">Anzeige</span>
+      <span class="ad-url">zahnarztpraxis-seeblick.de</span>
+    </div>
+    <div class="ad-headline">Zahnreinigung Pfullendorf | 210+ zufriedene Patienten</div>
+    <p class="ad-desc">Professionelle Zahnreinigung in Pfullendorf. Kassenzuschuss oft möglich. Jetzt anrufen.</p>
+    <div class="call-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" width="14" height="14"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 8.9 8.9 0 0 0 2.8.45 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A15 15 0 0 1 3 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 8.9 8.9 0 0 0 .45 2.8 1 1 0 0 1-.25 1z"/></svg>
+      Anrufen
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Wichtig zu verstehen:</strong> Das ist ein Mockup zur Veranschaulichung, keine Live-Schaltung.
+    <ul>
+      <li>Google Ads ist ein <strong>Responsive Search Ad</strong> — aus den 10 Headlines und 4 Descriptions in <code>google-ads-copy.md</code> testet Google automatisch verschiedene Kombinationen und zeigt die am besten performende häufiger.</li>
+      <li>Sitelinks, Anruf-Erweiterung und Standort erscheinen nicht garantiert bei jeder Ausspielung — abhängig von Ad Rank, Gerät und Suchkontext.</li>
+      <li>Bevor das live geht: echte Domain, echtes Buchungssystem hinter dem Formular, und ein eingerichtetes Google-Unternehmensprofil für die Standort-/Bewertungsdaten.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
