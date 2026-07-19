@@ -1,84 +1,62 @@
 # Website: fit4life Pfullendorf
 
-Erstes Website-Referenzprojekt in der Nische Fitnessstudio. Statische Website
-(HTML/CSS/JS, keine externen Abhaengigkeiten) – direkt hostbar oder als Vorlage
-fuer Webflow/WordPress uebertragbar.
+Erstes Website-Referenzprojekt in der Nische Fitnessstudio. Editoriale One-Page-Homepage
+nach `docs/design-standard.md` (Bebas Neue + Manrope, Kohle/Knochen/Signalorange,
+ein Konversionsziel: Probetraining). Statisch, ohne Build, direkt auf Vercel deploybar.
 
-## Seiten
+Auf KI-Slop geprüft mit dem `impeccable`-Detektor (0 Anti-Patterns).
 
-| Datei             | Inhalt                                                        |
-|-------------------|---------------------------------------------------------------|
-| `index.html`      | Startseite: Hero, Angebotsueberblick, Warum, Kurs-Teaser, CTA |
-| `kurse.html`      | Alle Kurse mit Beschreibung + Kursplan-Platzhalter            |
-| `studio.html`     | Ausstattung: Geraete, Kursflaeche, Sauna, Solarium, Cafe, PT  |
-| `ueber-uns.html`  | Philosophie + Team (Felix Staudacher)                         |
-| `kontakt.html`    | Adresse, Telefon, Oeffnungszeiten, Karte, Anfrageformular     |
-| `assets/style.css`| Zentrales Stylesheet (Design-System)                          |
-| `assets/main.js`  | Mobile-Navigation + Jahr im Footer                            |
+## Dateien
+
+| Datei          | Inhalt                                                                 |
+|----------------|------------------------------------------------------------------------|
+| `index.html`   | Komplette Homepage (Hero, Zahlen, Bereiche, Wohlfühlen, Kurse, Preise, Statement, Kontakt) – Styles & JS inline |
+| `vercel.json`  | `cleanUrls` für saubere URLs                                            |
+
+## Seiten-Aufbau (Sektionen der One-Page)
+
+1. **Hero** – Vollbild, „Fit fürs Leben", zeilenweiser Typo-Aufstieg
+2. **Zahlenband** – 570 m² / 120 m² / 10 Kursformate
+3. **Bereiche** – Gerätetraining & Kurse als Vollbild-Zeilen mit Bild
+4. **Mehr als nur Geräte** – Sauna, Solarium, Café, Personal Training, Reha (editoriale Zeilenliste)
+5. **Kurse** – alle 10 Kursformate als Typo-Index
+6. **Preise** – Zeilen mit Hover-Invert (Probetraining gratis, Rest als Platzhalter)
+7. **Statement** – ehrlicher Studio-Leitsatz (kein erfundenes Kundenzitat)
+8. **Besuch/Kontakt** – Bild + Infotabelle, Anrufen + Route planen
+9. **Footer + Sticky-Mobile-Leiste** (Anrufen / Probetraining)
 
 ## Lokal ansehen
 
-Einfach `index.html` im Browser oeffnen. Oder lokaler Server:
+`index.html` im Browser öffnen, oder:
 
 ```
 cd websites/fit4life
-python3 -m http.server 8000
-# -> http://localhost:8000
+python3 -m http.server 8000   # -> http://localhost:8000
 ```
 
 ## Auf Vercel deployen
 
-Die Seite ist eine reine statische Website – **kein Build noetig**, laeuft auf
-Vercel sofort. `vercel.json` sorgt fuer saubere URLs (`/kurse` statt `/kurse.html`).
-Drei Wege:
+Reine statische Seite, **kein Build**. `vercel.json` sorgt für saubere URLs.
 
-1. **Repo verbinden (empfohlen):** In Vercel „Add New… → Project", dieses Repo
-   waehlen. Bei **Root Directory** `websites/fit4life` eintragen. Framework Preset:
-   „Other" (kein Build). Deploy – fertig. Kuenftige Pushes deployen automatisch.
-2. **Drag & Drop:** Auf vercel.com den Ordner `websites/fit4life` einfach ins
-   Dashboard ziehen.
-3. **Vercel CLI:**
-   ```
-   cd websites/fit4life
-   vercel        # Preview-Deploy
-   vercel --prod # Produktions-Deploy
-   ```
+1. **Repo verbinden (empfohlen):** Vercel „Add New… → Project", dieses Repo wählen,
+   **Root Directory** = `websites/fit4life`, Framework Preset „Other", Deploy.
+2. **Drag & Drop:** Ordner `websites/fit4life` ins Vercel-Dashboard ziehen.
+3. **CLI:** im Ordner `vercel --prod`.
 
-Wichtig: Als Root/Deploy-Verzeichnis immer den **Website-Ordner selbst**
-(`websites/fit4life`) angeben, nicht das Repo-Wurzelverzeichnis – so wird
-`index.html` korrekt als Startseite ausgeliefert.
+Immer den **Website-Ordner selbst** als Root Directory setzen, nicht die Repo-Wurzel.
 
-## NOCH zu ergaenzen (Platzhalter im Code mit `[ ]` und CSS-Klasse `.ph` markiert)
+## VOR ECHTEM LIVE-GANG ersetzen (im Code mit `[ … ]` / Klasse `.todo` markiert)
 
-Alle Platzhalter sind orange/kursiv dargestellt und leicht per Suche nach `ph`
-bzw. `[` auffindbar.
+- [ ] **Telefon 07771 875275 verifizieren** – Vorwahl 07771 = Stockach, nicht Pfullendorf (07552). Beim Kunden bestätigen, dann alle `tel:`-Links + Anzeigetexte korrigieren.
+- [ ] **Öffnungszeiten** (Besuch-Sektion)
+- [ ] **Preise** (Mitgliedschaft, Personal Training)
+- [ ] **E-Mail** ergänzen (aktuell nur Telefon + Route)
+- [ ] **Fotos**: Hero, Gerätefläche, Kursraum, Besuch-Bild sind lizenzfreie Unsplash-Platzhalter – beim Vor-Ort-Termin durch echte fit4life-Fotos ersetzen.
+- [ ] **Kursplan** (Wochenzeiten) in der Kurse-Sektion ergänzen
+- [ ] **Impressum & Datenschutz** (rechtlich Pflicht) – `impressum.html` / `datenschutz.html` anlegen (im Footer verlinkt)
 
-- [ ] **Oeffnungszeiten** (kontakt.html + Footer-Hinweis)
-- [ ] **Telefonnummer bestaetigen** – 07771 875275 hat Vorwahl Stockach, nicht
-      Pfullendorf (07552). Beim Kunden verifizieren, dann in allen Seiten + `tel:`-Links korrigieren.
-- [ ] **E-Mail-Adresse** (kontakt.html + evtl. Footer)
-- [ ] **Fotos**: Studio, Geraetflaeche, Kursraum, Sauna/Solarium/Cafe, Team –
-      gemeinsam vor Ort aufnehmen und `media-ph`-Platzhalter ersetzen.
-- [ ] **Kursplan** (Wochenzeiten/Trainer) als Tabelle in kurse.html
-- [ ] **Reha-Sport**: Kassen-/Verordnungsinfos ergaenzen
-- [ ] **Team**: weitere Mitglieder + O-Ton von Felix (ueber-uns.html)
-- [ ] **Preise / Mitgliedschaften** (optional eigene Seite, falls gewuenscht)
-- [ ] **Google-Maps-Einbettung** (Anfahrt in kontakt.html)
-- [ ] **Kontaktformular** an Versanddienst anbinden (z. B. Formspree / Netlify
-      Forms) oder serverseitig verarbeiten – aktuell nur Platzhalter ohne Versand.
-- [ ] **Impressum & Datenschutz** (rechtlich verpflichtend!) – Seiten
-      `impressum.html` / `datenschutz.html` anlegen (im Footer bereits verlinkt).
-- [ ] **Social-Links** (Instagram/Facebook), falls vorhanden
+## Design-Quelle
 
-## Design
-
-- Farbschema: dunkles Anthrazit + Limegruen-Akzent (energetisch, modern).
-  Zentral in `assets/style.css` unter `:root` aenderbar (z. B. an echte
-  fit4life-Markenfarben anpassen, falls vorhanden).
-- Mobile-first, responsiv, mit Burger-Menue.
-- Platzhalter-Farbe (`--accent-2`, orange) macht offene Stellen bewusst sichtbar –
-  nach dem Befuellen kann die `.ph`-Hervorhebung entfernt werden.
-
-## Datenquelle
-
-Inhalte basieren auf `templates/fitnessstudio-landingpage/kunde-fit4life-brief.md`.
+Inhalte: `templates/fitnessstudio-landingpage/kunde-fit4life-brief.md`.
+Design-Sprache & verbotene KI-Muster: `docs/design-standard.md`.
+Genutzte Skills: `impeccable`, `taste-skill` (in `.agents/skills/` / `.claude/skills/`).

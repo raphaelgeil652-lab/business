@@ -49,3 +49,20 @@ Die Referenz-Generation (Friseur/Beauty/Fitness, editorial) wurde vom Nutzer aus
 1. **Diese Design-Sprache ist der Standard** — editoriale Layouts, große Typo mit Charakter, Vollbild-Bilder, produktabgeleitete Farben, wenige cleane Animationen, ein Konversionsziel. Die verbotenen KI-Muster (oben) bleiben dauerhaft verboten.
 2. **Die Templates sind bewusst kompakte Grundgerüste.** Echte Kundenprojekte werden **länger und informationsreicher**, sobald der Nutzer echtes Material liefert (Team-Fotos, Leistungsdetails, Geschichte, Öffnungszeiten, FAQ, Anfahrt etc.). Mehr Inhalt = mehr Sektionen in derselben Design-Sprache — nicht dichter quetschen, sondern die Seite wachsen lassen.
 3. **Umfang richtet sich nach dem gelieferten Material**, nicht nach dem Template: was der Nutzer pro Kunde schickt (Texte, Bilder, Infos), bestimmt Länge und Tiefe der Seite.
+
+## Installierte Design-Skills (verbindlich nutzen)
+
+Der Nutzer hat per Video (TikTok @nateherkai, Juli 2026) ausdrücklich gewünscht, dass beim Website-Bau diese Skills genutzt werden. Sie sind ins Repo installiert (`.agents/skills/` mit Symlinks in `.claude/skills/`, `skills-lock.json`) und laden ab der jeweils nächsten Session automatisch. Bei jeder Homepage/Website anwenden:
+
+- **impeccable** (`pbakaus/impeccable`) — „Design fluency for AI harnesses". 23 Befehle + 45 Detektor-Regeln gegen KI-Slop (Gradient-Text, Seitenstrich-Rahmen, Lila-Paletten, überbenutzte Fonts, flache Hierarchie, WCAG-Kontrast, verschachtelte Cards, alles-zentriert, Motion-Probleme). Invokation z. B. `$impeccable craft|shape|audit|polish`.
+- **taste-skill** (`Leonxlnx/taste-skill`) — Anti-Slop-Frontend. Erst den Brief lesen und eine einzeilige „Design Read" ausgeben, dann drei Regler setzen: **DESIGN_VARIANCE / MOTION_INTENSITY / VISUAL_DENSITY** (1–10). Verbietet dieselben KI-Defaults (AI-Lila-Verläufe, zentrierter Hero über Mesh, drei gleiche Feature-Cards, Inter + slate-900).
+- **Referenz für Motion:** Emil Kowalski / [animations.dev](https://animations.dev) — bewusstes Easing (ease-out-quart/quint/expo, kein Bounce/Elastic), Reduced-Motion Pflicht.
+
+Diese Skills sind **keine Ersetzung, sondern die Werkzeug-Umsetzung** dieses Standards: Der Standard sagt *was* gilt, die Skills liefern das Vokabular, die Detektoren und die Motion-Handwerkskunst dazu. Bei Konflikt gewinnt die vom Nutzer bestätigte Richtung oben.
+
+### Kern-Handwerksregeln (aus impeccable, sofort anwendbar — auch ohne aktiven Skill)
+
+- **Kontrast:** Fließtext ≥ 4,5:1, große/fette Schrift ≥ 3:1 — auch Placeholder. Häufigster Fehler: hellgrauer Text auf getöntem Fast-Weiß.
+- **Typografie:** Zeilenlänge 65–75ch; Display-Headline-Deckel ≤ 6rem; Display-Letter-Spacing **nicht enger als −0.04em**; `text-wrap: balance` auf h1–h3, `pretty` auf Fließtext; nur auf Kontrastachse paaren (Serif+Sans / geometrisch+humanist).
+- **Layout:** Cards sind die faule Antwort — verschachtelte Cards sind immer falsch; Flexbox für 1D, Grid für 2D; responsive ohne Breakpoints via `repeat(auto-fit, minmax(280px,1fr))`; semantische z-index-Skala statt 999/9999.
+- **Motion:** intentional statt Reflex; kein identischer Entrance auf jede Sektion; `translateY/opacity` + Blur/clip-path/mask als Palette; Reveals müssen einen bereits sichtbaren Default verbessern (Inhalt nie hinter class-getriggerter Transition verstecken); immer `prefers-reduced-motion`-Alternative.
