@@ -26,6 +26,28 @@ python3 -m http.server 8000
 # -> http://localhost:8000
 ```
 
+## Auf Vercel deployen
+
+Die Seite ist eine reine statische Website – **kein Build noetig**, laeuft auf
+Vercel sofort. `vercel.json` sorgt fuer saubere URLs (`/kurse` statt `/kurse.html`).
+Drei Wege:
+
+1. **Repo verbinden (empfohlen):** In Vercel „Add New… → Project", dieses Repo
+   waehlen. Bei **Root Directory** `websites/fit4life` eintragen. Framework Preset:
+   „Other" (kein Build). Deploy – fertig. Kuenftige Pushes deployen automatisch.
+2. **Drag & Drop:** Auf vercel.com den Ordner `websites/fit4life` einfach ins
+   Dashboard ziehen.
+3. **Vercel CLI:**
+   ```
+   cd websites/fit4life
+   vercel        # Preview-Deploy
+   vercel --prod # Produktions-Deploy
+   ```
+
+Wichtig: Als Root/Deploy-Verzeichnis immer den **Website-Ordner selbst**
+(`websites/fit4life`) angeben, nicht das Repo-Wurzelverzeichnis – so wird
+`index.html` korrekt als Startseite ausgeliefert.
+
 ## NOCH zu ergaenzen (Platzhalter im Code mit `[ ]` und CSS-Klasse `.ph` markiert)
 
 Alle Platzhalter sind orange/kursiv dargestellt und leicht per Suche nach `ph`
