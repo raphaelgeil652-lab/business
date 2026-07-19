@@ -44,28 +44,23 @@ Realistisch bei 5-8h/Woche:
 
 Ziel in den ersten 4-6 Wochen: nicht Abschlüsse, sondern **Gesprächstermine**. Ein Gespräch pro Woche ist am Anfang schon ein guter Wert.
 
-### Wie du Fortschritt in `leads.csv` einträgst
+### Wie du Fortschritt einträgst: sag es mir einfach, editier nichts selbst
 
-Vier Spalten dafür, mit klarer Aufgabenteilung:
+**Feste Regel: `leads.csv` von Hand zu bearbeiten ist nicht mehr nötig — auch nicht empfohlen.** CSV-Dateien sind nichts, womit man von Hand rumhantieren sollte (Kommas, Anführungszeichen, Spaltenzahl müssen exakt stimmen, ein falsches Komma reicht, um die Datei kaputt zu machen). Das ist Maschinenarbeit, keine Nutzerarbeit.
 
-- **Status**: der aktuelle Zustand — `Neu` → `Kontaktiert` → `Termin vereinbart` → `Kunde` (oder `Kein Interesse`, wenn abgelehnt).
-- **Naechster_Schritt**: was konkret als Nächstes ansteht, z. B. „Rückruf Freitag 14 Uhr" oder „Angebot per WhatsApp schicken".
-- **Datum**: wann du diesen Lead zuletzt bearbeitet hast (Format egal, z. B. `16.07.`).
-- **Kontaktverlauf**: ein kurzes, anwachsendes Protokoll aller Kontakte — neue Einträge einfach hinten anhängen, ältere nicht löschen. Das ist bewusst getrennt von der Spalte `Notizen` (die enthält nur die ursprüngliche Recherche-Einschätzung, nicht deinen Verlauf).
+Stattdessen: Nach einem Anruf oder Besuch schreibst du mir einfach in normaler Sprache, was passiert ist — hier im Chat, egal ob in dieser Session oder einer späteren. Zum Beispiel:
 
-**Beispiel** — nach einem Anruf bei TheSalonNiki, der zu einem Rückruftermin führt:
-- `Status`: `Kontaktiert`
-- `Naechster_Schritt`: `Rückruf Fr 14 Uhr`
-- `Datum`: `16.07.`
-- `Kontaktverlauf`: `16.07.: angerufen, Chefin nicht da, Rückruf vereinbart`
+> „Hab TheSalonNiki angerufen, Chefin war nicht da, soll Freitag 14 Uhr nochmal anrufen."
 
-Nächste Woche, nach dem Rückruf mit Terminvereinbarung:
-- `Status`: `Termin vereinbart`
-- `Naechster_Schritt`: `Termin 22.07., 16 Uhr vor Ort`
-- `Datum`: `18.07.`
-- `Kontaktverlauf`: `16.07.: angerufen, Chefin nicht da, Rückruf vereinbart | 18.07.: Rückruf erhalten, Termin für 22.07. vereinbart`
+Ich trage das dann korrekt in die passenden Spalten ein (`Status`, `Naechster_Schritt`, `Datum`, `Kontaktverlauf`) — technisch fehlerfrei, ohne dass du dich um Kommas oder Spalten kümmern musst. Die Spalten selbst (zur Orientierung, falls du die Datei mal ansiehst):
 
-Einfach in Excel/Numbers/Google Sheets öffnen (CSV-Datei) oder direkt als Text bearbeiten — beides funktioniert, solange die Kommas innerhalb von Freitext in Anführungszeichen stehen.
+- **Status** — aktueller Zustand (`Neu`, `Kontaktiert`, `Termin vereinbart`, `Kunde`, `Kein Interesse`)
+- **Naechster_Schritt** — was konkret ansteht
+- **Datum** — letzter Bearbeitungsstand
+- **Kontaktverlauf** — wachsendes Protokoll aller Kontakte zu diesem Lead
+- **Notizen** — bleibt für meine ursprüngliche Recherche-Einschätzung reserviert, nicht für deinen Verlauf
+
+Falls du die Liste mal selbst ansehen willst (nicht bearbeiten): auf GitHub die Datei öffnen, dort wird sie automatisch als lesbare Tabelle dargestellt.
 
 ## 4. Automatisierte Erinnerung (optional)
 
