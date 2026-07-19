@@ -41,3 +41,11 @@ Stattdessen verbindlich: **editoriale Layouts** — Vollbild-Bilder, überlappen
 ## Für neue Vorlagen
 
 Jede neue Homepage bekommt einen eigenen kurzen Design-Plan (Farbpalette als 4-6 benannte Werte, Schriftpaarung, Layout-Idee in 1-2 Sätzen) **vor** dem Bauen — nie das Skelett einer bestehenden Vorlage kopieren, auch nicht das der Referenz-Generation. Farben aus der Bildwelt/dem Produkt der Branche ableiten (z. B. Lackrot aus der Nagellack-Bildwelt, Bronze aus dem warmen Barbershop-Licht).
+
+## Vom Nutzer bestätigt (Juli 2026) — verbindliche Richtung
+
+Die Referenz-Generation (Friseur/Beauty/Fitness, editorial) wurde vom Nutzer ausdrücklich als **die** Richtung für alle zukünftigen Websites bestätigt. Für jedes kommende Kundenprojekt gilt daher:
+
+1. **Diese Design-Sprache ist der Standard** — editoriale Layouts, große Typo mit Charakter, Vollbild-Bilder, produktabgeleitete Farben, wenige cleane Animationen, ein Konversionsziel. Die verbotenen KI-Muster (oben) bleiben dauerhaft verboten.
+2. **Die Templates sind bewusst kompakte Grundgerüste.** Echte Kundenprojekte werden **länger und informationsreicher**, sobald der Nutzer echtes Material liefert (Team-Fotos, Leistungsdetails, Geschichte, Öffnungszeiten, FAQ, Anfahrt etc.). Mehr Inhalt = mehr Sektionen in derselben Design-Sprache — nicht dichter quetschen, sondern die Seite wachsen lassen.
+3. **Umfang richtet sich nach dem gelieferten Material**, nicht nach dem Template: was der Nutzer pro Kunde schickt (Texte, Bilder, Infos), bestimmt Länge und Tiefe der Seite.
