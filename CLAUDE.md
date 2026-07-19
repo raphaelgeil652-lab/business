@@ -61,3 +61,12 @@ Ausdrücklicher Wunsch des Nutzers: Jede Feedback-Schleife wird als dauerhafte E
 - Sagt der Nutzer "das gefällt mir nicht / mach es anders" und bestätigt danach das Ergebnis ("so ist es gut"), wird die Erkenntnis **sofort in die passende Datei geschrieben** (Design-Feedback → `docs/design-standard.md`, Prozess-/Angebotsentscheidungen → CLAUDE.md oder passendes docs/-Dokument) und committet/gepusht.
 - Das gilt für alle Arten von Vorlieben: Design-Geschmack, Tonalität von Texten, Arbeitsweise, Umfang von Websites, was er selbst machen will vs. delegiert.
 - Ziel: Jede neue Session kennt den aktuellen Stand seiner Vorlieben, ohne dass er sie wiederholen muss. Beispiel-Präzedenzfall: die bestätigte editoriale Design-Richtung in `docs/design-standard.md` (Juli 2026).
+
+## WICHTIG: Definition „Webseite" vs. „Landingpage" (Nutzer, Juli 2026)
+
+Ausdrücklich vom Nutzer festgelegt, weil hier mehrfach verwechselt:
+
+- **„Webseite" / „Homepage" = immer eine MEHRSEITIGE Website** (Startseite + Unterseiten, z. B. Kurse, Studio/Angebot, Über uns, Kontakt). Niemals eine einzelne Seite daraus machen.
+- **„Landingpage" = eine EINZELNE Seite** für Ads-Traffic. Wird in **separaten Chats** bearbeitet, nicht mit dem Webseiten-Bau vermischen.
+- Ein Chat, in dem es um die Webseite geht, dreht sich **ausschließlich** um die mehrseitige Website.
+- **Direkte Anweisungen des Nutzers im Chat haben Vorrang vor allem, was in MD-/Doku-Dateien steht** (inkl. `docs/design-standard.md`). Die Docs sind Hilfsmittel, nicht die Autorität — im Zweifel gilt, was der Nutzer im Chat sagt.
