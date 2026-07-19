@@ -1,6 +1,13 @@
 # Template: Fitnessstudio-Website (Homepage)
 
-Volle Homepage (keine Landingpage) für ein Fitnessstudio — mehrere Abschnitte, echte Bildsprache, modernes/energisches Design. Design-Entscheidungen im Detail: siehe `docs/design-standard.md`.
+Volle Homepage (keine Landingpage) für ein Fitnessstudio — editorial, dunkel, energisch. Referenz-Vorlage der verschärften Design-Generation, siehe `docs/design-standard.md`.
+
+## Design
+
+- Schriftpaarung: **Bebas Neue** (riesige Condensed-Headlines) + **Manrope** (UI/Fließtext).
+- Farbwelt: Kohle (#101214), Knochen (#EDEAE4), Signalorange (#E8542F) — kräftig, aber nicht die "Schwarz + Neongrün"-KI-Klischeekombination.
+- Layout: Vollbild-Hero mit zeilenweisem Typo-Aufstieg, Zahlenband mit Linienraster, Trainingsbereiche als alternierende Vollbild-Zeilen mit Clip-Reveal, Preise als helle Großzeilen mit Dunkel-Hover-Invert, Zitat, geteilte Kontakt-Sektion, Sticky-Mobile-Leiste.
+- Bewusst keine Karten-Grids, keine Pillen-Buttons, kein Label-über-Überschrift-Muster in jeder Sektion.
 
 ## Anpassung pro Kunde
 
@@ -23,4 +30,4 @@ Das hier ist bewusst **keine** Landingpage, sondern die volle Website: mehrere T
 
 ## Getestet
 
-Rendering in Chromium geprüft (Layout, Hover-Zustände, Bento-Kursplan, Preis-Karten, Schluss-CTA). Externe Bilder/Google-Fonts werden in der Entwicklungssandbox teils blockiert (Netzwerk-Restriktion) — auf einer echten Website laden sie normal.
+Rendering in Chromium geprüft (Hero-Animation, Zahlenband, Bereichs-Zeilen inkl. Clip-Reveal, Preiszeilen-Hover, Kontakt-Split, mobile Leiste). Externe Bilder/Google-Fonts werden in der Entwicklungssandbox teils blockiert (Netzwerk-Restriktion) — auf einer echten Website laden sie normal.

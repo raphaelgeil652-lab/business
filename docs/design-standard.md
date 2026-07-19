@@ -19,24 +19,25 @@ Ein KI-Modell gibt bei vager Anfrage den statistischen Durchschnitt seiner Train
 7. **Zurückhaltung trotzdem Pflicht — aber als bewusste Entscheidung, nicht als Verbot.** Glassmorphismus, 3D-Mockups oder Dark-Mode-First sind nicht per se falsch, aber nur einsetzen, wenn es zur Marke passt (z. B. dunkle, kontrastreiche Optik für ein Fitnessstudio — passt zur Energie der Branche), nicht weil es gerade Trend ist. Referenzpunkt für "Wow ohne Kitsch": reduziertes, tadelloses Interface-Design (z. B. die Design-Sprache von Emil Kowalski/Vercel-Umfeld) — hohe Sorgfalt in Typografie/Spacing/Bewegung statt Effekthascherei.
 8. **Bewegung immer mit `prefers-reduced-motion`-Rücksicht.** Jede Animation braucht eine Reduced-Motion-Alternative (sofort sichtbar statt animiert).
 
-## Konkret umgesetzt in `templates/zahnarzt-landingpage/`
+## Verschärfung (nach Feedback): Verbotene Muster
 
-Bleibt eine Landingpage (ein Service, ein CTA) — bekam nur maßvolle Auffrischung, keine Homepage-Behandlung:
-- Schriftpaarung: **Fraunces** (Display, warm, Charakter) + **Work Sans** (Fließtext) statt System-Serif/Inter.
-- Hero: dezentes Gradient-Mesh im Hintergrund + gestaffelte Eintritts-Animation der Hero-Elemente.
-- Benefits-Sektion: Bento-Grid statt drei gleicher Karten.
+Die erste Generation der Homepages fiel trotz eigener Farben/Schriften als "KI-Website" auf, weil alle dasselbe **Skelett** teilten. Der Wiedererkennungswert von KI-Design liegt nicht in der Farbe, sondern in der Struktur. Deshalb ab sofort verboten:
 
-## Konkret umgesetzt in `templates/fitnessstudio-website/` (volle Homepage)
+- **Label-über-Überschrift-Muster in jeder Sektion** (kleines Uppercase-Label mit Strich + H2 + Absatz, endlos wiederholt). Sektionseinstiege müssen variieren.
+- **Gleichförmige Karten-Grids** (3 gleiche abgerundete Boxen nebeneinander) — für Leistungen/Preise stattdessen große editoriale Zeilen, Vollbild-Reihen oder asymmetrische Collagen.
+- **Pillen-Buttons überall** — Buttons dürfen eckig/kantig sein; Form ist eine Markenentscheidung.
+- **Einheitliche runde Ecken auf allem** — Bilder dürfen hart an Viewport-Kanten stoßen, Vollbild laufen, überlappen.
+- **Gleiches Sektions-Raster mit identischem Padding-Rhythmus** — Größenkontraste einbauen: riesige Typo neben kleiner, Vollbild neben Weißraum.
 
-- Schriftpaarung: **Bebas Neue** (kräftige, athletische Display-Schrift) + **Manrope** (Fließtext) — bewusst anders als beim Zahnarzt, passend zur energischen Branche.
-- Farbwelt: dunkles Kohle-Marine statt reinem Schwarz, Amber/Gold als Hauptakzent, Petrol als Zweitakzent — bewusste Abweichung von der "Fast-Schwarz + Neongrün/Vermillion"-KI-Klischeekombination.
-- Echte Unsplash-Trainingsfotos (Hero, Studio, Kursplan, Testimonial) statt Icons/Illustrationen.
-- Hero: Vollbild-Foto mit langsamem Zoom-Effekt + gestaffelter Text-Einblendung.
-- Kursplan als Bento-Bildgrid (eine große Kachel + zwei kleinere), Hover-Zoom auf den Bildern.
-- Dark-Mode-First als bewusste Markenentscheidung (passt zur Foto-Stimmung/Energie), nicht als Standardwert.
+Stattdessen verbindlich: **editoriale Layouts** — Vollbild-Bilder, überlappende Ebenen, große Serifentypo mit Kursiv-Akzenten oder Condensed-Display, Preislisten als große Zeilen mit Hover-Invert, geteilte Kontakt-Sektionen (Bild + Infotabelle), Sticky-Mobile-Leiste mit Anruf + Termin. Animationen clean und wenige: Zeilen-Aufstieg im Hero (`translateY` + `overflow: hidden`), Clip-Reveals auf Bildern, Hover-Invert auf Preiszeilen. Alles dient **einem** Konversionsziel (Termin/Probetraining).
 
-## Für zukünftige Vorlagen (Beauty, Friseur)
+## Aktueller Stand der Vorlagen (Referenz-Generation)
 
-Jede neue Homepage bekommt einen eigenen kurzen Design-Plan (Farbpalette als 4-6 benannte Werte, Schriftpaarung, Layout-Idee in 1-2 Sätzen) **vor** dem Bauen — nicht eine bestehende Optik einfach wiederverwenden. Branchenspezifische Stimmung:
-- **Beautysalon**: warm, weich, evtl. mit Vorher-Nachher-Fokus im Layout
-- **Friseur**: modern, klar, Fokus auf Ortsbezug in Typografie/Struktur
+- **`templates/friseur-website/`** — Instrument Serif + Archivo; Papier/Espresso/Bronze; Vollbild-Hero mit zeilenweisem Typo-Aufstieg, Statement mit überlappendem Bild, asymmetrische Arbeits-Collage, dunkle Preiszeilen mit Bronze-Hover-Invert, geteilte Kontakt-Sektion.
+- **`templates/beautysalon-website/`** — Fraunces (kursiv-Akzente) + Outfit; Porzellan/Pflaume/Lackrot; Split-Hero mit randabfallendem Bild + Überlappung, Behandlungen als nummerierte Großzeilen mit Bild/Preis/Dauer, Pflaumen-Statement-Band, ehrlicher Vorher-Nachher-Platzhalter (niemals Stockfotos als Ergebnisse!).
+- **`templates/fitnessstudio-website/`** — Bebas Neue + Manrope; Kohle/Knochen/Signalorange; Vollbild-Hero mit Riesen-Typo, Zahlenband mit Linienraster, Bereiche als alternierende Vollbild-Zeilen, helle Preiszeilen mit Dunkel-Hover-Invert. `showcase.html` daneben = bewusst übertriebene Effekt-Demo, kein Kundentemplate.
+- **`templates/zahnarzt-landingpage/`** — bleibt bewusst schlanke Ads-Landingpage (Playbook-Regeln), keine Homepage-Behandlung.
+
+## Für neue Vorlagen
+
+Jede neue Homepage bekommt einen eigenen kurzen Design-Plan (Farbpalette als 4-6 benannte Werte, Schriftpaarung, Layout-Idee in 1-2 Sätzen) **vor** dem Bauen — nie das Skelett einer bestehenden Vorlage kopieren, auch nicht das der Referenz-Generation. Farben aus der Bildwelt/dem Produkt der Branche ableiten (z. B. Lackrot aus der Nagellack-Bildwelt, Bronze aus dem warmen Barbershop-Licht).

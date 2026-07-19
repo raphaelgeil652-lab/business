@@ -1,7 +1,7 @@
 <!--
   TEMPLATE — Fitnessstudio-Website (volle Homepage, keine Landingpage)
-  Design-Prinzipien: siehe docs/design-standard.md — Homepages dürfen/sollen anspruchsvoll,
-  modern und bildstark sein (Landingpages bleiben bewusst schlank, siehe docs/playbook-landingpages-ads.md).
+  Referenz-Rebuild nach verschärftem Design-Standard (docs/design-standard.md):
+  editorial statt Karten-Grid, Bereiche als Vollbild-Zeilen, Preise als Zeilen, ein Ziel (Probetraining).
   Vor dem Einsatz bei einem echten Kunden ersetzen:
     - Studioname, Adresse, Telefonnummer, Öffnungszeiten
     - Bilder durch echte Fotos des Studios ersetzen (aktuell lizenzfreie Unsplash-Platzhalter)
@@ -12,300 +12,273 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fitnessstudio Pulswerk — Training in Pfullendorf</title>
+<title>Pulswerk — Fitnessstudio in Pfullendorf</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #14171C;
-    --surface: #1C2027;
-    --surface-alt: #232830;
-    --text: #F2F0EA;
-    --text-muted: #9CA1AB;
-    --accent: #F2A93C;
-    --accent-ink: #17140A;
-    --accent-2: #3FA9C9;
-    --border: #2B303A;
-    --shadow: 0 24px 48px -20px rgba(0,0,0,0.55);
-    --shadow-lift: 0 18px 36px -14px rgba(0,0,0,0.6);
-    --radius-lg: 20px;
-    --radius-md: 12px;
+    --coal: #101214;
+    --coal-soft: #191C1F;
+    --bone: #EDEAE4;
+    --muted: #8E938F;
+    --signal: #E8542F;
+    --signal-deep: #C6431F;
+    --line-dark: #2A2E31;
+    --line-light: #D8D4CB;
     --display: "Bebas Neue", Impact, "Arial Narrow Bold", sans-serif;
-    --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
-  :root[data-theme="light"] {
-    --bg: #F4F2ED; --surface: #FFFFFF; --surface-alt: #ECE9E2;
-    --text: #17181B; --text-muted: #5B5F68; --accent: #D4832A; --accent-ink: #FFFFFF;
-    --accent-2: #1E8DAA; --border: #E4E1DA;
-    --shadow: 0 24px 48px -20px rgba(23,24,27,0.25); --shadow-lift: 0 18px 36px -14px rgba(23,24,27,0.3);
-  }
-
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
   }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  img, svg { max-width: 100%; display: block; }
+  body { margin: 0; background: var(--coal); color: var(--bone); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
   a { color: inherit; }
+  ::selection { background: var(--signal); color: var(--coal); }
 
-  h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; letter-spacing: 0.01em; margin: 0 0 0.3em; line-height: 0.95; }
-  h1 { font-size: clamp(3rem, 2rem + 5vw, 6.2rem); }
-  h2 { font-size: clamp(2.2rem, 1.7rem + 2vw, 3.4rem); }
-  h3 { font-size: 1.6rem; }
-  p { margin: 0 0 1em; }
-  .lead { font-size: 1.15rem; color: var(--text-muted); max-width: 46ch; }
+  /* ---------- Header ---------- */
+  header.site {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem clamp(1.2rem, 4vw, 3rem);
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  }
+  header.site.scrolled { background: var(--coal); box-shadow: 0 1px 0 var(--line-dark); padding-top: 0.7rem; padding-bottom: 0.7rem; }
+  .brand { font-family: var(--display); font-size: 1.7rem; letter-spacing: 0.04em; line-height: 1; text-decoration: none; }
+  .brand span { color: var(--signal); }
+  .head-right { display: flex; align-items: center; gap: 1.6rem; }
+  .head-tel { font-size: 0.88rem; font-weight: 700; text-decoration: none; color: var(--muted); }
+  .head-tel:hover { color: var(--bone); }
+  @media (max-width: 640px) { .head-tel { display: none; } }
+  .btn-main {
+    font-weight: 800; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--signal); color: var(--coal); text-decoration: none;
+    padding: 0.85em 1.6em; transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .btn-main:hover { background: var(--signal-deep); transform: translateY(-1px); }
 
-  .eyebrow { display: inline-flex; align-items: center; gap: 0.6em; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1em; }
-  .eyebrow::before { content: ""; width: 2em; height: 2px; background: var(--accent); }
+  /* ---------- Hero ---------- */
+  .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+  .hero-img { position: absolute; inset: 0; }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9); }
+  .hero-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(190deg, rgba(16,18,20,0.2) 30%, rgba(16,18,20,0.9) 88%); }
+  .hero-inner { position: relative; z-index: 1; width: 100%; padding: 0 clamp(1.2rem, 4vw, 3rem) clamp(1.8rem, 4vw, 3rem); }
+  .hero h1 {
+    font-family: var(--display); font-weight: 400; margin: 0;
+    font-size: clamp(4rem, 2.4rem + 13vw, 13rem); line-height: 0.84; letter-spacing: 0.005em;
+  }
+  .hero h1 .line { display: block; overflow: hidden; }
+  .hero h1 .line > span { display: inline-block; transform: translateY(108%); animation: rise 0.85s cubic-bezier(.16,.84,.28,1) forwards; }
+  .hero h1 .line:nth-child(2) > span { animation-delay: 0.1s; color: var(--signal); }
+  @keyframes rise { to { transform: translateY(0); } }
+  .hero-foot {
+    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem;
+    margin-top: clamp(1.4rem, 3vw, 2.4rem); padding-top: 1.3rem;
+    border-top: 1px solid rgba(237,234,228,0.25);
+    opacity: 0; animation: fade 0.8s ease 0.5s forwards;
+  }
+  @keyframes fade { to { opacity: 1; } }
+  .hero-sub { max-width: 36ch; font-size: 1rem; color: rgba(237,234,228,0.8); margin: 0; }
+  .hero-actions { display: flex; align-items: center; gap: 1.4rem; }
+  .link-quiet { font-size: 0.9rem; font-weight: 600; color: rgba(237,234,228,0.7); text-decoration: none; border-bottom: 1px solid rgba(237,234,228,0.3); padding-bottom: 2px; }
+  .link-quiet:hover { color: var(--bone); border-color: var(--bone); }
+  @media (prefers-reduced-motion: reduce) { .hero h1 .line > span { transform: none; animation: none; } .hero-foot { opacity: 1; animation: none; } }
 
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
-  section { padding: clamp(4rem, 7vw, 7.5rem) 0; }
+  /* ---------- Zahlenband ---------- */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+  @media (max-width: 640px) { .stats { grid-template-columns: 1fr; } }
+  .stat { padding: clamp(1.6rem, 4vw, 2.6rem) clamp(1.2rem, 4vw, 3rem); border-right: 1px solid var(--line-dark); }
+  .stat:last-child { border-right: none; }
+  @media (max-width: 640px) { .stat { border-right: none; border-bottom: 1px solid var(--line-dark); } .stat:last-child { border-bottom: none; } }
+  .stat b { display: block; font-family: var(--display); font-size: clamp(2.6rem, 2rem + 2.4vw, 4.4rem); line-height: 1; color: var(--signal); font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5em; font-family: var(--sans); font-weight: 700; font-size: 0.95rem; padding: 0.9em 1.6em; border-radius: 999px; border: 2px solid transparent; text-decoration: none; cursor: pointer; transition: transform 0.2s cubic-bezier(.2,.8,.3,1.3), box-shadow 0.2s ease; white-space: nowrap; }
-  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .btn-primary { background: var(--accent); color: var(--accent-ink); }
-  .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: var(--shadow-lift); }
-  .btn-outline { background: transparent; color: var(--text); border-color: color-mix(in srgb, var(--text) 30%, transparent); }
-  .btn-outline:hover { border-color: var(--text); }
-
-  /* Nav */
-  header.site { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.25s ease, background 0.25s ease; }
-  header.site.scrolled { border-bottom-color: var(--border); background: color-mix(in srgb, var(--bg) 94%, transparent); }
-  header.site .wrap { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.5rem; gap: 1rem; }
-  .brand { font-family: var(--display); font-size: 1.5rem; letter-spacing: 0.03em; text-decoration: none; color: var(--text); }
-  .brand span { color: var(--accent); }
-  nav.links { display: flex; gap: 2rem; }
-  nav.links a { font-size: 0.92rem; font-weight: 600; text-decoration: none; color: var(--text-muted); transition: color 0.2s ease; }
-  nav.links a:hover { color: var(--text); }
-  @media (max-width: 780px) { nav.links { display: none; } }
-
-  /* Hero */
-  .hero { position: relative; min-height: 92vh; display: flex; align-items: flex-end; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; z-index: 0; }
-  .hero-bg img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); animation: heroZoom 18s ease-out forwards; }
-  @keyframes heroZoom { to { transform: scale(1); } }
-  .hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--bg) 6%, rgba(20,23,28,0.55) 55%, rgba(20,23,28,0.25) 100%); }
-  .hero .wrap { position: relative; z-index: 1; padding-bottom: clamp(2.5rem, 5vw, 4.5rem); width: 100%; }
-  .hero-copy > * { opacity: 0; transform: translateY(24px); animation: heroIn 0.8s cubic-bezier(.2,.7,.3,1) forwards; }
-  .hero-copy > *:nth-child(1) { animation-delay: 0.1s; }
-  .hero-copy > *:nth-child(2) { animation-delay: 0.25s; }
-  .hero-copy > *:nth-child(3) { animation-delay: 0.4s; }
-  .hero-copy > *:nth-child(4) { animation-delay: 0.55s; }
-  .hero-copy > *:nth-child(5) { animation-delay: 0.7s; }
-  @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
-  .hero h1 { max-width: 16ch; }
-  .hero h1 em { font-style: normal; color: var(--accent); }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.6rem; }
-  .stat-row { display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 4vw, 3rem); margin-top: 3rem; padding-top: 2rem; border-top: 1px solid color-mix(in srgb, var(--text) 18%, transparent); }
-  .stat b { display: block; font-family: var(--display); font-size: 2.2rem; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
-  .stat span { font-size: 0.85rem; color: var(--text-muted); }
-
-  [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.16,.84,.28,1); }
   [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
-  @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; } .hero-copy > * { opacity: 1; transform: none; animation: none; } .hero-bg img { animation: none; transform: none; } }
+  [data-clip] { clip-path: inset(8% 0 8% 0); transition: clip-path 1s cubic-bezier(.16,.84,.28,1); }
+  [data-clip].is-visible { clip-path: inset(0 0 0 0); }
+  @media (prefers-reduced-motion: reduce) { [data-reveal], [data-clip] { opacity: 1; transform: none; clip-path: none; } }
 
-  /* Studio section */
-  .studio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-  @media (max-width: 860px) { .studio-grid { grid-template-columns: 1fr; } }
-  .studio-media { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4/5; }
-  .studio-media img { width: 100%; height: 100%; object-fit: cover; }
-  .feature-list { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 1rem; }
-  .feature-list li { display: flex; gap: 0.8em; align-items: flex-start; font-size: 0.98rem; }
-  .feature-list svg { flex: none; width: 1.3em; height: 1.3em; stroke: var(--accent); margin-top: 0.15em; }
+  .kicker { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 
-  /* Kurse - image cards */
-  .kurse-grid { display: grid; grid-template-columns: 1.3fr 1fr; grid-template-rows: 1fr 1fr; gap: 1.4rem; margin-top: 2.5rem; }
-  @media (max-width: 860px) { .kurse-grid { grid-template-columns: 1fr; grid-template-rows: auto; } }
-  .kurse-card { position: relative; border-radius: var(--radius-lg); overflow: hidden; min-height: 260px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .kurse-card:first-child { grid-row: 1 / 3; min-height: 400px; }
-  .kurse-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
-  .kurse-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-  .kurse-card:hover img { transform: scale(1.06); }
-  .kurse-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,11,13,0.85) 10%, rgba(10,11,13,0.05) 60%); }
-  .kurse-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.4rem; z-index: 1; }
-  .kurse-info h3 { color: #fff; margin-bottom: 0.15em; }
-  .kurse-info p { color: rgba(255,255,255,0.78); font-size: 0.88rem; margin: 0; }
+  /* ---------- Bereiche: Vollbild-Zeilen ---------- */
+  .areas { padding: clamp(4.5rem, 9vw, 8rem) 0 0; }
+  .areas-head { padding: 0 clamp(1.2rem, 4vw, 3rem); margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .areas h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2.8rem, 2rem + 4vw, 5.6rem); line-height: 0.9; margin: 0; }
+  .areas h2 em { font-style: normal; color: var(--signal); }
+  .area {
+    display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
+    border-top: 1px solid var(--line-dark); text-decoration: none;
+  }
+  .area:last-child { border-bottom: 1px solid var(--line-dark); }
+  .area:nth-child(even) .area-media { order: 2; }
+  @media (max-width: 780px) { .area { grid-template-columns: 1fr; } .area:nth-child(even) .area-media { order: 0; } }
+  .area-media { overflow: hidden; aspect-ratio: 16/9; }
+  .area-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(.2,.8,.2,1); filter: saturate(0.85); }
+  .area:hover .area-media img { transform: scale(1.05); }
+  .area-copy { padding: clamp(1.8rem, 4vw, 3.5rem) clamp(1.2rem, 4vw, 3rem); display: flex; flex-direction: column; justify-content: center; gap: 0.6rem; }
+  .area-copy .num { font-family: var(--display); font-size: 1.2rem; color: var(--signal); letter-spacing: 0.06em; }
+  .area-copy h3 { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 1.6rem + 2vw, 3.6rem); line-height: 0.95; margin: 0; }
+  .area-copy p { color: var(--muted); font-size: 0.95rem; max-width: 44ch; margin: 0; }
 
-  /* Pricing */
-  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-  @media (max-width: 900px) { .price-grid { grid-template-columns: 1fr; } }
-  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; display: flex; flex-direction: column; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
-  .price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
-  .price-card.featured { background: linear-gradient(160deg, var(--surface-alt), var(--surface)); border-color: var(--accent); position: relative; }
-  .price-card.featured::before { content: "Beliebteste Wahl"; position: absolute; top: -0.9rem; left: 2rem; background: var(--accent); color: var(--accent-ink); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.35em 0.9em; border-radius: 999px; }
-  .price-card h3 { font-size: 1.3rem; margin-bottom: 0.2em; }
-  .price-amount { font-family: var(--display); font-size: 2.8rem; color: var(--accent); margin: 0.3em 0; font-variant-numeric: tabular-nums; }
-  .price-amount small { font-family: var(--sans); font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
-  .price-card ul { list-style: none; margin: 1.2rem 0; padding: 0; flex: 1; display: grid; gap: 0.7rem; }
-  .price-card li { font-size: 0.92rem; color: var(--text-muted); display: flex; gap: 0.6em; }
-  .price-card li::before { content: "✓"; color: var(--accent); font-weight: 700; }
+  /* ---------- Preise: Zeilen auf Knochen ---------- */
+  .prices { background: var(--bone); color: var(--coal); padding: clamp(4.5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3rem); }
+  .prices .kicker { color: #7A766D; }
+  .prices h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2.8rem, 2rem + 4vw, 5.6rem); line-height: 0.9; margin: 0.15em 0 0.6em; }
+  .prices h2 em { font-style: normal; color: var(--signal-deep); }
+  .price-list { list-style: none; margin: 0; padding: 0; }
+  .price-list li { border-top: 1px solid var(--line-light); }
+  .price-list li:last-child { border-bottom: 1px solid var(--line-light); }
+  .price-row {
+    display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 1rem;
+    padding: 1.5rem clamp(0.4rem, 1.5vw, 1.2rem);
+    transition: background 0.25s ease, color 0.25s ease, padding-left 0.25s ease;
+  }
+  .price-row:hover { background: var(--coal); color: var(--bone); padding-left: clamp(1rem, 3vw, 2rem); }
+  .price-row .name { font-family: var(--display); font-size: clamp(1.7rem, 1.3rem + 1.8vw, 3rem); line-height: 1; letter-spacing: 0.02em; }
+  .price-row .desc { font-size: 0.85rem; color: #7A766D; margin-top: 0.35rem; transition: color 0.25s ease; }
+  .price-row:hover .desc { color: var(--muted); }
+  .price-row .price { font-family: var(--display); font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.8rem); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .price-row .price small { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; }
+  .prices .note { margin-top: 1.5rem; font-size: 0.85rem; color: #7A766D; max-width: 60ch; }
 
-  /* Testimonials / trainer strip */
-  .proof { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
-  @media (max-width: 860px) { .proof { grid-template-columns: 1fr; } }
-  .proof-media { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .proof-media img { border-radius: var(--radius-md); aspect-ratio: 1; object-fit: cover; width: 100%; }
-  .proof-media div:first-child img { aspect-ratio: 4/5; }
-  .quote { font-family: var(--display); font-size: 1.7rem; line-height: 1.15; margin-bottom: 0.6em; }
-  .quote-name { color: var(--text-muted); font-size: 0.9rem; }
+  /* ---------- Zitat ---------- */
+  .proof { padding: clamp(4.5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3rem); text-align: center; }
+  .proof blockquote { margin: 0 auto; max-width: 24ch; font-family: var(--display); font-weight: 400; font-size: clamp(2.2rem, 1.6rem + 3.4vw, 4.6rem); line-height: 0.95; }
+  .proof blockquote em { font-style: normal; color: var(--signal); }
+  .proof cite { display: block; font-style: normal; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-top: 1.4rem; letter-spacing: 0.06em; }
 
-  /* Final CTA */
-  .cta-final { position: relative; border-radius: var(--radius-lg); overflow: hidden; padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem); text-align: center; }
-  .cta-final .bg { position: absolute; inset: 0; z-index: 0; }
-  .cta-final .bg img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
-  .cta-final .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,23,28,0.7), rgba(20,23,28,0.92)); }
-  .cta-final > * { position: relative; z-index: 1; }
-  .cta-final h2 { max-width: 16ch; margin-inline: auto; }
-  .cta-final .lead { margin-inline: auto; }
-  .cta-final .hero-cta { justify-content: center; }
+  /* ---------- Besuch ---------- */
+  .visit { display: grid; grid-template-columns: 1fr 1fr; min-height: 74vh; border-top: 1px solid var(--line-dark); }
+  @media (max-width: 860px) { .visit { grid-template-columns: 1fr; } }
+  .visit-media { position: relative; min-height: 320px; }
+  .visit-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.4); }
+  .visit-info { padding: clamp(2.5rem, 6vw, 5rem); display: flex; flex-direction: column; justify-content: center; }
+  .visit-info h2 { font-family: var(--display); font-weight: 400; font-size: clamp(3rem, 2.2rem + 3.6vw, 6rem); line-height: 0.88; margin: 0 0 0.4em; }
+  .visit-info h2 em { font-style: normal; color: var(--signal); }
+  .visit-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 1rem 0 2rem; }
+  .visit-table td { padding: 0.65rem 0; border-bottom: 1px solid var(--line-dark); vertical-align: top; }
+  .visit-table td:first-child { color: var(--muted); width: 38%; padding-right: 1rem; }
+  .visit-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+  .btn-ghost {
+    font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--bone); text-decoration: none; padding: 0.85em 1.6em;
+    border: 1px solid rgba(237,234,228,0.35); transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .btn-ghost:hover { border-color: var(--bone); background: rgba(237,234,228,0.07); }
 
-  footer.site { border-top: 1px solid var(--border); padding: 2.5rem 0; }
-  footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: 0.85rem; color: var(--text-muted); }
-  footer.site address { font-style: normal; }
+  footer.site { padding: 1.6rem clamp(1.2rem, 4vw, 3rem) calc(1.6rem + 4.4rem); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem; font-size: 0.8rem; color: var(--muted); }
+  @media (min-width: 641px) { footer.site { padding-bottom: 1.6rem; } }
+
+  .mobile-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
+    display: none; gap: 1px; background: var(--line-dark);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .mobile-bar a { flex: 1; text-align: center; padding: 1rem; font-weight: 800; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; }
+  .mobile-bar .call { background: var(--coal-soft); color: var(--bone); }
+  .mobile-bar .book { background: var(--signal); color: var(--coal); }
+  @media (max-width: 640px) { .mobile-bar { display: flex; } }
 </style>
 </head>
 <body>
 
 <header class="site" id="siteHeader">
-  <div class="wrap">
-    <a class="brand" href="#top">Puls<span>werk</span></a>
-    <nav class="links">
-      <a href="#studio">Studio</a>
-      <a href="#kurse">Kurse</a>
-      <a href="#preise">Preise</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-    <a class="btn btn-primary" href="#kontakt">Probetraining sichern</a>
+  <a class="brand" href="#top">Puls<span>werk</span></a>
+  <div class="head-right">
+    <a class="head-tel" href="tel:+497552000000">07552 00 00 00</a>
+    <a class="btn-main" href="#besuch">Probetraining</a>
   </div>
 </header>
 
 <main id="top">
 
   <section class="hero">
-    <div class="hero-bg"><img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=1600&q=75" alt="" aria-hidden="true"></div>
-    <div class="wrap">
-      <div class="hero-copy">
-        <div class="eyebrow">Fitnessstudio in Pfullendorf</div>
-        <h1>Trainier wie du es <em>wirklich</em> willst.</h1>
-        <p class="lead">Freihanteln, Kurse, Cardio und Coaching unter einem Dach — 7 Tage die Woche geöffnet, ohne dich in einen Jahresvertrag zu drängen.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#kontakt">3 Trainings für 29&nbsp;€ testen</a>
-          <a class="btn btn-outline" href="#kurse">Kursplan ansehen</a>
-        </div>
-        <div class="stat-row">
-          <div class="stat"><b>7/Tage</b><span>durchgehend geöffnet</span></div>
-          <div class="stat"><b>12</b><span>Kurse pro Woche</span></div>
-          <div class="stat"><b>450&nbsp;m²</b><span>Trainingsfläche</span></div>
+    <div class="hero-img"><img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=1800&q=75" alt="Training an der Langhantel im Rack"></div>
+    <div class="hero-inner">
+      <h1>
+        <span class="line"><span>Komm rein.</span></span>
+        <span class="line"><span>Werd stärker.</span></span>
+      </h1>
+      <div class="hero-foot">
+        <p class="hero-sub">450&nbsp;m² Freihanteln, Kurse und Cardio in Pfullendorf — ohne Jahresvertrag, ohne Kleingedrucktes.</p>
+        <div class="hero-actions">
+          <a class="btn-main" href="#besuch">3 Trainings für 29&nbsp;€</a>
+          <a class="link-quiet" href="#bereiche">Studio ansehen</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="studio" data-reveal>
-    <div class="wrap studio-grid">
-      <div>
-        <div class="eyebrow">Das Studio</div>
-        <h2>Ausstattung, die mit dir mitwächst</h2>
-        <p class="lead">Vom ersten Probetraining bis zum Wettkampf-Deadlift — unsere Fläche ist in drei Bereiche aufgeteilt, damit sich niemand im Weg steht.</p>
-        <ul class="feature-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M4 7h10M4 17h7"/></svg> Freihantelbereich mit Wettkampf-Equipment</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Cardio-Zone mit Skyline-Blick</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12l4 4L19 6"/></svg> Kursraum für Gruppentraining & Mobility</li>
-        </ul>
-      </div>
-      <div class="studio-media">
-        <img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?w=900&q=75" alt="Trainingsbereich mit Blick über die Stadt">
-      </div>
-    </div>
+  <section class="stats">
+    <div class="stat" data-reveal><b>450&nbsp;m²</b><span>Trainingsfläche</span></div>
+    <div class="stat" data-reveal><b>12</b><span>Kurse pro Woche</span></div>
+    <div class="stat" data-reveal><b>7&nbsp;Tage</b><span>durchgehend geöffnet</span></div>
   </section>
 
-  <section id="kurse" data-reveal>
-    <div class="wrap">
-      <div class="eyebrow">Kursplan</div>
-      <h2>Für jeden Trainingstyp etwas dabei</h2>
-      <div class="kurse-grid">
-        <div class="kurse-card">
-          <img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=900&q=75" alt="Outdoor-Bootcamp-Gruppe">
-          <div class="kurse-info"><h3>Bootcamp</h3><p>Mo &amp; Do, 18:30 Uhr · drinnen &amp; draußen</p></div>
-        </div>
-        <div class="kurse-card">
-          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=75" alt="Mat-Pilates-Kurs">
-          <div class="kurse-info"><h3>Mat &amp; Mobility</h3><p>Di &amp; Fr, 9:00 Uhr</p></div>
-        </div>
-        <div class="kurse-card">
-          <img src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=900&q=75" alt="Krafttraining an Geräten">
-          <div class="kurse-info"><h3>Kraft-Zirkel</h3><p>Mi, 19:00 Uhr</p></div>
-        </div>
-      </div>
+  <section class="areas" id="bereiche">
+    <div class="areas-head">
+      <h2 data-reveal>Drei Bereiche. <em>Null Warten.</em></h2>
+      <span class="kicker">Pulswerk, Industriestraße 8</span>
     </div>
+    <a class="area" href="#besuch">
+      <div class="area-media" data-clip><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=75" alt="Langhantel-Setup auf schwarzem Gummiboden"></div>
+      <div class="area-copy">
+        <span class="num">01</span>
+        <h3>Freihantelbereich</h3>
+        <p>Racks, Plattformen und Kurzhanteln bis 50&nbsp;kg — genug Fläche, dass sich niemand im Weg steht.</p>
+      </div>
+    </a>
+    <a class="area" href="#besuch">
+      <div class="area-media" data-clip><img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=1200&q=75" alt="Bootcamp-Gruppe beim Training im Freien"></div>
+      <div class="area-copy">
+        <span class="num">02</span>
+        <h3>Kurse &amp; Bootcamp</h3>
+        <p>12 Kurse pro Woche, drinnen und draußen — vom Mobility-Flow bis zum Bootcamp, alle inklusive.</p>
+      </div>
+    </a>
+    <a class="area" href="#besuch">
+      <div class="area-media" data-clip><img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?w=1200&q=75" alt="Cardio-Zone mit Blick auf die Stadt"></div>
+      <div class="area-copy">
+        <span class="num">03</span>
+        <h3>Cardio-Deck</h3>
+        <p>Laufbänder, Ruderer und Bikes mit Blick nach draußen statt an die Wand.</p>
+      </div>
+    </a>
   </section>
 
-  <section id="preise" data-reveal>
-    <div class="wrap">
-      <div class="eyebrow">Mitgliedschaft</div>
-      <h2>Transparent, ohne Kleingedrucktes</h2>
-      <div class="price-grid">
-        <div class="price-card">
-          <h3>Schnuppern</h3>
-          <div class="price-amount">29&nbsp;€ <small>einmalig</small></div>
-          <ul>
-            <li>3 Trainingseinheiten</li>
-            <li>Freihantel- &amp; Cardio-Zone</li>
-            <li>Unverbindlich, kein Abo</li>
-          </ul>
-          <a class="btn btn-outline" href="#kontakt">Jetzt testen</a>
-        </div>
-        <div class="price-card featured">
-          <h3>Mitgliedschaft</h3>
-          <div class="price-amount">39&nbsp;€ <small>/ Monat</small></div>
-          <ul>
-            <li>Voller Zugang, 7 Tage/Woche</li>
-            <li>Alle Kurse inklusive</li>
-            <li>Monatlich kündbar</li>
-          </ul>
-          <a class="btn btn-primary" href="#kontakt">Mitglied werden</a>
-        </div>
-        <div class="price-card">
-          <h3>Mit Coaching</h3>
-          <div class="price-amount">69&nbsp;€ <small>/ Monat</small></div>
-          <ul>
-            <li>Alles aus "Mitgliedschaft"</li>
-            <li>Monatlicher Trainingsplan</li>
-            <li>Check-in-Termin mit Trainer</li>
-          </ul>
-          <a class="btn btn-outline" href="#kontakt">Anfragen</a>
-        </div>
-      </div>
-    </div>
+  <section class="prices" id="preise">
+    <span class="kicker" data-reveal>Mitgliedschaft</span>
+    <h2 data-reveal>Ehrliche Preise. <em>Monatlich kündbar.</em></h2>
+    <ul class="price-list" data-reveal>
+      <li><div class="price-row"><div><div class="name">Schnuppern</div><div class="desc">3 Trainingseinheiten, unverbindlich, kein Abo</div></div><div class="price">29&nbsp;€ <small>einmalig</small></div></div></li>
+      <li><div class="price-row"><div><div class="name">Mitgliedschaft</div><div class="desc">Voller Zugang 7 Tage/Woche, alle Kurse inklusive</div></div><div class="price">39&nbsp;€ <small>/ Monat</small></div></div></li>
+      <li><div class="price-row"><div><div class="name">Mit Coaching</div><div class="desc">Plus Trainingsplan und monatlicher Check-in</div></div><div class="price">69&nbsp;€ <small>/ Monat</small></div></div></li>
+    </ul>
+    <p class="note">Kein Jahresvertrag, keine Aufnahmegebühr, keine versteckten Kosten. Was hier steht, ist der Preis.</p>
   </section>
 
-  <section data-reveal>
-    <div class="wrap proof">
-      <div>
-        <div class="quote">„Erster Studio-Wechsel seit Jahren, den ich nicht bereut habe.“</div>
-        <div class="quote-name">— Mitglied seit 2025</div>
-      </div>
-      <div class="proof-media">
-        <div><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=75" alt="Mitglied beim Training am Kabelzug"></div>
-        <div><img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=700&q=75" alt="Nahaufnahme Hantelablage"></div>
-      </div>
-    </div>
+  <section class="proof">
+    <blockquote data-reveal>„Erster Studio-Wechsel seit Jahren, den ich <em>nicht bereut</em> habe.“</blockquote>
+    <cite data-reveal>Google-Bewertung, Mitglied seit 2025</cite>
   </section>
 
-  <section id="kontakt" data-reveal>
-    <div class="wrap">
-      <div class="cta-final">
-        <div class="bg"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1400&q=70" alt=""></div>
-        <div class="eyebrow" style="justify-content:center;">Bereit anzufangen?</div>
-        <h2>Dein erstes Training ist in 3 Minuten gebucht.</h2>
-        <p class="lead">Kurz Kontakt hinterlassen — wir melden uns telefonisch für einen Termin, der zu deinem Kalender passt.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="tel:+497552000000">Anrufen: 07552 00 00 00</a>
-          <a class="btn btn-outline" href="mailto:info@pulswerk-pfullendorf.de">E-Mail schreiben</a>
-        </div>
+  <section class="visit" id="besuch">
+    <div class="visit-media"><img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=1100&q=75" alt="Konzentration vor dem Squat"></div>
+    <div class="visit-info">
+      <h2 data-reveal>Erstes Training <em>diese Woche.</em></h2>
+      <table class="visit-table">
+        <tr><td>Adresse</td><td>Industriestraße 8, 88630 Pfullendorf</td></tr>
+        <tr><td>Probetraining</td><td>3 Einheiten für 29&nbsp;€, unverbindlich</td></tr>
+        <tr><td>Mo – So</td><td>6:00 – 23:00 Uhr</td></tr>
+      </table>
+      <div class="visit-cta">
+        <a class="btn-main" href="tel:+497552000000">Jetzt anrufen</a>
+        <a class="btn-ghost" href="mailto:start@pulswerk-pfullendorf.de">E-Mail schreiben</a>
       </div>
     </div>
   </section>
@@ -313,22 +286,31 @@
 </main>
 
 <footer class="site">
-  <div class="wrap">
-    <address>Fitnessstudio Pulswerk · Industriestraße 8 · 88630 Pfullendorf · Täglich 6–23 Uhr</address>
-    <div>© 2026 Pulswerk — Template zur Anpassung pro Kunde</div>
-  </div>
+  <span>Pulswerk · Industriestraße 8 · 88630 Pfullendorf</span>
+  <span>© 2026 — Template zur Anpassung pro Kunde</span>
 </footer>
+
+<div class="mobile-bar">
+  <a class="call" href="tel:+497552000000">Anrufen</a>
+  <a class="book" href="#besuch">Probetraining</a>
+</div>
 
 <script>
   var header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', function () { header.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
+  var hero = document.querySelector('.hero');
+  window.addEventListener('scroll', function () {
+    header.classList.toggle('scrolled', window.scrollY > hero.offsetHeight - 80);
+  }, { passive: true });
+
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.18 });
+    document.querySelectorAll('[data-reveal], [data-clip]').forEach(function (el) { io.observe(el); });
   } else {
-    document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-visible'); });
+    document.querySelectorAll('[data-reveal], [data-clip]').forEach(function (el) { el.classList.add('is-visible'); });
   }
 </script>
 

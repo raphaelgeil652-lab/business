@@ -1,262 +1,304 @@
 <!--
   TEMPLATE — Beautysalon-Website (volle Homepage, keine Landingpage)
-  Design-Prinzipien: siehe docs/design-standard.md — warm, weich, Fokus auf Behandlungen.
+  Referenz-Rebuild nach verschärftem Design-Standard (docs/design-standard.md):
+  editorial statt Karten-Grid, Leistungen als große Zeilen statt Kacheln, ein Ziel (Termin).
   Vor dem Einsatz bei einem echten Kunden ersetzen:
     - Studioname, Adresse, Telefonnummer, Öffnungszeiten
     - Bilder durch echte Fotos des Studios/der Behandlungen ersetzen
     - Leistungen/Preise durch echte Daten
-    - Der Abschnitt "Deine Verwandlung" ist als Platzhalter für ECHTE Vorher-Nachher-Fotos
-      echter Kund:innen (mit Einverständnis) gedacht — niemals mit Stockfotos als
-      angebliche Transformation befüllen, das wäre irreführend.
+    - "Vorher-Nachher" bleibt Platzhalter, bis echte Kundenfotos (mit Einverständnis) existieren —
+      niemals Stockfotos als angebliche Ergebnisse einsetzen.
 -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beautystudio Amara — Kosmetik &amp; Nageldesign in Pfullendorf</title>
+<title>Amara — Kosmetik &amp; Nageldesign in Pfullendorf</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,450;1,9..144,380;1,9..144,450&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F8F1EC; --surface: #FFFFFF; --surface-alt: #F1E4DC;
-    --text: #2C2220; --text-muted: #7A6963;
-    --accent: #8B4A56; --accent-ink: #FFFFFF;
-    --accent-2: #C9A15A;
-    --border: #E7D9CF;
-    --shadow: 0 22px 44px -22px rgba(44,34,32,0.28);
-    --shadow-lift: 0 16px 32px -16px rgba(44,34,32,0.32);
-    --radius-lg: 26px; --radius-md: 16px;
-    --display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
-    --sans: "Karla", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
-  :root[data-theme="dark"] {
-    --bg: #221A18; --surface: #2C2321; --surface-alt: #362B28; --text: #F3EAE5; --text-muted: #BBA9A2;
-    --accent: #D98CA0; --accent-ink: #2C1219; --accent-2: #E0BC7D; --border: #40332F;
-    --shadow: 0 22px 44px -22px rgba(0,0,0,0.55); --shadow-lift: 0 16px 32px -16px rgba(0,0,0,0.6);
+    --porcelain: #F7F1EC;
+    --ink: #33211E;
+    --muted: #8A7370;
+    --lacquer: #A8404C;
+    --lacquer-deep: #8C3440;
+    --plum: #2E1A1D;
+    --line: #E3D5CD;
+    --line-plum: #47302F;
+    --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --sans: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
-  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
-  img, svg { max-width: 100%; display: block; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
-  section { padding: clamp(3.5rem, 7vw, 7rem) 0; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+  body { margin: 0; background: var(--porcelain); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  ::selection { background: var(--lacquer); color: var(--porcelain); }
 
-  h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; margin: 0 0 0.35em; line-height: 1.08; }
-  h1 { font-size: clamp(2.6rem, 1.8rem + 3.2vw, 4.6rem); font-style: italic; }
-  h2 { font-size: clamp(2rem, 1.6rem + 1.6vw, 3rem); }
-  h3 { font-size: 1.5rem; }
-  p { margin: 0 0 1em; }
-  .lead { font-size: 1.15rem; color: var(--text-muted); max-width: 46ch; }
-  .eyebrow { display: inline-flex; align-items: center; gap: 0.6em; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1em; }
-  .eyebrow::before { content: ""; width: 1.8em; height: 1px; background: var(--accent); }
+  /* ---------- Header ---------- */
+  header.site {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem clamp(1.2rem, 4vw, 3rem);
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  }
+  header.site.scrolled { background: var(--porcelain); box-shadow: 0 1px 0 var(--line); padding-top: 0.7rem; padding-bottom: 0.7rem; }
+  .brand { font-family: var(--serif); font-style: italic; font-size: 1.7rem; line-height: 1; text-decoration: none; }
+  .head-right { display: flex; align-items: center; gap: 1.6rem; }
+  .head-tel { font-size: 0.9rem; font-weight: 500; text-decoration: none; color: var(--muted); }
+  .head-tel:hover { color: var(--ink); }
+  @media (max-width: 640px) { .head-tel { display: none; } }
+  .btn-book {
+    font-weight: 500; font-size: 0.85rem; letter-spacing: 0.09em; text-transform: uppercase;
+    background: var(--lacquer); color: var(--porcelain); text-decoration: none;
+    padding: 0.8em 1.6em; transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .btn-book:hover { background: var(--lacquer-deep); transform: translateY(-1px); }
 
-  .btn { display: inline-flex; align-items: center; gap: 0.5em; font-weight: 600; font-size: 0.94rem; padding: 0.85em 1.6em; border-radius: 999px; text-decoration: none; border: 1px solid transparent; transition: transform 0.25s cubic-bezier(.2,.8,.3,1.2), box-shadow 0.25s ease; }
-  .btn-primary { background: var(--accent); color: var(--accent-ink); }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
-  .btn-outline { border-color: var(--accent); color: var(--accent); }
-  .btn-outline:hover { background: var(--accent); color: var(--accent-ink); }
+  /* ---------- Hero: split, image bleeds to edge ---------- */
+  .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; min-height: 100svh; }
+  @media (max-width: 860px) { .hero { grid-template-columns: 1fr; min-height: auto; } }
+  .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(6rem, 12vh, 9rem) clamp(1.2rem, 4vw, 3.5rem) clamp(3rem, 6vh, 5rem); }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 380; margin: 0;
+    font-size: clamp(2.9rem, 1.8rem + 5.5vw, 6.4rem); line-height: 0.98; letter-spacing: -0.01em;
+  }
+  .hero h1 em { font-style: italic; color: var(--lacquer); }
+  .hero h1 .line { display: block; overflow: hidden; }
+  .hero h1 .line > span { display: inline-block; transform: translateY(112%); animation: rise 0.9s cubic-bezier(.16,.84,.28,1) forwards; }
+  .hero h1 .line:nth-child(2) > span { animation-delay: 0.12s; }
+  .hero h1 .line:nth-child(3) > span { animation-delay: 0.24s; }
+  @keyframes rise { to { transform: translateY(0); } }
+  .hero-sub { max-width: 36ch; color: var(--muted); font-size: 1.08rem; margin: 1.6rem 0 2.2rem; opacity: 0; animation: fade 0.8s ease 0.6s forwards; }
+  .hero-cta { display: flex; align-items: center; gap: 1.6rem; opacity: 0; animation: fade 0.8s ease 0.75s forwards; }
+  .link-quiet { font-size: 0.92rem; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+  .link-quiet:hover { color: var(--ink); border-color: var(--ink); }
+  @keyframes fade { to { opacity: 1; } }
+  .hero-media { position: relative; }
+  .hero-media .tall { width: 100%; height: 100%; object-fit: cover; }
+  .hero-media .over {
+    position: absolute; left: -18%; bottom: 8%; width: 42%;
+    box-shadow: 0 30px 60px -25px rgba(51,33,30,0.45); opacity: 0; animation: fade 1s ease 0.5s forwards;
+  }
+  @media (max-width: 860px) {
+    .hero-media { order: -1; height: 52vw; min-height: 280px; }
+    .hero-media .over { display: none; }
+    .hero-copy { padding-top: 2.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero h1 .line > span { transform: none; animation: none; } .hero-sub, .hero-cta, .hero-media .over { opacity: 1; animation: none; } }
 
-  header.site { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
-  header.site.scrolled { border-bottom-color: var(--border); }
-  header.site .wrap { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; }
-  .brand { font-family: var(--display); font-style: italic; font-size: 1.5rem; text-decoration: none; color: var(--text); }
-  nav.links { display: flex; gap: 2rem; }
-  nav.links a { font-size: 0.9rem; font-weight: 600; text-decoration: none; color: var(--text-muted); }
-  nav.links a:hover { color: var(--accent); }
-  @media (max-width: 780px) { nav.links { display: none; } }
-
-  .hero { position: relative; overflow: hidden; }
-  .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-  @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero .media { order: -1; } }
-  .hero-copy > * { opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s cubic-bezier(.2,.7,.3,1) forwards; }
-  .hero-copy > *:nth-child(1) { animation-delay: 0.05s; }
-  .hero-copy > *:nth-child(2) { animation-delay: 0.2s; }
-  .hero-copy > *:nth-child(3) { animation-delay: 0.35s; }
-  .hero-copy > *:nth-child(4) { animation-delay: 0.5s; }
-  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-  .hero .media { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4/5; opacity: 0; animation: fadeIn 1s ease 0.3s forwards; }
-  @keyframes fadeIn { to { opacity: 1; } }
-  .hero .media img { width: 100%; height: 100%; object-fit: cover; }
-  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
-
-  @media (prefers-reduced-motion: reduce) { .hero-copy > *, .hero .media { opacity: 1; transform: none; animation: none; } }
-
-  [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.16,.84,.28,1); }
   [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
-  @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; } }
+  [data-clip] { clip-path: inset(8% 0 8% 0); transition: clip-path 1s cubic-bezier(.16,.84,.28,1); }
+  [data-clip].is-visible { clip-path: inset(0 0 0 0); }
+  @media (prefers-reduced-motion: reduce) { [data-reveal], [data-clip] { opacity: 1; transform: none; clip-path: none; } }
 
-  .services-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: auto auto; gap: 1.3rem; margin-top: 2.5rem; }
-  @media (max-width: 860px) { .services-grid { grid-template-columns: 1fr; grid-template-rows: auto; } }
-  .service-card { position: relative; border-radius: var(--radius-lg); overflow: hidden; min-height: 240px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .service-card:first-child { grid-row: 1 / 3; min-height: 380px; }
-  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
-  .service-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-  .service-card:hover img { transform: scale(1.06); }
-  .service-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(44,20,25,0.82), rgba(44,20,25,0.05) 60%); }
-  .service-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.3rem; z-index: 1; }
-  .service-info h3 { color: #fff; margin-bottom: 0.1em; }
-  .service-info p { color: rgba(255,255,255,0.82); font-size: 0.85rem; margin: 0; }
+  .kicker { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 
-  .transform-box { background: var(--surface-alt); border: 1px dashed var(--border); border-radius: var(--radius-lg); padding: clamp(1.8rem, 4vw, 2.6rem); text-align: center; }
-  .transform-box p.lead { margin-inline: auto; }
+  /* ---------- Behandlungen: große Zeilen statt Karten ---------- */
+  .services { padding: clamp(4.5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3rem); }
+  .services-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+  .services h2 { font-family: var(--serif); font-weight: 380; font-size: clamp(2.2rem, 1.6rem + 2.8vw, 4rem); line-height: 1.02; margin: 0.2em 0 1em; max-width: 18ch; }
+  .services h2 em { font-style: italic; color: var(--lacquer); }
+  .service-row {
+    display: grid; grid-template-columns: auto 1fr auto clamp(120px, 16vw, 220px); gap: clamp(1rem, 3vw, 2.5rem); align-items: center;
+    padding: 1.6rem 0; border-top: 1px solid var(--line); text-decoration: none;
+    transition: padding-left 0.3s ease;
+  }
+  .service-row:last-of-type { border-bottom: 1px solid var(--line); }
+  .service-row:hover { padding-left: clamp(0.6rem, 2vw, 1.4rem); }
+  .service-row .idx { font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 1rem; }
+  .service-row .name { font-family: var(--serif); font-weight: 450; font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2.6rem); line-height: 1.05; }
+  .service-row .meta { text-align: right; }
+  .service-row .price { font-family: var(--serif); font-size: 1.4rem; }
+  .service-row .dur { font-size: 0.82rem; color: var(--muted); }
+  .service-row .pic { aspect-ratio: 4/3; overflow: hidden; }
+  .service-row .pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(.2,.8,.2,1); }
+  .service-row:hover .pic img { transform: scale(1.06); }
+  @media (max-width: 700px) {
+    .service-row { grid-template-columns: 1fr auto; }
+    .service-row .idx, .service-row .pic { display: none; }
+  }
 
-  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.5rem; }
-  @media (max-width: 860px) { .price-grid { grid-template-columns: 1fr; } }
-  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.9rem; transition: transform 0.25s ease, box-shadow 0.25s ease; }
-  .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-  .price-card .amount { font-family: var(--display); font-size: 2.1rem; color: var(--accent); font-style: italic; }
+  /* ---------- Statement auf Pflaume ---------- */
+  .ritual { background: var(--plum); color: var(--porcelain); padding: clamp(5rem, 10vw, 9rem) clamp(1.2rem, 4vw, 3rem); }
+  .ritual .inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .ritual p.big { font-family: var(--serif); font-weight: 380; font-size: clamp(1.8rem, 1.3rem + 2.6vw, 3.3rem); line-height: 1.18; margin: 0; }
+  .ritual p.big em { font-style: italic; color: #D98E82; }
+  .ritual .kicker { color: rgba(247,241,236,0.5); display: block; margin-bottom: 1.6rem; }
 
-  .testimonials { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
-  @media (max-width: 860px) { .testimonials { grid-template-columns: 1fr; } }
-  .t-media { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--shadow); }
-  .t-media img { width: 100%; height: 100%; object-fit: cover; }
-  .quote { font-family: var(--display); font-style: italic; font-size: 1.5rem; margin-bottom: 0.5em; }
-  .quote-name { color: var(--text-muted); font-size: 0.9rem; }
+  /* ---------- Vorher/Nachher: ehrlicher Platzhalter ---------- */
+  .transform { padding: clamp(4.5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3rem); }
+  .transform .frame {
+    border: 1px solid var(--line); padding: clamp(2rem, 5vw, 4rem); text-align: center;
+  }
+  .transform h3 { font-family: var(--serif); font-weight: 450; font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.4rem); margin: 0 0 0.4em; }
+  .transform p { max-width: 52ch; margin: 0 auto; color: var(--muted); font-size: 0.96rem; }
 
-  .cta-final { background: linear-gradient(155deg, var(--accent), color-mix(in srgb, var(--accent) 70%, black)); color: #fff; border-radius: var(--radius-lg); padding: clamp(2.2rem, 5vw, 3.6rem); text-align: center; }
-  .cta-final h2 { color: #fff; margin-inline: auto; max-width: 18ch; }
-  .cta-final .lead { color: rgba(255,255,255,0.85); margin-inline: auto; }
-  .cta-final .hero-cta { justify-content: center; }
-  .cta-final .btn-outline { border-color: rgba(255,255,255,0.6); color: #fff; }
-  .cta-final .btn-outline:hover { background: rgba(255,255,255,0.15); }
+  /* ---------- Besuch ---------- */
+  .visit { display: grid; grid-template-columns: 1fr 1fr; min-height: 74vh; }
+  @media (max-width: 860px) { .visit { grid-template-columns: 1fr; } }
+  .visit-media { position: relative; min-height: 320px; }
+  .visit-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .visit-info { background: var(--plum); color: var(--porcelain); padding: clamp(2.5rem, 6vw, 5rem); display: flex; flex-direction: column; justify-content: center; }
+  .visit-info h2 { font-family: var(--serif); font-weight: 380; font-size: clamp(2.4rem, 1.9rem + 2.8vw, 4.4rem); line-height: 1; margin: 0 0 0.5em; }
+  .visit-info h2 em { font-style: italic; color: #D98E82; }
+  .visit-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 1.2rem 0 2rem; }
+  .visit-table td { padding: 0.65rem 0; border-bottom: 1px solid var(--line-plum); vertical-align: top; }
+  .visit-table td:first-child { color: rgba(247,241,236,0.55); width: 38%; padding-right: 1rem; }
+  .visit-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+  .btn-ghost {
+    font-weight: 500; font-size: 0.85rem; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--porcelain); text-decoration: none; padding: 0.8em 1.6em;
+    border: 1px solid rgba(247,241,236,0.4); transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .btn-ghost:hover { border-color: var(--porcelain); background: rgba(247,241,236,0.08); }
 
-  footer.site { border-top: 1px solid var(--border); padding: 2.2rem 0; }
-  footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: 0.85rem; color: var(--text-muted); }
-  footer.site address { font-style: normal; }
+  footer.site { padding: 1.6rem clamp(1.2rem, 4vw, 3rem) calc(1.6rem + 4.4rem); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem; font-size: 0.8rem; color: var(--muted); }
+  @media (min-width: 641px) { footer.site { padding-bottom: 1.6rem; } }
+
+  .mobile-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
+    display: none; gap: 1px; background: var(--line-plum);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .mobile-bar a { flex: 1; text-align: center; padding: 1rem; font-weight: 500; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.07em; text-decoration: none; }
+  .mobile-bar .call { background: var(--plum); color: var(--porcelain); }
+  .mobile-bar .book { background: var(--lacquer); color: var(--porcelain); }
+  @media (max-width: 640px) { .mobile-bar { display: flex; } }
 </style>
 </head>
 <body>
 
 <header class="site" id="siteHeader">
-  <div class="wrap">
-    <a class="brand" href="#top">Amara</a>
-    <nav class="links">
-      <a href="#leistungen">Behandlungen</a>
-      <a href="#preise">Preise</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-    <a class="btn btn-primary" href="#kontakt">Termin anfragen</a>
+  <a class="brand" href="#top">Amara</a>
+  <div class="head-right">
+    <a class="head-tel" href="tel:+497552000001">07552 00 00 01</a>
+    <a class="btn-book" href="#besuch">Termin anfragen</a>
   </div>
 </header>
 
 <main id="top">
+
   <section class="hero">
-    <div class="wrap">
-      <div class="hero-copy">
-        <div class="eyebrow">Beautystudio in Pfullendorf</div>
-        <h1>Zeit für dich, ganz in Ruhe.</h1>
-        <p class="lead">Kosmetik, Nageldesign und Wimpern in warmer Atmosphäre — ohne Hektik, mit echter Handwerkskunst.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#kontakt">Termin anfragen</a>
-          <a class="btn btn-outline" href="#leistungen">Behandlungen ansehen</a>
-        </div>
+    <div class="hero-copy">
+      <h1>
+        <span class="line"><span>Schön ist,</span></span>
+        <span class="line"><span>was sich <em>gut</em></span></span>
+        <span class="line"><span><em>anfühlt.</em></span></span>
+      </h1>
+      <p class="hero-sub">Kosmetik, Nageldesign und Wimpern in Pfullendorf — mit Zeit, Ruhe und einem Anspruch, den man an den Details sieht.</p>
+      <div class="hero-cta">
+        <a class="btn-book" href="#besuch">Termin anfragen</a>
+        <a class="link-quiet" href="#behandlungen">Behandlungen ansehen</a>
       </div>
-      <div class="media">
-        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=75" alt="Frau fährt sich entspannt durchs lange Haar">
+    </div>
+    <div class="hero-media">
+      <img class="tall" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1100&q=75" alt="Gepflegtes, gewelltes Haar vor rosafarbener Wand">
+      <img class="over" src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=500&q=75" alt="Dezente Gel-Maniküre in Grau und Weiß">
+    </div>
+  </section>
+
+  <section class="services" id="behandlungen">
+    <div class="services-head">
+      <span class="kicker">Behandlungen</span>
+      <span class="kicker">Di – Sa</span>
+    </div>
+    <h2 data-reveal>Vier Dinge, die wir <em>richtig gut</em> machen.</h2>
+    <div>
+      <a class="service-row" href="#besuch">
+        <span class="idx">01</span>
+        <span class="name">Gesichtsbehandlung</span>
+        <span class="meta"><div class="price">68&nbsp;€</div><div class="dur">60 Min.</div></span>
+        <span class="pic"><img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=70" alt="Gesichtsbehandlung in der Kabine"></span>
+      </a>
+      <a class="service-row" href="#besuch">
+        <span class="idx">02</span>
+        <span class="name">Nageldesign</span>
+        <span class="meta"><div class="price">ab&nbsp;45&nbsp;€</div><div class="dur">75 Min.</div></span>
+        <span class="pic"><img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600&q=70" alt="Rotes Nageldesign mit Schriftzug"></span>
+      </a>
+      <a class="service-row" href="#besuch">
+        <span class="idx">03</span>
+        <span class="name">Maniküre&nbsp;&amp;&nbsp;Pflege</span>
+        <span class="meta"><div class="price">32&nbsp;€</div><div class="dur">45 Min.</div></span>
+        <span class="pic"><img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&q=70" alt="Pflegeprodukte auf hellem Holz"></span>
+      </a>
+      <a class="service-row" href="#besuch">
+        <span class="idx">04</span>
+        <span class="name">Wimpernwelle</span>
+        <span class="meta"><div class="price">45&nbsp;€</div><div class="dur">40 Min.</div></span>
+        <span class="pic"><img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=70" alt="Behandlung im Liegen, Detailaufnahme"></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="ritual">
+    <div class="inner">
+      <span class="kicker" data-reveal>Warum Amara</span>
+      <p class="big" data-reveal>Wir takten keine Kundinnen im Viertelstundenrhythmus. Ein Termin ist bei uns <em>deine Stunde</em> — und die gehört nur dir.</p>
+    </div>
+  </section>
+
+  <section class="transform">
+    <div class="frame" data-reveal>
+      <span class="kicker">Vorher / Nachher</span>
+      <h3>Echte Ergebnisse — sobald es sie gibt.</h3>
+      <p>Hier zeigen wir ausschließlich echte Arbeiten an echten Kundinnen, mit deren Einverständnis. Keine Stockfotos, keine Filter. Der Platz bleibt frei, bis die ersten Behandlungen dokumentiert sind.</p>
+    </div>
+  </section>
+
+  <section class="visit" id="besuch">
+    <div class="visit-media"><img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=1100&q=75" alt="Ruhiger Wartebereich mit Pflanzen und warmem Licht"></div>
+    <div class="visit-info">
+      <h2 data-reveal>Deine Stunde <em>wartet.</em></h2>
+      <table class="visit-table">
+        <tr><td>Adresse</td><td>St.-Katharinen-Str. 12, 88630 Pfullendorf</td></tr>
+        <tr><td>Termine</td><td>Nach Vereinbarung, meist innerhalb einer Woche</td></tr>
+        <tr><td>Di – Fr</td><td>9:00 – 18:00 Uhr</td></tr>
+        <tr><td>Samstag</td><td>9:00 – 14:00 Uhr</td></tr>
+      </table>
+      <div class="visit-cta">
+        <a class="btn-book" href="tel:+497552000001">Jetzt anrufen</a>
+        <a class="btn-ghost" href="mailto:termin@amara-pfullendorf.de">E-Mail schreiben</a>
       </div>
     </div>
   </section>
 
-  <section id="leistungen" data-reveal>
-    <div class="wrap">
-      <div class="eyebrow">Unsere Behandlungen</div>
-      <h2>Für jeden Anlass die richtige Pflege</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=900&q=75" alt="Gesichtsbehandlung im Detail">
-          <div class="service-info"><h3>Gesichtsbehandlung</h3><p>Reinigung, Pflege &amp; Massage für strahlende Haut</p></div>
-        </div>
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=75" alt="Nageldesign mit rotem Lack">
-          <div class="service-info"><h3>Nageldesign</h3><p>Maniküre, Gel &amp; individuelle Nailart</p></div>
-        </div>
-        <div class="service-card">
-          <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=800&q=75" alt="Zarte Nagellackfarben">
-          <div class="service-info"><h3>Handpflege</h3><p>Entspannende Maniküre mit Handmassage</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section data-reveal>
-    <div class="wrap">
-      <div class="transform-box">
-        <div class="eyebrow" style="justify-content:center;">Deine Verwandlung</div>
-        <h2>Platz für deine Vorher-Nachher-Geschichte</h2>
-        <p class="lead">Hier zeigen wir echte Ergebnisse echter Kund:innen — sobald die ersten Behandlungen abgeschlossen sind, kommen hier reale Fotos hin (nur mit ausdrücklichem Einverständnis).</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="preise" data-reveal>
-    <div class="wrap">
-      <div class="eyebrow">Preise</div>
-      <h2>Transparent von Anfang an</h2>
-      <div class="price-grid">
-        <div class="price-card">
-          <h3>Klassische Maniküre</h3>
-          <div class="amount">32&nbsp;€</div>
-          <p style="color:var(--text-muted); font-size:0.92rem;">inkl. Handmassage &amp; Lack, 45 Min.</p>
-        </div>
-        <div class="price-card">
-          <h3>Gesichtsbehandlung</h3>
-          <div class="amount">68&nbsp;€</div>
-          <p style="color:var(--text-muted); font-size:0.92rem;">Reinigung &amp; Pflege, 60 Min.</p>
-        </div>
-        <div class="price-card">
-          <h3>Wimpernwelle</h3>
-          <div class="amount">45&nbsp;€</div>
-          <p style="color:var(--text-muted); font-size:0.92rem;">inkl. Tönung, 40 Min.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section data-reveal>
-    <div class="wrap testimonials">
-      <div class="t-media"><img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=800&q=75" alt="Gepflegte Pflegeprodukte im Studio"></div>
-      <div>
-        <div class="quote">„Endlich ein Studio, in dem ich mich wirklich entspannen kann.“</div>
-        <div class="quote-name">— Stammkundin seit 2025</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="kontakt" data-reveal>
-    <div class="wrap">
-      <div class="cta-final">
-        <div class="eyebrow" style="justify-content:center; color:rgba(255,255,255,0.8);">Termin vereinbaren</div>
-        <h2>Gönn dir deine Auszeit.</h2>
-        <p class="lead">Kurz anrufen oder schreiben — wir finden gemeinsam den passenden Termin.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" style="background:#fff; color:var(--accent);" href="tel:+497552000001">Anrufen: 07552 00 00 01</a>
-          <a class="btn btn-outline" href="mailto:info@amara-pfullendorf.de">E-Mail schreiben</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer class="site">
-  <div class="wrap">
-    <address>Beautystudio Amara · St.-Katharinen-Str. 12 · 88630 Pfullendorf · Di–Sa 9–18 Uhr</address>
-    <div>© 2026 Amara — Template zur Anpassung pro Kunde</div>
-  </div>
+  <span>Amara · St.-Katharinen-Str. 12 · 88630 Pfullendorf</span>
+  <span>© 2026 — Template zur Anpassung pro Kunde</span>
 </footer>
+
+<div class="mobile-bar">
+  <a class="call" href="tel:+497552000001">Anrufen</a>
+  <a class="book" href="#besuch">Termin anfragen</a>
+</div>
 
 <script>
   var header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', function () { header.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
+  window.addEventListener('scroll', function () {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.18 });
+    document.querySelectorAll('[data-reveal], [data-clip]').forEach(function (el) { io.observe(el); });
   } else {
-    document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-visible'); });
+    document.querySelectorAll('[data-reveal], [data-clip]').forEach(function (el) { el.classList.add('is-visible'); });
   }
 </script>
 
