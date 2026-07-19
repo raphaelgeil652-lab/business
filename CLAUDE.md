@@ -50,6 +50,7 @@ Ausgangslage: nebenbei (Job/Schule parallel), beide Kern-Skills (Website-Bau, Ad
   - `templates/fitnessstudio-website/` – volle Homepage (Fitnessstudios), inkl. `showcase.html` als bewusst übertriebene Effekt-Demo (kein Kundentemplate)
   - `templates/beautysalon-website/` – volle Homepage (Beautysalons/Kosmetik)
   - `templates/friseur-website/` – volle Homepage (Friseure)
+- `websites/` – konkrete, mehrseitige Kunden-Websites (statisches HTML/CSS/JS, direkt hostbar). Erstes Projekt: `websites/fit4life/` (Fitnessstudio Pfullendorf). Landingpages werden separat unter `templates/` gepflegt. **Konvention: Jede Website ist ein eigenständiger, direkt auf Vercel deploybarer Ordner** (kein Build-Schritt, eigene `vercel.json`, `cleanUrls`; in Vercel als Root Directory den jeweiligen Website-Ordner setzen). **Workflow-Konvention: Sobald eine Website fertig oder aktualisiert ist, wird der Arbeits-Branch direkt nach `main` gemerged**, damit der Ordner auf `main` liegt und ohne Extra-Schritte in Vercel als Root Directory auswählbar/deploybar ist (Vercel liest die Ordnerauswahl aus dem Production-Branch `main`).
 - `leads/leads.csv` – Lead-Tracker mit echten recherchierten Betrieben in der Zielregion (Name, Kontakt, Website-Einschätzung, Status, nächster Schritt). Nach jedem Kontaktversuch aktuell halten.
 - Konvention: Erkenntnisse, Recherchen und Entscheidungen aus Sessions werden hier im Repo festgehalten (nicht nur im Chat-Verlauf), damit zukünftige Sessions direkt darauf aufbauen können.
 
