@@ -1,29 +1,22 @@
 # Website: fit4life Pfullendorf
 
-Erstes Website-Referenzprojekt in der Nische Fitnessstudio. Editoriale One-Page-Homepage
-nach `docs/design-standard.md` (Bebas Neue + Manrope, Kohle/Knochen/Signalorange,
-ein Konversionsziel: Probetraining). Statisch, ohne Build, direkt auf Vercel deploybar.
+Erstes Website-Referenzprojekt in der Nische Fitnessstudio. **Mehrseitige Website**
+(Startseite + Unterseiten), statisch (HTML/CSS/JS, kein Build), direkt auf Vercel deploybar.
+Design: Bebas Neue + Manrope, Kohle/Knochen/Signalorange. Auf KI-Slop geprüft mit dem
+`impeccable`-Detektor (0 Anti-Patterns auf allen Seiten).
 
-Auf KI-Slop geprüft mit dem `impeccable`-Detektor (0 Anti-Patterns).
+## Seiten
 
-## Dateien
-
-| Datei          | Inhalt                                                                 |
-|----------------|------------------------------------------------------------------------|
-| `index.html`   | Komplette Homepage (Hero, Zahlen, Bereiche, Wohlfühlen, Kurse, Preise, Statement, Kontakt) – Styles & JS inline |
-| `vercel.json`  | `cleanUrls` für saubere URLs                                            |
-
-## Seiten-Aufbau (Sektionen der One-Page)
-
-1. **Hero** – Vollbild, „Fit fürs Leben", zeilenweiser Typo-Aufstieg
-2. **Zahlenband** – 570 m² / 120 m² / 10 Kursformate
-3. **Bereiche** – Gerätetraining & Kurse als Vollbild-Zeilen mit Bild
-4. **Mehr als nur Geräte** – Sauna, Solarium, Café, Personal Training, Reha (editoriale Zeilenliste)
-5. **Kurse** – alle 10 Kursformate als Typo-Index
-6. **Preise** – Zeilen mit Hover-Invert (Probetraining gratis, Rest als Platzhalter)
-7. **Statement** – ehrlicher Studio-Leitsatz (kein erfundenes Kundenzitat)
-8. **Besuch/Kontakt** – Bild + Infotabelle, Anrufen + Route planen
-9. **Footer + Sticky-Mobile-Leiste** (Anrufen / Probetraining)
+| Datei             | Inhalt                                                                    |
+|-------------------|---------------------------------------------------------------------------|
+| `index.html`      | Startseite: Hero, Zahlen, Bereiche, Wohlfühlen-Teaser, Preise, Statement, CTA |
+| `kurse.html`      | Alle 10 Kurse (Index + Detailzeilen) + Kursplan-Platzhalter                |
+| `studio.html`     | 570 m² Geräte, 120 m² Kurse, Sauna, Solarium, Café, Personal Training, Reha |
+| `ueber-uns.html`  | Philosophie + Ansprechpartner Felix Staudacher                            |
+| `kontakt.html`    | Adresse, Telefon, Öffnungszeiten, Karte, Anfrageformular                  |
+| `assets/style.css`| Gemeinsames Design-System                                                  |
+| `assets/main.js`  | Navigation (Mobile-Menü), Header-Scroll, Reveal-Animationen, Jahr         |
+| `vercel.json`     | `cleanUrls` für saubere URLs (`/kurse` statt `/kurse.html`)               |
 
 ## Lokal ansehen
 
@@ -36,7 +29,7 @@ python3 -m http.server 8000   # -> http://localhost:8000
 
 ## Auf Vercel deployen
 
-Reine statische Seite, **kein Build**. `vercel.json` sorgt für saubere URLs.
+Reine statische Seite, **kein Build**.
 
 1. **Repo verbinden (empfohlen):** Vercel „Add New… → Project", dieses Repo wählen,
    **Root Directory** = `websites/fit4life`, Framework Preset „Other", Deploy.
@@ -47,16 +40,19 @@ Immer den **Website-Ordner selbst** als Root Directory setzen, nicht die Repo-Wu
 
 ## VOR ECHTEM LIVE-GANG ersetzen (im Code mit `[ … ]` / Klasse `.todo` markiert)
 
-- [ ] **Telefon 07771 875275 verifizieren** – Vorwahl 07771 = Stockach, nicht Pfullendorf (07552). Beim Kunden bestätigen, dann alle `tel:`-Links + Anzeigetexte korrigieren.
-- [ ] **Öffnungszeiten** (Besuch-Sektion)
-- [ ] **Preise** (Mitgliedschaft, Personal Training)
-- [ ] **E-Mail** ergänzen (aktuell nur Telefon + Route)
-- [ ] **Fotos**: Hero, Gerätefläche, Kursraum, Besuch-Bild sind lizenzfreie Unsplash-Platzhalter – beim Vor-Ort-Termin durch echte fit4life-Fotos ersetzen.
-- [ ] **Kursplan** (Wochenzeiten) in der Kurse-Sektion ergänzen
+- [ ] **Telefon 07771 875275 verifizieren** – Vorwahl 07771 = Stockach, nicht Pfullendorf (07552). Bestätigen, dann alle `tel:`-Links + Anzeigetexte anpassen.
+- [ ] **Öffnungszeiten** (kontakt.html)
+- [ ] **Preise** (Startseite, Abschnitt Mitgliedschaft)
+- [ ] **E-Mail** (kontakt.html + evtl. Footer)
+- [ ] **Fotos**: Hero, Gerätefläche, Kursraum, Studio-Einblick, Über-uns, Felix-Foto sind Unsplash-Platzhalter – beim Vor-Ort-Termin durch echte fit4life-Fotos ersetzen.
+- [ ] **Kursplan** (Wochenzeiten) in kurse.html
+- [ ] **Google-Maps-Einbettung** in kontakt.html
+- [ ] **Kontaktformular** an Versanddienst anbinden (Formspree/Netlify Forms o. ä.)
 - [ ] **Impressum & Datenschutz** (rechtlich Pflicht) – `impressum.html` / `datenschutz.html` anlegen (im Footer verlinkt)
 
-## Design-Quelle
+## Hinweis
 
-Inhalte: `templates/fitnessstudio-landingpage/kunde-fit4life-brief.md`.
-Design-Sprache & verbotene KI-Muster: `docs/design-standard.md`.
-Genutzte Skills: `impeccable`, `taste-skill` (in `.agents/skills/` / `.claude/skills/`).
+„Webseite" = diese mehrseitige Website. Landingpages (einzelne Ads-Seiten) werden
+getrennt gepflegt und sind **nicht** Teil dieses Ordners.
+
+Datenquelle Inhalte: `templates/fitnessstudio-landingpage/kunde-fit4life-brief.md`.

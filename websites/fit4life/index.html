@@ -1,15 +1,3 @@
-<!--
-  fit4life Pfullendorf — Kunden-Homepage (editorial, nach docs/design-standard.md)
-  Design-Sprache: Bebas Neue + Manrope · Kohle/Knochen/Signalorange · ein Ziel: Probetraining.
-  Gebaut nach impeccable/taste-Regeln (Anti-Slop): keine gleichen Karten-Grids, kein Lila-Verlauf,
-  Kontrast geprüft, Motion mit prefers-reduced-motion.
-
-  VOR ECHTEM LIVE-GANG ERSETZEN (siehe README, mit [ … ] markiert):
-    - Telefonnummer 07771 875275 verifizieren (Vorwahl Stockach, nicht Pfullendorf 07552)
-    - Öffnungszeiten, Preise, E-Mail eintragen
-    - Unsplash-Platzhalterbilder durch echte fit4life-Fotos ersetzen (Termin vor Ort)
-    - Impressum + Datenschutz anlegen (rechtlich Pflicht)
--->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -20,218 +8,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --coal: #101214;
-    --coal-soft: #191C1F;
-    --bone: #EDEAE4;
-    --muted: #9AA09C;
-    --signal: #E8542F;
-    --signal-deep: #C6431F;
-    --line-dark: #2A2E31;
-    --line-light: #D8D4CB;
-    --display: "Bebas Neue", Impact, "Arial Narrow Bold", sans-serif;
-    --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-  }
-  body { margin: 0; background: var(--coal); color: var(--bone); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  ::selection { background: var(--signal); color: var(--coal); }
-  h1, h2, h3 { text-wrap: balance; }
-  p { text-wrap: pretty; }
-
-  /* ---------- Header ---------- */
-  header.site {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 60;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem clamp(1.2rem, 4vw, 3rem);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-  }
-  header.site.scrolled { background: var(--coal); box-shadow: 0 1px 0 var(--line-dark); padding-top: 0.7rem; padding-bottom: 0.7rem; }
-  .brand { font-family: var(--display); font-size: 1.8rem; letter-spacing: 0.02em; line-height: 1; text-decoration: none; }
-  .brand b { color: var(--signal); font-weight: 400; }
-  .head-right { display: flex; align-items: center; gap: 1.6rem; }
-  .head-tel { font-size: 0.88rem; font-weight: 700; text-decoration: none; color: var(--muted); }
-  .head-tel:hover { color: var(--bone); }
-  @media (max-width: 640px) { .head-tel { display: none; } }
-  .btn-main {
-    font-weight: 800; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
-    background: var(--signal); color: #fff; text-decoration: none;
-    padding: 0.85em 1.6em; transition: background 0.2s ease, transform 0.2s ease;
-  }
-  .btn-main:hover { background: var(--signal-deep); transform: translateY(-1px); }
-
-  /* ---------- Hero ---------- */
-  .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
-  .hero-img { position: absolute; inset: 0; }
-  .hero-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9); transform: scale(1.06); animation: heroZoom 12s ease-out forwards; }
-  @keyframes heroZoom { to { transform: scale(1); } }
-  .hero-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(190deg, rgba(16,18,20,0.25) 30%, rgba(16,18,20,0.92) 88%); }
-  .hero-inner { position: relative; z-index: 1; width: 100%; padding: 0 clamp(1.2rem, 4vw, 3rem) clamp(1.8rem, 4vw, 3rem); }
-  .hero h1 {
-    font-family: var(--display); font-weight: 400; margin: 0;
-    font-size: clamp(4rem, 2.4rem + 13vw, 12rem); line-height: 0.84; letter-spacing: 0.01em;
-  }
-  .hero h1 .line { display: block; overflow: hidden; }
-  .hero h1 .line > span { display: inline-block; transform: translateY(108%); animation: rise 0.85s cubic-bezier(.16,.84,.28,1) forwards; }
-  .hero h1 .line:nth-child(2) > span { animation-delay: 0.1s; color: var(--signal); }
-  @keyframes rise { to { transform: translateY(0); } }
-  .hero-foot {
-    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem;
-    margin-top: clamp(1.4rem, 3vw, 2.4rem); padding-top: 1.3rem;
-    border-top: 1px solid rgba(237,234,228,0.25);
-    opacity: 0; animation: fade 0.8s ease 0.5s forwards;
-  }
-  @keyframes fade { to { opacity: 1; } }
-  .hero-sub { max-width: 40ch; font-size: 1.05rem; color: rgba(237,234,228,0.82); margin: 0; }
-  .hero-actions { display: flex; align-items: center; gap: 1.4rem; }
-  .link-quiet { font-size: 0.9rem; font-weight: 600; color: rgba(237,234,228,0.72); text-decoration: none; border-bottom: 1px solid rgba(237,234,228,0.35); padding-bottom: 2px; }
-  .link-quiet:hover { color: var(--bone); border-color: var(--bone); }
-  @media (prefers-reduced-motion: reduce) {
-    .hero h1 .line > span { transform: none; animation: none; }
-    .hero-foot { opacity: 1; animation: none; }
-    .hero-img img { transform: none; animation: none; }
-  }
-
-  /* ---------- Zahlenband ---------- */
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
-  @media (max-width: 640px) { .stats { grid-template-columns: 1fr; } }
-  .stat { padding: clamp(1.6rem, 4vw, 2.6rem) clamp(1.2rem, 4vw, 3rem); border-right: 1px solid var(--line-dark); }
-  .stat:last-child { border-right: none; }
-  @media (max-width: 640px) { .stat { border-right: none; border-bottom: 1px solid var(--line-dark); } .stat:last-child { border-bottom: none; } }
-  .stat b { display: block; font-family: var(--display); font-size: clamp(2.6rem, 2rem + 2.4vw, 4.4rem); line-height: 1; color: var(--signal); font-variant-numeric: tabular-nums; }
-  .stat span { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-
-  [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.16,.84,.28,1); }
-  [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
-  [data-clip] { clip-path: inset(8% 0 8% 0); transition: clip-path 1s cubic-bezier(.16,.84,.28,1); }
-  [data-clip].is-visible { clip-path: inset(0 0 0 0); }
-  @media (prefers-reduced-motion: reduce) { [data-reveal], [data-clip] { opacity: 1; transform: none; clip-path: none; } }
-
-  .kicker { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
-
-  /* ---------- Bereiche: Vollbild-Zeilen ---------- */
-  .areas { padding: clamp(4.5rem, 9vw, 8rem) 0 0; }
-  .areas-head { padding: 0 clamp(1.2rem, 4vw, 3rem); margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-  .areas h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2.8rem, 2rem + 4vw, 5.6rem); line-height: 0.9; margin: 0; letter-spacing: 0.01em; }
-  .areas h2 em { font-style: normal; color: var(--signal); }
-  .area { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; border-top: 1px solid var(--line-dark); text-decoration: none; }
-  .area:last-child { border-bottom: 1px solid var(--line-dark); }
-  .area:nth-child(even) .area-media { order: 2; }
-  @media (max-width: 780px) { .area { grid-template-columns: 1fr; } .area:nth-child(even) .area-media { order: 0; } }
-  .area-media { overflow: hidden; aspect-ratio: 16/9; }
-  .area-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(.2,.8,.2,1); filter: saturate(0.85); }
-  .area:hover .area-media img { transform: scale(1.05); }
-  .area-copy { padding: clamp(1.8rem, 4vw, 3.5rem) clamp(1.2rem, 4vw, 3rem); display: flex; flex-direction: column; justify-content: center; gap: 0.6rem; }
-  .area-copy .num { font-family: var(--display); font-size: 1.2rem; color: var(--signal); letter-spacing: 0.06em; }
-  .area-copy h3 { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 1.6rem + 2vw, 3.6rem); line-height: 0.95; margin: 0; letter-spacing: 0.01em; }
-  .area-copy p { color: rgba(237,234,228,0.72); font-size: 0.98rem; max-width: 46ch; margin: 0; }
-
-  /* ---------- Wohlfühlen: editoriale Zeilenliste (kein Karten-Grid) ---------- */
-  .extras { padding: clamp(4.5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3rem); }
-  .extras h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2.8rem, 2rem + 4vw, 5.6rem); line-height: 0.9; margin: 0.1em 0 0.6em; max-width: 20ch; }
-  .extras h2 em { font-style: normal; color: var(--signal); }
-  .extra-list { list-style: none; margin: 0; padding: 0; }
-  .extra-list li { border-top: 1px solid var(--line-dark); display: grid; grid-template-columns: 1fr; gap: 0.3rem clamp(0.8rem, 3vw, 2.4rem); padding: 1.4rem 0; align-items: baseline; }
-  .extra-list li:last-child { border-bottom: 1px solid var(--line-dark); }
-  .extra-list .ex-name { font-family: var(--display); font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.8rem); line-height: 1; letter-spacing: 0.02em; }
-  .extra-list .ex-desc { color: rgba(237,234,228,0.7); font-size: 0.95rem; max-width: 52ch; }
-  @media (min-width: 700px) { .extra-list li { grid-template-columns: 26ch 1fr; } }
-
-  /* ---------- Kurse: großer Typo-Index ---------- */
-  .courses { padding: clamp(4.5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3rem); background: var(--coal-soft); border-top: 1px solid var(--line-dark); }
-  .courses .head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
-  .courses h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2.8rem, 2rem + 4vw, 5.6rem); line-height: 0.9; margin: 0; }
-  .courses h2 em { font-style: normal; color: var(--signal); }
-  .course-index { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; }
-  .course-index span {
-    font-family: var(--display); font-size: clamp(1.6rem, 1.2rem + 2vw, 3rem); line-height: 1.05;
-    letter-spacing: 0.02em; color: var(--bone); transition: color 0.2s ease;
-  }
-  .course-index span:hover { color: var(--signal); }
-  .course-index span .cat { font-family: var(--sans); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); vertical-align: super; margin-left: 0.15em; }
-  .courses .note { color: var(--muted); font-size: 0.9rem; margin: 1.6rem 0 0; }
-
-  /* ---------- Preise: Zeilen auf Knochen ---------- */
-  .prices { background: var(--bone); color: var(--coal); padding: clamp(4.5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3rem); }
-  .prices .kicker { color: #7A766D; }
-  .prices h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2.8rem, 2rem + 4vw, 5.6rem); line-height: 0.9; margin: 0.15em 0 0.6em; }
-  .prices h2 em { font-style: normal; color: var(--signal-deep); }
-  .price-list { list-style: none; margin: 0; padding: 0; }
-  .price-list li { border-top: 1px solid var(--line-light); }
-  .price-list li:last-child { border-bottom: 1px solid var(--line-light); }
-  .price-row {
-    display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 1rem;
-    padding: 1.5rem clamp(0.4rem, 1.5vw, 1.2rem);
-    transition: background 0.25s ease, color 0.25s ease;
-  }
-  .price-row:hover { background: var(--coal); color: var(--bone); }
-  .price-row .name { font-family: var(--display); font-size: clamp(1.7rem, 1.3rem + 1.8vw, 3rem); line-height: 1; letter-spacing: 0.02em; }
-  .price-row .desc { font-size: 0.85rem; color: #6E6A61; margin-top: 0.35rem; transition: color 0.25s ease; }
-  .price-row:hover .desc { color: rgba(237,234,228,0.75); }
-  .price-row .price { font-family: var(--display); font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.8rem); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .price-row .price small { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; }
-  .prices .note { margin-top: 1.5rem; font-size: 0.85rem; color: #6E6A61; max-width: 62ch; }
-
-  /* ---------- Statement ---------- */
-  .proof { padding: clamp(4.5rem, 9vw, 8rem) clamp(1.2rem, 4vw, 3rem); text-align: center; }
-  .proof blockquote { margin: 0 auto; max-width: 22ch; font-family: var(--display); font-weight: 400; font-size: clamp(2.2rem, 1.6rem + 3.4vw, 4.6rem); line-height: 0.98; letter-spacing: 0.01em; }
-  .proof blockquote em { font-style: normal; color: var(--signal); }
-  .proof cite { display: block; font-style: normal; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-top: 1.4rem; letter-spacing: 0.06em; }
-
-  /* ---------- Besuch / Kontakt ---------- */
-  .visit { display: grid; grid-template-columns: 1fr 1fr; min-height: 74vh; border-top: 1px solid var(--line-dark); }
-  @media (max-width: 860px) { .visit { grid-template-columns: 1fr; } }
-  .visit-media { position: relative; min-height: 320px; }
-  .visit-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.35); }
-  .visit-info { padding: clamp(2.5rem, 6vw, 5rem); display: flex; flex-direction: column; justify-content: center; }
-  .visit-info h2 { font-family: var(--display); font-weight: 400; font-size: clamp(3rem, 2.2rem + 3.6vw, 6rem); line-height: 0.88; margin: 0 0 0.4em; letter-spacing: 0.01em; }
-  .visit-info h2 em { font-style: normal; color: var(--signal); }
-  .visit-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 1rem 0 2rem; }
-  .visit-table td { padding: 0.7rem 0; border-bottom: 1px solid var(--line-dark); vertical-align: top; }
-  .visit-table td:first-child { color: var(--muted); width: 40%; padding-right: 1rem; }
-  .todo { color: var(--signal); font-style: italic; }
-  .visit-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
-  .btn-ghost {
-    font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--bone); text-decoration: none; padding: 0.85em 1.6em;
-    border: 1px solid rgba(237,234,228,0.35); transition: border-color 0.2s ease, background 0.2s ease;
-  }
-  .btn-ghost:hover { border-color: var(--bone); background: rgba(237,234,228,0.07); }
-
-  footer.site { padding: 1.6rem clamp(1.2rem, 4vw, 3rem) calc(1.6rem + 4.4rem); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem; font-size: 0.8rem; color: var(--muted); }
-  footer.site a { text-decoration: none; }
-  footer.site a:hover { color: var(--bone); }
-  @media (min-width: 641px) { footer.site { padding-bottom: 1.6rem; } }
-
-  .mobile-bar {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
-    display: none; gap: 1px; background: var(--line-dark);
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-  .mobile-bar a { flex: 1; text-align: center; padding: 1rem; font-weight: 800; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; }
-  .mobile-bar .call { background: var(--coal-soft); color: var(--bone); }
-  .mobile-bar .book { background: var(--signal); color: #fff; }
-  @media (max-width: 640px) { .mobile-bar { display: flex; } }
-</style>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <header class="site" id="siteHeader">
-  <a class="brand" href="#top">fit<b>4</b>life</a>
-  <div class="head-right">
-    <a class="head-tel" href="tel:+4977718752750">07771 875275</a>
-    <a class="btn-main" href="#besuch">Probetraining</a>
-  </div>
+  <a class="brand" href="index.html">fit<b>4</b>life</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Start</a></li>
+    <li><a href="kurse.html">Kurse</a></li>
+    <li><a href="studio.html">Studio</a></li>
+    <li><a href="ueber-uns.html">Über uns</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a class="nav-cta" href="kontakt.html">Probetraining</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
 
-<main id="top">
+<main>
 
   <section class="hero">
     <div class="hero-img"><img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=1800&q=75" alt="Training an der Langhantel im Rack"></div>
@@ -243,8 +37,8 @@
       <div class="hero-foot">
         <p class="hero-sub">570&nbsp;m² Training, über 10 Kurse, Sauna und Café: dein Fitnessstudio mitten in Pfullendorf. Persönlich statt anonym.</p>
         <div class="hero-actions">
-          <a class="btn-main" href="#besuch">Kostenloses Probetraining</a>
-          <a class="link-quiet" href="#bereiche">Studio ansehen</a>
+          <a class="btn-main" href="kontakt.html">Kostenloses Probetraining</a>
+          <a class="link-quiet" href="studio.html">Studio ansehen</a>
         </div>
       </div>
     </div>
@@ -256,126 +50,111 @@
     <div class="stat" data-reveal><b>10</b><span>Kursformate</span></div>
   </section>
 
-  <section class="areas" id="bereiche">
+  <section class="areas">
     <div class="areas-head">
       <h2 data-reveal>Trainieren. <em>Ohne Gedränge.</em></h2>
       <span class="kicker">Bergwaldstr. 4, Pfullendorf</span>
     </div>
-    <a class="area" href="#besuch">
+    <a class="area" href="studio.html">
       <div class="area-media" data-clip><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=75" alt="Langhantel-Setup auf dunklem Boden"></div>
       <div class="area-copy">
         <span class="num">01</span>
         <h3>Gerätetraining</h3>
-        <p>570&nbsp;m² für Kraft, Ausdauer und gezielten Muskelaufbau, mit persönlicher Einweisung und genug Platz, dass sich niemand im Weg steht.</p>
+        <p>570&nbsp;m² für Kraft, Ausdauer und gezielten Muskelaufbau, mit persönlicher Einweisung und genug Platz für alle.</p>
+        <span class="link-quiet more">Zum Studio</span>
       </div>
     </a>
-    <a class="area" href="#kurse">
+    <a class="area" href="kurse.html">
       <div class="area-media" data-clip><img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=1200&q=75" alt="Gruppe beim gemeinsamen Kurstraining"></div>
       <div class="area-copy">
         <span class="num">02</span>
         <h3>Kurse &amp; Groupfitness</h3>
-        <p>Über 10 Kursformate auf eigener 120&nbsp;m²-Kursfläche, von sanftem Rücken bis intensivem Auspowern, für jedes Level.</p>
+        <p>Über 10 Kursformate auf eigener 120&nbsp;m²-Kursfläche, von sanftem Rücken bis intensivem Auspowern.</p>
+        <span class="link-quiet more">Alle Kurse ansehen</span>
       </div>
     </a>
   </section>
 
-  <section class="extras">
-    <h2 data-reveal>Mehr als nur <em>Geräte.</em></h2>
-    <ul class="extra-list" data-reveal>
-      <li><span class="ex-name">Sauna</span><span class="ex-desc">Regeneration und Entspannung für die Muskeln direkt nach dem Training.</span></li>
-      <li><span class="ex-name">Solarium</span><span class="ex-desc">Die gesunde Portion Bräune, bequem bei uns im Studio.</span></li>
-      <li><span class="ex-name">Café</span><span class="ex-desc">Shake, Kaffee oder ein Snack, der Treffpunkt zum Durchatmen nach dem Workout.</span></li>
-      <li><span class="ex-name">Personal Training</span><span class="ex-desc">Eins-zu-eins-Betreuung mit klarem Plan für schnellere, sichere Ergebnisse.</span></li>
-      <li><span class="ex-name">Reha &amp; Rücken</span><span class="ex-desc">Reha-Sport und Rücken-Fitness für einen starken, schmerzfreien Alltag, auch für Einsteiger.</span></li>
-    </ul>
-  </section>
-
-  <section class="courses" id="kurse">
-    <div class="head">
-      <h2 data-reveal>Zehn Kurse. <em>Ein Beitrag.</em></h2>
-      <span class="kicker">Alle Kurse inklusive</span>
+  <section class="section">
+    <div class="wrap split">
+      <div class="split-intro-wrap">
+        <h2 class="big-h2" data-reveal>Mehr als nur <em>Geräte.</em></h2>
+        <p data-reveal style="margin-top:1.2rem">Nach dem Training entspannen, auftanken, wohlfühlen: Bei fit4life gehört das dazu.</p>
+        <a class="btn-ghost" href="studio.html" data-reveal style="margin-top:1rem">Studio &amp; Ausstattung</a>
+      </div>
+      <ul class="extra-list" data-reveal>
+        <li><span class="ex-name">Sauna &amp; Solarium</span><span class="ex-desc">Regeneration für die Muskeln und die gesunde Portion Bräune, direkt im Studio.</span></li>
+        <li><span class="ex-name">Café</span><span class="ex-desc">Shake, Kaffee oder Snack: der Treffpunkt zum Durchatmen nach dem Workout.</span></li>
+        <li><span class="ex-name">Personal Training</span><span class="ex-desc">Eins-zu-eins-Betreuung mit klarem Plan für schnellere, sichere Ergebnisse.</span></li>
+        <li><span class="ex-name">Reha &amp; Rücken</span><span class="ex-desc">Reha-Sport und Rücken-Fitness für einen starken, schmerzfreien Alltag.</span></li>
+      </ul>
     </div>
-    <div class="course-index" data-reveal>
-      <span>Bauch-Workout<span class="cat">Core</span></span>
-      <span>BBP<span class="cat">Bodystyling</span></span>
-      <span>deepWORK™<span class="cat">Functional</span></span>
-      <span>HOT IRON®<span class="cat">Kraft</span></span>
-      <span>Indoor Cycling<span class="cat">Ausdauer</span></span>
-      <span>Langhantel-Workout<span class="cat">Kraft</span></span>
-      <span>Reha-Sport<span class="cat">Gesundheit</span></span>
-      <span>Rücken-Fitness<span class="cat">Gesundheit</span></span>
-      <span>Step<span class="cat">Ausdauer</span></span>
-      <span>Tae Bo<span class="cat">Ausdauer</span></span>
+  </section>
+
+  <section class="section section--soft prices" id="preise" style="background:var(--bone)">
+    <div class="wrap">
+      <span class="kicker" data-reveal>Mitgliedschaft</span>
+      <h2 data-reveal>Erst testen. <em>Dann entscheiden.</em></h2>
+      <ul class="price-list" data-reveal>
+        <li><div class="price-row"><div><div class="name">Probetraining</div><div class="desc">Studio, Kurse und Geräte unverbindlich kennenlernen</div></div><div class="price">gratis</div></div></li>
+        <li><div class="price-row"><div><div class="name">Mitgliedschaft</div><div class="desc">Voller Zugang zu Geräten, allen Kursen, Sauna &amp; Solarium</div></div><div class="price todo">[Preis]&nbsp;<small>/ Monat</small></div></div></li>
+        <li><div class="price-row"><div><div class="name">Mit Personal Training</div><div class="desc">Plus persönliche Betreuung und individueller Trainingsplan</div></div><div class="price todo">[Preis]&nbsp;<small>/ Monat</small></div></div></li>
+      </ul>
+      <p class="note">Preise und Laufzeiten werden gemeinsam mit fit4life final festgelegt. <span class="todo">[Beträge eintragen]</span></p>
     </div>
-    <p class="note">Kursplan mit Wochenzeiten kommt hierher, sobald die Zeiten final sind. <span class="todo">[Kursplan ergänzen]</span></p>
   </section>
 
-  <section class="prices" id="preise">
-    <span class="kicker" data-reveal>Mitgliedschaft</span>
-    <h2 data-reveal>Erst testen. <em>Dann entscheiden.</em></h2>
-    <ul class="price-list" data-reveal>
-      <li><div class="price-row"><div><div class="name">Probetraining</div><div class="desc">Studio, Kurse und Geräte unverbindlich kennenlernen</div></div><div class="price">gratis</div></div></li>
-      <li><div class="price-row"><div><div class="name">Mitgliedschaft</div><div class="desc">Voller Zugang zu Geräten, allen Kursen, Sauna &amp; Solarium</div></div><div class="price todo">[Preis]&nbsp;<small>/ Monat</small></div></div></li>
-      <li><div class="price-row"><div><div class="name">Mit Personal Training</div><div class="desc">Plus persönliche Betreuung und individueller Trainingsplan</div></div><div class="price todo">[Preis]&nbsp;<small>/ Monat</small></div></div></li>
-    </ul>
-    <p class="note">Preise und Konditionen werden gemeinsam mit fit4life final festgelegt. <span class="todo">[Beträge und Laufzeiten eintragen]</span></p>
-  </section>
-
-  <section class="proof">
+  <section class="section proof">
     <blockquote data-reveal>Bei uns zählt der <em>Mensch</em>, nicht die Mitgliedsnummer.</blockquote>
     <cite data-reveal>fit4life Pfullendorf</cite>
   </section>
 
-  <section class="visit" id="besuch">
-    <div class="visit-media"><img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=1100&q=75" alt="Konzentration vor der nächsten Übung"></div>
-    <div class="visit-info">
-      <h2 data-reveal>Erstes Training <em>diese Woche.</em></h2>
-      <table class="visit-table">
-        <tr><td>Adresse</td><td>Bergwaldstr. 4, 88630 Pfullendorf</td></tr>
-        <tr><td>Ansprechpartner</td><td>Felix Staudacher</td></tr>
-        <tr><td>Öffnungszeiten</td><td class="todo">[Zeiten ergänzen]</td></tr>
-        <tr><td>Probetraining</td><td>kostenlos &amp; unverbindlich</td></tr>
-      </table>
-      <div class="visit-cta">
-        <a class="btn-main" href="tel:+4977718752750">Jetzt anrufen</a>
-        <a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Bergwaldstr.+4+88630+Pfullendorf" target="_blank" rel="noopener">Route planen</a>
-      </div>
+  <section class="section section--soft cta-band">
+    <div class="wrap">
+      <h2 data-reveal>Erstes Training diese Woche.</h2>
+      <p data-reveal>Komm vorbei, lern das Studio kennen und trainiere unverbindlich zur Probe.</p>
+      <a class="btn-main" href="kontakt.html" data-reveal>Probetraining vereinbaren</a>
     </div>
   </section>
 
 </main>
 
 <footer class="site">
-  <span>fit4life · Bergwaldstr. 4 · 88630 Pfullendorf · <a href="tel:+4977718752750">07771 875275</a></span>
-  <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · © <span data-year>2026</span> Fitnessclub fit4life GmbH</span>
+  <div class="footer-grid">
+    <div>
+      <span class="fbrand">fit<b>4</b>life</span>
+      <p class="lead">Dein Fitnessstudio in Pfullendorf. Training, Kurse, Sauna und Café unter einem Dach.</p>
+    </div>
+    <div>
+      <h4>Seiten</h4>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="kurse.html">Kurse</a></li>
+        <li><a href="studio.html">Studio</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul>
+        <li>Bergwaldstr. 4</li>
+        <li>88630 Pfullendorf</li>
+        <li><a href="tel:+4977718752750">07771 875275</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span data-year>2026</span> Fitnessclub fit4life GmbH</span>
+    <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+  </div>
 </footer>
 
 <div class="mobile-bar">
   <a class="call" href="tel:+4977718752750">Anrufen</a>
-  <a class="book" href="#besuch">Probetraining</a>
+  <a class="book" href="kontakt.html">Probetraining</a>
 </div>
 
-<script>
-  var header = document.getElementById('siteHeader');
-  var hero = document.querySelector('.hero');
-  window.addEventListener('scroll', function () {
-    header.classList.toggle('scrolled', window.scrollY > hero.offsetHeight - 80);
-  }, { passive: true });
-
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.18 });
-    document.querySelectorAll('[data-reveal], [data-clip]').forEach(function (el) { io.observe(el); });
-  } else {
-    document.querySelectorAll('[data-reveal], [data-clip]').forEach(function (el) { el.classList.add('is-visible'); });
-  }
-
-  var y = document.querySelector('[data-year]');
-  if (y) y.textContent = new Date().getFullYear();
-</script>
-
+<script src="assets/main.js"></script>
 </body>
 </html>
