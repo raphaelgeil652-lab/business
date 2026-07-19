@@ -52,3 +52,11 @@ Ausgangslage: nebenbei (Job/Schule parallel), beide Kern-Skills (Website-Bau, Ad
   - `templates/friseur-website/` – volle Homepage (Friseure)
 - `leads/leads.csv` – Lead-Tracker mit echten recherchierten Betrieben in der Zielregion (Name, Kontakt, Website-Einschätzung, Status, nächster Schritt). Nach jedem Kontaktversuch aktuell halten.
 - Konvention: Erkenntnisse, Recherchen und Entscheidungen aus Sessions werden hier im Repo festgehalten (nicht nur im Chat-Verlauf), damit zukünftige Sessions direkt darauf aufbauen können.
+
+## Konvention: Feedback und Vorlieben des Nutzers dauerhaft festhalten
+
+Ausdrücklicher Wunsch des Nutzers: Jede Feedback-Schleife wird als dauerhafte Erkenntnis gespeichert, nicht nur im Moment umgesetzt. Konkret:
+
+- Sagt der Nutzer "das gefällt mir nicht / mach es anders" und bestätigt danach das Ergebnis ("so ist es gut"), wird die Erkenntnis **sofort in die passende Datei geschrieben** (Design-Feedback → `docs/design-standard.md`, Prozess-/Angebotsentscheidungen → CLAUDE.md oder passendes docs/-Dokument) und committet/gepusht.
+- Das gilt für alle Arten von Vorlieben: Design-Geschmack, Tonalität von Texten, Arbeitsweise, Umfang von Websites, was er selbst machen will vs. delegiert.
+- Ziel: Jede neue Session kennt den aktuellen Stand seiner Vorlieben, ohne dass er sie wiederholen muss. Beispiel-Präzedenzfall: die bestätigte editoriale Design-Richtung in `docs/design-standard.md` (Juli 2026).
