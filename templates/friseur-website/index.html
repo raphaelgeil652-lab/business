@@ -1,0 +1,220 @@
+<!--
+  TEMPLATE — Friseur-Website (volle Homepage, keine Landingpage)
+  Design-Prinzipien: siehe docs/design-standard.md — modern, klar, Ortsbezug in Typografie/Struktur.
+  Vor dem Einsatz bei einem echten Kunden ersetzen:
+    - Salonname, Adresse, Telefonnummer, Öffnungszeiten
+    - Bilder durch echte Fotos des Salons/der Arbeiten ersetzen
+    - Leistungen/Preise durch echte Daten
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon Kranz — Friseur in Pfullendorf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3F1EC; --surface: #FFFFFF; --surface-alt: #E9E5DC;
+    --text: #1C1D1F; --text-muted: #63666B;
+    --accent: #2A56D6; --accent-ink: #FFFFFF;
+    --ink: #14151A;
+    --border: #DEDACF;
+    --shadow: 0 22px 44px -22px rgba(20,21,26,0.3);
+    --shadow-lift: 0 16px 32px -16px rgba(20,21,26,0.35);
+    --radius-lg: 18px; --radius-md: 12px;
+    --display: "Unbounded", "Arial Black", sans-serif;
+    --sans: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  :root[data-theme="dark"] {
+    --bg: #16171A; --surface: #1F2023; --surface-alt: #26282C; --text: #F1F0EC; --text-muted: #9C9FA6;
+    --accent: #6E8FFF; --accent-ink: #0B1020; --ink: #F1F0EC; --border: #303236;
+    --shadow: 0 22px 44px -22px rgba(0,0,0,0.6); --shadow-lift: 0 16px 32px -16px rgba(0,0,0,0.65);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  img, svg { max-width: 100%; display: block; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
+  section { padding: clamp(3.5rem, 7vw, 7.5rem) 0; }
+
+  h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; line-height: 1.02; margin: 0 0 0.3em; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(2.6rem, 1.6rem + 4.5vw, 5.6rem); font-weight: 800; }
+  h2 { font-size: clamp(1.9rem, 1.5rem + 1.6vw, 2.8rem); }
+  h3 { font-size: 1.2rem; }
+  p { margin: 0 0 1em; }
+  .lead { font-size: 1.12rem; color: var(--text-muted); max-width: 44ch; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 0.6em; font-family: var(--display); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1em; }
+  .eyebrow::before { content: ""; width: 1.8em; height: 2px; background: var(--accent); }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5em; font-weight: 600; font-size: 0.92rem; padding: 0.85em 1.6em; border-radius: 10px; text-decoration: none; border: 1.5px solid transparent; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+  .btn-outline { border-color: var(--ink); color: var(--text); }
+  .btn-outline:hover { background: var(--ink); color: var(--bg); }
+
+  header.site { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
+  header.site.scrolled { border-bottom-color: var(--border); }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; }
+  .brand { font-family: var(--display); font-weight: 800; font-size: 1.15rem; text-decoration: none; color: var(--text); }
+  nav.links { display: flex; gap: 2rem; }
+  nav.links a { font-size: 0.88rem; font-weight: 600; text-decoration: none; color: var(--text-muted); }
+  nav.links a:hover { color: var(--accent); }
+  @media (max-width: 780px) { nav.links { display: none; } }
+
+  /* Hero with location wordmark */
+  .hero { position: relative; overflow: hidden; padding-top: clamp(3rem, 8vw, 6rem); }
+  .locmark { position: absolute; top: 18%; right: -4%; font-family: var(--display); font-weight: 800; font-size: clamp(6rem, 5vw + 8rem, 13rem); color: var(--text); opacity: 0.05; letter-spacing: -0.02em; transform: rotate(-6deg); pointer-events: none; z-index: 0; white-space: nowrap; }
+  .hero .wrap { z-index: 1; }
+  .hero-copy > * { opacity: 0; transform: translateY(20px); animation: fadeUp 0.75s cubic-bezier(.2,.7,.3,1) forwards; }
+  .hero-copy > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-copy > *:nth-child(2) { animation-delay: 0.18s; }
+  .hero-copy > *:nth-child(3) { animation-delay: 0.32s; }
+  .hero-copy > *:nth-child(4) { animation-delay: 0.46s; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-copy > * { opacity: 1; transform: none; animation: none; } }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+  .hero-media { margin-top: 3rem; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 21/9; }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; }
+
+  [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.75s ease, transform 0.75s ease; }
+  [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; } }
+
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 260px 220px; gap: 1.2rem; margin-top: 2.5rem; }
+  @media (max-width: 860px) { .work-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 220px); } }
+  @media (max-width: 560px) { .work-grid { grid-template-columns: 1fr; } }
+  .work-card { position: relative; border-radius: var(--radius-md); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .work-card:first-child { grid-column: span 2; grid-row: span 2; }
+  @media (max-width: 860px) { .work-card:first-child { grid-column: span 2; grid-row: span 1; } }
+  .work-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); }
+  .work-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .work-card:hover img { transform: scale(1.07); }
+
+  .service-list { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--border); }
+  .service-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 1.1rem 0; border-bottom: 1px solid var(--border); gap: 1rem; }
+  .service-list .name { font-family: var(--display); font-weight: 600; font-size: 1.05rem; }
+  .service-list .desc { color: var(--text-muted); font-size: 0.88rem; flex: 1; margin-left: 1.5rem; }
+  .service-list .price { font-family: var(--display); font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+  .badge { background: var(--surface-alt); border-radius: 999px; padding: 0.6em 1.1em; font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 0.5em; }
+  .badge svg { width: 1.1em; height: 1.1em; stroke: var(--accent); }
+
+  .cta-final { position: relative; background: var(--ink); color: #F3F1EC; border-radius: var(--radius-lg); padding: clamp(2.5rem, 6vw, 4.5rem); overflow: hidden; }
+  .cta-final .locmark2 { position: absolute; bottom: -10%; left: -2%; font-family: var(--display); font-weight: 800; font-size: clamp(4rem, 4vw + 6rem, 9rem); opacity: 0.06; letter-spacing: -0.02em; white-space: nowrap; }
+  .cta-final > * { position: relative; }
+  .cta-final h2 { color: #fff; max-width: 16ch; }
+  .cta-final .lead { color: rgba(243,241,236,0.75); }
+  .cta-final .btn-outline { border-color: rgba(243,241,236,0.4); color: #fff; }
+  .cta-final .btn-outline:hover { background: rgba(243,241,236,0.15); }
+
+  footer.site { border-top: 1px solid var(--border); padding: 2.2rem 0; }
+  footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: 0.85rem; color: var(--text-muted); }
+  footer.site address { font-style: normal; }
+</style>
+</head>
+<body>
+
+<header class="site" id="siteHeader">
+  <div class="wrap">
+    <a class="brand" href="#top">SALON KRANZ</a>
+    <nav class="links">
+      <a href="#arbeiten">Arbeiten</a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn btn-primary" href="#kontakt">Termin buchen</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="locmark" aria-hidden="true">PFULLENDORF</div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">Friseur · Pfullendorf, Hauptstraße</div>
+        <h1>Schnitt mit<br>Haltung.</h1>
+        <p class="lead">Modernes Handwerk für Damen &amp; Herren — klare Schnitte, ehrliche Beratung, mitten in Pfullendorf.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#kontakt">Termin buchen</a>
+          <a class="btn btn-outline" href="#arbeiten">Arbeiten ansehen</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1400&q=75" alt="Barbershop-Stühle vor Backsteinwand">
+      </div>
+    </div>
+  </section>
+
+  <section id="arbeiten" data-reveal>
+    <div class="wrap">
+      <div class="eyebrow">Aus dem Salon</div>
+      <h2>Handwerk, das man sieht</h2>
+      <div class="work-grid">
+        <div class="work-card"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1000&q=75" alt="Haarschnitt im Detail"></div>
+        <div class="work-card"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=75" alt="Präzisionsarbeit am Undercut"></div>
+        <div class="work-card"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=75" alt="Moderner, heller Salon-Innenraum"></div>
+        <div class="work-card"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=75" alt="Farbenfroher Friseursalon mit Portraits"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="leistungen" data-reveal>
+    <div class="wrap">
+      <div class="eyebrow">Leistungen</div>
+      <h2>Transparente Preise, keine Überraschungen</h2>
+      <ul class="service-list">
+        <li><span class="name">Damenhaarschnitt</span><span class="desc">inkl. Waschen &amp; Föhnen</span><span class="price">42&nbsp;€</span></li>
+        <li><span class="name">Herrenhaarschnitt</span><span class="desc">inkl. Waschen, Konturenschnitt</span><span class="price">28&nbsp;€</span></li>
+        <li><span class="name">Coloration</span><span class="desc">ab Kurzhaar, je nach Länge</span><span class="price">ab&nbsp;65&nbsp;€</span></li>
+        <li><span class="name">Bart Trim</span><span class="desc">Konturen &amp; Pflege</span><span class="price">15&nbsp;€</span></li>
+      </ul>
+      <div class="badge-row">
+        <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Termin meist innerhalb 48 Std.</div>
+        <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M12 4v16"/></svg> Zentral in Pfullendorf</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" data-reveal>
+    <div class="wrap">
+      <div class="cta-final">
+        <div class="locmark2" aria-hidden="true">PFULLENDORF</div>
+        <div class="eyebrow" style="color:rgba(243,241,236,0.7);">Termin sichern</div>
+        <h2>Dein Schnitt wartet.</h2>
+        <p class="lead">Kurz anrufen oder vorbeikommen — wir finden einen Termin, der passt.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:+497552000002">Anrufen: 07552 00 00 02</a>
+          <a class="btn btn-outline" href="mailto:info@salon-kranz.de">E-Mail schreiben</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <address>Salon Kranz · Hauptstraße 22 · 88630 Pfullendorf · Di–Fr 9–18, Sa 8–13 Uhr</address>
+    <div>© 2026 Salon Kranz — Template zur Anpassung pro Kunde</div>
+  </div>
+</footer>
+
+<script>
+  var header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function () { header.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-visible'); });
+  }
+</script>
+
+</body>
+</html>

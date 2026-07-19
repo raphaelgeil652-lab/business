@@ -44,7 +44,11 @@ Ausgangslage: nebenbei (Job/Schule parallel), beide Kern-Skills (Website-Bau, Ad
   - `docs/konzept-akquise-system.md` – Akquise-Trichter, was automatisiert läuft vs. was der Nutzer selbst tun muss, wöchentlicher Rhythmus
   - `docs/outreach-skripte.md` – Anruf-/Vor-Ort-Skripte für Erstkontakt
   - `docs/ads-budget-und-abrechnung.md` – wie Werbebudget (Kunde → Google/Meta) und eigene Betreuungsgebühr (Kunde → dir) technisch und finanziell getrennt funktionieren
-  - `docs/design-standard.md` – verbindliche Design-Prinzipien für alle Landingpages (gegen generisches KI-Design), gilt für jede neue Vorlage in `templates/`
-- `templates/` – wiederverwendbare Website-/Ads-Vorlagen pro Nische (z. B. `templates/zahnarzt-landingpage/`: Landingpage + Google-Ads-Copy + Anzeigenvorschau-Mockup)
+  - `docs/design-standard.md` – verbindliche Design-Prinzipien für alle Homepages (gegen generisches KI-Design; Landingpages bleiben bewusst schlank, siehe Playbook), gilt für jede neue Vorlage in `templates/`
+- `templates/` – wiederverwendbare Website-/Ads-Vorlagen pro Nische:
+  - `templates/zahnarzt-landingpage/` – Ads-Landingpage + Google-Ads-Copy + Anzeigenvorschau-Mockup (Zahnärzte)
+  - `templates/fitnessstudio-website/` – volle Homepage (Fitnessstudios), inkl. `showcase.html` als bewusst übertriebene Effekt-Demo (kein Kundentemplate)
+  - `templates/beautysalon-website/` – volle Homepage (Beautysalons/Kosmetik)
+  - `templates/friseur-website/` – volle Homepage (Friseure)
 - `leads/leads.csv` – Lead-Tracker mit echten recherchierten Betrieben in der Zielregion (Name, Kontakt, Website-Einschätzung, Status, nächster Schritt). Nach jedem Kontaktversuch aktuell halten.
 - Konvention: Erkenntnisse, Recherchen und Entscheidungen aus Sessions werden hier im Repo festgehalten (nicht nur im Chat-Verlauf), damit zukünftige Sessions direkt darauf aufbauen können.

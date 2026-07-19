@@ -1,0 +1,264 @@
+<!--
+  TEMPLATE — Beautysalon-Website (volle Homepage, keine Landingpage)
+  Design-Prinzipien: siehe docs/design-standard.md — warm, weich, Fokus auf Behandlungen.
+  Vor dem Einsatz bei einem echten Kunden ersetzen:
+    - Studioname, Adresse, Telefonnummer, Öffnungszeiten
+    - Bilder durch echte Fotos des Studios/der Behandlungen ersetzen
+    - Leistungen/Preise durch echte Daten
+    - Der Abschnitt "Deine Verwandlung" ist als Platzhalter für ECHTE Vorher-Nachher-Fotos
+      echter Kund:innen (mit Einverständnis) gedacht — niemals mit Stockfotos als
+      angebliche Transformation befüllen, das wäre irreführend.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beautystudio Amara — Kosmetik &amp; Nageldesign in Pfullendorf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F8F1EC; --surface: #FFFFFF; --surface-alt: #F1E4DC;
+    --text: #2C2220; --text-muted: #7A6963;
+    --accent: #8B4A56; --accent-ink: #FFFFFF;
+    --accent-2: #C9A15A;
+    --border: #E7D9CF;
+    --shadow: 0 22px 44px -22px rgba(44,34,32,0.28);
+    --shadow-lift: 0 16px 32px -16px rgba(44,34,32,0.32);
+    --radius-lg: 26px; --radius-md: 16px;
+    --display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+    --sans: "Karla", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  :root[data-theme="dark"] {
+    --bg: #221A18; --surface: #2C2321; --surface-alt: #362B28; --text: #F3EAE5; --text-muted: #BBA9A2;
+    --accent: #D98CA0; --accent-ink: #2C1219; --accent-2: #E0BC7D; --border: #40332F;
+    --shadow: 0 22px 44px -22px rgba(0,0,0,0.55); --shadow-lift: 0 16px 32px -16px rgba(0,0,0,0.6);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  img, svg { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+  section { padding: clamp(3.5rem, 7vw, 7rem) 0; }
+
+  h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; margin: 0 0 0.35em; line-height: 1.08; }
+  h1 { font-size: clamp(2.6rem, 1.8rem + 3.2vw, 4.6rem); font-style: italic; }
+  h2 { font-size: clamp(2rem, 1.6rem + 1.6vw, 3rem); }
+  h3 { font-size: 1.5rem; }
+  p { margin: 0 0 1em; }
+  .lead { font-size: 1.15rem; color: var(--text-muted); max-width: 46ch; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 0.6em; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1em; }
+  .eyebrow::before { content: ""; width: 1.8em; height: 1px; background: var(--accent); }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5em; font-weight: 600; font-size: 0.94rem; padding: 0.85em 1.6em; border-radius: 999px; text-decoration: none; border: 1px solid transparent; transition: transform 0.25s cubic-bezier(.2,.8,.3,1.2), box-shadow 0.25s ease; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+  .btn-outline { border-color: var(--accent); color: var(--accent); }
+  .btn-outline:hover { background: var(--accent); color: var(--accent-ink); }
+
+  header.site { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
+  header.site.scrolled { border-bottom-color: var(--border); }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; }
+  .brand { font-family: var(--display); font-style: italic; font-size: 1.5rem; text-decoration: none; color: var(--text); }
+  nav.links { display: flex; gap: 2rem; }
+  nav.links a { font-size: 0.9rem; font-weight: 600; text-decoration: none; color: var(--text-muted); }
+  nav.links a:hover { color: var(--accent); }
+  @media (max-width: 780px) { nav.links { display: none; } }
+
+  .hero { position: relative; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  @media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero .media { order: -1; } }
+  .hero-copy > * { opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s cubic-bezier(.2,.7,.3,1) forwards; }
+  .hero-copy > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-copy > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-copy > *:nth-child(3) { animation-delay: 0.35s; }
+  .hero-copy > *:nth-child(4) { animation-delay: 0.5s; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .hero .media { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4/5; opacity: 0; animation: fadeIn 1s ease 0.3s forwards; }
+  @keyframes fadeIn { to { opacity: 1; } }
+  .hero .media img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+
+  @media (prefers-reduced-motion: reduce) { .hero-copy > *, .hero .media { opacity: 1; transform: none; animation: none; } }
+
+  [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; } }
+
+  .services-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: auto auto; gap: 1.3rem; margin-top: 2.5rem; }
+  @media (max-width: 860px) { .services-grid { grid-template-columns: 1fr; grid-template-rows: auto; } }
+  .service-card { position: relative; border-radius: var(--radius-lg); overflow: hidden; min-height: 240px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .service-card:first-child { grid-row: 1 / 3; min-height: 380px; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+  .service-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .service-card:hover img { transform: scale(1.06); }
+  .service-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(44,20,25,0.82), rgba(44,20,25,0.05) 60%); }
+  .service-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.3rem; z-index: 1; }
+  .service-info h3 { color: #fff; margin-bottom: 0.1em; }
+  .service-info p { color: rgba(255,255,255,0.82); font-size: 0.85rem; margin: 0; }
+
+  .transform-box { background: var(--surface-alt); border: 1px dashed var(--border); border-radius: var(--radius-lg); padding: clamp(1.8rem, 4vw, 2.6rem); text-align: center; }
+  .transform-box p.lead { margin-inline: auto; }
+
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.5rem; }
+  @media (max-width: 860px) { .price-grid { grid-template-columns: 1fr; } }
+  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.9rem; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .price-card .amount { font-family: var(--display); font-size: 2.1rem; color: var(--accent); font-style: italic; }
+
+  .testimonials { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+  @media (max-width: 860px) { .testimonials { grid-template-columns: 1fr; } }
+  .t-media { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--shadow); }
+  .t-media img { width: 100%; height: 100%; object-fit: cover; }
+  .quote { font-family: var(--display); font-style: italic; font-size: 1.5rem; margin-bottom: 0.5em; }
+  .quote-name { color: var(--text-muted); font-size: 0.9rem; }
+
+  .cta-final { background: linear-gradient(155deg, var(--accent), color-mix(in srgb, var(--accent) 70%, black)); color: #fff; border-radius: var(--radius-lg); padding: clamp(2.2rem, 5vw, 3.6rem); text-align: center; }
+  .cta-final h2 { color: #fff; margin-inline: auto; max-width: 18ch; }
+  .cta-final .lead { color: rgba(255,255,255,0.85); margin-inline: auto; }
+  .cta-final .hero-cta { justify-content: center; }
+  .cta-final .btn-outline { border-color: rgba(255,255,255,0.6); color: #fff; }
+  .cta-final .btn-outline:hover { background: rgba(255,255,255,0.15); }
+
+  footer.site { border-top: 1px solid var(--border); padding: 2.2rem 0; }
+  footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: 0.85rem; color: var(--text-muted); }
+  footer.site address { font-style: normal; }
+</style>
+</head>
+<body>
+
+<header class="site" id="siteHeader">
+  <div class="wrap">
+    <a class="brand" href="#top">Amara</a>
+    <nav class="links">
+      <a href="#leistungen">Behandlungen</a>
+      <a href="#preise">Preise</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn btn-primary" href="#kontakt">Termin anfragen</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">Beautystudio in Pfullendorf</div>
+        <h1>Zeit für dich, ganz in Ruhe.</h1>
+        <p class="lead">Kosmetik, Nageldesign und Wimpern in warmer Atmosphäre — ohne Hektik, mit echter Handwerkskunst.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#kontakt">Termin anfragen</a>
+          <a class="btn btn-outline" href="#leistungen">Behandlungen ansehen</a>
+        </div>
+      </div>
+      <div class="media">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=75" alt="Frau fährt sich entspannt durchs lange Haar">
+      </div>
+    </div>
+  </section>
+
+  <section id="leistungen" data-reveal>
+    <div class="wrap">
+      <div class="eyebrow">Unsere Behandlungen</div>
+      <h2>Für jeden Anlass die richtige Pflege</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=900&q=75" alt="Gesichtsbehandlung im Detail">
+          <div class="service-info"><h3>Gesichtsbehandlung</h3><p>Reinigung, Pflege &amp; Massage für strahlende Haut</p></div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=75" alt="Nageldesign mit rotem Lack">
+          <div class="service-info"><h3>Nageldesign</h3><p>Maniküre, Gel &amp; individuelle Nailart</p></div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=800&q=75" alt="Zarte Nagellackfarben">
+          <div class="service-info"><h3>Handpflege</h3><p>Entspannende Maniküre mit Handmassage</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal>
+    <div class="wrap">
+      <div class="transform-box">
+        <div class="eyebrow" style="justify-content:center;">Deine Verwandlung</div>
+        <h2>Platz für deine Vorher-Nachher-Geschichte</h2>
+        <p class="lead">Hier zeigen wir echte Ergebnisse echter Kund:innen — sobald die ersten Behandlungen abgeschlossen sind, kommen hier reale Fotos hin (nur mit ausdrücklichem Einverständnis).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="preise" data-reveal>
+    <div class="wrap">
+      <div class="eyebrow">Preise</div>
+      <h2>Transparent von Anfang an</h2>
+      <div class="price-grid">
+        <div class="price-card">
+          <h3>Klassische Maniküre</h3>
+          <div class="amount">32&nbsp;€</div>
+          <p style="color:var(--text-muted); font-size:0.92rem;">inkl. Handmassage &amp; Lack, 45 Min.</p>
+        </div>
+        <div class="price-card">
+          <h3>Gesichtsbehandlung</h3>
+          <div class="amount">68&nbsp;€</div>
+          <p style="color:var(--text-muted); font-size:0.92rem;">Reinigung &amp; Pflege, 60 Min.</p>
+        </div>
+        <div class="price-card">
+          <h3>Wimpernwelle</h3>
+          <div class="amount">45&nbsp;€</div>
+          <p style="color:var(--text-muted); font-size:0.92rem;">inkl. Tönung, 40 Min.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal>
+    <div class="wrap testimonials">
+      <div class="t-media"><img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=800&q=75" alt="Gepflegte Pflegeprodukte im Studio"></div>
+      <div>
+        <div class="quote">„Endlich ein Studio, in dem ich mich wirklich entspannen kann.“</div>
+        <div class="quote-name">— Stammkundin seit 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" data-reveal>
+    <div class="wrap">
+      <div class="cta-final">
+        <div class="eyebrow" style="justify-content:center; color:rgba(255,255,255,0.8);">Termin vereinbaren</div>
+        <h2>Gönn dir deine Auszeit.</h2>
+        <p class="lead">Kurz anrufen oder schreiben — wir finden gemeinsam den passenden Termin.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" style="background:#fff; color:var(--accent);" href="tel:+497552000001">Anrufen: 07552 00 00 01</a>
+          <a class="btn btn-outline" href="mailto:info@amara-pfullendorf.de">E-Mail schreiben</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <address>Beautystudio Amara · St.-Katharinen-Str. 12 · 88630 Pfullendorf · Di–Sa 9–18 Uhr</address>
+    <div>© 2026 Amara — Template zur Anpassung pro Kunde</div>
+  </div>
+</footer>
+
+<script>
+  var header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function () { header.classList.toggle('scrolled', window.scrollY > 8); }, { passive: true });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-visible'); });
+  }
+</script>
+
+</body>
+</html>
