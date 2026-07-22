@@ -4,4 +4,6 @@ Aufbau einer **lokalen Performance-Marketing-Agentur für Küche & Bad** (Küche
 
 Meta Ads → Leads → Termine für den Klienten, plus komplettes System (Landingpage + CRM + Automationen + Tracking). Ziel: 10k+/Monat wiederkehrend.
 
-**Start hier:** `CLAUDE.md` (Übersicht) → `docs/geschaeftsmodell.md` → `docs/klienten-journey.md`.
+**Neu hier / Überblick:** `docs/so-funktioniert-alles.md` (alles in einfacher Sprache) → `docs/erster-kunde-fahrplan.md` (schlanker Startweg).
+
+**Vertiefung:** `CLAUDE.md` (Übersicht) → `docs/geschaeftsmodell.md` → `docs/klienten-journey.md`.
