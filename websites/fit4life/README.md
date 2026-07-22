@@ -44,7 +44,8 @@ Immer den **Website-Ordner selbst** als Root Directory setzen, nicht die Repo-Wu
 - [ ] **Öffnungszeiten** (kontakt.html)
 - [ ] **Preise** (Startseite, Abschnitt Mitgliedschaft)
 - [ ] **E-Mail** (kontakt.html + evtl. Footer)
-- [ ] **Fotos**: Hero, Gerätefläche, Kursraum, Studio-Einblick, Über-uns, Felix-Foto sind Unsplash-Platzhalter – beim Vor-Ort-Termin durch echte fit4life-Fotos ersetzen.
+- [ ] **Fotos**: Gerätefläche, Kursraum, Studio-Einblick, Über-uns, Felix-Foto sind Unsplash-Platzhalter – beim Vor-Ort-Termin durch echte fit4life-Fotos ersetzen.
+- [ ] **Hero-Video** (`assets/hero.mp4`): dezentes Hintergrund-Video hinter der Startseiten-Headline. Aktuell ein ruhiger Platzhalter-Clip – beim Fototermin ein entspanntes Studio-Video drehen (leise, wenig Bewegung) und unter gleichem Namen `assets/hero.mp4` ablegen; `assets/hero-poster.jpg` als Standbild/Fallback ersetzen. Läuft stumm, in Endlosschleife; bei „Reduced Motion" wird automatisch nur das Poster gezeigt.
 - [ ] **Kursplan** (Wochenzeiten) in kurse.html
 - [ ] **Google-Maps-Einbettung** in kontakt.html
 - [ ] **Kontaktformular** an Versanddienst anbinden (Formspree/Netlify Forms o. ä.)
