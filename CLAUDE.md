@@ -2,7 +2,7 @@
 
 ## Auf einen Blick
 
-Website + Ads-Retainer für vier lokale Branchen in Pfullendorf/Sigmaringen. Der Kreislauf: Leads recherchieren → Erstkontakt (Anruf/vor Ort) → 1-2 kostenlose/günstige Referenzprojekte → daraus zahlende Kunden in derselben Nische → monatliche Ads-Betreuung als eigentliches Einkommen. Was automatisiert läuft (Recherche, Vorlagen, Lead-Tracking, wöchentliche Erinnerung) vs. was nur der Nutzer selbst tun kann (Anrufe, Vertrauen, Vertragsabschluss) steht in `docs/konzept-akquise-system.md`.
+Website + Ads-Retainer für **eine fokussierte Nische** in Pfullendorf/Sigmaringen: das **Zahn-Cluster** (Zahnärzte, Kieferorthopäden, Implantologie/Zahnästhetik). Der Kreislauf: Leads recherchieren → Erstkontakt (Anruf/vor Ort) → 1-2 kostenlose/günstige Referenzprojekte → daraus zahlende Kunden in derselben Nische → monatliche Ads-Betreuung als eigentliches Einkommen. Was automatisiert läuft (Recherche, Vorlagen, Lead-Tracking, wöchentliche Erinnerung) vs. was nur der Nutzer selbst tun kann (Anrufe, Vertrauen, Vertragsabschluss) steht in `docs/konzept-akquise-system.md`.
 
 ## Kontext
 
@@ -25,7 +25,12 @@ Standort: Pfullendorf / Landkreis Sigmaringen (Bodensee-Nord).
 
 - **Nicht** die großen Industriearbeitgeber der Region (Geberit, Kramer-Werke, Schwörer Haus, Fürst-von-Hohenzollern-Gruppe) als Zielkunden – eigene Marketingabteilungen, lange B2B-Zyklen, kein Fit.
 - **Nicht** klassisches Handwerk (Elektriker, Dachdecker, Sanitär) als erste Nische – wegen Fachkräftemangel meist schon ausgebucht, Ads bringen dort kaum messbaren Mehrwert.
-- **Festgelegte Nische (4 Branchen)**: Zahnärzte, Fitnessstudios, Beautysalons (Kosmetik/Nagelstudios) und Friseure – konsumentennahe, wiederkehrende Entscheidungen, kaum digitale Konkurrenz vor Ort, gut kopierbares Muster nach dem ersten Referenzprojekt pro Branche. Physio und Gastronomie/Tourismus wurden als frühere Kandidaten geprüft (siehe `docs/playbook-landingpages-ads.md`), sind aber aktuell **nicht** Fokus – Recherche/Ansprache konzentriert sich auf die vier genannten Branchen.
+- **Festgelegte Nische (Zahn-Cluster, Entscheidung 2026-07-22)**: **Zahnärzte + Kieferorthopäden + Implantologie/Zahnästhetik** – faktisch fast identische Nischen mit gleichem Playbook (gleicher Landingpage-Aufbau, gleiche Google-Ads-Logik, gleiche Argumente). Warum genau diese eine Nische:
+  - **Geld**: mit Abstand höchster Ticketwert (Implantat 1.500–3.000 €, Aligner/Invisalign 3.000–6.000 €, PZR wiederkehrend) → ein einziger neuer Patient finanziert Ads-Budget + Betreuung locker.
+  - **Ads-Fit**: starke Google-Suchintention – Patienten suchen aktiv („Zahnimplantat Pfullendorf"), wir greifen bestehende Nachfrage ab statt sie zu erzeugen.
+  - **Dichte**: genug Praxen im Landkreis → gut kopierbares Muster nach dem ersten Referenzprojekt.
+  - **Vorsprung**: `templates/zahnarzt-landingpage/` existiert bereits, kein Neustart.
+- **Bewusst NICHT (mehr) Fokus**: Fitnessstudios, Beautysalons (Kosmetik/Nagelstudios), Friseure wurden am 2026-07-22 als Nische **verworfen** – zu niedriger Ticketwert (30–80 € pro Termin), zu dünne Marge, um Ads-Budget + Monats-Retainer sauber zu rechtfertigen; Friseur/Handwerk oft ohnehin ausgebucht. Ebenso geprüft und verworfen: Küchenstudios/Hörakustiker (Traumticket, aber zu wenige Betriebe im Landkreis → zu dünn zum Kopieren), Physio und Gastronomie/Tourismus (frühere Kandidaten, siehe `docs/playbook-landingpages-ads.md`). Der Nutzer will bewusst **eine** Nische, nicht breit streuen.
 
 ## Fahrplan
 
@@ -46,11 +51,9 @@ Ausgangslage: nebenbei (Job/Schule parallel), beide Kern-Skills (Website-Bau, Ad
   - `docs/ads-budget-und-abrechnung.md` – wie Werbebudget (Kunde → Google/Meta) und eigene Betreuungsgebühr (Kunde → dir) technisch und finanziell getrennt funktionieren
   - `docs/design-standard.md` – verbindliche Design-Prinzipien für alle Homepages (gegen generisches KI-Design; Landingpages bleiben bewusst schlank, siehe Playbook), gilt für jede neue Vorlage in `templates/`
 - `templates/` – wiederverwendbare Website-/Ads-Vorlagen pro Nische:
-  - `templates/zahnarzt-landingpage/` – Ads-Landingpage + Google-Ads-Copy + Anzeigenvorschau-Mockup (Zahnärzte)
-  - `templates/fitnessstudio-website/` – volle Homepage (Fitnessstudios), inkl. `showcase.html` als bewusst übertriebene Effekt-Demo (kein Kundentemplate)
-  - `templates/beautysalon-website/` – volle Homepage (Beautysalons/Kosmetik)
-  - `templates/friseur-website/` – volle Homepage (Friseure)
-- `websites/` – konkrete, mehrseitige Kunden-Websites (statisches HTML/CSS/JS, direkt hostbar). Erstes Projekt: `websites/fit4life/` (Fitnessstudio Pfullendorf). Landingpages werden separat unter `templates/` gepflegt. **Konvention: Jede Website ist ein eigenständiger, direkt auf Vercel deploybarer Ordner** (kein Build-Schritt, eigene `vercel.json`, `cleanUrls`; in Vercel als Root Directory den jeweiligen Website-Ordner setzen). **Workflow-Konvention: Sobald eine Website fertig oder aktualisiert ist, wird der Arbeits-Branch direkt nach `main` gemerged**, damit der Ordner auf `main` liegt und ohne Extra-Schritte in Vercel als Root Directory auswählbar/deploybar ist (Vercel liest die Ordnerauswahl aus dem Production-Branch `main`).
+  - **Aktive Nische (Zahn-Cluster):** `templates/zahnarzt-landingpage/` – Ads-Landingpage + Google-Ads-Copy + Anzeigenvorschau-Mockup (Zahnärzte). Das ist die Vorlage, auf der aufgebaut wird.
+  - **Altbestand (verworfene Nischen, 2026-07-22 – nicht mehr aktiv weiterentwickeln):** `templates/fitnessstudio-website/`, `templates/fitnessstudio-landingpage/`, `templates/beautysalon-website/`, `templates/friseur-website/`. Bleiben als Referenz/Fundus im Repo, sind aber nicht mehr Fokus.
+- `websites/` – konkrete, mehrseitige Kunden-Websites (statisches HTML/CSS/JS, direkt hostbar). `websites/fit4life/` (Fitnessstudio Pfullendorf) war das erste Projekt, wird aber seit der Nischen-Entscheidung 2026-07-22 **nicht mehr weitergeführt** (Fitness fallengelassen). Neue Kunden-Websites entstehen künftig im Zahn-Cluster. Landingpages werden separat unter `templates/` gepflegt. **Konvention: Jede Website ist ein eigenständiger, direkt auf Vercel deploybarer Ordner** (kein Build-Schritt, eigene `vercel.json`, `cleanUrls`; in Vercel als Root Directory den jeweiligen Website-Ordner setzen). **Workflow-Konvention: Sobald eine Website fertig oder aktualisiert ist, wird der Arbeits-Branch direkt nach `main` gemerged**, damit der Ordner auf `main` liegt und ohne Extra-Schritte in Vercel als Root Directory auswählbar/deploybar ist (Vercel liest die Ordnerauswahl aus dem Production-Branch `main`).
 - `leads/leads.csv` – Lead-Tracker mit echten recherchierten Betrieben in der Zielregion (Name, Kontakt, Website-Einschätzung, Status, nächster Schritt). Nach jedem Kontaktversuch aktuell halten.
 - Konvention: Erkenntnisse, Recherchen und Entscheidungen aus Sessions werden hier im Repo festgehalten (nicht nur im Chat-Verlauf), damit zukünftige Sessions direkt darauf aufbauen können.
 
