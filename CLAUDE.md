@@ -50,6 +50,7 @@ Ausgangslage: nebenbei (Job/Schule parallel), beide Kern-Skills (Website-Bau, Ad
   - `docs/outreach-skripte.md` – Anruf-/Vor-Ort-Skripte für Erstkontakt
   - `docs/ads-budget-und-abrechnung.md` – wie Werbebudget (Kunde → Google/Meta) und eigene Betreuungsgebühr (Kunde → dir) technisch und finanziell getrennt funktionieren
   - `docs/design-standard.md` – verbindliche Design-Prinzipien für alle Homepages (gegen generisches KI-Design; Landingpages bleiben bewusst schlank, siehe Playbook), gilt für jede neue Vorlage in `templates/`
+  - `docs/research-zahnarzt-websites.md` – Recherche: wie verkaufsoptimierte Zahnarzt-Websites aufgebaut sind (Struktur, Conversion, Vertrauen, **HWG/DSGVO-Rechtsrahmen**). Grundlage für jeden Website-Bau im Zahn-Cluster.
 - `templates/` – wiederverwendbare Website-/Ads-Vorlagen pro Nische:
   - **Aktive Nische (Zahn-Cluster):** `templates/zahnarzt-landingpage/` – Ads-Landingpage + Google-Ads-Copy + Anzeigenvorschau-Mockup (Zahnärzte). Das ist die Vorlage, auf der aufgebaut wird.
   - **Altbestand (verworfene Nischen, 2026-07-22 – nicht mehr aktiv weiterentwickeln):** `templates/fitnessstudio-website/`, `templates/fitnessstudio-landingpage/`, `templates/beautysalon-website/`, `templates/friseur-website/`. Bleiben als Referenz/Fundus im Repo, sind aber nicht mehr Fokus.
