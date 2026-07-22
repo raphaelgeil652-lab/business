@@ -30,6 +30,7 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
   - `offer-und-ads.md` — 3–5 wiederverwendbare Offer-/Ad-Strukturen, Trust-Regeln.
   - `klienten-journey.md` — A–Z-Prozess vom Lead bis zur Abrechnung + Checklisten.
   - `tech-stack.md` — GoHighLevel, n8n, Tracking (Pixel + CAPI), Meta-Hygiene, LP-Hosting.
+  - `ghl-n8n-aufbau.md` — Schritt-für-Schritt: Master-Snapshot bauen + n8n-Workflows (Lead-Intake, Speed-to-Lead, Stage→CAPI, Onboarding-Klon), Klienten-Store, Dedup-Kette, Testplan.
 - `wissen/` — Lern-System: `creatives.md`, `onboarding.md`, `tech.md`, `sales.md`. Jede Erkenntnis pro Bereich hier festhalten, damit keine Fehler doppelt passieren.
 - `templates/` — `landingpage/` (Single-File, mobile-first, GHL-iframe-Formular + Pixel/CAPI), `onboarding-email.md`, `ad-copy.md`.
 - `leads/klienten-leads.csv` — recherchierte Prospect-Betriebe (Küche/Bad) in der Region.

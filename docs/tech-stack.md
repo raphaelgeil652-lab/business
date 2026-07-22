@@ -2,6 +2,8 @@
 
 Aus dem Playbook (§5). Grundregel über allem: **Skalierbar ab Tag 1 — nichts pro Klient hardcoden.** Jede Lösung muss für 100 Klienten parallel funktionieren.
 
+> **Konkrete Bauanleitung (Schritt für Schritt): [`ghl-n8n-aufbau.md`](ghl-n8n-aufbau.md)** — Master-Snapshot, n8n-Workflows, Klienten-Store, Tracking-Dedup, Testplan. Dieses Dokument hier fasst die Kernregeln zusammen.
+
 ## GoHighLevel (GHL) — CRM
 
 - **Ein Subaccount pro Klient**, deployed als **Klon eines Master-Snapshots** (alle Pipelines, Kalender, Workflows vorkonfiguriert).
