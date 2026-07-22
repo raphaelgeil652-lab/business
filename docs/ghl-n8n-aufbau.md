@@ -89,6 +89,9 @@ Jeder Workflow liest zuerst über die eingehende `locationId` die passende Zeile
 
 ## TEIL C — n8n-Workflows (ein Workflow pro Aktion)
 
+> **Importierbare Grundgerüste liegen bereit:** `../templates/n8n/` (WF-1/2/3 als `.json` + README).
+> In n8n importieren, dann Tokens/Store/URLs setzen (siehe dortige README).
+
 Gemeinsame Bausteine:
 - **GHL-Call:** HTTP Request, Base `https://services.leadconnectorhq.com`,
   Header `Authorization: Bearer {{pit}}`, `Version: 2021-07-28`, `Content-Type: application/json`.

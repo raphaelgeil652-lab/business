@@ -32,7 +32,7 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
   - `tech-stack.md` — GoHighLevel, n8n, Tracking (Pixel + CAPI), Meta-Hygiene, LP-Hosting.
   - `ghl-n8n-aufbau.md` — Schritt-für-Schritt: Master-Snapshot bauen + n8n-Workflows (Lead-Intake, Speed-to-Lead, Stage→CAPI, Onboarding-Klon), Klienten-Store, Dedup-Kette, Testplan.
 - `wissen/` — Lern-System: `creatives.md`, `onboarding.md`, `tech.md`, `sales.md`. Jede Erkenntnis pro Bereich hier festhalten, damit keine Fehler doppelt passieren.
-- `templates/` — `landingpage/` (Single-File, mobile-first, GHL-iframe-Formular + Pixel/CAPI), `onboarding-email.md`, `ad-copy.md`.
+- `templates/` — `landingpage/` (Single-File, mobile-first, GHL-iframe-Formular + Pixel/CAPI), `n8n/` (importierbare Workflow-Grundgerüste WF-1/2/3), `onboarding-email.md`, `ad-copy.md`.
 - `leads/klienten-leads.csv` — recherchierte Prospect-Betriebe (Küche/Bad) in der Region.
 - `.agents/skills` + `.claude/skills` — installierte Design-Skills (impeccable, taste-skill) zum Bau guter Landingpages/Creatives.
 
