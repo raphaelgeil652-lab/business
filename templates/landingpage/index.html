@@ -1,0 +1,220 @@
+<!--
+  LANDINGPAGE-VORLAGE · Küche & Bad (Gratis-Planung-Offer)
+  Playbook-konform: Single-File, mobile-first, GHL-Formular per iframe,
+  Meta Pixel + event_id (CAPI-Dedup) + FBCLID-Hidden-Field.
+
+  VOR EINSATZ PRO KLIENT ERSETZEN (mit [ ] markiert):
+    - [Studioname], [Ort], Offer-Text (Küche: 3D-Planung / Bad: Vor-Ort-Beratung)
+    - PIXEL_ID (Meta Pixel), GHL_FORM_ID (Formular-iframe)
+    - Fotos (echte Klienten-Bilder statt Platzhalter), Bewertungssterne (max 4,9!)
+    - Impressum/Datenschutz-Links
+  Extern hosten (Netlify/Vercel). Kein Build.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kostenlose Küchenplanung in [Ort] · [Studioname]</title>
+<meta name="description" content="Kostenlose 3D-Küchenplanung bei [Studioname] in [Ort]. Unverbindlich deine Traumküche visualisieren. Jetzt Termin sichern.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF6F0; --surface:#FFFFFF; --ink:#211C16; --muted:#6E655A;
+    --line:#E7DFD3; --accent:#B4552D; --accent-deep:#93421F; --gold:#C69A4C;
+    --display:"DM Serif Display",Georgia,serif; --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important;}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;margin:0;letter-spacing:0;text-wrap:balance;}
+  p{text-wrap:pretty;}
+  .wrap{width:100%;max-width:560px;margin:0 auto;padding:0 20px;}
+  .btn{display:block;width:100%;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;font-size:1.05rem;padding:1.1em 1.4em;border-radius:14px;border:0;cursor:pointer;transition:background .2s ease,transform .2s ease;}
+  .btn:hover{background:var(--accent-deep);transform:translateY(-1px);}
+
+  /* Trust-Bar */
+  .trust{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.85rem;color:var(--muted);padding:.5rem 0;}
+  .stars{color:var(--gold);letter-spacing:.05em;}
+
+  /* Hero */
+  .hero{padding:2.2rem 0 1.6rem;text-align:center;}
+  .badge{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:rgba(180,85,45,.09);padding:.5em 1em;border-radius:999px;margin-bottom:1rem;}
+  .hero h1{font-size:clamp(2rem,7vw,2.7rem);}
+  .hero h1 em{font-style:italic;color:var(--accent);}
+  .hero p.sub{color:var(--muted);font-size:1.08rem;margin:.9rem 0 1.4rem;}
+  .hero-img{border-radius:18px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:#EFE7DA;margin-bottom:1.4rem;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  /* Formular-Karte */
+  .form-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.2rem 1.1rem 1rem;box-shadow:0 14px 40px rgba(33,28,22,.07);}
+  .form-card h2{font-size:1.35rem;text-align:center;margin-bottom:.2rem;}
+  .form-card .hint{text-align:center;color:var(--muted);font-size:.9rem;margin:0 0 .8rem;}
+  .form-frame{width:100%;min-height:520px;border:0;border-radius:12px;background:#fff;}
+  .form-fallback{font-size:.82rem;color:var(--muted);text-align:center;margin-top:.4rem;}
+
+  /* Sektionen */
+  section.blk{padding:2.2rem 0;border-top:1px solid var(--line);}
+  section.blk h2{font-size:clamp(1.5rem,5.5vw,1.9rem);text-align:center;margin-bottom:1.2rem;}
+  .points{list-style:none;margin:0;padding:0;display:grid;gap:.9rem;}
+  .point{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;display:flex;gap:.8rem;align-items:flex-start;}
+  .point .ic{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:rgba(180,85,45,.1);color:var(--accent);display:grid;place-items:center;font-weight:800;}
+  .point b{display:block;}
+  .point span{color:var(--muted);font-size:.95rem;}
+
+  /* Ablauf */
+  .steps{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:1rem;}
+  .steps li{position:relative;padding-left:3rem;}
+  .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-.1rem;width:2.1rem;height:2.1rem;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--display);font-weight:400;font-size:1.1rem;display:grid;place-items:center;}
+  .steps b{display:block;}
+  .steps span{color:var(--muted);font-size:.95rem;}
+
+  /* Bewertungen */
+  .review{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.1rem;margin-bottom:.9rem;}
+  .review .stars{font-size:1rem;}
+  .review p{margin:.4rem 0 .3rem;}
+  .review cite{font-style:normal;font-size:.85rem;color:var(--muted);}
+
+  /* Final CTA */
+  .final{text-align:center;padding:2.4rem 0;}
+  .final h2{font-size:clamp(1.6rem,6vw,2.1rem);margin-bottom:1rem;}
+
+  footer{border-top:1px solid var(--line);padding:1.4rem 0 5rem;text-align:center;font-size:.8rem;color:var(--muted);}
+  footer a{color:var(--muted);}
+
+  /* Sticky Mobile-CTA */
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(250,246,240,.92);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:.6rem 20px calc(.6rem + env(safe-area-inset-bottom));}
+  .sticky .btn{max-width:560px;margin:0 auto;}
+  @media (min-width:720px){ .sticky{display:none;} footer{padding-bottom:1.4rem;} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="trust"><span class="stars">★★★★★</span> 4,9 / 5 aus lokalen Bewertungen</div>
+
+  <!-- HERO + Offer -->
+  <header class="hero">
+    <span class="badge">Kostenlos &amp; unverbindlich</span>
+    <h1>Deine <em>Traumküche</em>: erst in 3D, dann in echt.</h1>
+    <p class="sub">[Studioname] in [Ort] plant deine neue Küche <b>kostenlos in 3D</b>. Du siehst alles, bevor du dich entscheidest.</p>
+    <div class="hero-img">
+      <!-- [Foto ersetzen: echte Küche/Bad des Klienten] -->
+      <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1000&q=75" alt="Moderne Küche">
+    </div>
+  </header>
+
+  <!-- FORMULAR (GHL iframe) -->
+  <div class="form-card" id="termin">
+    <h2>Kostenlosen Planungstermin sichern</h2>
+    <p class="hint">In 30 Sekunden ausfüllen, wir melden uns zeitnah.</p>
+    <iframe class="form-frame" id="ghlForm"
+            data-src="https://api.leadconnectorhq.com/widget/form/GHL_FORM_ID"
+            title="Terminanfrage"></iframe>
+    <p class="form-fallback">Formular lädt nicht? Ruf uns an: <a href="tel:+49XXXXXXXX">[Telefon]</a></p>
+  </div>
+
+</div>
+
+<!-- VORTEILE -->
+<section class="blk">
+  <div class="wrap">
+    <h2>Warum [Studioname]?</h2>
+    <ul class="points">
+      <li class="point"><span class="ic">✓</span><div><b>Kostenlose 3D-Planung</b><span>Du siehst deine Küche fotorealistisch, bevor ein Cent fließt.</span></div></li>
+      <li class="point"><span class="ic">✓</span><div><b>Persönlich &amp; lokal</b><span>Beratung direkt bei dir vor Ort oder im Studio in [Ort].</span></div></li>
+      <li class="point"><span class="ic">✓</span><div><b>Alles aus einer Hand</b><span>Von der Planung bis zur fertigen Montage, ein Ansprechpartner.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ABLAUF -->
+<section class="blk">
+  <div class="wrap">
+    <h2>So einfach geht's</h2>
+    <ol class="steps">
+      <li><b>Termin anfragen</b><span>Formular ausfüllen, wir melden uns.</span></li>
+      <li><b>Kostenlose Planung</b><span>Gemeinsam gestalten wir deine Küche in 3D.</span></li>
+      <li><b>Entscheiden in Ruhe</b><span>Unverbindliches Angebot, du entscheidest.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- BEWERTUNGEN (echt, max 4,9) -->
+<section class="blk">
+  <div class="wrap">
+    <h2>Das sagen Kunden</h2>
+    <!-- [Durch echte Google-Bewertungen ersetzen] -->
+    <div class="review"><div class="stars">★★★★★</div><p>„Von der Planung bis zur Montage top betreut. Unsere Küche ist ein Traum."</p><cite>[Kundenname], [Ort]</cite></div>
+    <div class="review"><div class="stars">★★★★★</div><p>„Die 3D-Planung hat uns die Entscheidung so leicht gemacht. Klare Empfehlung."</p><cite>[Kundenname], [Ort]</cite></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Bereit für deine neue Küche?</h2>
+    <a class="btn" href="#termin">Jetzt kostenlosen Termin sichern</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    [Studioname] · [Adresse], [Ort] · <a href="tel:+49XXXXXXXX">[Telefon]</a><br>
+    <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+  </div>
+</footer>
+
+<!-- Sticky Mobile-CTA -->
+<div class="sticky"><a class="btn" href="#termin">Kostenlosen Termin sichern</a></div>
+
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  // event_id für Pixel<->CAPI-Dedup
+  var EVENT_ID = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+                 : 'ev-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+
+  fbq('init', 'PIXEL_ID');                       // [PIXEL_ID ersetzen]
+  fbq('track', 'PageView', {}, { eventID: EVENT_ID });
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+<!-- FBCLID + event_id an GHL-Formular übergeben, Lead-Event bei Submit -->
+<script>
+  (function(){
+    var params = new URLSearchParams(location.search);
+    var fbclid = params.get('fbclid') || '';
+    var frame = document.getElementById('ghlForm');
+    // Hidden-Felder im GHL-Formular per Query-Param befüllen (im Formular als Felder anlegen)
+    var q = new URLSearchParams({
+      event_id: EVENT_ID,
+      fbclid: fbclid,
+      utm_source: params.get('utm_source') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_medium: params.get('utm_medium') || ''
+    });
+    if (frame && frame.dataset.src) frame.src = frame.dataset.src + '?' + q.toString();
+
+    // GHL sendet bei Absenden eine postMessage -> Lead-Event (server-CAPI nutzt gleiche event_id)
+    window.addEventListener('message', function(e){
+      var d = e.data;
+      var submitted = (typeof d === 'string' && /form.*submit/i.test(d)) ||
+                      (d && (d.type === 'form_submitted' || d.event === 'form_submit'));
+      if (submitted && window.fbq) fbq('track', 'Lead', {}, { eventID: EVENT_ID });
+    });
+  })();
+</script>
+
+</body>
+</html>
