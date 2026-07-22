@@ -24,6 +24,8 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
 
 - `CLAUDE.md` — diese Übersicht. Bei jeder größeren Entscheidung aktuell halten.
 - `docs/`
+  - `so-funktioniert-alles.md` — **Einsteiger-Überblick + Glossar** (was ist was, wie hängt alles zusammen). Bei Unklarheit hier starten.
+  - `erster-kunde-fahrplan.md` — **schlanker Startweg** zum ersten Kunden (ohne den ganzen Automatik-Überbau).
   - `agentur-playbook.md` — **Master-Playbook (Grundlage, nicht ändern außer auf Ansage).**
   - `geschaeftsmodell.md` — Angebot, Abrechnung (Onboarding-Gebühr + Revenue Share), 10k/Monat-Rechnung, Positionierung.
   - `nischen.md` — Küche & Bad durch den 5-Punkte-Filter, Gratis-Anker-Offers.
