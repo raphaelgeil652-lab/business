@@ -1,0 +1,76 @@
+{
+  "name": "WF-2 Speed-to-Lead",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "speed-to-lead",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "438afdf6-dd33-4e04-82c7-d08b1b8f7de3",
+      "name": "Webhook Speed-to-Lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/conversations/messages",
+        "options": {},
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.body.pit }}"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ type:'WhatsApp', contactId: $json.body.contactId, message: 'Hallo ' + ($json.body.name||'') + ', danke fuer deine Anfrage bei ' + ($json.body.studioname||'uns') + '! Wir melden uns gleich fuer deinen kostenlosen Planungstermin.' }) }}"
+      },
+      "id": "0941b11d-e742-4a6b-a2b9-3094d3d49018",
+      "name": "GHL Nachricht senden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Speed-to-Lead": {
+      "main": [
+        [
+          {
+            "node": "GHL Nachricht senden",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [],
+  "meta": {}
+}

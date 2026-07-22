@@ -1,0 +1,225 @@
+{
+  "name": "WF-1 Lead-Intake (Kueche & Bad)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-intake",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "c99805b6-3d53-4f40-a308-a201e6d63175",
+      "name": "Webhook Lead-Intake",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// === Klienten-Config & Normalisierung ===\n// TODO: Beispiel-Map durch echten Store-Lookup ersetzen (Google Sheet / DB / n8n Data Table),\n// gemappt ueber body.locationId. NIE Secrets im Klartext committen.\nconst body = $json.body || $json;\nconst CLIENTS = {\n  \"LOCATION_ID_BEISPIEL\": { pit: \"GHL_PIT_TOKEN\", pixelId: \"META_PIXEL_ID\", capiToken: \"META_CAPI_TOKEN\", studioname: \"Musterkueche\" }\n};\nconst locationId = body.locationId || \"LOCATION_ID_BEISPIEL\";\nconst cfg = CLIENTS[locationId] || CLIENTS[\"LOCATION_ID_BEISPIEL\"];\n\nconst email = (body.email || \"\").trim().toLowerCase();\nlet phone = (body.phone || \"\").replace(/[^0-9]/g, \"\");\nif (phone.startsWith(\"0\")) phone = \"49\" + phone.slice(1); // DE-Laendercode\n\nconst fbclid = body.fbclid || \"\";\nreturn [{ json: {\n  locationId,\n  pit: cfg.pit, pixelId: cfg.pixelId, capiToken: cfg.capiToken, studioname: cfg.studioname,\n  name: body.name || \"\", email, emailNorm: email, phone, phoneNorm: phone,\n  offer_typ: body.offer_typ || \"\", event_id: body.event_id || $execution.id,\n  fbclid, fbc: fbclid ? (\"fb.1.\" + Date.now() + \".\" + fbclid) : \"\", fbp: body.fbp || \"\",\n  utm_source: body.utm_source || \"\", utm_campaign: body.utm_campaign || \"\", utm_medium: body.utm_medium || \"\"\n}}];\n"
+      },
+      "id": "a6c09eec-7ca6-4e4a-872f-6eb19e75f0d5",
+      "name": "Config & Normalisieren",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "action": "hash",
+        "type": "SHA256",
+        "value": "={{$json.emailNorm}}",
+        "dataPropertyName": "em",
+        "encoding": "hex"
+      },
+      "id": "849cf62e-3ccb-4899-8cd0-cf72980ddec5",
+      "name": "Hash E-Mail",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "action": "hash",
+        "type": "SHA256",
+        "value": "={{$json.phoneNorm}}",
+        "dataPropertyName": "ph",
+        "encoding": "hex"
+      },
+      "id": "43936c18-4634-4fd2-b2a9-0c158c98edfb",
+      "name": "Hash Telefon",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/upsert",
+        "options": {},
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Config & Normalisieren').item.json.pit }}"
+            },
+            {
+              "name": "Version",
+              "value": "2021-07-28"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ locationId: $('Config & Normalisieren').item.json.locationId, name: $('Config & Normalisieren').item.json.name, email: $('Config & Normalisieren').item.json.email, phone: $('Config & Normalisieren').item.json.phone, tags: ['lead-neu'], customFields: [ {key:'event_id', field_value:$('Config & Normalisieren').item.json.event_id}, {key:'fbclid', field_value:$('Config & Normalisieren').item.json.fbclid}, {key:'offer_typ', field_value:$('Config & Normalisieren').item.json.offer_typ} ] }) }}"
+      },
+      "id": "14ff5d66-7d1b-4c43-be51-347d634826e2",
+      "name": "GHL Upsert Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{ $('Config & Normalisieren').item.json.pixelId }}/events",
+        "options": {},
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "={{ $('Config & Normalisieren').item.json.capiToken }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ data: [ { event_name:'Lead', event_time: Math.floor(Date.now()/1000), event_id: $('Config & Normalisieren').item.json.event_id, action_source:'website', user_data: { em:[$('Hash E-Mail').item.json.em], ph:[$('Hash Telefon').item.json.ph], fbc:$('Config & Normalisieren').item.json.fbc, fbp:$('Config & Normalisieren').item.json.fbp }, custom_data: { offer_typ:$('Config & Normalisieren').item.json.offer_typ } } ] }) }}"
+      },
+      "id": "caf72ce0-3e91-4603-b5c0-a989b41e408d",
+      "name": "Meta CAPI Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://DEINE-N8N-URL/webhook/speed-to-lead",
+        "options": {},
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ locationId: $('Config & Normalisieren').item.json.locationId, pit: $('Config & Normalisieren').item.json.pit, contactId: ($('GHL Upsert Contact').item.json.contact ? $('GHL Upsert Contact').item.json.contact.id : ''), name: $('Config & Normalisieren').item.json.name, studioname: $('Config & Normalisieren').item.json.studioname }) }}"
+      },
+      "id": "85792cb0-9877-47f9-a631-23687289ad44",
+      "name": "Trigger Speed-to-Lead (WF-2)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Lead-Intake": {
+      "main": [
+        [
+          {
+            "node": "Config & Normalisieren",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config & Normalisieren": {
+      "main": [
+        [
+          {
+            "node": "Hash E-Mail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hash E-Mail": {
+      "main": [
+        [
+          {
+            "node": "Hash Telefon",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hash Telefon": {
+      "main": [
+        [
+          {
+            "node": "GHL Upsert Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GHL Upsert Contact": {
+      "main": [
+        [
+          {
+            "node": "Meta CAPI Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Meta CAPI Lead": {
+      "main": [
+        [
+          {
+            "node": "Trigger Speed-to-Lead (WF-2)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [],
+  "meta": {}
+}

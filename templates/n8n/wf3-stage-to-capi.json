@@ -1,0 +1,92 @@
+{
+  "name": "WF-3 Stage-Change -> Meta CAPI",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "stage-changed",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "8356f764-0922-484e-9917-433bbc419db4",
+      "name": "Webhook Stage-Change",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// === Stage -> Meta-Event + Klienten-Config ===\n// TODO: CLIENTS-Map durch echten Store-Lookup ersetzen (gemappt ueber body.locationId).\nconst body = $json.body || $json;\nconst CLIENTS = {\n  \"LOCATION_ID_BEISPIEL\": { pixelId: \"META_PIXEL_ID\", capiToken: \"META_CAPI_TOKEN\" }\n};\nconst cfg = CLIENTS[body.locationId] || CLIENTS[\"LOCATION_ID_BEISPIEL\"];\nconst MAP = {\n  \"Termin gebucht\":    { event: \"Schedule\" },\n  \"Termin erschienen\": { event: \"AppointmentShow\" },\n  \"Kunde gewonnen\":    { event: \"Purchase\", value: Number(body.value || 0) }\n};\nconst m = MAP[body.stage];\nif (!m) return []; // nicht getrackte Stage -> nichts senden\nreturn [{ json: {\n  pixelId: cfg.pixelId, capiToken: cfg.capiToken,\n  event_name: m.event, event_id: body.event_id || \"\",\n  value: m.value || 0, fbc: body.fbc || \"\", fbp: body.fbp || \"\"\n}}];\n"
+      },
+      "id": "58a56d45-8ed3-4608-8a06-34e7e57dc7de",
+      "name": "Stage -> Event + Config",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{$json.pixelId}}/events",
+        "options": {},
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "={{$json.capiToken}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ data: [ { event_name:$json.event_name, event_time: Math.floor(Date.now()/1000), event_id:$json.event_id, action_source:'website', user_data:{ fbc:$json.fbc, fbp:$json.fbp }, custom_data: ($json.event_name==='Purchase' ? { value:$json.value, currency:'EUR' } : {}) } ] }) }}"
+      },
+      "id": "ebe15a6a-5160-4d4c-ae46-4b14020096e2",
+      "name": "Meta CAPI Event",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Stage-Change": {
+      "main": [
+        [
+          {
+            "node": "Stage -> Event + Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stage -> Event + Config": {
+      "main": [
+        [
+          {
+            "node": "Meta CAPI Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [],
+  "meta": {}
+}
