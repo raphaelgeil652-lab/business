@@ -49,6 +49,7 @@ Die Referenz-Generation (Friseur/Beauty/Fitness, editorial) wurde vom Nutzer aus
 1. **Diese Design-Sprache ist der Standard** — editoriale Layouts, große Typo mit Charakter, Vollbild-Bilder, produktabgeleitete Farben, wenige cleane Animationen, ein Konversionsziel. Die verbotenen KI-Muster (oben) bleiben dauerhaft verboten.
 2. **Die Templates sind bewusst kompakte Grundgerüste.** Echte Kundenprojekte werden **länger und informationsreicher**, sobald der Nutzer echtes Material liefert (Team-Fotos, Leistungsdetails, Geschichte, Öffnungszeiten, FAQ, Anfahrt etc.). Mehr Inhalt = mehr Sektionen in derselben Design-Sprache — nicht dichter quetschen, sondern die Seite wachsen lassen.
 3. **Umfang richtet sich nach dem gelieferten Material**, nicht nach dem Template: was der Nutzer pro Kunde schickt (Texte, Bilder, Infos), bestimmt Länge und Tiefe der Seite.
+4. **Kunden-Websites sind MEHRSEITIG** (Startseite + Unterseiten), keine Einzelseite. Die Nischen-Templates in `templates/` sind kompakte Einseiter-Grundgerüste als Design-Referenz; das echte Kundenprojekt wird daraus eine mehrseitige Website in derselben Design-Sprache. **Vom Nutzer bestätigt (Juli 2026)** am Beispiel `websites/fit4life/` (Start / Kurse / Studio / Über uns / Kontakt, editorial, Bebas Neue + Manrope, Kohle/Knochen/Signalorange) — „das ist super". Diese Umsetzung ist die Referenz für weitere Kundenprojekte.
 
 ## Installierte Design-Skills (verbindlich nutzen)
 
