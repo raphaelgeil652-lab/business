@@ -32,6 +32,7 @@ zu sein, sondern **einem Betrieb echte Anfragen zu bringen** und daraus eine Cas
 - [ ] **Eine Meta-Anzeige** schalten (Gratis-Offer). Textvorlagen: `../templates/ad-copy.md`. Klein starten (z. B. 10–20 €/Tag Testbudget, zahlt der Kunde).
 - [ ] **Anfrage-Auffang testen:** LP bei Netlify live → Formular selbst ausfüllen → kommt die E-Mail an? (Funktioniert nur online bei Netlify, nicht lokal.)
 - [ ] **Speed-to-Lead:** sobald eine Anfrage-Mail kommt, **sofort** anrufen (< 5 Min). Am Anfang bewusst **manuell** — reicht für den ersten Kunden.
+- [ ] **Termine/Kalender:** vorerst **manuell per Anruf** ausmachen, **kein Tool nötig**. Später optional Selbstbuchung mit **Cal.com/Calendly** (mit Google Calendar des Betriebs); voll ins System integriert erst mit **GHL (Phase 4)**.
 - [ ] **Tracking simpel:** der **Meta Pixel** auf der LP reicht zum Start. **CAPI/Dedup kommt später.**
 
 ## Phase 3 — Liefern & Beweis sammeln
