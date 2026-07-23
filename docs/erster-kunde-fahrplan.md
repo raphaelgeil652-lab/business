@@ -15,7 +15,7 @@ zu sein, sondern **einem Betrieb echte Anfragen zu bringen** und daraus eine Cas
 
 - [ ] **Angebot festlegen:** „Kostenlose 3D-Küchenplanung" (Küche) bzw. „Kostenlose Bad-Beratung / Vor-Ort-Aufmaß" (Bad). Ein Offer, ein Ziel: Termin.
 - [ ] **Landingpage:** Vorlage `../templates/landingpage/` nutzen — `index.html` (Küche) / `bad.html` (Bad). Platzhalter `[ ]` erst mit dem echten Kunden füllen.
-- [ ] **Lead-Auffang (gewählt: einfach, ohne GHL):** Die LP nutzt ein **Netlify-Formular → E-Mail**. Ordner bei **Netlify** hochladen (Anleitung: `../templates/landingpage/README.md`), E-Mail-Benachrichtigung aktivieren. Jede Anfrage kommt in dein Postfach. **Kein GoHighLevel, kein n8n nötig.**
+- [ ] **Lead-Auffang (gewählt: einfach, ohne GHL):** Die LP nutzt ein **Netlify-Formular → E-Mail**. Seite bei **Netlify** online stellen (Schritt-für-Schritt: `landingpage-hosten.md`), E-Mail-Benachrichtigung aktivieren. Jede Anfrage kommt in dein Postfach. **Kein GoHighLevel, kein n8n nötig.**
 
 ## Phase 1 — Ersten Kunden gewinnen (die wichtigste Phase)
 

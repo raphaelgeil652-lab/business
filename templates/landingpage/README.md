@@ -18,6 +18,8 @@ Einfache, mobil-optimierte Werbe-Landingpages. **Formular → E-Mail** über **N
 
 ## Online stellen mit Netlify (Schritt für Schritt)
 
+> Ausführliche Einsteiger-Anleitung (GitHub-Import + Drag&Drop + Fehlerbehebung): `../../docs/landingpage-hosten.md`
+
 1. Auf **netlify.com** kostenlos anmelden.
 2. Diesen Ordner (`index.html`, `bad.html`, `danke.html`) als ZIP oder Ordner auf
    **app.netlify.com/drop** ziehen („Netlify Drop"). Fertig — du bekommst sofort eine Live-URL.
