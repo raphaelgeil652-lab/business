@@ -26,6 +26,11 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
   - **Revenue Share** pro erfasstem Termin/Abschluss (skaliert mit Ergebnis; setzt lückenloses Termin-Tracking voraus).
 - Werbebudget zahlt der Klient direkt an Meta (getrennt von unserer Fee).
 
+**Empfehlung erster Kunde (Referenz/Case-Study):** bewusst niedrig ansetzen, um den Beweis zu holen —
+Einrichtung **0–300 €** + **250–400 €/Monat**, monatlich kündbar, Werbebudget extra. Ab Kunde 3
+(mit vorzeigbarem Ergebnis) hoch auf Standard (Einrichtung ~500 € + ~750–1.000 €/Monat).
+Fertige Vorlage: `../templates/angebot-vertrag.md`.
+
 ## Der 10k/Monat-Weg (Rechnung)
 
 Ziel: **10.000 €/Monat wiederkehrend** (ohne Onboarding-Gebühren, die kommen obendrauf).
