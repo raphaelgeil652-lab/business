@@ -1,0 +1,56 @@
+<!--
+  DANKE-SEITE — wird nach dem Absenden des Formulars angezeigt (Netlify: action="danke.html").
+  Feuert das Meta-Pixel-Event "Lead". PIXEL_ID eintragen (sonst wirkungslos).
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danke — wir melden uns · [Studioname]</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FAF6F0;--ink:#211C16;--muted:#6E655A;--line:#E7DFD3;--accent:#B4552D;--accent-deep:#93421F;--gold:#C69A4C;
+    --display:"DM Serif Display",Georgia,serif;--sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+  *{box-sizing:border-box;}
+  body{margin:0;min-height:100svh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;padding:24px;-webkit-font-smoothing:antialiased;}
+  .card{max-width:520px;text-align:center;}
+  .check{width:64px;height:64px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;margin:0 auto 1.2rem;font-size:1.8rem;}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,7vw,2.8rem);line-height:1.1;margin:0 0 .6rem;text-wrap:balance;}
+  h1 em{font-style:italic;color:var(--accent);}
+  p{color:var(--muted);font-size:1.05rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .stars{color:var(--gold);letter-spacing:.05em;margin-bottom:1.2rem;}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;padding:.9em 1.6em;border-radius:14px;transition:background .2s ease;}
+  .btn:hover{background:var(--accent-deep);}
+  .call{display:block;margin-top:1rem;color:var(--muted);font-size:.9rem;}
+  .call a{color:var(--accent);}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="check">✓</div>
+    <div class="stars">★★★★★</div>
+    <h1>Danke! Wir <em>melden uns</em>.</h1>
+    <p>Deine Anfrage ist bei [Studioname] angekommen. Wir rufen dich zeitnah für deinen kostenlosen Termin zurück.</p>
+    <a class="btn" href="index.html">Zurück zur Startseite</a>
+    <span class="call">Dringend? Ruf uns direkt an: <a href="tel:+49XXXXXXXX">[Telefon]</a></span>
+  </div>
+
+  <!-- Meta Pixel: PageView + Lead -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'PIXEL_ID');           // [PIXEL_ID ersetzen]
+    fbq('track', 'PageView');
+    fbq('track', 'Lead');              // Anfrage = Lead
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=PIXEL_ID&ev=Lead&noscript=1"/></noscript>
+</body>
+</html>

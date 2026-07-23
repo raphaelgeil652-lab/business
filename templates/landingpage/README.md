@@ -1,34 +1,57 @@
-# Landingpage-Vorlage (Küche & Bad)
+# Landingpage-Vorlage (Küche & Bad) — MVP
 
-Single-File, mobile-first Ad-Landingpage nach Playbook. Für Meta-Ad-Traffic mit
-Gratis-Anker-Offer (Küche: 3D-Planung / Bad: Vor-Ort-Beratung). Extern hosten
-(Netlify/Vercel), **kein Build**. Slop-geprüft (impeccable: 0 Anti-Patterns).
+Einfache, mobil-optimierte Werbe-Landingpages. **Formular → E-Mail** über **Netlify Forms**
+(kein GoHighLevel, kein Backend, keine laufenden Kosten). Slop-geprüft (impeccable: 0 Anti-Patterns).
+
+| Datei | Zweck |
+|---|---|
+| `index.html` | Küche — „Kostenlose 3D-Planung" |
+| `bad.html` | Bad — „Kostenlose Vor-Ort-Beratung" |
+| `danke.html` | Danke-Seite nach dem Absenden (feuert Meta-Pixel „Lead") |
 
 ## Pro Klient anpassen (im Code mit `[ ]` markiert)
 
-- **Texte:** `[Studioname]`, `[Ort]`, `[Adresse]`, `[Telefon]`, Offer (Küche ↔ Bad).
-- **Bilder:** Hero-Bild + Bewertungen durch **echte** Klienten-Fotos/Google-Bewertungen ersetzen. **Sterne max 4,9** (nie 5,0 — wirkt gekauft).
-- **Meta Pixel:** `PIXEL_ID` (3×: init, noscript-img, noscript-url) eintragen.
-- **GHL-Formular:** `GHL_FORM_ID` im iframe `data-src` eintragen.
-- **Impressum/Datenschutz:** Links im Footer setzen.
+- Texte: `[Studioname]`, `[Ort]`, `[Telefon]`, `[Adresse]`.
+- Bilder: Hero + Bewertungen durch **echte** Fotos/Google-Bewertungen ersetzen. **Sterne max 4,9**.
+- `PIXEL_ID`: Meta-Pixel-ID (optional, kann am Anfang leer bleiben — dann misst der Pixel nichts, alles andere läuft).
+- Impressum/Datenschutz: `impressum.html` / `datenschutz.html` anlegen (Pflicht) und verlinken.
 
-## Tracking (Playbook: Abrechnungs-Grundlage)
+## Online stellen mit Netlify (Schritt für Schritt)
 
-- Meta **Pixel** feuert `PageView` mit generierter **`event_id`**.
-- Beim Absenden feuert das Skript `Lead` mit **derselben `event_id`** → **Dedup** mit dem serverseitigen **CAPI**-Event (aus dem n8n/GHL-Workflow).
-- **`fbclid`** + UTM-Parameter werden aus der URL gelesen und an den GHL-iframe als Query-Parameter übergeben → im GHL-Formular als (versteckte) Felder anlegen, damit sie im CRM ankommen.
+1. Auf **netlify.com** kostenlos anmelden.
+2. Diesen Ordner (`index.html`, `bad.html`, `danke.html`) als ZIP oder Ordner auf
+   **app.netlify.com/drop** ziehen („Netlify Drop"). Fertig — du bekommst sofort eine Live-URL.
+3. In Netlify unter **Forms** siehst du jede Anfrage. Unter **Site settings → Forms → Notifications**
+   eine **E-Mail-Benachrichtigung** einrichten → jede Anfrage landet in deinem Postfach.
+4. Später: eigene Domain verbinden (z. B. `kueche-[ort].de`).
 
-## GHL-Formular vorbereiten
+> Wichtig: Das Formular funktioniert **nur, wenn die Seite bei Netlify liegt** (die Formular-
+> Verarbeitung ist eine Netlify-Funktion). Lokal/Doppelklick sendet nichts ab.
 
-Im GHL-Formular Hidden-Fields anlegen: `event_id`, `fbclid`, `utm_source`, `utm_campaign`, `utm_medium`. Diese werden per URL-Parameter befüllt. Beim Submit sendet GHL eine `postMessage`, die den Pixel-`Lead` auslöst.
+## So kommt eine Anfrage bei dir an
 
-## Deploy
+Besucher füllt Formular aus → Netlify verarbeitet es → du bekommst eine **E-Mail** + Eintrag im
+**Netlify-Dashboard**. `danke.html` wird angezeigt und feuert (falls `PIXEL_ID` gesetzt) das
+Meta-Event „Lead". **Speed-to-Lead:** du/der Betrieb ruft die Nummer aus der Mail **sofort** an
+(< 5 Min). — Am Anfang bewusst manuell, das reicht für den ersten Kunden.
 
-Ordner extern hosten (Netlify Drop / Vercel). Eine LP-Instanz pro Klient (eigene
-`PIXEL_ID`/`GHL_FORM_ID`). Vor Launch: Testlead absenden und prüfen, dass Lead
-im CRM ankommt **und** das Pixel/CAPI-Event dedupliziert erscheint.
+## Später auf GoHighLevel umstellen (wenn du skalierst)
 
-## Design
+Ersetze in `index.html`/`bad.html` den `<form>…</form>`-Block durch das GHL-Formular-iframe und
+verdrahte Tracking/Automationen nach `../../docs/ghl-n8n-aufbau.md`:
 
-Warme, vertrauensbildende Palette (Sand/Ton/Terrakotta) + DM Serif Display + Manrope.
-Mobile-first, Sticky-CTA unten. Farben zentral in `:root` anpassbar.
+```html
+<iframe class="form-frame" id="ghlForm"
+        data-src="https://api.leadconnectorhq.com/widget/form/GHL_FORM_ID"
+        title="Terminanfrage" style="width:100%;min-height:520px;border:0;border-radius:12px;"></iframe>
+<script>
+  // event_id + fbclid an das GHL-Formular übergeben (Hidden-Felder im Formular anlegen)
+  var EVENT_ID = (crypto.randomUUID ? crypto.randomUUID() : 'ev-'+Date.now());
+  var p = new URLSearchParams(location.search);
+  var f = document.getElementById('ghlForm');
+  f.src = f.dataset.src + '?event_id='+EVENT_ID+'&fbclid='+(p.get('fbclid')||'');
+</script>
+```
+
+Dann greifen die n8n-Workflows (`../n8n/`) und die CAPI-Dedup-Kette. Das ist die Ausbaustufe,
+nicht nötig für den ersten Kunden.
