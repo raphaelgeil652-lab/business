@@ -50,4 +50,10 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
 
 ## Aktueller Stand
 
-Aufbauphase, noch keine Klienten. Nächste Schritte: Nische final schärfen, erste Klienten-Leads abtelefonieren, ersten Klienten (ggf. vergünstigt) für Case-Study gewinnen, GHL-Snapshot + n8n-Workflows aufsetzen.
+MVP steht: Landingpages (Küche/Bad) live bei Netlify, Anfragen kommen per E-Mail, Terminvergabe manuell.
+Angebot/Vertrag-Vorlage + Salescall-Skript + Leads bereit. **Noch keine Klienten.**
+
+**Ziel: 7.000 € bis 01.10.2026** (Details/Rückrechnung in `docs/geschaeftsmodell.md`). Hebel = **jetzt akquirieren**:
+ab sofort telefonieren (`wissen/sales.md`, `leads/klienten-leads.csv`), Lead-Liste erweitern, ~2–3 Kunden
+im August abschließen (Standardpreis ~990 € Setup + ~990 €/Monat). Fahrplan bis zum ersten Geld:
+`docs/fahrplan-erster-umsatz.md`. Der ganze Automatik-Überbau (GHL/n8n/CAPI) kommt erst nach den ersten Kunden.

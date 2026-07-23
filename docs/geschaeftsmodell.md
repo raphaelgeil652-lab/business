@@ -26,10 +26,27 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
   - **Revenue Share** pro erfasstem Termin/Abschluss (skaliert mit Ergebnis; setzt lückenloses Termin-Tracking voraus).
 - Werbebudget zahlt der Klient direkt an Meta (getrennt von unserer Fee).
 
-**Empfehlung erster Kunde (Referenz/Case-Study):** bewusst niedrig ansetzen, um den Beweis zu holen —
-Einrichtung **0–300 €** + **250–400 €/Monat**, monatlich kündbar, Werbebudget extra. Ab Kunde 3
-(mit vorzeigbarem Ergebnis) hoch auf Standard (Einrichtung ~500 € + ~750–1.000 €/Monat).
-Fertige Vorlage: `../templates/angebot-vertrag.md`.
+**Preis-Empfehlung (Standard, selbstbewusst):** Einrichtung **~990 €** (750–1.500) + **~990 €/Monat**
+(750–1.250), monatlich kündbar, Werbebudget extra (Kunde zahlt Meta direkt). **Auf Wert verkaufen,
+nicht auf Rabatt** — der Kunde muss nicht wissen, dass er der erste ist. Fertige Vorlage:
+`../templates/angebot-vertrag.md`.
+
+## Ziel: 7.000 € bis 01.10.2026
+
+Ausgangspunkt ~23.07. → **~10 Wochen**. Rückgerechnet mit Standardpreis (990 € Setup + 990 €/Monat):
+
+- **Ein im August unterschriebener Kunde** bringt bis 01.10.: 990 (Setup) + August + September ≈ **~2.970 €**.
+- **Ziel 7k → ~2–3 Kunden im August:**
+  - 3 Kunden im August ≈ **~8.900 €**
+  - 2 im August + 1 im September ≈ **~7.900 €**
+- **Einziger echter Hebel: Abschlüsse im August.** Also ab sofort viel telefonieren und zügig closen.
+
+**Grober Funnel (konservativ, zum Planen):** ~10 Wählversuche → ~2–3 Inhaber erreicht → ~1 Termin;
+~4–6 Termine → ~2–3 Abschlüsse. Für 2–3 Kunden also grob **60–100 Anrufversuche im August** einplanen
+(≈ 15–25/Woche). → **Die 14 Leads reichen dafür nicht** — Lead-Liste erweitern (mehr Küchen-/Badbetriebe
+im weiteren Umkreis Bodensee/Oberschwaben, `../leads/klienten-leads.csv`).
+
+*(Zahlen sind Ziele/Orientierung, keine Garantie — Umsatz hängt an Abschlussquote und Tempo.)*
 
 ## Der 10k/Monat-Weg (Rechnung)
 
