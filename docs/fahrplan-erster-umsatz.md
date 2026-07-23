@@ -25,7 +25,7 @@ schnellste Weg zum ersten Umsatz.
 ## Block B — Angebot & Preis festlegen
 
 - [ ] **Preis für den ersten Kunden** festlegen. Vorschlag Referenzprojekt: **Einrichtungsgebühr 300–500 € + Monatsbeitrag 300–500 €**, monatlich kündbar. Werbebudget zahlt der Kunde **extra, direkt an Meta**.
-- [ ] **1-Seiten-Angebot/Vertrag** (Leistung, Laufzeit, Preis, was der Kunde liefert). → Claude kann das aufsetzen.
+- [ ] **1-Seiten-Angebot/Vertrag** ausfüllen: fertige Vorlage inkl. Preis-Empfehlung → `../templates/angebot-vertrag.md`.
 - [ ] Details: `geschaeftsmodell.md`.
 
 ## Block C — Ersten Kunden gewinnen
