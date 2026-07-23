@@ -34,9 +34,14 @@ Bei jedem `git push` nach `main` aktualisiert Netlify die Seite automatisch.
 
 ## Anfragen per E-Mail bekommen
 
-1. In Netlify: **Site configuration → Forms → Notifications**.
-2. **Add notification → Email notification** → deine E-Mail eintragen.
-3. Ab jetzt kommt jede Formular-Anfrage in dein Postfach (und ins Netlify-Dashboard unter **Forms**).
+Netlify **speichert** jede Anfrage, verschickt aber **nur mit aktivierter Benachrichtigung** eine E-Mail.
+
+1. Erst prüfen, dass eine Anfrage angekommen ist: Projekt → **Forms** (erscheint, sobald es eine
+   Anfrage gibt) → dort das Formular **„anfrage-kueche"** mit dem Eintrag.
+2. **Project configuration → Notifications** → Abschnitt **„Form submission notifications"** →
+   **Add notification → Email notification** → deine E-Mail eintragen → **Save**.
+   (Je nach Netlify-UI auch unter Forms → Settings erreichbar.)
+3. Formular erneut absenden → die Mail kommt in ~1 Minute. **Wichtig: erste Mail landet oft im Spam-/Werbung-Ordner.**
 
 ## Kurz testen
 
@@ -44,10 +49,22 @@ Bei jedem `git push` nach `main` aktualisiert Netlify die Seite automatisch.
 2. Es sollte die **Danke-Seite** erscheinen.
 3. Im Netlify-Dashboard unter **Forms** taucht die Anfrage auf (und als Mail, wenn Benachrichtigung aktiv).
 
+## Problem: 404 „Page not found" beim Absenden
+
+Beim Klick auf „Absenden" kommt eine 404 → **Netlify hat das Formular nicht erkannt**
+(Formular-Erkennung ist bei neuen Seiten oft standardmäßig aus).
+
+- **Prüf-Trick:** Ruf `deinname.netlify.app/danke.html` direkt auf. Lädt die Danke-Seite, sind
+  alle Dateien da → es liegt nur an der Formular-Erkennung.
+- **Fix:** In Netlify die **Form detection aktivieren** (Forms bzw. Project configuration → Forms),
+  dann **Deploys → Trigger deploy → „Clear cache and deploy site"**, danach erneut testen.
+- **Fallback:** Klappt es partout nicht, das Formular auf **Formspree** umstellen (kostenlos,
+  mailt automatisch, ohne Netlify-Einstellungen).
+
 ## Häufigster Fehler
 
-**Seite ist leer / 404** → meist falsches **Publish directory**. Es muss `templates/landingpage`
-sein (nicht der Repo-Wurzelordner) — sonst findet Netlify die `index.html` nicht.
+**Seite ist leer / 404 (schon beim Öffnen)** → meist falsches **Publish directory**. Es muss
+`templates/landingpage` sein (nicht der Repo-Wurzelordner) — sonst findet Netlify die `index.html` nicht.
 
 ## Wichtig
 
