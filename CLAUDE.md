@@ -26,6 +26,7 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
 - `docs/`
   - `so-funktioniert-alles.md` — **Einsteiger-Überblick + Glossar** (was ist was, wie hängt alles zusammen). Bei Unklarheit hier starten.
   - `erster-kunde-fahrplan.md` — **schlanker Startweg** zum ersten Kunden (ohne den ganzen Automatik-Überbau).
+  - `fahrplan-erster-umsatz.md` — **abhakbare To-do-Liste bis zur ersten Überweisung** (Rechtliches/Konten, Preis, Akquise, Aufsetzen, Rechnung).
   - `agentur-playbook.md` — **Master-Playbook (Grundlage, nicht ändern außer auf Ansage).**
   - `geschaeftsmodell.md` — Angebot, Abrechnung (Onboarding-Gebühr + Revenue Share), 10k/Monat-Rechnung, Positionierung.
   - `nischen.md` — Küche & Bad durch den 5-Punkte-Filter, Gratis-Anker-Offers.
