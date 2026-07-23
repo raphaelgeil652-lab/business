@@ -8,16 +8,19 @@
 
 ## Preis-Empfehlung (zum Festlegen, bevor du das Angebot rausgibst)
 
-| Modell | Einrichtungsgebühr (einmalig) | Monatlich | Für wen |
-|---|---|---|---|
-| **Referenz / Case-Study** (1.–2. Kunde) | 0–300 € | 250–400 € | Erster Kunde, im Tausch gegen Testimonial |
-| **Standard** (ab Kunde 3) | ~500 € | ~750–1.000 € | Sobald du ein Ergebnis vorweisen kannst |
+**Standardpreis:** Einrichtung **~990 €** einmalig + **~990 €/Monat**, monatlich kündbar.
+**Werbebudget extra** — zahlt der Kunde direkt an Meta.
 
-- **Werbebudget ist immer extra** und zahlt der Kunde **direkt an Meta** (nicht über dich).
-- Monatlich kündbar halten — senkt die Hürde beim Ja.
-- Faustregel: Ein einziger vermittelter Küchen-/Bad-Abschluss ist für den Kunden 10–40k € wert;
-  deine Gebühr ist dagegen klein. Du musst dich nicht unter Wert verkaufen — beim ersten Kunden
-  geht es aber bewusst um den **Beweis**, nicht um Marge.
+| Position | Empfehlung | Range |
+|---|---|---|
+| Einrichtungsgebühr (einmalig) | **990 €** | 750–1.500 € |
+| Monatliche Betreuung | **990 €** | 750–1.250 € |
+| Werbebudget | vom Kunden direkt an Meta | 15–30 €/Tag |
+
+- **Auf Wert verkaufen, nicht auf Rabatt.** Ein einziger vermittelter Abschluss bringt dem Kunden 10–40k € — deine Gebühr ist dagegen klein. Der Kunde muss **nicht** wissen, dass er dein erster ist.
+- **Monatlich kündbar** halten → senkt die Hürde beim Ja, ohne den Preis zu drücken.
+- **Werbebudget ist immer extra** und läuft direkt über das Meta-Konto des Kunden (nicht über dich).
+- Braucht es zum Abschluss *unbedingt* einen Anreiz: lieber **ersten Monat reduzieren** oder **Einrichtung erlassen** als den Dauerpreis senken — und nur, wenn wirklich nötig.
 
 ---
 
