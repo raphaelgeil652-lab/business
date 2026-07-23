@@ -1,23 +1,22 @@
 <!--
-  LANDINGPAGE-VORLAGE · KÜCHE (Gratis-3D-Planung-Offer) — MVP-Variante
+  LANDINGPAGE-VORLAGE · BAD (Gratis-Beratung-Offer) — MVP-Variante
   Einfaches Formular -> E-Mail via Netlify Forms. KEIN GoHighLevel, kein Backend, kein Build.
-  (Bad-Variante: bad.html · Danke-Seite: danke.html)
+  (Küche-Variante: index.html · Danke-Seite: danke.html)
 
   VOR EINSATZ PRO KLIENT ERSETZEN (mit [ ] markiert):
     - [Studioname], [Ort], [Telefon], [Adresse]
     - PIXEL_ID (Meta Pixel) — optional, kann am Anfang leer bleiben
-    - Fotos (echte Küche des Klienten statt Platzhalter), Bewertungen (max 4,9!)
+    - Fotos (echtes Bad des Klienten statt Platzhalter), Bewertungen (max 4,9!)
     - Impressum/Datenschutz-Links
   Hosten bei Netlify (dann funktioniert das Formular automatisch). Siehe README.
-  Später auf GoHighLevel umstellen? Snippet in der README.
 -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kostenlose Küchenplanung in [Ort] · [Studioname]</title>
-<meta name="description" content="Kostenlose 3D-Küchenplanung bei [Studioname] in [Ort]. Unverbindlich deine Traumküche visualisieren. Jetzt Termin sichern.">
+<title>Kostenlose Bad-Beratung in [Ort] · [Studioname]</title>
+<meta name="description" content="Kostenlose Bad-Planung inkl. Vor-Ort-Aufmaß bei [Studioname] in [Ort]. Unverbindlich dein neues Bad planen. Jetzt Termin sichern.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,7 +47,6 @@
   .hero-img{border-radius:18px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:#EFE7DA;margin-bottom:1.4rem;}
   .hero-img img{width:100%;height:100%;object-fit:cover;}
 
-  /* Formular-Karte */
   .form-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.3rem 1.1rem 1.1rem;box-shadow:0 14px 40px rgba(33,28,22,.07);}
   .form-card h2{font-size:1.35rem;text-align:center;margin-bottom:.2rem;}
   .form-card .hint{text-align:center;color:var(--muted);font-size:.9rem;margin:0 0 1rem;}
@@ -97,26 +95,26 @@
 
   <header class="hero">
     <span class="badge">Kostenlos &amp; unverbindlich</span>
-    <h1>Deine <em>Traumküche</em>: erst in 3D, dann in echt.</h1>
-    <p class="sub">[Studioname] in [Ort] plant deine neue Küche <b>kostenlos in 3D</b>. Du siehst alles, bevor du dich entscheidest.</p>
+    <h1>Dein <em>Traumbad</em>: erst geplant, dann gebaut.</h1>
+    <p class="sub">[Studioname] in [Ort] plant dein neues Bad <b>kostenlos vor Ort</b>, inklusive Aufmaß. Du weißt vorher genau, was dich erwartet.</p>
     <div class="hero-img">
-      <!-- [Foto ersetzen: echte Küche des Klienten] -->
-      <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1000&q=75" alt="Moderne Küche">
+      <!-- [Foto ersetzen: echtes Bad des Klienten] -->
+      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1000&q=75" alt="Modernes Badezimmer">
     </div>
   </header>
 
   <!-- FORMULAR (Netlify Forms -> E-Mail; kein GHL) -->
   <div class="form-card" id="termin">
-    <h2>Kostenlosen Planungstermin sichern</h2>
+    <h2>Kostenlosen Beratungstermin sichern</h2>
     <p class="hint">In 30 Sekunden ausfüllen, wir melden uns zeitnah.</p>
-    <form class="lead-form" name="anfrage-kueche" method="POST"
+    <form class="lead-form" name="anfrage-bad" method="POST"
           data-netlify="true" netlify-honeypot="bot-field" action="danke.html">
-      <input type="hidden" name="form-name" value="anfrage-kueche">
+      <input type="hidden" name="form-name" value="anfrage-bad">
       <p class="hp"><label>Bitte leer lassen: <input name="bot-field"></label></p>
       <label>Name<input type="text" name="name" required placeholder="Dein Name"></label>
       <label>Telefon<input type="tel" name="telefon" required placeholder="Für den Rückruf"></label>
       <label>E-Mail<input type="email" name="email" placeholder="dein@email.de"></label>
-      <label>Nachricht (optional)<textarea name="nachricht" rows="3" placeholder="Worum geht's? z. B. neue Küche, Umbau …"></textarea></label>
+      <label>Nachricht (optional)<textarea name="nachricht" rows="3" placeholder="Worum geht's? z. B. Komplettbad, barrierefrei, Dusche …"></textarea></label>
       <input type="hidden" name="fbclid" id="f_fbclid">
       <input type="hidden" name="utm_source" id="f_utm_source">
       <input type="hidden" name="utm_campaign" id="f_utm_campaign">
@@ -131,8 +129,8 @@
   <div class="wrap">
     <h2>Warum [Studioname]?</h2>
     <ul class="points">
-      <li class="point"><span class="ic">✓</span><div><b>Kostenlose 3D-Planung</b><span>Du siehst deine Küche fotorealistisch, bevor ein Cent fließt.</span></div></li>
-      <li class="point"><span class="ic">✓</span><div><b>Persönlich &amp; lokal</b><span>Beratung direkt bei dir vor Ort oder im Studio in [Ort].</span></div></li>
+      <li class="point"><span class="ic">✓</span><div><b>Kostenlose Vor-Ort-Beratung</b><span>Aufmaß und Planung bei dir zuhause, bevor ein Cent fließt.</span></div></li>
+      <li class="point"><span class="ic">✓</span><div><b>Persönlich &amp; lokal</b><span>Echte Ansprechpartner aus [Ort], kein Callcenter.</span></div></li>
       <li class="point"><span class="ic">✓</span><div><b>Alles aus einer Hand</b><span>Von der Planung bis zur fertigen Montage, ein Ansprechpartner.</span></div></li>
     </ul>
   </div>
@@ -143,7 +141,7 @@
     <h2>So einfach geht's</h2>
     <ol class="steps">
       <li><b>Termin anfragen</b><span>Formular ausfüllen, wir melden uns.</span></li>
-      <li><b>Kostenlose Planung</b><span>Gemeinsam gestalten wir deine Küche in 3D.</span></li>
+      <li><b>Kostenlose Vor-Ort-Beratung</b><span>Wir messen auf und planen dein Bad gemeinsam.</span></li>
       <li><b>Entscheiden in Ruhe</b><span>Unverbindliches Angebot, du entscheidest.</span></li>
     </ol>
   </div>
@@ -153,14 +151,14 @@
   <div class="wrap">
     <h2>Das sagen Kunden</h2>
     <!-- [Durch echte Google-Bewertungen ersetzen] -->
-    <div class="review"><div class="stars">★★★★★</div><p>„Von der Planung bis zur Montage top betreut. Unsere Küche ist ein Traum."</p><cite>[Kundenname], [Ort]</cite></div>
-    <div class="review"><div class="stars">★★★★★</div><p>„Die 3D-Planung hat uns die Entscheidung so leicht gemacht. Klare Empfehlung."</p><cite>[Kundenname], [Ort]</cite></div>
+    <div class="review"><div class="stars">★★★★★</div><p>„Vom Aufmaß bis zur Montage alles reibungslos. Unser Bad ist ein Traum."</p><cite>[Kundenname], [Ort]</cite></div>
+    <div class="review"><div class="stars">★★★★★</div><p>„Endlich ein barrierefreies Bad. Super beraten und sauber umgesetzt."</p><cite>[Kundenname], [Ort]</cite></div>
   </div>
 </section>
 
 <section class="final">
   <div class="wrap">
-    <h2>Bereit für deine neue Küche?</h2>
+    <h2>Bereit für dein neues Bad?</h2>
     <a class="btn" href="#termin">Jetzt kostenlosen Termin sichern</a>
   </div>
 </section>
@@ -187,7 +185,6 @@
 <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
 
-<!-- Werbe-Herkunft (fbclid/utm) ins Formular schreiben, damit sie in der Anfrage-Mail stehen -->
 <script>
   (function(){
     var p = new URLSearchParams(location.search);

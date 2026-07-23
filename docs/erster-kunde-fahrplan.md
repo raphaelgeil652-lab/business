@@ -14,8 +14,8 @@ zu sein, sondern **einem Betrieb echte Anfragen zu bringen** und daraus eine Cas
 ## Phase 0 — Vorbereitung (1–2 Tage)
 
 - [ ] **Angebot festlegen:** „Kostenlose 3D-Küchenplanung" (Küche) bzw. „Kostenlose Bad-Beratung / Vor-Ort-Aufmaß" (Bad). Ein Offer, ein Ziel: Termin.
-- [ ] **Landingpage fertig machen:** Vorlage `../templates/landingpage/` nehmen, Platzhalter `[ ]` ersetzen (Name, Ort, Fotos später vom Kunden). Hosten bei **Netlify** oder **Vercel** (kostenlos, kein Server nötig).
-- [ ] **Lead-Auffang wählen (simpel!):** Am Anfang reicht ein **GHL-Basiskonto** mit einem Formular — oder sogar ein einfaches Formular-Tool, das dir die Anfrage per E-Mail/WhatsApp schickt. **n8n ist hier noch nicht nötig.**
+- [ ] **Landingpage:** Vorlage `../templates/landingpage/` nutzen — `index.html` (Küche) / `bad.html` (Bad). Platzhalter `[ ]` erst mit dem echten Kunden füllen.
+- [ ] **Lead-Auffang (gewählt: einfach, ohne GHL):** Die LP nutzt ein **Netlify-Formular → E-Mail**. Ordner bei **Netlify** hochladen (Anleitung: `../templates/landingpage/README.md`), E-Mail-Benachrichtigung aktivieren. Jede Anfrage kommt in dein Postfach. **Kein GoHighLevel, kein n8n nötig.**
 
 ## Phase 1 — Ersten Kunden gewinnen (die wichtigste Phase)
 
@@ -30,8 +30,8 @@ zu sein, sondern **einem Betrieb echte Anfragen zu bringen** und daraus eine Cas
 
 - [ ] **Landingpage personalisieren:** echten Studionamen, Ort, 2–3 echte Fotos, echte Bewertungen (max. 4,9★).
 - [ ] **Eine Meta-Anzeige** schalten (Gratis-Offer). Textvorlagen: `../templates/ad-copy.md`. Klein starten (z. B. 10–20 €/Tag Testbudget, zahlt der Kunde).
-- [ ] **Anfrage-Auffang testen:** Formular ausfüllen → kommt die Anfrage an? Reicht am Anfang GHL-Formular + Benachrichtigung.
-- [ ] **Speed-to-Lead:** sofort reagieren. Zur Not **manuell** oder mit einer einfachen GHL-Automation — noch **kein n8n** nötig.
+- [ ] **Anfrage-Auffang testen:** LP bei Netlify live → Formular selbst ausfüllen → kommt die E-Mail an? (Funktioniert nur online bei Netlify, nicht lokal.)
+- [ ] **Speed-to-Lead:** sobald eine Anfrage-Mail kommt, **sofort** anrufen (< 5 Min). Am Anfang bewusst **manuell** — reicht für den ersten Kunden.
 - [ ] **Tracking simpel:** der **Meta Pixel** auf der LP reicht zum Start. **CAPI/Dedup kommt später.**
 
 ## Phase 3 — Liefern & Beweis sammeln
