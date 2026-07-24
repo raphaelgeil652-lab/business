@@ -34,6 +34,40 @@ Facebook-Werbung  →  Landingpage  →  Formular ausgefüllt (= "Lead")
 - **n8n** — der **Automatik-Roboter im Hintergrund**. Nach dem Prinzip „*wenn X passiert, tue automatisch Y*". Verbindet alle Teile, ohne dass du klickst.
 - **Tracking (Pixel + CAPI)** — die **Erfolgsmessung**. Meldet Facebook zurück „aus diesem Klick wurde eine Anfrage / ein Termin / ein Kunde", damit Facebook mehr von den *richtigen* Leuten anspricht. Gleichzeitig dein **Beweis**, wie viel du gebracht hast (Abrechnungsgrundlage).
 
+## Wie Werbung + Budget funktioniert (in einfach)
+
+**Werbung schalten** = Meta (Facebook/Instagram) zeigt deine Anzeige gezielt Leuten **in der Region**
+(z. B. Hausbesitzern 35–65 im Umkreis). Dafür zahlt man Meta Geld — das heißt **Werbebudget**.
+
+**Budget = Tagesbetrag.** Du sagst Meta z. B. „gib 20 €/Tag aus". Meta zeigt die Anzeige so vielen
+passenden Leuten, bis die 20 € aufgebraucht sind. **Mehr Budget = mehr Reichweite = mehr mögliche Anfragen.**
+
+**Wie daraus Anfragen werden:**
+```
+Anzeige "Kostenlose 3D-Planung" (Meta zeigt sie in der Region)
+   → jemand klickt → Landingpage → Formular ausgefüllt = 1 Anfrage → E-Mail an den Kunden
+```
+Grobes Gefühl: aus ~20 €/Tag kommen vielleicht 1–3 Anfragen/Tag (schwankt stark).
+
+### ⭐ Der wichtigste Punkt: die ZWEI getrennten Geldtöpfe
+```
+KUNDE (Küchenstudio)
+   ├─ zahlt WERBEBUDGET ─────►  META     (damit die Anzeige läuft; eigene Kreditkarte)
+   │    z.B. 600 €/Monat                 ⟵ NICHT dein Geld, du verdienst da nichts dran
+   └─ zahlt DEINE GEBÜHR ────►  DU        (fürs Aufsetzen + Betreuen)
+        990 € Setup + 990 €/Monat        ⟵ DAS ist dein Einkommen
+```
+- **Werbebudget** gehört dem Kunden und geht **direkt an Meta** (seine Karte im Werbekonto). Du fasst es nie an. Es ist nur der „Sprit" für die Anzeige.
+- **Deine Gebühr** zahlt der Kunde separat an dich. Damit hat das Werbebudget nichts zu tun.
+- Du **stellst das Budget zwar ein** (weil du die Anzeige verwaltest), aber bezahlt wird es von **seiner** Karte.
+
+**Was du dabei tust:** einmal einrichten (Bild, Text, Zielgruppe, Tagesbudget) — die Auslieferung
+macht danach **Metas System automatisch**. Dein Job: gutes Angebot + gute Landingpage + Anzeige
+aufsetzen + ab und zu optimieren.
+
+**Warum es sich für den Kunden lohnt:** ~600 € Budget + 990 € an dich = ~1.600 €/Monat → z. B.
+20 Anfragen → 3 Termine → **1 verkaufte Küche = 15.000–20.000 €**. Ein Abschluss zahlt alles zigfach zurück.
+
 ## Was die 3 n8n-Workflows tun (in einfach)
 
 n8n besteht aus kleinen Automatik-Ketten. Wir haben drei Grundgerüste (`../templates/n8n/`):
