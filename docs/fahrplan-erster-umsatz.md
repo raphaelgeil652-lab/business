@@ -39,7 +39,7 @@ schnellste Weg zum ersten Umsatz.
 
 - [ ] **Material holen:** Logo, echte Fotos, Bewertungen, Öffnungszeiten (Vorlage-Mail: `../templates/onboarding-email.md`).
 - [ ] **Landingpage personalisieren** (`../templates/landingpage/`, seine Variante) → eigene Netlify-Seite (`landingpage-hosten.md`) + **Impressum/Datenschutz** ergänzen.
-- [ ] **Meta-Anzeige einrichten** (auf seinem Werbekonto, du als Partner), Budget, Kampagne **live** (Ad-Texte: `../templates/ad-copy.md`).
+- [ ] **Meta-Anzeige einrichten** (auf seinem Werbekonto, du als Partner), Budget, Kampagne **live**. Klick-für-Klick-Anleitung: `meta-anzeige-einrichten.md`; Ad-Texte: `../templates/ad-copy.md`.
 - [ ] **Testlauf:** Formular → Anfrage-Mail → Anruf klappt.
 
 ## Block E — Liefern & Beweis
