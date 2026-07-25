@@ -33,6 +33,7 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
   - `offer-und-ads.md` — 3–5 wiederverwendbare Offer-/Ad-Strukturen, Trust-Regeln.
   - `klienten-journey.md` — A–Z-Prozess vom Lead bis zur Abrechnung + Checklisten.
   - `tech-stack.md` — GoHighLevel, n8n, Tracking (Pixel + CAPI), Meta-Hygiene, LP-Hosting.
+  - `meta-konto-einrichten.md` — **Überblick Meta-Konto** einrichten (Business Portfolio für die Agentur vs. Seite/Werbekonto/Pixel beim Kunden, Partnerzugriff).
   - `meta-anzeige-einrichten.md` — **klickbare Anleitung: erste Facebook-/Instagram-Anzeige** einrichten (Kampagne/Zielgruppe/Budget/Anzeige), für Einsteiger.
   - `ghl-n8n-aufbau.md` — Schritt-für-Schritt: Master-Snapshot bauen + n8n-Workflows (Lead-Intake, Speed-to-Lead, Stage→CAPI, Onboarding-Klon), Klienten-Store, Dedup-Kette, Testplan.
 - `wissen/` — Lern-System: `creatives.md`, `onboarding.md`, `tech.md`, `sales.md`. Jede Erkenntnis pro Bereich hier festhalten, damit keine Fehler doppelt passieren.
