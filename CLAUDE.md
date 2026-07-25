@@ -38,6 +38,7 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
 - `wissen/` — Lern-System: `creatives.md`, `onboarding.md`, `tech.md`, `sales.md`. Jede Erkenntnis pro Bereich hier festhalten, damit keine Fehler doppelt passieren.
 - `templates/` — `landingpage/` (mobile-first; Küche `index.html` / Bad `bad.html` + `danke.html`; Formular→E-Mail via Netlify, GHL-Umstellung in der README dokumentiert), `n8n/` (importierbare Workflow-Grundgerüste WF-1/2/3, für die Ausbaustufe), `onboarding-email.md`, `ad-copy.md`, `angebot-vertrag.md` (1-Seiten-Vereinbarung + Preis-Empfehlung).
 - `leads/klienten-leads.csv` — recherchierte Prospect-Betriebe (Küche/Bad) in der Region.
+- `brand/` — **Logo/Bildmarke „CCG"** (Vektor-SVGs in `logo/`, Markenboard `brand-board.html`, Farben/Regeln in `README.md`). Reines Bildzeichen, Wortmarke folgt nach Namensfindung.
 - `.agents/skills` + `.claude/skills` — installierte Design-Skills (impeccable, taste-skill) zum Bau guter Landingpages/Creatives.
 
 ## Prinzipien (aus dem Playbook — immer beachten)
