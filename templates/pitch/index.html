@@ -1,7 +1,8 @@
 <!--
   CLICKCULTURE — Verkaufs-One-Pager (alles in EINER Datei zum Vorzeigen beim Kunden).
-  Einfach durchscrollen: Was wir machen -> Beispiel-Anzeige -> Beispiel-Landingpage -> Preis -> Garantie.
-  Self-contained, iPad-optimiert. [Platzhalter] anpassen. Bei Netlify hochladen = eine URL zum Zeigen.
+  Einfach durchscrollen: Was wir machen -> Ablauf -> Beispiel-Anzeige -> Beispiel-Landingpage
+  -> Angebot -> Preis -> Garantie -> Warum Clickculture -> Fragen.
+  Self-contained, iPad-optimiert. Bei Netlify hochladen = eine URL zum Zeigen.
 -->
 <!DOCTYPE html>
 <html lang="de">
@@ -21,27 +22,36 @@
   *{box-sizing:border-box;}
   @media (prefers-reduced-motion:reduce){*{transition-duration:.001ms!important;}}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
   .wrap{width:100%;max-width:820px;margin:0 auto;padding:0 22px;}
-  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;letter-spacing:0;text-wrap:balance;}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;letter-spacing:0;text-wrap:balance;}
   p{text-wrap:pretty;}
 
-  header.top{position:sticky;top:0;z-index:10;background:rgba(250,246,240,.9);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:1rem 0;border-bottom:1px solid var(--line);}
-  header.top .in{width:100%;max-width:820px;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;}
-  .brand{font-family:var(--display);font-size:1.5rem;}
+  header.top{position:sticky;top:0;z-index:10;background:rgba(250,246,240,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  header.top .in{width:100%;max-width:820px;margin:0 auto;padding:.85rem 22px;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+  .brand{font-family:var(--display);font-size:1.5rem;line-height:1;}
   .brand b{color:var(--accent);}
-  .brand-sub{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+  .brand-sub{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.2rem;}
+  header.top .tel{font-weight:800;color:var(--accent);text-decoration:none;font-size:.95rem;white-space:nowrap;}
 
-  .hero{padding:2.6rem 0 1.4rem;}
+  .hero{padding:2.4rem 0 1.2rem;}
   .hero h1{font-size:clamp(2.1rem,6vw,3.2rem);}
   .hero h1 em{font-style:italic;color:var(--accent);}
-  .hero p{font-size:1.12rem;color:var(--muted);margin:.8rem 0 0;max-width:54ch;}
+  .hero .lead{font-size:1.12rem;color:var(--muted);margin:.8rem 0 1.3rem;max-width:56ch;}
+  .hero-img{border-radius:18px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;box-shadow:0 18px 50px rgba(33,28,22,.1);}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+
+  .intro{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.3rem 1.3rem;margin-top:1.3rem;}
+  .intro p{margin:0;font-size:1.05rem;}
+  .intro b{color:var(--accent-deep);}
 
   section{padding:2rem 0;border-top:1px solid var(--line);}
   .kicker{font-size:.74rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;}
   h2{font-size:clamp(1.5rem,4.5vw,2.1rem);margin-bottom:1.1rem;}
+  .sec-sub{color:var(--muted);margin:-.6rem 0 1.2rem;max-width:60ch;}
 
   .flow{display:grid;gap:.7rem;counter-reset:s;}
-  .step{display:grid;grid-template-columns:2.2rem 1fr;gap:.9rem;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;}
+  .step{display:grid;grid-template-columns:2.2rem 1fr;gap:.9rem;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.95rem 1rem;}
   .step .n{counter-increment:s;font-family:var(--display);color:#fff;background:var(--accent);width:2.2rem;height:2.2rem;border-radius:50%;display:grid;place-items:center;}
   .step .n::before{content:counter(s);}
   .step b{display:block;}
@@ -51,11 +61,12 @@
   .adwrap{display:grid;place-items:center;}
   .ad{width:100%;max-width:420px;background:#fff;border:1px solid #DADDE1;border-radius:12px;overflow:hidden;font-size:.94rem;}
   .ad .a-top{display:flex;align-items:center;gap:10px;padding:12px 12px 8px;}
-  .ad .a-pic{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#B4552D,#C69A4C);}
+  .ad .a-pic{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#B4552D,#C69A4C);flex:0 0 auto;}
   .ad .a-who b{display:block;font-size:.9rem;}
   .ad .a-who span{font-size:.76rem;color:#65676B;}
   .ad .a-txt{padding:0 12px 10px;line-height:1.5;}
-  .ad .a-img{aspect-ratio:1.91/1;background:#EFE7DA repeating-linear-gradient(45deg,rgba(0,0,0,.03) 0 12px,transparent 12px 24px);display:grid;place-items:center;color:#9a8f7d;font-size:.82rem;text-align:center;padding:12px;}
+  .ad .a-img{aspect-ratio:1.91/1;overflow:hidden;background:#EFE7DA;}
+  .ad .a-img img{width:100%;height:100%;object-fit:cover;}
   .ad .a-card{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#F7F8FA;border-top:1px solid #DADDE1;padding:10px 12px;}
   .ad .a-card .u{font-size:.7rem;color:#65676B;text-transform:uppercase;}
   .ad .a-card b{display:block;font-size:.92rem;}
@@ -65,73 +76,105 @@
   .phone{width:300px;max-width:88%;margin:0 auto;background:#111;border-radius:34px;padding:10px;box-shadow:0 24px 60px rgba(33,28,22,.18);}
   .phone .screen{background:var(--bg);border-radius:26px;overflow:hidden;}
   .lp-hero{position:relative;aspect-ratio:3/3.1;}
-  .lp-hero img{width:100%;height:100%;object-fit:cover;display:block;}
+  .lp-hero img{width:100%;height:100%;object-fit:cover;}
   .lp-hero .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,26,21,.05),rgba(30,26,21,.72));}
   .lp-hero .cap{position:absolute;left:0;right:0;bottom:0;padding:14px;color:#fff;}
   .lp-hero .cap .bdg{display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--accent);padding:.3em .7em;border-radius:999px;}
-  .lp-hero .cap h4{font-family:var(--display);font-weight:400;font-size:1.25rem;line-height:1.05;margin:.5rem 0 0;}
+  .lp-hero .cap h4{color:#fff;font-size:1.25rem;line-height:1.05;margin:.5rem 0 0;}
   .lp-hero .cap h4 em{font-style:italic;color:#F3C48A;}
   .lp-form{padding:12px;display:grid;gap:7px;}
   .lp-form .bar{height:30px;border:1px solid var(--line);border-radius:8px;background:#fff;}
   .lp-form .go{height:38px;border-radius:9px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem;}
   .caption{text-align:center;color:var(--muted);font-size:.85rem;margin-top:.8rem;}
 
+  /* Anker-Offer Optionen */
+  .offer{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.3rem;margin-top:1.2rem;}
+  .offer h3{font-size:1.15rem;margin-bottom:.5rem;}
+  .offer p{margin:0 0 .8rem;color:var(--muted);font-size:.95rem;}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem;}
+  .chip{font-size:.85rem;font-weight:700;background:rgba(180,85,45,.09);color:var(--accent-deep);border:1px solid rgba(180,85,45,.2);padding:.4em .9em;border-radius:999px;}
+  .chip.lead{background:var(--accent);color:#fff;border-color:var(--accent);}
+
   .prices{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
   .prices .row{display:flex;justify-content:space-between;gap:1rem;padding:.95rem 1.1rem;border-bottom:1px solid var(--line);}
   .prices .row:last-child{border-bottom:0;}
   .prices .val{font-family:var(--display);font-size:1.15rem;white-space:nowrap;}
   .prices small{display:block;color:var(--muted);font-size:.82rem;font-weight:400;}
+  .note{color:var(--muted);font-size:.9rem;margin-top:.8rem;}
 
   .guarantee{background:#EDF5EE;border:1px solid #CDE6D5;border-radius:16px;padding:1.2rem;}
   .guarantee .badge{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--ok);padding:.35em .8em;border-radius:999px;margin-bottom:.6rem;}
   .guarantee h3{font-size:1.3rem;margin-bottom:.3rem;}
   .guarantee p{margin:0;color:#2b4a38;}
 
+  .trust{display:grid;gap:.7rem;}
+  .trust .t{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.95rem 1rem;display:grid;grid-template-columns:1.6rem 1fr;gap:.8rem;align-items:start;}
+  .trust .t .ic{color:var(--ok);font-weight:800;font-size:1.05rem;line-height:1.3;}
+  .trust .t b{display:block;}
+  .trust .t span{color:var(--muted);font-size:.95rem;}
+
+  .faq{display:grid;gap:.6rem;}
+  .faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.2rem .3rem;}
+  .faq summary{cursor:pointer;list-style:none;padding:.85rem 1rem;font-weight:700;display:flex;justify-content:space-between;gap:1rem;align-items:center;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+";color:var(--accent);font-weight:800;font-size:1.3rem;line-height:1;}
+  .faq details[open] summary::after{content:"–";}
+  .faq .a{padding:0 1rem 1rem;color:var(--muted);}
+
   ul.clean{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;}
   ul.clean li{position:relative;padding-left:1.7rem;}
   ul.clean li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:800;}
 
-  .cta{background:var(--ink);color:#fff;border-radius:18px;padding:1.8rem;text-align:center;margin:2rem 0;}
+  .cta{background:var(--ink);color:#fff;border-radius:18px;padding:1.9rem;text-align:center;margin:2rem 0;}
   .cta h2{color:#fff;}
-  .cta p{color:rgba(255,255,255,.75);margin:.5rem 0 1.1rem;}
-  .cta a{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;padding:.95em 1.7em;border-radius:12px;}
+  .cta p{color:rgba(255,255,255,.75);margin:.5rem 0 1.2rem;}
+  .cta a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;padding:.95em 1.7em;border-radius:12px;}
+  .cta .alt{display:block;margin-top:.9rem;font-size:.9rem;}
+  .cta .alt a{color:#fff;}
   footer{padding:1.4rem 0 2.6rem;color:var(--muted);font-size:.85rem;text-align:center;}
+  footer a{color:var(--muted);}
 </style>
 </head>
 <body>
 
 <header class="top"><div class="in">
   <div><div class="brand">Click<b>culture</b></div><div class="brand-sub">Küchen-Anfragen auf Autopilot</div></div>
-  <div class="brand-sub">[Telefon]</div>
+  <a class="tel" href="tel:+4915222392901">0152 2392901</a>
 </div></header>
 
 <div class="wrap">
 
   <div class="hero">
     <h1>Mehr Kunden für dein <em>Küchenstudio</em>, planbar über Werbung.</h1>
-    <p>Wir bringen dir regelmäßig Menschen aus deiner Region, die eine neue Küche planen und einen kostenlosen Beratungstermin wollen. Du musst nur noch verkaufen.</p>
+    <p class="lead">Wir bringen dir regelmäßig Menschen aus deiner Region, die eine neue Küche planen und einen kostenlosen Beratungstermin wollen. Du musst dich nur noch um die Beratung und den Verkauf kümmern.</p>
+    <div class="hero-img"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=75" alt="Moderne Küche" loading="lazy"></div>
+    <div class="intro">
+      <p>Clickculture ist eine <b>lokale Werbe-Agentur nur für Küchenstudios</b>. Wir bauen dir ein komplettes System aus Werbung, einer eigenen Landingpage und schneller Anfrage-Weiterleitung, damit bei dir <b>planbar neue Anfragen reinkommen</b>. Kein Technik-Wissen nötig, wir richten alles ein und betreuen es laufend.</p>
+    </div>
   </div>
 
   <section>
     <div class="kicker">So läuft's</div>
     <h2>In 4 Schritten zu neuen Anfragen</h2>
+    <p class="sec-sub">So sieht der Weg vom Facebook-Nutzer bis zu deinem Küchenauftrag aus. Die Schritte 1 und 2 machen wir, ab Schritt 3 kommst du ins Spiel.</p>
     <div class="flow">
-      <div class="step"><span class="n"></span><div><b>Werbung auf Facebook, Instagram &amp; Google</b><span>Deine Anzeige läuft gezielt bei Hausbesitzern in deiner Region.</span></div></div>
-      <div class="step"><span class="n"></span><div><b>Eigene Landingpage</b><span>Interessenten tragen sich für die kostenlose 3D-Planung ein.</span></div></div>
-      <div class="step"><span class="n"></span><div><b>Anfrage sofort bei dir</b><span>Kontaktdaten kommen direkt aufs Handy, du rufst zurück.</span></div></div>
-      <div class="step"><span class="n"></span><div><b>Termin &amp; Verkauf</b><span>Aus dem Planungstermin wird dein Küchenauftrag.</span></div></div>
+      <div class="step"><span class="n"></span><div><b>Wir schalten Werbung auf Facebook, Instagram &amp; Google</b><span>Deine Anzeige läuft gezielt bei Hausbesitzern in deiner Region, die gerade über eine neue Küche nachdenken.</span></div></div>
+      <div class="step"><span class="n"></span><div><b>Interessent landet auf deiner eigenen Landingpage</b><span>Eine schlichte Seite mit deinem Studio und einem kostenlosen Angebot. Er trägt Name und Telefon ein.</span></div></div>
+      <div class="step"><span class="n"></span><div><b>Die Anfrage kommt sofort bei dir an</b><span>Kontaktdaten landen direkt bei dir. Du rufst zeitnah zurück und machst einen Termin aus.</span></div></div>
+      <div class="step"><span class="n"></span><div><b>Beratungstermin &amp; Verkauf</b><span>Aus dem kostenlosen Termin wird dein Küchenauftrag. Das Verkaufen bleibt bei dir, das kannst du am besten.</span></div></div>
     </div>
   </section>
 
   <section>
     <div class="kicker">Beispiel</div>
     <h2>So sieht deine Anzeige aus</h2>
+    <p class="sec-sub">So begegnet dein zukünftiger Kunde deinem Studio im Facebook- oder Instagram-Feed (Beispiel).</p>
     <div class="adwrap">
       <div class="ad">
-        <div class="a-top"><div class="a-pic"></div><div class="a-who"><b>[Dein Studio]</b><span>Gesponsert · 📍 [Ort]</span></div></div>
-        <div class="a-txt">Neue Küche geplant? 🍳 Bei [Dein Studio] bekommst du deine <b>kostenlose 3D-Planung</b>, bevor du dich entscheidest. Unverbindlich &amp; kostenlos.</div>
-        <div class="a-img">[ Foto: fertige Küche ]</div>
-        <div class="a-card"><div><span class="u">deine-landingpage.de</span><b>Kostenlose 3D-Planung sichern</b></div><span class="a-btn">Mehr dazu</span></div>
+        <div class="a-top"><div class="a-pic"></div><div class="a-who"><b>Küchenstudio Sonnhalder</b><span>Gesponsert · 📍 deine Region</span></div></div>
+        <div class="a-txt">Neue Küche geplant? 🍳 Bei uns bekommst du deine <b>kostenlose Küchenplanung</b>, bevor du dich entscheidest. Unverbindlich &amp; kostenlos, direkt bei dir in der Region.</div>
+        <div class="a-img"><img src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=800&q=75" alt="Fertige Küche" loading="lazy"></div>
+        <div class="a-card"><div><span class="u">deine-landingpage.de</span><b>Kostenlose Küchenplanung sichern</b></div><span class="a-btn">Mehr dazu</span></div>
       </div>
     </div>
   </section>
@@ -139,36 +182,61 @@
   <section>
     <div class="kicker">Beispiel</div>
     <h2>So sieht deine Landingpage aus</h2>
+    <p class="sec-sub">Klickt jemand auf die Anzeige, landet er hier. Er trägt sich ein, und die Anfrage kommt zu dir.</p>
     <div class="phone"><div class="screen">
       <div class="lp-hero">
-        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=700&q=75" alt="Moderne Küche">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=700&q=75" alt="Moderne Küche" loading="lazy">
         <div class="ov"></div>
-        <div class="cap"><span class="bdg">Kostenlos</span><h4>Deine <em>Traumküche</em>: erst in 3D, dann in echt.</h4></div>
+        <div class="cap"><span class="bdg">Kostenlos</span><h4>Deine <em>Traumküche</em>: erst geplant, dann in echt.</h4></div>
       </div>
       <div class="lp-form">
         <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         <div class="go">Kostenlosen Termin anfragen</div>
       </div>
     </div></div>
-    <p class="caption">Klick auf die Anzeige → hier landet der Interessent → trägt sich ein → Anfrage bei dir.</p>
+    <p class="caption">Anzeige anklicken → hier landen → eintragen → Anfrage bei dir.</p>
+
+    <div class="offer">
+      <h3>Das kostenlose Angebot richtet sich nach deinem Studio</h3>
+      <p>Der Trick ist ein kostenloser, unverbindlicher Anker, der die Leute überhaupt erst zum Anfragen bringt. Was genau das ist, entscheidest du, je nachdem, was du gut kannst:</p>
+      <div class="chips">
+        <span class="chip lead">Kostenlose 3D-Planung</span>
+        <span class="chip">Kostenlose Küchenplanung / Beratung</span>
+        <span class="chip">Kostenloses Aufmaß vor Ort</span>
+        <span class="chip">Unverbindliches Angebot</span>
+      </div>
+    </div>
   </section>
 
   <section>
     <div class="kicker">Kosten, transparent</div>
     <h2>Was es kostet</h2>
     <div class="prices">
-      <div class="row"><b>Einrichtung <small>einmalig, mit Geld-zurück-Garantie</small></b><span class="val">[500–1.000] €</span></div>
-      <div class="row"><b>Monatliche Betreuung <small>Anzeigen, Optimierung, Report, monatlich kündbar</small></b><span class="val">[__] € / Monat</span></div>
-      <div class="row"><b>Werbebudget <small>zahlst du direkt an Meta/Google, nicht an uns</small></b><span class="val">ca. 1.500 € / Monat</span></div>
+      <div class="row"><b>Onboarding <small>einmalig zum Start, mit Geld-zurück-Garantie</small></b><span class="val">850 €</span></div>
+      <div class="row"><b>Monatliche Betreuung <small>startet erst, wenn Anfragen laufen · Anzeigen, Optimierung, Report · monatlich kündbar</small></b><span class="val">1.500 € / Monat</span></div>
+      <div class="row"><b>Werbebudget <small>zahlst du direkt an Meta/Google, nicht an uns</small></b><span class="val">1.499 € / Monat</span></div>
     </div>
-    <p style="color:var(--muted);font-size:.9rem;margin-top:.8rem;">Zum Vergleich: eine einzige verkaufte Küche bringt dir 10.000 bis 30.000 € Umsatz.</p>
+    <p class="note">Die monatliche Betreuung zahlst du <b>erst, wenn das System für dich Ergebnisse bringt</b>. Zum Vergleich: eine einzige verkaufte Küche bringt dir 10.000 bis 30.000 € Umsatz.</p>
   </section>
 
   <section>
     <div class="guarantee">
       <span class="badge">Deine Sicherheit</span>
       <h3>Geld-zurück-Garantie</h3>
-      <p>Bekommst du in den ersten 30 Tagen nicht die vereinbarte Zahl an Anfragen, bekommst du deine Einrichtungsgebühr zurück. Für dich praktisch kein Risiko.</p>
+      <p>Bekommst du in den ersten 30 Tagen nicht die vereinbarte Zahl an Anfragen, bekommst du dein Onboarding zurück. Für dich praktisch kein Risiko.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Warum Clickculture</div>
+    <h2>Warum du dir das sicher trauen kannst</h2>
+    <div class="trust">
+      <div class="t"><span class="ic">✓</span><div><b>Du zahlst monatlich erst, wenn's läuft</b><span>Die 1.500 €/Monat starten erst, wenn tatsächlich Anfragen reinkommen. Kein Vorschuss ins Blaue.</span></div></div>
+      <div class="t"><span class="ic">✓</span><div><b>Geld-zurück-Garantie auf das Onboarding</b><span>Liefern wir nicht die vereinbarten Anfragen, bekommst du deine Startgebühr zurück.</span></div></div>
+      <div class="t"><span class="ic">✓</span><div><b>Monatlich kündbar</b><span>Keine lange Vertragsbindung. Läuft es nicht wie besprochen, steigst du zum Monatsende aus.</span></div></div>
+      <div class="t"><span class="ic">✓</span><div><b>Werbebudget läuft nicht über uns</b><span>Die 1.499 € zahlst du direkt an Meta/Google. Wir fassen dein Werbegeld nicht an, alles transparent.</span></div></div>
+      <div class="t"><span class="ic">✓</span><div><b>Kein Technik-Wissen nötig</b><span>Wir richten Werbung, Landingpage und Anfrage-Weiterleitung komplett ein. Du kümmerst dich nur um deine Kunden.</span></div></div>
+      <div class="t"><span class="ic">✓</span><div><b>Lokal &amp; persönlich</b><span>Clickculture ist aus der Region, ein fester Ansprechpartner, kein anonymes Callcenter.</span></div></div>
     </div>
   </section>
 
@@ -177,19 +245,33 @@
     <h2>Was wir von dir brauchen</h2>
     <ul class="clean">
       <li>Ein paar echte Fotos + Logo deines Studios</li>
-      <li>Zugang zu Facebook-Seite und Werbekonten (kurze Einladung)</li>
-      <li><b>Schnelle Reaktion auf Anfragen</b> (am besten innerhalb weniger Minuten)</li>
+      <li>Zugang zu Facebook-Seite und Werbekonten (kurze Einladung, machen wir gemeinsam)</li>
+      <li><b>Schnelle Reaktion auf Anfragen</b> (am besten innerhalb weniger Minuten, das entscheidet über den Erfolg)</li>
       <li>Das Werbebudget direkt bei Meta/Google</li>
     </ul>
   </section>
 
+  <section>
+    <div class="kicker">Häufige Fragen</div>
+    <h2>Was Kunden oft fragen</h2>
+    <div class="faq">
+      <details><summary>Muss ich mich mit Technik oder Werbung auskennen?</summary><div class="a">Nein. Wir richten die Werbung, die Landingpage und die Weiterleitung der Anfragen komplett für dich ein und betreuen alles laufend. Du bekommst am Ende einfach die Anfragen.</div></details>
+      <details><summary>Bin ich langfristig gebunden?</summary><div class="a">Nein, die monatliche Betreuung ist monatlich kündbar. Wenn es nicht so läuft, wie wir besprochen haben, steigst du zum Monatsende einfach aus.</div></details>
+      <details><summary>Was ist, wenn keine Anfragen kommen?</summary><div class="a">Dafür gibt es die Geld-zurück-Garantie: Bekommst du in den ersten 30 Tagen nicht die vereinbarte Zahl an Anfragen, bekommst du dein Onboarding zurück. Und die monatliche Gebühr startet ohnehin erst, wenn Anfragen laufen.</div></details>
+      <details><summary>Wer bezahlt das Werbebudget?</summary><div class="a">Das Werbebudget (ca. 1.499 €/Monat) zahlst du direkt an Meta und Google, über dein eigenes Werbekonto. Es läuft nicht über uns, dadurch bleibt alles transparent und du behältst die Kontrolle.</div></details>
+      <details><summary>Garantiert ihr mir verkaufte Küchen?</summary><div class="a">Ehrlich: nein. Wir liefern dir qualifizierte Anfragen und Termine. Ob daraus ein Küchenkauf wird, hängt von deiner Beratung und wie schnell du zurückrufst ab, das kannst du am besten. Wir sorgen dafür, dass genug Leute anfragen.</div></details>
+      <details><summary>Wie schnell geht es los?</summary><div class="a">In der Regel sind Landingpage und Anzeigen wenige Tage nach unserem Start online, sobald wir deine Fotos, dein Logo und die Zugänge haben.</div></details>
+    </div>
+  </section>
+
   <div class="cta">
     <h2>Sollen wir das für dich aufsetzen?</h2>
-    <p>Unverbindliches Erstgespräch, wir zeigen dir alles konkret.</p>
-    <a href="tel:[Telefon]">Jetzt Termin vereinbaren</a>
+    <p>Unverbindliches Erstgespräch, wir schauen gemeinsam, ob es zu deinem Studio passt.</p>
+    <a class="btn" href="tel:+4915222392901">Jetzt anrufen: 0152 2392901</a>
+    <span class="alt">oder per E-Mail: <a href="mailto:raphaelgeil652@gmail.com">raphaelgeil652@gmail.com</a></span>
   </div>
 
-  <footer>Clickculture · [Name] · [Telefon] · [E-Mail]</footer>
+  <footer>Clickculture · Raphael Geil · <a href="tel:+4915222392901">0152 2392901</a> · <a href="mailto:raphaelgeil652@gmail.com">raphaelgeil652@gmail.com</a></footer>
 
 </div>
 </body>

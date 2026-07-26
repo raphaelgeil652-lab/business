@@ -8,14 +8,16 @@
 
 ## Preis-/Garantie-Modell (Clickculture)
 
-| Position | Empfehlung | Range |
+| Position | Betrag | Hinweis |
 |---|---|---|
-| Einrichtungsgebühr (einmalig, **mit Geld-zurück-Garantie**) | **750 €** | 500–1.000 € |
-| Monatliche Betreuung | **750 €** | 500–1.000 € |
-| Werbebudget (extra, Kunde zahlt direkt an Meta/Google) | **~1.500 €/Monat** | nach Absprache |
+| Onboarding-Gebühr (einmalig, **mit Geld-zurück-Garantie**) | **850 €** | fällig bei Vertragsbeginn |
+| Monatliche Betreuung | **1.500 €/Monat** | **startet erst, wenn Anfragen laufen**, monatlich kündbar |
+| Werbebudget (extra, Kunde zahlt direkt an Meta/Google) | **~1.499 €/Monat** | nach Absprache |
 
-- **Geld-zurück-Garantie** auf die Einrichtungsgebühr = dein stärkstes Argument: keine vereinbarte
+- **Geld-zurück-Garantie** auf die Onboarding-Gebühr = dein stärkstes Argument: keine vereinbarte
   Anzahl Anfragen in 30 Tagen → Gebühr zurück. Messbar formulieren (Anfragen, **nicht** Umsatz).
+- **Betreuung erst ab Ergebnis:** die 1.500 €/Monat laufen erst, wenn die Kampagne Anfragen bringt.
+  Bis dahin zahlt der Kunde nur das Onboarding — nimmt beim Abschluss die Angst.
 - **Auf Wert verkaufen, nicht auf Rabatt.** Ein Abschluss bringt dem Kunden 10–30k € — deine Gebühr ist klein.
 - **Monatlich kündbar** halten → senkt die Hürde beim Ja.
 - **Werbebudget ist immer extra** und läuft über das Meta-/Google-Konto des Kunden (nicht über dich).
@@ -50,9 +52,10 @@ Datum: [__]
 - Tragen des **Werbebudgets** direkt gegenüber Meta/Google.
 
 ### 3. Vergütung
-- **Einrichtungsgebühr (einmalig):** [__] € — fällig bei Vertragsbeginn (**Geld-zurück-Garantie**, siehe §7).
-- **Monatliche Betreuung:** [__] € — fällig jeweils zum [Monatsanfang/__].
-- **Werbebudget (~1.500 €/Monat):** wird vom Auftraggeber **separat und direkt an Meta/Google** gezahlt (nicht Teil dieser Vergütung).
+- **Onboarding-Gebühr (einmalig):** 850 € — fällig bei Vertragsbeginn (**Geld-zurück-Garantie**, siehe §7).
+- **Monatliche Betreuung:** 1.500 € — beginnt, **sobald die Kampagne Anfragen liefert** (Ergebnis-Start),
+  danach fällig jeweils zum [Monatsanfang/__], monatlich kündbar.
+- **Werbebudget (~1.499 €/Monat):** wird vom Auftraggeber **separat und direkt an Meta/Google** gezahlt (nicht Teil dieser Vergütung).
 - Zahlung per Überweisung auf: [IBAN], Zahlungsziel **14 Tage** ab Rechnungsdatum.
 - *(Kleinunternehmer)* Gemäß **§19 UStG** wird **keine Umsatzsteuer** berechnet.
 
@@ -71,7 +74,7 @@ Datum: [__]
 
 ### 7. Geld-zurück-Garantie
 - Erhält der Auftraggeber innerhalb der ersten **30 Tage** ab Kampagnenstart weniger als
-  **[__] echte Anfragen** über die Landingpage, wird die **Einrichtungsgebühr vollständig erstattet**.
+  **[__] echte Anfragen** über die Landingpage, wird die **Onboarding-Gebühr (850 €) vollständig erstattet**.
 - Voraussetzung: der Auftraggeber hat seine Pflichten aus §2 erfüllt (Material geliefert, Zugänge
   freigegeben, Werbebudget bereitgestellt, zeitnah auf Anfragen reagiert).
 - Die Garantie bezieht sich auf **Anfragen**, nicht auf getätigte Käufe (der Verkauf liegt beim Auftraggeber).

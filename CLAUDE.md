@@ -16,7 +16,7 @@ Aufbau der Agentur **Clickculture** — Performance-Marketing für **EINE fokuss
 
 **Kanäle:** Meta (Facebook/Instagram) **+ Google Ads**. Meta weckt Nachfrage (Feed), Google fängt aktive Sucher ab („Küchenstudio [Ort]").
 
-**Preis-/Garantie-Modell:** Setup **500–1.000 €** (mit **Geld-zurück-Garantie**: keine vereinbarten Anfragen in 30 Tagen → Gebühr zurück) + monatliche Betreuung; **Werbebudget ~1.500 €/Monat** zahlt der Kunde direkt an Meta/Google. Details: `docs/geschaeftsmodell.md`.
+**Preis-/Garantie-Modell:** Onboarding **850 €** (mit **Geld-zurück-Garantie**: keine vereinbarten Anfragen in 30 Tagen → Gebühr zurück) + **monatliche Betreuung 1.500 €/Monat, die erst startet, wenn Anfragen laufen**; **Werbebudget ~1.499 €/Monat** zahlt der Kunde direkt an Meta/Google. Details: `docs/geschaeftsmodell.md`.
 
 Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Oberschwaben); per Targeting erweiterbar.
 
@@ -42,7 +42,7 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
   - `meta-anzeige-einrichten.md` — **klickbare Anleitung: erste Facebook-/Instagram-Anzeige** einrichten (Kampagne/Zielgruppe/Budget/Anzeige), für Einsteiger.
   - `ghl-n8n-aufbau.md` — Schritt-für-Schritt: Master-Snapshot bauen + n8n-Workflows (Lead-Intake, Speed-to-Lead, Stage→CAPI, Onboarding-Klon), Klienten-Store, Dedup-Kette, Testplan.
 - `wissen/` — Lern-System: `creatives.md`, `onboarding.md`, `tech.md`, `sales.md`. Jede Erkenntnis pro Bereich hier festhalten, damit keine Fehler doppelt passieren.
-- `templates/` — `landingpage/` (mobile-first; Küche `index.html` / Bad `bad.html` + `danke.html`; Formular→E-Mail via Netlify, GHL-Umstellung in der README dokumentiert), `n8n/` (importierbare Workflow-Grundgerüste WF-1/2/3, für die Ausbaustufe), `onboarding-email.md`, `ad-copy.md`, `angebot-vertrag.md` (1-Seiten-Vereinbarung + Geld-zurück-Garantie), `kunden-uebersicht/` (Übersichtsblatt zum Vorzeigen), `beispiele/` (fertige Schau-Beispiele: Landingpage + Facebook-Ad-Mockup + Anzeigentexte).
+- `templates/` — `landingpage/` (mobile-first; Küche `index.html` / Bad `bad.html` + `danke.html`; Formular→E-Mail via Netlify, GHL-Umstellung in der README dokumentiert), `n8n/` (importierbare Workflow-Grundgerüste WF-1/2/3, für die Ausbaustufe), `onboarding-email.md`, `ad-copy.md`, `angebot-vertrag.md` (1-Seiten-Vereinbarung + Geld-zurück-Garantie), `pitch/` (**Verkaufs-One-Pager: alles in einer Datei zum Vorzeigen beim Kunden** — Ablauf, Beispiel-Anzeige/-Landingpage, Preise, Garantie, FAQ), `kunden-uebersicht/` (kompakteres Übersichtsblatt), `beispiele/` (fertige Schau-Beispiele: Landingpage + Facebook-Ad-Mockup + Anzeigentexte).
 - `leads/klienten-leads.csv` — recherchierte Prospect-Betriebe (Küche/Bad) in der Region.
 - `.agents/skills` + `.claude/skills` — installierte Design-Skills (impeccable, taste-skill) zum Bau guter Landingpages/Creatives.
 
@@ -62,6 +62,6 @@ Angebot/Vertrag-Vorlage + Salescall-Skript + Leads bereit. **Noch keine Klienten
 
 **Ziel: 7.000 € bis 01.10.2026** (Details/Rückrechnung in `docs/geschaeftsmodell.md`). Hebel = **jetzt akquirieren**:
 Küchenstudios anrufen **und vor Ort abklappern** (`wissen/sales.md`, `leads/klienten-leads.csv`, `leads/anruf-reihenfolge.md`),
-~2–3 Kunden im August abschließen (Setup 500–1.000 € + monatlich, Geld-zurück-Garantie). Fahrplan bis zum ersten Geld:
-`docs/fahrplan-erster-umsatz.md`. Kunden-Übersichtsblatt zum Vorzeigen: `templates/kunden-uebersicht/`.
+~2 Kunden im August abschließen (Onboarding 850 € + 1.500 €/Monat ab Ergebnissen, Geld-zurück-Garantie). Fahrplan bis zum ersten Geld:
+`docs/fahrplan-erster-umsatz.md`. Verkaufs-One-Pager zum Vorzeigen (alles in einer Datei): `templates/pitch/`. Kunden-Übersichtsblatt: `templates/kunden-uebersicht/`.
 Der ganze Automatik-Überbau (GHL/n8n/CAPI) kommt erst nach den ersten Kunden.
