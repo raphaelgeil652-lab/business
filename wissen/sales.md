@@ -97,6 +97,28 @@ Kurze Mailbox-Nachricht:
 
 ---
 
+## Vor Ort (Tür-zu-Tür, beim Abklappern)
+
+Kurz, respektvoll, kein Druck (evtl. haben sie Kundschaft). Ziel: Chef sprechen → kurzer Pitch →
+Termin oder Kontakt. Reihenfolge/Route: `../leads/anruf-reihenfolge.md`.
+
+**Reingehen:** „Grüß Gott! Ist der Inhaber / der Chef da?"
+
+**Wenn der Chef da ist:**
+> „Ich halt Sie nur ganz kurz auf. Mein Name ist [Name] von **Clickculture** — ich bin aus der Region
+> und helfe Küchenstudios, über Facebook- und Google-Werbung mehr **Anfragen für kostenlose
+> Küchenplanungen** zu bekommen. Ich such gerade 1–2 Studios hier in der Ecke, mit denen ich das aufziehe.
+> Wäre das für Sie grundsätzlich interessant?"
+
+Bei Interesse → **Termin + Risk-Reversal:**
+> „Am besten zeig ich's Ihnen in 15 Minuten in Ruhe — passt diese Woche mal? Und damit's für Sie null
+> Risiko ist: Wenn's nicht die Anfragen bringt, die ich verspreche, kriegen Sie Ihr Geld zurück."
+
+**Wenn der Chef nicht da ist:** „Wann ist er am besten erreichbar? Ich notier's mir und melde mich —
+hier meine Karte." → Name + Zeit aufschreiben, später anrufen (in `klienten-leads.csv` eintragen).
+
+**Was du versprichst:** Anfragen/Termine + Geld-zurück-Garantie — **keine** garantierten Küchenverkäufe.
+
 ## Learnings (hier laufend ergänzen)
 
 ### Was funktioniert

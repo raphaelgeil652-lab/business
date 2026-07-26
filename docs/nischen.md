@@ -1,6 +1,11 @@
-# Nische: Küchenstudios + Badsanierung
+# Nische: Küchenstudios (Fokus) — Bad zurückgestellt
 
-Warum genau diese zwei — und warum zusammen: **fast identische Mechanik** (hoher Ticketwert, Gratis-Planungs-Anker, Termin → Vor-Ort/Abschluss, inhaberbetrieben). Ein gemeinsames Playbook, nur Offer/Bilder/Leads unterscheiden sich.
+> **Aktuelle Entscheidung (Clickculture):** Fokus **nur auf Küchenstudios**. Badsanierung ist
+> **zurückgestellt** (nicht aktiv bespielt) — die Bad-Inhalte unten + `bad.html` bleiben als Fundus,
+> falls später erweitert wird. Gründe fürs Fokussieren: eine Nische = ein Playbook = schneller kopierbar,
+> und Küchenstudios sind verkaufsgetriebener/seltener ausgebucht als Bad-Handwerksbetriebe.
+
+Warum Küche (und historisch Bad dazu): **hoher Ticketwert, Gratis-Planungs-Anker, Termin → Vor-Ort/Abschluss, inhaberbetrieben.** Ein Playbook, nur Offer/Bilder/Leads pro Betrieb personalisiert.
 
 ## 5-Punkte-Filter (aus dem Playbook — alle müssen erfüllt sein)
 

@@ -1,19 +1,24 @@
-# business — Lokale Performance-Marketing-Agentur (Küche & Bad)
+# business — Clickculture (lokale Performance-Marketing-Agentur für Küchenstudios)
 
 ## Auf einen Blick
 
-Aufbau einer **Performance-Marketing-Agentur für EINE fokussierte lokale Doppel-Nische: Küchenstudios + Badsanierung.** Modell zu 100 % nach dem erprobten Playbook (`docs/agentur-playbook.md`, aus einem Partner-Modell mit 25+ Klienten). Kern: **Meta Ads → Leads → Terminbuchungen** für den Klienten, drumherum ein **System** (Landingpage + CRM-Automationen + Speed-to-Lead + Reporting). Wir verkaufen kein „Ads-Schalten", sondern ein komplettes Kundengewinnungs-System. Ziel: **10k+/Monat** wiederkehrend, schlank und kopierbar.
+Aufbau der Agentur **Clickculture** — Performance-Marketing für **EINE fokussierte lokale Nische: Küchenstudios.** Modell zu 100 % nach dem erprobten Playbook (`docs/agentur-playbook.md`, aus einem Partner-Modell mit 25+ Klienten). Kern: **Werbung (Meta + Google Ads) → Leads → Terminbuchungen** für den Klienten, drumherum ein **System** (Landingpage + Speed-to-Lead + Reporting). Wir verkaufen kein „Ads-Schalten", sondern ein komplettes Kundengewinnungs-System. Ziel: **10k+/Monat** wiederkehrend, schlank und kopierbar.
 
 **Autorität:** `docs/agentur-playbook.md` ist die Grundlage. Alles hier setzt es konkret um. Direkte Anweisungen des Nutzers im Chat haben Vorrang.
 
 ## Nische
 
-**Küchenstudios + Badsanierung** (Renovierung/Modernisierung) — fast identische Mechanik, ein gemeinsames Playbook:
-- Hoher Ticketwert (Küche 10–30k €, Bad 15–40k €) → ein gewonnener Kunde finanziert Ad-Budget + Agentur-Fee locker.
-- Natürlicher **Gratis-Anker-Offer**: „kostenlose 3D-Küchenplanung" bzw. „kostenlose Bad-Beratung/Vor-Ort-Aufmaß" → führt zum High-Ticket-Abschluss.
+**Nur Küchenstudios** (kleinbetrieblich, inhabergeführt, mit genug Budget). Entscheidung: Fokus statt Bauchladen.
+- Hoher Ticketwert (Küche 10–30k €) → ein gewonnener Kunde finanziert Werbebudget + Agentur-Fee locker.
+- Natürlicher **Gratis-Anker-Offer**: „kostenlose 3D-Küchenplanung" → führt zum High-Ticket-Abschluss.
 - Terminbasiert & trackbar, inhaberbetrieben. Details + 5-Punkte-Filter: `docs/nischen.md`.
+- **Badsanierung ist zurückgestellt** (nicht Fokus). Die Bad-Landingpage/-Leads bleiben als Fundus, werden aber nicht aktiv bespielt.
 
-Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Oberschwaben); per Meta-Targeting erweiterbar.
+**Kanäle:** Meta (Facebook/Instagram) **+ Google Ads**. Meta weckt Nachfrage (Feed), Google fängt aktive Sucher ab („Küchenstudio [Ort]").
+
+**Preis-/Garantie-Modell:** Setup **500–1.000 €** (mit **Geld-zurück-Garantie**: keine vereinbarten Anfragen in 30 Tagen → Gebühr zurück) + monatliche Betreuung; **Werbebudget ~1.500 €/Monat** zahlt der Kunde direkt an Meta/Google. Details: `docs/geschaeftsmodell.md`.
+
+Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Oberschwaben); per Targeting erweiterbar.
 
 ## Was automatisiert/vom System läuft vs. was nur der Nutzer selbst tut
 
@@ -37,7 +42,7 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
   - `meta-anzeige-einrichten.md` — **klickbare Anleitung: erste Facebook-/Instagram-Anzeige** einrichten (Kampagne/Zielgruppe/Budget/Anzeige), für Einsteiger.
   - `ghl-n8n-aufbau.md` — Schritt-für-Schritt: Master-Snapshot bauen + n8n-Workflows (Lead-Intake, Speed-to-Lead, Stage→CAPI, Onboarding-Klon), Klienten-Store, Dedup-Kette, Testplan.
 - `wissen/` — Lern-System: `creatives.md`, `onboarding.md`, `tech.md`, `sales.md`. Jede Erkenntnis pro Bereich hier festhalten, damit keine Fehler doppelt passieren.
-- `templates/` — `landingpage/` (mobile-first; Küche `index.html` / Bad `bad.html` + `danke.html`; Formular→E-Mail via Netlify, GHL-Umstellung in der README dokumentiert), `n8n/` (importierbare Workflow-Grundgerüste WF-1/2/3, für die Ausbaustufe), `onboarding-email.md`, `ad-copy.md`, `angebot-vertrag.md` (1-Seiten-Vereinbarung + Preis-Empfehlung).
+- `templates/` — `landingpage/` (mobile-first; Küche `index.html` / Bad `bad.html` + `danke.html`; Formular→E-Mail via Netlify, GHL-Umstellung in der README dokumentiert), `n8n/` (importierbare Workflow-Grundgerüste WF-1/2/3, für die Ausbaustufe), `onboarding-email.md`, `ad-copy.md`, `angebot-vertrag.md` (1-Seiten-Vereinbarung + Geld-zurück-Garantie), `kunden-uebersicht/` (Übersichtsblatt zum Vorzeigen), `beispiele/` (fertige Schau-Beispiele: Landingpage + Facebook-Ad-Mockup + Anzeigentexte).
 - `leads/klienten-leads.csv` — recherchierte Prospect-Betriebe (Küche/Bad) in der Region.
 - `.agents/skills` + `.claude/skills` — installierte Design-Skills (impeccable, taste-skill) zum Bau guter Landingpages/Creatives.
 
@@ -56,6 +61,7 @@ MVP steht: Landingpages (Küche/Bad) live bei Netlify, Anfragen kommen per E-Mai
 Angebot/Vertrag-Vorlage + Salescall-Skript + Leads bereit. **Noch keine Klienten.**
 
 **Ziel: 7.000 € bis 01.10.2026** (Details/Rückrechnung in `docs/geschaeftsmodell.md`). Hebel = **jetzt akquirieren**:
-ab sofort telefonieren (`wissen/sales.md`, `leads/klienten-leads.csv`), Lead-Liste erweitern, ~2–3 Kunden
-im August abschließen (Standardpreis ~990 € Setup + ~990 €/Monat). Fahrplan bis zum ersten Geld:
-`docs/fahrplan-erster-umsatz.md`. Der ganze Automatik-Überbau (GHL/n8n/CAPI) kommt erst nach den ersten Kunden.
+Küchenstudios anrufen **und vor Ort abklappern** (`wissen/sales.md`, `leads/klienten-leads.csv`, `leads/anruf-reihenfolge.md`),
+~2–3 Kunden im August abschließen (Setup 500–1.000 € + monatlich, Geld-zurück-Garantie). Fahrplan bis zum ersten Geld:
+`docs/fahrplan-erster-umsatz.md`. Kunden-Übersichtsblatt zum Vorzeigen: `templates/kunden-uebersicht/`.
+Der ganze Automatik-Überbau (GHL/n8n/CAPI) kommt erst nach den ersten Kunden.
