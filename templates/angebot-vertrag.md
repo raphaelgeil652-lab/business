@@ -72,11 +72,17 @@ Datum: [__]
   Auftraggebers ab; ein bestimmter Umsatz wird nicht garantiert.
 - Der Auftragnehmer darf das Projekt (anonymisiert/mit Zustimmung) als **Referenz** nennen.
 
-### 7. Geld-zurück-Garantie
-- Erhält der Auftraggeber innerhalb der ersten **30 Tage** ab Kampagnenstart weniger als
-  **[__] echte Anfragen** über die Landingpage, wird die **Onboarding-Gebühr (850 €) vollständig erstattet**.
-- Voraussetzung: der Auftraggeber hat seine Pflichten aus §2 erfüllt (Material geliefert, Zugänge
-  freigegeben, Werbebudget bereitgestellt, zeitnah auf Anfragen reagiert).
+### 7. Anfragen-Garantie (mit Geld-zurück)
+- Der Auftragnehmer garantiert **mindestens 10 qualifizierte Anfragen** innerhalb der ersten
+  **30 Tage ab Kampagnenstart** (nicht ab Vertragsunterschrift).
+- **Qualifizierte Anfrage** = über die Landingpage eingegangener Kontakt mit **echtem Namen und
+  erreichbarer Telefonnummer**, aus der Zielregion, mit Interesse an einer Küche. Offensichtlicher
+  Spam/Fake zählt nicht.
+- **Werden die 10 Anfragen nicht erreicht**, arbeitet der Auftragnehmer **kostenlos weiter**
+  (weitere Optimierung/Laufzeit), bis die 10 erreicht sind. Gelingt auch das nicht, wird die
+  **Onboarding-Gebühr (850 €) vollständig erstattet**.
+- **Voraussetzung:** der Auftraggeber hat seine Pflichten aus §2 erfüllt (Material geliefert, Zugänge
+  freigegeben, Werbebudget bereitgestellt, **zeitnah auf Anfragen reagiert**).
 - Die Garantie bezieht sich auf **Anfragen**, nicht auf getätigte Käufe (der Verkauf liegt beim Auftraggeber).
 
 ---
