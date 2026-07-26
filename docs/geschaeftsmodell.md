@@ -27,29 +27,32 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 - Werbebudget zahlt der Klient direkt an Meta (getrennt von unserer Fee).
 
 **Preis-/Garantie-Modell (Clickculture):**
-- **Setup 500–1.000 €** einmalig **mit Geld-zurück-Garantie**: Bekommt der Kunde in den ersten
-  **30 Tagen** nicht die vereinbarte Zahl echter Anfragen (z. B. 10), gibt's die Setup-Gebühr zurück.
+- **Onboarding 850 €** einmalig **mit Geld-zurück-Garantie**: Bekommt der Kunde in den ersten
+  **30 Tagen** nicht die vereinbarte Zahl echter Anfragen (z. B. 10), gibt's die Onboarding-Gebühr zurück.
   Das ist dein stärkstes Verkaufsargument (Risk-Reversal) — der Kunde geht praktisch kein Risiko ein.
-- **Monatliche Betreuung** (im Vertrag festlegen), monatlich kündbar.
-- **Werbebudget ~1.500 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
-- **Betreuung bis die Kampagne läuft (Break-even):** starkes Vertrauenssignal — aber **begrenzen**
-  (z. B. „im ersten Monat optimiere ich nach, bis die Anfrage-Maschine sauber läuft"), NICHT open-ended,
-  sonst Gratis-Falle.
+- **Monatliche Betreuung 1.500 €/Monat**, monatlich kündbar. Wichtig: die Betreuung **startet erst,
+  wenn Ergebnisse laufen** (die Anfrage-Maschine bringt Anfragen). Bis dahin zahlt der Kunde nur das
+  Onboarding — ein starkes Vertrauenssignal beim Abschluss.
+- **Werbebudget ~1.499 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
+- **Anlauf bis die Kampagne läuft:** im ersten Zeitraum optimierst du nach, bis die Anfrage-Maschine
+  sauber läuft — dann greift die monatliche Betreuung. Klar begrenzen, nicht open-ended, sonst Gratis-Falle.
 - **Was du versprichst:** Anfragen/Termine + Garantie — **keine** garantierten Küchenverkäufe (der
   Abschluss hängt am Studio). Fertige Vertrags-Vorlage mit Garantie-Klausel: `../templates/angebot-vertrag.md`.
 
 ## Ziel: 7.000 € bis 01.10.2026
 
-Ausgangspunkt ~23.07. → **~10 Wochen**. Rückgerechnet (Beispiel ~750–1.000 € Setup + ~750–1.000 €/Monat):
+Ausgangspunkt ~23.07. → **~10 Wochen**. Rückgerechnet (Modell: 850 € Onboarding + 1.500 €/Monat,
+Betreuung startet, sobald Anfragen laufen):
 
-- **Ein im August unterschriebener Kunde** bringt bis 01.10.: Setup + August + September ≈ **~2.250–3.000 €**.
-- **Ziel 7k → ~2–3 Kunden im August:**
-  - 3 Kunden im August ≈ **~6.750–9.000 €**
-  - 2 im August + 1 im September ≈ **~6.000–7.500 €**
+- **Ein im August unterschriebener Kunde** bringt bis 01.10.: Onboarding + ~2 Monate Betreuung
+  (August + September, sobald die Anfragen laufen) ≈ **~3.850 €**.
+- **Ziel 7k → ~2 Kunden im August:**
+  - 2 Kunden im August ≈ **~7.700 €**
+  - 1 im August + 1 im September ≈ **~6.200 €** (Onboarding beider + Betreuung, sobald sie greift)
 - **Einziger echter Hebel: Abschlüsse im August.** Also ab sofort viel akquirieren (Telefon + vor Ort) und zügig closen.
 
 **Grober Funnel (konservativ, zum Planen):** ~10 Wählversuche → ~2–3 Inhaber erreicht → ~1 Termin;
-~4–6 Termine → ~2–3 Abschlüsse. Für 2–3 Kunden also grob **60–100 Kontaktversuche im August** einplanen
+~4–6 Termine → ~2–3 Abschlüsse. Für 2 Kunden also grob **50–90 Kontaktversuche im August** einplanen
 (Telefon + vor Ort abklappern, ≈ 15–25/Woche). Genug Küchenstudios in der Lead-Liste + auf den Fahrt-Routen
 (`../leads/klienten-leads.csv`, `../leads/anruf-reihenfolge.md`).
 
