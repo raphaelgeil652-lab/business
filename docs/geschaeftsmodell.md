@@ -27,9 +27,17 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 - Werbebudget zahlt der Klient direkt an Meta (getrennt von unserer Fee).
 
 **Preis-/Garantie-Modell (Clickculture):**
-- **Onboarding 850 €** einmalig **mit Geld-zurück-Garantie**: Bekommt der Kunde in den ersten
-  **30 Tagen** nicht die vereinbarte Zahl echter Anfragen (z. B. 10), gibt's die Onboarding-Gebühr zurück.
-  Das ist dein stärkstes Verkaufsargument (Risk-Reversal) — der Kunde geht praktisch kein Risiko ein.
+- **Onboarding 850 €** einmalig **mit Anfragen-Garantie** (Risk-Reversal, dein stärkstes Argument):
+  - **Garantiere 10 qualifizierte Anfragen in 30 Tagen** ab Kampagnenstart. Prinzip: **wenig
+    garantieren, viel liefern** — 10 ist der sichere Boden (bei ~1.499 € Budget realistisch eher
+    20–40). Im Gespräch: „garantiert min. 10, realistisch eher 20–30".
+  - **Stufe davor statt sofort Geld weg:** Werden die 10 nicht erreicht, **erst kostenlos
+    weiterarbeiten**, bis sie da sind. Erst wenn auch das scheitert → Onboarding zurück. So verlierst
+    du fast nie die 850 €.
+  - **Qualifizierte Anfrage** klar definieren: echter Name + erreichbare Telefonnummer, Zielregion,
+    Küchen-Interesse; Spam/Fake zählt nicht. Gilt nur, wenn der Kunde seine Pflichten erfüllt
+    (Budget läuft, Zugänge/Material da, **zeitnah reagiert**).
+  - Nach dem **ersten Kunden** hast du echte Zahlen (Kosten pro Anfrage) → Garantie ggf. auf 15–20 anheben.
 - **Monatliche Betreuung 1.500 €/Monat**, monatlich kündbar. Wichtig: die Betreuung **startet erst,
   wenn Ergebnisse laufen** (die Anfrage-Maschine bringt Anfragen). Bis dahin zahlt der Kunde nur das
   Onboarding — ein starkes Vertrauenssignal beim Abschluss.
