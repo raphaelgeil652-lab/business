@@ -1,6 +1,6 @@
 # Wissen: Sales & Akquise — Salescall-Skript (Küche & Bad)
 
-Für den **Erstanruf** bei Küchen-/Bad-Betrieben aus `../leads/klienten-leads.csv`.
+Für den **Erstanruf** bei Küchen-/Bad-Betrieben aus `klienten-leads.csv`.
 Ziel ist **nicht**, am Telefon zu verkaufen, sondern **einen kurzen Termin (15–20 Min,
 vor Ort oder Video)** zu vereinbaren, in dem du das System zeigst. Anrede: **Sie**.
 
@@ -89,7 +89,7 @@ Kurze Mailbox-Nachricht:
 
 → Max. 3 Versuche zu **verschiedenen Zeiten** (vormittags / früher Nachmittag). Danach ggf. vor Ort vorbeischauen.
 
-## Nach jedem Anruf: in `../leads/klienten-leads.csv` eintragen
+## Nach jedem Anruf: in `klienten-leads.csv` eintragen
 
 - **Status:** z. B. „kein Interesse", „Termin vereinbart", „später nachfassen", „nicht erreicht".
 - **Naechster_Schritt** + Datum.
@@ -100,7 +100,7 @@ Kurze Mailbox-Nachricht:
 ## Vor Ort (Tür-zu-Tür, beim Abklappern)
 
 Kurz, respektvoll, kein Druck (evtl. haben sie Kundschaft). Ziel: Chef sprechen → kurzer Pitch →
-Termin oder Kontakt. Reihenfolge/Route: `../leads/anruf-reihenfolge.md`.
+Termin oder Kontakt. Reihenfolge/Route: `anruf-reihenfolge.md`.
 
 **Reingehen:** „Grüß Gott! Ist der Inhaber / der Chef da?"
 

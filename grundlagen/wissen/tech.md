@@ -1,6 +1,6 @@
 # Wissen: Tech (GHL, n8n, Tracking)
 
-Learnings zu Automationen, CRM, Tracking. Grundregeln stehen in `../docs/tech-stack.md`.
+Learnings zu Automationen, CRM, Tracking. Grundregeln stehen in `../../anleitungen/tech-stack.md`.
 
 ## Gelöste Probleme
 

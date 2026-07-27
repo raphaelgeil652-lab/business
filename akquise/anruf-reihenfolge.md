@@ -4,7 +4,7 @@ Reihenfolge nach: **Küche vor Bad** (verkaufsorientierter; Bad-/SHK-Betriebe of
 Kapazitätsrisiko), **inhabergeführt vor Verbund/Franchise** (entscheiden lokal selbst),
 **nah vor weit** (dein „aus der Region"-Bonus + einfacher Vor-Ort-Termin).
 
-Skript: `../wissen/sales.md`. Nach jedem Anruf Ergebnis in `klienten-leads.csv` eintragen.
+Skript: `verkaufsskript.md`. Nach jedem Anruf Ergebnis in `klienten-leads.csv` eintragen.
 **Tagesziel:** 8–10 Versuche pro Session, am besten **vormittags** oder **früher Nachmittag**.
 
 ---
@@ -64,5 +64,5 @@ früh fragen, ob sie überhaupt mehr Aufträge stemmen können.
 
 - **Ziel des Anrufs = Termin**, nicht Verkauf.
 - Nicht erreicht? Max. 3 Versuche zu verschiedenen Zeiten, dann später nochmal.
-- Nach jedem Call: Status + Notiz in `klienten-leads.csv`. Learnings in `../wissen/sales.md`.
-- Für das 7k-Ziel (siehe `../docs/geschaeftsmodell.md`): dranbleiben, Runde 1 zuerst durchziehen.
+- Nach jedem Call: Status + Notiz in `klienten-leads.csv`. Learnings in `verkaufsskript.md`.
+- Für das 7k-Ziel (siehe `../grundlagen/geschaeftsmodell.md`): dranbleiben, Runde 1 zuerst durchziehen.

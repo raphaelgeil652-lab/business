@@ -25,21 +25,21 @@ schnellste Weg zum ersten Umsatz.
 ## Block B — Angebot & Preis festlegen
 
 - [ ] **Preis für den ersten Kunden** festlegen. Vorschlag Referenzprojekt: **Einrichtungsgebühr 300–500 € + Monatsbeitrag 300–500 €**, monatlich kündbar. Werbebudget zahlt der Kunde **extra, direkt an Meta**.
-- [ ] **1-Seiten-Angebot/Vertrag** ausfüllen: fertige Vorlage inkl. Preis-Empfehlung → `../templates/angebot-vertrag.md`.
+- [ ] **1-Seiten-Angebot/Vertrag** ausfüllen: fertige Vorlage inkl. Preis-Empfehlung → `angebot-vertrag.md`.
 - [ ] Details: `geschaeftsmodell.md`.
 
 ## Block C — Ersten Kunden gewinnen
 
-- [ ] **Anrufen** — Skript `wissen/sales.md`, Liste `leads/klienten-leads.csv` (Start: Hoch-Prio-Küchenstudios).
+- [ ] **Anrufen** — Skript `verkaufsskript.md`, Liste `klienten-leads.csv` (Start: Hoch-Prio-Küchenstudios).
 - [ ] **Termin/Demo:** deine Live-Landingpage zeigen, Case-Study-Deal erklären.
 - [ ] **Zusage + Vertrag** → **jetzt die Onboarding-Gebühr in Rechnung stellen** (siehe Block F).
 - [ ] **Kapazität prüfen** vor Abschluss (kann der Betrieb mehr Termine bedienen?).
 
 ## Block D — Für den Kunden aufsetzen
 
-- [ ] **Material holen:** Logo, echte Fotos, Bewertungen, Öffnungszeiten (Vorlage-Mail: `../templates/onboarding-email.md`).
-- [ ] **Landingpage personalisieren** (`../templates/landingpage/`, seine Variante) → eigene Netlify-Seite (`landingpage-hosten.md`) + **Impressum/Datenschutz** ergänzen.
-- [ ] **Meta-Anzeige einrichten** (auf seinem Werbekonto, du als Partner), Budget, Kampagne **live**. Klick-für-Klick-Anleitung: `meta-anzeige-einrichten.md`; Ad-Texte: `../templates/ad-copy.md`.
+- [ ] **Material holen:** Logo, echte Fotos, Bewertungen, Öffnungszeiten (Vorlage-Mail: `onboarding-email.md`).
+- [ ] **Landingpage personalisieren** (`../seiten/landingpage/`, seine Variante) → eigene Netlify-Seite (`landingpage-hosten.md`) + **Impressum/Datenschutz** ergänzen.
+- [ ] **Meta-Anzeige einrichten** (auf seinem Werbekonto, du als Partner), Budget, Kampagne **live**. Klick-für-Klick-Anleitung: `meta-anzeige-einrichten.md`; Ad-Texte: `../anleitungen/ad-copy.md`.
 - [ ] **Testlauf:** Formular → Anfrage-Mail → Anruf klappt.
 
 ## Block E — Liefern & Beweis

@@ -29,7 +29,7 @@ Facebook-Werbung  →  Landingpage  →  Formular ausgefüllt (= "Lead")
 ## Die Werkzeuge — was ist was
 
 - **Meta Ads** — die Werbung selbst (Facebook/Instagram Anzeigen).
-- **Landingpage** — die *eine* Seite mit Angebot + Formular. Vorlage: `../templates/landingpage/`.
+- **Landingpage** — die *eine* Seite mit Angebot + Formular. Vorlage: `../seiten/landingpage/`.
 - **GoHighLevel (GHL)** — das **CRM**. Wie ein digitales **Kontaktbuch + Kalender + Nachrichten-Zentrale**. Hier landen Anfragen, stehen Termine, gehen automatische Nachrichten raus.
 - **n8n** — der **Automatik-Roboter im Hintergrund**. Nach dem Prinzip „*wenn X passiert, tue automatisch Y*". Verbindet alle Teile, ohne dass du klickst.
 - **Tracking (Pixel + CAPI)** — die **Erfolgsmessung**. Meldet Facebook zurück „aus diesem Klick wurde eine Anfrage / ein Termin / ein Kunde", damit Facebook mehr von den *richtigen* Leuten anspricht. Gleichzeitig dein **Beweis**, wie viel du gebracht hast (Abrechnungsgrundlage).
@@ -70,7 +70,7 @@ aufsetzen + ab und zu optimieren.
 
 ## Was die 3 n8n-Workflows tun (in einfach)
 
-n8n besteht aus kleinen Automatik-Ketten. Wir haben drei Grundgerüste (`../templates/n8n/`):
+n8n besteht aus kleinen Automatik-Ketten. Wir haben drei Grundgerüste (`../anleitungen/n8n/`):
 
 - **WF-1 „Neue Anfrage verarbeiten"** — sobald jemand das Formular ausfüllt: Kontakt ins CRM eintragen, Facebook „das war eine Anfrage" melden, Sofort-Antwort anstoßen.
 - **WF-2 „Sofort zurückschreiben"** — schickt in Sekunden eine WhatsApp/SMS „Danke, wir melden uns". Wichtig, weil Anfragen kalt werden, wenn man Stunden wartet.

@@ -33,4 +33,4 @@ Träumst du von einem neuen Bad? 🛁 [Studioname] in [Ort] plant dein Bad **kos
 
 ## Hinweis
 
-Die LP muss zum Ad-Offer passen (Message Match): gleiche Headline/gleicher Offer auf `../templates/landingpage/`.
+Die LP muss zum Ad-Offer passen (Message Match): gleiche Headline/gleicher Offer auf `../seiten/landingpage/`.

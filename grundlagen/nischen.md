@@ -26,7 +26,7 @@ Warum Küche (und historisch Bad dazu): **hoher Ticketwert, Gratis-Planungs-Anke
 
 Ergänzende Offer-Varianten (rotieren, siehe `offer-und-ads.md`): Giveaway (z. B. Gutschein/Geräte-Upgrade), Anker-Preis „X statt Y", saisonale Aktion (Jahresend-/Frühjahrsaktion).
 
-## Zielkunden-Profil (für Lead-Recherche, `leads/klienten-leads.csv`)
+## Zielkunden-Profil (für Lead-Recherche, `../akquise/klienten-leads.csv`)
 
 - Inhabergeführtes Küchenstudio oder Bad-/Sanitär-/Renovierungsbetrieb mit Bad-Fokus.
 - Schwacher digitaler Auftritt / keine oder kaum Ads = größter Mehrwert.

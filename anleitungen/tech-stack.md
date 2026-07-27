@@ -20,7 +20,7 @@ Aus dem Playbook (§5). Grundregel über allem: **Skalierbar ab Tag 1 — nichts
 - **Extern hosten** (Netlify/Vercel o. ä.), **nicht** im Funnel-Builder des CRM.
 - **Single-File-HTML, mobile-first only** (80 %+ des Meta-Traffics ist mobil).
 - **GHL-Formular per iframe** einbetten.
-- Vorlage: `../templates/landingpage/`.
+- Vorlage: `../seiten/landingpage/`.
 
 ## Tracking (Abrechnungs-Grundlage — nicht optional)
 

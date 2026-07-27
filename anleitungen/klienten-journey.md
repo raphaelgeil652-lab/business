@@ -4,10 +4,10 @@ Der standardisierte Ablauf vom Erstkontakt bis zur laufenden Abrechnung. **Onboa
 
 ## Ablauf
 
-1. **Akquise** — Klienten-Leads (`../leads/klienten-leads.csv`) via Kaltakquise (Anruf/vor Ort) oder eigene Ads. Ziel: Termin mit Entscheider (Inhaber).
+1. **Akquise** — Klienten-Leads (`../akquise/klienten-leads.csv`) via Kaltakquise (Anruf/vor Ort) oder eigene Ads. Ziel: Termin mit Entscheider (Inhaber).
 2. **Salescall** — Bedarf klären, System zeigen, **Kapazität prüfen** (kann er mehr Termine abarbeiten?), Erwartung managen. Abschluss: Vertrag + **Onboarding-Gebühr**.
 3. **CRM-Subaccount anlegen** — Automation klont einen **Master-Snapshot** (alle Pipelines, Kalender, Workflows vorkonfiguriert) → neuer Subaccount in Minuten.
-4. **Willkommens-E-Mail** (`../templates/onboarding-email.md`) mit Instructions: Meta-Partner-Einladung, Asset-Upload (Drive: Logo, Fotos, Referenzen), Kalender verbinden.
+4. **Willkommens-E-Mail** (`../akquise/onboarding-email.md`) mit Instructions: Meta-Partner-Einladung, Asset-Upload (Drive: Logo, Fotos, Referenzen), Kalender verbinden.
 5. **Onboarding-Call** — WhatsApp/Kanäle verbinden, Systeme prüfen, **Tracking-Setup (Pixel + CAPI)**, Kalender-Slots festlegen.
 6. **Creatives + Landingpage** — LP-Vorlage personalisieren (Name/Fotos/Ort), Ad-Creatives + Copy aus Vorlagen, Kampagne einrichten und **launchen**.
 7. **Betrieb** — Leads laufen ein → **Speed-to-Lead** (sofort WhatsApp/SMS) → Klient bucht Termine → Systeme erfassen sie automatisch (→ Sheet für Abrechnung).
