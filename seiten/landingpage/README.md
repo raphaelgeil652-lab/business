@@ -1,5 +1,7 @@
 # Landingpage-Vorlage (Küche & Bad) — MVP
 
+**▶ [Küche-Landingpage öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/seiten/landingpage/index.html)** (rendert im Browser)
+
 Einfache, mobil-optimierte Werbe-Landingpages. **Formular → E-Mail** über **Netlify Forms**
 (kein GoHighLevel, kein Backend, keine laufenden Kosten). Slop-geprüft (impeccable: 0 Anti-Patterns).
 
@@ -18,7 +20,7 @@ Einfache, mobil-optimierte Werbe-Landingpages. **Formular → E-Mail** über **N
 
 ## Online stellen mit Netlify (Schritt für Schritt)
 
-> Ausführliche Einsteiger-Anleitung (GitHub-Import + Drag&Drop + Fehlerbehebung): `../../docs/landingpage-hosten.md`
+> Ausführliche Einsteiger-Anleitung (GitHub-Import + Drag&Drop + Fehlerbehebung): `../../anleitungen/landingpage-hosten.md`
 
 1. Auf **netlify.com** kostenlos anmelden.
 2. Diesen Ordner (`index.html`, `bad.html`, `danke.html`) als ZIP oder Ordner auf
@@ -40,7 +42,7 @@ Meta-Event „Lead". **Speed-to-Lead:** du/der Betrieb ruft die Nummer aus der M
 ## Später auf GoHighLevel umstellen (wenn du skalierst)
 
 Ersetze in `index.html`/`bad.html` den `<form>…</form>`-Block durch das GHL-Formular-iframe und
-verdrahte Tracking/Automationen nach `../../docs/ghl-n8n-aufbau.md`:
+verdrahte Tracking/Automationen nach `../../anleitungen/ghl-n8n-aufbau.md`:
 
 ```html
 <iframe class="form-frame" id="ghlForm"

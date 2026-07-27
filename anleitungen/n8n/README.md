@@ -1,6 +1,6 @@
 # n8n-Workflow-Grundgerüste (Küche & Bad)
 
-Importierbare Skelett-Workflows zum Playbook (Details: `../../docs/ghl-n8n-aufbau.md`).
+Importierbare Skelett-Workflows zum Playbook (Details: `../ghl-n8n-aufbau.md`).
 **Grundgerüste, kein Fertig-System** — Tokens/URLs/Store müssen noch gesetzt werden.
 Prinzip: ein Workflow pro Aktion, Klient kommt aus dem Payload/Store (nichts hardcoden).
 
@@ -25,7 +25,7 @@ Webhook aktivieren (Production-URL notieren).
    `https://DEINE-N8N-URL/webhook/speed-to-lead` durch deine echte WF-2-Production-URL ersetzen.
 3. **GHL-Outbound-Webhook (für WF-3):** Im GHL-Master-Snapshot einen Workflow
    „Opportunity Stage Changed → Webhook" auf die WF-3-URL zeigen lassen (siehe
-   `../../docs/ghl-n8n-aufbau.md`, Teil A7). Payload muss `locationId`, `stage`, `event_id` enthalten.
+   `../ghl-n8n-aufbau.md`, Teil A7). Payload muss `locationId`, `stage`, `event_id` enthalten.
 4. **Meta Graph-Version** (`v21.0`) und **GHL-Endpunkte** vor Live gegen die aktuelle Doku prüfen.
 
 ## Tracking-Dedup (wichtig)
@@ -36,5 +36,5 @@ werden in WF-1 per SHA256 (Crypto-Node) gehasht, bevor sie an Meta gehen.
 
 ## Testen
 
-Siehe Testplan in `../../docs/ghl-n8n-aufbau.md` (Teil F): Testlead senden → Kontakt in GHL,
+Siehe Testplan in `../ghl-n8n-aufbau.md` (Teil F): Testlead senden → Kontakt in GHL,
 Speed-to-Lead-Nachricht < 5 Min, im Meta Events Manager „Browser + Server (dedupliziert)".

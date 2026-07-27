@@ -2,21 +2,21 @@
 
 ## Auf einen Blick
 
-Aufbau der Agentur **Clickculture** — Performance-Marketing für **EINE fokussierte lokale Nische: Küchenstudios.** Modell zu 100 % nach dem erprobten Playbook (`docs/agentur-playbook.md`, aus einem Partner-Modell mit 25+ Klienten). Kern: **Werbung (Meta + Google Ads) → Leads → Terminbuchungen** für den Klienten, drumherum ein **System** (Landingpage + Speed-to-Lead + Reporting). Wir verkaufen kein „Ads-Schalten", sondern ein komplettes Kundengewinnungs-System. Ziel: **10k+/Monat** wiederkehrend, schlank und kopierbar.
+Aufbau der Agentur **Clickculture** — Performance-Marketing für **EINE fokussierte lokale Nische: Küchenstudios.** Modell zu 100 % nach dem erprobten Playbook (`grundlagen/agentur-playbook.md`, aus einem Partner-Modell mit 25+ Klienten). Kern: **Werbung (Meta + Google Ads) → Leads → Terminbuchungen** für den Klienten, drumherum ein **System** (Landingpage + Speed-to-Lead + Reporting). Wir verkaufen kein „Ads-Schalten", sondern ein komplettes Kundengewinnungs-System. Ziel: **10k+/Monat** wiederkehrend, schlank und kopierbar.
 
-**Autorität:** `docs/agentur-playbook.md` ist die Grundlage. Alles hier setzt es konkret um. Direkte Anweisungen des Nutzers im Chat haben Vorrang.
+**Autorität:** `grundlagen/agentur-playbook.md` ist die Grundlage. Alles hier setzt es konkret um. Direkte Anweisungen des Nutzers im Chat haben Vorrang.
 
 ## Nische
 
 **Nur Küchenstudios** (kleinbetrieblich, inhabergeführt, mit genug Budget). Entscheidung: Fokus statt Bauchladen.
 - Hoher Ticketwert (Küche 10–30k €) → ein gewonnener Kunde finanziert Werbebudget + Agentur-Fee locker.
 - Natürlicher **Gratis-Anker-Offer**: „kostenlose 3D-Küchenplanung" → führt zum High-Ticket-Abschluss.
-- Terminbasiert & trackbar, inhaberbetrieben. Details + 5-Punkte-Filter: `docs/nischen.md`.
+- Terminbasiert & trackbar, inhaberbetrieben. Details + 5-Punkte-Filter: `grundlagen/nischen.md`.
 - **Badsanierung ist zurückgestellt** (nicht Fokus). Die Bad-Landingpage/-Leads bleiben als Fundus, werden aber nicht aktiv bespielt.
 
 **Kanäle:** Meta (Facebook/Instagram) **+ Google Ads**. Meta weckt Nachfrage (Feed), Google fängt aktive Sucher ab („Küchenstudio [Ort]").
 
-**Preis-/Garantie-Modell:** Onboarding **850 €** (mit **Geld-zurück-Garantie**: keine vereinbarten Anfragen in 30 Tagen → Gebühr zurück) + **monatliche Betreuung 1.500 €/Monat, die erst startet, wenn Anfragen laufen**; **Werbebudget ~1.499 €/Monat** zahlt der Kunde direkt an Meta/Google. Details: `docs/geschaeftsmodell.md`.
+**Preis-/Garantie-Modell:** Onboarding **850 €** (mit **Geld-zurück-Garantie**: keine vereinbarten Anfragen in 30 Tagen → Gebühr zurück) + **monatliche Betreuung 1.500 €/Monat, die erst startet, wenn Anfragen laufen**; **Werbebudget ~1.499 €/Monat** zahlt der Kunde direkt an Meta/Google. Details: `grundlagen/geschaeftsmodell.md`.
 
 Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Oberschwaben); per Targeting erweiterbar.
 
@@ -25,25 +25,31 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
 - **System/Claude:** Landingpages + Creatives + Ad-Copy (Struktur wiederverwenden), CRM-Snapshot & n8n-Automationen, Tracking-Setup, Reports, Lead-Recherche, Doku/Wissen pflegen.
 - **Nur der Nutzer selbst:** Salescalls/Vertragsabschluss mit Klienten, Vertrauen aufbauen, Meta-/Zahlungs-Konten verifizieren, Entscheidungen zu Budget/Preisen.
 
-## Struktur dieses Repos (bewusst schlank)
+## Struktur dieses Repos (aufgeräumt in 4 Ordner)
 
+- `README.md` — **Start-/Übersichtsseite** mit klickbaren Links zu den fertigen Seiten. Erste Anlaufstelle.
 - `CLAUDE.md` — diese Übersicht. Bei jeder größeren Entscheidung aktuell halten.
-- `docs/`
-  - `so-funktioniert-alles.md` — **Einsteiger-Überblick + Glossar** (was ist was, wie hängt alles zusammen). Bei Unklarheit hier starten.
-  - `erster-kunde-fahrplan.md` — **schlanker Startweg** zum ersten Kunden (ohne den ganzen Automatik-Überbau).
-  - `fahrplan-erster-umsatz.md` — **abhakbare To-do-Liste bis zur ersten Überweisung** (Rechtliches/Konten, Preis, Akquise, Aufsetzen, Rechnung).
+- **`seiten/` — alles zum Zeigen (Kundensachen), rendert per Link im Browser:**
+  - `pitch/index.html` — **Verkaufs-One-Pager: alles in einer Datei** (Ablauf, Beispiel-Anzeige, Landingpage-Vorschau, Preise, Garantie, FAQ). Das Hauptstück zum Vorzeigen.
+  - `landingpage/` — echte Küche-Landingpage (`index.html` + `danke.html`; Bad `bad.html` als Fundus), Formular→E-Mail via Netlify, GHL-Umstellung in der README.
+  - `beispiele/` — Schau-Beispiele: Facebook-Ad-Mockup + fertige Beispiel-Landingpage + Anzeigentexte (README).
+- **`akquise/` — dein Tagesgeschäft (Kunden gewinnen):**
+  - `klienten-leads.csv` — recherchierte Küchenstudio-Leads in der Region.
+  - `anruf-reihenfolge.md` — priorisierte Anruf-/Fahrt-Reihenfolge.
+  - `verkaufsskript.md` — Salescall- + Vor-Ort-Skript, Einwände (früher `wissen/sales.md`).
+  - `angebot-vertrag.md` — 1-Seiten-Vereinbarung + Anfragen-Garantie.
+  - `onboarding-email.md` — Onboarding-Mail-Vorlage.
+  - `erster-kunde-fahrplan.md` / `fahrplan-erster-umsatz.md` — Startweg + abhakbare To-do-Liste bis zur ersten Überweisung.
+- **`anleitungen/` — Wie-geht-was (nur bei Bedarf reinschauen):**
+  - `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md` — Meta-Konto + erste Anzeige einrichten (Einsteiger).
+  - `landingpage-hosten.md` — Landingpage online stellen (Netlify) + Troubleshooting.
+  - `ghl-n8n-aufbau.md`, `n8n/` — CRM-/Automations-Ausbaustufe (Workflow-Grundgerüste, später).
+  - `tech-stack.md`, `klienten-journey.md`, `ad-copy.md` — Tech-Stack, A–Z-Prozess, Ad-Text-Vorlagen.
+- **`grundlagen/` — Strategie & Wissen (nachschlagen):**
   - `agentur-playbook.md` — **Master-Playbook (Grundlage, nicht ändern außer auf Ansage).**
-  - `geschaeftsmodell.md` — Angebot, Abrechnung (Onboarding-Gebühr + Revenue Share), 10k/Monat-Rechnung, Positionierung.
-  - `nischen.md` — Küche & Bad durch den 5-Punkte-Filter, Gratis-Anker-Offers.
-  - `offer-und-ads.md` — 3–5 wiederverwendbare Offer-/Ad-Strukturen, Trust-Regeln.
-  - `klienten-journey.md` — A–Z-Prozess vom Lead bis zur Abrechnung + Checklisten.
-  - `tech-stack.md` — GoHighLevel, n8n, Tracking (Pixel + CAPI), Meta-Hygiene, LP-Hosting.
-  - `meta-konto-einrichten.md` — **Überblick Meta-Konto** einrichten (Business Portfolio für die Agentur vs. Seite/Werbekonto/Pixel beim Kunden, Partnerzugriff).
-  - `meta-anzeige-einrichten.md` — **klickbare Anleitung: erste Facebook-/Instagram-Anzeige** einrichten (Kampagne/Zielgruppe/Budget/Anzeige), für Einsteiger.
-  - `ghl-n8n-aufbau.md` — Schritt-für-Schritt: Master-Snapshot bauen + n8n-Workflows (Lead-Intake, Speed-to-Lead, Stage→CAPI, Onboarding-Klon), Klienten-Store, Dedup-Kette, Testplan.
-- `wissen/` — Lern-System: `creatives.md`, `onboarding.md`, `tech.md`, `sales.md`. Jede Erkenntnis pro Bereich hier festhalten, damit keine Fehler doppelt passieren.
-- `templates/` — `landingpage/` (mobile-first; Küche `index.html` / Bad `bad.html` + `danke.html`; Formular→E-Mail via Netlify, GHL-Umstellung in der README dokumentiert), `n8n/` (importierbare Workflow-Grundgerüste WF-1/2/3, für die Ausbaustufe), `onboarding-email.md`, `ad-copy.md`, `angebot-vertrag.md` (1-Seiten-Vereinbarung + Geld-zurück-Garantie), `pitch/` (**Verkaufs-One-Pager: alles in einer Datei zum Vorzeigen beim Kunden** — Ablauf, Beispiel-Anzeige/-Landingpage, Preise, Garantie, FAQ), `kunden-uebersicht/` (kompakteres Übersichtsblatt), `beispiele/` (fertige Schau-Beispiele: Landingpage + Facebook-Ad-Mockup + Anzeigentexte).
-- `leads/klienten-leads.csv` — recherchierte Prospect-Betriebe (Küche/Bad) in der Region.
+  - `geschaeftsmodell.md` — Angebot, Preise/Garantie, 10k/Monat-Rechnung, 7k-Ziel.
+  - `nischen.md`, `offer-und-ads.md`, `so-funktioniert-alles.md` — Nische + 5-Punkte-Filter, Offer-/Ad-Strukturen, Einsteiger-Überblick + Glossar.
+  - `grundlagen/wissen/` — Lern-System (`creatives.md`, `onboarding.md`, `tech.md`): Learnings festhalten, damit keine Fehler doppelt passieren.
 - `.agents/skills` + `.claude/skills` — installierte Design-Skills (impeccable, taste-skill) zum Bau guter Landingpages/Creatives.
 
 ## Prinzipien (aus dem Playbook — immer beachten)
@@ -53,15 +59,15 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
 3. **Wiederholung schlägt Kreativität** — dieselben 3–5 Offer-Strukturen dauerhaft, nur in Variationen testen.
 4. **Onboarding standardisieren** — Snapshot + Automation + Checklisten. Der Engpass ist nie die Werbung, sondern das Onboarding.
 5. **Kapazität & Speed-to-Lead** — sofortige WhatsApp/SMS-Antwort; Leads sind wertlos, wenn der Klient langsam reagiert.
-6. **Wissens-System pflegen** — Learnings nach `wissen/` schreiben (nicht nur im Chat).
+6. **Wissens-System pflegen** — Learnings nach `grundlagen/wissen/` schreiben (nicht nur im Chat).
 
 ## Aktueller Stand
 
 MVP steht: Landingpages (Küche/Bad) live bei Netlify, Anfragen kommen per E-Mail, Terminvergabe manuell.
 Angebot/Vertrag-Vorlage + Salescall-Skript + Leads bereit. **Noch keine Klienten.**
 
-**Ziel: 7.000 € bis 01.10.2026** (Details/Rückrechnung in `docs/geschaeftsmodell.md`). Hebel = **jetzt akquirieren**:
-Küchenstudios anrufen **und vor Ort abklappern** (`wissen/sales.md`, `leads/klienten-leads.csv`, `leads/anruf-reihenfolge.md`),
+**Ziel: 7.000 € bis 01.10.2026** (Details/Rückrechnung in `grundlagen/geschaeftsmodell.md`). Hebel = **jetzt akquirieren**:
+Küchenstudios anrufen **und vor Ort abklappern** (`akquise/verkaufsskript.md`, `akquise/klienten-leads.csv`, `akquise/anruf-reihenfolge.md`),
 ~2 Kunden im August abschließen (Onboarding 850 € + 1.500 €/Monat ab Ergebnissen, Geld-zurück-Garantie). Fahrplan bis zum ersten Geld:
-`docs/fahrplan-erster-umsatz.md`. Verkaufs-One-Pager zum Vorzeigen (alles in einer Datei): `templates/pitch/`. Kunden-Übersichtsblatt: `templates/kunden-uebersicht/`.
+`akquise/fahrplan-erster-umsatz.md`. Verkaufs-One-Pager zum Vorzeigen (alles in einer Datei): `seiten/pitch/` (Links in `README.md`).
 Der ganze Automatik-Überbau (GHL/n8n/CAPI) kommt erst nach den ersten Kunden.

@@ -45,7 +45,7 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 - **Anlauf bis die Kampagne läuft:** im ersten Zeitraum optimierst du nach, bis die Anfrage-Maschine
   sauber läuft — dann greift die monatliche Betreuung. Klar begrenzen, nicht open-ended, sonst Gratis-Falle.
 - **Was du versprichst:** Anfragen/Termine + Garantie — **keine** garantierten Küchenverkäufe (der
-  Abschluss hängt am Studio). Fertige Vertrags-Vorlage mit Garantie-Klausel: `../templates/angebot-vertrag.md`.
+  Abschluss hängt am Studio). Fertige Vertrags-Vorlage mit Garantie-Klausel: `../akquise/angebot-vertrag.md`.
 
 ## Ziel: 7.000 € bis 01.10.2026
 
@@ -62,7 +62,7 @@ Betreuung startet, sobald Anfragen laufen):
 **Grober Funnel (konservativ, zum Planen):** ~10 Wählversuche → ~2–3 Inhaber erreicht → ~1 Termin;
 ~4–6 Termine → ~2–3 Abschlüsse. Für 2 Kunden also grob **50–90 Kontaktversuche im August** einplanen
 (Telefon + vor Ort abklappern, ≈ 15–25/Woche). Genug Küchenstudios in der Lead-Liste + auf den Fahrt-Routen
-(`../leads/klienten-leads.csv`, `../leads/anruf-reihenfolge.md`).
+(`../akquise/klienten-leads.csv`, `../akquise/anruf-reihenfolge.md`).
 
 *(Zahlen sind Ziele/Orientierung, keine Garantie — Umsatz hängt an Abschlussquote und Tempo.)*
 
