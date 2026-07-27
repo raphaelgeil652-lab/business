@@ -1,0 +1,63 @@
+name: Deploy Pitch-Seite zu GitHub Pages
+
+# Veroeffentlicht NUR die kundenseitigen Seiten (Pitch, Uebersichtsblatt, Beispiele)
+# als gehostete Website. Interne Dokumente (docs/, wissen/, leads/) bleiben aussen vor.
+# Laeuft automatisch bei jedem Push nach main.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "templates/pitch/**"
+      - "templates/kunden-uebersicht/**"
+      - "templates/beispiele/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Kuratierte Seite zusammenstellen
+        run: |
+          set -e
+          mkdir -p _site/pitch _site/uebersicht _site/beispiele
+          # Root-URL zeigt direkt die Pitch-Seite (kuerzeste URL zum Vorzeigen)
+          cp templates/pitch/index.html _site/index.html
+          cp templates/pitch/index.html _site/pitch/index.html
+          cp templates/kunden-uebersicht/index.html _site/uebersicht/index.html
+          cp templates/beispiele/ad-mockup.html _site/beispiele/ad-mockup.html
+          cp templates/beispiele/landingpage-beispiel.html _site/beispiele/landingpage-beispiel.html
+          # Verhindert Jekyll-Verarbeitung
+          touch _site/.nojekyll
+
+      - name: Pages konfigurieren
+        uses: actions/configure-pages@v5
+
+      - name: Artefakt hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Zu GitHub Pages deployen
+        id: deployment
+        uses: actions/deploy-pages@v4
