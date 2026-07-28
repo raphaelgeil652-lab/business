@@ -1,108 +1,97 @@
 # Priorisierte Besuchs-Reihenfolge (persönlich abklappern)
 
 Du gehst **persönlich in die Läden rein**, kein Kaltakquise-Anruf. Das Telefon nutzt du nur zum
-**Nachfassen** (wenn der Chef nicht da war) oder für weit entfernte Betriebe, die du nicht abfährst.
+**Nachfassen** (wenn der Chef nicht da war) oder für weit entfernte Betriebe.
 
-Reihenfolge nach: **Küche vor Bad** (verkaufsorientierter; Bad-/SHK-Betriebe oft ausgebucht →
-Kapazitätsrisiko), **inhabergeführt vor Verbund/Franchise** (entscheiden lokal selbst),
-**nah vor weit** (dein „aus der Region"-Bonus + kurzer Weg).
+**Fokus: kleine, inhabergeführte Studios (oft Schreinereien).** Zwei Gründe:
+1. Der **Chef ist eher selbst da** und entscheidet direkt, kein Filialleiter, keine Marketing-Zentrale.
+2. **Höhere Trefferchance** — kleine Studios haben selten schon eine Agentur und freuen sich über Anfragen.
+
+**Große Ketten / Verbünde / Franchise** (PLANA, musterhaus, DAN, große Möbelhäuser) haben oft eine
+eigene Werbe-Zentrale und der Chef ist nicht greifbar → nur **optional** mitnehmen, wenn du eh vorbeikommst.
 
 Skript: `verkaufsskript.md`. Nach jedem Besuch das Ergebnis in `klienten-leads.csv` eintragen.
-**Tagesziel:** 6–10 Läden pro Tour, am besten **vormittags** oder **früher Nachmittag** (aber nicht
-zur Mittagspause). Öffnungszeiten vorher kurz checken.
+**Tagesziel:** 6–10 Läden pro Tour, vormittags oder früher Nachmittag (nicht zur Mittagspause).
 
 ---
 
-## 🚗 Tages-Route: Bodensee → Pfullendorf (auf dem Weg abklappern)
+## 🚗 Tages-Route: Bodensee → Pfullendorf (klein zuerst)
 
-In Fahrtrichtung von unten (Bodensee) hoch nach Pfullendorf. Einfach der Reihe nach reingehen.
-Neu recherchierte Studios sind mit **(neu)** markiert; wo „Tel prüfen" steht, Nummer kurz bei Google
-Maps holen oder direkt vor Ort fragen.
+In Fahrtrichtung von unten hoch. **✅ = klein/inhabergeführt (Priorität)**, ⚪ = eher groß (optional).
+Wo „Tel prüfen" steht, Nummer bei Google Maps holen oder vor Ort fragen.
 
 **① Tettnang / Meckenbeuren**
-- Martin Hagenmaier Küchen (Küchenstudio Tettnang) — Oberhofer Str. 7, 88069 Tettnang — 07542 7664
-- Küchen Block **(neu)** — Karl-Maybach-Str. 7, 88074 Meckenbeuren — 07542 935050
+- ✅ Martin Hagenmaier Küchen (Küchenstudio Tettnang) — Oberhofer Str. 7, 88069 Tettnang — 07542 7664
+- ✅ Küchen Block **(neu)** — Karl-Maybach-Str. 7, 88074 Meckenbeuren — 07542 935050
+- ⚪ Schöllhorn (musterhaus-Verbund) — Brochenzellerstr. 33, Meckenbeuren — nur falls Zeit
 
 **② Ravensburg / Weingarten**
-- Küchenstudio Hämmerle **(neu, inhabergeführt)** — Eggartskircher Str. 12/1, 88213 Ravensburg — Tel prüfen
-- SCALA KüchenART — Meersburger Str. 158, 88213 Ravensburg — 0751 95895486
-- Küchenstudio Lorinser — Stettiner Str. 7, 88250 Weingarten — 0751 7669870
+- ✅ Küchenstudio Hämmerle **(neu, inhabergeführt + Schreinerei)** — Eggartskircher Str. 12/1, 88213 Ravensburg — Tel prüfen
+- ✅ Küchenstudio Lorinser — Stettiner Str. 7, 88250 Weingarten — 0751 7669870
+- ⚪ SCALA KüchenART (DAN, Kette) / PLANA (Franchise) — nur optional
 
 **③ Horgenzell → Ostrach (kurz vor Pfullendorf)**
-- Küchen Benz **(neu)** — Hechtweg 6, 88356 Ostrach — Tel prüfen
+- ✅ Küchen Benz **(neu)** — Hechtweg 6, 88356 Ostrach — Tel prüfen
 
 **④ Pfullendorf (Ziel)**
-- KüchenTreff Martin Fritz — Otterswanger Str. 7/8, 88630 Pfullendorf — 07552 3089490
-- Brier Küchen — Otterswanger Str. 7/5 (gleiches Gebäude) — 07552 9358999
-- Mika Küchen — Allschwiler Weg 27, 88630 Pfullendorf — 07552 929639
+- ✅ Brier Küchen (Schreinermeister, klein) — Otterswanger Str. 7/5, 88630 Pfullendorf — 07552 9358999
+- ✅ Mika Küchen — Allschwiler Weg 27, 88630 Pfullendorf — 07552 929639
+- ⚪ KüchenTreff Martin Fritz (größerer Verbund-Showroom) — Otterswanger Str. 7/8 — trotzdem mitnehmen, ist direkt nebenan
 
 **⑤ Umgebung Pfullendorf (Rückweg / wenn Zeit)**
-- König Küchen — Pappelweg 4, 88512 Mengen — 07572 3591
-- Demmelhuber — Igelswieser Str. 10, 88605 Meßkirch — 07575 2449
-- Keller Innenausbau — Weidenäcker 1, 88605 Meßkirch-Heudorf — 07575 922215
-- Küchenwelt Sigmaringen — Binger Str. 2, 72488 Sigmaringen — 07571 9297386 *(Verbund, kurz prüfen)*
-
-**Optionaler Abstecher nach Nordost (Aulendorf / Bad Saulgau):**
-- Harald Zoller — Auf der Steige 56/1, 88326 Aulendorf — 07525 92370
-- KWB Küche Wohnen Bad — Paradiesstr. 27, 88348 Bad Saulgau — 07581 2276
+- ✅ Demmelhuber (Schreinerei) — Igelswieser Str. 10, 88605 Meßkirch — 07575 2449
+- ✅ Keller Innenausbau (Familien-Schreinerei) — Weidenäcker 1, 88605 Meßkirch-Heudorf — 07575 922215
+- ⚪ König Küchen (großes Möbelhaus) — Mengen — optional
+- ⚪ Küchenwelt Sigmaringen (musterhaus-Verbund) — optional
+- Abstecher Nordost: Harald Zoller (Aulendorf, 07525 92370) · KWB Küche Wohnen Bad (Bad Saulgau, 07581 2276)
 
 ---
 
-## 🟢 Runde 1 — Beste Chance (nah + inhabergeführte Küche)
+## ✅ Klein & inhabergeführt — Priorität (weiterer Fundus, andere Touren)
 
-| # | Betrieb | Ort | Adresse | Telefon (Nachfassen) | Warum |
-|---|---|---|---|---|---|
-| 1 | KüchenTreff Martin Fritz | Pfullendorf | Otterswanger Str. 7/8 | 07552 3089490 | direkt vor Ort, Inhaber bekannt |
-| 2 | Brier Küchen | Pfullendorf | Otterswanger Str. 7/5 | 07552 9358999 | gleiches Gebäude wie #1, direkt mitnehmen |
-| 3 | Mika Küchen | Pfullendorf | Allschwiler Weg 27 | 07552 929639 | Küche **+ Bad**, vor Ort |
-| 4 | König Küchen (Möbel König) | Mengen | Pappelweg 4 | 07572 3591 | inhabergeführt, nah |
-| 5 | Demmelhuber | Meßkirch | Igelswieser Str. 10 | 07575 2449 | inhabergeführte Schreinerei |
-| 6 | Keller Innenausbau | Meßkirch-Heudorf | Weidenäcker 1 | 07575 922215 | Küche **+ Bad**, Familienbetrieb |
-| 7 | KWB Küche Wohnen Bad | Bad Saulgau | Paradiesstr. 27 | 07581 2276 | Küche **+ Bad**, deckt beides ab |
+Für andere Tage / die Bodensee-West-Ecke (Radolfzell, Überlingen, Stockach, Tuttlingen):
 
-## 🟡 Runde 2 — weiterer Umkreis, inhabergeführte Küche
-
-| # | Betrieb | Ort | Adresse | Telefon | Warum |
-|---|---|---|---|---|---|
-| 8 | Küchenstudio G. Wurst | Stockach | Seerheinstr. 8 | 07771 6349950 | Inhaber Gerd Wurst |
-| 9 | Küchenatelier La Cucina | Überlingen | Oberriedweg 17 | 07551 8315070 | inhabergeführtes Atelier |
-| 10 | Auer Küchen | Tuttlingen | Daimlerstr. 23 | 07461 165555 | Inhaber Siegbert Auer |
-| 11 | Lorinser | Weingarten | Stettiner Str. 7 | 0751 7669870 | inhabergeführt |
-| 12 | Buck Küchenstudio | Radolfzell | Herrenlandstr. 72 | 07732 54813 | inhabergeführt |
-| 13 | janik. küchen+wohnen | Radolfzell | Werner-Messmer-Str. 1 | 07732 8233539 | inhabergeführt (Premium) |
-| 14 | SCALA KüchenART | Ravensburg | Meersburger Str. 158 | 0751 95895486 | Inhaber/Verbund prüfen |
-| 15 | Küchenwelt Sigmaringen | Sigmaringen | Binger Str. 2 | 07571 9297386 | nah, aber musterhaus-Verbund → prüfen |
-| 16 | Die Kücheninsel | Radolfzell | Höllturm-Passage 2 | 0162 6291949 | nur Mobilnr. bekannt |
-
-## 🟠 Runde 3 — Bad-/SHK-Betriebe (Kapazität vor Abschluss prüfen!)
-
-Erst dran, wenn Runde 1–2 durch ist. Bad-Handwerker sind oft ausgelastet — im Gespräch
-früh fragen, ob sie überhaupt mehr Aufträge stemmen können.
-
-| # | Betrieb | Ort | Telefon |
+| Betrieb | Ort | Adresse | Telefon |
 |---|---|---|---|
-| 17 | Waldvogel Heiztechnik | Pfullendorf | 07552 933790 *(lokal, stärkster Bad-Lead)* |
-| 18 | Gerd Horn Bad + Wärme | Sigmaringen-Laiz | 07571 5753 |
-| 19 | Vogt & Sitta | Frickingen | 07554 2104660 |
-| 20 | Nabenhauer | Meßkirch | 07575 9218-0 |
-| 21 | Bodon Haustechnik | Herbertingen | 07586 4199699 |
-| 22 | Riester Haustechnik | Meßkirch | 07575 4742 |
-| 23 | K-Voigt Haustechnik | Weingarten | 0751 9587166 |
-| 24 | Förschner GmbH | Bad Saulgau | 07581 48870 |
-| 25 | Gabriel GmbH | Ebersbach-Musbach | 07581 48830 |
+| Küchenatelier La Cucina (Joost Theelen) | Überlingen | Oberriedweg 17 | 07551 8315070 |
+| Küchenstudio G. Wurst (Gerd Wurst) | Stockach | Seerheinstr. 8 | 07771 6349950 |
+| Auer Küchen (Siegbert Auer) | Tuttlingen | Daimlerstr. 23 | 07461 165555 |
+| Buck Küchenstudio | Radolfzell | Herrenlandstr. 72 | 07732 54813 |
+| janik. küchen+wohnen (Premium) | Radolfzell | Werner-Messmer-Str. 1 | 07732 8233539 |
+| Die Kücheninsel | Radolfzell | Höllturm-Passage 2 | 0162 6291949 |
+| Franz Kremmler Küchen | Bad Waldsee | Welfenring 11 | Tel prüfen |
+| Küchenstudio Salem *(Name vor Ort prüfen)* | Salem | Zum Ried 1 | 07553 9176926 |
 
-## ⚪ Runde 4 — niedrige Priorität (Franchise/Verbund, evtl. kein lokales Marketing)
+## ⚪ Größer / Kette / Verbund — nur optional (Chef oft nicht greifbar)
 
-| # | Betrieb | Ort | Telefon |
-|---|---|---|---|
-| 26 | PLANA Küchenstudio | Ravensburg | 0751 3666090 |
+| Betrieb | Ort | Warum niedrig |
+|---|---|---|
+| KüchenTreff Martin Fritz | Pfullendorf | Verbund-Showroom (aber lokal, drum in der Route) |
+| König Küchen (Möbel König) | Mengen | großes Möbelhaus |
+| SCALA KüchenART (DAN) | Ravensburg | Kette |
+| PLANA Küchenstudio | Ravensburg | Franchise |
+| Küchenwelt Sigmaringen | Sigmaringen | musterhaus-Verbund |
+| Schöllhorn Küchenplanung | Meckenbeuren | musterhaus-Verbund |
+| Küchen Krall | Markdorf | größeres/bekanntes Studio |
+
+## 🟠 Bad-/SHK-Betriebe — später (Kapazität vor Abschluss prüfen!)
+
+Erst dran, wenn die Küchen durch sind. Bad-Handwerker sind oft ausgelastet, im Gespräch früh fragen,
+ob sie überhaupt mehr Aufträge stemmen können.
+
+Waldvogel (Pfullendorf, 07552 933790) · Gerd Horn (Sigmaringen-Laiz, 07571 5753) ·
+Vogt & Sitta (Frickingen, 07554 2104660) · Nabenhauer (Meßkirch, 07575 9218-0) ·
+Bodon (Herbertingen, 07586 4199699) · Riester (Meßkirch, 07575 4742) ·
+K-Voigt (Weingarten, 0751 9587166) · Förschner (Bad Saulgau, 07581 48870) ·
+Gabriel (Ebersbach-Musbach, 07581 48830)
 
 ---
 
 ## Merke
 
 - **Ziel des Besuchs = Termin** (oder gleich das iPad zeigen), nicht sofort verkaufen.
+- **Kleine Studios zuerst** — dort ist der Chef eher da und die Trefferchance höher.
 - **Chef nicht da?** Name + beste Erreichbarkeit aufschreiben, Karte/Nummer dalassen, später
-  telefonisch nachfassen. Das ist normal, nicht ärgern.
+  telefonisch nachfassen. Ganz normal, nicht ärgern.
 - Nach jedem Besuch: Status + Notiz in `klienten-leads.csv`. Learnings in `verkaufsskript.md`.
-- Für das 7k-Ziel (siehe `../grundlagen/geschaeftsmodell.md`): dranbleiben, Runde 1 zuerst abfahren.
+- Für das 7k-Ziel (siehe `../grundlagen/geschaeftsmodell.md`): dranbleiben, kleine Studios zuerst abfahren.

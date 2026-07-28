@@ -35,8 +35,8 @@ Details zu jeder Datei: siehe [`CLAUDE.md`](CLAUDE.md).
 
 ## Preise (aktuell)
 
-- **Onboarding: 850 €** einmalig (mit Anfragen-Garantie: min. 7 Anfragen in 30 Tagen, sonst Geld zurück)
-- **Betreuung: 1.500 €/Monat**, startet erst, wenn Anfragen laufen
+- **Onboarding: 850 €** einmalig (Setup)
+- **Betreuung: 1.500 €/Monat**, startet **erst ab der ersten verkauften Küche** (du zahlst erst, wenn du verdient hast)
 - **Werbebudget: 1.499 €/Monat**, zahlt der Kunde direkt an Meta/Google
 
 **Ziel: 7.000 € bis 01.10.2026** → jetzt akquirieren (Leads + Besuchs-Reihenfolge in [`akquise/`](akquise/)).

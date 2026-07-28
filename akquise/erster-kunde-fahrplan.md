@@ -20,7 +20,7 @@ zu sein, sondern **einem Betrieb echte Anfragen zu bringen** und daraus eine Cas
 ## Phase 1 — Ersten Kunden gewinnen (die wichtigste Phase)
 
 - [ ] **Besuchs-Liste + Route nehmen:** `klienten-leads.csv` + `besuchs-reihenfolge.md` (über 25 echte Betriebe).
-- [ ] **Vor Ort reingehen und Pitch-Seite am iPad zeigen** (Skript: `verkaufsskript.md`). Angebot: 850 € Onboarding mit **Anfragen-Garantie** (min. 7 in 30 Tagen, sonst Geld zurück), monatliche Betreuung erst ab Ergebnissen. Das ist dein Risk-Reversal, das senkt seine Hürde.
+- [ ] **Vor Ort reingehen und Pitch-Seite am iPad zeigen** (Skript: `verkaufsskript.md`). Angebot: 850 € Onboarding einmalig, **monatliche Betreuung 1.500 € startet erst ab der ersten verkauften Küche**. Das ist dein Risk-Reversal („du zahlst mich erst, wenn du verdient hast"), das senkt seine Hürde.
 - [ ] **Kapazität prüfen** (wichtig, Playbook-Filter Punkt 5): Kann der Betrieb zusätzliche Termine/Aufträge überhaupt bedienen? Wenn nicht → anderer Betrieb.
 - [ ] **Gesprächs-Notizen** in `verkaufsskript.md` festhalten (was funktioniert, welche Einwände).
 

@@ -10,14 +10,14 @@
 
 | Position | Betrag | Hinweis |
 |---|---|---|
-| Onboarding-Gebühr (einmalig, **mit Geld-zurück-Garantie**) | **850 €** | fällig bei Vertragsbeginn |
-| Monatliche Betreuung | **1.500 €/Monat** | **startet erst, wenn Anfragen laufen**, monatlich kündbar |
+| Onboarding-Gebühr (einmalig, Setup) | **850 €** | fällig bei Vertragsbeginn |
+| Monatliche Betreuung | **1.500 €/Monat** | **startet erst ab der ersten verkauften Küche**, monatlich kündbar |
 | Werbebudget (extra, Kunde zahlt direkt an Meta/Google) | **~1.499 €/Monat** | nach Absprache |
 
-- **Geld-zurück-Garantie** auf die Onboarding-Gebühr = dein stärkstes Argument: keine vereinbarte
-  Anzahl Anfragen in 30 Tagen → Gebühr zurück. Messbar formulieren (Anfragen, **nicht** Umsatz).
-- **Betreuung erst ab Ergebnis:** die 1.500 €/Monat laufen erst, wenn die Kampagne Anfragen bringt.
-  Bis dahin zahlt der Kunde nur das Onboarding — nimmt beim Abschluss die Angst.
+- **Monatlich erst ab dem ersten Verkauf = dein stärkstes Argument:** die 1.500 €/Monat laufen erst,
+  wenn der Kunde über die Werbung **die erste Küche verkauft** hat. Bis dahin zahlt er nur das
+  einmalige Onboarding + sein Werbebudget. „Du zahlst mich erst, wenn du verdient hast" nimmt die Angst.
+- **Auf Wert verkaufen:** eine verkaufte Küche bringt dem Kunden 10–30k € — die 1.500 €/Monat sind klein.
 - **Auf Wert verkaufen, nicht auf Rabatt.** Ein Abschluss bringt dem Kunden 10–30k € — deine Gebühr ist klein.
 - **Monatlich kündbar** halten → senkt die Hürde beim Ja.
 - **Werbebudget ist immer extra** und läuft über das Meta-/Google-Konto des Kunden (nicht über dich).
@@ -52,9 +52,9 @@ Datum: [__]
 - Tragen des **Werbebudgets** direkt gegenüber Meta/Google.
 
 ### 3. Vergütung
-- **Onboarding-Gebühr (einmalig):** 850 € — fällig bei Vertragsbeginn (**Geld-zurück-Garantie**, siehe §7).
-- **Monatliche Betreuung:** 1.500 € — beginnt, **sobald die Kampagne Anfragen liefert** (Ergebnis-Start),
-  danach fällig jeweils zum [Monatsanfang/__], monatlich kündbar.
+- **Onboarding-Gebühr (einmalig):** 850 € — fällig bei Vertragsbeginn (Setup; zur monatlichen Betreuung siehe §7).
+- **Monatliche Betreuung:** 1.500 € — beginnt, **sobald der Auftraggeber über die Kampagne die erste
+  Küche verkauft** hat, danach fällig jeweils zum [Monatsanfang/__], monatlich kündbar.
 - **Werbebudget (~1.499 €/Monat):** wird vom Auftraggeber **separat und direkt an Meta/Google** gezahlt (nicht Teil dieser Vergütung).
 - Zahlung per Überweisung auf: [IBAN], Zahlungsziel **14 Tage** ab Rechnungsdatum.
 - *(Kleinunternehmer)* Gemäß **§19 UStG** wird **keine Umsatzsteuer** berechnet.
@@ -72,18 +72,17 @@ Datum: [__]
   Auftraggebers ab; ein bestimmter Umsatz wird nicht garantiert.
 - Der Auftragnehmer darf das Projekt (anonymisiert/mit Zustimmung) als **Referenz** nennen.
 
-### 7. Anfragen-Garantie (mit Geld-zurück)
-- Der Auftragnehmer garantiert **mindestens 7 qualifizierte Anfragen** innerhalb der ersten
-  **30 Tage ab Kampagnenstart** (nicht ab Vertragsunterschrift).
-- **Qualifizierte Anfrage** = über die Landingpage eingegangener Kontakt mit **echtem Namen und
-  erreichbarer Telefonnummer**, aus der Zielregion, mit Interesse an einer Küche. Offensichtlicher
-  Spam/Fake zählt nicht.
-- **Werden die 7 Anfragen nicht erreicht**, arbeitet der Auftragnehmer **kostenlos weiter**
-  (weitere Optimierung/Laufzeit), bis die 7 erreicht sind. Gelingt auch das nicht, wird die
-  **Onboarding-Gebühr (850 €) vollständig erstattet**.
+### 7. Monatliche Betreuung erst ab dem ersten Verkauf
+- Die **monatliche Betreuung (1.500 €)** wird **erst fällig, sobald der Auftraggeber über eine durch
+  die Werbung gewonnene Anfrage seine erste Küche verkauft** hat. Bis dahin zahlt der Auftraggeber
+  **nur die einmalige Onboarding-Gebühr (850 €) und sein Werbebudget** (direkt an Meta/Google).
+- Ab dem Monat des ersten Verkaufs läuft die monatliche Betreuung, monatlich kündbar (§4).
+- **Meldung des ersten Verkaufs:** Der Auftraggeber teilt den ersten Abschluss aus einer vermittelten
+  Anfrage zeitnah mit (Basis für den Start der monatlichen Abrechnung).
 - **Voraussetzung:** der Auftraggeber hat seine Pflichten aus §2 erfüllt (Material geliefert, Zugänge
   freigegeben, Werbebudget bereitgestellt, **zeitnah auf Anfragen reagiert**).
-- Die Garantie bezieht sich auf **Anfragen**, nicht auf getätigte Käufe (der Verkauf liegt beim Auftraggeber).
+- Es wird **kein bestimmter Umsatz garantiert**; der Verkauf selbst liegt beim Auftraggeber. Der
+  Auftragnehmer optimiert die Kampagne laufend, damit Anfragen entstehen.
 
 ---
 

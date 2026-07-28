@@ -14,7 +14,7 @@ kurzen **Termin (15 Min)** zu vereinbaren, in dem du das System zeigst.
 ## Mindset (30 Sekunden vorm Reingehen)
 
 - Du **hilfst** ihm, du bettelst nicht. Ein neuer Küchen-Kunde = 10–30k € für ihn, deine Gebühr ist winzig dagegen.
-- Dein Angebot ist **risikoarm**: Anfragen-Garantie, monatliche Betreuung erst ab Ergebnissen.
+- Dein Angebot ist **risikoarm**: die monatliche Betreuung startet erst ab seiner ersten verkauften Küche.
 - Ziel = **Termin oder iPad zeigen**, kein Abschluss auf der Stelle. Das nimmt den Druck.
 - Die ersten 2–3 Läden sind Übung. Locker bleiben, lächeln.
 
@@ -45,9 +45,9 @@ kurzen **Termin (15 Min)** zu vereinbaren, in dem du das System zeigst.
 > und durchscrollen (Ablauf → Beispiel-Anzeige → Landingpage → Preise → Garantie).
 
 ### 5) Termin / Abschluss + Risk-Reversal
-> „Damit's für Sie null Risiko ist: Ich garantiere Ihnen **mindestens 7 Anfragen im ersten Monat**.
-> Kommen die nicht, arbeite ich kostenlos weiter, bis sie da sind, und klappt auch das nicht, kriegen
-> Sie Ihr Onboarding zurück."
+> „Damit's für Sie null Risiko ist: Die monatliche Betreuung von 1.500 € zahlen Sie **erst, wenn Sie
+> über meine Werbung Ihre erste Küche verkauft haben**. Bis dahin nur das einmalige Onboarding und Ihr
+> Werbebudget. Ich verdiene also erst, wenn Sie verdienen."
 
 Wenn er noch überlegen will → **Termin fixieren:**
 > „Passt Ihnen **[Tag] vormittags** besser oder **[anderer Tag] nachmittags**? Dann setzen wir uns in
@@ -83,9 +83,9 @@ In `klienten-leads.csv` eintragen.
 > für Ihr Studio aussieht. Ich schick die Infos **und** wir machen einen kurzen Termin."
 
 **„Was kostet das?"**
-> „Einmalig 850 € Onboarding, mit Geld-zurück-Garantie, plus eine monatliche Betreuung von 1.500 €,
-> die aber **erst startet, wenn tatsächlich Anfragen reinkommen**. Das Werbebudget von rund 1.500 €
-> zahlen Sie direkt an Meta/Google, nicht an mich. Die Details zeig ich Ihnen kurz am iPad."
+> „Einmalig 850 € Onboarding, plus eine monatliche Betreuung von 1.500 €, die aber **erst startet, wenn
+> Sie über meine Werbung Ihre erste Küche verkauft haben**. Das Werbebudget von rund 1.500 € zahlen Sie
+> direkt an Meta/Google, nicht an mich. Die Details zeig ich Ihnen kurz am iPad."
 
 **„Facebook funktioniert bei uns nicht / unsere Kunden sind da nicht."**
 > „Das denken viele, gerade bei Küchen ist es aber stark, weil die Leute die Entscheidung lange vor
@@ -106,8 +106,8 @@ Nicht erreicht → kurze Mailbox-Nachricht, max. 3 Versuche zu **verschiedenen Z
 
 ## Was du versprichst
 
-Anfragen/Termine + Anfragen-Garantie (min. 7 in 30 Tagen), **keine** garantierten Küchenverkäufe
-(der Abschluss liegt beim Studio).
+Anfragen/Termine + faire Kopplung (monatliche Betreuung erst ab der ersten verkauften Küche),
+**keine** garantierten Küchenverkäufe (der Abschluss liegt beim Studio).
 
 ## Nach jedem Besuch: in `klienten-leads.csv` eintragen
 
