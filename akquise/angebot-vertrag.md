@@ -12,11 +12,14 @@
 |---|---|---|
 | Onboarding-Gebühr (einmalig, Setup) | **850 €** | fällig bei Vertragsbeginn |
 | Monatliche Betreuung | **1.500 €/Monat** | **startet erst ab der ersten verkauften Küche**, monatlich kündbar |
-| Werbebudget (extra, Kunde zahlt direkt an Meta/Google) | **~2.500 €/Monat** | nach Absprache |
+| Werbebudget (extra, Kunde zahlt direkt an Meta/Google) | **~1.500 €/Monat** | nach Absprache |
 
 - **Monatlich erst ab dem ersten Verkauf = dein stärkstes Argument:** die 1.500 €/Monat laufen erst,
   wenn der Kunde über die Werbung **die erste Küche verkauft** hat. Bis dahin zahlt er nur das
   einmalige Onboarding + sein Werbebudget. „Du zahlst mich erst, wenn du verdient hast" nimmt die Angst.
+- **Geld-zurück-Garantie:** kommen in den ersten 30 Tagen keine echten Anfragen → Onboarding (850 €) zurück.
+- **Realistisch kommunizieren:** ein echter Küchenverkauf braucht meist **1–2 Monate** (langer Kaufprozess), die Anfragen kommen aber schnell.
+- **Jederzeit kündbar**, keine Mindestlaufzeit → senkt die Hürde beim Ja.
 - **Auf Wert verkaufen:** eine verkaufte Küche bringt dem Kunden 10–30k € — die 1.500 €/Monat sind klein.
 - **Auf Wert verkaufen, nicht auf Rabatt.** Ein Abschluss bringt dem Kunden 10–30k € — deine Gebühr ist klein.
 - **Monatlich kündbar** halten → senkt die Hürde beim Ja.
@@ -55,12 +58,12 @@ Datum: [__]
 - **Onboarding-Gebühr (einmalig):** 850 € — fällig bei Vertragsbeginn (Setup; zur monatlichen Betreuung siehe §7).
 - **Monatliche Betreuung:** 1.500 € — beginnt, **sobald der Auftraggeber über die Kampagne die erste
   Küche verkauft** hat, danach fällig jeweils zum [Monatsanfang/__], monatlich kündbar.
-- **Werbebudget (~2.500 €/Monat):** wird vom Auftraggeber **separat und direkt an Meta/Google** gezahlt (nicht Teil dieser Vergütung).
+- **Werbebudget (~1.500 €/Monat):** wird vom Auftraggeber **separat und direkt an Meta/Google** gezahlt (nicht Teil dieser Vergütung).
 - Zahlung per Überweisung auf: [IBAN], Zahlungsziel **14 Tage** ab Rechnungsdatum.
 - *(Kleinunternehmer)* Gemäß **§19 UStG** wird **keine Umsatzsteuer** berechnet.
 
 ### 4. Laufzeit & Kündigung
-- Beginn: [Datum]. **Monatlich kündbar** mit **14 Tagen** Frist zum Monatsende, formlos in Textform (E-Mail genügt).
+- Beginn: [Datum]. **Keine Mindestlaufzeit, jederzeit zum Monatsende kündbar** (formlos in Textform, E-Mail genügt). Der Auftraggeber ist an nichts langfristig gebunden.
 
 ### 5. Datenschutz
 - Über die Landingpage werden personenbezogene Daten von Interessenten verarbeitet. Beide Parteien
@@ -72,17 +75,18 @@ Datum: [__]
   Auftraggebers ab; ein bestimmter Umsatz wird nicht garantiert.
 - Der Auftragnehmer darf das Projekt (anonymisiert/mit Zustimmung) als **Referenz** nennen.
 
-### 7. Monatliche Betreuung erst ab dem ersten Verkauf
-- Die **monatliche Betreuung (1.500 €)** wird **erst fällig, sobald der Auftraggeber über eine durch
-  die Werbung gewonnene Anfrage seine erste Küche verkauft** hat. Bis dahin zahlt der Auftraggeber
-  **nur die einmalige Onboarding-Gebühr (850 €) und sein Werbebudget** (direkt an Meta/Google).
-- Ab dem Monat des ersten Verkaufs läuft die monatliche Betreuung, monatlich kündbar (§4).
-- **Meldung des ersten Verkaufs:** Der Auftraggeber teilt den ersten Abschluss aus einer vermittelten
-  Anfrage zeitnah mit (Basis für den Start der monatlichen Abrechnung).
-- **Voraussetzung:** der Auftraggeber hat seine Pflichten aus §2 erfüllt (Material geliefert, Zugänge
-  freigegeben, Werbebudget bereitgestellt, **zeitnah auf Anfragen reagiert**).
-- Es wird **kein bestimmter Umsatz garantiert**; der Verkauf selbst liegt beim Auftraggeber. Der
-  Auftragnehmer optimiert die Kampagne laufend, damit Anfragen entstehen.
+### 7. Garantie & Start der monatlichen Betreuung
+- **Geld-zurück-Garantie auf das Onboarding:** Kommen in den ersten **30 Tagen ab Kampagnenstart**
+  **keine echten Anfragen** über die Landingpage, wird die **Onboarding-Gebühr (850 €) vollständig
+  erstattet**. (Anfrage = echter Name + erreichbare Telefonnummer aus der Zielregion; Spam zählt nicht.)
+- **Monatliche Betreuung erst ab dem ersten Verkauf:** Die **1.500 €/Monat** werden **erst fällig,
+  sobald der Auftraggeber über eine vermittelte Anfrage die erste Küche verkauft** hat. Bis dahin zahlt
+  er **nur das Onboarding (850 €) und sein Werbebudget** (direkt an Meta/Google). Der Auftraggeber meldet
+  den ersten Abschluss zeitnah (Basis für den Start der Abrechnung).
+- **Realistischer Zeitrahmen:** Ein tatsächlicher Küchenverkauf braucht erfahrungsgemäß **1–2 Monate**
+  (längerer Kaufentscheidungsprozess). Die Garantie oben bezieht sich daher auf **Anfragen**, nicht auf
+  einen Verkauf innerhalb von 30 Tagen. Ein bestimmter Umsatz wird nicht garantiert (der Verkauf liegt beim Auftraggeber).
+- **Voraussetzung:** der Auftraggeber hat seine Pflichten aus §2 erfüllt (Material, Zugänge, Werbebudget, **zeitnahe Reaktion** auf Anfragen).
 
 ---
 

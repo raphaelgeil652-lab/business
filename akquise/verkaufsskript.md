@@ -47,13 +47,23 @@ kurzen **Termin (15 Min)** zu vereinbaren, in dem du das System zeigst.
 ### 5) Termin / Abschluss + Risk-Reversal
 > „Damit's für Sie null Risiko ist: Die monatliche Betreuung von 1.500 € zahlen Sie **erst, wenn Sie
 > über meine Werbung Ihre erste Küche verkauft haben**. Bis dahin nur das einmalige Onboarding und Ihr
-> Werbebudget. Ich verdiene also erst, wenn Sie verdienen."
+> Werbebudget. Und kommen in den ersten 30 Tagen gar keine Anfragen, kriegen Sie das Onboarding zurück.
+> Sie sind an nichts gebunden, **jederzeit kündbar**."
 
-Wenn er noch überlegen will → **Termin fixieren:**
-> „Passt Ihnen **[Tag] vormittags** besser oder **[anderer Tag] nachmittags**? Dann setzen wir uns in
-> Ruhe 15 Minuten zusammen." *(Zwei Optionen statt „hätten Sie mal Zeit?". Handynummer/E-Mail holen.)*
+**Erwartung ehrlich setzen (wichtig):**
+> „Die Anfragen kommen meist schon in den ersten Tagen. Bis wirklich eine Küche verkauft ist, dauert's
+> erfahrungsgemäß **1–2 Monate**, so eine Kaufentscheidung braucht Zeit. Das ist ganz normal."
 
-### 6) Wenn der Chef nicht da ist
+### 6) Closing — wenn er Ja sagt
+
+Direkt abschließen, nicht vertagen:
+> „Super, dann machen wir's. Wir **starten diese Woche mit dem Onboarding**. Ich schick Ihnen gleich eine
+> **Schritt-für-Schritt-Anleitung**, wie wir alles einrichten (Fotos, Logo, Zugänge), dann geht's los."
+
+→ **Vertrag direkt vor Ort unterschreiben** (Vorlage: `angebot-vertrag.md`, Studioname + Datum ausfüllen),
+Onboarding (850 €) in Rechnung stellen, Studio-Fotos/Logo + Konten-Zugänge einsammeln.
+
+### 7) Wenn der Chef nicht da ist
 > „Wann ist er am besten erreichbar? Ich notier's mir und melde mich. Hier meine Karte."
 
 → Name + beste Zeit aufschreiben, Karte/Nummer dalassen, später **telefonisch nachfassen** (unten).
@@ -84,7 +94,7 @@ In `klienten-leads.csv` eintragen.
 
 **„Was kostet das?"**
 > „Einmalig 850 € Onboarding, plus eine monatliche Betreuung von 1.500 €, die aber **erst startet, wenn
-> Sie über meine Werbung Ihre erste Küche verkauft haben**. Das Werbebudget von rund 2.500 € zahlen Sie
+> Sie über meine Werbung Ihre erste Küche verkauft haben**. Das Werbebudget von rund 1.500 € zahlen Sie
 > direkt an Meta/Google, nicht an mich. Die Details zeig ich Ihnen kurz am iPad."
 
 **„Facebook funktioniert bei uns nicht / unsere Kunden sind da nicht."**

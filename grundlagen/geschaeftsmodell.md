@@ -31,9 +31,12 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 - **Monatliche Betreuung 1.500 €/Monat — startet erst ab der ersten verkauften Küche** (Risk-Reversal,
   dein stärkstes Argument): Solange der Kunde über die Werbung noch keine Küche verkauft hat, zahlt er
   **nur Onboarding + Werbebudget**. „Du zahlst mich erst, wenn du verdient hast" nimmt beim Abschluss die Angst.
-  - Ab dem Monat des ersten Abschlusses läuft die 1.500 €/Monat, monatlich kündbar.
+  - Ab dem Monat des ersten Abschlusses läuft die 1.500 €/Monat.
   - Der Kunde meldet den ersten Verkauf aus einer vermittelten Anfrage (= Start der monatlichen Abrechnung).
-- **Werbebudget ~2.500 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
+- **Geld-zurück-Garantie:** kommen in den ersten **30 Tagen** keine echten Anfragen → **Onboarding (850 €) zurück**.
+- **1–2 Monate bis zum ersten Verkauf** ehrlich ansagen (Küche kaufen dauert), die Anfragen kommen aber schnell.
+- **Jederzeit kündbar**, keine Mindestlaufzeit (Kunde ist an nichts gebunden).
+- **Werbebudget ~1.500 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
 - **Was du versprichst:** Anfragen/Termine + faire Kopplung (Betreuung erst ab Verkauf) — **keine**
   garantierten Küchenverkäufe (der Abschluss hängt am Studio). Vertrags-Vorlage: `../akquise/angebot-vertrag.md`.
 
