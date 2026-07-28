@@ -16,7 +16,7 @@ Aufbau der Agentur **Clickculture** — Performance-Marketing für **EINE fokuss
 
 **Kanäle:** Meta (Facebook/Instagram) **+ Google Ads**. Meta weckt Nachfrage (Feed), Google fängt aktive Sucher ab („Küchenstudio [Ort]").
 
-**Preis-/Garantie-Modell:** Onboarding **850 €** (mit **Geld-zurück-Garantie**: keine vereinbarten Anfragen in 30 Tagen → Gebühr zurück) + **monatliche Betreuung 1.500 €/Monat, die erst startet, wenn Anfragen laufen**; **Werbebudget ~1.499 €/Monat** zahlt der Kunde direkt an Meta/Google. Details: `grundlagen/geschaeftsmodell.md`.
+**Preis-/Garantie-Modell:** Onboarding **850 €** einmalig (Setup) + **monatliche Betreuung 1.500 €/Monat, die erst ab der ersten verkauften Küche startet** (Risk-Reversal: der Kunde zahlt die Betreuung erst, wenn er über die Werbung verdient hat); **Werbebudget ~1.499 €/Monat** zahlt der Kunde direkt an Meta/Google. Details: `grundlagen/geschaeftsmodell.md`.
 
 Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Oberschwaben); per Targeting erweiterbar.
 
@@ -37,7 +37,7 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
   - `klienten-leads.csv` — recherchierte Küchenstudio-Leads in der Region.
   - `besuchs-reihenfolge.md` — priorisierte Besuchs-/Fahrt-Reihenfolge (welche Läden in welcher Reihenfolge).
   - `verkaufsskript.md` — **Vor-Ort-Skript (persönlich reingehen)** + Einwände + Telefon als Nachfass-Fallback (früher `wissen/sales.md`).
-  - `angebot-vertrag.md` — 1-Seiten-Vereinbarung + Anfragen-Garantie.
+  - `angebot-vertrag.md` — 1-Seiten-Vereinbarung + Vergütung (Betreuung erst ab erstem Verkauf).
   - `onboarding-email.md` — Onboarding-Mail-Vorlage.
   - `erster-kunde-fahrplan.md` / `fahrplan-erster-umsatz.md` — Startweg + abhakbare To-do-Liste bis zur ersten Überweisung.
 - **`anleitungen/` — Wie-geht-was (nur bei Bedarf reinschauen):**
@@ -68,6 +68,6 @@ Angebot/Vertrag-Vorlage + Salescall-Skript + Leads bereit. **Noch keine Klienten
 
 **Ziel: 7.000 € bis 01.10.2026** (Details/Rückrechnung in `grundlagen/geschaeftsmodell.md`). Hebel = **jetzt akquirieren**:
 Küchenstudios **vor Ort abklappern** (persönlich reingehen; telefonisch nur nachfassen) (`akquise/verkaufsskript.md`, `akquise/klienten-leads.csv`, `akquise/besuchs-reihenfolge.md`),
-~2 Kunden im August abschließen (Onboarding 850 € + 1.500 €/Monat ab Ergebnissen, Geld-zurück-Garantie). Fahrplan bis zum ersten Geld:
+~2 Kunden im August abschließen (Onboarding 850 € + 1.500 €/Monat ab der ersten verkauften Küche). Fahrplan bis zum ersten Geld:
 `akquise/fahrplan-erster-umsatz.md`. Verkaufs-One-Pager zum Vorzeigen (alles in einer Datei): `seiten/pitch/` (Links in `README.md`).
 Der ganze Automatik-Überbau (GHL/n8n/CAPI) kommt erst nach den ersten Kunden.

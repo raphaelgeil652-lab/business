@@ -27,25 +27,15 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 - Werbebudget zahlt der Klient direkt an Meta (getrennt von unserer Fee).
 
 **Preis-/Garantie-Modell (Clickculture):**
-- **Onboarding 850 €** einmalig **mit Anfragen-Garantie** (Risk-Reversal, dein stärkstes Argument):
-  - **Garantiere 7 qualifizierte Anfragen in 30 Tagen** ab Kampagnenstart. Prinzip: **wenig
-    garantieren, viel liefern** — 7 ist der sichere Boden (bei ~1.499 € Budget realistisch eher
-    15–40). Im Gespräch: „garantiert min. 7, realistisch eher 15–30".
-  - **Stufe davor statt sofort Geld weg:** Werden die 7 nicht erreicht, **erst kostenlos
-    weiterarbeiten**, bis sie da sind. Erst wenn auch das scheitert → Onboarding zurück. So verlierst
-    du fast nie die 850 €.
-  - **Qualifizierte Anfrage** klar definieren: echter Name + erreichbare Telefonnummer, Zielregion,
-    Küchen-Interesse; Spam/Fake zählt nicht. Gilt nur, wenn der Kunde seine Pflichten erfüllt
-    (Budget läuft, Zugänge/Material da, **zeitnah reagiert**).
-  - Nach dem **ersten Kunden** hast du echte Zahlen (Kosten pro Anfrage) → Garantie ggf. auf 10–15 anheben.
-- **Monatliche Betreuung 1.500 €/Monat**, monatlich kündbar. Wichtig: die Betreuung **startet erst,
-  wenn Ergebnisse laufen** (die Anfrage-Maschine bringt Anfragen). Bis dahin zahlt der Kunde nur das
-  Onboarding — ein starkes Vertrauenssignal beim Abschluss.
+- **Onboarding 850 €** einmalig (Setup: Landingpage, Kampagnen, Anfrage-Weiterleitung).
+- **Monatliche Betreuung 1.500 €/Monat — startet erst ab der ersten verkauften Küche** (Risk-Reversal,
+  dein stärkstes Argument): Solange der Kunde über die Werbung noch keine Küche verkauft hat, zahlt er
+  **nur Onboarding + Werbebudget**. „Du zahlst mich erst, wenn du verdient hast" nimmt beim Abschluss die Angst.
+  - Ab dem Monat des ersten Abschlusses läuft die 1.500 €/Monat, monatlich kündbar.
+  - Der Kunde meldet den ersten Verkauf aus einer vermittelten Anfrage (= Start der monatlichen Abrechnung).
 - **Werbebudget ~1.499 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
-- **Anlauf bis die Kampagne läuft:** im ersten Zeitraum optimierst du nach, bis die Anfrage-Maschine
-  sauber läuft — dann greift die monatliche Betreuung. Klar begrenzen, nicht open-ended, sonst Gratis-Falle.
-- **Was du versprichst:** Anfragen/Termine + Garantie — **keine** garantierten Küchenverkäufe (der
-  Abschluss hängt am Studio). Fertige Vertrags-Vorlage mit Garantie-Klausel: `../akquise/angebot-vertrag.md`.
+- **Was du versprichst:** Anfragen/Termine + faire Kopplung (Betreuung erst ab Verkauf) — **keine**
+  garantierten Küchenverkäufe (der Abschluss hängt am Studio). Vertrags-Vorlage: `../akquise/angebot-vertrag.md`.
 
 ## Ziel: 7.000 € bis 01.10.2026
 
