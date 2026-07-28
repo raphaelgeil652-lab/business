@@ -19,12 +19,12 @@ zu sein, sondern **einem Betrieb echte Anfragen zu bringen** und daraus eine Cas
 
 ## Phase 1 — Ersten Kunden gewinnen (die wichtigste Phase)
 
-- [ ] **Anruf-Liste nehmen:** `klienten-leads.csv` (14 echte Betriebe mit Nummer).
-- [ ] **Case-Study-Deal anbieten:** ersten Kunden **vergünstigt oder kostenlos** – im Tausch gegen ein **Testimonial** und die Erlaubnis, die Ergebnisse zu zeigen. Das senkt seine Hürde und gibt dir deinen Beweis.
+- [ ] **Besuchs-Liste + Route nehmen:** `klienten-leads.csv` + `besuchs-reihenfolge.md` (über 25 echte Betriebe).
+- [ ] **Vor Ort reingehen und Pitch-Seite am iPad zeigen** (Skript: `verkaufsskript.md`). Angebot: 850 € Onboarding mit **Anfragen-Garantie** (min. 7 in 30 Tagen, sonst Geld zurück), monatliche Betreuung erst ab Ergebnissen. Das ist dein Risk-Reversal, das senkt seine Hürde.
 - [ ] **Kapazität prüfen** (wichtig, Playbook-Filter Punkt 5): Kann der Betrieb zusätzliche Termine/Aufträge überhaupt bedienen? Wenn nicht → anderer Betrieb.
-- [ ] **Salescall-Notizen** in `verkaufsskript.md` festhalten (was funktioniert, welche Einwände).
+- [ ] **Gesprächs-Notizen** in `verkaufsskript.md` festhalten (was funktioniert, welche Einwände).
 
-> Merke: Das ist **dein** Job (Anrufe, Vertrauen, Abschluss) — das kann kein Tool und keine KI für dich machen.
+> Merke: Das ist **dein** Job (Vor-Ort-Besuche, Vertrauen, Abschluss) — das kann kein Tool und keine KI für dich machen.
 
 ## Phase 2 — Schlank aufsetzen (für diesen einen Kunden)
 
@@ -53,7 +53,7 @@ Wenn der erste Kunde läuft und du den Beweis hast:
 
 | Nur du selbst | System / Claude |
 |---|---|
-| Anrufen, Vertrauen aufbauen, Deal abschließen | Landingpage, Ad-Copy, Vorlagen bauen |
+| Vor Ort reingehen, Vertrauen aufbauen, Deal abschließen | Landingpage, Ad-Copy, Vorlagen bauen |
 | Meta-/Zahlungskonten verifizieren | Lead-Recherche, Doku pflegen |
 | Entscheidungen zu Budget/Preisen | (später) Automationen/Tracking einrichten |
 | Ergebnisse mit dem Kunden besprechen | Reports vorbereiten |
@@ -61,7 +61,7 @@ Wenn der erste Kunde läuft und du den Beweis hast:
 ## Diese Woche konkret
 
 1. Landingpage aus der Vorlage fertig personalisieren + bei Netlify/Vercel hochladen.
-2. 5 Betriebe aus `klienten-leads.csv` anrufen (mit Case-Study-Angebot).
+2. 5 Betriebe aus `besuchs-reihenfolge.md` **vor Ort besuchen** (Pitch-Seite am iPad zeigen).
 3. Ergebnisse + Einwände in `verkaufsskript.md` notieren.
 
 Ein einziges „Ja" reicht, um loszulegen. Der Rest wächst von dort.

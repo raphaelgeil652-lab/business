@@ -30,7 +30,7 @@ schnellste Weg zum ersten Umsatz.
 
 ## Block C — Ersten Kunden gewinnen
 
-- [ ] **Anrufen** — Skript `verkaufsskript.md`, Liste `klienten-leads.csv` (Start: Hoch-Prio-Küchenstudios).
+- [ ] **Vor Ort abklappern** — Skript `verkaufsskript.md`, Route `besuchs-reihenfolge.md`, Liste `klienten-leads.csv` (Start: Hoch-Prio-Küchenstudios).
 - [ ] **Termin/Demo:** deine Live-Landingpage zeigen, Case-Study-Deal erklären.
 - [ ] **Zusage + Vertrag** → **jetzt die Onboarding-Gebühr in Rechnung stellen** (siehe Block F).
 - [ ] **Kapazität prüfen** vor Abschluss (kann der Betrieb mehr Termine bedienen?).
@@ -60,10 +60,10 @@ schnellste Weg zum ersten Umsatz.
 ## Zeitrahmen & Realismus
 
 - Block A/B: wenige Tage.
-- **Flaschenhals = Block C** (das erste „Ja") — können 5 oder 50 Anrufe sein. Dranbleiben.
+- **Flaschenhals = Block C** (das erste „Ja") — können 5 oder 50 Besuche sein. Dranbleiben.
 - Sobald das Ja steht, ist das erste Geld über die Onboarding-Gebühr schnell da.
 
 ## Dein allererster nächster Schritt
 
-**Gewerbe anmelden + Meta-Konto anlegen + mit dem Anrufen starten** (Block A und C laufen parallel).
+**Gewerbe anmelden + Meta-Konto anlegen + mit dem Abklappern (vor Ort) starten** (Block A und C laufen parallel).
 Die Technik (Landingpage) steht ja schon.

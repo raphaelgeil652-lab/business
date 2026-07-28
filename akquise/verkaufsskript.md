@@ -1,132 +1,130 @@
-# Wissen: Sales & Akquise — Salescall-Skript (Küche & Bad)
+# Verkaufsskript (Küche) — persönlich vor Ort
 
-Für den **Erstanruf** bei Küchen-/Bad-Betrieben aus `klienten-leads.csv`.
-Ziel ist **nicht**, am Telefon zu verkaufen, sondern **einen kurzen Termin (15–20 Min,
-vor Ort oder Video)** zu vereinbaren, in dem du das System zeigst. Anrede: **Sie**.
+Du gehst **persönlich in die Läden rein** (Route: `besuchs-reihenfolge.md`). Das Telefon ist nur
+**Nachfass-Fallback**, wenn der Chef nicht da war (ganz unten). Anrede: **Sie**.
 
-> Kurz zur Rechtslage: B2B-Anrufe bei fachlich passenden Betrieben (du bietest ihnen
-> Kundengewinnung an) sind i. d. R. zulässig. Bleib seriös, kein Druck, akzeptiere ein Nein.
+Ziel ist **nicht**, sofort zu verkaufen, sondern **das iPad zu zeigen** (Pitch-Seite) oder einen
+kurzen **Termin (15 Min)** zu vereinbaren, in dem du das System zeigst.
 
----
-
-## Mindset (bevor du wählst)
-
-- Du **hilfst** ihm, du bettelst nicht. Ein neuer Küchen-/Bad-Kunde = 10–40k € für ihn.
-- Dein Angebot ist **risikoarm**: Case-Study, vergünstigt/fast kostenlos, gegen ehrliche Bewertung.
-- Ziel des Calls = **Termin**, nicht Abschluss. Das nimmt den Druck raus.
-- Die ersten 10 Anrufe sind Übung. Locker bleiben, lächeln (hört man).
-
-## Vorbereitung (30 Sekunden pro Lead)
-
-- Betrieb kurz googeln: Haben sie eine Website? Läuft schon Werbung? Inhabername?
-- Notiere dir den **Inhabernamen** (steht oft in der CSV/im Impressum).
-- Zettel bereit: Name, ein konkreter Aufhänger, Terminvorschläge.
+> Kurz zur Rechtslage: Ein persönlicher B2B-Besuch bei fachlich passenden Betrieben ist unproblematisch.
+> Bleib seriös, respektiere ein „gerade keine Zeit / kein Interesse".
 
 ---
 
-## Das Skript
+## Mindset (30 Sekunden vorm Reingehen)
 
-### 1) Falls jemand anderes rangeht (Gatekeeper)
-> „Guten Tag, [dein Name] hier. Könnten Sie mich bitte mit **[Inhabername]** verbinden? Es geht um die **Kundengewinnung** für [Betriebsname]."
-
-Wenn „worum geht's genau?":
-> „Ich helfe Küchen-/Badstudios in der Region, über Facebook mehr Anfragen für kostenlose Planungen zu bekommen. Ich wollte kurz mit [Inhabername] schauen, ob das für Sie interessant ist — zwei Minuten reichen."
-
-### 2) Opener (Inhaber am Telefon)
-> „Guten Tag [Herr/Frau Nachname], mein Name ist [dein Name]. Ich mach's ganz kurz — haben Sie 2 Minuten?"
-
-*(Kurz warten. Sagt er „ja" oder „worum geht's?" → weiter.)*
-
-### 3) Grund des Anrufs (ehrlich, direkt)
-> „Ich baue gerade eine kleine Agentur auf, die **speziell Küchen- und Badstudios** über Facebook- und Instagram-Werbung neue Anfragen bringt — konkret Leute, die eine **kostenlose Küchenplanung / Bad-Beratung** wollen. Ich bin hier aus der Region ([Ort]) und suche **1–2 Betriebe**, mit denen ich das als Referenzprojekt aufziehe."
-
-### 4) Kurz-Pitch (die Case-Study)
-> „Weil ich am Anfang stehe und ein **echtes Ergebnis in der Region** vorzeigen will, mache ich das für den ersten Betrieb **stark vergünstigt** — im Grunde zahlen Sie fast nur das Werbebudget bei Facebook. Im Gegenzug hätte ich später gern eine **ehrliche Bewertung**, wenn es funktioniert. Sie gehen also kaum ein Risiko ein."
-
-### 5) Qualifizieren (2 kurze Fragen — WICHTIG)
-> „Damit ich weiß, ob das überhaupt passt: **Könnten Sie aktuell mehr Anfragen / Termine gebrauchen** — oder sind Sie eh schon voll ausgelastet?"
-
-*(Kapazität ist Playbook-Filter Punkt 5. Wenn komplett ausgebucht → ehrlich sagen, evtl. später.)*
-
-> „Und wie kommen bei Ihnen gerade **neue Kunden rein** — eher Empfehlung, Laufkundschaft, oder machen Sie schon Werbung?"
-
-### 6) Termin vereinbaren (der eigentliche Close)
-> „Am besten zeige ich Ihnen in **15 Minuten** ganz konkret, wie das aussieht — die Seite, die Anzeige, wie die Anfragen reinkommen. Passt Ihnen **[Tag] vormittags** besser oder **[anderer Tag] nachmittags**?"
-
-*(Zwei Optionen anbieten statt „hätten Sie mal Zeit?". Termin fixieren, Handynummer/E-Mail für die Einladung holen.)*
+- Du **hilfst** ihm, du bettelst nicht. Ein neuer Küchen-Kunde = 10–30k € für ihn, deine Gebühr ist winzig dagegen.
+- Dein Angebot ist **risikoarm**: Anfragen-Garantie, monatliche Betreuung erst ab Ergebnissen.
+- Ziel = **Termin oder iPad zeigen**, kein Abschluss auf der Stelle. Das nimmt den Druck.
+- Die ersten 2–3 Läden sind Übung. Locker bleiben, lächeln.
 
 ---
 
-## Einwände + Antworten
+## Vor Ort — der Ablauf im Laden
 
-**„Ich hab keine Zeit."**
-> „Total verständlich, kurz halt ich Sie nicht auf. Ich schick Ihnen zwei Terminvorschläge — 15 Minuten, unverbindlich. Passt [Tag] oder [Tag] besser?"
+### 1) Reingehen
+> „Grüß Gott! Ist der Inhaber / der Chef da?"
+
+### 2) Wenn der Chef da ist — Opener + Pitch
+> „Ich halt Sie nur ganz kurz auf. Mein Name ist [dein Name] von **Clickculture**. Ich bin aus der
+> Region und helfe Küchenstudios, über Facebook- und Google-Werbung mehr **Anfragen für kostenlose
+> Küchenplanungen** zu bekommen. Ich suche gerade 1–2 Studios hier in der Ecke, mit denen ich das
+> aufziehe. Wäre das für Sie grundsätzlich interessant?"
+
+### 3) Kurz qualifizieren (2 Fragen)
+> „Damit ich weiß, ob das überhaupt passt: **Könnten Sie aktuell mehr Anfragen gebrauchen**, oder sind
+> Sie eh schon voll ausgelastet?"
+
+*(Wenn komplett ausgebucht → ehrlich, evtl. später. Kapazität ist Playbook-Filter Punkt 5.)*
+
+> „Und wie kommen bei Ihnen gerade **neue Kunden rein** — eher Empfehlung, Laufkundschaft, oder machen
+> Sie schon Werbung?"
+
+### 4) iPad zeigen
+> „Am einfachsten zeig ich's Ihnen kurz, dann sehen Sie's direkt." → **Pitch-Seite am iPad** aufmachen
+> und durchscrollen (Ablauf → Beispiel-Anzeige → Landingpage → Preise → Garantie).
+
+### 5) Termin / Abschluss + Risk-Reversal
+> „Damit's für Sie null Risiko ist: Ich garantiere Ihnen **mindestens 7 Anfragen im ersten Monat**.
+> Kommen die nicht, arbeite ich kostenlos weiter, bis sie da sind, und klappt auch das nicht, kriegen
+> Sie Ihr Onboarding zurück."
+
+Wenn er noch überlegen will → **Termin fixieren:**
+> „Passt Ihnen **[Tag] vormittags** besser oder **[anderer Tag] nachmittags**? Dann setzen wir uns in
+> Ruhe 15 Minuten zusammen." *(Zwei Optionen statt „hätten Sie mal Zeit?". Handynummer/E-Mail holen.)*
+
+### 6) Wenn der Chef nicht da ist
+> „Wann ist er am besten erreichbar? Ich notier's mir und melde mich. Hier meine Karte."
+
+→ Name + beste Zeit aufschreiben, Karte/Nummer dalassen, später **telefonisch nachfassen** (unten).
+In `klienten-leads.csv` eintragen.
+
+---
+
+## Einwände + Antworten (gelten vor Ort & am Telefon)
+
+**„Ich hab gerade keine Zeit."**
+> „Total verständlich, ich halt Sie nicht auf. Wann passt's diese Woche mal für 15 Minuten in Ruhe,
+> eher Anfang oder Ende der Woche?"
 
 **„Kein Interesse."**
-> „Alles gut. Darf ich fragen — liegt's daran, dass Sie aktuell genug zu tun haben, oder haben Sie mit Werbung schon schlechte Erfahrungen gemacht?" *(Öffnet oft nochmal das Gespräch; wenn wirklich nein → höflich beenden.)*
+> „Alles gut. Darf ich kurz fragen: liegt's daran, dass Sie eh genug zu tun haben, oder haben Sie mit
+> Werbung schon schlechte Erfahrungen gemacht?" *(Öffnet oft nochmal das Gespräch; wenn wirklich nein → höflich beenden.)*
 
 **„Wir haben genug Kunden / sind ausgebucht."**
-> „Freut mich, das ist ein gutes Zeichen. Dann wäre es eher was für später oder für ruhigere Monate — soll ich mich in [Zeitraum] nochmal melden?"
+> „Freut mich, gutes Zeichen. Dann wäre es eher was für ruhigere Monate, soll ich mich in [Zeitraum] nochmal melden?"
 
-**„Wir haben schon eine Agentur / machen schon Facebook."**
-> „Super, dann kennen Sie das Prinzip. Läuft es denn so gut, wie Sie sich's wünschen? Ich schau in den 15 Minuten gern mal drüber — oft sind's Kleinigkeiten (Angebot, Landingpage), die den Unterschied machen."
+**„Wir machen schon Facebook / haben schon eine Agentur."**
+> „Super, dann kennen Sie das Prinzip. Läuft's denn so gut, wie Sie sich's wünschen? Oft sind's
+> Kleinigkeiten am Angebot oder der Landingpage, die den Unterschied machen, das schau ich mir gern an."
 
 **„Schicken Sie mir Infos per Mail."**
-> „Mach ich gern. Ehrlich gesagt sagt so eine Mail wenig — in 15 Minuten zeige ich Ihnen konkret, wie's für [Betriebsname] aussehen würde. Ich schick die Infos **und** wir machen einen kurzen Termin, dann können Sie's gleich einordnen. Passt [Tag]?"
+> „Mach ich gern. Ehrlich gesagt sagt so eine Mail wenig, in 15 Minuten zeig ich Ihnen konkret, wie's
+> für Ihr Studio aussieht. Ich schick die Infos **und** wir machen einen kurzen Termin."
 
 **„Was kostet das?"**
-> „Für das Referenzprojekt bewusst wenig — im Grunde nur Ihr Werbebudget plus eine kleine Einrichtungsgebühr. Die genauen Zahlen zeig ich Ihnen im Termin, wenn Sie sehen, was Sie dafür bekommen. Wann passt's Ihnen?"
+> „Einmalig 850 € Onboarding, mit Geld-zurück-Garantie, plus eine monatliche Betreuung von 1.500 €,
+> die aber **erst startet, wenn tatsächlich Anfragen reinkommen**. Das Werbebudget von rund 1.500 €
+> zahlen Sie direkt an Meta/Google, nicht an mich. Die Details zeig ich Ihnen kurz am iPad."
 
 **„Facebook funktioniert bei uns nicht / unsere Kunden sind da nicht."**
-> „Das denken viele — gerade bei Küche und Bad ist es aber stark, weil die Leute die Entscheidung lange vor sich herschieben. Genau die holen wir mit der kostenlosen Planung ab. Ich zeig Ihnen im Termin Beispiele."
+> „Das denken viele, gerade bei Küchen ist es aber stark, weil die Leute die Entscheidung lange vor
+> sich herschieben. Genau die holen wir mit der kostenlosen Planung ab. Beispiele zeig ich Ihnen gleich."
 
 ---
 
-## Kein Erreichen / Anrufbeantworter
+## Telefon-Nachfassen (nur Fallback, wenn der Chef nicht da war)
 
-Kurze Mailbox-Nachricht:
-> „Guten Tag [Name], [dein Name] hier, kurz wegen Kundengewinnung für [Betrieb] über Facebook. Ich probier's die Tage nochmal — oder Sie erreichen mich unter [Nummer]. Danke!"
+Kurzer Anruf, um den Chef doch zu erreichen oder den Termin zu machen:
+> „Guten Tag [Herr/Frau Nachname], [dein Name] von Clickculture, ich war die Tage kurz bei Ihnen im
+> Studio. Ich helfe Küchenstudios in der Region, über Werbung mehr Anfragen zu bekommen. Haben Sie
+> zwei Minuten, oder passt es besser, wenn ich diese Woche nochmal kurz vorbeikomme?"
 
-→ Max. 3 Versuche zu **verschiedenen Zeiten** (vormittags / früher Nachmittag). Danach ggf. vor Ort vorbeischauen.
+Nicht erreicht → kurze Mailbox-Nachricht, max. 3 Versuche zu **verschiedenen Zeiten**.
 
-## Nach jedem Anruf: in `klienten-leads.csv` eintragen
+---
 
-- **Status:** z. B. „kein Interesse", „Termin vereinbart", „später nachfassen", „nicht erreicht".
+## Was du versprichst
+
+Anfragen/Termine + Anfragen-Garantie (min. 7 in 30 Tagen), **keine** garantierten Küchenverkäufe
+(der Abschluss liegt beim Studio).
+
+## Nach jedem Besuch: in `klienten-leads.csv` eintragen
+
+- **Status:** z. B. „Termin vereinbart", „iPad gezeigt, überlegt", „Chef nicht da, nachfassen", „kein Interesse".
 - **Naechster_Schritt** + Datum.
 - **Notizen:** was er gesagt hat (Kapazität, aktuelle Kundengewinnung, Einwand).
 
 ---
 
-## Vor Ort (Tür-zu-Tür, beim Abklappern)
-
-Kurz, respektvoll, kein Druck (evtl. haben sie Kundschaft). Ziel: Chef sprechen → kurzer Pitch →
-Termin oder Kontakt. Reihenfolge/Route: `anruf-reihenfolge.md`.
-
-**Reingehen:** „Grüß Gott! Ist der Inhaber / der Chef da?"
-
-**Wenn der Chef da ist:**
-> „Ich halt Sie nur ganz kurz auf. Mein Name ist [Name] von **Clickculture** — ich bin aus der Region
-> und helfe Küchenstudios, über Facebook- und Google-Werbung mehr **Anfragen für kostenlose
-> Küchenplanungen** zu bekommen. Ich such gerade 1–2 Studios hier in der Ecke, mit denen ich das aufziehe.
-> Wäre das für Sie grundsätzlich interessant?"
-
-Bei Interesse → **Termin + Risk-Reversal:**
-> „Am besten zeig ich's Ihnen in 15 Minuten in Ruhe — passt diese Woche mal? Und damit's für Sie null
-> Risiko ist: Wenn's nicht die Anfragen bringt, die ich verspreche, kriegen Sie Ihr Geld zurück."
-
-**Wenn der Chef nicht da ist:** „Wann ist er am besten erreichbar? Ich notier's mir und melde mich —
-hier meine Karte." → Name + Zeit aufschreiben, später anrufen (in `klienten-leads.csv` eintragen).
-
-**Was du versprichst:** Anfragen/Termine + Geld-zurück-Garantie — **keine** garantierten Küchenverkäufe.
-
 ## Learnings (hier laufend ergänzen)
 
 ### Was funktioniert
-- _(nach den ersten Calls eintragen: welcher Opener, welcher Satz zog)_
+- _(nach den ersten Besuchen eintragen: welcher Opener, welcher Satz zog)_
 
 ### Häufige Einwände + beste Antwort
 - _(die Einwände, die real kommen, + was gewirkt hat)_
 
 ### Pflichtcheck vor Abschluss
 - Kapazität: Kann der Betrieb zusätzliche Termine/Aufträge bedienen?
-- Entscheider = Inhaber am Tisch?
+- Entscheider = Inhaber vor dir?
