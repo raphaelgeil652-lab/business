@@ -23,7 +23,7 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
 ## Was automatisiert/vom System läuft vs. was nur der Nutzer selbst tut
 
 - **System/Claude:** Landingpages + Creatives + Ad-Copy (Struktur wiederverwenden), CRM-Snapshot & n8n-Automationen, Tracking-Setup, Reports, Lead-Recherche, Doku/Wissen pflegen.
-- **Nur der Nutzer selbst:** Salescalls/Vertragsabschluss mit Klienten, Vertrauen aufbauen, Meta-/Zahlungs-Konten verifizieren, Entscheidungen zu Budget/Preisen.
+- **Nur der Nutzer selbst:** Verkaufsgespräche **vor Ort** (persönlich reingehen)/Vertragsabschluss mit Klienten, Vertrauen aufbauen, Meta-/Zahlungs-Konten verifizieren, Entscheidungen zu Budget/Preisen.
 
 ## Struktur dieses Repos (aufgeräumt in 4 Ordner)
 
@@ -35,8 +35,8 @@ Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Obe
   - `beispiele/` — Schau-Beispiele: Facebook-Ad-Mockup + fertige Beispiel-Landingpage + Anzeigentexte (README).
 - **`akquise/` — dein Tagesgeschäft (Kunden gewinnen):**
   - `klienten-leads.csv` — recherchierte Küchenstudio-Leads in der Region.
-  - `anruf-reihenfolge.md` — priorisierte Anruf-/Fahrt-Reihenfolge.
-  - `verkaufsskript.md` — Salescall- + Vor-Ort-Skript, Einwände (früher `wissen/sales.md`).
+  - `besuchs-reihenfolge.md` — priorisierte Besuchs-/Fahrt-Reihenfolge (welche Läden in welcher Reihenfolge).
+  - `verkaufsskript.md` — **Vor-Ort-Skript (persönlich reingehen)** + Einwände + Telefon als Nachfass-Fallback (früher `wissen/sales.md`).
   - `angebot-vertrag.md` — 1-Seiten-Vereinbarung + Anfragen-Garantie.
   - `onboarding-email.md` — Onboarding-Mail-Vorlage.
   - `erster-kunde-fahrplan.md` / `fahrplan-erster-umsatz.md` — Startweg + abhakbare To-do-Liste bis zur ersten Überweisung.
@@ -67,7 +67,7 @@ MVP steht: Landingpages (Küche/Bad) live bei Netlify, Anfragen kommen per E-Mai
 Angebot/Vertrag-Vorlage + Salescall-Skript + Leads bereit. **Noch keine Klienten.**
 
 **Ziel: 7.000 € bis 01.10.2026** (Details/Rückrechnung in `grundlagen/geschaeftsmodell.md`). Hebel = **jetzt akquirieren**:
-Küchenstudios anrufen **und vor Ort abklappern** (`akquise/verkaufsskript.md`, `akquise/klienten-leads.csv`, `akquise/anruf-reihenfolge.md`),
+Küchenstudios **vor Ort abklappern** (persönlich reingehen; telefonisch nur nachfassen) (`akquise/verkaufsskript.md`, `akquise/klienten-leads.csv`, `akquise/besuchs-reihenfolge.md`),
 ~2 Kunden im August abschließen (Onboarding 850 € + 1.500 €/Monat ab Ergebnissen, Geld-zurück-Garantie). Fahrplan bis zum ersten Geld:
 `akquise/fahrplan-erster-umsatz.md`. Verkaufs-One-Pager zum Vorzeigen (alles in einer Datei): `seiten/pitch/` (Links in `README.md`).
 Der ganze Automatik-Überbau (GHL/n8n/CAPI) kommt erst nach den ersten Kunden.

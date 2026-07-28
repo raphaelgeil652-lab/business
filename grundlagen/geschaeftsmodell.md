@@ -28,16 +28,16 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 
 **Preis-/Garantie-Modell (Clickculture):**
 - **Onboarding 850 €** einmalig **mit Anfragen-Garantie** (Risk-Reversal, dein stärkstes Argument):
-  - **Garantiere 10 qualifizierte Anfragen in 30 Tagen** ab Kampagnenstart. Prinzip: **wenig
-    garantieren, viel liefern** — 10 ist der sichere Boden (bei ~1.499 € Budget realistisch eher
-    20–40). Im Gespräch: „garantiert min. 10, realistisch eher 20–30".
-  - **Stufe davor statt sofort Geld weg:** Werden die 10 nicht erreicht, **erst kostenlos
+  - **Garantiere 7 qualifizierte Anfragen in 30 Tagen** ab Kampagnenstart. Prinzip: **wenig
+    garantieren, viel liefern** — 7 ist der sichere Boden (bei ~1.499 € Budget realistisch eher
+    15–40). Im Gespräch: „garantiert min. 7, realistisch eher 15–30".
+  - **Stufe davor statt sofort Geld weg:** Werden die 7 nicht erreicht, **erst kostenlos
     weiterarbeiten**, bis sie da sind. Erst wenn auch das scheitert → Onboarding zurück. So verlierst
     du fast nie die 850 €.
   - **Qualifizierte Anfrage** klar definieren: echter Name + erreichbare Telefonnummer, Zielregion,
     Küchen-Interesse; Spam/Fake zählt nicht. Gilt nur, wenn der Kunde seine Pflichten erfüllt
     (Budget läuft, Zugänge/Material da, **zeitnah reagiert**).
-  - Nach dem **ersten Kunden** hast du echte Zahlen (Kosten pro Anfrage) → Garantie ggf. auf 15–20 anheben.
+  - Nach dem **ersten Kunden** hast du echte Zahlen (Kosten pro Anfrage) → Garantie ggf. auf 10–15 anheben.
 - **Monatliche Betreuung 1.500 €/Monat**, monatlich kündbar. Wichtig: die Betreuung **startet erst,
   wenn Ergebnisse laufen** (die Anfrage-Maschine bringt Anfragen). Bis dahin zahlt der Kunde nur das
   Onboarding — ein starkes Vertrauenssignal beim Abschluss.
@@ -57,12 +57,12 @@ Betreuung startet, sobald Anfragen laufen):
 - **Ziel 7k → ~2 Kunden im August:**
   - 2 Kunden im August ≈ **~7.700 €**
   - 1 im August + 1 im September ≈ **~6.200 €** (Onboarding beider + Betreuung, sobald sie greift)
-- **Einziger echter Hebel: Abschlüsse im August.** Also ab sofort viel akquirieren (Telefon + vor Ort) und zügig closen.
+- **Einziger echter Hebel: Abschlüsse im August.** Also ab sofort viel akquirieren (vor Ort reingehen, telefonisch nachfassen) und zügig closen.
 
-**Grober Funnel (konservativ, zum Planen):** ~10 Wählversuche → ~2–3 Inhaber erreicht → ~1 Termin;
-~4–6 Termine → ~2–3 Abschlüsse. Für 2 Kunden also grob **50–90 Kontaktversuche im August** einplanen
-(Telefon + vor Ort abklappern, ≈ 15–25/Woche). Genug Küchenstudios in der Lead-Liste + auf den Fahrt-Routen
-(`../akquise/klienten-leads.csv`, `../akquise/anruf-reihenfolge.md`).
+**Grober Funnel (konservativ, zum Planen):** ~10 Läden besucht → ~2–3 Inhaber angetroffen → ~1 Termin;
+~4–6 Termine → ~2–3 Abschlüsse. Für 2 Kunden also grob **50–90 Besuche/Kontakte im August** einplanen
+(vor Ort abklappern, telefonisch nachfassen, ≈ 15–25/Woche). Genug Küchenstudios in der Lead-Liste + auf den Fahrt-Routen
+(`../akquise/klienten-leads.csv`, `../akquise/besuchs-reihenfolge.md`).
 
 *(Zahlen sind Ziele/Orientierung, keine Garantie — Umsatz hängt an Abschlussquote und Tempo.)*
 
