@@ -36,7 +36,7 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 - **Geld-zurück-Garantie:** kommen in den ersten **30 Tagen** keine echten Anfragen → **Onboarding (850 €) zurück**.
 - **1–2 Monate bis zum ersten Verkauf** ehrlich ansagen (Küche kaufen dauert), die Anfragen kommen aber schnell.
 - **Jederzeit kündbar**, keine Mindestlaufzeit (Kunde ist an nichts gebunden).
-- **Werbebudget ~1.500 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
+- **Werbebudget ~1.000 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
 - **Was du versprichst:** Anfragen/Termine + faire Kopplung (Betreuung erst ab Verkauf) — **keine**
   garantierten Küchenverkäufe (der Abschluss hängt am Studio). Vertrags-Vorlage: `../akquise/angebot-vertrag.md`.
 

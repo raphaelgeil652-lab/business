@@ -94,7 +94,7 @@ In `klienten-leads.csv` eintragen.
 
 **„Was kostet das?"**
 > „Einmalig 850 € Onboarding, plus eine monatliche Betreuung von 1.500 €, die aber **erst startet, wenn
-> Sie über meine Werbung Ihre erste Küche verkauft haben**. Das Werbebudget von rund 1.500 € zahlen Sie
+> Sie über meine Werbung Ihre erste Küche verkauft haben**. Das Werbebudget von rund 1.000 € zahlen Sie
 > direkt an Meta/Google, nicht an mich. Die Details zeig ich Ihnen kurz am iPad."
 
 **„Facebook funktioniert bei uns nicht / unsere Kunden sind da nicht."**

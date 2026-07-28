@@ -12,7 +12,7 @@
 |---|---|---|
 | Onboarding-Gebühr (einmalig, Setup) | **850 €** | fällig bei Vertragsbeginn |
 | Monatliche Betreuung | **1.500 €/Monat** | **startet erst ab der ersten verkauften Küche**, monatlich kündbar |
-| Werbebudget (extra, Kunde zahlt direkt an Meta/Google) | **~1.500 €/Monat** | nach Absprache |
+| Werbebudget (extra, Kunde zahlt direkt an Meta/Google) | **~1.000 €/Monat** | nach Absprache |
 
 - **Monatlich erst ab dem ersten Verkauf = dein stärkstes Argument:** die 1.500 €/Monat laufen erst,
   wenn der Kunde über die Werbung **die erste Küche verkauft** hat. Bis dahin zahlt er nur das
@@ -58,7 +58,7 @@ Datum: [__]
 - **Onboarding-Gebühr (einmalig):** 850 € — fällig bei Vertragsbeginn (Setup; zur monatlichen Betreuung siehe §7).
 - **Monatliche Betreuung:** 1.500 € — beginnt, **sobald der Auftraggeber über die Kampagne die erste
   Küche verkauft** hat, danach fällig jeweils zum [Monatsanfang/__], monatlich kündbar.
-- **Werbebudget (~1.500 €/Monat):** wird vom Auftraggeber **separat und direkt an Meta/Google** gezahlt (nicht Teil dieser Vergütung).
+- **Werbebudget (~1.000 €/Monat):** wird vom Auftraggeber **separat und direkt an Meta/Google** gezahlt (nicht Teil dieser Vergütung).
 - Zahlung per Überweisung auf: [IBAN], Zahlungsziel **14 Tage** ab Rechnungsdatum.
 - *(Kleinunternehmer)* Gemäß **§19 UStG** wird **keine Umsatzsteuer** berechnet.
 
