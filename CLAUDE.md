@@ -16,7 +16,7 @@ Aufbau der Agentur **Clickculture** — Performance-Marketing für **EINE fokuss
 
 **Kanäle:** Meta (Facebook/Instagram) **+ Google Ads**. Meta weckt Nachfrage (Feed), Google fängt aktive Sucher ab („Küchenstudio [Ort]").
 
-**Preis-/Garantie-Modell:** Onboarding **850 €** einmalig (Setup) + **monatliche Betreuung 1.500 €/Monat, die erst ab der ersten verkauften Küche startet** (Risk-Reversal: der Kunde zahlt die Betreuung erst, wenn er über die Werbung verdient hat); **Werbebudget ~1.499 €/Monat** zahlt der Kunde direkt an Meta/Google. Details: `grundlagen/geschaeftsmodell.md`.
+**Preis-/Garantie-Modell:** Onboarding **850 €** einmalig (Setup) + **monatliche Betreuung 1.500 €/Monat, die erst ab der ersten verkauften Küche startet** (Risk-Reversal: der Kunde zahlt die Betreuung erst, wenn er über die Werbung verdient hat); **Werbebudget ~2.500 €/Monat** zahlt der Kunde direkt an Meta/Google. Details: `grundlagen/geschaeftsmodell.md`.
 
 Region-Ausgangspunkt: Pfullendorf / Landkreis Sigmaringen + Umland (Bodensee/Oberschwaben); per Targeting erweiterbar.
 

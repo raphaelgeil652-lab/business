@@ -33,7 +33,7 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
   **nur Onboarding + Werbebudget**. „Du zahlst mich erst, wenn du verdient hast" nimmt beim Abschluss die Angst.
   - Ab dem Monat des ersten Abschlusses läuft die 1.500 €/Monat, monatlich kündbar.
   - Der Kunde meldet den ersten Verkauf aus einer vermittelten Anfrage (= Start der monatlichen Abrechnung).
-- **Werbebudget ~1.499 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
+- **Werbebudget ~2.500 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
 - **Was du versprichst:** Anfragen/Termine + faire Kopplung (Betreuung erst ab Verkauf) — **keine**
   garantierten Küchenverkäufe (der Abschluss hängt am Studio). Vertrags-Vorlage: `../akquise/angebot-vertrag.md`.
 
