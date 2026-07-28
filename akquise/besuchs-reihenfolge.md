@@ -13,6 +13,41 @@ zur Mittagspause). Öffnungszeiten vorher kurz checken.
 
 ---
 
+## 🚗 Tages-Route: Bodensee → Pfullendorf (auf dem Weg abklappern)
+
+In Fahrtrichtung von unten (Bodensee) hoch nach Pfullendorf. Einfach der Reihe nach reingehen.
+Neu recherchierte Studios sind mit **(neu)** markiert; wo „Tel prüfen" steht, Nummer kurz bei Google
+Maps holen oder direkt vor Ort fragen.
+
+**① Tettnang / Meckenbeuren**
+- Martin Hagenmaier Küchen (Küchenstudio Tettnang) — Oberhofer Str. 7, 88069 Tettnang — 07542 7664
+- Küchen Block **(neu)** — Karl-Maybach-Str. 7, 88074 Meckenbeuren — 07542 935050
+
+**② Ravensburg / Weingarten**
+- Küchenstudio Hämmerle **(neu, inhabergeführt)** — Eggartskircher Str. 12/1, 88213 Ravensburg — Tel prüfen
+- SCALA KüchenART — Meersburger Str. 158, 88213 Ravensburg — 0751 95895486
+- Küchenstudio Lorinser — Stettiner Str. 7, 88250 Weingarten — 0751 7669870
+
+**③ Horgenzell → Ostrach (kurz vor Pfullendorf)**
+- Küchen Benz **(neu)** — Hechtweg 6, 88356 Ostrach — Tel prüfen
+
+**④ Pfullendorf (Ziel)**
+- KüchenTreff Martin Fritz — Otterswanger Str. 7/8, 88630 Pfullendorf — 07552 3089490
+- Brier Küchen — Otterswanger Str. 7/5 (gleiches Gebäude) — 07552 9358999
+- Mika Küchen — Allschwiler Weg 27, 88630 Pfullendorf — 07552 929639
+
+**⑤ Umgebung Pfullendorf (Rückweg / wenn Zeit)**
+- König Küchen — Pappelweg 4, 88512 Mengen — 07572 3591
+- Demmelhuber — Igelswieser Str. 10, 88605 Meßkirch — 07575 2449
+- Keller Innenausbau — Weidenäcker 1, 88605 Meßkirch-Heudorf — 07575 922215
+- Küchenwelt Sigmaringen — Binger Str. 2, 72488 Sigmaringen — 07571 9297386 *(Verbund, kurz prüfen)*
+
+**Optionaler Abstecher nach Nordost (Aulendorf / Bad Saulgau):**
+- Harald Zoller — Auf der Steige 56/1, 88326 Aulendorf — 07525 92370
+- KWB Küche Wohnen Bad — Paradiesstr. 27, 88348 Bad Saulgau — 07581 2276
+
+---
+
 ## 🟢 Runde 1 — Beste Chance (nah + inhabergeführte Küche)
 
 | # | Betrieb | Ort | Adresse | Telefon (Nachfassen) | Warum |
