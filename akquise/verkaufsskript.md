@@ -97,6 +97,15 @@ In `klienten-leads.csv` eintragen.
 > Sie über meine Werbung Ihre erste Küche verkauft haben**. Das Werbebudget von rund 1.000 € zahlen Sie
 > direkt an Meta/Google, nicht an mich. Die Details zeig ich Ihnen kurz am iPad."
 
+**„Was sind das überhaupt für Anzeigen / wie funktioniert das?"** *(Verständnisfrage, kein Einwand — ein Satz genügt)*
+> „Ihre Anzeige läuft bei Leuten hier im Umkreis im Facebook- und Instagram-Feed und oben bei Google —
+> wer draufklickt, landet auf einer Seite, auf der er direkt seine **kostenlose Küchenplanung** anfragt."
+
+Wenn er nachbohrt, in dieser Reihenfolge nachlegen (nie alles auf einmal):
+- **Wer sieht das?** „Wir stellen ein: Umkreis 30 km, Alter, Eigenheimbesitzer — es sehen also nur Leute die Anzeige, für die eine neue Küche überhaupt in Frage kommt."
+- **Was kostet ein Klick?** „Sie zahlen pro Klick, ein paar Cent bis ein, zwei Euro. Das Budget legen **Sie** fest, und es geht direkt an Facebook bzw. Google, nicht an mich."
+- **Warum nicht einfach auf die Website?** „Weil eine normale Website zehn Themen hat. Die Seite hier hat genau eins: Termin anfragen. Das macht den Unterschied zwischen ein paar Anfragen und gar keiner."
+
 **„Facebook funktioniert bei uns nicht / unsere Kunden sind da nicht."**
 > „Das denken viele, gerade bei Küchen ist es aber stark, weil die Leute die Entscheidung lange vor
 > sich herschieben. Genau die holen wir mit der kostenlosen Planung ab. Beispiele zeig ich Ihnen gleich."
