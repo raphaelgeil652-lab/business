@@ -28,10 +28,10 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 
 **Preis-/Garantie-Modell (Clickculture):**
 - **Onboarding 850 €** einmalig (Setup: Landingpage, Kampagnen, Anfrage-Weiterleitung).
-- **Monatliche Betreuung 1.500 €/Monat — startet erst ab der ersten verkauften Küche** (Risk-Reversal,
+- **Retainer 1.500 €/Monat — Betreuung läuft ab Start, die Gebühr wird erst ab der ersten verkauften Küche fällig** (Risk-Reversal,
   dein stärkstes Argument): Solange der Kunde über die Werbung noch keine Küche verkauft hat, zahlt er
   **nur Onboarding + Werbebudget**. „Du zahlst mich erst, wenn du verdient hast" nimmt beim Abschluss die Angst.
-  - Ab dem Monat des ersten Abschlusses läuft die 1.500 €/Monat.
+  - Ab dem Monat des ersten Abschlusses wird die Retainer-Gebühr (1.500 €/Monat) fällig.
   - Der Kunde meldet den ersten Verkauf aus einer vermittelten Anfrage (= Start der monatlichen Abrechnung).
 - **Geld-zurück-Garantie:** kommen in den ersten **30 Tagen** keine echten Anfragen → **Onboarding (850 €) zurück**.
 - **1–2 Monate bis zum ersten Verkauf** ehrlich ansagen (Küche kaufen dauert), die Anfragen kommen aber schnell.
@@ -42,11 +42,11 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 
 ## Ziel: 7.000 € bis 01.10.2026
 
-Ausgangspunkt ~23.07. → **~10 Wochen**. Rückgerechnet (Modell: 850 € Onboarding + 1.500 €/Monat,
-Betreuung startet, sobald Anfragen laufen):
+Ausgangspunkt ~23.07. → **~10 Wochen**. Rückgerechnet (Modell: 850 € Onboarding + 1.500 €/Monat
+Retainer, fällig ab dem ersten Verkauf):
 
-- **Ein im August unterschriebener Kunde** bringt bis 01.10.: Onboarding + ~2 Monate Betreuung
-  (August + September, sobald die Anfragen laufen) ≈ **~3.850 €**.
+- **Ein im August unterschriebener Kunde** bringt bis 01.10.: Onboarding + ~2 Monate Retainer
+  (sobald der erste Verkauf da ist) ≈ **~3.850 €**.
 - **Ziel 7k → ~2 Kunden im August:**
   - 2 Kunden im August ≈ **~7.700 €**
   - 1 im August + 1 im September ≈ **~6.200 €** (Onboarding beider + Betreuung, sobald sie greift)

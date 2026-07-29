@@ -14,7 +14,7 @@ kurzen **Termin (15 Min)** zu vereinbaren, in dem du das System zeigst.
 ## Mindset (30 Sekunden vorm Reingehen)
 
 - Du **hilfst** ihm, du bettelst nicht. Ein neuer Küchen-Kunde = 10–30k € für ihn, deine Gebühr ist winzig dagegen.
-- Dein Angebot ist **risikoarm**: die monatliche Betreuung startet erst ab seiner ersten verkauften Küche.
+- Dein Angebot ist **risikoarm**: die Retainer-Gebühr (1.500 €/Monat) zahlt er erst ab seiner ersten verkauften Küche.
 - Ziel = **Termin oder iPad zeigen**, kein Abschluss auf der Stelle. Das nimmt den Druck.
 - Die ersten 2–3 Läden sind Übung. Locker bleiben, lächeln.
 
@@ -93,7 +93,7 @@ In `klienten-leads.csv` eintragen.
 > für Ihr Studio aussieht. Ich schick die Infos **und** wir machen einen kurzen Termin."
 
 **„Was kostet das?"**
-> „Einmalig 850 € Onboarding, plus eine monatliche Betreuung von 1.500 €, die aber **erst startet, wenn
+> „Einmalig 850 € Onboarding, plus eine monatliche Betreuung von 1.500 €, die Sie aber **erst zahlen, wenn
 > Sie über meine Werbung Ihre erste Küche verkauft haben**. Das Werbebudget von rund 1.000 € zahlen Sie
 > direkt an Meta/Google, nicht an mich. Die Details zeig ich Ihnen kurz am iPad."
 
@@ -125,7 +125,7 @@ Nicht erreicht → kurze Mailbox-Nachricht, max. 3 Versuche zu **verschiedenen Z
 
 ## Was du versprichst
 
-Anfragen/Termine + faire Kopplung (monatliche Betreuung erst ab der ersten verkauften Küche),
+Anfragen/Termine + faire Kopplung (Retainer-Gebühr erst ab der ersten verkauften Küche),
 **keine** garantierten Küchenverkäufe (der Abschluss liegt beim Studio).
 
 ## Nach jedem Besuch: in `klienten-leads.csv` eintragen
