@@ -36,7 +36,7 @@ Details zu jeder Datei: siehe [`CLAUDE.md`](CLAUDE.md).
 ## Preise (aktuell)
 
 - **Onboarding: 850 €** einmalig (mit Geld-zurück-Garantie: keine echten Anfragen in 30 Tagen → zurück)
-- **Betreuung: 1.500 €/Monat**, startet **erst ab der ersten verkauften Küche** (du zahlst erst, wenn du verdient hast); jederzeit kündbar
+- **Retainer: 1.500 €/Monat** — Betreuung läuft ab Start, die Gebühr zahlst du **erst ab der ersten verkauften Küche** (du zahlst erst, wenn du verdient hast); jederzeit kündbar
 - **Werbebudget: 1.000 €/Monat**, zahlt der Kunde direkt an Meta/Google
 - Erster Küchenverkauf realistisch in **1–2 Monaten** (Anfragen kommen aber schnell)
 
