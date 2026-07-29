@@ -24,7 +24,7 @@ Für den Start pro Klient: **Gratis-Offer als Hauptkampagne**, 1 Variante als Te
 
 ## Creative-/Copy-Bausteine (Vorlagen)
 
-Konkrete Text-Vorlagen: `../anleitungen/ad-copy.md`. Landingpage-Vorlage: `../seiten/landingpage/`.
+Konkrete Text-Vorlagen: `ad-copy.md`. Landingpage-Vorlage: `seiten/landingpage/`.
 
 ## Meta-Optimierung (Kurz — Details in tech-stack.md)
 

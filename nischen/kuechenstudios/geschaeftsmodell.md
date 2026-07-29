@@ -1,6 +1,6 @@
 # Geschäftsmodell
 
-Konkrete Umsetzung des Playbooks (`agentur-playbook.md`) für die Agentur **Clickculture**, Nische **Küchenstudios**.
+Konkrete Umsetzung des Playbooks (`../../grundlagen/agentur-playbook.md`) für die Agentur **Clickculture**, Nische **Küchenstudios**.
 
 ## Was wir verkaufen
 
@@ -38,7 +38,7 @@ Der Gratis-Offer senkt die Einstiegshürde; das Geld verdient der Klient im High
 - **Jederzeit kündbar**, keine Mindestlaufzeit (Kunde ist an nichts gebunden).
 - **Werbebudget ~1.000 €/Monat** — zahlt der Kunde **direkt an Meta/Google** (extra, nicht deine Fee).
 - **Was du versprichst:** Anfragen/Termine + faire Kopplung (Betreuung erst ab Verkauf) — **keine**
-  garantierten Küchenverkäufe (der Abschluss hängt am Studio). Vertrags-Vorlage: `../akquise/angebot-vertrag.md`.
+  garantierten Küchenverkäufe (der Abschluss hängt am Studio). Vertrags-Vorlage: `akquise/angebot-vertrag.md`.
 
 ## Ziel: 7.000 € bis 01.10.2026
 
@@ -55,7 +55,7 @@ Retainer, fällig ab dem ersten Verkauf):
 **Grober Funnel (konservativ, zum Planen):** ~10 Läden besucht → ~2–3 Inhaber angetroffen → ~1 Termin;
 ~4–6 Termine → ~2–3 Abschlüsse. Für 2 Kunden also grob **50–90 Besuche/Kontakte im August** einplanen
 (vor Ort abklappern, telefonisch nachfassen, ≈ 15–25/Woche). Genug Küchenstudios in der Lead-Liste + auf den Fahrt-Routen
-(`../akquise/klienten-leads.csv`, `../akquise/besuchs-reihenfolge.md`).
+(`akquise/klienten-leads.csv`, `akquise/besuchs-reihenfolge.md`).
 
 *(Zahlen sind Ziele/Orientierung, keine Garantie — Umsatz hängt an Abschlussquote und Tempo.)*
 

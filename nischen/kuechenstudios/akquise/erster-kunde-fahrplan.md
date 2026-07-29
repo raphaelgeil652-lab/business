@@ -15,7 +15,7 @@ zu sein, sondern **einem Betrieb echte Anfragen zu bringen** und daraus eine Cas
 
 - [ ] **Angebot festlegen:** „Kostenlose 3D-Küchenplanung" (Küche) bzw. „Kostenlose Bad-Beratung / Vor-Ort-Aufmaß" (Bad). Ein Offer, ein Ziel: Termin.
 - [ ] **Landingpage:** Vorlage `../seiten/landingpage/` nutzen — `index.html` (Küche) / `bad.html` (Bad). Platzhalter `[ ]` erst mit dem echten Kunden füllen.
-- [ ] **Lead-Auffang (gewählt: einfach, ohne GHL):** Die LP nutzt ein **Netlify-Formular → E-Mail**. Seite bei **Netlify** online stellen (Schritt-für-Schritt: `landingpage-hosten.md`), E-Mail-Benachrichtigung aktivieren. Jede Anfrage kommt in dein Postfach. **Kein GoHighLevel, kein n8n nötig.**
+- [ ] **Lead-Auffang (gewählt: einfach, ohne GHL):** Die LP nutzt ein **Netlify-Formular → E-Mail**. Seite bei **Netlify** online stellen (Schritt-für-Schritt: `../../../anleitungen/landingpage-hosten.md`), E-Mail-Benachrichtigung aktivieren. Jede Anfrage kommt in dein Postfach. **Kein GoHighLevel, kein n8n nötig.**
 
 ## Phase 1 — Ersten Kunden gewinnen (die wichtigste Phase)
 
@@ -29,7 +29,7 @@ zu sein, sondern **einem Betrieb echte Anfragen zu bringen** und daraus eine Cas
 ## Phase 2 — Schlank aufsetzen (für diesen einen Kunden)
 
 - [ ] **Landingpage personalisieren:** echten Studionamen, Ort, 2–3 echte Fotos, echte Bewertungen (max. 4,9★).
-- [ ] **Eine Meta-Anzeige** schalten (Gratis-Offer). Textvorlagen: `../anleitungen/ad-copy.md`. Klein starten (z. B. 10–20 €/Tag Testbudget, zahlt der Kunde).
+- [ ] **Eine Meta-Anzeige** schalten (Gratis-Offer). Textvorlagen: `../ad-copy.md`. Klein starten (z. B. 10–20 €/Tag Testbudget, zahlt der Kunde).
 - [ ] **Anfrage-Auffang testen:** LP bei Netlify live → Formular selbst ausfüllen → kommt die E-Mail an? (Funktioniert nur online bei Netlify, nicht lokal.)
 - [ ] **Speed-to-Lead:** sobald eine Anfrage-Mail kommt, **sofort** anrufen (< 5 Min). Am Anfang bewusst **manuell** — reicht für den ersten Kunden.
 - [ ] **Termine/Kalender:** vorerst **manuell per Anruf** ausmachen, **kein Tool nötig**. Später optional Selbstbuchung mit **Cal.com/Calendly** (mit Google Calendar des Betriebs); voll ins System integriert erst mit **GHL (Phase 4)**.
@@ -44,8 +44,8 @@ zu sein, sondern **einem Betrieb echte Anfragen zu bringen** und daraus eine Cas
 ## Phase 4 — Erst JETZT skalieren
 
 Wenn der erste Kunde läuft und du den Beweis hast:
-- [ ] Den **Automatik-Überbau** aufsetzen: n8n-Workflows (`../anleitungen/n8n/`), Master-Snapshot + CAPI-Dedup nach `ghl-n8n-aufbau.md`.
-- [ ] Zweiten/dritten Kunden mit **demselben Muster** gewinnen (gleiche LP-/Ad-Struktur, nur personalisiert). Ab hier zahlt sich die Standardisierung aus → Weg Richtung 10k/Monat (`geschaeftsmodell.md`).
+- [ ] Den **Automatik-Überbau** aufsetzen: n8n-Workflows (`../../../anleitungen/n8n/`), Master-Snapshot + CAPI-Dedup nach `../../../anleitungen/ghl-n8n-aufbau.md`.
+- [ ] Zweiten/dritten Kunden mit **demselben Muster** gewinnen (gleiche LP-/Ad-Struktur, nur personalisiert). Ab hier zahlt sich die Standardisierung aus → Weg Richtung 10k/Monat (`../geschaeftsmodell.md`).
 
 ---
 

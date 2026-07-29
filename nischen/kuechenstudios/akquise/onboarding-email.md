@@ -29,4 +29,4 @@ Beste Grüße
 
 ---
 
-**Checkliste (intern):** Meta-Partner ✔ · Assets ✔ · Kalender ✔ → Onboarding-Call terminieren → siehe `../anleitungen/klienten-journey.md`.
+**Checkliste (intern):** Meta-Partner ✔ · Assets ✔ · Kalender ✔ → Onboarding-Call terminieren → siehe `../../../anleitungen/klienten-journey.md`.

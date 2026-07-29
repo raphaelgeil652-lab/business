@@ -94,4 +94,4 @@ Gabriel (Ebersbach-Musbach, 07581 48830)
 - **Chef nicht da?** Name + beste Erreichbarkeit aufschreiben, Karte/Nummer dalassen, später
   telefonisch nachfassen. Ganz normal, nicht ärgern.
 - Nach jedem Besuch: Status + Notiz in `klienten-leads.csv`. Learnings in `verkaufsskript.md`.
-- Für das 7k-Ziel (siehe `../grundlagen/geschaeftsmodell.md`): dranbleiben, kleine Studios zuerst abfahren.
+- Für das 7k-Ziel (siehe `../geschaeftsmodell.md`): dranbleiben, kleine Studios zuerst abfahren.

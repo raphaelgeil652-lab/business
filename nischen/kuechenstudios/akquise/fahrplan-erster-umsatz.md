@@ -26,7 +26,7 @@ schnellste Weg zum ersten Umsatz.
 
 - [ ] **Preis für den ersten Kunden** festlegen. Vorschlag Referenzprojekt: **Einrichtungsgebühr 300–500 € + Monatsbeitrag 300–500 €**, monatlich kündbar. Werbebudget zahlt der Kunde **extra, direkt an Meta**.
 - [ ] **1-Seiten-Angebot/Vertrag** ausfüllen: fertige Vorlage inkl. Preis-Empfehlung → `angebot-vertrag.md`.
-- [ ] Details: `geschaeftsmodell.md`.
+- [ ] Details: `../geschaeftsmodell.md`.
 
 ## Block C — Ersten Kunden gewinnen
 
@@ -38,8 +38,8 @@ schnellste Weg zum ersten Umsatz.
 ## Block D — Für den Kunden aufsetzen
 
 - [ ] **Material holen:** Logo, echte Fotos, Bewertungen, Öffnungszeiten (Vorlage-Mail: `onboarding-email.md`).
-- [ ] **Landingpage personalisieren** (`../seiten/landingpage/`, seine Variante) → eigene Netlify-Seite (`landingpage-hosten.md`) + **Impressum/Datenschutz** ergänzen.
-- [ ] **Meta-Anzeige einrichten** (auf seinem Werbekonto, du als Partner), Budget, Kampagne **live**. Klick-für-Klick-Anleitung: `meta-anzeige-einrichten.md`; Ad-Texte: `../anleitungen/ad-copy.md`.
+- [ ] **Landingpage personalisieren** (`../seiten/landingpage/`, seine Variante) → eigene Netlify-Seite (`../../../anleitungen/landingpage-hosten.md`) + **Impressum/Datenschutz** ergänzen.
+- [ ] **Meta-Anzeige einrichten** (auf seinem Werbekonto, du als Partner), Budget, Kampagne **live**. Klick-für-Klick-Anleitung: `../../../anleitungen/meta-anzeige-einrichten.md`; Ad-Texte: `../ad-copy.md`.
 - [ ] **Testlauf:** Formular → Anfrage-Mail → Anruf klappt.
 
 ## Block E — Liefern & Beweis

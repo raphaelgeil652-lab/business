@@ -20,7 +20,7 @@ Einfache, mobil-optimierte Werbe-Landingpages. **Formular → E-Mail** über **N
 
 ## Online stellen mit Netlify (Schritt für Schritt)
 
-> Ausführliche Einsteiger-Anleitung (GitHub-Import + Drag&Drop + Fehlerbehebung): `../../anleitungen/landingpage-hosten.md`
+> Ausführliche Einsteiger-Anleitung (GitHub-Import + Drag&Drop + Fehlerbehebung): `../../../../anleitungen/landingpage-hosten.md`
 
 1. Auf **netlify.com** kostenlos anmelden.
 2. Diesen Ordner (`index.html`, `bad.html`, `danke.html`) als ZIP oder Ordner auf
@@ -42,7 +42,7 @@ Meta-Event „Lead". **Speed-to-Lead:** du/der Betrieb ruft die Nummer aus der M
 ## Später auf GoHighLevel umstellen (wenn du skalierst)
 
 Ersetze in `index.html`/`bad.html` den `<form>…</form>`-Block durch das GHL-Formular-iframe und
-verdrahte Tracking/Automationen nach `../../anleitungen/ghl-n8n-aufbau.md`:
+verdrahte Tracking/Automationen nach `../../../../anleitungen/ghl-n8n-aufbau.md`:
 
 ```html
 <iframe class="form-frame" id="ghlForm"
@@ -57,5 +57,5 @@ verdrahte Tracking/Automationen nach `../../anleitungen/ghl-n8n-aufbau.md`:
 </script>
 ```
 
-Dann greifen die n8n-Workflows (`../n8n/`) und die CAPI-Dedup-Kette. Das ist die Ausbaustufe,
+Dann greifen die n8n-Workflows (`../../../../anleitungen/n8n/`) und die CAPI-Dedup-Kette. Das ist die Ausbaustufe,
 nicht nötig für den ersten Kunden.
