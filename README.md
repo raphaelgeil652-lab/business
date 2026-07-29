@@ -27,8 +27,11 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 
 > **Für den Kundenbesuch reicht die Pitch-Seite.** Die zeigst du am iPad. Will er mehr sehen,
 > hast du Beispiel-Anzeige und Beispiel-Landingpage als Nachschlag.
-> Diese **drei Zeig-Seiten laufen ohne Internet** (Bilder eingebettet) — vorher einmal im Flugmodus
-> testen. Die Vorlage in der letzten Zeile braucht Netz, die zeigst du beim Kunden aber ohnehin nicht.
+> ⚠️ **Der Öffnen-Link braucht Internet.** Für den Werkstatt-Besuch die Seite vorher **zu Hause
+> einmal öffnen** und in Safari über *Teilen → Zur Leseliste hinzufügen* sichern — die Leseliste
+> speichert die Seite komplett offline. Dann funktioniert sie auch im Funkloch.
+> (Die drei Zeig-Seiten haben ihre Bilder eingebettet, deshalb klappt das. Die Vorlage in der letzten
+> Zeile lädt Bilder nach — die zeigst du beim Kunden aber ohnehin nicht.)
 
 ### 🍳 Küchenstudios — zurückgestellt
 

@@ -16,9 +16,18 @@ Alles, was du dem Kunden zeigst. Klick auf **Öffnen**, dann rendert die Seite i
 - **Vorlagen** (`landingpage/`) sind zum **Arbeiten** — mit `[Platzhalter]`, die du beim echten
   Kunden füllst. Anleitung: [`landingpage/README.md`](landingpage/README.md).
 
-**Offline:** Die drei Zeig-Seiten (Pitch, Beispiel-Anzeige, Beispiel-Landingpage) haben ihre Bilder
-eingebettet und laufen ohne Netz — wichtig, weil das WLAN in Werkstätten oft schlecht ist.
-Vor dem ersten Besuch einmal im Flugmodus testen.
+## Offline nutzen (wichtig fürs iPad)
+
+Die drei Zeig-Seiten (Pitch, Beispiel-Anzeige, Beispiel-Landingpage) haben ihre Bilder **eingebettet**
+und funktionieren ohne Netz — wichtig, weil das WLAN in Werkstätten oft schlecht ist.
+
+**Aber: Der Öffnen-Link oben braucht Internet**, er lädt die Datei ja erst von GitHub. Deshalb einmalig:
+
+1. Seite **zu Hause** über den Öffnen-Link aufrufen
+2. In Safari: *Teilen* → **Zur Leseliste hinzufügen**
+3. Fertig — die Leseliste speichert die Seite vollständig. Sie geht auch im Funkloch auf.
+
+Vor dem ersten Besuch einmal im Flugmodus gegentesten.
 
 Die **Vorlage** lädt ihre Platzhalter-Bilder aus dem Netz. Das ist Absicht: Du tauschst sie beim
 echten Kunden gegen seine Fotos, und eine kurze URL ist dafür leichter zu finden als ein
