@@ -1,0 +1,386 @@
+<!--
+  LANDINGPAGE-VORLAGE · KFZ-BETRIEBE — ein File für ALLE Kunden
+  Formular -> E-Mail via Netlify Forms. Kein Backend, kein Build.
+
+  ============================================================
+  SO PERSONALISIERST DU DIESE SEITE (dauert ~15 Minuten)
+  ============================================================
+  1. Modul aus ../../service-module.md wählen (nach dem Verkaufsgespräch klar).
+  2. Alle [Platzhalter] ersetzen:
+     [Betrieb] [Ort] [Telefon] [Adresse] [Leistung] [Kundenname]
+  3. HEADLINE + SUBLINE aus dem Modul übernehmen — sie MUSS die Anzeige
+     wörtlich spiegeln (Message Match), sonst springen die Leute ab.
+  4. Dropdown-Optionen im Formular auf das Modul anpassen.
+  5. VORHER/NACHHER-FOTOS einsetzen — das ist der wichtigste Schritt.
+     Echte Fotos des Betriebs, KEINE Stockbilder. Mindestens 3 Paare.
+  6. Bewertungen durch echte Google-Bewertungen ersetzen.
+     TRUST-REGEL: nie 5,0 anzeigen — maximal 4,9 (5,0 wirkt gekauft).
+  7. Impressum/Datenschutz des Kunden verlinken.
+  8. PIXEL_ID eintragen (optional, kann anfangs leer bleiben).
+
+  Hosten bei Netlify -> dann funktioniert das Formular automatisch.
+  Anleitung: ../../../../anleitungen/landingpage-hosten.md
+  Danke-Seite: danke.html
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Leistung] in [Ort] · [Betrieb]</title>
+<meta name="description" content="[Leistung] bei [Betrieb] in [Ort]. Kostenloser Check, Festpreis vorab, unverbindlich. Jetzt Termin anfragen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1013; --surface:#181C22; --card:#FFFFFF;
+    --ink:#F3F5F7; --ink-dark:#14171C; --muted:#98A2AE; --muted-dark:#5D6672;
+    --line:rgba(255,255,255,.11); --line-dark:#E3E7EC;
+    --accent:#FF6B2C; --accent-deep:#E8511A; --gold:#FFB020; --ok:#35C26A;
+    --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important;}}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{margin:0;font-weight:800;line-height:1.06;letter-spacing:-.025em;text-wrap:balance;}
+  p{text-wrap:pretty;margin:0;}
+  .wrap{width:100%;max-width:600px;margin:0 auto;padding:0 20px;}
+
+  .btn{display:block;width:100%;text-align:center;background:var(--accent);color:#fff;text-decoration:none;
+       font-weight:800;font-size:1.05rem;padding:1.05em 1.4em;border-radius:12px;border:0;cursor:pointer;
+       transition:background .2s ease,transform .2s ease;font-family:inherit;line-height:1.2;}
+  .btn:hover{background:var(--accent-deep);transform:translateY(-1px);}
+  .btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink);}
+  .btn-ghost:hover{background:rgba(255,255,255,.06);transform:none;}
+
+  /* ---------- HERO: Versprechen + Formular, alles above the fold ---------- */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line);}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:1.05rem;}
+  .topbar a{color:var(--accent);text-decoration:none;font-weight:700;font-size:.9rem;white-space:nowrap;}
+
+  .hero{padding:1.3rem 0 1rem;}
+  .badge{display:inline-flex;align-items:center;gap:.45em;font-size:.7rem;font-weight:800;letter-spacing:.1em;
+         text-transform:uppercase;color:var(--accent);background:rgba(255,107,44,.13);
+         padding:.45em .95em;border-radius:999px;margin-bottom:.8rem;}
+  .hero h1{font-size:clamp(1.9rem,7vw,2.7rem);}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero .sub{color:var(--muted);font-size:1.02rem;line-height:1.5;margin:.7rem 0 .9rem;}
+
+  .trustrow{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem 1rem;font-size:.82rem;color:var(--muted);margin-bottom:1rem;}
+  .trustrow b{color:var(--ink);}
+  .stars{color:var(--gold);letter-spacing:.06em;}
+
+  /* ---------- Formular-Karte (hell = Vertrauen + Kontrast) ---------- */
+  .form-card{background:var(--card);color:var(--ink-dark);border-radius:16px;padding:1.3rem 1.15rem 1.15rem;
+             box-shadow:0 20px 50px rgba(0,0,0,.45);}
+  .form-card h2{font-size:1.3rem;color:var(--ink-dark);}
+  .form-card .hint{color:var(--muted-dark);font-size:.9rem;margin:.35rem 0 1rem;}
+  .lead-form{display:grid;gap:.7rem;}
+  .lead-form label{display:block;font-size:.8rem;font-weight:700;color:var(--ink-dark);}
+  .lead-form input,.lead-form select,.lead-form textarea{
+    width:100%;margin-top:.25rem;padding:.82rem .9rem;border:1.5px solid var(--line-dark);border-radius:10px;
+    background:#fff;font:inherit;font-size:1rem;color:var(--ink-dark);appearance:none;}
+  .lead-form select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' stroke='%235D6672' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+                background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.6rem;}
+  .lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus{outline:2px solid var(--accent);border-color:transparent;}
+  .lead-form .hp{position:absolute;left:-9999px;top:auto;height:0;overflow:hidden;}
+  .form-note{font-size:.78rem;color:var(--muted-dark);text-align:center;margin-top:.8rem;line-height:1.45;}
+  .form-note a{color:var(--accent-deep);font-weight:700;}
+
+  /* ---------- Sektionen ---------- */
+  section.blk{padding:2.4rem 0;border-top:1px solid var(--line);}
+  section.blk h2{font-size:clamp(1.5rem,5.6vw,1.95rem);margin-bottom:.5rem;}
+  section.blk .lead{color:var(--muted);margin-bottom:1.4rem;font-size:1rem;}
+
+  /* ---------- VORHER/NACHHER — das Kernstück ---------- */
+  .ba{display:grid;gap:1.3rem;}
+  .ba-pair{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface);}
+  .ba-side{position:relative;aspect-ratio:4/3;background:#22262D;}
+  .ba-side img{width:100%;height:100%;object-fit:cover;}
+  .ba-tag{position:absolute;left:.5rem;bottom:.5rem;font-size:.62rem;font-weight:800;letter-spacing:.11em;
+          text-transform:uppercase;padding:.38em .7em;border-radius:6px;background:rgba(14,16,19,.86);color:var(--ink);backdrop-filter:blur(4px);}
+  .ba-tag.after{background:var(--accent);color:#fff;}
+  .ba-cap{grid-column:1/-1;padding:.7rem .9rem;font-size:.87rem;color:var(--muted);border-top:1px solid var(--line);}
+
+  /* ---------- Leistungen ---------- */
+  .points{list-style:none;margin:0;padding:0;display:grid;gap:.75rem;}
+  .point{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;display:flex;gap:.85rem;align-items:flex-start;}
+  .point .ic{flex:0 0 auto;width:30px;height:30px;border-radius:8px;background:rgba(53,194,106,.15);color:var(--ok);display:grid;place-items:center;font-weight:800;font-size:.9rem;}
+  .point b{display:block;font-size:1rem;}
+  .point span{color:var(--muted);font-size:.93rem;}
+
+  /* ---------- Schritte ---------- */
+  .steps{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;gap:1.1rem;}
+  .steps li{position:relative;padding-left:3.1rem;}
+  .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-.15rem;
+    width:2.2rem;height:2.2rem;border-radius:10px;background:var(--accent);color:#fff;
+    font-weight:800;font-size:1.05rem;display:grid;place-items:center;}
+  .steps b{display:block;}
+  .steps span{color:var(--muted);font-size:.93rem;}
+
+  /* ---------- Bewertungen ---------- */
+  .review{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.05rem;margin-bottom:.8rem;}
+  .review .stars{font-size:.95rem;}
+  .review p{margin:.45rem 0 .4rem;font-size:.97rem;}
+  .review cite{font-style:normal;font-size:.83rem;color:var(--muted);}
+
+  /* ---------- FAQ ---------- */
+  details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.95rem 1.05rem;margin-bottom:.65rem;}
+  details summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center;}
+  details summary::-webkit-details-marker{display:none;}
+  details summary::after{content:"+";color:var(--accent);font-size:1.35rem;font-weight:800;line-height:1;flex:0 0 auto;}
+  details[open] summary::after{content:"−";}
+  details p{color:var(--muted);font-size:.93rem;margin-top:.6rem;}
+
+  /* ---------- Abschluss ---------- */
+  .final{padding:2.6rem 0 1.5rem;text-align:center;border-top:1px solid var(--line);}
+  .final h2{font-size:clamp(1.6rem,6vw,2.1rem);margin-bottom:.6rem;}
+  .final .lead{color:var(--muted);margin-bottom:1.4rem;}
+
+  footer{border-top:1px solid var(--line);padding:1.4rem 0 6.5rem;text-align:center;font-size:.82rem;color:var(--muted);line-height:1.8;}
+  footer a{color:var(--muted);}
+  footer .nap{color:var(--ink);font-weight:600;}
+
+  /* ---------- Sticky Bar (mobil) ---------- */
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(14,16,19,.93);
+          backdrop-filter:blur(10px);border-top:1px solid var(--line);
+          padding:.6rem 20px calc(.6rem + env(safe-area-inset-bottom));}
+  .sticky-inner{max-width:600px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:.55rem;}
+  .sticky .btn{font-size:1rem;padding:.95em 1rem;}
+  .sticky .btn-ghost{padding-left:1.2em;padding-right:1.2em;}
+  @media (min-width:720px){ .sticky{display:none;} footer{padding-bottom:1.6rem;} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <span class="brand">[Betrieb]</span>
+    <a href="tel:+49XXXXXXXX">📞 [Telefon]</a>
+  </div>
+
+  <!-- ================= HERO — Versprechen + Formular above the fold ================= -->
+  <header class="hero">
+    <span class="badge">Kostenlos &amp; unverbindlich</span>
+
+    <!-- [HEADLINE aus dem Service-Modul — muss die Anzeige wörtlich spiegeln] -->
+    <h1>Ihr Auto wieder <em>wie neu</em> — in [Ort].</h1>
+
+    <!-- [SUBLINE aus dem Service-Modul] -->
+    <p class="sub">
+      [Betrieb] bereitet Ihr Fahrzeug professionell auf.
+      <b>Kostenloser Lack-Check, Festpreis vorab</b> — Sie entscheiden erst danach.
+    </p>
+
+    <div class="trustrow">
+      <!-- [Echte Google-Bewertung eintragen · NIE 5,0 — maximal 4,9] -->
+      <span><span class="stars">★★★★★</span> <b>4,9</b> bei Google</span>
+      <span><b>[X]+</b> Fahrzeuge im Jahr</span>
+      <span>seit <b>[Jahr]</b> in [Ort]</span>
+    </div>
+  </header>
+
+  <!-- ================= FORMULAR (Netlify Forms -> E-Mail) ================= -->
+  <div class="form-card" id="anfrage">
+    <h2>Kostenlosen Check sichern</h2>
+    <p class="hint">30 Sekunden ausfüllen — wir melden uns schnellstmöglich zurück.</p>
+
+    <form class="lead-form" name="anfrage-kfz" method="POST"
+          data-netlify="true" netlify-honeypot="bot-field" action="danke.html">
+      <input type="hidden" name="form-name" value="anfrage-kfz">
+      <p class="hp"><label>Bitte leer lassen: <input name="bot-field"></label></p>
+
+      <label>Name <input type="text" name="name" required placeholder="Ihr Name"></label>
+      <label>Telefon <input type="tel" name="telefon" required placeholder="Für den Rückruf"></label>
+      <label>Ihr Fahrzeug <input type="text" name="fahrzeug" required placeholder="z. B. VW Golf, 2019"></label>
+
+      <!-- [Dropdown-Optionen aus dem Service-Modul übernehmen] -->
+      <label>Gewünschte Leistung
+        <select name="leistung">
+          <option value="">Bitte wählen …</option>
+          <option>Komplettaufbereitung</option>
+          <option>Keramikversiegelung</option>
+          <option>Innenraumreinigung</option>
+          <option>Lackpolitur</option>
+          <option>Weiß ich noch nicht</option>
+        </select>
+      </label>
+
+      <label>E-Mail (optional) <input type="email" name="email" placeholder="ihre@email.de"></label>
+
+      <input type="hidden" name="fbclid" id="f_fbclid">
+      <input type="hidden" name="utm_source" id="f_utm_source">
+      <input type="hidden" name="utm_campaign" id="f_utm_campaign">
+
+      <button class="btn" type="submit">Kostenlosen Check anfragen</button>
+    </form>
+
+    <p class="form-note">
+      Unverbindlich &amp; kostenlos. Lieber direkt anrufen?
+      <a href="tel:+49XXXXXXXX">[Telefon]</a>
+    </p>
+  </div>
+
+</div>
+
+<!-- ================= VORHER / NACHHER — das wichtigste Element ================= -->
+<section class="blk">
+  <div class="wrap">
+    <h2>Vorher / Nachher</h2>
+    <p class="lead">Alles echte Fahrzeuge aus unserer Werkstatt in [Ort].</p>
+
+    <!--
+      [HIER ECHTE FOTOS DES BETRIEBS EINSETZEN — KEINE STOCKBILDER]
+      Mindestens 3 Paare, immer dasselbe Fahrzeug aus derselben Perspektive.
+      Verschiedene Fahrzeugtypen zeigen (Alltagsauto UND hochwertiges Fahrzeug),
+      damit sich jeder Besucher wiedererkennt.
+    -->
+    <div class="ba">
+
+      <div class="ba-pair">
+        <div class="ba-side">
+          <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=700&q=70" alt="Fahrzeug vor der Aufbereitung">
+          <span class="ba-tag">Vorher</span>
+        </div>
+        <div class="ba-side">
+          <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=700&q=70" alt="Fahrzeug nach der Aufbereitung">
+          <span class="ba-tag after">Nachher</span>
+        </div>
+        <p class="ba-cap">[Fahrzeug] · [Leistung] · [Dauer]</p>
+      </div>
+
+      <div class="ba-pair">
+        <div class="ba-side">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=700&q=70" alt="Fahrzeug vor der Aufbereitung">
+          <span class="ba-tag">Vorher</span>
+        </div>
+        <div class="ba-side">
+          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=700&q=70" alt="Fahrzeug nach der Aufbereitung">
+          <span class="ba-tag after">Nachher</span>
+        </div>
+        <p class="ba-cap">[Fahrzeug] · [Leistung] · [Dauer]</p>
+      </div>
+
+      <div class="ba-pair">
+        <div class="ba-side">
+          <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=700&q=70" alt="Innenraum vor der Aufbereitung">
+          <span class="ba-tag">Vorher</span>
+        </div>
+        <div class="ba-side">
+          <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=700&q=70" alt="Innenraum nach der Aufbereitung">
+          <span class="ba-tag after">Nachher</span>
+        </div>
+        <p class="ba-cap">[Fahrzeug] · [Leistung] · [Dauer]</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEISTUNGEN ================= -->
+<section class="blk">
+  <div class="wrap">
+    <h2>Was Sie bekommen</h2>
+    <p class="lead">Klar, was drin ist — und was es kostet, bevor Sie sich entscheiden.</p>
+    <ul class="points">
+      <!-- [Leistungen des Betriebs eintragen — konkret, nicht allgemein] -->
+      <li class="point"><span class="ic">✓</span><div><b>[Leistung 1]</b><span>[Was genau enthalten ist. z. B. Handwäsche, Lackreinigung, Politur in zwei Stufen.]</span></div></li>
+      <li class="point"><span class="ic">✓</span><div><b>[Leistung 2]</b><span>[Was genau enthalten ist.]</span></div></li>
+      <li class="point"><span class="ic">✓</span><div><b>[Leistung 3]</b><span>[Was genau enthalten ist.]</span></div></li>
+      <li class="point"><span class="ic">✓</span><div><b>Festpreis vorab</b><span>Sie wissen vorher, was es kostet. Keine Überraschung bei der Abholung.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= ABLAUF ================= -->
+<section class="blk">
+  <div class="wrap">
+    <h2>So einfach geht's</h2>
+    <ol class="steps">
+      <li><b>Anfrage schicken</b><span>Formular ausfüllen — dauert 30 Sekunden.</span></li>
+      <li><b>Wir rufen zurück</b><span>Kurzes Gespräch, kostenloser Check, Sie bekommen Ihren Festpreis.</span></li>
+      <li><b>Termin &amp; fertig</b><span>Sie bringen das Fahrzeug, wir machen den Rest. [Dauer].</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= BEWERTUNGEN ================= -->
+<section class="blk">
+  <div class="wrap">
+    <h2>Das sagen Kunden</h2>
+    <p class="lead">Echte Bewertungen aus [Ort] und Umgebung.</p>
+    <!-- [Durch echte Google-Bewertungen ersetzen] -->
+    <div class="review"><div class="stars">★★★★★</div><p>„Hätte nicht gedacht, dass da nochmal so ein Auto draus wird. Sieht aus wie frisch vom Händler."</p><cite>[Kundenname], [Ort]</cite></div>
+    <div class="review"><div class="stars">★★★★★</div><p>„Festpreis vorher gesagt, Termin gehalten, Ergebnis top. Kann ich nur empfehlen."</p><cite>[Kundenname], [Ort]</cite></div>
+    <div class="review"><div class="stars">★★★★★</div><p>„Schnelle Rückmeldung, faire Beratung — und das Ergebnis spricht für sich."</p><cite>[Kundenname], [Ort]</cite></div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="blk">
+  <div class="wrap">
+    <h2>Häufige Fragen</h2>
+    <!-- [Nur die Fragen, die wirklich vom Abschluss abhalten — max. 5] -->
+    <details><summary>Was kostet das?</summary><p>[Preisspanne nennen, z. B. „Je nach Fahrzeuggröße und Zustand zwischen X und Y €."] Den genauen Festpreis bekommen Sie beim kostenlosen Check — vorher, nicht hinterher.</p></details>
+    <details><summary>Wie lange dauert es?</summary><p>[Dauer eintragen, z. B. „Eine Komplettaufbereitung dauert je nach Zustand 4 bis 8 Stunden, eine Keramikversiegelung ein bis zwei Tage."]</p></details>
+    <details><summary>Ist der Check wirklich kostenlos?</summary><p>Ja. Wir schauen uns Ihr Fahrzeug an und sagen Ihnen ehrlich, was sinnvoll ist und was es kostet. Danach entscheiden Sie in Ruhe — ohne Verpflichtung.</p></details>
+    <details><summary>Wie lange hält das Ergebnis?</summary><p>[Antwort eintragen, z. B. „Eine Keramikversiegelung schützt bei normaler Pflege 2 bis 5 Jahre."]</p></details>
+    <details><summary>Brauche ich einen Ersatzwagen?</summary><p>[Antwort eintragen — Ersatzwagen, Hol- und Bringservice oder Wartemöglichkeit.]</p></details>
+  </div>
+</section>
+
+<!-- ================= ABSCHLUSS-CTA ================= -->
+<section class="final">
+  <div class="wrap">
+    <h2>Bereit? Dann los.</h2>
+    <p class="lead">Kostenloser Check, Festpreis vorab, keine Verpflichtung.</p>
+    <a class="btn" href="#anfrage">Jetzt kostenlosen Check anfragen</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="nap">[Betrieb]</span><br>
+    [Adresse], [Ort] · <a href="tel:+49XXXXXXXX">[Telefon]</a><br>
+    [Öffnungszeiten]<br>
+    <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
+  </div>
+</footer>
+
+<div class="sticky">
+  <div class="sticky-inner">
+    <a class="btn btn-ghost" href="tel:+49XXXXXXXX">Anrufen</a>
+    <a class="btn" href="#anfrage">Kostenlos anfragen</a>
+  </div>
+</div>
+
+<!-- Meta Pixel (optional; PIXEL_ID eintragen, sonst wirkungslos) -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'PIXEL_ID');            // [PIXEL_ID ersetzen] – Lead-Event feuert auf danke.html
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+<!-- Werbe-Herkunft (fbclid/utm) ins Formular schreiben, damit sie in der Anfrage-Mail stehen -->
+<script>
+  (function(){
+    var p = new URLSearchParams(location.search);
+    var set = function(id,val){ var el=document.getElementById(id); if(el) el.value=val||''; };
+    set('f_fbclid', p.get('fbclid'));
+    set('f_utm_source', p.get('utm_source'));
+    set('f_utm_campaign', p.get('utm_campaign'));
+  })();
+</script>
+
+</body>
+</html>
