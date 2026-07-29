@@ -1,11 +1,11 @@
 # Landingpage online stellen (Netlify) — Schritt für Schritt
 
-Für Einsteiger. Ziel: eine der Landingpages aus `../seiten/landingpage/` ins Netz bringen,
+Für Einsteiger. Ziel: eine der Landingpages aus `../nischen/autowerkstaetten/seiten/landingpage/` ins Netz bringen,
 sodass das Formular funktioniert und Anfragen per E-Mail kommen. **Kein Programmieren, kein Build.**
 
 ## Weg A — Netlify mit GitHub verbinden (empfohlen)
 
-Die Dateien liegen schon im Repo `business` (Ordner `../seiten/landingpage`). Du musst nichts
+Die Dateien liegen schon im Repo `business` (Ordner `../nischen/autowerkstaetten/seiten/landingpage`). Du musst nichts
 herunterladen.
 
 1. Auf **netlify.com** → **Sign up** → **„Sign up with GitHub"** (damit ist GitHub gleich verbunden).
@@ -13,7 +13,7 @@ herunterladen.
 3. Zugriff erlauben (es reicht, nur das Repo **`business`** freizugeben), dann **`business`** auswählen.
 4. **Wichtigste Einstellung:**
    - **Build command:** leer lassen
-   - **Publish directory:** `../seiten/landingpage`
+   - **Publish directory:** `../nischen/autowerkstaetten/seiten/landingpage`
 5. **Deploy** → nach ~30 Sekunden bekommst du eine Live-URL (`zufallsname.netlify.app`).
 
 Bei jedem `git push` nach `main` aktualisiert Netlify die Seite automatisch.
@@ -64,7 +64,7 @@ Beim Klick auf „Absenden" kommt eine 404 → **Netlify hat das Formular nicht 
 ## Häufigster Fehler
 
 **Seite ist leer / 404 (schon beim Öffnen)** → meist falsches **Publish directory**. Es muss
-`../seiten/landingpage` sein (nicht der Repo-Wurzelordner) — sonst findet Netlify die `index.html` nicht.
+`../nischen/autowerkstaetten/seiten/landingpage` sein (nicht der Repo-Wurzelordner) — sonst findet Netlify die `index.html` nicht.
 
 ## Wichtig
 

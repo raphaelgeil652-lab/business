@@ -134,7 +134,7 @@ Schritte:
 **Trigger:** Webhook „neuer Klient" (nach Vertrag). Payload: Klientendaten.
 Schritte: GHL `POST /locations/` mit `snapshotId` (Master) → PIT erzeugen/eintragen →
 Custom Values füllen (`studioname`, `pixel_id`, `telefon`, …) → Zeile in Klienten-Store
-schreiben → Willkommens-Mail (`../akquise/onboarding-email.md`) auslösen.
+schreiben → Willkommens-Mail (`../nischen/autowerkstaetten/akquise/onboarding-email.md`) auslösen.
 > Startphase: ruhig **manuell klonen** (Snapshot laden), WF-4 erst automatisieren, wenn es sich lohnt.
 
 ### WF-5 — Report (optional, geplant)
@@ -160,7 +160,7 @@ Zusammenfassung ins Reporting-Sheet / E-Mail an Klient.
 1. Snapshot klonen (manuell oder WF-4) → neuer Subaccount.
 2. PIT erzeugen, Custom Values füllen (Name, Ort, Telefon, Pixel-ID, Kalender).
 3. Zeile im Klienten-Store anlegen (locationId → pit/pixel/capi_token).
-4. Landingpage aus `../seiten/landingpage/` personalisieren + hosten (Pixel-ID, GHL-Form-ID).
+4. Landingpage aus `../nischen/autowerkstaetten/seiten/landingpage/` personalisieren + hosten (Pixel-ID, GHL-Form-ID).
 5. **Testlead** senden → prüfen: Kontakt in GHL ✔, Speed-to-Lead-Nachricht ✔, CAPI-Event
    im Meta Events Manager **dedupliziert** ✔.
 6. Kampagne live (Budget in Cent, Advantage+/Multi-Advertiser aus, System User Token).

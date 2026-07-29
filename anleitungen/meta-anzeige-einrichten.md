@@ -44,7 +44,7 @@ Leute auf seine Landingpage bringt (Gratis-Planung-Offer). Für Einsteiger.
 11. **Facebook-Seite des Kunden** als Absender wählen (ggf. Instagram-Konto verknüpfen).
 12. **Format: Einzelbild** (am einfachsten).
 13. **Bild** hochladen — ein **echtes, gutes Foto** (fertige Küche/Bad). Kein Text im Bild überladen.
-14. **Primärtext + Überschrift** aus `ad-copy.md` einsetzen ([Studioname]/[Ort] ersetzen).
+14. **Primärtext + Überschrift** aus `../nischen/autowerkstaetten/service-module.md` einsetzen ([Studioname]/[Ort] ersetzen).
 15. **Website-URL:** deine **Landingpage-URL**.
 16. **Call-to-Action-Button:** „Mehr dazu" oder „Angebot erhalten".
 17. **Advantage+ Creative-Verbesserungen ausschalten** (Meta verändert sonst dein Bild/Text — Playbook-Hygiene). Für den Start optional.
@@ -67,7 +67,7 @@ Passiert bei neuen Konten öfter. Meist Formalität. **Einspruch einlegen** (But
 ## Budget-Erinnerung (wichtig)
 
 Das **Tagesbudget zahlt der Kunde** über seine Karte direkt an Meta — nicht du. Du **verwaltest** nur die
-Anzeige. Deine Gebühr (Setup + monatlich) ist davon komplett getrennt. (Details: `so-funktioniert-alles.md`.)
+Anzeige. Deine Gebühr (Setup + monatlich) ist davon komplett getrennt. (Details: `../grundlagen/so-funktioniert-alles.md`.)
 
 ## Später (Ausbaustufe)
 

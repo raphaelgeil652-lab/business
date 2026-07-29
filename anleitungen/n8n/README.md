@@ -30,7 +30,7 @@ Webhook aktivieren (Production-URL notieren).
 
 ## Tracking-Dedup (wichtig)
 
-`event_id` kommt aus dem Landingpage-Formular (`../landingpage/`) über GHL bis in WF-1/WF-3.
+`event_id` kommt aus dem Landingpage-Formular (`../../nischen/autowerkstaetten/seiten/landingpage/`) über GHL bis in WF-1/WF-3.
 Browser-Pixel und Server-CAPI nutzen **dieselbe** `event_id` → Meta dedupliziert. E-Mail/Telefon
 werden in WF-1 per SHA256 (Crypto-Node) gehasht, bevor sie an Meta gehen.
 

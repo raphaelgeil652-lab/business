@@ -42,4 +42,4 @@ deine Gebühr ist komplett getrennt (steuerlich/rechtlich für dich einfach).
 
 ## Danach
 
-Erste Anzeige schalten: `meta-anzeige-einrichten.md`. Geldfluss/Budget erklärt: `so-funktioniert-alles.md`.
+Erste Anzeige schalten: `meta-anzeige-einrichten.md`. Geldfluss/Budget erklärt: `../grundlagen/so-funktioniert-alles.md`.
