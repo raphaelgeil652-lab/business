@@ -20,10 +20,15 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 
 | Seite | Was es ist | Öffnen |
 |---|---|---|
-| **Pitch-Seite** ⭐ | Das Hauptstück zum Vorzeigen: Ablauf, Service-Baukasten, Beispiel-Anzeige, Landingpage-Vorschau, Preise, Garantie, FAQ. **Bilder eingebettet — läuft auch ohne Netz.** | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/pitch/index.html) |
-| Landingpage | Die Vorlage, auf der sich Interessenten eintragen. Eine Datei für alle Kunden. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/landingpage/index.html) |
+| **Pitch-Seite** ⭐ | Das Hauptstück zum Vorzeigen: Ablauf, Service-Baukasten, Beispiel-Anzeige, Landingpage-Vorschau, Preise, Garantie, FAQ. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/pitch/index.html) |
+| **Beispiel-Anzeige** | So sieht die Anzeige im Feed aus — 3 Varianten (Aufbereitung · Smart Repair · Reel). | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/beispiele/ad-mockup.html) |
+| **Beispiel-Landingpage** | Die fertige Seite, auf der die Leute landen. Komplett ausgefüllt am Beispiel „Autopflege Sauter". | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/beispiele/landingpage-beispiel.html) |
+| Landingpage-*Vorlage* | Zum **Arbeiten**, nicht zum Zeigen: das leere Gerüst mit `[Platzhalter]`, eine Datei für alle Kunden. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/landingpage/index.html) |
 
-> Für den Kundenbesuch reicht dir der **oberste Link**. Den zeigst du am iPad.
+> **Für den Kundenbesuch reicht die Pitch-Seite.** Die zeigst du am iPad. Will er mehr sehen,
+> hast du Beispiel-Anzeige und Beispiel-Landingpage als Nachschlag.
+> Diese **drei Zeig-Seiten laufen ohne Internet** (Bilder eingebettet) — vorher einmal im Flugmodus
+> testen. Die Vorlage in der letzten Zeile braucht Netz, die zeigst du beim Kunden aber ohnehin nicht.
 
 ### 🍳 Küchenstudios — zurückgestellt
 

@@ -1,6 +1,6 @@
 # Beispiele (zum Zeigen & Ableiten)
 
-**▶ Öffnen:** [Beispiel-Anzeige](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/seiten/beispiele/ad-mockup.html) · [Beispiel-Landingpage](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/seiten/beispiele/landingpage-beispiel.html)
+**▶ Öffnen:** [Beispiel-Anzeige](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/kuechenstudios/seiten/beispiele/ad-mockup.html) · [Beispiel-Landingpage](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/kuechenstudios/seiten/beispiele/landingpage-beispiel.html)
 
 Fertige Schau-Beispiele — so sieht das Endergebnis aus, das Clickculture liefert. Fiktives Studio
 „Küchenstudio Sonnhalder". Zum Vorzeigen beim Kunden oder als Vorlage zum Personalisieren.

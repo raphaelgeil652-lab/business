@@ -1,6 +1,6 @@
 # Landingpage-Vorlage (Küche & Bad) — MVP
 
-**▶ [Küche-Landingpage öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/seiten/landingpage/index.html)** (rendert im Browser)
+**▶ [Küche-Landingpage öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/kuechenstudios/seiten/landingpage/index.html)** (rendert im Browser)
 
 Einfache, mobil-optimierte Werbe-Landingpages. **Formular → E-Mail** über **Netlify Forms**
 (kein GoHighLevel, kein Backend, keine laufenden Kosten). Slop-geprüft (impeccable: 0 Anti-Patterns).

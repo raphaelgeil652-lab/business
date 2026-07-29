@@ -13,10 +13,15 @@ bei allen identisch.
 
 ## Zum Zeigen
 
-| Seite | Was es ist |
-|---|---|
-| **[Pitch-Seite](seiten/pitch/index.html)** ⭐ | Das Hauptstück fürs iPad. Bilder sind eingebettet — läuft auch ohne Netz. |
-| [Landingpage](seiten/landingpage/index.html) | Die Vorlage für alle Kunden. Anleitung: [README](seiten/landingpage/README.md) |
+| Seite | Was es ist | Öffnen |
+|---|---|---|
+| **[Pitch-Seite](seiten/pitch/index.html)** ⭐ | Das Hauptstück fürs iPad: Ablauf, Baukasten, Preise, Garantie, FAQ. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/pitch/index.html) |
+| [Beispiel-Anzeige](seiten/beispiele/ad-mockup.html) | So sieht die Anzeige im Feed aus — 3 Varianten. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/beispiele/ad-mockup.html) |
+| [Beispiel-Landingpage](seiten/beispiele/landingpage-beispiel.html) | Die fertige Seite, komplett ausgefüllt. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/beispiele/landingpage-beispiel.html) |
+| [Landingpage-*Vorlage*](seiten/landingpage/index.html) | Zum **Arbeiten**: leeres Gerüst mit Platzhaltern. [Anleitung](seiten/landingpage/README.md) | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/landingpage/index.html) |
+
+Die drei **Zeig-Seiten** laufen ohne Internet (Bilder eingebettet); die Vorlage braucht Netz.
+Übersicht: [`seiten/README.md`](seiten/README.md)
 
 ## Zum Arbeiten
 

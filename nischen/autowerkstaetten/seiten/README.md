@@ -1,0 +1,33 @@
+# Seiten zum Zeigen
+
+Alles, was du dem Kunden zeigst. Klick auf **Öffnen**, dann rendert die Seite im Browser.
+
+| Seite | Datei | Öffnen |
+|---|---|---|
+| **Pitch-Seite** ⭐ | [`pitch/index.html`](pitch/index.html) | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/pitch/index.html) |
+| Beispiel-Anzeige | [`beispiele/ad-mockup.html`](beispiele/ad-mockup.html) | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/beispiele/ad-mockup.html) |
+| Beispiel-Landingpage | [`beispiele/landingpage-beispiel.html`](beispiele/landingpage-beispiel.html) | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/beispiele/landingpage-beispiel.html) |
+| Landingpage-**Vorlage** | [`landingpage/index.html`](landingpage/index.html) | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/autowerkstaetten/seiten/landingpage/index.html) |
+
+## Vorlage oder Beispiel?
+
+- **Beispiele** (`beispiele/`) sind zum **Zeigen** — fiktiver Betrieb „Autopflege Sauter",
+  alles ausgefüllt, nichts mehr offen. Das zeigst du beim Kunden.
+- **Vorlagen** (`landingpage/`) sind zum **Arbeiten** — mit `[Platzhalter]`, die du beim echten
+  Kunden füllst. Anleitung: [`landingpage/README.md`](landingpage/README.md).
+
+**Offline:** Die drei Zeig-Seiten (Pitch, Beispiel-Anzeige, Beispiel-Landingpage) haben ihre Bilder
+eingebettet und laufen ohne Netz — wichtig, weil das WLAN in Werkstätten oft schlecht ist.
+Vor dem ersten Besuch einmal im Flugmodus testen.
+
+Die **Vorlage** lädt ihre Platzhalter-Bilder aus dem Netz. Das ist Absicht: Du tauschst sie beim
+echten Kunden gegen seine Fotos, und eine kurze URL ist dafür leichter zu finden als ein
+eingebetteter Bildblock.
+
+## Was du beim Kunden zeigst
+
+1. **Pitch-Seite** — das Hauptstück, führt durch Ablauf, Baukasten, Preise, Garantie.
+2. Wenn er mehr sehen will: **Beispiel-Anzeige** („so sieht Ihre Anzeige aus")
+   und **Beispiel-Landingpage** („da landen die Leute").
+
+Verkaufsablauf: [`../akquise/verkaufsskript.md`](../akquise/verkaufsskript.md)
