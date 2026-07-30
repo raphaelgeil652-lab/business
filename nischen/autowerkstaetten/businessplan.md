@@ -183,14 +183,17 @@ Abhakbare Liste: `akquise/fahrplan-erster-umsatz.md`.
 
 **Ziel: 3–4 Abschlüsse im August, davon 2 in der ersten Hälfte** → 7.000–8.800 €.
 
-### Was der Kunde davon hat (Modul 1, 600 € Budget)
+### Trägt der Preis beim Kunden? (interne Kalkulation, nicht zeigen)
 
 600 € Budget ÷ ~35 € pro Anfrage = **~17 Anfragen** → ~30 % werden Auftrag = **~5 Aufträge**
 × 600 € = **~3.000 € Umsatz** gegen 1.599 € Kosten (Budget + Fee) = **~1.400 € für ihn**.
 
 Bei Keramikversiegelung (Ø 1.000 €) oder Karosserie (Ø 2.500 €) entsprechend deutlich mehr.
 
-> Orientierungswerte aus Branchen-Benchmarks, **keine Garantie** — genau so auch im Gespräch sagen.
+> ⚠️ **Nicht im Verkaufsgespräch vorrechnen.** Das sind Orientierungswerte aus Branchen-Benchmarks,
+> keine Garantie. Vorgerechnete Umsätze versprechen Zahlen, die du nicht halten kannst, und wirken
+> wie ein Verkaufstrick. Rechne stattdessen mit **seinen** Zahlen, wenn er selbst danach fragt.
+> Herleitung: `geschaeftsmodell.md`.
 
 ### Der Weg zu 10.000 €/Monat
 

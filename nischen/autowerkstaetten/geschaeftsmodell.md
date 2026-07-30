@@ -67,7 +67,14 @@ die er nicht bedienen kann, ärgert sich über verpasste Chancen und macht dich 
 
 ---
 
-## Was der Kunde davon hat (die Rechnung fürs Verkaufsgespräch)
+## Rechnet sich der Preis für den Kunden? (interne Kalkulation)
+
+> ⚠️ **Nicht dem Kunden zeigen.** Diese Rechnung ist dein eigener Prüfstein: Trägt ein Auftrag bei
+> ihm die 999 € überhaupt? Vorgerechnete Umsätze im Verkaufsgespräch wirken wie ein Trick und
+> versprechen Zahlen, die du nicht halten kannst. Deshalb steht sie auch nicht mehr auf der
+> Pitch-Seite. Wenn er von sich aus fragt „rechnet sich das?", rechne mit **seinen** Zahlen:
+> „Was bringt Ihnen eine Aufbereitung im Schnitt?" → „Dann zahlt sich das mit dem zweiten Auftrag."
+> Das überzeugt, ohne dass du etwas versprichst.
 
 Beispiel Modul 1 (Aufbereitung), Budget 600 €/Monat:
 
