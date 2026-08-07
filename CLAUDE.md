@@ -95,6 +95,17 @@ Vollständig erhalten: `geschaeftsmodell.md`, `nische.md`, `offer-und-ads.md`, `
 `akquise/` (inkl. Leads + Besuchs-Reihenfolge), `seiten/` (Pitch, Landingpage Küche/Bad, Beispiele).
 Preise dort: 850 € / 1.500 € — **nicht mit der Kfz-Nische verwechseln.**
 
+### `kunden/` — konkrete Kundenarbeit (außerhalb der Nischen-Logik)
+Hier liegt fertige Arbeit für einzelne Kunden, nicht das Nischen-System.
+- `chinatown-pfullendorf/flyer/` — **China Restaurant Chinatown** (Fam. Mau, Pfullendorf):
+  druckfertiger DIN-A4-Faltflyer (Wickelfalz) mit kompletter Speisekarte, dazu Assets
+  (freigestellte Winkekatze, vektorisierter Drache, Font-Subsets) und die Skripte, die sie
+  erzeugen. Einstieg: das README dort.
+
+**Achtung:** Chinatown ist ein Gastro-Kunde und liegt damit **außerhalb der aktiven Kfz-Nische**.
+Nicht mit dem Kfz-Angebot oder dessen Preisen vermischen — es ist ein Einzelauftrag, kein
+Nischen-Kunde.
+
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,
 `ghl-n8n-aufbau.md` + `n8n/`, `tech-stack.md`, `klienten-journey.md`
