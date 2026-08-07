@@ -6,9 +6,15 @@ verkaufsoptimierten Restaurant-Flyern: Front = Catcher + EIN Angebot + CTA, Rüc
 (kuratierte Gerichte, kein voller Karten-Abdruck) + Gutschein + Fakten.
 
 ## Dateien
-- `index.html` — die Quelle (bearbeitbar).
-- `chinatown-flyer-A5.pdf` — druckfertig (A5, randlos, Hintergrund an).
-- `preview-seite1.png` / `preview-seite2.png` — Vorschau.
+
+**A5-Flyer (einfach, Vorder-/Rückseite):**
+- `index.html` — Quelle · `chinatown-flyer-A5.pdf` — druckfertig · `preview-seite1/2.png` — Vorschau.
+
+**Faltflyer (DIN A4, Wickelfalz → DL, durchgehend dunkel, ALLE Gerichte):**
+- `faltflyer.html` — Quelle · `chinatown-faltflyer-A4.pdf` — druckfertig · `fold-aussen/innen.png` — Vorschau.
+- Druck: **beidseitig, A4 quer, an kurzer Kante wenden**, danach **2× falzen (Wickelfalz)**.
+  Front = Cover (Chinatown + Katze), aufgeklappt = komplette Speisekarte (Nr. 1–69),
+  Innenflügel = Mittagskarte (M1–M18), Rückseite = Kontakt/Zeiten/Buffet.
 
 ## Neu rendern (nach Änderungen an index.html)
 Chromium/Playwright vorhanden. Rendert PDF + Vorschau:

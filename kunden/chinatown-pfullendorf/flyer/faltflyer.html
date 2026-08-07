@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chinatown – Faltflyer (DIN A4, Wickelfalz)</title>
+<style>
+  /* ==========================================================================
+     CHINA RESTAURANT CHINATOWN – Faltflyer
+     DIN A4 quer (297 x 210 mm), 3 Panels je Seite -> Wickelfalz zu DL.
+     Durchgehend dunkel (Schwarz/Gold/Rot). Alle Gerichte enthalten.
+     Beidseitig drucken (an kurzer Kante wenden), 2x falzen.
+     ========================================================================== */
+  :root{
+    --black:      #0c0b09;
+    --black-2:    #16130f;
+    --panel:      #100e0b;
+    --gold:       #d8b04a;
+    --gold-lt:    #f4dc93;
+    --gold-dk:    #9c7a1f;
+    --red:        #b21c15;
+    --red-lt:     #e0554d;
+    --cream:      #efe6d0;
+    --cream-dim:  #b9ad93;
+    --line:       #3a2f1a;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ background:#3a3a3a; }
+  body{
+    font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    color:var(--cream);
+    display:flex; flex-direction:column; align-items:center; gap:16px; padding:22px;
+  }
+  .zh{ font-family:"SimSun","Songti SC","STSong",serif; }
+  .serif{ font-family:"Georgia","Times New Roman",serif; }
+
+  /* ---- A4-quer-Bogen ---------------------------------------------------- */
+  .sheet{
+    position:relative;
+    width:297mm; height:210mm;
+    background:var(--black);
+    display:flex;
+    box-shadow:0 12px 46px rgba(0,0,0,.55);
+    overflow:hidden;
+  }
+  .panel{
+    position:relative;
+    width:99mm; height:210mm;
+    padding:9mm 7mm;
+    display:flex; flex-direction:column;
+    background:
+      radial-gradient(120% 80% at 50% 0%, rgba(216,176,74,.06), rgba(216,176,74,0) 55%),
+      var(--panel);
+  }
+  /* Falzlinie zwischen den Panels */
+  .panel + .panel{ box-shadow:inset 1px 0 0 rgba(216,176,74,.18); }
+  /* Falzmarken oben/unten */
+  .sheet::before,.sheet::after{
+    content:""; position:absolute; left:99mm; right:99mm; height:0;
+    border-left:1px dashed rgba(216,176,74,.30); border-right:1px dashed rgba(216,176,74,.30);
+  }
+  .sheet::before{ top:0; } .sheet::after{ bottom:0; }
+
+  /* ============================ COVER (Front) =========================== */
+  .cover{ align-items:center; text-align:center; justify-content:space-between; padding:12mm 8mm; }
+  .cover .frame{ position:absolute; inset:6mm; border:1px solid var(--gold-dk); }
+  .cover .frame::after{ content:""; position:absolute; inset:2mm; border:1px solid rgba(216,176,74,.28); }
+  .cover .catbg{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:100mm; opacity:.16; filter:saturate(.7); }
+  .cov-top{ position:relative; z-index:2; }
+  .cov-top .chars{ font-size:34px; letter-spacing:.3em; color:var(--gold-lt); margin-left:.3em; }
+  .cov-top .kick{ margin-top:6px; font-size:10.5px; letter-spacing:.5em; color:var(--gold); text-transform:uppercase; }
+  .cov-cat{ position:relative; z-index:2; width:72mm; filter:drop-shadow(0 12px 22px rgba(0,0,0,.65)); }
+  .cov-brand{ position:relative; z-index:2; }
+  .cov-brand h1{
+    font-size:46px; line-height:.9; letter-spacing:.01em; font-weight:700;
+    color:transparent; background:linear-gradient(180deg,var(--gold-lt),var(--gold) 55%,var(--gold-dk));
+    -webkit-background-clip:text; background-clip:text;
+  }
+  .cov-brand .sub{ margin-top:8px; display:flex; align-items:center; justify-content:center; gap:9px; color:var(--gold); font-size:11px; letter-spacing:.34em; text-transform:uppercase; }
+  .cov-brand .sub::before,.cov-brand .sub::after{ content:""; height:1px; width:26px; background:var(--gold-dk); }
+  .cov-brand .tag{ margin-top:12px; font-size:12px; color:var(--cream-dim); letter-spacing:.02em; }
+
+  /* ============================ BACK COVER ============================= */
+  .back{ justify-content:space-between; text-align:center; align-items:center; }
+  .back .frame{ position:absolute; inset:6mm; border:1px solid var(--gold-dk); pointer-events:none; }
+  .b-cat{ width:30mm; opacity:.9; margin-top:2mm; }
+  .b-title{ font-size:22px; color:var(--gold-lt); margin-top:4mm; }
+  .b-title .k{ display:block; font-size:9.5px; letter-spacing:.34em; color:var(--gold); text-transform:uppercase; margin-bottom:3px; }
+  .b-tel{ font-size:30px; color:var(--red-lt); font-weight:700; margin:5mm 0 1mm; letter-spacing:.01em; }
+  .b-block{ font-size:12.5px; line-height:1.6; color:var(--cream); }
+  .b-block .name{ color:var(--gold-lt); font-size:14px; letter-spacing:.02em; }
+  .b-hours{ margin-top:5mm; font-size:12px; line-height:1.55; color:var(--cream); }
+  .b-hours .h{ font-size:9.5px; letter-spacing:.28em; color:var(--gold); text-transform:uppercase; margin-bottom:3px; }
+  .b-hours b{ color:var(--gold-lt); }
+  .b-hours .closed{ color:var(--red-lt); }
+  .b-buffet{ margin-top:5mm; border:1px solid var(--gold-dk); border-radius:4px; padding:7px 10px; font-size:11px; color:var(--cream-dim); background:rgba(216,176,74,.05); }
+  .b-buffet b{ color:var(--gold-lt); font-size:13px; }
+  .b-foot{ margin-top:4mm; font-size:9px; letter-spacing:.2em; color:var(--gold-dk); text-transform:uppercase; }
+
+  /* ============================ FLAP: Mittag ============================ */
+  .phead{ text-align:center; margin-bottom:5mm; }
+  .phead .chars{ font-size:18px; color:var(--gold); letter-spacing:.2em; }
+  .phead h2{ font-size:24px; color:var(--gold-lt); line-height:1; margin-top:3px; }
+  .phead .k{ font-size:9px; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; margin-top:5px; }
+  .phead .note{ font-size:10px; color:var(--cream-dim); margin-top:6px; line-height:1.4; }
+
+  /* ---- Speisen-Zeilen (kompakt) ---------------------------------------- */
+  .cat{ display:flex; align-items:center; gap:7px; margin:9px 0 4px; }
+  .cat:first-of-type{ margin-top:0; }
+  .cat .t{ font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--red-lt); font-weight:700; white-space:nowrap; }
+  .cat .l{ flex:1; height:1px; background:linear-gradient(90deg,var(--gold-dk),transparent); }
+  .cat .zhc{ font-size:11px; color:var(--gold-dk); }
+  .sub-h{ font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin:5px 0 2px; }
+
+  .d{ display:flex; align-items:baseline; gap:5px; padding:1.6px 0; font-size:8.7px; line-height:1.15; }
+  .d .num{ color:var(--gold-dk); font-weight:700; flex:0 0 auto; min-width:12px; }
+  .d .n{ color:var(--cream); }
+  .d .n em{ color:var(--cream-dim); font-style:normal; font-size:7.6px; }
+  .d .dot{ flex:1; border-bottom:1px dotted #4a3d22; transform:translateY(-2px); }
+  .d .p{ color:var(--gold-lt); font-weight:700; flex:0 0 auto; white-space:nowrap; }
+
+  .pfoot{ margin-top:auto; padding-top:5px; font-size:8px; color:var(--gold-dk); letter-spacing:.16em; text-transform:uppercase; text-align:center; }
+
+  /* Inside spread column headline */
+  .inside-flag{
+    position:absolute; top:0; left:0; right:0; text-align:center;
+    font-size:8px; letter-spacing:.3em; color:var(--gold-dk); text-transform:uppercase;
+    padding-top:3.5mm; z-index:1; pointer-events:none;
+  }
+
+  /* Bildschirm-Hinweis */
+  .hint{ color:#eee; font-size:12.5px; text-align:center; max-width:297mm; line-height:1.55; }
+  .hint b{ color:#ffd98a; } .hint code{ background:#00000066; padding:1px 5px; border-radius:3px; }
+  .lbl{ color:#f2d888; font-size:12px; letter-spacing:.14em; text-transform:uppercase; margin-top:4px; }
+
+  @page{ size:A4 landscape; margin:0; }
+  @media print{
+    html,body{ background:#fff; }
+    body{ padding:0; gap:0; display:block; }
+    .hint,.lbl{ display:none; }
+    .sheet{ box-shadow:none; page-break-after:always; break-after:page; }
+    .sheet:last-of-type{ page-break-after:auto; break-after:auto; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ====================== Wiederverwendbare Katze (SVG-Symbol) ========= -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="gB" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f7e39c"/><stop offset=".5" stop-color="#dcb64f"/><stop offset="1" stop-color="#a8801f"/>
+      </linearGradient>
+      <radialGradient id="gH" cx="42%" cy="34%" r="70%">
+        <stop offset="0" stop-color="#fbeeb6"/><stop offset=".6" stop-color="#e2c05f"/><stop offset="1" stop-color="#b58d28"/>
+      </radialGradient>
+      <symbol id="cat" viewBox="0 0 200 224">
+        <ellipse cx="100" cy="210" rx="62" ry="12" fill="#3a1c07"/>
+        <ellipse cx="100" cy="205" rx="60" ry="12" fill="url(#gB)" stroke="#7a5c14" stroke-width="1.5"/>
+        <path d="M52 150 C48 108 66 86 100 86 C134 86 152 108 148 150 C146 178 128 196 100 196 C72 196 54 178 52 150 Z" fill="url(#gB)" stroke="#7a5c14" stroke-width="2"/>
+        <path d="M78 150 C78 172 90 186 100 186 C110 186 122 172 122 150 C122 150 112 160 100 160 C88 160 78 150 78 150 Z" fill="#2e8f86"/>
+        <ellipse cx="100" cy="158" rx="20" ry="13" fill="#f2d888" stroke="#a8801f" stroke-width="2"/>
+        <text x="100" y="162" font-size="11" text-anchor="middle" fill="#7a5c14" font-family="serif" font-weight="700">千萬</text>
+        <ellipse cx="60" cy="168" rx="15" ry="12" fill="url(#gB)" stroke="#7a5c14" stroke-width="2"/>
+        <path d="M143 112 C158 96 156 74 146 66 C136 58 120 66 122 84 C123 96 132 108 143 112 Z" fill="url(#gB)" stroke="#7a5c14" stroke-width="2"/>
+        <ellipse cx="141" cy="74" rx="12" ry="11" fill="url(#gB)" stroke="#7a5c14" stroke-width="2"/>
+        <ellipse cx="100" cy="66" rx="48" ry="43" fill="url(#gH)" stroke="#7a5c14" stroke-width="2"/>
+        <path d="M62 40 C58 20 74 14 82 30 C76 34 68 40 62 40 Z" fill="url(#gB)" stroke="#7a5c14" stroke-width="2"/>
+        <path d="M138 40 C142 20 126 14 118 30 C124 34 132 40 138 40 Z" fill="url(#gB)" stroke="#7a5c14" stroke-width="2"/>
+        <path d="M66 36 C64 25 72 22 77 31 Z" fill="#c21d16"/>
+        <path d="M134 36 C136 25 128 22 123 31 Z" fill="#c21d16"/>
+        <ellipse cx="82" cy="64" rx="5.5" ry="8" fill="#1c140c"/>
+        <ellipse cx="118" cy="64" rx="5.5" ry="8" fill="#1c140c"/>
+        <circle cx="83.5" cy="61" r="1.6" fill="#fff"/><circle cx="119.5" cy="61" r="1.6" fill="#fff"/>
+        <path d="M96 76 h8 l-4 4 z" fill="#c21d16"/>
+        <path d="M100 80 C96 86 90 85 88 81 M100 80 C104 86 110 85 112 81" fill="none" stroke="#7a5c14" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M66 66 l-16 -4 M66 72 l-16 2 M134 66 l16 -4 M134 72 l16 2" stroke="#b58d28" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M64 96 C78 108 122 108 136 96" fill="none" stroke="#c21d16" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="100" cy="104" r="7" fill="#f2d888" stroke="#a8801f" stroke-width="1.6"/>
+        <path d="M94 104 h12 M100 104 v6" stroke="#a8801f" stroke-width="1.4"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ####################################################################### -->
+  <!-- ############### AUSSENSEITE (Cover + Rücken + Mittagskarte) ########### -->
+  <!-- ####################################################################### -->
+  <p class="lbl">Außenseite — beim Drucken Seite 1</p>
+  <section class="sheet">
+
+    <!-- Panel A1: FLAP / Mittagskarte -->
+    <div class="panel">
+      <div class="phead">
+        <div class="chars zh">午 市</div>
+        <h2 class="serif">Mittagskarte</h2>
+        <div class="k">Dienstag – Samstag · bis 14:30 Uhr</div>
+        <div class="note">Jedes Menü inkl. <b style="color:var(--gold-lt)">Pekingsuppe</b> oder <b style="color:var(--gold-lt)">Gemüserollen</b>.<br>Außer Sonn- &amp; Feiertage.</div>
+      </div>
+
+      <div class="d"><span class="num">M1</span><span class="n">Gebratener Reis mit Hühnerfleisch</span><span class="dot"></span><span class="p">8,40</span></div>
+      <div class="d"><span class="num">M2</span><span class="n">Gebratene Nudeln mit Hühnerfleisch</span><span class="dot"></span><span class="p">8,40</span></div>
+      <div class="d"><span class="num">M3</span><span class="n">Gebratene Nudeln mit Gemüse <em>vegetarisch</em></span><span class="dot"></span><span class="p">7,50</span></div>
+      <div class="d"><span class="num">M4</span><span class="n">Schweinefleisch süß-sauer</span><span class="dot"></span><span class="p">8,70</span></div>
+      <div class="d"><span class="num">M5</span><span class="n">Hühnerfleisch süß-sauer mit Ananas</span><span class="dot"></span><span class="p">8,70</span></div>
+      <div class="d"><span class="num">M6</span><span class="n">Huhn mit Curry und Gemüse</span><span class="dot"></span><span class="p">8,70</span></div>
+      <div class="d"><span class="num">M7</span><span class="n">Hühnerfleisch Gung Bao <em>pikant, leicht scharf</em></span><span class="dot"></span><span class="p">8,70</span></div>
+      <div class="d"><span class="num">M8</span><span class="n">Rindfleisch Gung Bao Art <em>leicht scharf</em></span><span class="dot"></span><span class="p">9,40</span></div>
+      <div class="d"><span class="num">M9</span><span class="n">Rindfleisch mit Morcheln und Bambus</span><span class="dot"></span><span class="p">9,40</span></div>
+      <div class="d"><span class="num">M10</span><span class="n">Knusprige Ente mit Nudeln</span><span class="dot"></span><span class="p">10,50</span></div>
+      <div class="d"><span class="num">M11</span><span class="n">Knuspr. Ente Chop Suey <em>versch. Gemüse</em></span><span class="dot"></span><span class="p">10,50</span></div>
+      <div class="d"><span class="num">M12</span><span class="n">Knuspr. Ente süß-sauer</span><span class="dot"></span><span class="p">10,50</span></div>
+      <div class="d"><span class="num">M13</span><span class="n">Gebr. Reis mit knuspr. Ente</span><span class="dot"></span><span class="p">10,50</span></div>
+      <div class="d"><span class="num">M14</span><span class="n">Fischfilet süß-sauer oder Hoi-Sin-Soße</span><span class="dot"></span><span class="p">9,80</span></div>
+      <div class="d"><span class="num">M15</span><span class="n">Krabben Chop-Suey <em>versch. Gemüse</em></span><span class="dot"></span><span class="p">9,90</span></div>
+      <div class="d"><span class="num">M16</span><span class="n">Versch. Fleischsorten mit Gemüse <em>leicht scharf</em></span><span class="dot"></span><span class="p">9,90</span></div>
+      <div class="d"><span class="num">M17</span><span class="n">Gebratenes Gemüse <em>vegetarisch</em></span><span class="dot"></span><span class="p">7,50</span></div>
+      <div class="d"><span class="num">M18</span><span class="n">Gebr. Gemüse <em>mit Soße nach Wahl</em></span><span class="dot"></span><span class="p">7,50</span></div>
+
+      <div class="pfoot">Alle Preise in €</div>
+    </div>
+
+    <!-- Panel A2: BACK COVER -->
+    <div class="panel back">
+      <div class="frame"></div>
+      <svg class="b-cat"><use href="#cat"/></svg>
+      <div class="b-title serif"><span class="k">Reservierung &amp; Abholung</span>Wir freuen uns<br>auf Ihren Besuch</div>
+      <div class="b-tel serif">07552 · 6636</div>
+      <div class="b-block">
+        <span class="name serif">China Restaurant Chinatown</span><br>
+        Heiligenberger Straße 1<br>88630 Pfullendorf<br>
+        <span style="color:var(--cream-dim)">Inhaber: Familie Mau</span>
+      </div>
+      <div class="b-hours">
+        <div class="h">Öffnungszeiten</div>
+        <b>Dienstag – Sonntag</b><br>
+        11:30 – 14:30 Uhr &nbsp;·&nbsp; 17:30 – 22:00 Uhr<br>
+        <span class="closed">Montag Ruhetag</span>
+      </div>
+      <div class="b-buffet">
+        <b>Buffet à volonté · 19,50 € p. P.</b><br>
+        Samstagabend, Sonntag &amp; an Feiertagen
+      </div>
+      <div class="b-foot zh">旺 城 · 酒 楼</div>
+    </div>
+
+    <!-- Panel A3: FRONT COVER -->
+    <div class="panel cover">
+      <div class="frame"></div>
+      <svg class="catbg"><use href="#cat"/></svg>
+      <div class="cov-top">
+        <div class="chars zh">旺 城</div>
+        <div class="kick">China Restaurant</div>
+      </div>
+      <svg class="cov-cat"><use href="#cat"/></svg>
+      <div class="cov-brand">
+        <h1 class="serif">CHINATOWN</h1>
+        <div class="sub">Pfullendorf</div>
+        <div class="tag serif">Original chinesische Küche</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ####################################################################### -->
+  <!-- ################## INNENSEITE (komplette Speisekarte) ################# -->
+  <!-- ####################################################################### -->
+  <p class="lbl">Innenseite — beim Drucken Seite 2 (aufgeklappt: die ganze Karte)</p>
+  <section class="sheet">
+    <div class="inside-flag">✦ Speisekarte ✦</div>
+
+    <!-- Innen Spalte 1: Vorspeisen + Vegetarisch -->
+    <div class="panel">
+      <div class="cat"><span class="t">Vorspeisen</span><span class="l"></span><span class="zhc zh">前菜</span></div>
+      <div class="d"><span class="num">1</span><span class="n">Pekingsuppe <em>süß-sauer-scharf</em></span><span class="dot"></span><span class="p">3,80</span></div>
+      <div class="d"><span class="num">2</span><span class="n">Hühnerstreifensuppe</span><span class="dot"></span><span class="p">3,70</span></div>
+      <div class="d"><span class="num">3</span><span class="n">Wan Tan Suppe <em>mit gef. Fleischtaschen</em></span><span class="dot"></span><span class="p">4,50</span></div>
+      <div class="d"><span class="num">4</span><span class="n">Gemüsesuppe mit Glasnudeln <em>vegetarisch</em></span><span class="dot"></span><span class="p">3,60</span></div>
+      <div class="d"><span class="num">5</span><span class="n">Sam Sien Suppe mit Glasnudeln <em>versch. Fleisch</em></span><span class="dot"></span><span class="p">4,60</span></div>
+      <div class="d"><span class="num">6</span><span class="n">Eierblumensuppe</span><span class="dot"></span><span class="p">3,90</span></div>
+      <div class="d"><span class="num">7</span><span class="n">Knusprige Wan Tans mit süß-sauer Soße</span><span class="dot"></span><span class="p">4,70</span></div>
+      <div class="d"><span class="num">8</span><span class="n">Frühlingsrolle</span><span class="dot"></span><span class="p">3,80</span></div>
+      <div class="d"><span class="num">9</span><span class="n">Herbstrollen <em>vegetarisch</em></span><span class="dot"></span><span class="p">3,50</span></div>
+      <div class="d"><span class="num">10</span><span class="n">Krabben Chips <em>Krupuk</em></span><span class="dot"></span><span class="p">3,60</span></div>
+      <div class="d"><span class="num">11</span><span class="n">Gemischter Salat</span><span class="dot"></span><span class="p">4,70</span></div>
+      <div class="d"><span class="num">12</span><span class="n">Hühnerfleischsalat</span><span class="dot"></span><span class="p">6,30</span></div>
+      <div class="d"><span class="num">13</span><span class="n">Shrimps-Salat</span><span class="dot"></span><span class="p">7,40</span></div>
+      <div class="d"><span class="num">14</span><span class="n">Thunfisch-Salat</span><span class="dot"></span><span class="p">6,40</span></div>
+
+      <div class="cat"><span class="t">Vegetarisch</span><span class="l"></span><span class="zhc zh">素食</span></div>
+      <div class="d"><span class="num">15</span><span class="n">Chop-Suey <em>gebr. Gemüse</em></span><span class="dot"></span><span class="p">8,20</span></div>
+      <div class="d"><span class="num">16</span><span class="n">Gemüse Kung Po Art <em>leicht scharf</em></span><span class="dot"></span><span class="p">8,50</span></div>
+      <div class="d"><span class="num">17</span><span class="n">Gemüse in Erdnusssoße</span><span class="dot"></span><span class="p">8,40</span></div>
+      <div class="d"><span class="num">18</span><span class="n">Gemüse Süß-Sauer</span><span class="dot"></span><span class="p">8,20</span></div>
+      <div class="d"><span class="num">19</span><span class="n">Gemüse in Kokossoße</span><span class="dot"></span><span class="p">8,40</span></div>
+      <div class="d"><span class="num">20</span><span class="n">Gemüse in Currysoße</span><span class="dot"></span><span class="p">8,40</span></div>
+      <div class="d"><span class="num">21</span><span class="n">Gebratene Nudeln mit Gemüse</span><span class="dot"></span><span class="p">8,20</span></div>
+      <div class="d"><span class="num">22</span><span class="n">Gebratener Reis mit Gemüse</span><span class="dot"></span><span class="p">8,20</span></div>
+
+      <div class="cat"><span class="t">Nachtisch</span><span class="l"></span><span class="zhc zh">甜点</span></div>
+      <div class="d"><span class="num">64</span><span class="n">Gebackene Banane mit Vanilleeis &amp; Honig</span><span class="dot"></span><span class="p">4,80</span></div>
+      <div class="d"><span class="num">65</span><span class="n">Gebackene Ananas mit Vanilleeis &amp; Honig</span><span class="dot"></span><span class="p">4,80</span></div>
+      <div class="d"><span class="num">66</span><span class="n">Gebackenes Eis</span><span class="dot"></span><span class="p">5,20</span></div>
+      <div class="d"><span class="num">67</span><span class="n">Gemischtes Eis mit Sahne</span><span class="dot"></span><span class="p">4,50</span></div>
+      <div class="d"><span class="num">68</span><span class="n">Vanilleeis mit Eierlikör</span><span class="dot"></span><span class="p">5,50</span></div>
+      <div class="d"><span class="num">69</span><span class="n">Sanfter Engel <em>Vanilleeis, Orangensaft &amp; Sahne</em></span><span class="dot"></span><span class="p">4,80</span></div>
+
+      <div class="pfoot">Alle Preise in €</div>
+    </div>
+
+    <!-- Innen Spalte 2: Fleisch + Ente -->
+    <div class="panel">
+      <div class="cat"><span class="t">Fleischgerichte</span><span class="l"></span><span class="zhc zh">肉类</span></div>
+      <div class="sub-h">Schwein</div>
+      <div class="d"><span class="num">23</span><span class="n">Schweinefleisch süß-sauer</span><span class="dot"></span><span class="p">11,90</span></div>
+      <div class="d"><span class="num">24</span><span class="n">Schweinefleisch Gung Bao <em>pikant, leicht scharf</em></span><span class="dot"></span><span class="p">11,90</span></div>
+      <div class="d"><span class="num">25</span><span class="n">Schweinefleisch mit Morcheln und Bambus</span><span class="dot"></span><span class="p">12,30</span></div>
+      <div class="d"><span class="num">26</span><span class="n">Schweinefleisch gebraten in Sa-Cha-Soße</span><span class="dot"></span><span class="p">12,50</span></div>
+      <div class="sub-h">Rind</div>
+      <div class="d"><span class="num">27</span><span class="n">Rindfleisch mit Gemüse in Currysoße</span><span class="dot"></span><span class="p">13,80</span></div>
+      <div class="d"><span class="num">28</span><span class="n">Rindfleisch gebraten mit Zwiebeln</span><span class="dot"></span><span class="p">13,60</span></div>
+      <div class="d"><span class="num">29</span><span class="n">Rindfleisch mit Broccoli</span><span class="dot"></span><span class="p">13,60</span></div>
+      <div class="d"><span class="num">30</span><span class="n">Rindfleisch mit versch. Pilzen</span><span class="dot"></span><span class="p">13,80</span></div>
+      <div class="d"><span class="num">31</span><span class="n">Rindfleisch Gung Bao Art <em>leicht scharf</em></span><span class="dot"></span><span class="p">13,60</span></div>
+      <div class="sub-h">Huhn</div>
+      <div class="d"><span class="num">32</span><span class="n">Gebr. Hühnerbrust mit Erdnuss</span><span class="dot"></span><span class="p">11,40</span></div>
+      <div class="d"><span class="num">33</span><span class="n">Curryhuhn mit Gemüse <em>scharf</em></span><span class="dot"></span><span class="p">11,60</span></div>
+      <div class="d"><span class="num">34</span><span class="n">Hühnerbrust mit Gemüse, Ananas süß-sauer</span><span class="dot"></span><span class="p">11,60</span></div>
+      <div class="d"><span class="num">35</span><span class="n">Hühnerfleisch mit Gemüse in Mangosoße</span><span class="dot"></span><span class="p">11,80</span></div>
+      <div class="d"><span class="num">36</span><span class="n">Gung Bao Huhn <em>pikant, leicht scharf</em></span><span class="dot"></span><span class="p">11,60</span></div>
+      <div class="d"><span class="num">37</span><span class="n">Hühnerfleisch mit Kokossoße und Gemüse</span><span class="dot"></span><span class="p">11,60</span></div>
+      <div class="d"><span class="num">38</span><span class="n">Hühnerbrust knusprig mit süß-sauer Soße</span><span class="dot"></span><span class="p">11,60</span></div>
+      <div class="d"><span class="num">39</span><span class="n">Hühnerfleisch mit Morcheln und Bambus</span><span class="dot"></span><span class="p">11,80</span></div>
+
+      <div class="cat"><span class="t">Enten-Gerichte</span><span class="l"></span><span class="zhc zh">鸭</span></div>
+      <div class="d"><span class="num">40</span><span class="n">Knusprige Ente süß-sauer</span><span class="dot"></span><span class="p">15,60</span></div>
+      <div class="d"><span class="num">41</span><span class="n">Ente Canton Art <em>nicht scharf od. scharf</em></span><span class="dot"></span><span class="p">15,50</span></div>
+      <div class="d"><span class="num">42</span><span class="n">Knuspr. Ente mit gebr. Nudeln <em>Hoi-Sin-Soße</em></span><span class="dot"></span><span class="p">15,50</span></div>
+      <div class="d"><span class="num">43</span><span class="n">Ente knusprig mit Gemüse und Mangosoße</span><span class="dot"></span><span class="p">15,80</span></div>
+      <div class="d"><span class="num">44</span><span class="n">Knusprige Ente auf Currysoße <em>leicht scharf</em></span><span class="dot"></span><span class="p">15,80</span></div>
+      <div class="d"><span class="num">45</span><span class="n">Knuspr. Ente mit Morcheln und Bambus</span><span class="dot"></span><span class="p">15,60</span></div>
+      <div class="d"><span class="num">46</span><span class="n">Erdnuss-Ente <em>knusprig, mit Gemüse</em></span><span class="dot"></span><span class="p">15,60</span></div>
+
+      <div class="pfoot">Alle Preise in €</div>
+    </div>
+
+    <!-- Innen Spalte 3: Fisch + Reis + Nudeln -->
+    <div class="panel">
+      <div class="cat"><span class="t">Fisch &amp; Meeresfr.</span><span class="l"></span><span class="zhc zh">海鲜</span></div>
+      <div class="d"><span class="num">47</span><span class="n">Krabben Chop-Suey</span><span class="dot"></span><span class="p">14,80</span></div>
+      <div class="d"><span class="num">48</span><span class="n">Garnelen mit Gemüse und Knoblauch <em>scharf</em></span><span class="dot"></span><span class="p">17,20</span></div>
+      <div class="d"><span class="num">49</span><span class="n">Grünschalenmuschel mit Sa-Cha-Soße</span><span class="dot"></span><span class="p">17,50</span></div>
+      <div class="d"><span class="num">50</span><span class="n">Grünschalenmuschel in Weißwein-Soße</span><span class="dot"></span><span class="p">17,50</span></div>
+      <div class="d"><span class="num">51</span><span class="n">Garnelen mit Teigmantel süß-sauer</span><span class="dot"></span><span class="p">17,40</span></div>
+      <div class="d"><span class="num">52</span><span class="n">Fischfilet knusprig mit Gemüse <em>leicht scharf</em></span><span class="dot"></span><span class="p">14,60</span></div>
+      <div class="d"><span class="num">53</span><span class="n">Fischfilet knusprig süß-sauer</span><span class="dot"></span><span class="p">14,60</span></div>
+      <div class="d"><span class="num">54</span><span class="n">Meeresfrüchte mit Gemüse <em>pikant</em></span><span class="dot"></span><span class="p">17,80</span></div>
+      <div class="d"><span class="num">55</span><span class="n">Calamaris süß-sauer oder Hoi-Sin-Soße</span><span class="dot"></span><span class="p">14,80</span></div>
+
+      <div class="cat"><span class="t">Reisgerichte</span><span class="l"></span><span class="zhc zh">米饭</span></div>
+      <div class="d"><span class="num">56</span><span class="n">Gebratener Reis mit Hühnerfleisch</span><span class="dot"></span><span class="p">10,50</span></div>
+      <div class="d"><span class="num">57</span><span class="n">Gebratener Reis mit Shrimps</span><span class="dot"></span><span class="p">11,80</span></div>
+      <div class="d"><span class="num">58</span><span class="n">Gebratener Reis mit versch. Fleischsorten</span><span class="dot"></span><span class="p">11,50</span></div>
+
+      <div class="cat"><span class="t">Nudelgerichte</span><span class="l"></span><span class="zhc zh">面条</span></div>
+      <div class="d"><span class="num">59</span><span class="n">Gebratene Nudeln mit Rindfleisch</span><span class="dot"></span><span class="p">10,60</span></div>
+      <div class="d"><span class="num">60</span><span class="n">Gebratene Nudeln mit Shrimps</span><span class="dot"></span><span class="p">11,80</span></div>
+      <div class="d"><span class="num">61</span><span class="n">Gebratene Nudeln mit Hühnerfleisch</span><span class="dot"></span><span class="p">10,50</span></div>
+      <div class="d"><span class="num">62</span><span class="n">Gebratene Reisnudeln mit versch. Fleischsorten</span><span class="dot"></span><span class="p">12,80</span></div>
+      <div class="d"><span class="num">63</span><span class="n">Gebratene Reisnudeln mit Garnelen</span><span class="dot"></span><span class="p">14,80</span></div>
+
+      <div class="b-buffet" style="margin-top:9px">
+        <b>Sonntags- &amp; Feiertagsbuffet</b><br>
+        <span style="color:var(--cream-dim)">Sa-Abend, So &amp; feiertags · 19,50 € pro Person – so viel Sie mögen.</span>
+      </div>
+
+      <div class="pfoot">Scharfe Gerichte <span style="color:var(--red-lt)">●</span> nach Wunsch milder · Alle Preise in €</div>
+    </div>
+
+  </section>
+
+</body>
+</html>
