@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chinatown – Flyer</title>
+<style>
+  /* ==========================================================================
+     CHINA RESTAURANT CHINATOWN – A5 Flyer (Vorder- + Rückseite)
+     Druckfertig: A5 (148 x 210 mm). Farben Rot / Schwarz / Gold.
+     ========================================================================== */
+
+  :root{
+    --red:        #971410;   /* tiefes China-Rot (Grundton, appetitanregend) */
+    --red-deep:   #5f0b08;   /* Vignette / Tiefe */
+    --red-bright: #c21d16;   /* Akzent für Angebots-Störer */
+    --ink:        #16110d;   /* warmes Schwarz */
+    --ink-soft:   #241a13;
+    --gold:       #d8b04a;   /* Gold */
+    --gold-lt:    #f2d888;   /* helles Gold / Glanz */
+    --gold-dk:    #a8801f;   /* Gold-Schatten */
+    --cream:      #f6ecd2;   /* warmes Weiß für Text auf Rot */
+    --paper:      #f6ecd2;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html,body{ background:#3a3a3a; }
+  body{
+    font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+    color:var(--ink);
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+    display:flex; flex-direction:column; align-items:center;
+    gap:14px; padding:22px;
+  }
+
+  /* ---- A5-Seite --------------------------------------------------------- */
+  .page{
+    position:relative;
+    width:148mm; height:210mm;
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,.5);
+  }
+
+  /* ================================ FRONT =============================== */
+  .front{
+    background:
+      radial-gradient(120% 90% at 50% 8%, rgba(216,176,74,.16), rgba(216,176,74,0) 55%),
+      radial-gradient(130% 120% at 50% 108%, var(--red-deep), rgba(95,11,8,0) 60%),
+      linear-gradient(180deg, #a4160f 0%, var(--red) 45%, #7c0f0b 100%);
+    color:var(--cream);
+    display:flex; flex-direction:column; align-items:center;
+    padding:11mm 10mm 9mm;
+    text-align:center;
+  }
+  /* Gold-Doppelrahmen */
+  .front::before{
+    content:""; position:absolute; inset:5mm;
+    border:1.6px solid var(--gold);
+    box-shadow:inset 0 0 0 3px rgba(0,0,0,.18), inset 0 0 0 4.2px var(--gold-dk);
+    pointer-events:none;
+  }
+
+  .top-chars{
+    font-size:30px; letter-spacing:.28em; color:var(--gold-lt);
+    text-shadow:0 1px 0 var(--gold-dk); margin-left:.28em;
+    font-family:"SimSun","Songti SC",serif;
+  }
+  .kicker{
+    margin-top:5px;
+    font-size:11px; letter-spacing:.42em; text-transform:uppercase;
+    color:var(--gold-lt); font-weight:600;
+  }
+  .brand{
+    font-family:"Georgia","Times New Roman",serif;
+    font-weight:700; line-height:.92;
+    font-size:58px; letter-spacing:.02em;
+    color:transparent;
+    background:linear-gradient(180deg,var(--gold-lt) 0%,var(--gold) 48%,var(--gold-dk) 100%);
+    -webkit-background-clip:text; background-clip:text;
+    text-shadow:0 2px 6px rgba(0,0,0,.35);
+    margin-top:2px;
+  }
+  .rule{
+    display:flex; align-items:center; gap:9px; margin:8px 0 2px;
+    color:var(--gold);
+  }
+  .rule::before,.rule::after{ content:""; height:1px; width:52px; background:linear-gradient(90deg,transparent,var(--gold)); }
+  .rule::after{ background:linear-gradient(270deg,transparent,var(--gold)); }
+  .rule span{ font-size:13px; letter-spacing:.02em; color:var(--gold-lt); }
+
+  .cat-wrap{ margin:4px 0 2px; filter:drop-shadow(0 8px 14px rgba(0,0,0,.4)); }
+
+  .hook{
+    font-family:"Georgia",serif;
+    font-size:23px; line-height:1.18; font-weight:700;
+    color:var(--cream); margin-top:2px; max-width:26ch;
+  }
+  .hook em{ color:var(--gold-lt); font-style:normal; }
+  .sub{
+    font-size:12.5px; color:#f0dcae; margin-top:7px; max-width:34ch; line-height:1.4;
+  }
+
+  /* Angebots-Störer */
+  .offer{
+    margin-top:auto;
+    position:relative;
+    width:100%;
+    background:var(--ink);
+    border:1.5px solid var(--gold);
+    border-radius:4px;
+    padding:12px 14px 13px;
+    box-shadow:0 6px 16px rgba(0,0,0,.35);
+  }
+  .offer-tag{
+    position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+    background:var(--red-bright); color:#fff;
+    font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+    padding:3px 12px; border-radius:20px; border:1px solid var(--gold-lt);
+    white-space:nowrap;
+  }
+  .offer-main{
+    font-family:"Georgia",serif; font-weight:700;
+    font-size:26px; line-height:1.05; color:var(--gold-lt); margin-top:3px;
+  }
+  .offer-main b{ color:#fff; }
+  .offer-sub{ font-size:11px; color:#e7cf9a; margin-top:5px; letter-spacing:.02em; }
+
+  .cta{
+    margin-top:9px; width:100%;
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    font-size:16px; font-weight:700; letter-spacing:.01em;
+    color:var(--ink);
+    background:linear-gradient(180deg,var(--gold-lt),var(--gold) 60%,var(--gold-dk));
+    padding:9px 10px; border-radius:3px;
+  }
+  .cta svg{ width:17px; height:17px; }
+
+  /* Ecken-Ornament (Chinesischer Knoten) */
+  .corner{ position:absolute; width:15mm; height:15mm; color:var(--gold); opacity:.9; z-index:2;}
+  .corner.tl{ top:6.5mm; left:6.5mm; }
+  .corner.tr{ top:6.5mm; right:6.5mm; transform:scaleX(-1); }
+  .corner.bl{ bottom:6.5mm; left:6.5mm; transform:scaleY(-1); }
+  .corner.br{ bottom:6.5mm; right:6.5mm; transform:scale(-1); }
+
+  /* ================================ BACK =============================== */
+  .back{
+    background:
+      radial-gradient(120% 60% at 50% 0%, rgba(151,20,16,.10), rgba(151,20,16,0) 40%),
+      var(--paper);
+    color:var(--ink);
+    padding:9mm 9mm 8mm;
+    display:flex; flex-direction:column;
+  }
+  .back::before{
+    content:""; position:absolute; inset:5mm;
+    border:1.4px solid var(--gold-dk);
+    box-shadow:inset 0 0 0 2.4px rgba(168,128,31,.35);
+    pointer-events:none;
+  }
+
+  .b-head{ text-align:center; margin-bottom:7px; }
+  .b-head .kick{ font-size:9.5px; letter-spacing:.34em; text-transform:uppercase; color:var(--gold-dk); font-weight:700; }
+  .b-head h2{
+    font-family:"Georgia",serif; font-size:27px; color:var(--red);
+    line-height:1; margin-top:2px;
+  }
+  .b-head .sep{ color:var(--gold-dk); font-size:13px; margin-top:3px; }
+
+  .fav{ margin-top:4px; }
+  .fav-title{
+    display:flex; align-items:center; gap:8px; justify-content:center;
+    font-size:11px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--red); font-weight:700; margin-bottom:6px;
+  }
+  .fav-title::before,.fav-title::after{ content:""; height:1px; flex:0 0 30px; background:var(--gold-dk); opacity:.5; }
+
+  .dishes{ display:grid; grid-template-columns:1fr; gap:2px; }
+  .dish{ display:flex; align-items:baseline; gap:7px; font-size:12.5px; padding:3.5px 2px; }
+  .dish .nm{ color:var(--ink-soft); }
+  .dish .nm b{ color:var(--red); font-weight:700; }
+  .dish .dots{ flex:1; border-bottom:1.3px dotted #c9ab6a; transform:translateY(-3px); }
+  .dish .pr{ font-weight:700; color:var(--gold-dk); white-space:nowrap; }
+  .dish small{ color:#7a6a54; font-size:10px; }
+
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:9px; }
+  .box{
+    border:1.3px solid var(--gold-dk); border-radius:4px; padding:8px 9px;
+    background:#fbf4e2;
+  }
+  .box h3{
+    font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--red);
+    margin-bottom:4px; display:flex; align-items:center; gap:5px;
+  }
+  .box p{ font-size:11px; line-height:1.42; color:var(--ink-soft); }
+  .box .big{ font-family:"Georgia",serif; font-size:19px; color:var(--gold-dk); font-weight:700; display:block; }
+  .box .big small{ font-size:11px; color:var(--ink-soft); font-weight:400; }
+
+  /* Gutschein */
+  .voucher{
+    margin-top:9px; position:relative;
+    background:var(--ink); color:var(--cream);
+    border:1.5px dashed var(--gold); border-radius:5px;
+    padding:11px 14px; display:flex; align-items:center; gap:12px;
+  }
+  .voucher .scissors{ position:absolute; top:-9px; left:14px; font-size:13px; color:#8a7a56; background:var(--paper); padding:0 3px; }
+  .voucher .v-left{ text-align:center; flex:0 0 auto; padding-right:12px; border-right:1px dashed rgba(216,176,74,.5); }
+  .voucher .v-left .g{ font-size:9px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-lt); }
+  .voucher .v-left .num{ font-family:"Georgia",serif; font-size:30px; font-weight:700; color:var(--gold-lt); line-height:1; }
+  .voucher .v-body{ flex:1; }
+  .voucher .v-body b{ color:#fff; font-size:14px; }
+  .voucher .v-body p{ font-size:10.5px; color:#e7cf9a; margin-top:3px; line-height:1.35; }
+
+  /* Footer: Kontakt / Zeiten */
+  .foot{ margin-top:auto; padding-top:9px; }
+  .foot-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:start; }
+  .foot h4{ font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-dk); margin-bottom:4px; }
+  .foot p{ font-size:11.5px; line-height:1.5; color:var(--ink-soft); }
+  .foot .tel{ font-family:"Georgia",serif; font-size:19px; color:var(--red); font-weight:700; }
+  .times b{ color:var(--red); }
+  .foot .closed{ color:#9a3a34; }
+  .addr-brand{ font-family:"Georgia",serif; font-weight:700; color:var(--red); font-size:13px; letter-spacing:.02em; }
+
+  /* Bildschirm-Hinweis */
+  .hint{ color:#eee; font-size:12px; text-align:center; max-width:148mm; line-height:1.5; }
+  .hint code{ background:#00000055; padding:1px 5px; border-radius:3px; }
+
+  /* ---- Druck ------------------------------------------------------------ */
+  @page{ size:A5; margin:0; }
+  @media print{
+    html,body{ background:#fff; }
+    body{ padding:0; gap:0; display:block; }
+    .hint{ display:none; }
+    .page{ box-shadow:none; page-break-after:always; break-after:page; }
+    .page:last-of-type{ page-break-after:auto; break-after:auto; }
+  }
+</style>
+</head>
+<body>
+
+  <p class="hint">Vorschau — <b>Seite 1 (Vorderseite)</b> &amp; <b>Seite 2 (Rückseite)</b>. Zum Drucken: <code>Strg/Cmd + P</code> → A5, Ränder „Keine", Hintergrundgrafiken aktivieren. (Ein fertiges PDF liegt daneben.)</p>
+
+  <!-- ============================ VORDERSEITE ============================ -->
+  <section class="page front">
+
+    <!-- Ecken-Ornamente -->
+    <svg class="corner tl" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
+      <path d="M12 12h40v10H22v30H12z"/><rect x="20" y="20" width="14" height="14"/>
+      <path d="M40 40h16v16H40z" stroke-width="3"/>
+    </svg>
+    <svg class="corner tr" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
+      <path d="M12 12h40v10H22v30H12z"/><rect x="20" y="20" width="14" height="14"/>
+      <path d="M40 40h16v16H40z" stroke-width="3"/>
+    </svg>
+    <svg class="corner bl" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
+      <path d="M12 12h40v10H22v30H12z"/><rect x="20" y="20" width="14" height="14"/>
+      <path d="M40 40h16v16H40z" stroke-width="3"/>
+    </svg>
+    <svg class="corner br" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
+      <path d="M12 12h40v10H22v30H12z"/><rect x="20" y="20" width="14" height="14"/>
+      <path d="M40 40h16v16H40z" stroke-width="3"/>
+    </svg>
+
+    <div class="top-chars">旺城</div>
+    <div class="kicker">China Restaurant</div>
+    <div class="brand">CHINATOWN</div>
+    <div class="rule"><span>Pfullendorf</span></div>
+
+    <!-- Goldene Winkekatze (Maneki-neko) -->
+    <div class="cat-wrap">
+      <svg width="150" height="168" viewBox="0 0 200 224" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldB" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7e39c"/><stop offset=".5" stop-color="#dcb64f"/><stop offset="1" stop-color="#a8801f"/>
+          </linearGradient>
+          <radialGradient id="goldH" cx="42%" cy="34%" r="70%">
+            <stop offset="0" stop-color="#fbeeb6"/><stop offset=".6" stop-color="#e2c05f"/><stop offset="1" stop-color="#b58d28"/>
+          </radialGradient>
+        </defs>
+        <!-- Sockel -->
+        <ellipse cx="100" cy="210" rx="62" ry="12" fill="#7c0f0b"/>
+        <ellipse cx="100" cy="205" rx="60" ry="12" fill="url(#goldB)" stroke="#8a6a17" stroke-width="1.5"/>
+        <!-- Körper -->
+        <path d="M52 150 C48 108 66 86 100 86 C134 86 152 108 148 150 C146 178 128 196 100 196 C72 196 54 178 52 150 Z" fill="url(#goldB)" stroke="#8a6a17" stroke-width="2"/>
+        <!-- Latz -->
+        <path d="M78 150 C78 172 90 186 100 186 C110 186 122 172 122 150 C122 150 112 160 100 160 C88 160 78 150 78 150 Z" fill="#2e8f86"/>
+        <!-- Münze (Koban) -->
+        <ellipse cx="100" cy="158" rx="20" ry="13" fill="#f2d888" stroke="#a8801f" stroke-width="2"/>
+        <text x="100" y="162" font-size="11" text-anchor="middle" fill="#8a6a17" font-family="serif" font-weight="700">千萬</text>
+        <!-- linke Pfote (unten) -->
+        <ellipse cx="60" cy="168" rx="15" ry="12" fill="url(#goldB)" stroke="#8a6a17" stroke-width="2"/>
+        <!-- rechte Pfote (winkend, oben) -->
+        <g>
+          <path d="M143 112 C158 96 156 74 146 66 C136 58 120 66 122 84 C123 96 132 108 143 112 Z" fill="url(#goldB)" stroke="#8a6a17" stroke-width="2"/>
+          <ellipse cx="141" cy="74" rx="12" ry="11" fill="url(#goldB)" stroke="#8a6a17" stroke-width="2"/>
+        </g>
+        <!-- Kopf -->
+        <ellipse cx="100" cy="66" rx="48" ry="43" fill="url(#goldH)" stroke="#8a6a17" stroke-width="2"/>
+        <!-- Ohren -->
+        <path d="M62 40 C58 20 74 14 82 30 C76 34 68 40 62 40 Z" fill="url(#goldB)" stroke="#8a6a17" stroke-width="2"/>
+        <path d="M138 40 C142 20 126 14 118 30 C124 34 132 40 138 40 Z" fill="url(#goldB)" stroke="#8a6a17" stroke-width="2"/>
+        <path d="M66 36 C64 25 72 22 77 31 Z" fill="#c21d16"/>
+        <path d="M134 36 C136 25 128 22 123 31 Z" fill="#c21d16"/>
+        <!-- Augen -->
+        <ellipse cx="82" cy="64" rx="5.5" ry="8" fill="#1c140c"/>
+        <ellipse cx="118" cy="64" rx="5.5" ry="8" fill="#1c140c"/>
+        <circle cx="83.5" cy="61" r="1.6" fill="#fff"/><circle cx="119.5" cy="61" r="1.6" fill="#fff"/>
+        <!-- Nase + Mund -->
+        <path d="M96 76 h8 l-4 4 z" fill="#c21d16"/>
+        <path d="M100 80 C96 86 90 85 88 81 M100 80 C104 86 110 85 112 81" fill="none" stroke="#8a6a17" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- Schnurrhaare -->
+        <path d="M66 66 l-16 -4 M66 72 l-16 2 M134 66 l16 -4 M134 72 l16 2" stroke="#b58d28" stroke-width="1.4" stroke-linecap="round"/>
+        <!-- Halsband + Glocke -->
+        <path d="M64 96 C78 108 122 108 136 96" fill="none" stroke="#c21d16" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="100" cy="104" r="7" fill="#f2d888" stroke="#a8801f" stroke-width="1.6"/>
+        <path d="M94 104 h12 M100 104 v6" stroke="#a8801f" stroke-width="1.4"/>
+      </svg>
+    </div>
+
+    <div class="hook">Frisch gewokt.<br>Knusprige Ente.<br><em>Wie bei Familie Mau.</em></div>
+    <div class="sub">Original chinesische Küche im Herzen von Pfullendorf – zum Hier-Essen, Abholen &amp; Feiern.</div>
+
+    <div class="offer">
+      <span class="offer-tag">Jeden Mittag · Di–Sa</span>
+      <div class="offer-main"><b>Mittagsmenü</b><br>schon ab 7,50 €</div>
+      <div class="offer-sub">18 Menüs zur Auswahl · inkl. Pekingsuppe oder Gemüserollen</div>
+      <div class="cta">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+        Tisch reservieren: 07552 · 6636
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ RÜCKSEITE ============================ -->
+  <section class="page back">
+
+    <div class="b-head">
+      <div class="kick">Unsere Lieblingsgerichte</div>
+      <h2>Ein Vorgeschmack</h2>
+      <div class="sep">✦ ✦ ✦</div>
+    </div>
+
+    <div class="fav">
+      <div class="dishes">
+        <div class="dish"><span class="nm"><b>Knusprige Ente</b> süß-sauer</span><span class="dots"></span><span class="pr">15,60 €</span></div>
+        <div class="dish"><span class="nm"><b>Gung Bao Huhn</b> <small>pikant</small></span><span class="dots"></span><span class="pr">11,60 €</span></div>
+        <div class="dish"><span class="nm"><b>Rindfleisch</b> mit Broccoli</span><span class="dots"></span><span class="pr">13,60 €</span></div>
+        <div class="dish"><span class="nm"><b>Garnelen</b> mit Gemüse &amp; Knoblauch</span><span class="dots"></span><span class="pr">17,20 €</span></div>
+        <div class="dish"><span class="nm"><b>Chop-Suey</b> gebr. Gemüse <small>vegetarisch</small></span><span class="dots"></span><span class="pr">8,20 €</span></div>
+        <div class="dish"><span class="nm"><b>Gebr. Reisnudeln</b> mit Garnelen</span><span class="dots"></span><span class="pr">14,80 €</span></div>
+        <div class="dish"><span class="nm"><b>Frühlingsrolle</b> · knusprig</span><span class="dots"></span><span class="pr">3,80 €</span></div>
+        <div class="dish"><span class="nm"><b>Gebackene Banane</b> mit Vanilleeis &amp; Honig</span><span class="dots"></span><span class="pr">4,80 €</span></div>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="box">
+        <h3>◆ Mittagsmenü</h3>
+        <p><span class="big">7,50 – 10,50 €<br><small>18 Menüs · Di–Sa bis 14:30</small></span>Inklusive Pekingsuppe oder Gemüserollen. (Außer Sonn- &amp; Feiertage.)</p>
+      </div>
+      <div class="box">
+        <h3>◆ Buffet à volonté</h3>
+        <p><span class="big">19,50 €<br><small>pro Person</small></span>Samstagabend, Sonntag &amp; an Feiertagen – so viel Sie mögen.</p>
+      </div>
+    </div>
+
+    <div class="voucher">
+      <span class="scissors">✂ − − − − − − − − − − − − − − − − − − − − − − − −</span>
+      <div class="v-left">
+        <div class="g">Gutschein</div>
+        <div class="num">GRATIS</div>
+      </div>
+      <div class="v-body">
+        <b>1× Frühlingsrolle zu jedem Hauptgericht</b>
+        <p>Diesen Flyer bei Ihrem Besuch vorzeigen. Nicht mit anderen Aktionen kombinierbar · gültig bis 30.09.2026.</p>
+      </div>
+    </div>
+
+    <div class="foot">
+      <div class="foot-grid">
+        <div class="times">
+          <h4>Öffnungszeiten</h4>
+          <p>
+            <b>Di – So</b><br>
+            11:30 – 14:30 Uhr<br>
+            17:30 – 22:00 Uhr<br>
+            <span class="closed">Montag Ruhetag</span>
+          </p>
+        </div>
+        <div>
+          <h4>Reservieren &amp; Abholen</h4>
+          <p class="tel">07552 · 6636</p>
+          <p>
+            <span class="addr-brand">China Restaurant Chinatown</span><br>
+            Heiligenberger Str. 1<br>
+            88630 Pfullendorf<br>
+            <small>Inhaber: Fam. Mau</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
