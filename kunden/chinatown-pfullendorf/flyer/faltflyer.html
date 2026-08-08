@@ -115,9 +115,18 @@
   .cov-rule i+i{ background:linear-gradient(270deg,transparent,var(--gold)); }
   .cov-rule b{ color:var(--red); font-size:13px; }
 
-  .cov-cat{
-    position:relative; z-index:2; width:63mm; margin:1mm 0;
+  .cov-cat{ position:relative; z-index:2; width:63mm; margin:1mm 0; }
+  .cov-cat img{
+    display:block; width:100%;
     filter:drop-shadow(0 14px 26px rgba(0,0,0,.75)) drop-shadow(0 0 18px rgba(216,176,74,.18));
+  }
+  /* Beschriftung der Goldplatte im Sockel. Die Prozentwerte gibt grade.py aus
+     ("Goldplatte im Bild") - bei neuer Katze dort neu ablesen, nicht schaetzen. */
+  .cov-cat .plakette{
+    position:absolute; left:28.7%; top:82.7%; width:41.8%; height:11.5%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Display",cursive; font-size:13.5px; letter-spacing:.02em;
+    color:#5a3a0b; white-space:nowrap;
   }
   /* warmer Lichtschein hinter der Katze */
   .cov-glow{
@@ -139,7 +148,6 @@
     color:var(--gold); font-size:10px; letter-spacing:.34em; text-transform:uppercase;
   }
   .cov-brand .place::before,.cov-brand .place::after{ content:""; height:1px; width:14mm; background:var(--gold-dk); }
-  .cov-brand .owner{ margin-top:7px; font-size:10.5px; letter-spacing:.05em; color:var(--dim); }
 
   .cov-foot{ position:relative; z-index:2; display:flex; align-items:center; gap:9px; margin-top:6mm; }
   .cov-foot .seal{ width:16mm; height:16mm; font-size:15px; padding:2px; }
@@ -158,7 +166,6 @@
   .b-tel{
     font-family:"Brush",cursive; font-size:30px; color:var(--red);
     margin:0.5mm 0 1mm; letter-spacing:.01em;
-    text-shadow:0 0 16px rgba(189,36,25,.45);
   }
   .b-tel-k{ font-size:8.5px; letter-spacing:.3em; text-transform:uppercase; color:var(--dim); margin-top:3mm; }
   .b-addr{ font-size:12px; line-height:1.55; color:var(--cream); margin-top:1mm; }
@@ -380,12 +387,14 @@
         <div class="cov-rule"><i></i><b class="zh">旺</b><i></i></div>
       </div>
 
-      <img class="cov-cat" src="assets/winkekatze.png" alt="Goldene Winkekatze">
+      <div class="cov-cat">
+        <img src="assets/winkekatze.png" alt="Goldene Winkekatze">
+        <span class="plakette">Familie Mau</span>
+      </div>
 
       <div class="cov-brand">
         <h1>Chinatown</h1>
         <div class="place">Pfullendorf</div>
-        <div class="owner">Inhaber: Familie Mau</div>
       </div>
 
       <div class="cov-foot">

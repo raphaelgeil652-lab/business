@@ -54,7 +54,8 @@ Farb- und Schriftwelt entspricht **nicht** der aktuellen Fassung — bei Bedarf 
 
     assets/
       winkekatze.png     freigestellte, goldgegradete Winkekatze (aus dem echten Foto);
-                         die Solarzelle im Sockel ist durch eine glatte Goldplatte ersetzt
+                         die Solarzelle im Sockel ist durch eine glatte Goldplatte ersetzt,
+                         auf der im Flyer „Familie Mau“ steht
       drache.svg         vektorisierter Drache (vom alten Papierflyer)
       fonts/             ZCOOL KuaiLe, Ma Shan Zheng, Noto Serif SC (nur benötigte Glyphen)
       quellen/           Originalfotos: Winkekatze + alter Flyer (= Preis-Referenz)
@@ -65,6 +66,8 @@ Alle Skripte aus `assets/tools/` ausführen:
 ```bash
 python3 cutout.py        # Foto -> _work/crop.png + _work/mask.png (GrabCut)
 python3 grade.py         # _work -> assets/winkekatze.png (Goldgrading)
+                         #   gibt die Lage der Goldplatte in Prozent aus - diese Werte
+                         #   stehen im CSS unter .cov-cat .plakette (dort nicht schaetzen)
 python3 dragon.py        # alter Flyer -> assets/drache.svg (Vektorisierung)
 python3 fonts.py         # Font-Subsets -> assets/fonts/
 python3 check-glyphs.py  # prüft, ob alle CJK-Zeichen im Subset sind

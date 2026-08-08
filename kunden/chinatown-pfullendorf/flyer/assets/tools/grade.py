@@ -143,6 +143,11 @@ if n > 1:
     ziel = crop[py0:py1, px0:px1].astype(np.float32)
     crop[py0:py1, px0:px1] = (ziel * (1 - feder) + platte * feder).astype(np.uint8)
 
+    # Lage der Goldplatte in Prozent des fertigen Bildes ausgeben. Im Flyer wird
+    # "Familie Mau" per CSS genau darauf gesetzt - diese Werte gehören dorthin.
+    print(f"Goldplatte im Bild: left {100 * px0 / w:.1f}%  top {100 * py0 / h:.1f}%  "
+          f"width {100 * pw / w:.1f}%  height {100 * ph / h:.1f}%")
+
 hsv = cv2.cvtColor(crop, cv2.COLOR_BGR2HSV)
 Vv = hsv[..., 2].astype(int)
 
