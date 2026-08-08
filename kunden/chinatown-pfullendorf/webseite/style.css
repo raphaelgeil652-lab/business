@@ -1,0 +1,349 @@
+/* ==========================================================================
+   China Restaurant Chinatown, Pfullendorf — gemeinsames Stylesheet
+   Bildsprache aus dem gedruckten Faltflyer weitergeführt: dunkler Lack,
+   China-Rot, Gold. Die Seite hat genau ein Ziel: den Anruf.
+   ========================================================================== */
+
+/* ---- Schriften (Subsets, liegen lokal) ---------------------------------- */
+@font-face{ font-family:"Display";  src:url("assets/fonts/ZCOOLKuaiLe.ttf") format("truetype"); font-display:swap; }
+@font-face{ font-family:"Brush";    src:url("assets/fonts/MaShanZheng.ttf") format("truetype"); font-display:swap; }
+@font-face{ font-family:"HanSerif"; src:url("assets/fonts/NotoSerifSC.ttf") format("truetype"); font-display:swap; }
+
+:root{
+  --ink:      #0b0908;
+  --panel:    #13100c;
+  --panel-2:  #1c1610;
+  --red:      #c3271b;
+  --red-deep: #8e1610;
+  --gold:     #d8b04a;
+  --gold-lt:  #f7e2a0;
+  --gold-dk:  #9a7820;
+  --cream:    #f2e9d6;
+  --dim:      #a99b80;
+  --line:     rgba(216,176,74,.22);
+
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --wrap: 1120px;
+  --bar-h: 62px;          /* Höhe der Kopfleiste */
+  --callbar-h: 0px;       /* wird mobil auf echte Höhe gesetzt */
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; background:var(--ink); color:var(--cream);
+  font-family:var(--body); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:var(--callbar-h);
+}
+img{ max-width:100%; display:block; }
+a{ color:var(--gold-lt); }
+
+:focus-visible{ outline:3px solid var(--gold-lt); outline-offset:3px; border-radius:2px; }
+
+.wrap{ width:min(100% - 2.5rem, var(--wrap)); margin-inline:auto; }
+.zh{ font-family:"HanSerif",serif; }
+.visually-hidden{
+  position:absolute; width:1px; height:1px; overflow:hidden;
+  clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap;
+}
+
+/* ---- Abschnitte + Überschriften ----------------------------------------- */
+.section{ padding:clamp(3.5rem, 8vw, 6.5rem) 0; }
+.section--tint{ background:var(--panel); }
+
+.eyebrow{
+  font-size:.72rem; letter-spacing:.34em; text-transform:uppercase;
+  color:var(--gold); margin:0 0 .6rem;
+}
+.eyebrow .zh{ letter-spacing:.2em; }
+
+.h2{
+  font-family:"Display",cursive; font-weight:400;
+  font-size:clamp(1.7rem, 4.4vw, 2.6rem); line-height:1.2;
+  text-transform:uppercase; letter-spacing:.05em;
+  color:var(--gold-lt); margin:0 0 1rem;
+}
+.h3{
+  font-family:"Display",cursive; font-weight:400;
+  font-size:1.22rem; text-transform:uppercase; letter-spacing:.05em;
+  color:var(--gold-lt); margin:0 0 .5rem;
+}
+.lede{ color:var(--dim); max-width:56ch; margin:0 0 2rem; }
+
+/* Rotes Siegel — das wiederkehrende Strukturzeichen der Seite */
+.seal{
+  display:inline-grid; place-items:center;
+  width:2.9rem; height:2.9rem; flex:0 0 auto;
+  background:var(--red); border:1.5px solid var(--gold-dk); border-radius:4px;
+  font-family:"HanSerif",serif; font-size:.95rem; line-height:1.05;
+  color:var(--gold-lt); writing-mode:vertical-rl; letter-spacing:.05em;
+}
+
+/* ---- Buttons ------------------------------------------------------------ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+  min-height:52px; padding:.85rem 1.5rem; border-radius:3px;
+  font-size:1.02rem; font-weight:700; text-decoration:none;
+  border:1.5px solid transparent; cursor:pointer;
+  transition:transform .15s ease, background-color .15s ease, border-color .15s ease;
+}
+.btn svg{ width:1.15em; height:1.15em; flex:0 0 auto; fill:currentColor; }
+.btn:hover{ transform:translateY(-2px); }
+.btn--call{ background:linear-gradient(180deg,var(--gold-lt),var(--gold) 58%,var(--gold-dk)); color:#2b1f06; }
+.btn--ghost{ border-color:var(--gold-dk); color:var(--gold-lt); background:rgba(216,176,74,.05); }
+.btn--ghost:hover{ border-color:var(--gold); background:rgba(216,176,74,.11); }
+
+/* ---- Kopfleiste --------------------------------------------------------- */
+.topbar{
+  position:sticky; top:0; z-index:50; height:var(--bar-h);
+  display:flex; align-items:center;
+  background:rgba(11,9,8,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar__in{ display:flex; align-items:center; gap:1rem; width:min(100% - 2.5rem, var(--wrap)); margin-inline:auto; }
+.brandmark{ display:flex; align-items:baseline; gap:.5rem; text-decoration:none; margin-right:auto; }
+.brandmark b{
+  font-family:"Brush",cursive; font-weight:400; font-size:1.6rem;
+  color:var(--gold-lt); letter-spacing:.01em;
+}
+.brandmark span{ font-family:"HanSerif",serif; color:var(--gold-dk); font-size:.95rem; letter-spacing:.18em; }
+
+.nav{ display:flex; align-items:center; gap:.35rem; }
+.nav a{
+  padding:.6rem .85rem; border-radius:3px; text-decoration:none;
+  color:var(--cream); font-size:.95rem;
+}
+.nav a:hover{ color:var(--gold-lt); background:rgba(216,176,74,.08); }
+.nav a[aria-current="page"]{ color:var(--gold-lt); box-shadow:inset 0 -2px 0 var(--red); }
+.topbar .btn{ min-height:44px; padding:.5rem 1.1rem; font-size:.95rem; }
+
+.navtoggle{
+  display:none; min-width:44px; min-height:44px; align-items:center; justify-content:center;
+  background:none; border:1px solid var(--line); border-radius:3px; color:var(--gold-lt);
+}
+
+/* ---- Hero --------------------------------------------------------------- */
+.hero{
+  position:relative; isolation:isolate; overflow:hidden;
+  min-height:clamp(30rem, 84svh, 46rem);
+  display:grid; align-items:center;
+  padding:3.5rem 0 4rem;
+}
+.hero__bg{ position:absolute; inset:0; z-index:-2; }
+.hero__bg img{ width:100%; height:100%; object-fit:cover; }
+/* Abdunkler: hält den Text auch über einem hellen Foto lesbar (WCAG-Kontrast) */
+.hero__bg::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(11,9,8,.72) 0%, rgba(11,9,8,.58) 45%, rgba(11,9,8,.95) 100%),
+    radial-gradient(90% 65% at 50% 40%, rgba(142,22,16,.34), transparent 70%);
+}
+.hero__grid{ display:grid; gap:2.5rem; align-items:center; }
+.hero__title{
+  font-family:"Brush",cursive; font-weight:400;
+  font-size:clamp(3rem, 11vw, 5.6rem); line-height:.95; margin:.4rem 0 .2rem;
+  color:var(--gold-lt);
+  text-shadow:0 2px 18px rgba(0,0,0,.6);
+}
+.hero__sub{
+  font-family:"Display",cursive; text-transform:uppercase; letter-spacing:.22em;
+  font-size:.95rem; color:var(--gold);
+}
+.hero__claim{ font-size:1.12rem; color:var(--cream); max-width:44ch; margin:1.2rem 0 1.8rem; }
+.hero__actions{ display:flex; flex-wrap:wrap; gap:.85rem; }
+.hero__cat{ justify-self:center; width:min(72%, 19rem); filter:drop-shadow(0 22px 40px rgba(0,0,0,.75)); }
+
+/* ---- Status-Chip: heute geöffnet? --------------------------------------- */
+.status{
+  display:inline-flex; align-items:center; gap:.6rem;
+  padding:.5rem .95rem; border-radius:100px;
+  border:1px solid var(--line); background:rgba(11,9,8,.72);
+  font-size:.92rem; color:var(--cream);
+}
+.status__dot{ width:.62rem; height:.62rem; border-radius:50%; background:var(--dim); flex:0 0 auto; }
+.status[data-open="ja"] .status__dot{ background:#4ea862; box-shadow:0 0 0 4px rgba(78,168,98,.18); }
+.status[data-open="nein"] .status__dot{ background:var(--red); box-shadow:0 0 0 4px rgba(195,39,27,.16); }
+.status b{ color:var(--gold-lt); font-weight:700; }
+
+/* Hero-Platzhalter: dezente Textur, Beschriftung unten rechts statt mittig,
+   damit sie nicht mit der Überschrift kollidiert. */
+.hero__platzhalter{
+  position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(135deg, rgba(216,176,74,.05) 0 14px, transparent 14px 28px),
+    var(--panel-2);
+}
+.hero__marke{
+  position:absolute; right:1.2rem; bottom:1.2rem; z-index:1;
+  font-size:.74rem; letter-spacing:.08em; color:var(--gold-dk);
+  border:1px solid var(--line); border-radius:3px; padding:.4rem .75rem;
+  background:rgba(11,9,8,.55);
+}
+
+/* ---- Foto-Platzhalter ---------------------------------------------------
+   Markiert bewusst, welches Bild an diese Stelle gehört. Ersetzen: das
+   ganze <div class="foto"> durch <img src="..." alt="..."> tauschen.        */
+.foto{
+  position:relative; display:grid; place-items:center; gap:.5rem;
+  aspect-ratio:4/3; padding:1.5rem; text-align:center;
+  background:
+    repeating-linear-gradient(135deg, rgba(216,176,74,.05) 0 12px, transparent 12px 24px),
+    var(--panel-2);
+  border:1px solid var(--line); border-radius:4px; color:var(--dim);
+}
+.foto--hoch{ aspect-ratio:3/4; }
+.foto--breit{ aspect-ratio:16/9; }
+.foto svg{ width:2rem; height:2rem; fill:var(--gold-dk); }
+.foto b{ display:block; color:var(--gold-lt); font-size:.98rem; font-weight:700; }
+.foto small{ font-size:.82rem; letter-spacing:.02em; }
+
+/* ---- Zweispalter -------------------------------------------------------- */
+.split{ display:grid; gap:2.5rem; align-items:center; }
+.split__body p{ color:var(--dim); }
+
+/* ---- Karten ------------------------------------------------------------- */
+.cards{ display:grid; gap:1.25rem; }
+.card{
+  padding:1.6rem; border:1px solid var(--line); border-radius:4px;
+  background:linear-gradient(180deg, var(--panel-2), var(--panel));
+}
+.card__price{
+  font-family:"Brush",cursive; font-size:2rem; color:var(--gold-lt); line-height:1.1; margin:.2rem 0 .35rem;
+}
+.card p{ margin:0; color:var(--dim); font-size:.96rem; }
+.card--akzent{ border-color:var(--red-deep); }
+
+/* ---- Speisekarte -------------------------------------------------------- */
+.menu__gruppe{ margin-bottom:2.6rem; break-inside:avoid; }
+.menu__kopf{ display:flex; align-items:center; gap:.8rem; margin-bottom:.9rem; }
+.menu__kopf .h3{ margin:0; white-space:nowrap; }
+.menu__kopf .rule{ flex:1; height:1px; background:var(--line); }
+.menu__kopf .zh{ color:var(--gold); font-size:1rem; }
+
+.menu__sub{
+  font-family:"Display",cursive; font-weight:400; font-size:.98rem;
+  text-transform:uppercase; letter-spacing:.12em; color:var(--red);
+  margin:1.4rem 0 .3rem; break-after:avoid;
+}
+.menu__sub:first-child{ margin-top:0; }
+/* In zwei Spalten darf eine Zeile nicht mitten im Umbruch zerrissen werden */
+.dish{ break-inside:avoid; display:flex; align-items:baseline; gap:.6rem; padding:.42rem 0; border-bottom:1px dotted rgba(216,176,74,.16); }
+.dish__nr{ color:var(--red); font-weight:700; font-size:.85rem; min-width:2.1rem; flex:0 0 auto; }
+.dish__name{ color:var(--cream); }
+.dish__name em{ font-style:normal; color:var(--dim); font-size:.86rem; }
+.dish__preis{ margin-left:auto; color:var(--gold-lt); font-weight:700; white-space:nowrap; }
+
+.hinweis{
+  padding:1rem 1.2rem; border-left:3px solid var(--red); background:var(--panel-2);
+  color:var(--dim); font-size:.95rem; border-radius:0 4px 4px 0;
+}
+
+/* ---- Galerie ------------------------------------------------------------ */
+.galerie{ display:grid; gap:1rem; grid-template-columns:repeat(2, 1fr); }
+
+/* ---- Bewertungen -------------------------------------------------------- */
+.stimme{ padding:1.5rem; border:1px solid var(--line); border-radius:4px; background:var(--panel-2); }
+.stimme__sterne{ color:var(--gold); letter-spacing:.15em; }
+.stimme p{ margin:.5rem 0 0; color:var(--cream); }
+.stimme cite{ display:block; margin-top:.7rem; color:var(--dim); font-style:normal; font-size:.88rem; }
+
+/* ---- Infozeile / Kontakt ------------------------------------------------ */
+.fakten{ display:grid; gap:1.5rem; }
+.fakt__label{ font-size:.72rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin:0 0 .35rem; }
+.fakt p{ margin:0; }
+.fakt a{ color:var(--cream); text-decoration:none; border-bottom:1px solid var(--line); }
+.fakt a:hover{ color:var(--gold-lt); }
+
+.zeiten{ width:100%; border-collapse:collapse; }
+.zeiten th, .zeiten td{ text-align:left; padding:.55rem 0; border-bottom:1px solid var(--line); font-weight:400; }
+.zeiten td{ text-align:right; color:var(--cream); }
+.zeiten .ruhetag td, .zeiten .ruhetag th{ color:var(--red); }
+.zeiten tr[data-heute] th, .zeiten tr[data-heute] td{ color:var(--gold-lt); font-weight:700; }
+
+.telgross{
+  font-family:"Brush",cursive; font-size:clamp(2.2rem,7vw,3.2rem); line-height:1.1;
+  color:var(--gold-lt); text-decoration:none; display:inline-block;
+}
+.telgross:hover{ color:#fff; }
+
+.karte{ border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--panel-2); }
+.karte iframe{ display:block; width:100%; height:340px; border:0; filter:grayscale(.35) contrast(1.05); }
+
+/* ---- Drache als Zierelement --------------------------------------------- */
+.drache{ width:clamp(7rem, 16vw, 11rem); margin:0 auto 1.5rem; opacity:.92; }
+
+/* ---- Fußbereich --------------------------------------------------------- */
+.footer{ border-top:1px solid var(--line); background:var(--panel); padding:3rem 0 2.5rem; }
+.footer__grid{ display:grid; gap:2rem; }
+.footer h2{ font-family:"Brush",cursive; font-weight:400; font-size:1.8rem; color:var(--gold-lt); margin:0 0 .3rem; }
+.footer p, .footer li{ color:var(--dim); font-size:.95rem; }
+.footer ul{ list-style:none; padding:0; margin:0; }
+.footer li{ padding:.2rem 0; }
+.footer a{ color:var(--cream); text-decoration:none; }
+.footer a:hover{ color:var(--gold-lt); }
+.footer__fein{ margin-top:2rem; padding-top:1.3rem; border-top:1px solid var(--line); font-size:.85rem; color:var(--dim); }
+
+/* ---- Mobile Anrufleiste (Daumenzone) ------------------------------------ */
+.callbar{
+  position:fixed; left:0; right:0; bottom:0; z-index:60; display:none;
+  gap:.6rem; padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom));
+  background:rgba(11,9,8,.96); border-top:1px solid var(--line); backdrop-filter:blur(8px);
+}
+.callbar .btn{ flex:1; min-height:50px; font-size:1rem; }
+
+/* ---- Scroll-Einblendung ------------------------------------------------- */
+/* Inhalt ist ohne JavaScript sofort sichtbar. Erst wenn das Skript laeuft,
+   wird eingeblendet - sonst waere die halbe Seite bei einem JS-Fehler leer. */
+.js .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+.js .reveal.is-in{ opacity:1; transform:none; }
+
+/* ==========================================================================
+   Ab 720px: zweispaltige Layouts
+   ========================================================================== */
+@media (min-width:720px){
+  .hero__grid{ grid-template-columns:1.15fr .85fr; }
+  .split{ grid-template-columns:1fr 1fr; }
+  .split--umgekehrt .split__bild{ order:2; }
+  .cards{ grid-template-columns:repeat(3, 1fr); }
+  .galerie{ grid-template-columns:repeat(3, 1fr); }
+  .fakten{ grid-template-columns:repeat(3, 1fr); }
+  .footer__grid{ grid-template-columns:1.3fr 1fr 1fr; }
+  .menu__spalten{ columns:2; column-gap:3rem; }
+}
+
+/* ==========================================================================
+   Unter 720px: Navigation einklappen, Anrufleiste einblenden
+   ========================================================================== */
+@media (max-width:719px){
+  :root{ --callbar-h:70px; }
+  .navtoggle{ display:inline-flex; }
+  .topbar .btn--call{ display:none; }
+  .nav{
+    position:absolute; top:var(--bar-h); left:0; right:0;
+    flex-direction:column; align-items:stretch; gap:0;
+    background:var(--panel); border-bottom:1px solid var(--line);
+    padding:.5rem;
+  }
+  .nav[hidden]{ display:none; }
+  .nav a{ padding:.9rem 1rem; min-height:48px; display:flex; align-items:center; }
+  .callbar{ display:flex; }
+  .hero{ min-height:auto; padding:2.5rem 0 3rem; }
+  .hero__cat{ width:min(60%, 14rem); }
+  .galerie{ grid-template-columns:repeat(2, 1fr); }
+}
+
+/* ---- Bewegung reduzieren ------------------------------------------------ */
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+  .js .reveal{ opacity:1; transform:none; }
+}
+
+/* ---- Druck: die Speisekarte soll sauber auf Papier gehen ---------------- */
+@media print{
+  .topbar, .callbar, .hero__bg, .foto, .karte{ display:none !important; }
+  body{ background:#fff; color:#000; padding:0; }
+  .dish__name, .h2, .h3, .dish__preis{ color:#000; }
+  .dish__nr{ color:#666; }
+}

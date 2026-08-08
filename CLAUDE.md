@@ -101,6 +101,10 @@ Hier liegt fertige Arbeit für einzelne Kunden, nicht das Nischen-System.
   druckfertiger DIN-A4-Faltflyer (Wickelfalz) mit kompletter Speisekarte, dazu Assets
   (freigestellte Winkekatze, vektorisierter Drache, Font-Subsets) und die Skripte, die sie
   erzeugen. Einstieg: das README dort.
+- `chinatown-pfullendorf/webseite/` — statische Webseite (Start, Speisekarte, Kontakt) in
+  derselben Bildsprache. Die Speisekarte wird per Skript **aus dem Flyer** übernommen, damit
+  Druck und Web nicht auseinanderlaufen. Vor Livegang fehlen noch Impressum, Datenschutz
+  und echte Fotos — steht im README dort.
 
 **Achtung:** Chinatown ist ein Gastro-Kunde und liegt damit **außerhalb der aktiven Kfz-Nische**.
 Nicht mit dem Kfz-Angebot oder dessen Preisen vermischen — es ist ein Einzelauftrag, kein
