@@ -4,7 +4,7 @@
 set -e
 ZIEL="${1:-chinatown-webseite-vercel.zip}"
 TMP="$(mktemp -d)"
-cp index.html speisekarte.html kontakt.html style.css script.js vercel.json "$TMP/"
+cp index.html speisekarte.html kontakt.html impressum.html datenschutz.html style.css script.js vercel.json "$TMP/"
 cp -r assets "$TMP/"
 rm -f "$ZIEL"
 (cd "$TMP" && zip -qr - .) > "$ZIEL"

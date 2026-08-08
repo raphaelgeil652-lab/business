@@ -101,14 +101,19 @@ Hier liegt fertige Arbeit für einzelne Kunden, nicht das Nischen-System.
   druckfertiger DIN-A4-Faltflyer (Wickelfalz) mit kompletter Speisekarte, dazu Assets
   (freigestellte Winkekatze, vektorisierter Drache, Font-Subsets) und die Skripte, die sie
   erzeugen. Einstieg: das README dort.
-- `chinatown-pfullendorf/webseite/` — statische Webseite (Start, Speisekarte, Kontakt) in
-  derselben Bildsprache. Die Speisekarte wird per Skript **aus dem Flyer** übernommen, damit
-  Druck und Web nicht auseinanderlaufen. Vor Livegang fehlen noch Impressum, Datenschutz
-  und echte Fotos — steht im README dort.
+
+Die **Webseite** dieses Kunden liegt bewusst außerhalb von `kunden/`, damit Vercel sie direkt
+als Projektwurzel nehmen kann: `chinatown-website/` (siehe unten).
 
 **Achtung:** Chinatown ist ein Gastro-Kunde und liegt damit **außerhalb der aktiven Kfz-Nische**.
 Nicht mit dem Kfz-Angebot oder dessen Preisen vermischen — es ist ein Einzelauftrag, kein
 Nischen-Kunde.
+
+### `chinatown-website/` — die Webseite von Chinatown (eigener Ordner für Vercel)
+Statische Seite (Start, Speisekarte, Kontakt, Impressum, Datenschutz) in der Bildsprache des
+Flyers. **Die Speisekarte wird per Skript aus `kunden/chinatown-pfullendorf/flyer/faltflyer.html`
+übernommen** — der Flyer bleibt die einzige Quelle für Gerichte und Preise. Vor dem Livegang
+fehlen noch die Angaben im Impressum und echte Fotos; alles Weitere im README dort.
 
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,

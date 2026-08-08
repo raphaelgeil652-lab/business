@@ -12,8 +12,9 @@ import re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WEB = os.path.dirname(HERE)
-KUNDE = os.path.dirname(WEB)
-FLYER = f"{KUNDE}/flyer/faltflyer.html"
+REPO = os.path.dirname(WEB)
+# Der Flyer bleibt beim Kunden liegen und ist die Quelle für Gerichte und Preise.
+FLYER = f"{REPO}/kunden/chinatown-pfullendorf/flyer/faltflyer.html"
 ZIEL = f"{WEB}/speisekarte.html"
 
 START = "<!-- KARTE:START -->"

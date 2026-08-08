@@ -152,7 +152,11 @@ a{ color:var(--gold-lt); }
 }
 .hero__claim{ font-size:1.12rem; color:var(--cream); max-width:44ch; margin:1.2rem 0 1.8rem; }
 .hero__actions{ display:flex; flex-wrap:wrap; gap:.85rem; }
-.hero__cat{ justify-self:center; width:min(72%, 19rem); filter:drop-shadow(0 22px 40px rgba(0,0,0,.75)); }
+.hero__cat{
+  justify-self:center; width:auto; max-width:min(72%, 19rem);
+  max-height:clamp(18rem, 48svh, 30rem);
+  filter:drop-shadow(0 22px 40px rgba(0,0,0,.75));
+}
 
 /* ---- Status-Chip: heute geöffnet? --------------------------------------- */
 .status{
@@ -240,7 +244,14 @@ a{ color:var(--gold-lt); }
 }
 
 /* ---- Galerie ------------------------------------------------------------ */
-.galerie{ display:grid; gap:1rem; grid-template-columns:repeat(2, 1fr); }
+.galerie{ display:grid; gap:1rem; grid-template-columns:repeat(2, 1fr); align-items:start; }
+/* height:auto ist noetig - sonst wirkt das height-Attribut im HTML als feste
+   Hoehe und das Seitenverhaeltnis wird ignoriert. */
+.galerie img{
+  width:100%; height:auto; aspect-ratio:4/3; object-fit:cover;
+  border:1px solid var(--line); border-radius:4px;
+}
+.split__bild img{ width:100%; height:auto; border:1px solid var(--line); border-radius:4px; }
 
 /* ---- Bewertungen -------------------------------------------------------- */
 .stimme{ padding:1.5rem; border:1px solid var(--line); border-radius:4px; background:var(--panel-2); }
@@ -272,6 +283,15 @@ a{ color:var(--gold-lt); }
 
 /* ---- Drache als Zierelement --------------------------------------------- */
 .drache{ width:clamp(7rem, 16vw, 11rem); margin:0 auto 1.5rem; opacity:.92; }
+
+/* ---- Rechtstexte -------------------------------------------------------- */
+/* Auffaellige Markierung fuer alles, was der Kunde noch eintragen muss -
+   ein unvollstaendiges Impressum soll niemandem versehentlich online gehen. */
+.luecke{
+  background:rgba(195,39,27,.18); color:var(--gold-lt);
+  border:1px dashed var(--red); border-radius:3px;
+  padding:.1em .45em; font-style:normal;
+}
 
 /* ---- Fußbereich --------------------------------------------------------- */
 .footer{ border-top:1px solid var(--line); background:var(--panel); padding:3rem 0 2.5rem; }
