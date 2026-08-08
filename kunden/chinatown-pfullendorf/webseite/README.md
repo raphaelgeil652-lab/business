@@ -48,6 +48,37 @@ fällt ein Fehler auf, bevor er auf der Seite landet.
 node tools/screenshots.cjs "$(pwd)"   # -> tools/_shots/ (Desktop + Handy, alle Seiten)
 ```
 
+## Auf Vercel veröffentlichen
+
+Die Seite ist statisch — es gibt **keinen Build-Schritt**. `vercel.json` liegt bei und setzt
+saubere URLs (`/speisekarte` statt `/speisekarte.html`), Sicherheits-Header und Caching
+(Bilder und Schriften ein Jahr, HTML immer frisch).
+
+**Variante A — aus diesem Repo (empfohlen, weil Änderungen automatisch live gehen):**
+1. Auf vercel.com „Add New… → Project" und dieses Repository auswählen.
+2. **Root Directory** auf `kunden/chinatown-pfullendorf/webseite` setzen — das ist der
+   entscheidende Schritt, sonst findet Vercel die Seite nicht.
+3. Framework Preset: **Other**. Build Command und Output Directory leer lassen.
+4. Deploy. Jeder Push auf den Branch veröffentlicht danach automatisch.
+
+**Variante B — ohne Repo (Ordner hochladen):**
+Den Ordnerinhalt (bzw. das ZIP aus `tools/deploy-paket.sh`) auf vercel.com/new ziehen.
+Wichtig: die Dateien müssen **direkt** im Wurzelverzeichnis liegen, nicht in einem Unterordner.
+
+**Variante C — Kommandozeile:**
+```bash
+npm i -g vercel
+cd kunden/chinatown-pfullendorf/webseite
+vercel            # Vorschau-Adresse
+vercel --prod     # endgültig veröffentlichen
+```
+
+`.vercelignore` sorgt dafür, dass `tools/` und diese README nicht mit hochgeladen werden.
+
+### Eigene Domain
+Sobald Fam. Mau eine Domain hat: in Vercel unter *Settings → Domains* eintragen und die dort
+angezeigten DNS-Einträge beim Domain-Anbieter hinterlegen. HTTPS macht Vercel automatisch.
+
 ## ⚠️ Vor dem Livegang zwingend erledigen
 
 1. **Impressum und Datenschutzerklärung** ergänzen — in Deutschland Pflicht, aktuell steht

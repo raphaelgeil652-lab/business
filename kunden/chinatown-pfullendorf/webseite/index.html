@@ -101,7 +101,11 @@
           </div>
         </div>
 
-        <img class="hero__cat" src="assets/winkekatze.webp" width="760" height="1192"
+        <!-- Handys laden die kleine Fassung, Desktops die große -->
+        <img class="hero__cat" src="assets/winkekatze.webp"
+             srcset="assets/winkekatze-klein.webp 380w, assets/winkekatze.webp 760w"
+             sizes="(max-width:719px) 60vw, 19rem"
+             width="760" height="1192"
              alt="Goldene Winkekatze mit dem Namensschild „Familie Mau“" fetchpriority="high">
       </div>
     </div>
