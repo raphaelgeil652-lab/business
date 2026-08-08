@@ -37,12 +37,11 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 
 Alles zu diesem Kunden: [`nischen/chinatown/`](nischen/chinatown/)
 
-| Seite | Was es ist | Öffnen |
-|---|---|---|
-| **Webseite** ⭐ | Die fertige Seite: Buffet, Mittagskarte, Familie Mau, Galerie, Live-Anzeige „Jetzt geöffnet". | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-index.html) |
-| Webseite — Speisekarte | Alle 69 Gerichte + 18 Mittagsmenüs. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-speisekarte.html) |
-| **Flyer** ⭐ | Der Faltflyer zum Durchschauen am Bildschirm. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/flyer-faltflyer.html) |
-| Flyer — Druckdatei | Das PDF für die Druckerei. | [Öffnen](https://github.com/raphaelgeil652-lab/business/blob/main/nischen/chinatown/flyer/chinatown-faltflyer-A4.pdf) |
+| Was | Öffnen |
+|---|---|
+| **Die komplette Webseite** ⭐ Startseite, Speisekarte, Kontakt, Impressum, Datenschutz in einer Ansicht. | **[▶ Webseite öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-komplett.html)** |
+| **Der komplette Flyer** ⭐ Beide Seiten des Faltflyers. | **[▶ Flyer öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/flyer-komplett.html)** |
+| Flyer als Druckdatei (PDF) | [PDF öffnen](https://github.com/raphaelgeil652-lab/business/blob/main/nischen/chinatown/flyer/chinatown-faltflyer-A4.pdf) |
 
 > Chinatown ist **keine Nische**, sondern ein Einzelauftrag aus der Gastronomie — nicht mit dem
 > Kfz-Angebot oder dessen Preisen vermischen.

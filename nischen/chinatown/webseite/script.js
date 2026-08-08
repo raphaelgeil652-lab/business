@@ -45,9 +45,12 @@
   }
 
   function statusSetzen() {
-    var el = document.querySelector("[data-status]");
-    if (!el) return;
+    document.querySelectorAll("[data-status]").forEach(statusEinzeln);
+  }
+
+  function statusEinzeln(el) {
     var text = el.querySelector("[data-status-text]");
+    if (!text) return;
     var jetzt = jetztInPfullendorf();
     var heute = ZEITEN[jetzt.tag];
     var offen = null;
@@ -87,8 +90,8 @@
   /* Heutigen Tag in der Öffnungszeiten-Tabelle hervorheben */
   function heuteMarkieren() {
     var tag = jetztInPfullendorf().tag;
-    var zeile = document.querySelector('.zeiten tr[data-tag="' + tag + '"]');
-    if (zeile) zeile.setAttribute("data-heute", "");
+    document.querySelectorAll('.zeiten tr[data-tag="' + tag + '"]')
+      .forEach(function (z) { z.setAttribute("data-heute", ""); });
   }
 
   /* ---- Navigation auf schmalen Bildschirmen ------------------------------ */
@@ -131,8 +134,8 @@
 
   function start() {
     document.documentElement.classList.add("js");
-    var jahr = document.getElementById("jahr");
-    if (jahr) jahr.textContent = new Date().getFullYear();
+    var j = String(new Date().getFullYear());
+    document.querySelectorAll("#jahr, .jahr").forEach(function (e) { e.textContent = j; });
     statusSetzen();
     heuteMarkieren();
     navAufbauen();

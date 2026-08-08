@@ -7,26 +7,17 @@ Hier liegt alles für diesen Kunden an einer Stelle: der gedruckte Faltflyer und
 
 ---
 
-## ▶ Zum Zeigen (Öffnen anklicken)
+## ▶ Zum Zeigen
 
-Klick auf **Öffnen** → die fertige Seite geht im Browser auf. Auf dem iPad als Lesezeichen
-speichern oder über *Teilen → Zur Leseliste hinzufügen* offline sichern.
+| Was | Öffnen |
+|---|---|
+| 🌐 **Die komplette Webseite** — Startseite, Speisekarte, Kontakt, Impressum und Datenschutz in einer durchgehenden Ansicht. Oben auf „Speisekarte" oder „Kontakt" klicken springt innerhalb der Seite. | **[▶ Webseite öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-komplett.html)** |
+| 📄 **Der komplette Flyer** — beide Seiten des Faltflyers am Bildschirm. | **[▶ Flyer öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/flyer-komplett.html)** |
+| 🖨️ Flyer als Druckdatei (PDF) — das, was in die Druckerei geht. | [PDF öffnen](https://github.com/raphaelgeil652-lab/business/blob/main/nischen/chinatown/flyer/chinatown-faltflyer-A4.pdf) |
 
-| Was | Beschreibung | Öffnen |
-|---|---|---|
-| 🌐 **Webseite — Startseite** ⭐ | Das Hauptstück: Hero, Buffet, Mittagskarte, Familie Mau, Galerie. Mit Live-Anzeige „Jetzt geöffnet". | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-index.html) |
-| 🌐 Webseite — Speisekarte | Alle 69 Gerichte + 18 Mittagsmenüs mit Preisen. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-speisekarte.html) |
-| 🌐 Webseite — Kontakt | Öffnungszeiten, Adresse, Anfahrt. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-kontakt.html) |
-| 📄 **Flyer — Ansicht im Browser** ⭐ | Beide Seiten des Faltflyers zum Durchschauen am Bildschirm. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/flyer-faltflyer.html) |
-| 🖨️ **Flyer — Druckdatei (PDF)** | Das, was in die Druckerei geht. A4 quer, beidseitig. | [Öffnen](https://github.com/raphaelgeil652-lab/business/blob/main/nischen/chinatown/flyer/chinatown-faltflyer-A4.pdf) |
-| ⚖️ Webseite — Impressum | Gerüst, rot markierte Lücken muss Fam. Mau füllen. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-impressum.html) |
-| ⚖️ Webseite — Datenschutz | Passt zur Seite wie gebaut: keine Cookies, kein Tracking. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-datenschutz.html) |
-
-> ⚠️ **Die Öffnen-Links funktionieren erst, wenn der Pull Request in `main` gemergt ist.**
-> Vorher zeigen sie ins Leere, weil sie auf `main` verweisen.
->
-> Die Vorschau-Dateien in [`vorschau/`](vorschau/) enthalten **alles eingebettet** — Bilder,
-> Schriften, Stylesheet. Deshalb laufen sie auch ohne Internet, sobald sie einmal geladen sind.
+> Beide Dateien enthalten **alles eingebettet** — Bilder, Schriften, Stylesheet. Sie laufen
+> deshalb auch ohne Internet: einmal öffnen und auf dem iPad über *Teilen → Zur Leseliste
+> hinzufügen* sichern, dann funktionieren sie beim Kundenbesuch auch im Funkloch.
 
 ---
 
