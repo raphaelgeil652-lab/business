@@ -95,25 +95,16 @@ Vollständig erhalten: `geschaeftsmodell.md`, `nische.md`, `offer-und-ads.md`, `
 `akquise/` (inkl. Leads + Besuchs-Reihenfolge), `seiten/` (Pitch, Landingpage Küche/Bad, Beispiele).
 Preise dort: 850 € / 1.500 € — **nicht mit der Kfz-Nische verwechseln.**
 
-### `kunden/` — konkrete Kundenarbeit (außerhalb der Nischen-Logik)
-Hier liegt fertige Arbeit für einzelne Kunden, nicht das Nischen-System.
-- `chinatown-pfullendorf/flyer/` — **China Restaurant Chinatown** (Fam. Mau, Pfullendorf):
-  druckfertiger DIN-A4-Faltflyer (Wickelfalz) mit kompletter Speisekarte, dazu Assets
-  (freigestellte Winkekatze, vektorisierter Drache, Font-Subsets) und die Skripte, die sie
-  erzeugen. Einstieg: das README dort.
+### `nischen/chinatown/` — Einzelkunde China Restaurant Chinatown
+Liegt bewusst unter `nischen/`, weil der Nutzer dort sucht — inhaltlich ist es **keine Nische**,
+sondern ein Gastro-Einzelauftrag. **Nicht mit dem Kfz-Angebot oder dessen Preisen vermischen.**
+- `README.md` — Übersicht mit Öffnen-Buttons (erste Anlaufstelle)
+- `flyer/` — druckfertiger DIN-A4-Faltflyer (Wickelfalz), PDF, Winkekatze, Drache, Skripte
+- `webseite/` — statische Seite (Start, Speisekarte, Kontakt, Impressum, Datenschutz), Vercel-fertig
+- `vorschau/` — selbstenthaltende Dateien hinter den Öffnen-Links, erzeugt von `tools/vorschau-bauen.py`
 
-Die **Webseite** dieses Kunden liegt bewusst außerhalb von `kunden/`, damit Vercel sie direkt
-als Projektwurzel nehmen kann: `chinatown-website/` (siehe unten).
-
-**Achtung:** Chinatown ist ein Gastro-Kunde und liegt damit **außerhalb der aktiven Kfz-Nische**.
-Nicht mit dem Kfz-Angebot oder dessen Preisen vermischen — es ist ein Einzelauftrag, kein
-Nischen-Kunde.
-
-### `chinatown-website/` — die Webseite von Chinatown (eigener Ordner für Vercel)
-Statische Seite (Start, Speisekarte, Kontakt, Impressum, Datenschutz) in der Bildsprache des
-Flyers. **Die Speisekarte wird per Skript aus `kunden/chinatown-pfullendorf/flyer/faltflyer.html`
-übernommen** — der Flyer bleibt die einzige Quelle für Gerichte und Preise. Vor dem Livegang
-fehlen noch die Angaben im Impressum und echte Fotos; alles Weitere im README dort.
+**Eine Quelle für die Speisekarte:** `webseite/tools/speisekarte-uebernehmen.py` überträgt Gerichte
+und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt in der Webseite.
 
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,

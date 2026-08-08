@@ -33,6 +33,20 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 > (Die drei Zeig-Seiten haben ihre Bilder eingebettet, deshalb klappt das. Die Vorlage in der letzten
 > Zeile lädt Bilder nach — die zeigst du beim Kunden aber ohnehin nicht.)
 
+### 🏮 China Restaurant Chinatown — Einzelkunde (Pfullendorf)
+
+Alles zu diesem Kunden: [`nischen/chinatown/`](nischen/chinatown/)
+
+| Seite | Was es ist | Öffnen |
+|---|---|---|
+| **Webseite** ⭐ | Die fertige Seite: Buffet, Mittagskarte, Familie Mau, Galerie, Live-Anzeige „Jetzt geöffnet". | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-index.html) |
+| Webseite — Speisekarte | Alle 69 Gerichte + 18 Mittagsmenüs. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/webseite-speisekarte.html) |
+| **Flyer** ⭐ | Der Faltflyer zum Durchschauen am Bildschirm. | [Öffnen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/raphaelgeil652-lab/business/main/nischen/chinatown/vorschau/flyer-faltflyer.html) |
+| Flyer — Druckdatei | Das PDF für die Druckerei. | [Öffnen](https://github.com/raphaelgeil652-lab/business/blob/main/nischen/chinatown/flyer/chinatown-faltflyer-A4.pdf) |
+
+> Chinatown ist **keine Nische**, sondern ein Einzelauftrag aus der Gastronomie — nicht mit dem
+> Kfz-Angebot oder dessen Preisen vermischen.
+
 ### 🍳 Küchenstudios — zurückgestellt
 
 | Seite | Öffnen |
@@ -50,6 +64,7 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 |---|---|---|
 | 📂 **[nischen/autowerkstaetten/](nischen/autowerkstaetten/)** | **Dein Tagesgeschäft:** Businessplan, Service-Baukasten, Verkaufsskript, Leads, Vertrag, Seiten | oft |
 | 📂 [nischen/kuechenstudios/](nischen/kuechenstudios/) | Die zurückgestellte Nische, komplett erhalten | selten |
+| 📂 **[nischen/chinatown/](nischen/chinatown/)** | Einzelkunde China Restaurant Chinatown: Flyer + Webseite | bei Kundenarbeit |
 | 📂 [anleitungen/](anleitungen/) | Wie-geht-was: Meta, Google, Hosting, n8n — **gilt für beide Nischen** | bei Bedarf |
 | 📂 [grundlagen/](grundlagen/) | Playbook, Einsteiger-Überblick, Lern-System — **gilt für beide Nischen** | nachschlagen |
 

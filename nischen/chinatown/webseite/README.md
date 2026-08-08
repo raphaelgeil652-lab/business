@@ -1,7 +1,7 @@
 # 🏮 Webseite – China Restaurant Chinatown, Pfullendorf
 
 <p align="center">
-  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fraphaelgeil652-lab%2Fbusiness&root-directory=chinatown-website&project-name=chinatown-pfullendorf&repository-name=chinatown-pfullendorf">
+  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fraphaelgeil652-lab%2Fbusiness&root-directory=nischen%2Fchinatown%2Fwebseite&project-name=chinatown-pfullendorf&repository-name=chinatown-pfullendorf">
     <img alt="Website live schalten" src="https://img.shields.io/badge/Website%20live%20schalten-mit%20Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
   </a>
 </p>
@@ -50,13 +50,13 @@ Dazu `style.css`, `script.js`, `assets/` (Bilder, Schriften) und `tools/` (Hilfs
 
 **Variante B — Projekt selbst anlegen (Änderungen gehen automatisch live):**
 1. Auf vercel.com „Add New… → Project" und dieses Repository auswählen.
-2. **Root Directory** auf `chinatown-website` setzen — sonst findet Vercel die Seite nicht.
+2. **Root Directory** auf `nischen/chinatown/webseite` setzen — sonst findet Vercel die Seite nicht.
 3. Framework Preset **Other**, Build Command und Output Directory leer lassen.
 
 **Variante C — Kommandozeile:**
 ```bash
 npm i -g vercel
-cd chinatown-website
+cd nischen/chinatown/webseite
 vercel --prod
 ```
 
@@ -73,7 +73,7 @@ Preise **nicht** in `speisekarte.html` ändern — sie werden aus dem gedruckten
 übernommen, damit Karte und Webseite nicht auseinanderlaufen:
 
 ```bash
-# 1. Gericht/Preis in kunden/chinatown-pfullendorf/flyer/faltflyer.html ändern
+# 1. Gericht/Preis in ../flyer/faltflyer.html ändern
 # 2. dann:
 cd tools && python3 speisekarte-uebernehmen.py
 ```
