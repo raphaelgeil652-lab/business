@@ -5,7 +5,7 @@ Behebt gegenüber der ersten Fassung:
     einheitlich in tiefes Rot umgefärbt, Schattierung aus der Luminanz übernommen
   * Terrakotta-Rest am Sockel -> höherer Schnitt + längeres Ausblenden
   * dunkle Halos an der Kante -> Maske stärker eingezogen
-  * Solarzelle im Sockel -> abgedunkelt, damit sie nicht nach Plastik aussieht
+  * Solarzelle im Sockel -> restlos durch eine glatte Goldplatte ersetzt
 """
 import os
 import cv2
@@ -76,17 +76,75 @@ cv2.drawContours(teal, cnts, -1, 255, cv2.FILLED)
 teal_soft = cv2.GaussianBlur(teal, (0, 0), 2.0).astype(np.float32) / 255.0
 bib = teal > 0
 
-# Solarzelle: schwach gesättigtes Feld im unteren Sockelbereich
+# --- Solarzelle im Sockel restlos entfernen ---------------------------------
+# Sie ist ein Rechteck aus dunklen bzw. schwach gesättigten Pixeln. Erst die
+# Fläche finden, dann ihr *Bounding-Rechteck* durch eine glatte Goldplatte
+# ersetzen. Über das Rechteck statt die Pixelmaske zu gehen, stellt sicher,
+# dass auch der ganz dunkle obere Rand der Zelle mit verschwindet.
 lower = np.zeros_like(m, bool)
 lower[int(0.66 * h):] = True
-panel = (Ss < 110) & (Vv > 55) & inside & lower & ~bib
-panel = cv2.morphologyEx(panel.astype(np.uint8) * 255, cv2.MORPH_OPEN,
-                         np.ones((7, 7), np.uint8), iterations=2)
-n, lab, stats, _ = cv2.connectedComponentsWithStats(panel, 8)
+kern = (Ss < 110) & (Vv > 55) & inside & lower & ~bib
+kern = cv2.morphologyEx(kern.astype(np.uint8) * 255, cv2.MORPH_OPEN,
+                        np.ones((7, 7), np.uint8), iterations=2)
+n, lab, stats, _ = cv2.connectedComponentsWithStats(kern, 8)
+panel_px = 0
 if n > 1:
     big = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
-    panel = np.where(lab == big, 255, 0).astype(np.uint8)
-panel = cv2.GaussianBlur(panel, (0, 0), 1.5) > 40
+    px0, py0, pw0, ph0, panel_px = (int(v) for v in stats[big])
+
+    # Der obere Rand der Zelle ist fast schwarz und fällt aus dem Kernfenster.
+    # Deshalb zeilenweise nach oben erweitern, solange es dort deutlich dunkler
+    # ist als das umgebende Gold - höchstens aber um 60 % der Zellenhöhe.
+    gold_ref = float(np.median(Vv[inside & (Vv > 120)]))
+    grenze = max(0, py0 - int(0.6 * ph0))
+    r = py0
+    while r > grenze and float(np.median(Vv[r - 1, px0:px0 + pw0])) < gold_ref * 0.55:
+        r -= 1
+    ph0 += py0 - r
+    py0 = r
+
+    pad = 5
+    py0, px0 = max(0, py0 - pad), max(0, px0 - pad)
+    py1, px1 = min(h, py0 + ph0 + 2 * pad), min(w, px0 + pw0 + 2 * pad)
+    ph, pw = py1 - py0, px1 - px0
+
+    # Sicherheitsnetz: was zu groß ist, ist nicht die Solarzelle
+    if ph * pw > 0.16 * inside.sum():
+        raise SystemExit(f"Solarzellen-Erkennung unplausibel ({pw}x{ph}) - Abbruch")
+
+    # Goldton aus schmalen Bändern direkt ober- und unterhalb der Zelle nehmen
+    band = 16
+    s_oben = crop[max(0, py0 - band):py0, px0:px1].reshape(-1, 3)
+    s_unten = crop[py1:min(h, py1 + band), px0:px1].reshape(-1, 3)
+    oben = s_oben.mean(0) if len(s_oben) else None
+    unten = s_unten.mean(0) if len(s_unten) else None
+    if oben is None:
+        oben = unten
+    if unten is None:
+        unten = oben
+    if oben is None:                       # beide leer: Notfallwert aus dem Sockel
+        oben = unten = crop[inside].reshape(-1, 3).mean(0)
+
+    t = np.linspace(0, 1, ph, dtype=np.float32).reshape(-1, 1, 1)
+    platte = oben.reshape(1, 1, 3) * (1 - t) + unten.reshape(1, 1, 3) * t
+    platte = np.repeat(platte, pw, axis=1)
+    # leichte Wölbung quer, damit die Fläche nicht platt wirkt
+    xg = np.linspace(-1, 1, pw, dtype=np.float32).reshape(1, -1, 1)
+    platte *= (1.0 - 0.10 * xg ** 2)
+    # feine Körnung wie im umgebenden Sockel
+    platte += np.random.default_rng(7).normal(0, 3.0, platte.shape)
+    platte = np.clip(platte, 0, 255)
+
+    # nur ganz außen weich auslaufen -> nahtloser Übergang ins umgebende Gold
+    # (eigener Name: `a` ist weiter oben der Alphakanal des Bildes)
+    feder = np.zeros((ph, pw), np.float32)
+    feder[3:-3, 3:-3] = 1.0
+    feder = cv2.GaussianBlur(feder, (0, 0), 2.5)[..., None]
+    ziel = crop[py0:py1, px0:px1].astype(np.float32)
+    crop[py0:py1, px0:px1] = (ziel * (1 - feder) + platte * feder).astype(np.uint8)
+
+hsv = cv2.cvtColor(crop, cv2.COLOR_BGR2HSV)
+Vv = hsv[..., 2].astype(int)
 
 # --- Farbgrading -------------------------------------------------------------
 hsvf = hsv.astype(np.float32)
@@ -98,9 +156,6 @@ Sf[goldm] = np.clip(Sf[goldm] * 1.45, 0, 255)
 
 redm = ((Hf < 8) | (Hf > 168)) & (Sf > 60) & (~bib)  # Ohren, Halsband
 Sf[redm] = np.clip(Sf[redm] * 1.32, 0, 255)
-
-Vf[panel] = Vf[panel] * 0.32                         # Solarzelle abdunkeln
-Sf[panel] = Sf[panel] * 0.6
 
 out = cv2.cvtColor(np.clip(np.stack([Hf, Sf, Vf], -1), 0, 255).astype(np.uint8),
                    cv2.COLOR_HSV2BGR).astype(np.float32)
@@ -134,5 +189,5 @@ img = Image.fromarray(rgba, "RGBA")
 tw = 1200
 img = img.resize((tw, int(img.height * tw / img.width)), Image.LANCZOS)
 img.save(f"{ASSETS}/winkekatze.png", optimize=True)
-print(f"Latz {bib.sum()} px, Solarzelle {panel.sum()} px")
+print(f"Latz {bib.sum()} px, Solarzelle {panel_px} px ersetzt")
 print("gespeichert:", img.size, "->", f"{ASSETS}/winkekatze.png")

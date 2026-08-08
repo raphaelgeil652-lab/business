@@ -24,9 +24,15 @@ einfacher **A5-Flyer** aus dem ersten Entwurf.
 
 **Gestaltung:** dunkle Basis wie das Restaurant, Rot als durchgehendes Akzentsystem
 (Rahmen, alle Überschriften, Siegel 旺城), Gold für Wortmarke, Linien und Ornamente.
-Wortmarke und **alle Überschriften in Pinselkalligrafie** (Ma Shan Zheng), Gerichte und Preise
-in einer gut lesbaren Serifenlosen. Chinesische Zeichen in Noto Serif SC, zusätzlich große
-Zeichen als Wasserzeichen hinter jedem Abschnitt.
+Drei Schriften, jede mit einer Aufgabe:
+**ZCOOL KuaiLe** für die roten Gerichtüberschriften (kommt der China-Display-Schrift ihres alten
+Papierflyers am nächsten — Versalsatz mit weiter Laufweite wie dort), **Ma Shan Zheng**
+(Pinselkalligrafie) für Wortmarke und die goldenen Zwischentitel, **Noto Serif SC** für die
+chinesischen Zeichen. Gerichte und Preise in einer gut lesbaren Serifenlosen. Große chinesische
+Zeichen liegen als Wasserzeichen hinter jedem Abschnitt.
+
+Alle drei Schriften sind **im PDF eingebettet** — es druckt überall gleich, auch ohne die
+Schriften auf dem Rechner der Druckerei.
 
 **Drucken:** A4 **quer**, beidseitig, **an kurzer Kante wenden**, Hintergrundgrafiken aktivieren,
 Ränder „Keine". Danach 2× falzen (Wickelfalz).
@@ -47,9 +53,10 @@ Farb- und Schriftwelt entspricht **nicht** der aktuellen Fassung — bei Bedarf 
 ## Assets & Regenerierung
 
     assets/
-      winkekatze.png     freigestellte, goldgegradete Winkekatze (aus dem echten Foto)
+      winkekatze.png     freigestellte, goldgegradete Winkekatze (aus dem echten Foto);
+                         die Solarzelle im Sockel ist durch eine glatte Goldplatte ersetzt
       drache.svg         vektorisierter Drache (vom alten Papierflyer)
-      fonts/             Ma Shan Zheng + Noto Serif SC (nur benötigte Glyphen)
+      fonts/             ZCOOL KuaiLe, Ma Shan Zheng, Noto Serif SC (nur benötigte Glyphen)
       quellen/           Originalfotos: Winkekatze + alter Flyer (= Preis-Referenz)
       tools/             die Skripte, die die Assets erzeugen
 

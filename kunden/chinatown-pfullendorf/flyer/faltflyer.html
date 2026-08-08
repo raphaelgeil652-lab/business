@@ -19,6 +19,11 @@
     src:url("assets/fonts/MaShanZheng.ttf") format("truetype");
     font-display:block;
   }
+  @font-face{                       /* China-Display: rote Gerichtueberschriften */
+    font-family:"Display";
+    src:url("assets/fonts/ZCOOLKuaiLe.ttf") format("truetype");
+    font-display:block;
+  }
   @font-face{                       /* chinesische Zeichen */
     font-family:"HanSerif";
     src:url("assets/fonts/NotoSerifSC.ttf") format("truetype");
@@ -59,10 +64,9 @@
   }
   .panel{
     position:relative; overflow:hidden;
-    width:99mm; height:210mm; padding:9mm 7mm;
+    width:99mm; height:210mm; padding:10mm 8.5mm;
     display:flex; flex-direction:column;
     background:
-      radial-gradient(115% 70% at 50% 0%, rgba(189,36,25,.13), rgba(189,36,25,0) 58%),
       radial-gradient(120% 80% at 50% 100%, rgba(216,176,74,.07), rgba(216,176,74,0) 55%),
       var(--panel);
   }
@@ -99,7 +103,7 @@
   .seal.v{ writing-mode:vertical-rl; letter-spacing:.06em; }
 
   /* ============================ COVER ==================================== */
-  .cover{ align-items:center; text-align:center; justify-content:space-between; padding:11mm 7mm 9mm; }
+  .cover{ align-items:center; text-align:center; justify-content:space-between; padding:11mm 8.5mm 9mm; }
   .cov-top{ position:relative; z-index:2; }
   .cov-top .chars{ font-size:15px; letter-spacing:.42em; color:var(--gold); margin-left:.42em; }
   .cov-top .kick{
@@ -135,6 +139,7 @@
     color:var(--gold); font-size:10px; letter-spacing:.34em; text-transform:uppercase;
   }
   .cov-brand .place::before,.cov-brand .place::after{ content:""; height:1px; width:14mm; background:var(--gold-dk); }
+  .cov-brand .owner{ margin-top:7px; font-size:10.5px; letter-spacing:.05em; color:var(--dim); }
 
   .cov-foot{ position:relative; z-index:2; display:flex; align-items:center; gap:9px; margin-top:6mm; }
   .cov-foot .seal{ width:16mm; height:16mm; font-size:15px; padding:2px; }
@@ -193,9 +198,9 @@
   .cat{ display:flex; align-items:center; gap:7px; margin:3.4mm 0 1.4mm; position:relative; z-index:2; }
   .cat:first-of-type{ margin-top:0; }
   .cat .t{
-    font-family:"Brush",cursive; font-size:23px; line-height:1;
+    font-family:"Display",cursive; font-size:16.5px; line-height:1.15;
     color:var(--red); white-space:nowrap;
-    text-shadow:0 0 10px rgba(189,36,25,.30);
+    text-transform:uppercase; letter-spacing:.06em;
   }
   .cat .l{ flex:1; height:0; border-top:1px solid var(--gold-dk); }
   .cat .z{ font-family:"HanSerif",serif; font-size:12.5px; color:var(--gold); letter-spacing:.12em; }
@@ -380,6 +385,7 @@
       <div class="cov-brand">
         <h1>Chinatown</h1>
         <div class="place">Pfullendorf</div>
+        <div class="owner">Inhaber: Familie Mau</div>
       </div>
 
       <div class="cov-foot">

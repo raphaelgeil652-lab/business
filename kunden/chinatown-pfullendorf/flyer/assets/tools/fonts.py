@@ -33,7 +33,12 @@ CJK = ("旺城酒楼餐厅中国"
        "欢迎光临营业时间电话地址"
        "福喜龙财运宝吉利年有余双临门")
 
-FAMILIES = [("MaShanZheng", "Ma Shan Zheng"), ("NotoSerifSC", "Noto Serif SC")]
+FAMILIES = [
+    ("MaShanZheng", "Ma Shan Zheng"),    # Wortmarke + Pinsel-Elemente
+    ("NotoSerifSC", "Noto Serif SC"),    # chinesische Zeichen
+    ("ZCOOLXiaoWei", "ZCOOL XiaoWei"),   # Kandidat: kantige Keilserifen
+    ("ZCOOLKuaiLe", "ZCOOL KuaiLe"),     # Kandidat: kräftiger Pinselduktus
+]
 TEXT = "".join(sorted(set(LATIN + CJK)))
 
 
