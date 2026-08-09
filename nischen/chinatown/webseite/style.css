@@ -306,8 +306,10 @@ a{ color:var(--gold-lt); }
 /* ---- Tab-Ansicht: nur der aktive Bereich ist sichtbar -------------------
    Greift nur in der Komplett-Vorschau, wo alle Seiten in einem Dokument
    liegen. Auf der echten Webseite ist jede Seite eine eigene Datei.        */
-[data-seite]{ display:none; }
-[data-seite].ist-aktiv{ display:block; }
+/* Nur wenn JavaScript laeuft, wird versteckt - sonst waere die Seite leer,
+   falls das Skript blockiert wird. Ohne JS sieht man einfach alles am Stueck. */
+.js [data-seite]{ display:none; }
+.js [data-seite].ist-aktiv{ display:block; }
 
 /* ==========================================================================
    Ab 700px: mehrspaltig

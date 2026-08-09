@@ -119,20 +119,34 @@
       return true;
     }
 
-    /* Jeder Sprungverweis wechselt auf die Seite, in der sein Ziel liegt. */
+    /* Klicks abfangen. Bewusst NICHT über href^="#" gesucht: Vorschau-Dienste
+       wie htmlpreview schreiben Verweise in absolute Adressen um, dann würde
+       die Erkennung ins Leere laufen und der Klick die Seite verlassen.
+       Deshalb zählt data-tab, ersatzweise der Teil hinter dem #.            */
     document.addEventListener("click", function (e) {
-      var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      var a = e.target.closest ? e.target.closest("a") : null;
       if (!a) return;
-      var id = a.getAttribute("href").slice(1);
+
+      var id = a.getAttribute("data-tab");
+      if (!id) {
+        var href = a.getAttribute("href") || "";
+        if (href.indexOf("#") === -1) return;
+        id = href.split("#").pop();
+      }
       if (!id) return;
+
       var ziel = document.getElementById(id);
       if (!ziel) return;
       var seite = ziel.closest("[data-seite]");
       if (!seite) return;
+
       e.preventDefault();
-      var name = seite.getAttribute("data-seite");
-      zeige(name, ziel === seite ? null : ziel);
-      history.replaceState(null, "", "#" + id);
+      zeige(seite.getAttribute("data-seite"), ziel === seite ? null : ziel);
+      try { history.replaceState(null, "", "#" + id); } catch (fehler) { /* egal */ }
+    });
+
+    window.addEventListener("hashchange", function () {
+      zeige((location.hash || "").slice(1) || "start");
     });
 
     if (!zeige((location.hash || "").slice(1) || "start")) zeige("start");
