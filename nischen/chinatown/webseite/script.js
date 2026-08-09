@@ -94,25 +94,48 @@
       .forEach(function (z) { z.setAttribute("data-heute", ""); });
   }
 
-  /* ---- Navigation auf schmalen Bildschirmen ------------------------------ */
-  function navAufbauen() {
-    var knopf = document.querySelector(".navtoggle");
-    var nav = document.getElementById("hauptnav");
-    if (!knopf || !nav) return;
+  /* ---- Tabs -------------------------------------------------------------
+     Greift nur, wenn mehrere Seiten in einem Dokument liegen (Komplett-
+     Vorschau). Auf der echten Webseite ist jede Seite eine eigene Datei —
+     dort bleiben die Tabs ganz normale Verweise.                          */
+  function tabsAufbauen() {
+    var seiten = document.querySelectorAll("[data-seite]");
+    if (seiten.length < 2) return;
 
-    function schmal() { return window.matchMedia("(max-width:719px)").matches; }
-    function zustand(offen) {
-      nav.hidden = schmal() ? !offen : false;
-      knopf.setAttribute("aria-expanded", offen ? "true" : "false");
+    function zeige(name, ziel) {
+      var gefunden = false;
+      seiten.forEach(function (s) {
+        var aktiv = s.getAttribute("data-seite") === name;
+        s.classList.toggle("ist-aktiv", aktiv);
+        if (aktiv) gefunden = true;
+      });
+      if (!gefunden) return false;
+      document.querySelectorAll(".tabs a").forEach(function (a) {
+        if (a.getAttribute("data-tab") === name) a.setAttribute("aria-current", "page");
+        else a.removeAttribute("aria-current");
+      });
+      if (ziel) ziel.scrollIntoView({ block: "start" });
+      else window.scrollTo(0, 0);
+      return true;
     }
-    zustand(false);
-    knopf.addEventListener("click", function () {
-      zustand(knopf.getAttribute("aria-expanded") !== "true");
+
+    /* Jeder Sprungverweis wechselt auf die Seite, in der sein Ziel liegt. */
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+      if (!a) return;
+      var id = a.getAttribute("href").slice(1);
+      if (!id) return;
+      var ziel = document.getElementById(id);
+      if (!ziel) return;
+      var seite = ziel.closest("[data-seite]");
+      if (!seite) return;
+      e.preventDefault();
+      var name = seite.getAttribute("data-seite");
+      zeige(name, ziel === seite ? null : ziel);
+      history.replaceState(null, "", "#" + id);
     });
-    nav.addEventListener("click", function (e) {
-      if (e.target.tagName === "A" && schmal()) zustand(false);
-    });
-    window.addEventListener("resize", function () { zustand(false); });
+
+    if (!zeige((location.hash || "").slice(1) || "start")) zeige("start");
   }
 
   /* ---- Sanftes Einblenden beim Scrollen ---------------------------------- */
@@ -138,7 +161,7 @@
     document.querySelectorAll("#jahr, .jahr").forEach(function (e) { e.textContent = j; });
     statusSetzen();
     heuteMarkieren();
-    navAufbauen();
+    tabsAufbauen();
     revealAufbauen();
     setInterval(statusSetzen, 60000);
   }

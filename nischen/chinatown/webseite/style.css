@@ -1,12 +1,16 @@
 /* ==========================================================================
    China Restaurant Chinatown, Pfullendorf — gemeinsames Stylesheet
-   Bildsprache aus dem gedruckten Faltflyer weitergeführt: dunkler Lack,
-   China-Rot, Gold. Die Seite hat genau ein Ziel: den Anruf.
+
+   Aufbau: mobil zuerst. Die Grundregeln gelten fürs Handy, die Media-Queries
+   weiter unten bauen daraus die breiteren Ansichten. Rund 8 von 10 Besuchern
+   einer Gastro-Seite kommen vom Telefon.
+
+   Eine Schrift für alles Auffällige: ZCOOL KuaiLe („Display") trägt Wortmarke,
+   Überschriften, Preise und Telefonnummer. Bildsprache wie beim Faltflyer:
+   dunkler Lack, China-Rot, Gold.
    ========================================================================== */
 
-/* ---- Schriften (Subsets, liegen lokal) ---------------------------------- */
 @font-face{ font-family:"Display";  src:url("assets/fonts/ZCOOLKuaiLe.ttf") format("truetype"); font-display:swap; }
-@font-face{ font-family:"Brush";    src:url("assets/fonts/MaShanZheng.ttf") format("truetype"); font-display:swap; }
 @font-face{ font-family:"HanSerif"; src:url("assets/fonts/NotoSerifSC.ttf") format("truetype"); font-display:swap; }
 
 :root{
@@ -24,54 +28,59 @@
 
   --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --wrap: 1120px;
-  --bar-h: 62px;          /* Höhe der Kopfleiste */
-  --callbar-h: 0px;       /* wird mobil auf echte Höhe gesetzt */
+  --callbar-h: 72px;      /* Platz für die Anrufleiste unten */
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
 body{
   margin:0; background:var(--ink); color:var(--cream);
   font-family:var(--body); font-size:17px; line-height:1.65;
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%;
   padding-bottom:var(--callbar-h);
 }
 img{ max-width:100%; display:block; }
 a{ color:var(--gold-lt); }
-
 :focus-visible{ outline:3px solid var(--gold-lt); outline-offset:3px; border-radius:2px; }
 
-.wrap{ width:min(100% - 2.5rem, var(--wrap)); margin-inline:auto; }
+.wrap{ width:min(100% - 2rem, var(--wrap)); margin-inline:auto; }
 .zh{ font-family:"HanSerif",serif; }
 .visually-hidden{
   position:absolute; width:1px; height:1px; overflow:hidden;
   clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap;
 }
 
-/* ---- Abschnitte + Überschriften ----------------------------------------- */
-.section{ padding:clamp(3.5rem, 8vw, 6.5rem) 0; }
-.section--tint{ background:var(--panel); }
-
-.eyebrow{
-  font-size:.72rem; letter-spacing:.34em; text-transform:uppercase;
-  color:var(--gold); margin:0 0 .6rem;
-}
-.eyebrow .zh{ letter-spacing:.2em; }
-
-.h2{
+/* ---- Überschriften: durchgehend die China-Display-Schrift ---------------- */
+.h1, .h2, .h3, .hero__title, .brandmark b, .telgross,
+.card__price, .menu__sub, .footer h2, .b-tel, .b-addr .nm,
+.buffet .t, .buffet .p, .buffet-sm .t, .buffet-sm .s b{
   font-family:"Display",cursive; font-weight:400;
-  font-size:clamp(1.7rem, 4.4vw, 2.6rem); line-height:1.2;
+}
+
+.h1{
+  font-size:clamp(2rem, 8vw, 3rem); line-height:1.15;
+  text-transform:uppercase; letter-spacing:.04em;
+  color:var(--gold-lt); margin:0 0 .8rem;
+}
+.h2{
+  font-size:clamp(1.5rem, 6vw, 2.3rem); line-height:1.2;
   text-transform:uppercase; letter-spacing:.05em;
-  color:var(--gold-lt); margin:0 0 1rem;
+  color:var(--gold-lt); margin:0 0 .9rem;
 }
 .h3{
-  font-family:"Display",cursive; font-weight:400;
-  font-size:1.22rem; text-transform:uppercase; letter-spacing:.05em;
+  font-size:1.15rem; text-transform:uppercase; letter-spacing:.05em;
   color:var(--gold-lt); margin:0 0 .5rem;
 }
-.lede{ color:var(--dim); max-width:56ch; margin:0 0 2rem; }
+.eyebrow{
+  font-size:.7rem; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--gold); margin:0 0 .5rem;
+}
+.eyebrow .zh{ letter-spacing:.18em; }
+.lede{ color:var(--dim); max-width:58ch; margin:0 0 1.6rem; }
 
-/* Rotes Siegel — das wiederkehrende Strukturzeichen der Seite */
+.section{ padding:2.75rem 0; }
+.section--tint{ background:var(--panel); }
+
+/* Rotes Siegel als wiederkehrendes Zeichen */
 .seal{
   display:inline-grid; place-items:center;
   width:2.9rem; height:2.9rem; flex:0 0 auto;
@@ -82,115 +91,100 @@ a{ color:var(--gold-lt); }
 
 /* ---- Buttons ------------------------------------------------------------ */
 .btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
-  min-height:52px; padding:.85rem 1.5rem; border-radius:3px;
-  font-size:1.02rem; font-weight:700; text-decoration:none;
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  min-height:52px; padding:.8rem 1.3rem; border-radius:3px;
+  font-size:1rem; font-weight:700; text-decoration:none;
   border:1.5px solid transparent; cursor:pointer;
-  transition:transform .15s ease, background-color .15s ease, border-color .15s ease;
+  transition:background-color .15s ease, border-color .15s ease;
 }
 .btn svg{ width:1.15em; height:1.15em; flex:0 0 auto; fill:currentColor; }
-.btn:hover{ transform:translateY(-2px); }
 .btn--call{ background:linear-gradient(180deg,var(--gold-lt),var(--gold) 58%,var(--gold-dk)); color:#2b1f06; }
 .btn--ghost{ border-color:var(--gold-dk); color:var(--gold-lt); background:rgba(216,176,74,.05); }
-.btn--ghost:hover{ border-color:var(--gold); background:rgba(216,176,74,.11); }
 
-/* ---- Kopfleiste --------------------------------------------------------- */
+/* ---- Kopfbereich: Marke + Anruf, darunter die Tabs ---------------------- */
 .topbar{
-  position:sticky; top:0; z-index:50; height:var(--bar-h);
-  display:flex; align-items:center;
-  background:rgba(11,9,8,.92); backdrop-filter:blur(8px);
+  position:sticky; top:0; z-index:50;
+  background:rgba(11,9,8,.96); backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line);
 }
-.topbar__in{ display:flex; align-items:center; gap:1rem; width:min(100% - 2.5rem, var(--wrap)); margin-inline:auto; }
-.brandmark{ display:flex; align-items:baseline; gap:.5rem; text-decoration:none; margin-right:auto; }
-.brandmark b{
-  font-family:"Brush",cursive; font-weight:400; font-size:1.6rem;
-  color:var(--gold-lt); letter-spacing:.01em;
+.topbar__in{
+  display:flex; align-items:center; gap:.75rem; min-height:56px;
+  width:min(100% - 2rem, var(--wrap)); margin-inline:auto;
 }
-.brandmark span{ font-family:"HanSerif",serif; color:var(--gold-dk); font-size:.95rem; letter-spacing:.18em; }
+.brandmark{ display:flex; align-items:baseline; gap:.4rem; text-decoration:none; margin-right:auto; }
+.brandmark b{ font-size:1.35rem; color:var(--gold-lt); letter-spacing:.03em; text-transform:uppercase; }
+.brandmark span{ font-family:"HanSerif",serif; color:var(--gold-dk); font-size:.9rem; letter-spacing:.15em; }
+.topbar .btn{ min-height:44px; padding:.45rem .9rem; font-size:.92rem; }
+.topbar .btn span{ display:none; }          /* mobil nur die Nummer, kein langes Wort */
 
-.nav{ display:flex; align-items:center; gap:.35rem; }
-.nav a{
-  padding:.6rem .85rem; border-radius:3px; text-decoration:none;
-  color:var(--cream); font-size:.95rem;
+/* Die Tabs: auf dem Handy immer sichtbar, gleich breit, große Tippflächen */
+.tabs{ display:flex; border-top:1px solid var(--line); }
+.tabs a{
+  flex:1 1 0; min-height:52px; padding:.6rem .3rem;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  color:var(--cream); text-decoration:none; font-size:.94rem; font-weight:600;
+  border-bottom:3px solid transparent;
 }
-.nav a:hover{ color:var(--gold-lt); background:rgba(216,176,74,.08); }
-.nav a[aria-current="page"]{ color:var(--gold-lt); box-shadow:inset 0 -2px 0 var(--red); }
-.topbar .btn{ min-height:44px; padding:.5rem 1.1rem; font-size:.95rem; }
-
-.navtoggle{
-  display:none; min-width:44px; min-height:44px; align-items:center; justify-content:center;
-  background:none; border:1px solid var(--line); border-radius:3px; color:var(--gold-lt);
+.tabs a[aria-current="page"]{
+  color:var(--gold-lt); border-bottom-color:var(--red);
+  background:rgba(216,176,74,.07);
 }
 
 /* ---- Hero --------------------------------------------------------------- */
-.hero{
-  position:relative; isolation:isolate; overflow:hidden;
-  min-height:clamp(30rem, 84svh, 46rem);
-  display:grid; align-items:center;
-  padding:3.5rem 0 4rem;
-}
+.hero{ position:relative; isolation:isolate; overflow:hidden; padding:2rem 0 2.5rem; }
 .hero__bg{ position:absolute; inset:0; z-index:-2; }
 .hero__bg img{ width:100%; height:100%; object-fit:cover; }
-/* Abdunkler: hält den Text auch über einem hellen Foto lesbar (WCAG-Kontrast) */
 .hero__bg::after{
   content:""; position:absolute; inset:0;
   background:
-    linear-gradient(180deg, rgba(11,9,8,.72) 0%, rgba(11,9,8,.58) 45%, rgba(11,9,8,.95) 100%),
+    linear-gradient(180deg, rgba(11,9,8,.74) 0%, rgba(11,9,8,.62) 45%, rgba(11,9,8,.96) 100%),
     radial-gradient(90% 65% at 50% 40%, rgba(142,22,16,.34), transparent 70%);
 }
-.hero__grid{ display:grid; gap:2.5rem; align-items:center; }
+.hero__grid{ display:grid; gap:1.5rem; align-items:center; }
 .hero__title{
-  font-family:"Brush",cursive; font-weight:400;
-  font-size:clamp(3rem, 11vw, 5.6rem); line-height:.95; margin:.4rem 0 .2rem;
-  color:var(--gold-lt);
-  text-shadow:0 2px 18px rgba(0,0,0,.6);
+  font-size:clamp(2.6rem, 13vw, 4.6rem); line-height:1.05; margin:.3rem 0 .2rem;
+  text-transform:uppercase; letter-spacing:.02em;
+  color:var(--gold-lt); text-shadow:0 2px 16px rgba(0,0,0,.65);
 }
 .hero__sub{
-  font-family:"Display",cursive; text-transform:uppercase; letter-spacing:.22em;
-  font-size:.95rem; color:var(--gold);
+  font-family:"Display",cursive; text-transform:uppercase; letter-spacing:.18em;
+  font-size:.8rem; color:var(--gold); margin:0;
 }
-.hero__claim{ font-size:1.12rem; color:var(--cream); max-width:44ch; margin:1.2rem 0 1.8rem; }
-.hero__actions{ display:flex; flex-wrap:wrap; gap:.85rem; }
+.hero__claim{ font-size:1.05rem; color:var(--cream); max-width:44ch; margin:1rem 0 1.4rem; }
+.hero__actions{ display:flex; flex-direction:column; gap:.7rem; }
 .hero__cat{
-  justify-self:center; width:auto; max-width:min(72%, 19rem);
-  max-height:clamp(18rem, 48svh, 30rem);
-  filter:drop-shadow(0 22px 40px rgba(0,0,0,.75));
+  justify-self:center; width:auto; max-width:min(64%, 15rem); max-height:42svh;
+  filter:drop-shadow(0 18px 34px rgba(0,0,0,.75));
 }
-
-/* ---- Status-Chip: heute geöffnet? --------------------------------------- */
-.status{
-  display:inline-flex; align-items:center; gap:.6rem;
-  padding:.5rem .95rem; border-radius:100px;
-  border:1px solid var(--line); background:rgba(11,9,8,.72);
-  font-size:.92rem; color:var(--cream);
+.hero__marke{
+  position:absolute; right:.8rem; bottom:.8rem; z-index:1; margin:0;
+  font-size:.68rem; letter-spacing:.06em; color:var(--gold-dk);
+  border:1px solid var(--line); border-radius:3px; padding:.3rem .6rem;
+  background:rgba(11,9,8,.55);
 }
-.status__dot{ width:.62rem; height:.62rem; border-radius:50%; background:var(--dim); flex:0 0 auto; }
-.status[data-open="ja"] .status__dot{ background:#4ea862; box-shadow:0 0 0 4px rgba(78,168,98,.18); }
-.status[data-open="nein"] .status__dot{ background:var(--red); box-shadow:0 0 0 4px rgba(195,39,27,.16); }
-.status b{ color:var(--gold-lt); font-weight:700; }
-
-/* Hero-Platzhalter: dezente Textur, Beschriftung unten rechts statt mittig,
-   damit sie nicht mit der Überschrift kollidiert. */
 .hero__platzhalter{
   position:absolute; inset:0;
   background:
     repeating-linear-gradient(135deg, rgba(216,176,74,.05) 0 14px, transparent 14px 28px),
     var(--panel-2);
 }
-.hero__marke{
-  position:absolute; right:1.2rem; bottom:1.2rem; z-index:1;
-  font-size:.74rem; letter-spacing:.08em; color:var(--gold-dk);
-  border:1px solid var(--line); border-radius:3px; padding:.4rem .75rem;
-  background:rgba(11,9,8,.55);
-}
 
-/* ---- Foto-Platzhalter ---------------------------------------------------
-   Markiert bewusst, welches Bild an diese Stelle gehört. Ersetzen: das
-   ganze <div class="foto"> durch <img src="..." alt="..."> tauschen.        */
+/* ---- Öffnungsstatus ----------------------------------------------------- */
+.status{
+  display:inline-flex; align-items:center; gap:.55rem;
+  padding:.45rem .85rem; border-radius:100px;
+  border:1px solid var(--line); background:rgba(11,9,8,.72);
+  font-size:.9rem; color:var(--cream);
+}
+.status__dot{ width:.6rem; height:.6rem; border-radius:50%; background:var(--dim); flex:0 0 auto; }
+.status[data-open="ja"] .status__dot{ background:#4ea862; box-shadow:0 0 0 4px rgba(78,168,98,.18); }
+.status[data-open="nein"] .status__dot{ background:var(--red); box-shadow:0 0 0 4px rgba(195,39,27,.16); }
+.status b{ color:var(--gold-lt); font-weight:700; }
+
+/* ---- Bilder und Platzhalter --------------------------------------------- */
 .foto{
-  position:relative; display:grid; place-items:center; gap:.5rem;
-  aspect-ratio:4/3; padding:1.5rem; text-align:center;
+  position:relative; display:grid; place-items:center;
+  aspect-ratio:4/3; padding:1.2rem; text-align:center;
   background:
     repeating-linear-gradient(135deg, rgba(216,176,74,.05) 0 12px, transparent 12px 24px),
     var(--panel-2);
@@ -198,95 +192,89 @@ a{ color:var(--gold-lt); }
 }
 .foto--hoch{ aspect-ratio:3/4; }
 .foto--breit{ aspect-ratio:16/9; }
-.foto svg{ width:2rem; height:2rem; fill:var(--gold-dk); }
-.foto b{ display:block; color:var(--gold-lt); font-size:.98rem; font-weight:700; }
-.foto small{ font-size:.82rem; letter-spacing:.02em; }
+.foto svg{ width:1.8rem; height:1.8rem; fill:var(--gold-dk); }
+.foto b{ display:block; color:var(--gold-lt); font-size:.95rem; }
+.foto small{ font-size:.8rem; }
 
-/* ---- Zweispalter -------------------------------------------------------- */
-.split{ display:grid; gap:2.5rem; align-items:center; }
-.split__body p{ color:var(--dim); }
-
-/* ---- Karten ------------------------------------------------------------- */
-.cards{ display:grid; gap:1.25rem; }
-.card{
-  padding:1.6rem; border:1px solid var(--line); border-radius:4px;
-  background:linear-gradient(180deg, var(--panel-2), var(--panel));
-}
-.card__price{
-  font-family:"Brush",cursive; font-size:2rem; color:var(--gold-lt); line-height:1.1; margin:.2rem 0 .35rem;
-}
-.card p{ margin:0; color:var(--dim); font-size:.96rem; }
-.card--akzent{ border-color:var(--red-deep); }
-
-/* ---- Speisekarte -------------------------------------------------------- */
-.menu__gruppe{ margin-bottom:2.6rem; break-inside:avoid; }
-.menu__kopf{ display:flex; align-items:center; gap:.8rem; margin-bottom:.9rem; }
-.menu__kopf .h3{ margin:0; white-space:nowrap; }
-.menu__kopf .rule{ flex:1; height:1px; background:var(--line); }
-.menu__kopf .zh{ color:var(--gold); font-size:1rem; }
-
-.menu__sub{
-  font-family:"Display",cursive; font-weight:400; font-size:.98rem;
-  text-transform:uppercase; letter-spacing:.12em; color:var(--red);
-  margin:1.4rem 0 .3rem; break-after:avoid;
-}
-.menu__sub:first-child{ margin-top:0; }
-/* In zwei Spalten darf eine Zeile nicht mitten im Umbruch zerrissen werden */
-.dish{ break-inside:avoid; display:flex; align-items:baseline; gap:.6rem; padding:.42rem 0; border-bottom:1px dotted rgba(216,176,74,.16); }
-.dish__nr{ color:var(--red); font-weight:700; font-size:.85rem; min-width:2.1rem; flex:0 0 auto; }
-.dish__name{ color:var(--cream); }
-.dish__name em{ font-style:normal; color:var(--dim); font-size:.86rem; }
-.dish__preis{ margin-left:auto; color:var(--gold-lt); font-weight:700; white-space:nowrap; }
-
-.hinweis{
-  padding:1rem 1.2rem; border-left:3px solid var(--red); background:var(--panel-2);
-  color:var(--dim); font-size:.95rem; border-radius:0 4px 4px 0;
-}
-
-/* ---- Galerie ------------------------------------------------------------ */
-.galerie{ display:grid; gap:1rem; grid-template-columns:repeat(2, 1fr); align-items:start; }
-/* height:auto ist noetig - sonst wirkt das height-Attribut im HTML als feste
-   Hoehe und das Seitenverhaeltnis wird ignoriert. */
+/* height:auto ist nötig — sonst wirkt das height-Attribut im HTML als feste
+   Höhe und das gewünschte Seitenverhältnis wird ignoriert. */
+.galerie{ display:grid; gap:.7rem; grid-template-columns:repeat(2,1fr); align-items:start; }
 .galerie img{
   width:100%; height:auto; aspect-ratio:4/3; object-fit:cover;
   border:1px solid var(--line); border-radius:4px;
 }
+.split{ display:grid; gap:1.5rem; align-items:center; }
 .split__bild img{ width:100%; height:auto; border:1px solid var(--line); border-radius:4px; }
+.split__body p{ color:var(--dim); }
 
-/* ---- Bewertungen -------------------------------------------------------- */
-.stimme{ padding:1.5rem; border:1px solid var(--line); border-radius:4px; background:var(--panel-2); }
-.stimme__sterne{ color:var(--gold); letter-spacing:.15em; }
-.stimme p{ margin:.5rem 0 0; color:var(--cream); }
-.stimme cite{ display:block; margin-top:.7rem; color:var(--dim); font-style:normal; font-size:.88rem; }
+/* ---- Karten ------------------------------------------------------------- */
+.cards{ display:grid; gap:.9rem; }
+.card{
+  padding:1.2rem; border:1px solid var(--line); border-radius:4px;
+  background:linear-gradient(180deg, var(--panel-2), var(--panel));
+}
+.card--akzent{ border-color:var(--red-deep); }
+.card p{ margin:0; color:var(--dim); font-size:.94rem; }
+.card__price{ font-size:1.8rem; color:var(--gold-lt); line-height:1.15; margin:.2rem 0 .35rem; }
 
-/* ---- Infozeile / Kontakt ------------------------------------------------ */
-.fakten{ display:grid; gap:1.5rem; }
-.fakt__label{ font-size:.72rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin:0 0 .35rem; }
+/* ---- Speisekarte -------------------------------------------------------- */
+.menu__gruppe{ margin-bottom:2.2rem; }
+.menu__kopf{ display:flex; align-items:center; gap:.7rem; margin-bottom:.7rem; }
+.menu__kopf .h3{ margin:0; white-space:nowrap; }
+.menu__kopf .rule{ flex:1; height:1px; background:var(--line); }
+.menu__kopf .zh{ color:var(--gold); font-size:.95rem; }
+.menu__sub{
+  font-size:.95rem; text-transform:uppercase; letter-spacing:.1em;
+  color:var(--red); margin:1.3rem 0 .3rem;
+}
+.menu__sub:first-child{ margin-top:0; }
+
+.dish{
+  break-inside:avoid; display:flex; align-items:baseline; gap:.5rem;
+  padding:.5rem 0; border-bottom:1px dotted rgba(216,176,74,.16); margin:0;
+}
+.dish__nr{ color:var(--red); font-weight:700; font-size:.8rem; min-width:2rem; flex:0 0 auto; }
+.dish__name{ color:var(--cream); font-size:.98rem; }
+.dish__name em{ font-style:normal; color:var(--dim); font-size:.84rem; }
+.dish__preis{ margin-left:auto; color:var(--gold-lt); font-weight:700; white-space:nowrap; }
+
+.hinweis{
+  padding:.9rem 1rem; border-left:3px solid var(--red); background:var(--panel-2);
+  color:var(--dim); font-size:.94rem; border-radius:0 4px 4px 0;
+}
+.buffet, .buffet-sm{
+  border:1.5px solid var(--red-deep); border-radius:4px; padding:1rem;
+  background:linear-gradient(180deg, rgba(189,36,25,.15), rgba(189,36,25,.04));
+}
+.buffet .t, .buffet-sm .t{ font-size:1.15rem; color:var(--gold-lt); }
+.buffet .p{ font-size:1.5rem; color:var(--red); margin:.1rem 0; }
+.buffet .s, .buffet-sm .s{ font-size:.9rem; color:var(--dim); line-height:1.45; }
+.buffet-sm .s b{ color:var(--red); font-size:1.05rem; font-weight:400; }
+
+/* ---- Bewertungen, Fakten, Kontakt --------------------------------------- */
+.stimme{ padding:1.1rem; border:1px solid var(--line); border-radius:4px; background:var(--panel-2); }
+.stimme__sterne{ color:var(--gold); letter-spacing:.15em; margin:0; }
+.stimme p{ margin:.4rem 0 0; color:var(--cream); }
+.stimme cite{ display:block; margin-top:.6rem; color:var(--dim); font-style:normal; font-size:.86rem; }
+
+.fakten{ display:grid; gap:1.3rem; }
+.fakt__label{ font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin:0 0 .3rem; }
 .fakt p{ margin:0; }
-.fakt a{ color:var(--cream); text-decoration:none; border-bottom:1px solid var(--line); }
-.fakt a:hover{ color:var(--gold-lt); }
+.fakt a{ color:var(--cream); }
 
 .zeiten{ width:100%; border-collapse:collapse; }
-.zeiten th, .zeiten td{ text-align:left; padding:.55rem 0; border-bottom:1px solid var(--line); font-weight:400; }
+.zeiten th, .zeiten td{ text-align:left; padding:.5rem 0; border-bottom:1px solid var(--line); font-weight:400; font-size:.95rem; }
 .zeiten td{ text-align:right; color:var(--cream); }
 .zeiten .ruhetag td, .zeiten .ruhetag th{ color:var(--red); }
 .zeiten tr[data-heute] th, .zeiten tr[data-heute] td{ color:var(--gold-lt); font-weight:700; }
 
-.telgross{
-  font-family:"Brush",cursive; font-size:clamp(2.2rem,7vw,3.2rem); line-height:1.1;
-  color:var(--gold-lt); text-decoration:none; display:inline-block;
-}
-.telgross:hover{ color:#fff; }
-
+.telgross{ font-size:clamp(2rem,10vw,2.9rem); line-height:1.15; color:var(--gold-lt); text-decoration:none; display:inline-block; }
+.b-tel{ font-size:1.9rem; color:var(--red); margin:.2rem 0 .4rem; }
+.b-addr .nm{ font-size:1.15rem; color:var(--gold-lt); }
 .karte{ border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--panel-2); }
-.karte iframe{ display:block; width:100%; height:340px; border:0; filter:grayscale(.35) contrast(1.05); }
+.drache{ width:clamp(6rem, 26vw, 10rem); margin:0 auto 1.2rem; opacity:.92; }
 
-/* ---- Drache als Zierelement --------------------------------------------- */
-.drache{ width:clamp(7rem, 16vw, 11rem); margin:0 auto 1.5rem; opacity:.92; }
-
-/* ---- Rechtstexte -------------------------------------------------------- */
-/* Auffaellige Markierung fuer alles, was der Kunde noch eintragen muss -
-   ein unvollstaendiges Impressum soll niemandem versehentlich online gehen. */
+/* ---- Rechtstexte: auszufüllende Lücken sichtbar machen ------------------- */
 .luecke{
   background:rgba(195,39,27,.18); color:var(--gold-lt);
   border:1px dashed var(--red); border-radius:3px;
@@ -294,68 +282,60 @@ a{ color:var(--gold-lt); }
 }
 
 /* ---- Fußbereich --------------------------------------------------------- */
-.footer{ border-top:1px solid var(--line); background:var(--panel); padding:3rem 0 2.5rem; }
-.footer__grid{ display:grid; gap:2rem; }
-.footer h2{ font-family:"Brush",cursive; font-weight:400; font-size:1.8rem; color:var(--gold-lt); margin:0 0 .3rem; }
-.footer p, .footer li{ color:var(--dim); font-size:.95rem; }
+.footer{ border-top:1px solid var(--line); background:var(--panel); padding:2.2rem 0 2rem; }
+.footer__grid{ display:grid; gap:1.5rem; }
+.footer h2{ font-size:1.5rem; color:var(--gold-lt); margin:0 0 .3rem; text-transform:uppercase; }
+.footer p, .footer li{ color:var(--dim); font-size:.93rem; }
 .footer ul{ list-style:none; padding:0; margin:0; }
-.footer li{ padding:.2rem 0; }
+.footer li{ padding:.18rem 0; }
 .footer a{ color:var(--cream); text-decoration:none; }
-.footer a:hover{ color:var(--gold-lt); }
-.footer__fein{ margin-top:2rem; padding-top:1.3rem; border-top:1px solid var(--line); font-size:.85rem; color:var(--dim); }
+.footer__fein{ margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--line); font-size:.82rem; color:var(--dim); }
 
-/* ---- Mobile Anrufleiste (Daumenzone) ------------------------------------ */
+/* ---- Anrufleiste unten: der wichtigste Weg zum Tisch --------------------- */
 .callbar{
-  position:fixed; left:0; right:0; bottom:0; z-index:60; display:none;
-  gap:.6rem; padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom));
-  background:rgba(11,9,8,.96); border-top:1px solid var(--line); backdrop-filter:blur(8px);
+  position:fixed; left:0; right:0; bottom:0; z-index:60; display:flex; gap:.5rem;
+  padding:.55rem .7rem calc(.55rem + env(safe-area-inset-bottom));
+  background:rgba(11,9,8,.97); border-top:1px solid var(--line); backdrop-filter:blur(8px);
 }
-.callbar .btn{ flex:1; min-height:50px; font-size:1rem; }
+.callbar .btn{ flex:1; min-height:50px; font-size:.98rem; }
 
-/* ---- Scroll-Einblendung ------------------------------------------------- */
-/* Inhalt ist ohne JavaScript sofort sichtbar. Erst wenn das Skript laeuft,
-   wird eingeblendet - sonst waere die halbe Seite bei einem JS-Fehler leer. */
-.js .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+/* ---- Einblenden beim Scrollen (nur mit JavaScript) ---------------------- */
+.js .reveal{ opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease; }
 .js .reveal.is-in{ opacity:1; transform:none; }
 
-/* ==========================================================================
-   Ab 720px: zweispaltige Layouts
-   ========================================================================== */
-@media (min-width:720px){
-  .hero__grid{ grid-template-columns:1.15fr .85fr; }
-  .split{ grid-template-columns:1fr 1fr; }
-  .split--umgekehrt .split__bild{ order:2; }
-  .cards{ grid-template-columns:repeat(3, 1fr); }
-  .galerie{ grid-template-columns:repeat(3, 1fr); }
-  .fakten{ grid-template-columns:repeat(3, 1fr); }
-  .footer__grid{ grid-template-columns:1.3fr 1fr 1fr; }
-  .menu__spalten{ columns:2; column-gap:3rem; }
-}
+/* ---- Tab-Ansicht: nur der aktive Bereich ist sichtbar -------------------
+   Greift nur in der Komplett-Vorschau, wo alle Seiten in einem Dokument
+   liegen. Auf der echten Webseite ist jede Seite eine eigene Datei.        */
+[data-seite]{ display:none; }
+[data-seite].ist-aktiv{ display:block; }
 
 /* ==========================================================================
-   Unter 720px: Navigation einklappen, Anrufleiste einblenden
+   Ab 700px: mehrspaltig
    ========================================================================== */
-@media (max-width:719px){
-  :root{ --callbar-h:70px; }
-  .navtoggle{ display:inline-flex; }
-  .topbar .btn--call{ display:none; }
-  .nav{
-    position:absolute; top:var(--bar-h); left:0; right:0;
-    flex-direction:column; align-items:stretch; gap:0;
-    background:var(--panel); border-bottom:1px solid var(--line);
-    padding:.5rem;
-  }
-  .nav[hidden]{ display:none; }
-  .nav a{ padding:.9rem 1rem; min-height:48px; display:flex; align-items:center; }
-  .callbar{ display:flex; }
-  .hero{ min-height:auto; padding:2.5rem 0 3rem; }
-  .hero__cat{ width:min(60%, 14rem); }
-  .galerie{ grid-template-columns:repeat(2, 1fr); }
+@media (min-width:700px){
+  body{ font-size:17.5px; padding-bottom:0; }
+  .section{ padding:4rem 0; }
+  .hero{ padding:3rem 0 3.5rem; }
+  .hero__grid{ grid-template-columns:1.1fr .9fr; gap:2.5rem; }
+  .hero__cat{ max-width:min(72%,18rem); max-height:46svh; }
+  .hero__actions{ flex-direction:row; flex-wrap:wrap; }
+  .hero__sub{ font-size:.9rem; }
+  .split{ grid-template-columns:1fr 1fr; gap:2.5rem; }
+  .split--umgekehrt .split__bild{ order:2; }
+  .cards{ grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+  .galerie{ grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .fakten{ grid-template-columns:repeat(3,1fr); }
+  .footer__grid{ grid-template-columns:1.3fr 1fr 1fr; gap:2rem; }
+  .menu__spalten{ columns:2; column-gap:2.5rem; }
+  .callbar{ display:none; }                 /* am Rechner überflüssig */
+  .topbar .btn span{ display:inline; }
+  .topbar__in{ min-height:64px; }
+  .tabs a{ flex:0 0 auto; padding:.6rem 1.4rem; font-size:.98rem; }
+  .tabs{ justify-content:center; }
 }
 
 /* ---- Bewegung reduzieren ------------------------------------------------ */
 @media (prefers-reduced-motion:reduce){
-  html{ scroll-behavior:auto; }
   *,*::before,*::after{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
   .js .reveal{ opacity:1; transform:none; }
 }
@@ -364,6 +344,7 @@ a{ color:var(--gold-lt); }
 @media print{
   .topbar, .callbar, .hero__bg, .foto, .karte{ display:none !important; }
   body{ background:#fff; color:#000; padding:0; }
-  .dish__name, .h2, .h3, .dish__preis{ color:#000; }
+  [data-seite]{ display:block !important; }
+  .dish__name, .h1, .h2, .h3, .dish__preis{ color:#000; }
   .dish__nr{ color:#666; }
 }

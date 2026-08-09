@@ -9,7 +9,8 @@ Warum eine Datei statt fünf:
     verlinkt sind, fehlen. Deshalb wird hier **alles** als Data-URI eingebettet.
   * Verweise auf andere Dateien funktionieren in der Vorschau nicht (man landet auf
     der htmlpreview-Startseite mit dem Eingabefeld). Deshalb werden alle Unterseiten
-    in ein Dokument gehängt und die Navigation auf Sprungmarken umgestellt.
+    in ein Dokument gehängt; die Navigation schaltet dort zwischen Tabs um,
+    sodass immer nur ein Bereich sichtbar ist.
 
 Nebeneffekt: beide Dateien laufen ohne Internet — z. B. in der Safari-Leseliste
 auf dem iPad beim Kundenbesuch.
@@ -110,7 +111,8 @@ def baue_webseite():
     # Alle Seiteninhalte untereinander, jeder mit eigener Sprungmarke
     abschnitte = []
     for name, anker in SEITEN:
-        abschnitte.append(f'<div id="{anker}">\n{teil(roh[name], "main")}\n</div>')
+        abschnitte.append(
+            f'<div id="{anker}" data-seite="{anker}">\n{teil(roh[name], "main")}\n</div>')
     haupt = "\n".join(abschnitte)
 
     kopf = teil(start, "head")
