@@ -108,7 +108,9 @@ und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt i
 
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,
-`ghl-n8n-aufbau.md` + `n8n/`, `tech-stack.md`, `klienten-journey.md`
+`ghl-n8n-aufbau.md` + `n8n/`, `tech-stack.md`, `klienten-journey.md`,
+**`webseitenbau-standard.md`** — der verbindliche Ablauf für jede neue Webseite (Skill `10k-websites`)
+plus die Stellen, an denen wir vom Original abweichen (Netlify/Vercel, Deutsch, DSGVO, Skalierbarkeit).
 
 ### `grundlagen/` — gemeinsam, nischenneutral
 - `agentur-playbook.md` — **Master-Playbook (Grundlage, nicht ändern außer auf Ansage).**
@@ -116,7 +118,25 @@ und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt i
 - `wissen/` — Lern-System (`creatives.md`, `onboarding.md`, `tech.md`): Learnings festhalten,
   damit keine Fehler doppelt passieren.
 
-`.agents/skills` + `.claude/skills` — installierte Design-Skills (impeccable, taste-skill).
+`.agents/skills` + `.claude/skills` — installierte Skills: Design-Skills (impeccable, taste-skill) und
+**`10k-websites`** (unverändert übernommen, `SKILL.md` + `references/`).
+
+## Webseitenbau: der Skill `10k-websites` regiert
+
+**Jede neue Webseite, Landingpage oder Kundenseite wird nach `.agents/skills/10k-websites/SKILL.md`
+gebaut** (11 Phasen, Storyboard- und Video-Gate, Copy-Gate, Selbsttest, Qualitätsboden). Der Skill
+ist unverändert installiert und gilt vor jedem anderen Webseiten- oder Design-Skill; andere Skills
+sind Werkzeug für einen Einzelschritt, nie ein zweiter Ablaufplan.
+
+Die Kurzfassung und unsere Abweichungen stehen in **`anleitungen/webseitenbau-standard.md`**:
+Hosting über Netlify/Vercel statt Hostinger, Bild/Video-Generator optional (sonst Standbild-Hero aus
+echtem Kundenmaterial), alles auf Deutsch inklusive deutschem Floskel-Gate, DSGVO gehört zum
+Qualitätsboden, echte Kundenformulare laufen nie über `mailto`.
+
+**Der eine Konflikt, bewusst entschieden:** Kunden-Landingpages der Kfz-Nische bleiben **eine**
+Vorlage mit getauschtem Service-Modul (Prinzip 1). Dort gelten Gestaltungs- und Technikboden voll,
+aber kein eigenes Hero-Video pro Werkstatt. Volle Tiefe bekommen die eigene Agenturseite und
+Einzelkunden mit eigenem Auftritt.
 
 ## Prinzipien (aus dem Playbook — immer beachten)
 

@@ -64,10 +64,13 @@ Alles zu diesem Kunden: [`nischen/chinatown/`](nischen/chinatown/)
 | 📂 **[nischen/autowerkstaetten/](nischen/autowerkstaetten/)** | **Dein Tagesgeschäft:** Businessplan, Service-Baukasten, Verkaufsskript, Leads, Vertrag, Seiten | oft |
 | 📂 [nischen/kuechenstudios/](nischen/kuechenstudios/) | Die zurückgestellte Nische, komplett erhalten | selten |
 | 📂 **[nischen/chinatown/](nischen/chinatown/)** | Einzelkunde China Restaurant Chinatown: Flyer + Webseite | bei Kundenarbeit |
-| 📂 [anleitungen/](anleitungen/) | Wie-geht-was: Meta, Google, Hosting, n8n — **gilt für beide Nischen** | bei Bedarf |
+| 📂 [anleitungen/](anleitungen/) | Wie-geht-was: Meta, Google, Hosting, n8n, **Webseitenbau-Standard** — **gilt für beide Nischen** | bei Bedarf |
 | 📂 [grundlagen/](grundlagen/) | Playbook, Einsteiger-Überblick, Lern-System — **gilt für beide Nischen** | nachschlagen |
 
 Details zu jeder Datei: [`CLAUDE.md`](CLAUDE.md)
+
+> **Neue Webseiten** werden ab jetzt nach einem festen Ablauf gebaut (Kino-Hero, Gates, Selbsttest,
+> Qualitätsboden). Kurzfassung und unsere Abweichungen: [`anleitungen/webseitenbau-standard.md`](anleitungen/webseitenbau-standard.md)
 
 ---
 
