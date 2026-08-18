@@ -64,6 +64,7 @@ Alles zu diesem Kunden: [`nischen/chinatown/`](nischen/chinatown/)
 | 📂 **[nischen/autowerkstaetten/](nischen/autowerkstaetten/)** | **Dein Tagesgeschäft:** Businessplan, Service-Baukasten, Verkaufsskript, Leads, Vertrag, Seiten | oft |
 | 📂 [nischen/kuechenstudios/](nischen/kuechenstudios/) | Die zurückgestellte Nische, komplett erhalten | selten |
 | 📂 **[nischen/chinatown/](nischen/chinatown/)** | Einzelkunde China Restaurant Chinatown: Flyer + Webseite | bei Kundenarbeit |
+| 📂 [video/](video/) | **Video-Engine (Remotion):** fertige MP4-Ad-Creatives pro Kunde — ein Template, nur Fotos + Texte tauschen | für Werbevideos |
 | 📂 [anleitungen/](anleitungen/) | Wie-geht-was: Meta, Google, Hosting, n8n — **gilt für beide Nischen** | bei Bedarf |
 | 📂 [grundlagen/](grundlagen/) | Playbook, Einsteiger-Überblick, Lern-System — **gilt für beide Nischen** | nachschlagen |
 

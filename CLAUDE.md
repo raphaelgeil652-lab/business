@@ -106,6 +106,12 @@ sondern ein Gastro-Einzelauftrag. **Nicht mit dem Kfz-Angebot oder dessen Preise
 **Eine Quelle für die Speisekarte:** `webseite/tools/speisekarte-uebernehmen.py` überträgt Gerichte
 und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt in der Webseite.
 
+### `video/` — Video-Engine (Remotion), nischenneutral
+Erzeugt fertige **MP4-Ad-Creatives** (9:16 Reels/Stories) programmatisch aus React. Gleiches Prinzip
+wie das LP-Skelett: **ein Template, pro Kunde nur Preset + Fotos tauschen** (`src/kfz/presets.ts`).
+Vier feste Szenen: Hook → Vorher/Nachher-Slider → Gratis-Offer (Sterne max. 4,9) → CTA mit Telefon.
+Render mit `./render.sh <id>` → `out/*.mp4`. Details: `video/README.md`.
+
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,
 `ghl-n8n-aufbau.md` + `n8n/`, `tech-stack.md`, `klienten-journey.md`
