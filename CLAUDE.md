@@ -12,6 +12,23 @@ schlank und kopierbar.
 **Autorität:** `grundlagen/agentur-playbook.md` ist die Grundlage. Alles andere setzt es konkret um.
 Direkte Anweisungen des Nutzers im Chat haben Vorrang.
 
+## Zwei getrennte Geschäfte in diesem Repo
+
+1. **Agentur Clickculture** (alles Weitere in dieser Datei: Kfz, Küchenstudios, Chinatown,
+   `anleitungen/`, `grundlagen/`). Bleibt unverändert.
+2. **Webseitenbau** als eigenes Geschäft: Webseiten für beliebige Unternehmen, egal ob Restaurant,
+   Café, Werkstatt oder Küchenstudio. Es sind einfach Webseiten, kein Agenturkunde.
+
+**Für den Webseitenbau gilt ausschließlich `.claude/skills/10k-websites/SKILL.md` plus seine
+`references/`.** Unverändert, so wie der Nutzer den Skill geliefert hat: seine Phasen, seine Gates,
+sein Deploy-Weg, seine Standards. Nicht vermischen, in keine Richtung. Also keine Agentur-Preise,
+keine Kfz-Leitplanken, keine LP-Vorlage und kein Service-Baukasten in einer Webseite, und umgekehrt
+ändert der Skill nichts an der Agentur-Doku. Andere Webseiten- oder Design-Skills laufen nicht
+nebenher; `10k-websites` regiert allein.
+
+Der Projektordner einer Seite wird laut Skill mit dem Nutzer abgesprochen und liegt nicht unter
+`nischen/`.
+
 ## Zwei Nischen, zwei Ordner
 
 | Nische | Status | Ordner |
@@ -108,9 +125,7 @@ und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt i
 
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,
-`ghl-n8n-aufbau.md` + `n8n/`, `tech-stack.md`, `klienten-journey.md`,
-**`webseitenbau-standard.md`** — der verbindliche Ablauf für jede neue Webseite (Skill `10k-websites`)
-plus die Stellen, an denen wir vom Original abweichen (Netlify/Vercel, Deutsch, DSGVO, Skalierbarkeit).
+`ghl-n8n-aufbau.md` + `n8n/`, `tech-stack.md`, `klienten-journey.md`
 
 ### `grundlagen/` — gemeinsam, nischenneutral
 - `agentur-playbook.md` — **Master-Playbook (Grundlage, nicht ändern außer auf Ansage).**
@@ -118,25 +133,8 @@ plus die Stellen, an denen wir vom Original abweichen (Netlify/Vercel, Deutsch, 
 - `wissen/` — Lern-System (`creatives.md`, `onboarding.md`, `tech.md`): Learnings festhalten,
   damit keine Fehler doppelt passieren.
 
-`.agents/skills` + `.claude/skills` — installierte Skills: Design-Skills (impeccable, taste-skill) und
-**`10k-websites`** (unverändert übernommen, `SKILL.md` + `references/`).
-
-## Webseitenbau: der Skill `10k-websites` regiert
-
-**Jede neue Webseite, Landingpage oder Kundenseite wird nach `.agents/skills/10k-websites/SKILL.md`
-gebaut** (11 Phasen, Storyboard- und Video-Gate, Copy-Gate, Selbsttest, Qualitätsboden). Der Skill
-ist unverändert installiert und gilt vor jedem anderen Webseiten- oder Design-Skill; andere Skills
-sind Werkzeug für einen Einzelschritt, nie ein zweiter Ablaufplan.
-
-Die Kurzfassung und unsere Abweichungen stehen in **`anleitungen/webseitenbau-standard.md`**:
-Hosting über Netlify/Vercel statt Hostinger, Bild/Video-Generator optional (sonst Standbild-Hero aus
-echtem Kundenmaterial), alles auf Deutsch inklusive deutschem Floskel-Gate, DSGVO gehört zum
-Qualitätsboden, echte Kundenformulare laufen nie über `mailto`.
-
-**Der eine Konflikt, bewusst entschieden:** Kunden-Landingpages der Kfz-Nische bleiben **eine**
-Vorlage mit getauschtem Service-Modul (Prinzip 1). Dort gelten Gestaltungs- und Technikboden voll,
-aber kein eigenes Hero-Video pro Werkstatt. Volle Tiefe bekommen die eigene Agenturseite und
-Einzelkunden mit eigenem Auftritt.
+`.agents/skills` + `.claude/skills` — installierte Skills: Design-Skills (impeccable, taste-skill)
+und **`10k-websites`** (unverändert, maßgeblich für den Webseitenbau, siehe oben).
 
 ## Prinzipien (aus dem Playbook — immer beachten)
 
