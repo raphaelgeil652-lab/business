@@ -3,20 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tagwerk — Kaffee mit Datum</title>
+<title>Tagwerk, Kaffee mit Datum</title>
 <meta name="description" content="Ein Rösttag pro Woche. Ein Kaffee. Das Röstdatum steht auf jeder Packung. Dienstag geröstet, Donnerstag in deiner Küche.">
 <meta name="theme-color" content="#17110d">
 <!-- DEPLOY STEP: og:url und og:image beim Deploy auf die echte Live-Adresse setzen -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Tagwerk — Kaffee mit Datum">
+<meta property="og:title" content="Tagwerk, Kaffee mit Datum">
 <meta property="og:description" content="Ein Rösttag pro Woche. Ein Kaffee. Das Röstdatum steht auf jeder Packung.">
 <meta property="og:url" content="https://example.com/">
 <meta property="og:image" content="https://example.com/assets/hero-ending.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317110d'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23e08a3c' stroke-width='2' stroke-dasharray='4 3'/%3E%3Cpath d='M16 10c2.4 2.9 3.6 5 3.6 6.6a3.6 3.6 0 0 1-7.2 0c0-1.6 1.2-3.7 3.6-6.6z' fill='%23e08a3c'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Karla:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Fraunces.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Karla.woff2" crossorigin>
 <style>
+/* Schriften liegen im Projekt, keine fremden Server, funktioniert auch ohne Netz */
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:600 700;font-display:swap;
+  src:url('assets/fonts/Fraunces.woff2') format('woff2')}
+@font-face{font-family:'Karla';font-style:normal;font-weight:400 500;font-display:swap;
+  src:url('assets/fonts/Karla.woff2') format('woff2')}
+@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/SpaceMono-400.woff2') format('woff2')}
+@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;
+  src:url('assets/fonts/SpaceMono-700.woff2') format('woff2')}
 /* ---------- Tokens ---------- */
 :root{
   --canvas:#17110d;
@@ -99,6 +107,11 @@ main{position:relative;z-index:2}
 .nav-links a{text-decoration:none;color:var(--text-secondary);transition:color .3s var(--ease)}
 .nav-links a:hover{color:var(--text-primary)}
 @media (max-width:860px){.nav-links a:not(.btn){display:none}}
+@media (max-width:560px){
+  .nav{padding:14px 0}
+  .nav-links .btn{font-size:11px;letter-spacing:.02em;padding:11px 15px;white-space:nowrap}
+  .brand b{font-size:19px}.brand .mark{width:32px;height:32px}
+}
 
 /* ---------- Buttons ---------- */
 .btn{
@@ -158,12 +171,23 @@ main{position:relative;z-index:2}
   background:radial-gradient(ellipse 74% 62% at 28% 50%,rgba(8,5,3,.66) 0%,rgba(8,5,3,.44) 46%,rgba(8,5,3,0) 76%)
 }
 .band.b2::before{background:radial-gradient(ellipse 76% 64% at 28% 50%,rgba(8,5,3,.72) 0%,rgba(8,5,3,.48) 46%,rgba(8,5,3,0) 76%)}
+/* Baender 3 und 4 laufen ueber hellen Dampf und die weisse Tasse.
+   Gemessen: dort reicht der runde Scrim nicht. Dieser Schleier haengt links,
+   laeuft bis 70 Prozent aus und laesst die rechte Bildhaelfte hell. */
+.band.b3::after,.band.b4::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  opacity:calc(.3 + .7*var(--k,1));
+  background:linear-gradient(to right,rgba(8,5,3,.9) 0%,rgba(8,5,3,.8) 34%,rgba(8,5,3,.46) 56%,rgba(8,5,3,0) 74%)
+}
 .band.b4{justify-content:flex-end;padding-bottom:14vh}
 .band.b4::before{background:radial-gradient(ellipse 96% 58% at 34% 74%,rgba(8,5,3,.7) 0%,rgba(8,5,3,.46) 48%,rgba(8,5,3,0) 78%)}
 .band h2,.band .lead{max-width:none}
 .band h2{font-size:clamp(34px,5.6vw,76px);line-height:1.02;font-weight:600}
-.band .headline{display:block;width:16ch;max-width:100%}
-.band .lead{margin-top:18px;font-size:clamp(16px,1.35vw,21px);color:var(--text-primary);opacity:.92;width:34ch;max-width:100%}
+/* Die Textspalte bleibt in der ruhigen Bildhaelfte, die Aktion rechts bleibt frei.
+   Breite steht auf dem Textelement selbst, damit ch in der richtigen Schrift misst. */
+.band .headline{display:block;width:11ch;max-width:100%}
+.band.b4 .headline{width:13ch}
+.band .lead{margin-top:18px;font-size:clamp(16px,1.35vw,21px);color:var(--text-primary);opacity:.92;width:26ch;max-width:100%}
 .band .row{display:flex;gap:14px;align-items:center;margin-top:28px;pointer-events:auto;flex-wrap:wrap}
 .kicker{
   font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
@@ -175,7 +199,8 @@ main{position:relative;z-index:2}
   font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-secondary)
 }
 .hud{position:absolute;right:max(6vw,calc(50vw - 590px));top:50%;transform:translateY(-50%);z-index:6;
-  display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+  opacity:var(--hud,1);transition:opacity .6s var(--ease)}
 @media (max-height:560px){.cue,.hud{display:none}}
 
 /* Buchstaben- und Wort-Spans */
@@ -239,6 +264,8 @@ main{position:relative;z-index:2}
   .hero{height:100vh}
   .bands,.ring,.cue,.hud{display:none}
   .static-hero{display:flex}
+  /* Nur hier wird das Standbild geladen. Wer den Film bekommt, laedt es nie. */
+  .stage .poster{background-image:url('assets/hero-ending.jpg');background-position:64% 46%}
 }
 
 /* ---------- Sektionen ---------- */
@@ -271,6 +298,9 @@ section{position:relative}
 @media (max-width:900px){.steps{grid-template-columns:1fr}}
 .step{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative}
 .step .shot{aspect-ratio:4/3;background:var(--panel-2) center/cover no-repeat;position:relative}
+#shot1{background-image:url('assets/schritt-1.jpg')}
+#shot2{background-image:url('assets/schritt-2.jpg')}
+#shot3{background-image:url('assets/schritt-3.jpg')}
 .step .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,17,13,0) 55%,rgba(23,17,13,.85))}
 .step .body{padding:24px 24px 30px}
 .step h3{font-size:23px;margin-bottom:10px}
@@ -286,12 +316,15 @@ section{position:relative}
   opacity:.5;filter:blur(1px);animation:rise 9s var(--ease-soft) infinite}
 @keyframes rise{0%{transform:translateY(20px) scale(.6);opacity:0}
   25%{opacity:.55}100%{transform:translateY(-150px) scale(1.1);opacity:0}}
-.dial .read{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.dial{display:grid;grid-template-columns:minmax(150px,.3fr) 1fr;gap:clamp(20px,3.4vw,54px);align-items:center}
+@media (max-width:760px){.dial{grid-template-columns:1fr;gap:8px}}
+.dial .read{display:flex;flex-direction:column;gap:6px}
+@media (max-width:760px){.dial .read{flex-direction:row;align-items:baseline;gap:14px}}
 .dial .day{font-family:var(--display);font-size:clamp(46px,8vw,88px);font-weight:700;line-height:1;color:var(--text-primary)}
 .dial .unit{font-family:var(--mono);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
-.dial .note{margin-top:14px;font-size:clamp(18px,2vw,26px);font-family:var(--display);min-height:2.2em}
+.dial .note{font-size:clamp(19px,2.1vw,28px);font-family:var(--display);min-height:1.4em;line-height:1.25}
 .dial input[type=range]{
-  -webkit-appearance:none;appearance:none;width:100%;margin-top:34px;height:34px;background:transparent;cursor:grab
+  -webkit-appearance:none;appearance:none;width:100%;margin-top:26px;height:34px;background:transparent;cursor:grab
 }
 .dial input[type=range]:active{cursor:grabbing}
 .dial input[type=range]::-webkit-slider-runnable-track{height:2px;background:var(--line)}
@@ -329,9 +362,9 @@ section{position:relative}
 #preis ul{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
 #preis li{display:flex;gap:12px;align-items:flex-start;color:var(--text-secondary)}
 #preis li svg{flex:none;margin-top:5px}
-.stamp-card{width:150px;height:150px;justify-self:center;opacity:.9}
+.stamp-card{width:190px;height:190px;justify-self:center;opacity:.92}
 .stamp-card .ringpath{stroke:var(--accent);stroke-width:2;fill:none;stroke-dasharray:7 6}
-.stamp-card text{font-family:var(--mono);font-size:13px;fill:var(--text-secondary);letter-spacing:.14em}
+.stamp-card text{font-family:var(--mono);font-size:11px;fill:var(--text-secondary);letter-spacing:.12em}
 
 /* F: Fragen */
 .faq{margin-top:48px;border-top:1px solid var(--line)}
@@ -351,7 +384,8 @@ details .answer{padding:0 0 26px;color:var(--text-secondary);width:64ch;max-widt
 #roesttag{padding-bottom:clamp(80px,12vh,140px)}
 .cta{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);
   background:var(--panel);padding:clamp(30px,4.6vw,70px)}
-.cta .shot{position:absolute;inset:0;background-size:cover;background-position:50% 60%;opacity:.34}
+.cta .shot{position:absolute;inset:0;background-size:cover;background-position:50% 60%;opacity:.34;
+  background-image:url('assets/hero-ending.jpg')}
 .cta .veil{position:absolute;inset:0;background:linear-gradient(105deg,rgba(23,17,13,.96) 34%,rgba(23,17,13,.5))}
 .cta .inner{position:relative;z-index:2;max-width:none}
 .cta h2{width:18ch;max-width:100%}
@@ -561,12 +595,14 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
           <span class="day" id="dayOut">2</span>
           <span class="unit">Tage nach dem Rösten</span>
         </div>
-        <p class="note" id="noteOut">Blüte, brauner Zucker, klarer Abgang.</p>
-        <label class="sr" for="age">Tage nach dem Rösten</label>
-        <input type="range" id="age" min="0" max="90" step="1" value="2"
-               aria-describedby="noteOut">
-        <div class="scale"><span>Tag 0</span><span>Tag 45</span><span>Tag 90</span></div>
-        <p class="close">Wir verschicken an Tag 0.</p>
+        <div class="pull">
+          <p class="note" id="noteOut">Blüte, brauner Zucker, klarer Abgang.</p>
+          <label class="sr" for="age">Tage nach dem Rösten</label>
+          <input type="range" id="age" min="0" max="90" step="1" value="2"
+                 aria-describedby="noteOut">
+          <div class="scale"><span>Tag 0</span><span>Tag 45</span><span>Tag 90</span></div>
+          <p class="close">Wir verschicken an Tag 0.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -615,7 +651,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
         <svg class="stamp-card glow" viewBox="0 0 160 160" aria-hidden="true">
           <circle class="ringpath" cx="80" cy="80" r="68"/>
           <text x="80" y="74" text-anchor="middle">FRISCH SEIT</text>
-          <text x="80" y="102" text-anchor="middle" style="font-size:26px;fill:var(--text-primary)">2 TAGEN</text>
+          <text x="80" y="98" text-anchor="middle" style="font-size:19px;letter-spacing:.06em;fill:var(--text-primary)">2 TAGEN</text>
         </svg>
       </div>
     </div>
@@ -696,8 +732,11 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   "use strict";
 
   /* ================= Konstanten ================= */
-  var VIDEO_URL   = 'assets/hero-scrub.mp4';
-  var VIDEO_BYTES = 3900000;               /* echte Dateigröße, Reserve wenn Content-Length fehlt */
+  /* H.264 kann fast jeder Browser. Ein paar Linux-Builds von Chromium koennen es nicht,
+     die bekommen dieselbe Aufnahme als WebM. Geladen wird immer nur eine der beiden Dateien. */
+  var canH264 = !!document.createElement('video').canPlayType('video/mp4; codecs="avc1.42E01E"');
+  var VIDEO_URL   = canH264 ? 'assets/hero-scrub.mp4' : 'assets/hero-scrub.webm';
+  var VIDEO_BYTES = canH264 ? 3002804 : 1278756;   /* echte Dateigroessen, Reserve ohne Content-Length */
   var POSTER_URL  = 'assets/hero-poster.jpg';
 
   var video   = document.getElementById('hero-video');
@@ -779,10 +818,12 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       if (Math.abs(op-band.op) > 0.004){ band.op = op; band.el.style.opacity = op.toFixed(3); }
       if (Math.abs(k-band.k) > 0.008){ band.k = k; band.el.style.setProperty('--k', k.toFixed(3)); }
     }
+    var hud = p > 0.72 ? 0 : 1;                    /* im Schlussbild steht die Tasse frei */
+    if (hud !== lastHud){ lastHud = hud; hudEl.style.setProperty('--hud', hud); }
   }
 
   /* HUD-Text, gedrosselt und nur bei echter Änderung */
-  var lastLabel='', lastLabelAt=0;
+  var lastLabel='', lastLabelAt=0, lastHud=1, hudEl=document.querySelector('.hud');
   function updateHud(p, now){
     if (now-lastLabelAt < 100) return;
     var txt = p < 0.44 ? 'Charge 34' : (p < 0.74 ? 'Eine Sorte' : 'Geröstet 18.08.');
@@ -881,7 +922,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       })().then(function(){
         clearTimeout(watchdog);
         ring.style.setProperty('--ld', 0);
-        video.src = URL.createObjectURL(new Blob(chunks,{type:'video/mp4'}));
+        video.src = URL.createObjectURL(new Blob(chunks,{type: canH264 ? 'video/mp4' : 'video/webm'}));
         video.load();
         video.addEventListener('canplay', function(){
           requestSeek(heroProgress()*video.duration);
@@ -994,11 +1035,10 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     {upTo:60, text:'Flach. Man schmeckt nur noch Röstung.'},
     {upTo:90, text:'Bitter. Das ist der Kaffee aus dem Regal.'}
   ];
-  var lastDay=-1, lastNote='', lastAgeAt=0;
-  function renderAge(now){
+  var lastDay=-1, lastNote='';
+  function renderAge(){
     var v = Number(age.value);
-    if (now !== undefined && now-lastAgeAt < 60) return;
-    lastAgeAt = now || 0;
+    if (v === lastDay) return;              /* nur bei echter Aenderung ins DOM schreiben */
     if (v !== lastDay){ lastDay = v; dayOut.textContent = v; }
     var note = NOTES[0].text;
     for (var i=0;i<NOTES.length;i++){ if (v <= NOTES[i].upTo){ note = NOTES[i].text; break; } }
@@ -1006,7 +1046,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     dial.style.setProperty('--aroma', Math.max(0.05, 1 - v/70).toFixed(2));
   }
   if (age){
-    age.addEventListener('input', function(){ renderAge(performance.now()); });
+    age.addEventListener('input', function(){ renderAge(); });
     renderAge();
   }
 
