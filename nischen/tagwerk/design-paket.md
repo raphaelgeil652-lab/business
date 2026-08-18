@@ -126,6 +126,20 @@ und keinen Kaffee. Bilder und Film sind KI-generiert." · Impressum-Platzhalter 
   damit Scrollen sich wie Bewegung durch einen Raum anfühlt.
 - Alles respektiert reduzierte Bewegung: Endzustände sichtbar, Antriebe aus.
 
+## 8a. Nachtrag nach der ersten Vorschau: der Hero läuft als Bildfolge
+
+Der Nutzer hat die Animation als abgehackt gemeldet. Nachgemessen: bei einem Video kostet jedes
+Springen zu einer neuen Scrollposition bis zu einer Zehntelsekunde, es kamen nur 4 bis 10 Bilder
+pro Sekunde an. Deshalb bewusst abgewichen vom Video-Weg des Skills:
+
+- 141 Einzelbilder (1440 px breit, zusammen 4,5 MB) statt einer Videodatei.
+- Gezeichnet wird auf eine Zeichenfläche, gemessene Kosten 0,01 ms pro Bild.
+- Zwischen zwei Einzelbildern wird überblendet, sonst bleiben Stufen sichtbar.
+- Ergebnis gemessen: 143 verschiedene Bildzustände in 145 Bildschirm-Takten.
+- Hero-Höhe von 700vh auf 560vh, damit weniger Scrollweg auf ein Einzelbild fällt.
+
+Alles andere aus diesem Paket bleibt unverändert gültig.
+
 ## 8. Die Technik-Liste (nichts davon halb erinnern)
 
 Blob-Fetch mit Ladering, dt-normalisierter Lerp mit ruhender rAF-Schleife, gegatterte Seeks mit

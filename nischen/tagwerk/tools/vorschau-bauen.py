@@ -31,9 +31,14 @@ def main():
     for rel in sorted(set(re.findall(r"url\('(assets/[^']+)'\)", html))):
         html = html.replace("url('%s')" % rel, "url('%s')" % datei_als_uri(rel))
 
-    # alles, was im Skript als Pfad steht: Film in beiden Fassungen und das Standbild
-    for rel in ('assets/hero-scrub.mp4', 'assets/hero-scrub.webm', 'assets/hero-poster.jpg'):
-        html = html.replace("'%s'" % rel, "'%s'" % datei_als_uri(rel))
+    # die Bildfolge des Heros: alle Einzelbilder wandern in eine Liste im Skript
+    anzahl = len([n for n in os.listdir(os.path.join(SEITE, 'assets', 'frames')) if n.endswith('.jpg')])
+    liste = ','.join("'%s'" % datei_als_uri('assets/frames/f%04d.jpg' % (i + 1)) for i in range(anzahl))
+    alt = ("  function frameURL(i){ var n = String(i+1); while (n.length < 4) n = '0' + n; "
+           "return 'assets/frames/f' + n + '.jpg'; }")
+    neu = "  var __F=[%s];\n  function frameURL(i){ return __F[i]; }" % liste
+    assert alt in html, 'frameURL nicht gefunden, Vorschau waere ohne Bilder'
+    html = html.replace(alt, neu, 1)
 
     # Schriften-Vorladen zeigt sonst auf Dateien, die es in der einen Datei nicht gibt
     html = re.sub(r'<link rel="preload"[^>]*>\n?', '', html)

@@ -2,4 +2,6 @@
 # und nie in den Ordner, der online geht (../seite/).
 *.png
 *.mp4
+*.webm
+seq/
 test/

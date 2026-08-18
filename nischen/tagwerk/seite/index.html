@@ -128,14 +128,14 @@ main{position:relative;z-index:2}
 @media (pointer:coarse){.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;height:700vh;z-index:2}
+.hero{position:relative;height:560vh;z-index:2}
 .stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#0d0906}
 .stage .poster{position:absolute;inset:0;background-size:cover;background-position:50% 50%}
-.stage video{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+.stage canvas{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
   opacity:0;transition:opacity .8s var(--ease);will-change:transform;transform:translateZ(0)
 }
-.stage.video-ready video{opacity:1}
+.stage.video-ready canvas{opacity:1}
 .stage.video-failed .poster{filter:saturate(1.05)}
 .scrim{
   position:absolute;inset:0;pointer-events:none;
@@ -473,7 +473,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   <section class="hero" id="hero" aria-label="Der Espresso läuft">
     <div class="stage" id="stage">
       <div class="poster" id="poster"></div>
-      <video id="hero-video" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+      <canvas id="hero-canvas" width="1440" height="804" aria-hidden="true"></canvas>
       <div class="scrim" aria-hidden="true"></div>
       <div class="vignette" aria-hidden="true"></div>
 
@@ -732,14 +732,18 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   "use strict";
 
   /* ================= Konstanten ================= */
-  /* H.264 kann fast jeder Browser. Ein paar Linux-Builds von Chromium koennen es nicht,
-     die bekommen dieselbe Aufnahme als WebM. Geladen wird immer nur eine der beiden Dateien. */
-  var canH264 = !!document.createElement('video').canPlayType('video/mp4; codecs="avc1.42E01E"');
-  var VIDEO_URL   = canH264 ? 'assets/hero-scrub.mp4' : 'assets/hero-scrub.webm';
-  var VIDEO_BYTES = canH264 ? 3002804 : 1278756;   /* echte Dateigroessen, Reserve ohne Content-Length */
-  var POSTER_URL  = 'assets/hero-poster.jpg';
+  /* Der Hero laeuft als Bildfolge auf einer Zeichenflaeche, nicht als Video.
+     Grund, gemessen: bei einem Video muss der Browser fuer jede Scrollposition neu
+     hinspringen und dekodieren. Das kostete hier bis zu einer Zehntelsekunde pro Sprung,
+     es kamen nur vier bis zehn Bilder pro Sekunde an, und genau das sieht abgehackt aus.
+     Eine Bildfolge wird einmal geladen und danach nur noch gezeichnet, das kostet fast nichts. */
+  var FRAME_COUNT = 141;
+  var FRAME_W = 1440, FRAME_H = 804;
+  function frameURL(i){ var n = String(i+1); while (n.length < 4) n = '0' + n; return 'assets/frames/f' + n + '.jpg'; }
+  var POSTER_URL = frameURL(0);
 
-  var video   = document.getElementById('hero-video');
+  var canvas  = document.getElementById('hero-canvas');
+  var ctx     = canvas.getContext('2d', { alpha:false });
   var stage   = document.getElementById('stage');
   var heroEl  = document.getElementById('hero');
   var poster  = document.getElementById('poster');
@@ -831,18 +835,43 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     lastLabel = txt; lastLabelAt = now; hudline.textContent = txt;
   }
 
-  /* ================= Seek-Gatter ================= */
-  var seekBusy=false, pendingTime=null;
-  function requestSeek(t){
-    if (!video.duration) return;
-    if (seekBusy){ pendingTime=t; return; }
-    seekBusy=true; video.currentTime=t;
+  /* ================= Das Bild zeichnen ================= */
+  var frames = new Array(FRAME_COUNT);   /* {img, ok} pro Bild */
+  var lastShownF = -1, wantIndex = 0;
+
+  function nearestLoaded(i){
+    if (frames[i] && frames[i].ok) return i;
+    for (var d=1; d<FRAME_COUNT; d++){
+      var a=i-d, b=i+d;
+      if (a>=0 && frames[a] && frames[a].ok) return a;
+      if (b<FRAME_COUNT && frames[b] && frames[b].ok) return b;
+    }
+    return -1;
   }
-  video.addEventListener('seeked', function(){
-    seekBusy=false;
-    if (pendingTime!==null){ var t=pendingTime; pendingTime=null; requestSeek(t); }
-  });
-  video.addEventListener('error', function(){ seekBusy=false; pendingTime=null; failVideo(); });
+
+  /* Zeichnet zum Fortschritt 0..1 das Bild an dieser Stelle.
+     Zwischen zwei Einzelbildern liegen rund 30 Pixel Scrollweg. Wuerde die Seite
+     hart von Bild zu Bild springen, sieht man Stufen. Deshalb wird das naechste Bild
+     mit genau dem Anteil darueber geblendet, den der Scroll schon zurueckgelegt hat.
+     Aus Stufen wird so ein durchgehender Fluss, und es kostet zwei Zeichnungen
+     statt einer, gemessen 0,01 Millisekunden pro Stueck. */
+  function drawProgress(p){
+    var f = clamp(p,0,1) * (FRAME_COUNT-1);
+    if (Math.abs(f - lastShownF) < 0.02) return;      /* nur bei echter Aenderung zeichnen */
+    var i0 = Math.floor(f), mix = f - i0, i1 = Math.min(FRAME_COUNT-1, i0+1);
+    wantIndex = Math.round(f);
+    var a = nearestLoaded(i0);
+    if (a < 0) return;
+    lastShownF = f;
+    ctx.globalAlpha = 1;
+    ctx.drawImage(frames[a].img, 0, 0, FRAME_W, FRAME_H);
+    if (mix > 0.02 && frames[i1] && frames[i1].ok && i1 !== a){
+      ctx.globalAlpha = mix;
+      ctx.drawImage(frames[i1].img, 0, 0, FRAME_W, FRAME_H);
+      ctx.globalAlpha = 1;
+    }
+    canvas.dataset.frame = f.toFixed(2);   /* nur bei Aenderung, macht das Messen von aussen moeglich */
+  }
 
   /* ================= Antrieb ================= */
   var target=0, shown=0, rafId=null, lastTick=0, heroOnScreen=true, loadK=0;
@@ -859,7 +888,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     shown += (target-shown)*(1-Math.pow(1-k, dt/16.667));
     if (Math.abs(target-shown) < 0.0005){ shown=target; rafId=null; lastTick=0; }
     else rafId=requestAnimationFrame(tick);
-    if (video.duration) requestSeek(shown*video.duration);
+    drawProgress(shown);
     updateCaptions(shown);
     updateHud(shown, now);
   }
@@ -885,53 +914,53 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     })(performance.now());
   }
 
-  /* ================= Video laden ================= */
+  /* ================= Bildfolge laden ================= */
   var started=false, heroInit=false;
-  function startBlobFetch(){
-    if (started) return; started=true;
-    loadHeroBlob().catch(failVideo);
-  }
   function initHeroOnce(){
     if (heroInit) return; heroInit=true;
     poster.style.backgroundImage = "url('"+POSTER_URL+"')";
-    var img = new Image();
-    img.onload = startBlobFetch; img.onerror = startBlobFetch; img.src = POSTER_URL;
-    setTimeout(startBlobFetch, 4000);
+    if (!started){ started = true; loadSequence(); }
     runLoadRamp();
   }
-  function loadHeroBlob(){
-    var ctrl = new AbortController();
-    var watchdog = setTimeout(function(){ ctrl.abort(); }, 20000);
-    return fetch(VIDEO_URL,{signal:ctrl.signal}).then(function(res){
-      if (!res.ok || !res.body) throw new Error('bad response');
-      var total = Number(res.headers.get('Content-Length')) || VIDEO_BYTES;
-      var reader = res.body.getReader(), chunks=[], got=0, lastRing=0;
-      return (function pump(){
-        return reader.read().then(function(r){
-          if (r.done) return;
-          clearTimeout(watchdog);
-          watchdog = setTimeout(function(){ ctrl.abort(); }, 20000);
-          chunks.push(r.value); got += r.value.length;
-          var frac = Math.min(1, got/total), now = performance.now();
-          if (now-lastRing > 100 || frac === 1){
-            lastRing = now;
-            ring.style.setProperty('--ld', Math.round(126*(1-frac)));
-          }
-          return pump();
-        });
-      })().then(function(){
-        clearTimeout(watchdog);
-        ring.style.setProperty('--ld', 0);
-        video.src = URL.createObjectURL(new Blob(chunks,{type: canH264 ? 'video/mp4' : 'video/webm'}));
-        video.load();
-        video.addEventListener('canplay', function(){
-          requestSeek(heroProgress()*video.duration);
-          stage.classList.add('video-ready');
-        },{once:true});
-      });
-    });
+  function loadSequence(){
+    var next=0, active=0, done=0, failed=0, watchdog;
+    /* Bricht ab, wenn zwanzig Sekunden lang nichts mehr ankommt. Ein haengender
+       Ladering waere schlimmer als gar keiner. */
+    function arm(){
+      clearTimeout(watchdog);
+      watchdog = setTimeout(function(){ if (done < FRAME_COUNT) failSequence(); }, 20000);
+    }
+    function pump(){
+      while (active < 8 && next < FRAME_COUNT){
+        (function(i){
+          active++;
+          var img = new Image();
+          frames[i] = { img:img, ok:false };
+          img.decoding = 'async';
+          img.onload = function(){
+            frames[i].ok = true; active--; done++;
+            if (i === 0){
+              canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+              FRAME_W = img.naturalWidth; FRAME_H = img.naturalHeight;
+              stage.classList.add('video-ready');
+            }
+            if (i === 0 || i === wantIndex || lastShownF < 0){ lastShownF = -1; drawProgress(shown); }
+            ring.style.setProperty('--ld', Math.round(126*(1 - done/FRAME_COUNT)));
+            if (done === FRAME_COUNT) ring.style.setProperty('--ld', 0);
+            arm(); pump();
+          };
+          img.onerror = function(){
+            active--; done++; failed++;
+            if (failed > FRAME_COUNT*0.3) failSequence();
+            arm(); pump();
+          };
+          img.src = frameURL(i);
+        })(next++);
+      }
+    }
+    arm(); pump();
   }
-  function failVideo(){
+  function failSequence(){
     if (stage.classList.contains('video-failed')) return;
     stage.classList.add('video-failed');
     if (ring && ring.parentNode){
