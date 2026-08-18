@@ -9,6 +9,7 @@ Diese Startseite ist deine Übersicht.
 |---|---|---|
 | 🚗 **Kfz-Betriebe** (Werkstätten, Aufbereiter, Folierer) | **aktiver Fokus** | [`nischen/autowerkstaetten/`](nischen/autowerkstaetten/) |
 | 🍳 Küchenstudios | zurückgestellt (vollständig erhalten) | [`nischen/kuechenstudios/`](nischen/kuechenstudios/) |
+| ☕ **Tagwerk** (Demo-Webseite, erfundene Kaffeemarke) | Vorzeige-Stück für Webseitenbau | [`nischen/tagwerk/`](nischen/tagwerk/) |
 
 ---
 
@@ -46,6 +47,15 @@ Alles zu diesem Kunden: [`nischen/chinatown/`](nischen/chinatown/)
 > Chinatown ist **keine Nische**, sondern ein Einzelauftrag aus der Gastronomie — nicht mit dem
 > Kfz-Angebot oder dessen Preisen vermischen.
 
+### ☕ Tagwerk — Demo-Webseite (erfundene Kaffeemarke)
+
+Das Vorzeige-Stück für den Webseitenbau: beim Scrollen läuft ein Espresso in die Tasse, die Texte
+kommen daneben rein. Alles erfunden, kein echter Kunde. Details: [`nischen/tagwerk/`](nischen/tagwerk/)
+
+| Was | Öffnen |
+|---|---|
+| **Die komplette Seite** ⭐ Langsam nach unten scrollen, der Film ist ans Scrollen gekoppelt. | **[▶ Seite öffnen](https://rawcdn.githack.com/raphaelgeil652-lab/business/main/nischen/tagwerk/vorschau/tagwerk-komplett.html)** |
+
 ### 🍳 Küchenstudios — zurückgestellt
 
 | Seite | Öffnen |
@@ -64,6 +74,7 @@ Alles zu diesem Kunden: [`nischen/chinatown/`](nischen/chinatown/)
 | 📂 **[nischen/autowerkstaetten/](nischen/autowerkstaetten/)** | **Dein Tagesgeschäft:** Businessplan, Service-Baukasten, Verkaufsskript, Leads, Vertrag, Seiten | oft |
 | 📂 [nischen/kuechenstudios/](nischen/kuechenstudios/) | Die zurückgestellte Nische, komplett erhalten | selten |
 | 📂 **[nischen/chinatown/](nischen/chinatown/)** | Einzelkunde China Restaurant Chinatown: Flyer + Webseite | bei Kundenarbeit |
+| 📂 **[nischen/tagwerk/](nischen/tagwerk/)** | Demo-Webseite Tagwerk: das Vorzeige-Stück für Webseitenbau | zum Herzeigen |
 | 📂 [anleitungen/](anleitungen/) | Wie-geht-was: Meta, Google, Hosting, n8n — **gilt für beide Nischen** | bei Bedarf |
 | 📂 [grundlagen/](grundlagen/) | Playbook, Einsteiger-Überblick, Lern-System — **gilt für beide Nischen** | nachschlagen |
 

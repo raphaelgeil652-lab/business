@@ -26,8 +26,12 @@ keine Kfz-Leitplanken, keine LP-Vorlage und kein Service-Baukasten in einer Webs
 ändert der Skill nichts an der Agentur-Doku. Andere Webseiten- oder Design-Skills laufen nicht
 nebenher; `10k-websites` regiert allein.
 
-Der Projektordner einer Seite wird laut Skill mit dem Nutzer abgesprochen und liegt nicht unter
-`nischen/`.
+Gebaute Webseiten liegen unter `nischen/<name>/`, weil der Nutzer dort sucht. Aufbau je Seite:
+`seite/` (das, was online geht), `vorschau/` (eine Datei zum Herzeigen, erzeugt von `tools/`),
+`arbeitsdateien/` (Rohmaterial, bleibt lokal) und `design-paket.md` (der Plan vor der Generierung).
+
+**Erste gebaute Seite: `nischen/tagwerk/`**, eine Demo für eine erfundene Kaffeemarke. Kein Kunde,
+kein Auftrag, reines Vorzeige-Stück für den Webseitenbau.
 
 ## Zwei Nischen, zwei Ordner
 
@@ -111,6 +115,12 @@ Region: Pfullendorf / Landkreis Sigmaringen + Umland. Zielradius je Kampagne **m
 Vollständig erhalten: `geschaeftsmodell.md`, `nische.md`, `offer-und-ads.md`, `ad-copy.md`,
 `akquise/` (inkl. Leads + Besuchs-Reihenfolge), `seiten/` (Pitch, Landingpage Küche/Bad, Beispiele).
 Preise dort: 850 € / 1.500 € — **nicht mit der Kfz-Nische verwechseln.**
+
+### `nischen/tagwerk/` — Demo-Webseite (erfundene Kaffeemarke)
+Gehört zum **Webseitenbau**, nicht zur Agentur. Scroll-Film-Seite nach `10k-websites`:
+`seite/` (index.html + assets, nur das geht online), `vorschau/tagwerk-komplett.html` (alles
+eingebettet, für den Öffnen-Knopf), `tools/vorschau-bauen.py`, `arbeitsdateien/`, `design-paket.md`.
+Nach jeder Änderung an `seite/` die Vorschau neu bauen.
 
 ### `nischen/chinatown/` — Einzelkunde China Restaurant Chinatown
 Liegt bewusst unter `nischen/`, weil der Nutzer dort sucht — inhaltlich ist es **keine Nische**,

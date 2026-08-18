@@ -1,0 +1,5 @@
+# Rohmaterial und Prueflappen: bleiben lokal, gehoeren nicht ins Repo
+# und nie in den Ordner, der online geht (../seite/).
+*.png
+*.mp4
+test/

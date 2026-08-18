@@ -1,5 +1,0 @@
-# Rohmaterial und Prueflappen: bleiben lokal, gehoeren nicht ins Repo und nie in den Deploy-Ordner
-*.png
-*.mp4
-vorschau-tagwerk.html
-test/
