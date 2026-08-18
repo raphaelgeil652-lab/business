@@ -54,7 +54,7 @@ kommen daneben rein. Alles erfunden, kein echter Kunde. Details: [`nischen/tagwe
 
 | Was | Öffnen |
 |---|---|
-| **Die komplette Seite** ⭐ Langsam nach unten scrollen, der Film ist ans Scrollen gekoppelt. | **[▶ Seite öffnen](https://rawcdn.githack.com/raphaelgeil652-lab/business/main/nischen/tagwerk/vorschau/tagwerk-komplett.html)** |
+| **Die komplette Seite** ⭐ Langsam nach unten scrollen, der Film ist ans Scrollen gekoppelt. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/tagwerk/vorschau/tagwerk-komplett.html)** |
 
 ### 🍳 Küchenstudios — zurückgestellt
 

@@ -14,7 +14,10 @@ Geschäftsidee, Farben, Schriften, Texte, Film und Bilder.
 
 | Was | Öffnen |
 |---|---|
-| ☕ **Die komplette Seite** — Scroll-Film, alle Abschnitte, der Frische-Regler zum Ziehen, Preise, Fragen, Formular. | **[▶ Seite öffnen](https://rawcdn.githack.com/raphaelgeil652-lab/business/main/nischen/tagwerk/vorschau/tagwerk-komplett.html)** |
+| ☕ **Die komplette Seite** — Scroll-Film, alle Abschnitte, der Frische-Regler zum Ziehen, Preise, Fragen, Formular. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/tagwerk/vorschau/tagwerk-komplett.html)** |
+
+> Der Knopf liefert immer den aktuellen Stand aus `main`. Wenn die Seite trotzdem alt aussieht,
+> einmal hart neu laden.
 
 > **Wichtig zum Zeigen:** langsam nach unten scrollen. Der Film ist an das Scrollen gekoppelt, er
 > läuft nicht von allein. **Auf dem Handy** siehst du bewusst ein Standbild statt des Films, das
