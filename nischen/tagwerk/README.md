@@ -20,9 +20,6 @@ Geschäftsidee, Farben, Schriften, Texte, Film und Bilder.
 > läuft nicht von allein. **Auf dem Handy** siehst du bewusst ein Standbild statt des Films, das
 > hält die Seite dort schnell.
 
-> Der Knopf zeigt auf `main`. Solange dieser Stand noch im Arbeits-Branch liegt, geht es hierüber:
-> [Seite aus dem Branch öffnen](https://rawcdn.githack.com/raphaelgeil652-lab/business/claude/webseitenbau-analyse-umsetzung-9aivmc/nischen/tagwerk/vorschau/tagwerk-komplett.html)
-
 Die Vorschau-Datei enthält **alles eingebettet**: Film, Bilder, Schriften. Sie läuft deshalb auch
 ohne Internet. Einmal öffnen, auf dem iPad über *Teilen → Zur Leseliste hinzufügen* sichern, dann
 funktioniert sie beim Kundenbesuch auch im Funkloch. Sie ist 6,6 MB groß, das erste Öffnen dauert
