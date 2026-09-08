@@ -16,8 +16,7 @@ Gebaut nach dem Ablauf aus dem Skill `10k-websites`.
 |---|---|
 | 🌿 **Die komplette Seite** — Scroll-Fahrt, der Aufbau-Schnitt zum Ziehen, Leistungen, Fragen, Kontaktformular. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/alex-aussenanlagen/vorschau/alex-komplett.html)** |
 
-> Solange dieser Stand noch im Arbeits-Branch liegt, geht es hierüber:
-> [Seite aus dem Branch öffnen](https://raw.githack.com/raphaelgeil652-lab/business/claude/webseite-alex-aussenanlagen/nischen/alex-aussenanlagen/vorschau/alex-komplett.html)
+> Der Knopf liefert immer den aktuellen Stand aus `main`. Wenn die Seite alt aussieht, einmal hart neu laden.
 
 > **Wichtig zum Zeigen:** langsam nach unten scrollen. Die Fahrt hängt am Scrollen, sie läuft nicht
 > von allein. **Auf dem Handy** siehst du bewusst ein Standbild statt der Fahrt, das hält die Seite
