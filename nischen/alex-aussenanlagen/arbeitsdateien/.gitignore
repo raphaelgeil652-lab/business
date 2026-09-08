@@ -1,0 +1,6 @@
+# Rohmaterial und Prueflappen: bleiben lokal, nie im Deploy-Ordner (../seite/)
+*.png
+*.mp4
+*.webm
+seq/
+test/
