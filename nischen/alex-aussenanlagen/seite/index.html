@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Außenanlagen, Pfullendorf</title>
+<meta name="description" content="Alex Stadelmann, Außenanlagen im Raum Pfullendorf. Pflasterarbeiten, Bagger- und Erdarbeiten, Garten. Besichtigung kostenlos, Angebot schriftlich mit einzelnen Positionen.">
+<meta name="theme-color" content="#ece7dd">
+<!-- DEPLOY STEP: og:url und og:image beim Deploy auf die echte Live-Adresse setzen -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alex Außenanlagen, Pfullendorf">
+<meta property="og:description" content="Pflaster, Erdarbeiten, Garten. Besichtigung kostenlos, Angebot schriftlich mit einzelnen Positionen.">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:image" content="https://example.com/assets/hero-ending.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23191c17'/%3E%3Crect x='6' y='8' width='20' height='4' fill='%23ece7dd'/%3E%3Crect x='6' y='14' width='20' height='3' fill='%23d9932a'/%3E%3Crect x='6' y='19' width='20' height='6' fill='%233d5c3a'/%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/BricolageGrotesque.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/PublicSans.woff2" crossorigin>
+<style>
+/* Schriften liegen im Projekt, keine fremden Server, funktioniert auch ohne Netz */
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:600 800;font-display:swap;
+  src:url('assets/fonts/BricolageGrotesque.woff2') format('woff2')}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:400 500;font-display:swap;
+  src:url('assets/fonts/PublicSans.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+  src:url('assets/fonts/IBMPlexMono-400.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+  src:url('assets/fonts/IBMPlexMono-600.woff2') format('woff2')}
+
+/* ---------- Tokens ---------- */
+:root{
+  --canvas:#ece7dd;
+  --panel:#f6f3ec;
+  --panel-2:#e2dccf;
+  --ink:#191c17;
+  --ink-soft:#5b6154;
+  --accent:#d9932a;
+  --accent-hover:#c07f1c;
+  --green:#3d5c3a;
+  --line:#cfc7b7;
+  /* Heller Grund, dunkle Schrift: der Schatten hellt auf statt abzudunkeln */
+  --tshadow:0 1px 2px rgba(255,255,255,.92),0 4px 16px rgba(246,243,236,.85),0 12px 46px rgba(246,243,236,.7);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-soft:cubic-bezier(.4,0,.2,1);
+  --display:"Bricolage Grotesque",Verdana,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--body);font-size:clamp(16px,.5vw + 14px,18px);line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+/* ---------- Umgebung: eine feste Ebene hinter allem ---------- */
+.env{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(70% 50% at 82% 6%,rgba(217,147,42,.13),transparent 68%),
+    radial-gradient(55% 45% at 8% 92%,rgba(61,92,58,.10),transparent 70%),
+    var(--canvas);
+  animation:envDrift 100s var(--ease-soft) -30s infinite alternate;
+}
+@keyframes envDrift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(0,-2%,0) scale(1.05)}}
+.grain{
+  position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.045;
+  background-image:radial-gradient(rgba(25,28,23,.8) .5px,transparent .5px);
+  background-size:3px 3px;animation:grainShift 8s steps(6) infinite;
+}
+@keyframes grainShift{
+  0%{transform:translate3d(0,0,0)}20%{transform:translate3d(-1%,1%,0)}40%{transform:translate3d(1%,-1%,0)}
+  60%{transform:translate3d(-1%,-1%,0)}80%{transform:translate3d(1%,1%,0)}100%{transform:translate3d(0,0,0)}
+}
+
+/* ---------- Grundgerüst ---------- */
+.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--ink);color:var(--canvas);
+  padding:12px 18px;border-radius:0 0 8px 0;font-family:var(--mono);font-size:13px}
+.skip:focus{left:0}
+.wrap{width:min(1180px,92vw);margin-inline:auto;position:relative;z-index:2}
+main{position:relative;z-index:2}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:3px}
+
+/* ---------- Navigation ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;
+  justify-content:space-between;gap:24px;width:min(1180px,92vw);margin-inline:auto;padding:16px 0;
+}
+.nav::before{
+  content:"";position:absolute;inset:-16px -6vw;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(236,231,221,.94),rgba(236,231,221,0));
+  opacity:0;transition:opacity .5s var(--ease)
+}
+.nav.solid::before{opacity:1}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand .mark{width:30px;height:34px;flex:none}
+.brand b{font-family:var(--display);font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.05}
+.brand small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-soft);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:15px}
+.nav-links a{text-decoration:none;color:var(--ink-soft);transition:color .3s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+@media (max-width:900px){.nav-links a:not(.btn){display:none}}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--accent);color:#1b1409;text-decoration:none;
+  font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:13px 20px;border:0;border-radius:4px;cursor:pointer;text-shadow:none;
+  transition:background .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.btn:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 22px -10px rgba(25,28,23,.5)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink);box-shadow:none}
+.btn.ghost:hover{background:var(--ink);color:var(--canvas)}
+@media (pointer:coarse){.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
+@media (max-width:560px){
+  .nav{padding:12px 0}
+  .nav-links .btn{font-size:11px;padding:11px 13px;white-space:nowrap}
+  .brand b{font-size:17px}
+}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;height:560vh;z-index:2}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--panel-2)}
+.stage .poster{position:absolute;inset:0;background-size:cover;background-position:50% 50%}
+.stage canvas{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  opacity:0;transition:opacity .8s var(--ease);will-change:transform;transform:translateZ(0)
+}
+.stage.video-ready canvas{opacity:1}
+/* Grundschleier: hellt das Bild links auf, damit dunkle Schrift immer traegt */
+.scrim{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(95deg,rgba(236,231,221,.80) 0%,rgba(236,231,221,.55) 30%,rgba(236,231,221,0) 62%)}
+.vignette{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(236,231,221,.75),rgba(236,231,221,0) 26%,rgba(236,231,221,0) 68%,rgba(236,231,221,.55))}
+
+/* Ladering */
+.ring{position:absolute;left:50%;bottom:40px;transform:translateX(-50%);width:42px;height:42px;color:var(--ink);opacity:.7;z-index:6}
+.ring circle{transition:stroke-dashoffset .2s linear}
+.stage.video-ready .ring,.stage.video-failed .ring{opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+.cue{position:absolute;left:50%;bottom:38px;transform:translateX(-50%);z-index:6;color:var(--ink-soft);
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:flex;
+  flex-direction:column;align-items:center;gap:8px;text-shadow:var(--tshadow)}
+.cue span{display:block;width:1px;height:32px;background:linear-gradient(180deg,var(--ink),transparent);
+  animation:cueFall 2.6s var(--ease-soft) -.4s infinite}
+@keyframes cueFall{0%{transform:scaleY(.2);transform-origin:top;opacity:0}
+  40%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);transform-origin:bottom;opacity:0}}
+
+/* Textbänder */
+.bands{position:absolute;inset:0;z-index:5}
+.band{
+  position:absolute;left:0;top:0;width:100%;height:100%;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-left:max(6vw,calc(50vw - 590px));padding-right:6vw;
+  opacity:0;text-shadow:var(--tshadow);pointer-events:none
+}
+.band .btn{text-shadow:none}
+/* Heller Band-Schleier: liegt links unter dem Text und laeuft nach rechts aus */
+.band::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  opacity:calc(.3 + .7*var(--k,1));
+  background:linear-gradient(to right,rgba(240,236,228,.94) 0%,rgba(240,236,228,.86) 32%,rgba(240,236,228,.5) 54%,rgba(240,236,228,0) 74%)
+}
+.band.b4{justify-content:flex-end;padding-bottom:13vh}
+.band.b4::before{background:linear-gradient(8deg,rgba(240,236,228,.94) 0%,rgba(240,236,228,.82) 34%,rgba(240,236,228,.4) 58%,rgba(240,236,228,0) 78%)}
+.band h2{font-size:clamp(31px,5vw,66px);line-height:1.02}
+.band .headline{display:block;width:13ch;max-width:100%}
+.band.b4 .headline{width:15ch}
+.band .lead{margin-top:16px;font-size:clamp(16px,1.3vw,20px);color:var(--ink);width:27ch;max-width:100%}
+.band .row{display:flex;gap:12px;align-items:center;margin-top:26px;pointer-events:auto;flex-wrap:wrap}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--green);margin-bottom:16px;display:inline-block}
+.chip{background:rgba(246,243,236,.82);border:1px solid var(--line);border-radius:3px;
+  backdrop-filter:blur(8px);padding:6px 11px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.hud{position:absolute;right:max(6vw,calc(50vw - 590px));top:50%;transform:translateY(-50%);z-index:6;
+  display:flex;flex-direction:column;gap:9px;align-items:flex-end;
+  opacity:var(--hud,1);transition:opacity .6s var(--ease)}
+@media (max-height:560px){.cue,.hud{display:none}}
+
+/* Wort- und Zeichen-Spans */
+.w{display:inline-block;white-space:pre}
+.c{display:inline-block;will-change:transform,opacity}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+[data-entrance="drift"] .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1);opacity:var(--kc);
+  transform:translateY(calc((1 - var(--kc))*-24px))}
+[data-entrance="grid"] .c{--kc:clamp(0,(var(--k,0) - var(--th,0))*3,1);opacity:var(--kc);
+  transform:translateX(calc((1 - var(--kc))*var(--jx,0px)))}
+[data-entrance="punch"] .w{
+  --kc:clamp(0,(var(--k,0) - var(--th,0))*3,1);
+  --ks:clamp(0,(var(--k,0) - var(--th,0) - var(--sd,.1))*var(--ss,3.2),1);
+  opacity:var(--kc);
+  transform:scale(calc(0.66 + (0.34 + var(--ov,.1))*var(--kc) - var(--ov,.1)*var(--ks)))}
+[data-entrance="punch"] .w.em{--ov:.2;--sd:.16;--ss:2.6;color:var(--green)}
+[data-entrance="settle"] .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);
+  transform:translateY(calc((1 - var(--kc))*20px))}
+[data-entrance="settle"] .lead{opacity:clamp(0,(var(--k,0) - .58)*4,1);
+  transform:translateY(calc((1 - clamp(0,(var(--k,0) - .58)*4,1))*12px))}
+[data-entrance="settle"] .row{opacity:clamp(0,(var(--k,0) - .74)*5,1);
+  transform:translateY(calc((1 - clamp(0,(var(--k,0) - .74)*5,1))*12px))}
+
+/* Statisches Hero */
+.static-hero{position:absolute;inset:0;z-index:7;display:none;flex-direction:column;justify-content:flex-end;
+  padding:0 6vw 15vh;text-shadow:var(--tshadow)}
+.static-hero h1{font-size:clamp(30px,7.6vw,52px);width:15ch;max-width:100%}
+.static-hero p{margin-top:14px;width:28ch;max-width:100%}
+.static-hero .row{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+.static-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(236,231,221,.25) 0%,rgba(236,231,221,.62) 44%,rgba(236,231,221,.93) 100%)}
+
+/* Die fünf Gates: identisch in CSS und JS */
+@media (max-width:720px),
+       (orientation:portrait) and (max-width:1024px),
+       (orientation:portrait) and (pointer:coarse),
+       (orientation:landscape) and (pointer:coarse) and (max-height:560px),
+       (prefers-reduced-motion:reduce){
+  .hero{height:100vh}
+  .bands,.ring,.cue,.hud{display:none}
+  .static-hero{display:flex}
+  .stage .poster{background-image:url('assets/hero-ending.jpg');background-position:60% 60%}
+}
+
+/* ---------- Sektionen ---------- */
+section{position:relative}
+.sec{padding:clamp(84px,12vh,150px) 0}
+.sec h2{font-size:clamp(28px,4.2vw,54px)}
+.lede{color:var(--ink-soft);font-size:clamp(16px,1.1vw,19px);width:52ch;max-width:100%}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* A: Der Aufbau, zwei Spalten mit dem Schichtbild rechts */
+#aufbau .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,76px);align-items:center}
+@media (max-width:900px){#aufbau .grid{grid-template-columns:1fr}}
+.layers{width:100%;max-width:460px;margin-inline:auto}
+.layers .band-rect{opacity:0;transform:translateY(-10px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.layers.in .band-rect{opacity:1;transform:none}
+.layers.in .band-rect:nth-of-type(2){transition-delay:.12s}
+.layers.in .band-rect:nth-of-type(3){transition-delay:.24s}
+.layers.in .band-rect:nth-of-type(4){transition-delay:.36s}
+.layers text{font-family:var(--mono);font-size:11px;fill:var(--ink-soft);letter-spacing:.08em}
+.layers .dim{stroke:var(--ink);stroke-width:1;stroke-dasharray:200;stroke-dashoffset:200;
+  transition:stroke-dashoffset 1.4s var(--ease-soft) .3s}
+.layers.in .dim{stroke-dashoffset:0}
+
+/* B: So läuft's, drei Bildkarten */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,26px);margin-top:52px}
+@media (max-width:900px){.steps{grid-template-columns:1fr}}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;position:relative}
+.step .shot{aspect-ratio:4/3;background:var(--panel-2) center/cover no-repeat;position:relative}
+#shot1{background-image:url('assets/schritt-1.jpg')}
+#shot2{background-image:url('assets/schritt-2.jpg')}
+#shot3{background-image:url('assets/schritt-3.jpg')}
+.step .num{position:absolute;left:16px;top:14px;z-index:2}
+.step .body{padding:22px 22px 26px}
+.step h3{font-size:21px;margin-bottom:9px}
+.step p{color:var(--ink-soft);font-size:16px}
+
+/* C: Der Aufbau-Schnitt zum Ziehen */
+#schnitt .panel{background:var(--ink);color:var(--panel);border-radius:8px;overflow:hidden;
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,3.4vw,54px);
+  padding:clamp(26px,3.6vw,52px);align-items:center}
+@media (max-width:860px){#schnitt .panel{grid-template-columns:1fr}}
+#schnitt .kicker{color:var(--accent)}
+#schnitt h2{color:var(--panel)}
+#schnitt .lede{color:#c9c9c0}
+.cut{position:relative}
+.cutbox{position:relative;height:clamp(210px,26vw,300px);border:1px solid #3a3d36;border-radius:4px;overflow:hidden;background:#22261f}
+.cutlayer{position:absolute;left:0;right:0;display:flex;align-items:center;gap:12px;padding:0 16px;
+  font-family:var(--mono);font-size:12px;color:#e6e3d8;border-top:1px solid rgba(236,231,221,.16)}
+.cutlayer i{font-style:normal;opacity:.62;letter-spacing:.1em}
+.cutlayer b{font-weight:600;letter-spacing:.04em}
+.l1{top:0;height:19%;background:repeating-linear-gradient(90deg,#8d8b80 0 26px,#7c7a70 26px 28px)}
+.l2{top:19%;height:9%;background:#6d6455}
+.l3{top:28%;height:44%;background:#4e4a3e}
+.l4{top:72%;height:28%;background:#3a3529}
+.cutmask{position:absolute;left:0;right:0;bottom:0;background:#1b1e18;z-index:3;
+  height:calc(100% - var(--cut,25%));border-top:2px solid var(--accent)}
+.cutmask::after{content:attr(data-depth);position:absolute;right:12px;top:8px;
+  font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.08em}
+#schnitt input[type=range]{-webkit-appearance:none;appearance:none;width:100%;margin-top:22px;height:32px;background:transparent;cursor:grab}
+#schnitt input[type=range]:active{cursor:grabbing}
+#schnitt input[type=range]::-webkit-slider-runnable-track{height:2px;background:#4a4d45}
+#schnitt input[type=range]::-moz-range-track{height:2px;background:#4a4d45}
+#schnitt input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;
+  margin-top:-11px;border-radius:3px;background:var(--accent);border:2px solid #1b1e18;
+  transition:transform .3s var(--ease)}
+#schnitt input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.08)}
+#schnitt input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:3px;background:var(--accent);border:2px solid #1b1e18}
+.cutnote{margin-top:16px;font-size:16px;color:#c9c9c0;min-height:3em}
+.cutnote b{color:var(--panel);font-family:var(--display);font-weight:600;font-size:19px;display:block;margin-bottom:3px}
+#schnitt .close{margin-top:22px;color:#a8a89e;font-size:15px}
+
+/* D: Leistungen, Zeilen statt Karten */
+.leist{margin-top:44px;border-top:1px solid var(--line)}
+.leist .row{display:grid;grid-template-columns:auto 1fr 1.25fr;gap:clamp(16px,3vw,48px);
+  align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
+@media (max-width:760px){.leist .row{grid-template-columns:1fr;gap:8px}}
+.leist .idx{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
+.leist h3{font-size:clamp(21px,2.3vw,29px)}
+.leist p{color:var(--ink-soft)}
+
+/* E: Drei Zusagen */
+#zusagen{background:var(--panel);border-block:1px solid var(--line)}
+.zusagen{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);margin-top:40px}
+@media (max-width:860px){.zusagen{grid-template-columns:1fr}}
+.zusage{border-left:2px solid var(--green);padding-left:20px}
+.zusage h3{font-size:clamp(19px,1.9vw,24px);margin-bottom:8px}
+.zusage p{color:var(--ink-soft);font-size:16px}
+.hinweis{margin-top:34px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);
+  border:1px dashed var(--line);border-radius:4px;padding:14px 16px;line-height:1.7}
+
+/* F: Fragen */
+.faq{margin-top:40px;border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;
+  gap:22px;align-items:baseline;font-family:var(--display);font-weight:600;
+  font-size:clamp(18px,1.7vw,24px);transition:color .3s var(--ease)}
+summary::-webkit-details-marker{display:none}
+summary:hover{color:var(--green)}
+summary .sign{font-family:var(--mono);color:var(--accent);flex:none;transition:transform .4s var(--ease)}
+details[open] summary .sign{transform:rotate(45deg)}
+details .answer{padding:0 0 24px;color:var(--ink-soft);width:62ch;max-width:100%}
+
+/* G: Kontakt */
+#termin{padding-bottom:clamp(70px,10vh,120px)}
+.cta{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);
+  background:var(--panel);padding:clamp(28px,4.4vw,66px)}
+.cta .shot{position:absolute;inset:0;background-size:cover;background-position:50% 62%;opacity:.3;
+  background-image:url('assets/hero-ending.jpg')}
+.cta .veil{position:absolute;inset:0;background:linear-gradient(100deg,rgba(246,243,236,.97) 36%,rgba(246,243,236,.6))}
+.cta .inner{position:relative;z-index:2}
+.cta h2{width:16ch;max-width:100%}
+form{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:660px}
+@media (max-width:640px){form{grid-template-columns:1fr}}
+label.field{display:flex;flex-direction:column;gap:7px}
+label.field.wide{grid-column:1 / -1}
+label.field span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+input[type=text],input[type=email],textarea{
+  background:#fffdf8;border:1px solid var(--line);border-radius:4px;color:var(--ink);
+  font-family:var(--body);font-size:16px;padding:13px 15px;min-height:44px;
+  transition:border-color .3s var(--ease)}
+textarea{min-height:104px;resize:vertical}
+input::placeholder,textarea::placeholder{color:#9a9585}
+input:focus,textarea:focus{border-color:var(--ink);outline:none}
+form .send{grid-column:1 / -1;justify-self:start}
+.formnote{margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--ink-soft);line-height:1.8}
+.success{margin-top:18px;display:none;align-items:center;gap:10px;color:var(--green);
+  font-family:var(--display);font-weight:600;font-size:20px}
+form.done + .success{display:flex}
+form.done{display:none}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:46px 0 56px;position:relative;z-index:2}
+.foot{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.foot p,.foot a{color:var(--ink-soft);font-size:14px}
+.foot .col{max-width:44ch}
+.foot b{color:var(--ink);font-family:var(--display);font-size:16px}
+.platz{font-family:var(--mono);font-size:12px;color:var(--accent-hover)}
+
+/* ---------- Auftritte ---------- */
+.rise{opacity:0;transform:translateY(22px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rise.in{opacity:1;transform:none}
+.stagger .rise:nth-child(1){transition-delay:0s}
+.stagger .rise:nth-child(2){transition-delay:.09s}
+.stagger .rise:nth-child(3){transition-delay:.18s}
+.stagger.done .rise:nth-child(1),.stagger.done .rise:nth-child(2),.stagger.done .rise:nth-child(3){transition-delay:0s!important}
+.sec-head .rise:nth-child(1){transition-delay:0s}
+.sec-head .rise:nth-child(2){transition-delay:.08s}
+.sec-head .rise:nth-child(3){transition-delay:.16s}
+.sec-head.done .rise:nth-child(1),.sec-head.done .rise:nth-child(2),.sec-head.done .rise:nth-child(3){transition-delay:0s!important}
+body.paused *,body.paused *::before,body.paused *::after{animation-play-state:paused!important}
+
+/* ---------- Reduzierte Bewegung ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important;transition-delay:0s!important;animation-delay:0s!important}
+  .rise{opacity:1;transform:none}
+  .layers .band-rect{opacity:1;transform:none}
+  .layers .dim{stroke-dashoffset:0}
+  .env{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div class="env" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Alex Außenanlagen, zur Startseite">
+    <svg class="mark" viewBox="0 0 30 34" aria-hidden="true">
+      <rect x="0" y="2" width="30" height="6" fill="var(--ink)"/>
+      <rect x="0" y="11" width="30" height="4" fill="var(--accent)"/>
+      <rect x="0" y="18" width="30" height="9" fill="var(--green)"/>
+      <rect x="0" y="30" width="30" height="3" fill="var(--line)"/>
+    </svg>
+    <span><b>Alex Außenanlagen</b><small>Pfullendorf</small></span>
+  </a>
+  <nav class="nav-links" aria-label="Hauptmenü">
+    <a href="#aufbau">Der Aufbau</a>
+    <a href="#ablauf">So läuft's</a>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#fragen">Fragen</a>
+    <a class="btn" href="#termin">Termin anfragen</a>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+  <span id="top"></span>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero" aria-label="Die Kamera sinkt auf die fertige Fläche">
+    <div class="stage" id="stage">
+      <div class="poster" id="poster"></div>
+      <canvas id="hero-canvas" width="1440" height="804" aria-hidden="true"></canvas>
+      <div class="scrim" aria-hidden="true"></div>
+      <div class="vignette" aria-hidden="true"></div>
+
+      <div class="hud" aria-hidden="true">
+        <span class="chip" id="hudline">Aufbau 42 cm</span>
+      </div>
+
+      <div class="bands" id="bands">
+        <div class="band b1" data-range="0,0.17" data-entrance="drift" data-ramp="0.03">
+          <span class="kicker">Alex Stadelmann</span>
+          <h2><span class="headline" data-split="word">Das Schöne sieht man. Das Wichtige nicht.</span></h2>
+          <p class="lead">Alex Stadelmann, Außenanlagen im Raum Pfullendorf.</p>
+        </div>
+        <div class="band b2" data-range="0.21,0.44" data-entrance="grid" data-spread="0.5">
+          <h2><span class="headline" data-split="char">Pflaster hält nicht oben. Pflaster hält unten.</span></h2>
+          <p class="lead">Schotter, Splitt, Gefälle. In dieser Reihenfolge.</p>
+        </div>
+        <div class="band b3" data-range="0.48,0.70" data-entrance="punch">
+          <h2><span class="headline" data-split="word" data-em="Hand.">Bagger, Erde, Stein. Alles aus einer Hand.</span></h2>
+          <p class="lead">Kein Nachunternehmer, der sich nicht meldet.</p>
+        </div>
+        <div class="band b4" data-range="0.74,1" data-entrance="settle">
+          <h2><span class="headline" data-split="word">Ich schaue es mir an. Dann bekommen Sie es schriftlich.</span></h2>
+          <p class="lead">Besichtigung kostenlos, Angebot mit einzelnen Positionen.</p>
+          <div class="row">
+            <a class="btn" href="#termin">Termin anfragen</a>
+            <a class="btn ghost" href="#aufbau">Wie ich baue</a>
+          </div>
+        </div>
+      </div>
+
+      <svg class="ring" id="ring" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/>
+      </svg>
+
+      <div class="static-hero" id="statichero">
+        <h1>Ich schaue es mir an. Dann bekommen Sie es schriftlich.</h1>
+        <p>Alex Stadelmann, Außenanlagen im Raum Pfullendorf. Pflaster, Erdarbeiten, Garten.</p>
+        <div class="row">
+          <a class="btn" href="#termin">Termin anfragen</a>
+          <a class="btn ghost" href="#aufbau">Wie ich baue</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A: DER AUFBAU ============ -->
+  <section class="sec" id="aufbau">
+    <div class="wrap">
+      <div class="grid">
+        <div class="sec-head">
+          <span class="kicker rise">Was unter dem Stein liegt</span>
+          <h2 class="rise">Eine Einfahrt ist vier Schichten tief.</h2>
+          <p class="lede rise" style="margin-top:20px">Oben liegen acht Zentimeter Stein. Darunter Splitt, darunter Schotter, darunter der gewachsene Boden mit dem richtigen Gefälle. Wer an der untersten Schicht spart, sieht es nach dem ersten Winter. Deshalb steht in meinem Angebot jede Schicht einzeln drin.</p>
+        </div>
+        <div class="rise">
+          <svg class="layers" id="layers" viewBox="0 0 460 300" role="img" aria-label="Schnitt durch den Aufbau: 8 cm Pflasterstein, 4 cm Splitt, 30 cm Schotter, darunter das verdichtete Planum">
+            <rect class="band-rect" x="40" y="24" width="330" height="34" fill="#8d8b80"/>
+            <rect class="band-rect" x="40" y="60" width="330" height="20" fill="#6d6455"/>
+            <rect class="band-rect" x="40" y="82" width="330" height="112" fill="#4e4a3e"/>
+            <rect class="band-rect" x="40" y="196" width="330" height="66" fill="#3a3529"/>
+            <text x="378" y="46">8 cm  Stein</text>
+            <text x="378" y="76">4 cm  Splitt</text>
+            <text x="378" y="144">30 cm  Schotter</text>
+            <text x="378" y="234">Planum</text>
+            <line class="dim" x1="26" y1="24" x2="26" y2="262"/>
+            <line class="dim" x1="20" y1="24" x2="32" y2="24"/>
+            <line class="dim" x1="20" y1="262" x2="32" y2="262"/>
+            <text x="0" y="150" transform="rotate(-90 8 150)" text-anchor="middle">42 cm</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ B: SO LÄUFT'S ============ -->
+  <section class="sec" id="ablauf">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker rise">So läuft's</span>
+        <h2 class="rise">Drei Schritte, keine Überraschungen.</h2>
+      </div>
+      <div class="steps stagger">
+        <article class="step rise">
+          <div class="shot" id="shot1"></div>
+          <span class="chip num">Schritt 1</span>
+          <div class="body">
+            <h3>Ich komme vorbei.</h3>
+            <p>Wir gehen die Fläche zusammen ab, ich messe auf. Das kostet Sie nichts.</p>
+          </div>
+        </article>
+        <article class="step rise">
+          <div class="shot" id="shot2"></div>
+          <span class="chip num">Schritt 2</span>
+          <div class="body">
+            <h3>Sie bekommen es schriftlich.</h3>
+            <p>Jede Position einzeln: Aushub, Schotter, Splitt, Stein, Entsorgung. Kein Pauschalzettel.</p>
+          </div>
+        </article>
+        <article class="step rise">
+          <div class="shot" id="shot3"></div>
+          <span class="chip num">Schritt 3</span>
+          <div class="body">
+            <h3>Wir bauen.</h3>
+            <p>Ein fester Termin, ein Ansprechpartner. Am Ende ist die Baustelle sauber.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ C: DER SCHNITT ZUM ZIEHEN ============ -->
+  <section class="sec" id="schnitt">
+    <div class="wrap">
+      <div class="panel rise">
+        <div>
+          <span class="kicker">Zieh den Schnitt auf</span>
+          <h2>Schauen Sie mal drunter.</h2>
+          <p class="lede" style="margin-top:16px">Ziehen Sie den Regler nach unten. So tief geht eine Fläche, die halten soll.</p>
+          <p class="close">Bei einer Einfahrt für Autos gehe ich tiefer. Was Ihre Fläche braucht, sage ich Ihnen vor Ort.</p>
+        </div>
+        <div class="cut">
+          <div class="cutbox" aria-hidden="true">
+            <div class="cutlayer l1"><b>Pflasterstein</b><i>0 bis 8 cm</i></div>
+            <div class="cutlayer l2"><b>Splitt</b><i>8 bis 12 cm</i></div>
+            <div class="cutlayer l3"><b>Schotter</b><i>12 bis 42 cm</i></div>
+            <div class="cutlayer l4"><b>Planum</b><i>ab 42 cm</i></div>
+            <div class="cutmask" id="cutmask" data-depth="0 cm"></div>
+          </div>
+          <label class="sr" for="cut">Tiefe des Schnitts in Zentimetern</label>
+          <input type="range" id="cut" min="0" max="55" step="1" value="8" aria-describedby="cutnote">
+          <p class="cutnote" id="cutnote"><b>Pflasterstein</b>Das ist der Teil, den Sie sehen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ D: LEISTUNGEN ============ -->
+  <section class="sec" id="leistungen">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker rise">Leistungen</span>
+        <h2 class="rise">Was ich mache.</h2>
+      </div>
+      <div class="leist stagger">
+        <div class="row rise">
+          <span class="idx">01</span>
+          <h3>Pflasterarbeiten</h3>
+          <p>Einfahrt, Hofeinfahrt, Terrasse, Wege, Randsteine, Treppen.</p>
+        </div>
+        <div class="row rise">
+          <span class="idx">02</span>
+          <h3>Bagger- und Erdarbeiten</h3>
+          <p>Aushub, Planum, Verdichten, Kanalgräben, Abtrag und Auffüllung.</p>
+        </div>
+        <div class="row rise">
+          <span class="idx">03</span>
+          <h3>Garten- und Außenanlagen</h3>
+          <p>Rasenflächen, Beete, Hangbefestigung, Zäune, Pflege der Fläche danach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ E: DREI ZUSAGEN ============ -->
+  <section class="sec" id="zusagen">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker rise">Drei Zusagen</span>
+        <h2 class="rise">Woran Sie mich messen können.</h2>
+      </div>
+      <div class="zusagen stagger">
+        <div class="zusage rise">
+          <h3>Ich melde mich zurück.</h3>
+          <p>Am selben Werktag. Auch wenn die Antwort mal nein lautet, weil ich keine Kapazität habe.</p>
+        </div>
+        <div class="zusage rise">
+          <h3>Der Preis steht schriftlich.</h3>
+          <p>Mit einzelnen Positionen, damit Sie vergleichen können.</p>
+        </div>
+        <div class="zusage rise">
+          <h3>Die Fläche bleibt sauber.</h3>
+          <p>Erde weg, Wege gekehrt, Material abgeholt.</p>
+        </div>
+      </div>
+      <p class="hinweis rise">Platzhalter: Echte Kundenstimmen und Fotos von fertigen Flächen kommen hier rein, sobald Alex sie schickt.</p>
+    </div>
+  </section>
+
+  <!-- ============ F: FRAGEN ============ -->
+  <section class="sec" id="fragen">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker rise">Fragen</span>
+        <h2 class="rise">Das, was am Gartenzaun gefragt wird.</h2>
+      </div>
+      <div class="faq rise">
+        <details>
+          <summary>Kostet die Besichtigung etwas?<span class="sign">+</span></summary>
+          <p class="answer">Nein. Anschauen und aufmessen kostet Sie nichts.</p>
+        </details>
+        <details>
+          <summary>Was kostet ein Quadratmeter?<span class="sign">+</span></summary>
+          <p class="answer">Das hängt am Unterbau und am Stein, nicht am Bauchgefühl. Deshalb messe ich erst und rechne dann. Sie bekommen die Positionen einzeln, damit Sie sehen, wofür Sie zahlen.</p>
+        </details>
+        <details>
+          <summary>Wie lange dauert es, bis Sie anfangen können?<span class="sign">+</span></summary>
+          <p class="answer">Sage ich Ihnen beim Termin ehrlich. Lieber ein späterer Termin, der hält, als ein früher, der platzt.</p>
+        </details>
+        <details>
+          <summary>Machen Sie auch kleine Sachen?<span class="sign">+</span></summary>
+          <p class="answer">Ja. Ein paar Quadratmeter Weg oder ein Randstein sind auch Arbeit.</p>
+        </details>
+        <details>
+          <summary>Wer macht den Aushub?<span class="sign">+</span></summary>
+          <p class="answer">Ich, mit eigenem Bagger. Erdarbeiten und Pflaster kommen von derselben Person.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ G: TERMIN ============ -->
+  <section class="sec" id="termin">
+    <div class="wrap">
+      <div class="cta rise">
+        <div class="shot" aria-hidden="true"></div>
+        <div class="veil" aria-hidden="true"></div>
+        <div class="inner">
+          <span class="kicker">Termin</span>
+          <h2>Sagen Sie mir, worum es geht.</h2>
+          <p class="lede" style="margin-top:16px">Zwei Sätze reichen. Ich melde mich am selben Werktag zurück.</p>
+          <form id="form" novalidate>
+            <label class="field">
+              <span>Name</span>
+              <input type="text" id="name" name="name" placeholder="Vor- und Nachname" required autocomplete="name">
+            </label>
+            <label class="field">
+              <span>Telefon oder E-Mail</span>
+              <input type="text" id="kontakt" name="kontakt" placeholder="So erreiche ich Sie" required autocomplete="tel">
+            </label>
+            <label class="field wide">
+              <span>Worum geht es?</span>
+              <textarea id="text" name="text" placeholder="Zum Beispiel: Einfahrt neu pflastern, ungefähr 60 Quadratmeter."></textarea>
+            </label>
+            <button class="btn send" type="submit">Anfrage senden</button>
+          </form>
+          <p class="success" id="success" role="status">
+            <svg width="20" height="20" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            Angekommen. Ich melde mich am selben Werktag.
+          </p>
+          <p class="formnote">Platzhalter: Das Formular verschickt noch nichts. Sobald Alex' E-Mail-Adresse feststeht, geht die Anfrage direkt an ihn.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="col">
+      <b>Alex Außenanlagen</b>
+      <p style="margin-top:8px">Inhaber Alex Stadelmann. Pflaster, Erdarbeiten und Garten im Raum Pfullendorf und Umgebung.</p>
+    </div>
+    <div class="col">
+      <p class="platz">Platzhalter: Telefon, E-Mail und Anschrift fehlen noch.</p>
+      <p style="margin-top:8px">Impressum und Datenschutz kommen dazu, bevor die Seite online geht. Beides ist Pflicht.</p>
+    </div>
+    <div class="col">
+      <p class="platz">Platzhalter: Bilder und Film sind KI-erzeugt.</p>
+      <p style="margin-top:8px">Sie stehen hier, bis echte Fotos von Alex' Baustellen da sind.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ================= Der Hero als Bildfolge =================
+     Kein Video: bei einem Video muss der Browser fuer jede Scrollposition neu
+     hinspringen und dekodieren, das ruckelt sichtbar. Eine Bildfolge wird einmal
+     geladen und danach nur noch gezeichnet, und zwischen zwei Einzelbildern wird
+     ueberblendet, damit aus Stufen ein Fluss wird. */
+  var FRAME_COUNT = 141;
+  var FRAME_W = 1440, FRAME_H = 804;
+  function frameURL(i){ var n = String(i+1); while (n.length < 4) n = '0' + n; return 'assets/frames/f' + n + '.jpg'; }
+  var POSTER_URL = frameURL(0);
+
+  var canvas  = document.getElementById('hero-canvas');
+  var ctx     = canvas.getContext('2d', { alpha:false });
+  var stage   = document.getElementById('stage');
+  var heroEl  = document.getElementById('hero');
+  var poster  = document.getElementById('poster');
+  var ring    = document.getElementById('ring');
+  var hudline = document.getElementById('hudline');
+  var bandEls = [].slice.call(document.querySelectorAll('.band'));
+
+  var reduceQ = matchMedia('(prefers-reduced-motion:reduce)');
+  var clamp = function(v,lo,hi){ return Math.min(hi,Math.max(lo,v)); };
+  var smoothstep = function(p,e0,e1){ var t=clamp((p-e0)/(e1-e0),0,1); return t*t*(3-2*t); };
+
+  /* ================= Text zerlegen (einmal beim Laden) ================= */
+  function rng(seed){ var s=seed>>>0; return function(){ s=(s*1664525+1013904223)>>>0; return s/4294967296; }; }
+
+  function splitHeadline(el, mode, spread, seed){
+    var text = el.textContent, rand = rng(seed);
+    var sr = document.createElement('span'); sr.className='sr'; sr.textContent=text;
+    var vis = document.createElement('span'); vis.setAttribute('aria-hidden','true');
+    var words = text.split(' '), emWord = el.getAttribute('data-em');
+    var charCount = text.replace(/ /g,'').length, ci = 0;
+
+    words.forEach(function(word,wi){
+      var w = document.createElement('span'); w.className='w';
+      if (emWord && word === emWord) w.classList.add('em');
+      if (mode === 'word'){
+        w.style.setProperty('--th', (wi/Math.max(1,words.length))*0.5 + rand()*0.05);
+        w.textContent = word;
+      } else {
+        w.style.setProperty('--th', 0);
+        word.split('').forEach(function(ch){
+          var c = document.createElement('span'); c.className='c'; c.textContent = ch;
+          c.style.setProperty('--th', (ci/Math.max(1,charCount))*spread + rand()*0.06);
+          c.style.setProperty('--jx', (-(14+rand()*22)).toFixed(1)+'px');
+          w.appendChild(c); ci++;
+        });
+      }
+      vis.appendChild(w);
+      if (wi < words.length-1) vis.appendChild(document.createTextNode(' '));
+    });
+    el.textContent=''; el.appendChild(sr); el.appendChild(vis);
+  }
+
+  var bands = bandEls.map(function(el,i){
+    var r = (el.getAttribute('data-range')||'0,1').split(',').map(Number);
+    var head = el.querySelector('.headline');
+    if (head){
+      var mode = head.getAttribute('data-split') === 'char' ? 'char' : 'word';
+      splitHeadline(head, mode, parseFloat(el.getAttribute('data-spread')||'0.5'), 131 + i*577);
+    }
+    return { el:el, a:r[0], b:r[1], first:i===0, last:i===bandEls.length-1,
+             ramp: parseFloat(el.getAttribute('data-ramp')||'0') || 0, op:-1, k:-1 };
+  });
+
+  /* ================= Bänder zeichnen ================= */
+  var lastLabel='', lastLabelAt=0, lastHud=1, hudEl=document.querySelector('.hud');
+  function updateCaptions(p){
+    for (var i=0;i<bands.length;i++){
+      var band=bands[i], a=band.a, b=band.b;
+      var f = Math.min(0.02,(b-a)/3);
+      var inRamp  = band.first ? 1 : smoothstep(p,a,a+f);
+      var outRamp = band.last  ? 1 : (1 - smoothstep(p,b-f,b));
+      var op = inRamp*outRamp;
+      var ramp = band.ramp || Math.min(0.025,(b-a)*0.35);
+      var k = clamp((p-a)/ramp,0,1);
+      if (band.first) k = Math.max(k, loadK);
+      if (Math.abs(op-band.op) > 0.004){ band.op = op; band.el.style.opacity = op.toFixed(3); }
+      if (Math.abs(k-band.k) > 0.008){ band.k = k; band.el.style.setProperty('--k', k.toFixed(3)); }
+    }
+    var hud = p > 0.72 ? 0 : 1;
+    if (hud !== lastHud){ lastHud = hud; hudEl.style.setProperty('--hud', hud); }
+  }
+  function updateHud(p, now){
+    if (now-lastLabelAt < 100) return;
+    var txt = p < 0.44 ? 'Aufbau 42 cm' : (p < 0.74 ? 'Gefälle 2 %' : 'Fertig');
+    if (txt === lastLabel) return;
+    lastLabel = txt; lastLabelAt = now; hudline.textContent = txt;
+  }
+
+  /* ================= Das Bild zeichnen ================= */
+  var frames = new Array(FRAME_COUNT);
+  var lastShownF = -1, wantIndex = 0;
+
+  function nearestLoaded(i){
+    if (frames[i] && frames[i].ok) return i;
+    for (var d=1; d<FRAME_COUNT; d++){
+      var a=i-d, b=i+d;
+      if (a>=0 && frames[a] && frames[a].ok) return a;
+      if (b<FRAME_COUNT && frames[b] && frames[b].ok) return b;
+    }
+    return -1;
+  }
+  function drawProgress(p){
+    var f = clamp(p,0,1) * (FRAME_COUNT-1);
+    if (Math.abs(f - lastShownF) < 0.02) return;
+    var i0 = Math.floor(f), mix = f - i0, i1 = Math.min(FRAME_COUNT-1, i0+1);
+    wantIndex = Math.round(f);
+    var a = nearestLoaded(i0);
+    if (a < 0) return;
+    lastShownF = f;
+    ctx.globalAlpha = 1;
+    ctx.drawImage(frames[a].img, 0, 0, FRAME_W, FRAME_H);
+    if (mix > 0.02 && frames[i1] && frames[i1].ok && i1 !== a){
+      ctx.globalAlpha = mix;
+      ctx.drawImage(frames[i1].img, 0, 0, FRAME_W, FRAME_H);
+      ctx.globalAlpha = 1;
+    }
+    canvas.dataset.frame = f.toFixed(2);
+  }
+
+  /* ================= Antrieb ================= */
+  var target=0, shown=0, rafId=null, lastTick=0, heroOnScreen=true, loadK=0;
+
+  function heroProgress(){
+    var rect = heroEl.getBoundingClientRect();
+    var range = heroEl.offsetHeight - window.innerHeight;
+    if (range <= 0) return 0;
+    return clamp(-rect.top/range,0,1);
+  }
+  function tick(now){
+    var dt = Math.min(100, now-(lastTick||now)); lastTick=now;
+    var k=0.16;
+    shown += (target-shown)*(1-Math.pow(1-k, dt/16.667));
+    if (Math.abs(target-shown) < 0.0005){ shown=target; rafId=null; lastTick=0; }
+    else rafId=requestAnimationFrame(tick);
+    drawProgress(shown);
+    updateCaptions(shown);
+    updateHud(shown, now);
+  }
+  function onScroll(){
+    target = heroProgress();
+    if (rafId===null && heroOnScreen) rafId=requestAnimationFrame(tick);
+  }
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      heroOnScreen = es[0].isIntersecting;
+      if (heroOnScreen && scrubOn && rafId===null) rafId=requestAnimationFrame(tick);
+    },{rootMargin:'10px'}).observe(heroEl);
+  }
+  function runLoadRamp(){
+    var t0=null;
+    (function step(ts){
+      if (t0===null) t0=ts;
+      loadK = clamp((ts-t0)/900,0,1);
+      updateCaptions(shown);
+      if (loadK<1) requestAnimationFrame(step);
+    })(performance.now());
+  }
+
+  /* ================= Bildfolge laden ================= */
+  var started=false, heroInit=false;
+  function initHeroOnce(){
+    if (heroInit) return; heroInit=true;
+    poster.style.backgroundImage = "url('"+POSTER_URL+"')";
+    if (!started){ started = true; loadSequence(); }
+    runLoadRamp();
+  }
+  function loadSequence(){
+    var next=0, active=0, done=0, failed=0, watchdog;
+    function arm(){
+      clearTimeout(watchdog);
+      watchdog = setTimeout(function(){ if (done < FRAME_COUNT) failSequence(); }, 20000);
+    }
+    function pump(){
+      while (active < 8 && next < FRAME_COUNT){
+        (function(i){
+          active++;
+          var img = new Image();
+          frames[i] = { img:img, ok:false };
+          img.decoding = 'async';
+          img.onload = function(){
+            frames[i].ok = true; active--; done++;
+            if (i === 0){
+              canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+              FRAME_W = img.naturalWidth; FRAME_H = img.naturalHeight;
+              stage.classList.add('video-ready');
+            }
+            if (i === 0 || i === wantIndex || lastShownF < 0){ lastShownF = -1; drawProgress(shown); }
+            ring.style.setProperty('--ld', Math.round(126*(1 - done/FRAME_COUNT)));
+            if (done === FRAME_COUNT) ring.style.setProperty('--ld', 0);
+            arm(); pump();
+          };
+          img.onerror = function(){
+            active--; done++; failed++;
+            if (failed > FRAME_COUNT*0.3) failSequence();
+            arm(); pump();
+          };
+          img.src = frameURL(i);
+        })(next++);
+      }
+    }
+    arm(); pump();
+  }
+  function failSequence(){
+    if (stage.classList.contains('video-failed')) return;
+    stage.classList.add('video-failed');
+    if (ring && ring.parentNode){
+      var cue = document.createElement('div');
+      cue.className='cue';
+      cue.innerHTML = '<span></span>Scrollen';
+      ring.parentNode.replaceChild(cue, ring);
+    }
+  }
+
+  /* ================= Die fünf Gates, live ================= */
+  var GATES = [
+    '(max-width: 720px)',
+    '(orientation: portrait) and (max-width: 1024px)',
+    '(orientation: portrait) and (pointer: coarse)',
+    '(orientation: landscape) and (pointer: coarse) and (max-height: 560px)',
+    '(prefers-reduced-motion: reduce)'
+  ];
+  var scrubOn=false;
+  function enableScrub(){
+    if (scrubOn) return; scrubOn=true;
+    initHeroOnce();
+    addEventListener('scroll', onScroll, {passive:true});
+    bands.forEach(function(b){ b.op=-1; b.k=-1; });
+    unpinFinalStates();
+    updateCaptions(heroProgress());
+    onScroll();
+  }
+  function disableScrub(){
+    if (!scrubOn) return; scrubOn=false;
+    removeEventListener('scroll', onScroll);
+    if (rafId!==null){ cancelAnimationFrame(rafId); rafId=null; }
+  }
+  function applyHeroMode(){
+    if (GATES.some(function(q){ return matchMedia(q).matches; })) disableScrub();
+    else enableScrub();
+  }
+  var MQLS = GATES.map(function(q){ return matchMedia(q); });
+  MQLS.forEach(function(m){
+    if (m.addEventListener) m.addEventListener('change', applyHeroMode);
+    else if (m.addListener) m.addListener(applyHeroMode);
+  });
+
+  /* ================= Seite: Auftritte und Leben ================= */
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting){ e.target.classList.remove('alive'); return; }
+      e.target.classList.add('in','alive');
+      if (e.target.classList.contains('stagger') || e.target.classList.contains('sec-head')){
+        setTimeout(function(){ e.target.classList.add('done'); }, 1300);
+      }
+    });
+  },{threshold:0.16, rootMargin:'0px 0px -8% 0px'}) : null;
+
+  if (io){
+    [].forEach.call(document.querySelectorAll('.rise,.stagger,.sec-head,.layers,.sec'), function(el){ io.observe(el); });
+  } else {
+    [].forEach.call(document.querySelectorAll('.rise,.layers'), function(el){ el.classList.add('in'); });
+  }
+
+  var nav = document.getElementById('nav'), navSolid=false;
+  addEventListener('scroll', function(){
+    var want = scrollY > 40;
+    if (want !== navSolid){ navSolid = want; nav.classList.toggle('solid', want); }
+  }, {passive:true});
+
+  document.addEventListener('visibilitychange', function(){
+    document.body.classList.toggle('paused', document.hidden);
+  });
+
+  /* ================= Der Aufbau-Schnitt ================= */
+  var cut = document.getElementById('cut');
+  var cutmask = document.getElementById('cutmask');
+  var cutnote = document.getElementById('cutnote');
+  var SCHICHTEN = [
+    {bis:8,  name:'Pflasterstein', text:'Das ist der Teil, den Sie sehen.'},
+    {bis:12, name:'Splitt',        text:'Vier Zentimeter Bett. Hier wird der Stein eingerüttelt.'},
+    {bis:42, name:'Schotter',      text:'Die Tragschicht. Hier entscheidet sich alles.'},
+    {bis:55, name:'Planum',        text:'Der gewachsene Boden, verdichtet und mit Gefälle.'}
+  ];
+  var lastCm=-1, lastName='';
+  function renderCut(){
+    var cm = Number(cut.value);
+    if (cm === lastCm) return;
+    lastCm = cm;
+    cutmask.style.setProperty('--cut', (cm/55*100).toFixed(1)+'%');
+    cutmask.setAttribute('data-depth', cm + ' cm');
+    var s = SCHICHTEN[SCHICHTEN.length-1];
+    for (var i=0;i<SCHICHTEN.length;i++){ if (cm <= SCHICHTEN[i].bis){ s = SCHICHTEN[i]; break; } }
+    if (s.name !== lastName){
+      lastName = s.name;
+      cutnote.innerHTML = '<b></b>';
+      cutnote.firstChild.textContent = s.name;
+      cutnote.appendChild(document.createTextNode(s.text));
+    }
+  }
+  if (cut){ cut.addEventListener('input', renderCut); renderCut(); }
+
+  /* ================= Formular ================= */
+  var form = document.getElementById('form');
+  if (form){
+    var nameF = document.getElementById('name'), kontaktF = document.getElementById('kontakt');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var bad = null;
+      if (!nameF.value.trim()) bad = nameF;
+      else if (kontaktF.value.trim().length < 5) bad = kontaktF;
+      if (bad){
+        bad.setAttribute('aria-invalid','true');
+        bad.style.borderColor = '#a6412c';
+        bad.focus();
+        return;
+      }
+      form.classList.add('done');
+      document.getElementById('success').style.display='flex';
+    });
+    [nameF, kontaktF].forEach(function(f){
+      f.addEventListener('input', function(){ f.removeAttribute('aria-invalid'); f.style.borderColor=''; });
+    });
+  }
+
+  /* ================= Reduzierte Bewegung, in beide Richtungen ================= */
+  function pinToFinalStates(){
+    [].forEach.call(document.querySelectorAll('.rise,.layers'), function(el){ el.classList.add('in'); });
+    [].forEach.call(document.querySelectorAll('.stagger,.sec-head'), function(el){ el.classList.add('done'); });
+    document.body.classList.add('pinned');
+    if (cut) { lastCm = -1; renderCut(); }
+  }
+  function unpinFinalStates(){ document.body.classList.remove('pinned'); }
+  if (reduceQ.addEventListener){
+    reduceQ.addEventListener('change', function(e){
+      if (e.matches) pinToFinalStates(); else applyHeroMode();
+    });
+  }
+  if (reduceQ.matches) pinToFinalStates();
+
+  applyHeroMode();
+})();
+</script>
+</body>
+</html>
