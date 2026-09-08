@@ -55,7 +55,7 @@ Abendsonne von rechts, die Fugen treten hervor, zum Schluss steht sie dicht übe
 |---|---|---|---|---|
 | 1 | 0.00 bis 0.17 | hoch über der Fläche, Muster noch grob | **„Das Schöne sieht man. Das Wichtige nicht."** / „Alex Stadelmann, Außenanlagen im Raum Pfullendorf." | Drift-down, die Wörter sinken wie die Kamera |
 | 2 | 0.21 bis 0.44 | die Fläche kommt näher, Fugen werden scharf | **„Pflaster hält nicht oben. Pflaster hält unten."** / „Schotter, Splitt, Gefälle. In dieser Reihenfolge." | Grid-Snap, Zeichen rasten der Reihe nach ein |
-| 3 | 0.48 bis 0.70 | dicht über der Fläche, Licht streift die Kanten | **„Bagger, Erde, Stein. Alles aus einer Hand."** / „Kein Nachunternehmer, der sich nicht meldet." | Word-Punch auf „Alles aus einer Hand" |
+| 3 | 0.48 bis 0.70 | dicht über der Fläche, Licht streift die Kanten | **„Bagger, Erde, Stein. Alles von mir."** / „Kein Nachunternehmer, der sich nicht meldet." | Word-Punch auf „von mir" |
 | 4 | 0.74 bis 1.00 | steht still, Rasenkante und lange Schatten | **„Ich schaue es mir an. Dann bekommen Sie es schriftlich."** / „Besichtigung kostenlos, Angebot mit einzelnen Positionen." / CTA: **Termin anfragen** | Wort-für-Wort-Aufstieg, dann Subline, dann CTA |
 
 Aktionsspur: Die gepflasterte Fläche liegt rechts, links läuft der Rasen mit. Alle Bänder sitzen

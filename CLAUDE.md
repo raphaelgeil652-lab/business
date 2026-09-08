@@ -30,8 +30,8 @@ Gebaute Webseiten liegen unter `nischen/<name>/`, weil der Nutzer dort sucht. Au
 `seite/` (das, was online geht), `vorschau/` (eine Datei zum Herzeigen, erzeugt von `tools/`),
 `arbeitsdateien/` (Rohmaterial, bleibt lokal) und `design-paket.md` (der Plan vor der Generierung).
 
-**Erste gebaute Seite: `nischen/tagwerk/`**, eine Demo für eine erfundene Kaffeemarke. Kein Kunde,
-kein Auftrag, reines Vorzeige-Stück für den Webseitenbau.
+Gebaute Seiten: **`nischen/tagwerk/`** (Demo, erfundene Kaffeemarke) und
+**`nischen/alex-aussenanlagen/`** (echter Kunde, Pfullendorf).
 
 ## Zwei Nischen, zwei Ordner
 
@@ -121,6 +121,15 @@ Gehört zum **Webseitenbau**, nicht zur Agentur. Scroll-Film-Seite nach `10k-web
 `seite/` (index.html + assets, nur das geht online), `vorschau/tagwerk-komplett.html` (alles
 eingebettet, für den Öffnen-Knopf), `tools/vorschau-bauen.py`, `arbeitsdateien/`, `design-paket.md`.
 Nach jeder Änderung an `seite/` die Vorschau neu bauen.
+
+### `nischen/alex-aussenanlagen/` — Webseite für Alex Stadelmann (Pfullendorf)
+Gehört zum **Webseitenbau**, nicht zur Agentur. Echtes Unternehmen: Garten- und Außenanlagen,
+Bagger- und Erdarbeiten, Pflaster. Aufbau wie bei Tagwerk (`seite/`, `vorschau/`, `tools/`,
+`arbeitsdateien/`, `design-paket.md`).
+
+**Weil das Unternehmen echt ist, wurde nichts erfunden:** keine Kundenstimmen, keine Preise, keine
+Kontaktdaten. Diese Stellen sind sichtbare Platzhalter. Vor dem Livegang fehlen noch Telefon,
+E-Mail, Impressum und Datenschutz sowie echte Fotos.
 
 ### `nischen/chinatown/` — Einzelkunde China Restaurant Chinatown
 Liegt bewusst unter `nischen/`, weil der Nutzer dort sucht — inhaltlich ist es **keine Nische**,

@@ -10,6 +10,7 @@ Diese Startseite ist deine Übersicht.
 | 🚗 **Kfz-Betriebe** (Werkstätten, Aufbereiter, Folierer) | **aktiver Fokus** | [`nischen/autowerkstaetten/`](nischen/autowerkstaetten/) |
 | 🍳 Küchenstudios | zurückgestellt (vollständig erhalten) | [`nischen/kuechenstudios/`](nischen/kuechenstudios/) |
 | ☕ **Tagwerk** (Demo-Webseite, erfundene Kaffeemarke) | Vorzeige-Stück für Webseitenbau | [`nischen/tagwerk/`](nischen/tagwerk/) |
+| 🌿 **Alex Außenanlagen** (Pfullendorf) | Webseiten-Kunde: Garten, Erdarbeiten, Pflaster | [`nischen/alex-aussenanlagen/`](nischen/alex-aussenanlagen/) |
 
 ---
 
@@ -56,6 +57,19 @@ kommen daneben rein. Alles erfunden, kein echter Kunde. Details: [`nischen/tagwe
 |---|---|
 | **Die komplette Seite** ⭐ Langsam nach unten scrollen, der Film ist ans Scrollen gekoppelt. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/tagwerk/vorschau/tagwerk-komplett.html)** |
 
+### 🌿 Alex Außenanlagen — Webseite (Pfullendorf)
+
+Alex Stadelmann: Garten- und Außenanlagen, Bagger- und Erdarbeiten, Pflaster. Beim Scrollen sinkt
+die Kamera über einem Garten herab. Details und die offenen Punkte:
+[`nischen/alex-aussenanlagen/`](nischen/alex-aussenanlagen/)
+
+| Was | Öffnen |
+|---|---|
+| **Die komplette Seite** ⭐ Langsam nach unten scrollen. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/alex-aussenanlagen/vorschau/alex-komplett.html)** |
+
+> Noch nicht online tauglich: Telefon, E-Mail, Impressum und Datenschutz fehlen, die Bilder sind
+> Platzhalter. Alles andere steht.
+
 ### 🍳 Küchenstudios — zurückgestellt
 
 | Seite | Öffnen |
@@ -75,6 +89,7 @@ kommen daneben rein. Alles erfunden, kein echter Kunde. Details: [`nischen/tagwe
 | 📂 [nischen/kuechenstudios/](nischen/kuechenstudios/) | Die zurückgestellte Nische, komplett erhalten | selten |
 | 📂 **[nischen/chinatown/](nischen/chinatown/)** | Einzelkunde China Restaurant Chinatown: Flyer + Webseite | bei Kundenarbeit |
 | 📂 **[nischen/tagwerk/](nischen/tagwerk/)** | Demo-Webseite Tagwerk: das Vorzeige-Stück für Webseitenbau | zum Herzeigen |
+| 📂 **[nischen/alex-aussenanlagen/](nischen/alex-aussenanlagen/)** | Webseite für Alex Stadelmann, Pfullendorf | bei Kundenarbeit |
 | 📂 [anleitungen/](anleitungen/) | Wie-geht-was: Meta, Google, Hosting, n8n — **gilt für beide Nischen** | bei Bedarf |
 | 📂 [grundlagen/](grundlagen/) | Playbook, Einsteiger-Überblick, Lern-System — **gilt für beide Nischen** | nachschlagen |
 
