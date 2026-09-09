@@ -6,6 +6,11 @@ Pflasterarbeiten im Raum Pfullendorf.
 Beim Scrollen sinkt die Kamera über einem Garten herab und kommt dicht an der Kante zur Ruhe,
 wo die Platte an die Bepflanzung stößt. Darunter beginnt die echte Seite.
 
+**Der Film ist das Hauptelement der Seite.** Über dem Bild liegt kein Schleier, es läuft in voller
+Farbe durch, und es gibt nur zwei Textmomente: einen beim Einstieg und einen, wenn die Fahrt steht.
+Dazwischen ist nichts eingeblendet. Der Text sitzt jeweils auf einem eigenen dunklen Schild, statt
+das Bild für ihn aufzuhellen.
+
 Gebaut nach dem Ablauf aus dem Skill `10k-websites`.
 
 ---
@@ -22,8 +27,9 @@ Gebaut nach dem Ablauf aus dem Skill `10k-websites`.
 > von allein. **Auf dem Handy** siehst du bewusst ein Standbild statt der Fahrt, das hält die Seite
 > dort schnell.
 
-Die Vorschau enthält alles eingebettet und läuft auch ohne Internet. 7,8 MB, das erste Öffnen
-dauert einen Moment.
+Die Vorschau enthält alles eingebettet und läuft auch ohne Internet. 8,0 MB. Das erste Öffnen
+dauert gemessen rund 15 bis 20 Sekunden, bis alle Einzelbilder entpackt sind. Der Ladering unten
+zeigt den Fortschritt. Solange er noch läuft, wirkt die Fahrt stockend, danach nicht mehr.
 
 ---
 
@@ -34,7 +40,7 @@ dauert einen Moment.
 | **Telefon, E-Mail, Anschrift** | sichtbarer Platzhalter im Footer. Das Formular zeigt nur seine Danke-Zeile und verschickt nichts. |
 | **Impressum und Datenschutz** | Hinweis im Footer. Beides ist in Deutschland Pflicht. |
 | **Echte Fotos** | Hinweis, dass Bilder und Fahrt KI-erzeugt sind. Sie sind als Platzhalter gedacht. |
-| **Echte Kundenstimmen** | bewusst keine erfunden. Stattdessen drei Zusagen, die Alex selbst geben kann. |
+| **Echte Kundenstimmen** | bewusst keine erfunden. Stattdessen drei Zusagen über dem Formular, die Alex selbst geben kann. |
 | **Preise** | keine Zahlen auf der Seite. Die Frage nach dem Quadratmeterpreis wird ehrlich beantwortet, ohne eine Zahl zu behaupten. |
 
 Nichts davon ist erfunden worden. Sobald Alex die Angaben schickt, sind es kleine Änderungen.
@@ -64,16 +70,22 @@ python3 tools/vorschau-bauen.py
 - **Der Hero ist eine Bildfolge auf einer Zeichenfläche**, kein Video. Grund ist eine Messung aus
   dem vorigen Projekt: bei einem Video muss der Browser für jede Scrollposition neu hinspringen,
   dabei kamen nur 4 bis 10 Bilder pro Sekunde an. Eine Bildfolge kostet 0,01 Millisekunden pro Bild.
-  Zwischen zwei Einzelbildern wird überblendet. Gemessen: **140 verschiedene Bildzustände in 142
+  Zwischen zwei Einzelbildern wird überblendet. Gemessen: **149 verschiedene Bildzustände in 151
   Bildschirm-Takten**.
+- **Die Fahrt ist lang:** 900vh Scrollweg. Sie ist nicht nach ein paar Wischern vorbei, sondern
+  trägt die halbe Seite.
 - **Die Landung ist gebaut, nicht gefilmt.** Der Generator ließ die Kamera bis zum Schluss gleich
   schnell fahren. Deshalb bremst die Steuerung: das letzte Viertel Scrollweg verlangsamt
   gleichmäßig bis zum Stillstand.
+- **Kein Filter über dem Bild.** Weder ein aufhellender Schleier noch eine Vignette. Der Text
+  bringt seinen Kontrast über sein eigenes dunkles Schild mit, und die Navigation über eine
+  schmale dunkle Leiste, die nur über dem Film erscheint.
 - **Gewicht:** die Seite selbst wiegt gut 1 MB inklusive Schriften und aller Abschnittsbilder.
   Die Bildfolge wiegt 7,6 MB und lädt hinter dem Ladering nach, während die Seite schon benutzbar
   ist. Handys laden sie nie.
 - Schriften liegen im Projekt, es geht keine Anfrage an Google.
 - Ohne die Bildfolge ist die Seite trotzdem vollständig.
-- **Lesbarkeit gemessen, nicht geschätzt:** dunkle Schrift auf hellem Bild, also zählt das
-  dunkelste Pixel unter dem Text. Pro Band 7,5 · 7,6 · 7,6 · 7,4 zu 1, auf dem Handy 9,6.
-  Der Boden liegt bei 3,5.
+- **Lesbarkeit gemessen, nicht geschätzt:** helle Schrift auf dunklem Schild, also zählt das
+  hellste Pixel unter dem Text. Schild 1: 13,7 zu 1 (Überschrift) und 12,0 (Fließtext),
+  Schild 2: 11,3 und 9,9, auf dem Handy 11,2. Die Navigation über dem Film liegt zwischen
+  5,5 und 13,3. Der Boden ist 3,5.

@@ -51,22 +51,43 @@ und es passt zu draußen.
 Der Film: die Kamera sinkt langsam senkrecht auf eine frisch gepflasterte Fläche am Rasenrand,
 Abendsonne von rechts, die Fugen treten hervor, zum Schluss steht sie dicht über der Fläche still.
 
-| Band | Bereich (Startwert) | Moment im Film | Copy (wortgleich) | Entrance |
-|---|---|---|---|---|
-| 1 | 0.00 bis 0.17 | hoch über der Fläche, Muster noch grob | **„Das Schöne sieht man. Das Wichtige nicht."** / „Alex Stadelmann, Außenanlagen im Raum Pfullendorf." | Drift-down, die Wörter sinken wie die Kamera |
-| 2 | 0.21 bis 0.44 | die Fläche kommt näher, Fugen werden scharf | **„Pflaster hält nicht oben. Pflaster hält unten."** / „Schotter, Splitt, Gefälle. In dieser Reihenfolge." | Grid-Snap, Zeichen rasten der Reihe nach ein |
-| 3 | 0.48 bis 0.70 | dicht über der Fläche, Licht streift die Kanten | **„Bagger, Erde, Stein. Alles von mir."** / „Kein Nachunternehmer, der sich nicht meldet." | Word-Punch auf „von mir" |
-| 4 | 0.74 bis 1.00 | steht still, Rasenkante und lange Schatten | **„Ich schaue es mir an. Dann bekommen Sie es schriftlich."** / „Besichtigung kostenlos, Angebot mit einzelnen Positionen." / CTA: **Termin anfragen** | Wort-für-Wort-Aufstieg, dann Subline, dann CTA |
+**Der Film ist das Hauptelement, nicht die Kulisse.** Deshalb liegt über dem Bild an keiner Stelle
+ein Schleier, und es gibt nur **zwei** Textmomente statt vieler kurzer Einblendungen. Dazwischen
+läuft die Fahrt ohne jede Überlagerung durch. Der Scrollweg ist 900vh lang, damit sie trägt.
 
-Aktionsspur: Die gepflasterte Fläche liegt rechts, links läuft der Rasen mit. Alle Bänder sitzen
-links auf der ruhigen Rasenfläche, Band 4 rückt nach unten.
+| Schild | Bereich | Moment im Film | Copy (wortgleich) | Entrance |
+|---|---|---|---|---|
+| 1 | 0.00 bis 0.12 | hoch über der Fläche, Muster noch grob | Kicker: `ALEX STADELMANN` / **„Das Schöne sieht man. Das Wichtige nicht."** / „Alex Stadelmann, Außenanlagen im Raum Pfullendorf." | Drift-down, die Wörter sinken wie die Kamera |
+| frei | 0.12 bis 0.80 | die Fläche kommt näher, Fugen werden scharf, Licht streift die Kanten | **kein Text** | — |
+| 2 | 0.80 bis 1.00 | steht still, Rasenkante und lange Schatten | **„Ich schaue es mir an. Dann bekommen Sie es schriftlich."** / „Besichtigung kostenlos, Angebot mit einzelnen Positionen." / CTA: **Termin anfragen** · **Wie ich baue** | Wort-für-Wort-Aufstieg, dann Subline, dann CTA |
+
+**Das Schild** ist das einzige Element, das das Bild berührt: eine kompakte dunkle Fläche in
+Basalt (`rgba(21,25,19,.9)`) mit heller Schrift und einer Kante in Ocker links, nur so groß wie
+der Text selbst, unten links auf der ruhigen Rasenfläche. Es bringt seinen Kontrast selbst mit,
+statt das Bild aufzuhellen.
+
+Zwei Sprüche sind aus der ersten Fassung ersatzlos gestrichen („Pflaster hält nicht oben.
+Pflaster hält unten." und „Bagger, Erde, Stein. Alles von mir."). Ihre Inhalte stehen weiter
+unten auf der Seite ohnehin: der Unterbau im Abschnitt „Der Aufbau", die eigene Maschine in den
+Leistungen.
+
+**Die Navigation** bekommt über dem Film dasselbe Material: eine schmale dunkle Leiste mit heller
+Schrift, die nach unten ausläuft. Grund ist eine Messung, keine Vorliebe: das Laub unter der
+Zeile hat gleichzeitig fast weiße und fast schwarze Stellen, an denen weder dunkle noch helle
+Schrift allein trägt. Unterhalb des Films kippt die Leiste zurück auf dunkle Schrift über hellem
+Grund.
+
+**Der Film hört nicht abrupt auf:** der erste Abschnitt darunter („Der Aufbau") trägt das
+Schlussbild als eigene Ebene weiter und blendet es in den Kalkstein-Ton aus. Als Ebene innerhalb
+der Sektion, nicht mit `background-attachment:fixed`, weil das auf iPhones ruckelt.
 
 ## 5. Statisches Hero (Handy, reduzierte Bewegung)
 
 - Headline: **„Ich schaue es mir an. Dann bekommen Sie es schriftlich."**
 - Subline: „Alex Stadelmann, Außenanlagen im Raum Pfullendorf. Pflaster, Erdarbeiten, Garten."
-- CTA: **Termin anfragen**
-- Hintergrund: das Schlussbild des Films.
+- CTA: **Termin anfragen** · **Wie ich baue**
+- Hintergrund: das Schlussbild des Films, unangetastet. Der Text sitzt auf demselben Schild wie
+  im Film, es liegt keine Aufhellung über dem Bild.
 
 ## 6. Was unter dem Hero kommt
 
@@ -144,19 +165,19 @@ und der Satz zur Bildherkunft (siehe unten).
 Wie bei Tagwerk, inklusive der dort gemessenen Abweichung: **der Hero läuft als Bildfolge auf
 einer Zeichenfläche mit Überblendung zwischen den Einzelbildern**, nicht als Video. Dazu
 dt-normalisierter Lerp mit ruhender rAF-Schleife, DOM-Schreibzugriffe nur bei Änderung,
-Band-Pacing mit Flick-Test, vierschichtiges Lesbarkeits-System (hier auf hellem Grund, also
-helle Aufheller statt dunkler Scrims), die fünf Gates für das statische Hero live über
-change-Listener, Seite komplett ohne die Bildfolge, Schriften im Projekt, Qualitätsboden.
+Band-Pacing mit Flick-Test, die fünf Gates für das statische Hero live über change-Listener,
+Seite komplett ohne die Bildfolge, Schriften im Projekt, Qualitätsboden.
 
-**Achtung, anderer Grund als bei Tagwerk:** Die Seite ist hell, der Film ist hell. Text über dem
-Bild wird deshalb **dunkel** gesetzt, und die Bänder bekommen einen hellen Schleier statt eines
-dunklen. Der Kontrast wird genauso gemessen, Boden 3,5 zu 1.
+**Achtung, anderer Weg als bei Tagwerk:** Der Film ist hell und stark. Statt das Bild für den
+Text aufzuhellen, bekommt der Text seine eigene dunkle Fläche. Über dem Bild liegt nichts.
+Der Kontrast wird genauso gemessen, Boden 3,5 zu 1, und weil die Schrift jetzt hell auf dunkel
+sitzt, zählt das **hellste** Pixel unter dem Text statt des dunkelsten.
 
 ## 9. Das Copy-Gate
 
 Jede Zeile oben geht wortgleich in den Build. Vor der ersten Vorschau muss `index.html` durch das
 Gate: null Gedankenstriche, null Floskeln, dazu der Durchgang gegen die leiseren KI-Marker.
-Absichtliche Marken-Figuren bleiben, zum Beispiel „Pflaster hält nicht oben. Pflaster hält unten."
+Absichtliche Marken-Figuren bleiben, zum Beispiel „Das Schöne sieht man. Das Wichtige nicht."
 
 ## 10. Offenlegung der Bilder
 

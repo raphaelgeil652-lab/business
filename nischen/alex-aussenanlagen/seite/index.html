@@ -97,6 +97,17 @@ main{position:relative;z-index:2}
   opacity:0;transition:opacity .5s var(--ease)
 }
 .nav.solid::before{opacity:1}
+/* Über dem Film trägt die Navigation helle Schrift auf dem dunklen Hauch.
+   Kein aufhellender Kasten über dem Bild. Unterhalb des Films kippt sie zurück
+   auf dunkle Schrift mit hellem Grund. */
+/* Über dem Film bekommt die Navigation dasselbe Material wie die Textschilder:
+   eine schmale dunkle Fläche mit heller Schrift, die unten ausläuft. Gemessen, weil
+   das Laub unter der Zeile gleichzeitig fast weiße und fast schwarze Stellen hat,
+   an denen weder dunkle noch helle Schrift allein trägt. Unterhalb des Films kippt
+   die Leiste zurück auf dunkle Schrift über hellem Grund. */
+.nav.overfilm{--ink:#ece7dd;--ink-soft:#cbc6b9;--line:rgba(236,231,221,.45);color:var(--ink)}
+.nav.overfilm::before{opacity:1;
+  background:linear-gradient(180deg,rgba(18,21,16,.9),rgba(18,21,16,.86) 62%,rgba(18,21,16,0))}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
 .brand .mark{width:30px;height:34px;flex:none}
 .brand b{font-family:var(--display);font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.05}
@@ -118,6 +129,8 @@ main{position:relative;z-index:2}
 .btn:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 22px -10px rgba(25,28,23,.5)}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink);box-shadow:none}
 .btn.ghost:hover{background:var(--ink);color:var(--canvas)}
+.plate .btn.ghost{color:var(--canvas);border-color:rgba(236,231,221,.5)}
+.plate .btn.ghost:hover{background:var(--canvas);color:var(--ink);border-color:var(--canvas)}
 @media (pointer:coarse){.btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}}
 @media (max-width:560px){
   .nav{padding:12px 0}
@@ -126,7 +139,7 @@ main{position:relative;z-index:2}
 }
 
 /* ---------- Hero ---------- */
-.hero{position:relative;height:560vh;z-index:2}
+.hero{position:relative;height:900vh;z-index:2}
 .stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--panel-2)}
 .stage .poster{position:absolute;inset:0;background-size:cover;background-position:50% 50%}
 .stage canvas{
@@ -134,11 +147,8 @@ main{position:relative;z-index:2}
   opacity:0;transition:opacity .8s var(--ease);will-change:transform;transform:translateZ(0)
 }
 .stage.video-ready canvas{opacity:1}
-/* Grundschleier: hellt das Bild links auf, damit dunkle Schrift immer traegt */
-.scrim{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(95deg,rgba(236,231,221,.80) 0%,rgba(236,231,221,.55) 30%,rgba(236,231,221,0) 62%)}
-.vignette{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(236,231,221,.75),rgba(236,231,221,0) 26%,rgba(236,231,221,0) 68%,rgba(236,231,221,.55))}
+/* Kein Schleier ueber dem Bild, an keiner Stelle. Der Garten laeuft in voller
+   Farbe durch. Die Navigation loest ihre Lesbarkeit ueber sich selbst, siehe .overfilm. */
 
 /* Ladering */
 .ring{position:absolute;left:50%;bottom:40px;transform:translateX(-50%);width:42px;height:42px;color:var(--ink);opacity:.7;z-index:6}
@@ -156,33 +166,33 @@ main{position:relative;z-index:2}
 .bands{position:absolute;inset:0;z-index:5}
 .band{
   position:absolute;left:0;top:0;width:100%;height:100%;
-  display:flex;flex-direction:column;justify-content:center;
-  padding-left:max(6vw,calc(50vw - 590px));padding-right:6vw;
-  opacity:0;text-shadow:var(--tshadow);pointer-events:none
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 6vw 12vh max(6vw,calc(50vw - 590px));
+  opacity:0;pointer-events:none
+}
+/* Das Schild: eine kompakte dunkle Flaeche, nur so gross wie der Text.
+   Es liegt auf dem Bild statt es aufzuhellen, und bringt seinen Kontrast selbst mit. */
+.plate{
+  background:rgba(21,25,19,.9);color:var(--canvas);
+  padding:clamp(22px,2.4vw,34px) clamp(24px,2.6vw,40px);
+  border-radius:5px;border-left:3px solid var(--accent);
+  width:fit-content;max-width:min(92%,660px);
+  backdrop-filter:blur(3px);
+  box-shadow:0 24px 60px -30px rgba(15,18,13,.7)
 }
 .band .btn{text-shadow:none}
-/* Heller Band-Schleier: liegt links unter dem Text und laeuft nach rechts aus */
-.band::before{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
-  opacity:calc(.3 + .7*var(--k,1));
-  background:linear-gradient(to right,rgba(240,236,228,.9) 0%,rgba(240,236,228,.78) 32%,rgba(240,236,228,.4) 54%,rgba(240,236,228,0) 72%)
-}
-.band.b4{justify-content:flex-end;padding-bottom:13vh}
-.band.b4::before{background:linear-gradient(8deg,rgba(240,236,228,.9) 0%,rgba(240,236,228,.74) 34%,rgba(240,236,228,.34) 58%,rgba(240,236,228,0) 76%)}
-.band h2{font-size:clamp(31px,5vw,66px);line-height:1.02}
-.band .headline{display:block;width:13ch;max-width:100%}
-.band.b4 .headline{width:15ch}
-.band .lead{margin-top:16px;font-size:clamp(16px,1.3vw,20px);color:var(--ink);width:27ch;max-width:100%}
-.band .row{display:flex;gap:12px;align-items:center;margin-top:26px;pointer-events:auto;flex-wrap:wrap}
+.band h2{font-size:clamp(29px,4.4vw,58px);line-height:1.03;color:var(--canvas)}
+.band .headline{display:block;width:14ch;max-width:100%}
+.band.b4 .headline{width:16ch}
+.band .lead{margin-top:14px;font-size:clamp(16px,1.2vw,19px);color:#ded9cd;width:30ch;max-width:100%}
+.band .kicker{color:var(--accent)}
+.band .row{display:flex;gap:12px;align-items:center;margin-top:24px;pointer-events:auto;flex-wrap:wrap}
 .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
   color:var(--green);margin-bottom:16px;display:inline-block}
 .chip{background:rgba(246,243,236,.82);border:1px solid var(--line);border-radius:3px;
   backdrop-filter:blur(8px);padding:6px 11px;font-family:var(--mono);font-size:10px;
   letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
-.hud{position:absolute;right:max(6vw,calc(50vw - 590px));top:50%;transform:translateY(-50%);z-index:6;
-  display:flex;flex-direction:column;gap:9px;align-items:flex-end;
-  opacity:var(--hud,1);transition:opacity .6s var(--ease)}
-@media (max-height:560px){.cue,.hud{display:none}}
+@media (max-height:560px){.cue{display:none}}
 
 /* Wort- und Zeichen-Spans */
 .w{display:inline-block;white-space:pre}
@@ -207,12 +217,10 @@ main{position:relative;z-index:2}
 
 /* Statisches Hero */
 .static-hero{position:absolute;inset:0;z-index:7;display:none;flex-direction:column;justify-content:flex-end;
-  padding:0 6vw 15vh;text-shadow:var(--tshadow)}
-.static-hero h1{font-size:clamp(30px,7.6vw,52px);width:15ch;max-width:100%}
-.static-hero p{margin-top:14px;width:28ch;max-width:100%}
-.static-hero .row{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
-.static-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(236,231,221,.25) 0%,rgba(236,231,221,.62) 44%,rgba(236,231,221,.93) 100%)}
+  padding:0 5vw 8vh}
+.static-hero h1{font-size:clamp(28px,7vw,48px);width:15ch;max-width:100%;color:var(--canvas)}
+.static-hero p{margin-top:12px;width:30ch;max-width:100%;color:#ded9cd}
+.static-hero .row{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
 
 /* Die fünf Gates: identisch in CSS und JS */
 @media (max-width:720px),
@@ -221,19 +229,27 @@ main{position:relative;z-index:2}
        (orientation:landscape) and (pointer:coarse) and (max-height:560px),
        (prefers-reduced-motion:reduce){
   .hero{height:100vh}
-  .bands,.ring,.cue,.hud{display:none}
+  .bands,.ring,.cue{display:none}
   .static-hero{display:flex}
   .stage .poster{background-image:url('assets/hero-ending.jpg');background-position:60% 60%}
 }
 
 /* ---------- Sektionen ---------- */
 section{position:relative}
-.sec{padding:clamp(84px,12vh,150px) 0}
+.sec{padding:clamp(64px,8vh,110px) 0}
 .sec h2{font-size:clamp(28px,4.2vw,54px)}
 .lede{color:var(--ink-soft);font-size:clamp(16px,1.1vw,19px);width:52ch;max-width:100%}
 .rule{height:1px;background:var(--line);border:0;margin:0}
 
-/* A: Der Aufbau, zwei Spalten mit dem Schichtbild rechts */
+/* A: Der Aufbau. Das Schlussbild laeuft hier als Ebene weiter, damit der Film
+   nicht abrupt aufhoert. Eigene Ebene statt background-attachment:fixed, das
+   ruckelt auf iPhones. */
+#aufbau{overflow:hidden}
+#aufbau .holdover{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url('assets/hero-ending.jpg') center 30%/cover no-repeat}
+#aufbau .holdover::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(236,231,221,.74) 0%,rgba(236,231,221,.88) 42%,var(--canvas) 88%)}
+#aufbau .wrap{position:relative;z-index:1}
 #aufbau .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,76px);align-items:center}
 @media (max-width:900px){#aufbau .grid{grid-template-columns:1fr}}
 .layers{width:100%;max-width:520px;margin-inline:auto}
@@ -307,12 +323,12 @@ section{position:relative}
 .leist p{color:var(--ink-soft)}
 
 /* E: Drei Zusagen */
-#zusagen{background:var(--panel);border-block:1px solid var(--line)}
-.zusagen{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);margin-top:40px}
+.zusagen{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,34px);
+  margin:34px 0 6px;padding-top:28px;border-top:1px solid var(--line)}
 @media (max-width:860px){.zusagen{grid-template-columns:1fr}}
 .zusage{border-left:2px solid var(--green);padding-left:20px}
-.zusage h3{font-size:clamp(19px,1.9vw,24px);margin-bottom:8px}
-.zusage p{color:var(--ink-soft);font-size:16px}
+.zusage h3{font-size:clamp(17px,1.5vw,20px);margin-bottom:6px}
+.zusage p{color:var(--ink-soft);font-size:15px}
 .hinweis{margin-top:34px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);
   border:1px dashed var(--line);border-radius:4px;padding:14px 16px;line-height:1.7}
 
@@ -420,33 +436,23 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     <div class="stage" id="stage">
       <div class="poster" id="poster"></div>
       <canvas id="hero-canvas" width="1440" height="804" aria-hidden="true"></canvas>
-      <div class="scrim" aria-hidden="true"></div>
-      <div class="vignette" aria-hidden="true"></div>
-
-      <div class="hud" aria-hidden="true">
-        <span class="chip" id="hudline">Aufbau 42 cm</span>
-      </div>
 
       <div class="bands" id="bands">
-        <div class="band b1" data-range="0,0.17" data-entrance="drift" data-ramp="0.03">
-          <span class="kicker">Alex Stadelmann</span>
-          <h2><span class="headline" data-split="word">Das Schöne sieht man. Das Wichtige nicht.</span></h2>
-          <p class="lead">Alex Stadelmann, Außenanlagen im Raum Pfullendorf.</p>
+        <div class="band b1" data-range="0,0.12" data-entrance="drift" data-ramp="0.03">
+          <div class="plate">
+            <span class="kicker">Alex Stadelmann</span>
+            <h2><span class="headline" data-split="word">Das Schöne sieht man. Das Wichtige nicht.</span></h2>
+            <p class="lead">Alex Stadelmann, Außenanlagen im Raum Pfullendorf.</p>
+          </div>
         </div>
-        <div class="band b2" data-range="0.21,0.44" data-entrance="grid" data-spread="0.5">
-          <h2><span class="headline" data-split="char">Pflaster hält nicht oben. Pflaster hält unten.</span></h2>
-          <p class="lead">Schotter, Splitt, Gefälle. In dieser Reihenfolge.</p>
-        </div>
-        <div class="band b3" data-range="0.48,0.70" data-entrance="punch">
-          <h2><span class="headline" data-split="word" data-em="mir.">Bagger, Erde, Stein. Alles von mir.</span></h2>
-          <p class="lead">Kein Nachunternehmer, der sich nicht meldet.</p>
-        </div>
-        <div class="band b4" data-range="0.74,1" data-entrance="settle">
-          <h2><span class="headline" data-split="word">Ich schaue es mir an. Dann bekommen Sie es schriftlich.</span></h2>
-          <p class="lead">Besichtigung kostenlos, Angebot mit einzelnen Positionen.</p>
-          <div class="row">
-            <a class="btn" href="#termin">Termin anfragen</a>
-            <a class="btn ghost" href="#aufbau">Wie ich baue</a>
+        <div class="band b4" data-range="0.8,1" data-entrance="settle">
+          <div class="plate">
+            <h2><span class="headline" data-split="word">Ich schaue es mir an. Dann bekommen Sie es schriftlich.</span></h2>
+            <p class="lead">Besichtigung kostenlos, Angebot mit einzelnen Positionen.</p>
+            <div class="row">
+              <a class="btn" href="#termin">Termin anfragen</a>
+              <a class="btn ghost" href="#aufbau">Wie ich baue</a>
+            </div>
           </div>
         </div>
       </div>
@@ -457,11 +463,13 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       </svg>
 
       <div class="static-hero" id="statichero">
-        <h1>Ich schaue es mir an. Dann bekommen Sie es schriftlich.</h1>
-        <p>Alex Stadelmann, Außenanlagen im Raum Pfullendorf. Pflaster, Erdarbeiten, Garten.</p>
-        <div class="row">
-          <a class="btn" href="#termin">Termin anfragen</a>
-          <a class="btn ghost" href="#aufbau">Wie ich baue</a>
+        <div class="plate">
+          <h1>Ich schaue es mir an. Dann bekommen Sie es schriftlich.</h1>
+          <p>Alex Stadelmann, Außenanlagen im Raum Pfullendorf. Pflaster, Erdarbeiten, Garten.</p>
+          <div class="row">
+            <a class="btn" href="#termin">Termin anfragen</a>
+            <a class="btn ghost" href="#aufbau">Wie ich baue</a>
+          </div>
         </div>
       </div>
     </div>
@@ -469,6 +477,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
   <!-- ============ A: DER AUFBAU ============ -->
   <section class="sec" id="aufbau">
+    <div class="holdover" aria-hidden="true"></div>
     <div class="wrap">
       <div class="grid">
         <div class="sec-head">
@@ -586,29 +595,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   </section>
 
   <!-- ============ E: DREI ZUSAGEN ============ -->
-  <section class="sec" id="zusagen">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker rise">Drei Zusagen</span>
-        <h2 class="rise">Woran Sie mich messen können.</h2>
-      </div>
-      <div class="zusagen stagger">
-        <div class="zusage rise">
-          <h3>Ich melde mich zurück.</h3>
-          <p>Am selben Werktag. Auch wenn die Antwort mal nein lautet, weil ich keine Kapazität habe.</p>
-        </div>
-        <div class="zusage rise">
-          <h3>Der Preis steht schriftlich.</h3>
-          <p>Mit einzelnen Positionen, damit Sie vergleichen können.</p>
-        </div>
-        <div class="zusage rise">
-          <h3>Die Fläche bleibt sauber.</h3>
-          <p>Erde weg, Wege gekehrt, Material abgeholt.</p>
-        </div>
-      </div>
-      <p class="hinweis rise">Platzhalter: Echte Kundenstimmen und Fotos von fertigen Flächen kommen hier rein, sobald Alex sie schickt.</p>
-    </div>
-  </section>
 
   <!-- ============ F: FRAGEN ============ -->
   <section class="sec" id="fragen">
@@ -652,6 +638,20 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
           <span class="kicker">Termin</span>
           <h2>Sagen Sie mir, worum es geht.</h2>
           <p class="lede" style="margin-top:16px">Zwei Sätze reichen. Ich melde mich am selben Werktag zurück.</p>
+          <div class="zusagen stagger">
+            <div class="zusage rise">
+              <h3>Ich melde mich zurück.</h3>
+              <p>Am selben Werktag. Auch wenn die Antwort mal nein lautet, weil ich keine Kapazität habe.</p>
+            </div>
+            <div class="zusage rise">
+              <h3>Der Preis steht schriftlich.</h3>
+              <p>Mit einzelnen Positionen, damit Sie vergleichen können.</p>
+            </div>
+            <div class="zusage rise">
+              <h3>Die Fläche bleibt sauber.</h3>
+              <p>Erde weg, Wege gekehrt, Material abgeholt.</p>
+            </div>
+          </div>
           <form id="form" novalidate>
             <label class="field">
               <span>Name</span>
@@ -671,7 +671,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
             <svg width="20" height="20" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5 5.5 11 12 3.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
             Angekommen. Ich melde mich am selben Werktag.
           </p>
-          <p class="formnote">Platzhalter: Das Formular verschickt noch nichts. Sobald Alex' E-Mail-Adresse feststeht, geht die Anfrage direkt an ihn.</p>
+          <p class="formnote">Platzhalter: Das Formular verschickt noch nichts. Sobald Alex' E-Mail-Adresse feststeht, geht die Anfrage direkt an ihn.<br>Platzhalter: Echte Kundenstimmen und Fotos von fertigen Flächen kommen hier rein, sobald Alex sie schickt.</p>
         </div>
       </div>
     </div>
@@ -719,7 +719,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   var heroEl  = document.getElementById('hero');
   var poster  = document.getElementById('poster');
   var ring    = document.getElementById('ring');
-  var hudline = document.getElementById('hudline');
   var bandEls = [].slice.call(document.querySelectorAll('.band'));
 
   var reduceQ = matchMedia('(prefers-reduced-motion:reduce)');
@@ -769,7 +768,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   });
 
   /* ================= Bänder zeichnen ================= */
-  var lastLabel='', lastLabelAt=0, lastHud=1, hudEl=document.querySelector('.hud');
   function updateCaptions(p){
     for (var i=0;i<bands.length;i++){
       var band=bands[i], a=band.a, b=band.b;
@@ -783,16 +781,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       if (Math.abs(op-band.op) > 0.004){ band.op = op; band.el.style.opacity = op.toFixed(3); }
       if (Math.abs(k-band.k) > 0.008){ band.k = k; band.el.style.setProperty('--k', k.toFixed(3)); }
     }
-    var hud = p > 0.72 ? 0 : 1;
-    if (hud !== lastHud){ lastHud = hud; hudEl.style.setProperty('--hud', hud); }
   }
-  function updateHud(p, now){
-    if (now-lastLabelAt < 100) return;
-    var txt = p < 0.44 ? 'Aufbau 42 cm' : (p < 0.74 ? 'Gefälle 2 %' : 'Fertig');
-    if (txt === lastLabel) return;
-    lastLabel = txt; lastLabelAt = now; hudline.textContent = txt;
-  }
-
   /* ================= Das Bild zeichnen ================= */
   var frames = new Array(FRAME_COUNT);
   var lastShownF = -1, wantIndex = 0;
@@ -852,7 +841,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     else rafId=requestAnimationFrame(tick);
     drawProgress(shown);
     updateCaptions(shown);
-    updateHud(shown, now);
   }
   function onScroll(){
     target = heroProgress();
@@ -981,11 +969,17 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
     [].forEach.call(document.querySelectorAll('.rise,.layers'), function(el){ el.classList.add('in'); });
   }
 
-  var nav = document.getElementById('nav'), navSolid=false;
-  addEventListener('scroll', function(){
-    var want = scrollY > 40;
+  var nav = document.getElementById('nav'), navSolid=false, navFilm=false;
+  var heroEl = document.getElementById('hero');
+  function navUpdate(){
+    var film = scrollY < heroEl.offsetHeight - 72;
+    if (film !== navFilm){ navFilm = film; nav.classList.toggle('overfilm', film); }
+    var want = !film && scrollY > 40;
     if (want !== navSolid){ navSolid = want; nav.classList.toggle('solid', want); }
-  }, {passive:true});
+  }
+  addEventListener('scroll', navUpdate, {passive:true});
+  addEventListener('resize', navUpdate, {passive:true});
+  navUpdate();
 
   document.addEventListener('visibilitychange', function(){
     document.body.classList.toggle('paused', document.hidden);
