@@ -27,8 +27,10 @@ keine Kfz-Leitplanken, keine LP-Vorlage und kein Service-Baukasten in einer Webs
 nebenher; `10k-websites` regiert allein.
 
 Gebaute Webseiten liegen unter `nischen/<name>/`, weil der Nutzer dort sucht. Aufbau je Seite:
-`seite/` (das, was online geht), `vorschau/` (eine Datei zum Herzeigen, erzeugt von `tools/`),
-`arbeitsdateien/` (Rohmaterial, bleibt lokal) und `design-paket.md` (der Plan vor der Generierung).
+`seite/` (das, was online geht), `arbeitsdateien/` (Rohmaterial, bleibt lokal) und
+`design-paket.md` (der Plan vor der Generierung). Dazu meist `vorschau/` plus `tools/`, eine
+selbstenthaltende Datei zum Herzeigen — außer wenn der Öffnen-Knopf direkt auf `seite/` zeigen
+kann, siehe Alex.
 
 Gebaute Seiten: **`nischen/tagwerk/`** (Demo, erfundene Kaffeemarke) und
 **`nischen/alex-aussenanlagen/`** (echter Kunde, Pfullendorf).
@@ -124,8 +126,12 @@ Nach jeder Änderung an `seite/` die Vorschau neu bauen.
 
 ### `nischen/alex-aussenanlagen/` — Webseite für Alex Stadelmann (Pfullendorf)
 Gehört zum **Webseitenbau**, nicht zur Agentur. Echtes Unternehmen: Garten- und Außenanlagen,
-Bagger- und Erdarbeiten, Pflaster. Aufbau wie bei Tagwerk (`seite/`, `vorschau/`, `tools/`,
-`arbeitsdateien/`, `design-paket.md`).
+Bagger- und Erdarbeiten, Pflaster. Aufbau: `seite/`, `arbeitsdateien/`, `design-paket.md`.
+
+**Hier keine `vorschau/`:** Der Öffnen-Knopf zeigt direkt auf `seite/index.html` über githack.
+Die selbstenthaltende Vorschau musste den Film auf 820 px herunterrechnen, damit die eine Datei
+nicht zu groß wird, und genau das sah verpixelt aus. Tagwerk und Chinatown behalten ihre
+Vorschauen.
 
 **Weil das Unternehmen echt ist, wurde nichts erfunden:** keine Kundenstimmen, keine Preise, keine
 Kontaktdaten. Diese Stellen sind sichtbare Platzhalter. Vor dem Livegang fehlen noch Telefon,

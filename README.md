@@ -65,7 +65,7 @@ die Kamera über einem Garten herab. Details und die offenen Punkte:
 
 | Was | Öffnen |
 |---|---|
-| **Die komplette Seite** ⭐ Langsam nach unten scrollen. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/alex-aussenanlagen/vorschau/alex-komplett.html)** |
+| **Die komplette Seite** ⭐ Langsam nach unten scrollen. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/alex-aussenanlagen/seite/index.html)** |
 
 > Noch nicht online tauglich: Telefon, E-Mail, Impressum und Datenschutz fehlen, die Bilder sind
 > Platzhalter. Alles andere steht.

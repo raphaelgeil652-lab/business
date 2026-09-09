@@ -208,6 +208,9 @@ main{position:relative;z-index:2}
   opacity:var(--kc);
   transform:scale(calc(0.66 + (0.34 + var(--ov,.1))*var(--kc) - var(--ov,.1)*var(--ks)))}
 [data-entrance="punch"] .w.em{--ov:.2;--sd:.16;--ss:2.6;color:var(--green)}
+/* Auf dem dunklen Schild traegt das Dunkelgruen nicht, gemessen 2,2 zu 1.
+   Dort betont Ocker, dieselbe Farbe wie die Kante des Schilds. */
+.plate .w.em{color:var(--accent)}
 [data-entrance="settle"] .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);
   transform:translateY(calc((1 - var(--kc))*20px))}
 [data-entrance="settle"] .lead{opacity:clamp(0,(var(--k,0) - .58)*4,1);
@@ -438,11 +441,23 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       <canvas id="hero-canvas" width="1440" height="804" aria-hidden="true"></canvas>
 
       <div class="bands" id="bands">
-        <div class="band b1" data-range="0,0.12" data-entrance="drift" data-ramp="0.03">
+        <div class="band b1" data-range="0,0.14" data-entrance="drift" data-ramp="0.03">
           <div class="plate">
             <span class="kicker">Alex Stadelmann</span>
             <h2><span class="headline" data-split="word">Das Schöne sieht man. Das Wichtige nicht.</span></h2>
             <p class="lead">Alex Stadelmann, Außenanlagen im Raum Pfullendorf.</p>
+          </div>
+        </div>
+        <div class="band b2" data-range="0.28,0.46" data-entrance="grid" data-spread="0.5">
+          <div class="plate">
+            <h2><span class="headline" data-split="char">Pflaster hält nicht oben. Pflaster hält unten.</span></h2>
+            <p class="lead">Schotter, Splitt, Gefälle. In dieser Reihenfolge.</p>
+          </div>
+        </div>
+        <div class="band b3" data-range="0.56,0.72" data-entrance="punch">
+          <div class="plate">
+            <h2><span class="headline" data-split="word" data-em="mir.">Bagger, Erde, Stein. Alles von mir.</span></h2>
+            <p class="lead">Kein Nachunternehmer, der sich nicht meldet.</p>
           </div>
         </div>
         <div class="band b4" data-range="0.8,1" data-entrance="settle">
@@ -892,7 +907,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
             }
             if (i === 0 || i === wantIndex || lastShownF < 0){ lastShownF = -1; drawProgress(shown); }
             ring.style.setProperty('--ld', Math.round(126*(1 - done/FRAME_COUNT)));
-            if (done === FRAME_COUNT) ring.style.setProperty('--ld', 0);
+            if (done === FRAME_COUNT) { ring.style.setProperty('--ld', 0); aufwaermen(); }
             arm(); pump();
           };
           img.onerror = function(){
@@ -907,6 +922,22 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
       }
     }
     arm(); pump();
+  }
+  /* ================= Aufwaermen =================
+     Ein Bild zum ERSTEN Mal zu zeichnen kostet das Entpacken, gemessen rund 15 ms.
+     Dasselbe Bild danach: 0 ms. Bei 60 Bildern pro Sekunde stehen 16,7 ms zur
+     Verfuegung, also waere ausgerechnet die erste Fahrt durch den Film abgehackt
+     und jede spaetere fluessig. Deshalb wird nach dem Laden jedes Bild einmal
+     gezeichnet, solange der Nutzer noch oben steht.
+     img.decode() allein reicht dafuer nicht, gemessen zaehlt erst das Zeichnen. */
+  function aufwaermen(){
+    var i = 0;
+    (function weiter(){
+      var f = frames[i++];
+      if (f && f.ok){ try { ctx.drawImage(f.img, 0, 0, FRAME_W, FRAME_H); } catch(e){} }
+      if (i < FRAME_COUNT) requestAnimationFrame(weiter);
+      else { lastShownF = -1; drawProgress(shown); stage.classList.add('sequence-warm'); }
+    })();
   }
   function failSequence(){
     if (stage.classList.contains('video-failed')) return;

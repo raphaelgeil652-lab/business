@@ -52,24 +52,25 @@ Der Film: die Kamera sinkt langsam senkrecht auf eine frisch gepflasterte Fläch
 Abendsonne von rechts, die Fugen treten hervor, zum Schluss steht sie dicht über der Fläche still.
 
 **Der Film ist das Hauptelement, nicht die Kulisse.** Deshalb liegt über dem Bild an keiner Stelle
-ein Schleier, und es gibt nur **zwei** Textmomente statt vieler kurzer Einblendungen. Dazwischen
-läuft die Fahrt ohne jede Überlagerung durch. Der Scrollweg ist 900vh lang, damit sie trägt.
+ein Schleier. Der Scrollweg ist 900vh lang, damit die Fahrt trägt und jedes Schild lange steht.
 
 | Schild | Bereich | Moment im Film | Copy (wortgleich) | Entrance |
 |---|---|---|---|---|
-| 1 | 0.00 bis 0.12 | hoch über der Fläche, Muster noch grob | Kicker: `ALEX STADELMANN` / **„Das Schöne sieht man. Das Wichtige nicht."** / „Alex Stadelmann, Außenanlagen im Raum Pfullendorf." | Drift-down, die Wörter sinken wie die Kamera |
-| frei | 0.12 bis 0.80 | die Fläche kommt näher, Fugen werden scharf, Licht streift die Kanten | **kein Text** | — |
-| 2 | 0.80 bis 1.00 | steht still, Rasenkante und lange Schatten | **„Ich schaue es mir an. Dann bekommen Sie es schriftlich."** / „Besichtigung kostenlos, Angebot mit einzelnen Positionen." / CTA: **Termin anfragen** · **Wie ich baue** | Wort-für-Wort-Aufstieg, dann Subline, dann CTA |
+| 1 | 0.00 bis 0.14 | hoch über der Fläche, Muster noch grob | Kicker: `ALEX STADELMANN` / **„Das Schöne sieht man. Das Wichtige nicht."** / „Alex Stadelmann, Außenanlagen im Raum Pfullendorf." | Drift-down, die Wörter sinken wie die Kamera |
+| 2 | 0.28 bis 0.46 | die Fläche kommt näher, Fugen werden scharf | **„Pflaster hält nicht oben. Pflaster hält unten."** / „Schotter, Splitt, Gefälle. In dieser Reihenfolge." | Grid-Snap, Zeichen rasten der Reihe nach ein |
+| 3 | 0.56 bis 0.72 | dicht über der Fläche, Licht streift die Kanten | **„Bagger, Erde, Stein. Alles von mir."** / „Kein Nachunternehmer, der sich nicht meldet." | Word-Punch auf „mir." |
+| 4 | 0.80 bis 1.00 | steht still, Rasenkante und lange Schatten | **„Ich schaue es mir an. Dann bekommen Sie es schriftlich."** / „Besichtigung kostenlos, Angebot mit einzelnen Positionen." / CTA: **Termin anfragen** · **Wie ich baue** | Wort-für-Wort-Aufstieg, dann Subline, dann CTA |
+
+Zwischen den Schildern läuft die Fahrt ohne Einblendung durch.
 
 **Das Schild** ist das einzige Element, das das Bild berührt: eine kompakte dunkle Fläche in
 Basalt (`rgba(21,25,19,.9)`) mit heller Schrift und einer Kante in Ocker links, nur so groß wie
 der Text selbst, unten links auf der ruhigen Rasenfläche. Es bringt seinen Kontrast selbst mit,
 statt das Bild aufzuhellen.
 
-Zwei Sprüche sind aus der ersten Fassung ersatzlos gestrichen („Pflaster hält nicht oben.
-Pflaster hält unten." und „Bagger, Erde, Stein. Alles von mir."). Ihre Inhalte stehen weiter
-unten auf der Seite ohnehin: der Unterbau im Abschnitt „Der Aufbau", die eigene Maschine in den
-Leistungen.
+**Das betonte Wort auf dem Schild ist Ocker, nicht Grün.** Das Dunkelgrün der Marke war für hellen
+Grund gedacht und kam auf dem Schild gemessen nur auf 2,2 zu 1. Ocker, dieselbe Farbe wie die
+Kante des Schilds, liegt bei 6,3.
 
 **Die Navigation** bekommt über dem Film dasselbe Material: eine schmale dunkle Leiste mit heller
 Schrift, die nach unten ausläuft. Grund ist eine Messung, keine Vorliebe: das Laub unter der
@@ -177,7 +178,7 @@ sitzt, zählt das **hellste** Pixel unter dem Text statt des dunkelsten.
 
 Jede Zeile oben geht wortgleich in den Build. Vor der ersten Vorschau muss `index.html` durch das
 Gate: null Gedankenstriche, null Floskeln, dazu der Durchgang gegen die leiseren KI-Marker.
-Absichtliche Marken-Figuren bleiben, zum Beispiel „Das Schöne sieht man. Das Wichtige nicht."
+Absichtliche Marken-Figuren bleiben, zum Beispiel „Pflaster hält nicht oben. Pflaster hält unten."
 
 ## 10. Offenlegung der Bilder
 
