@@ -46,69 +46,63 @@ und es passt zu draußen.
 - **Fließtext: Public Sans** (400, 500). Ruhig, sehr gut lesbar auch bei Sonne auf dem Handy.
 - **Mono: IBM Plex Mono** (400, 600). Trägt die Maße: cm, m², Gefälle, Schichtdicken.
 
-## 4. Die Band-Karte (Hero)
+## 4. Der Hero (Verkaufsseite, kein Film)
 
-Der Film: die Kamera sinkt langsam senkrecht auf eine frisch gepflasterte Fläche am Rasenrand,
-Abendsonne von rechts, die Fugen treten hervor, zum Schluss steht sie dicht über der Fläche still.
+**Der Scroll-Film ist gestrichen.** Der Nutzer wollte ihn nicht mehr, und die Seite ist ohne ihn
+besser dran: das Angebot steht sofort da, statt erst nach mehreren Wischern.
 
-**Der Film ist das Hauptelement, nicht die Kulisse.** Deshalb liegt über dem Bild an keiner Stelle
-ein Schleier. Der Scrollweg ist 900vh lang, damit die Fahrt trägt und jedes Schild lange steht.
+Der Hero ist zweigeteilt. Links der Text auf ruhigem Kalkstein-Grund, rechts das Bild. Der Text
+steht **neben** dem Bild, nicht darauf. Damit braucht das Bild keinen Filter und der Text keinen
+Kontrast-Trick, und die Debatte um Schleier über der Wiese erledigt sich von selbst.
 
-| Schild | Bereich | Moment im Film | Copy (wortgleich) | Entrance |
-|---|---|---|---|---|
-| 1 | 0.00 bis 0.14 | hoch über der Fläche, Muster noch grob | Kicker: `ALEX STADELMANN` / **„Das Schöne sieht man. Das Wichtige nicht."** / „Alex Stadelmann, Außenanlagen im Raum Pfullendorf." | Drift-down, die Wörter sinken wie die Kamera |
-| 2 | 0.28 bis 0.46 | die Fläche kommt näher, Fugen werden scharf | **„Pflaster hält nicht oben. Pflaster hält unten."** / „Schotter, Splitt, Gefälle. In dieser Reihenfolge." | Grid-Snap, Zeichen rasten der Reihe nach ein |
-| 3 | 0.56 bis 0.72 | dicht über der Fläche, Licht streift die Kanten | **„Bagger, Erde, Stein. Alles von mir."** / „Kein Nachunternehmer, der sich nicht meldet." | Word-Punch auf „mir." |
-| 4 | 0.80 bis 1.00 | steht still, Rasenkante und lange Schatten | **„Ich schaue es mir an. Dann bekommen Sie es schriftlich."** / „Besichtigung kostenlos, Angebot mit einzelnen Positionen." / CTA: **Termin anfragen** · **Wie ich baue** | Wort-für-Wort-Aufstieg, dann Subline, dann CTA |
+| Element | Copy (wortgleich) |
+|---|---|
+| Ort (mono) | `PFULLENDORF UND UMGEBUNG` |
+| Headline | **„Pflaster, das nach dem Winter noch liegt."** |
+| Subline | „Alex Stadelmann macht Einfahrten, Terrassen und Wege, den Aushub dazu mit dem eigenen Bagger. Eine Firma, ein Ansprechpartner, ein Termin." |
+| Knöpfe | **Kostenlose Besichtigung anfragen** · **Wie ich baue** |
+| Zeile darunter | „Antwort am selben Werktag. Das Angebot bekommen Sie schriftlich, mit jeder Position einzeln." |
+| Schild am Bild | **„42 cm tief gebaut"** / „Stein, Splitt, Schotter, Planum. Jede Schicht einzeln im Angebot." |
 
-Zwischen den Schildern läuft die Fahrt ohne Einblendung durch.
+Die Headline nennt den Nutzen, nicht die Tätigkeit: was der Kunde fürchtet, ist die Fläche, die
+sich im Frühjahr senkt. Genau dagegen verkauft Alex.
 
-**Das Schild** ist das einzige Element, das das Bild berührt: eine kompakte dunkle Fläche in
-Basalt (`rgba(21,25,19,.9)`) mit heller Schrift und einer Kante in Ocker links, nur so groß wie
-der Text selbst, unten links auf der ruhigen Rasenfläche. Es bringt seinen Kontrast selbst mit,
-statt das Bild aufzuhellen.
+## 5. Die Vertrauensleiste
 
-**Das betonte Wort auf dem Schild ist Ocker, nicht Grün.** Das Dunkelgrün der Marke war für hellen
-Grund gedacht und kam auf dem Schild gemessen nur auf 2,2 zu 1. Ocker, dieselbe Farbe wie die
-Kante des Schilds, liegt bei 6,3.
+Direkt unter dem Hero, vier Punkte, das sind die vier Einwände, die als Erstes kommen:
 
-**Die Navigation** bekommt über dem Film dasselbe Material: eine schmale dunkle Leiste mit heller
-Schrift, die nach unten ausläuft. Grund ist eine Messung, keine Vorliebe: das Laub unter der
-Zeile hat gleichzeitig fast weiße und fast schwarze Stellen, an denen weder dunkle noch helle
-Schrift allein trägt. Unterhalb des Films kippt die Leiste zurück auf dunkle Schrift über hellem
-Grund.
+- **Besichtigung kostenlos** — „Anschauen und aufmessen kostet Sie nichts."
+- **Angebot mit Positionen** — „Kein Pauschalzettel. Sie sehen, wofür Sie zahlen."
+- **Eigener Bagger** — „Erdarbeiten und Pflaster von derselben Person."
+- **Aus der Region** — „Raum Pfullendorf und Landkreis Sigmaringen."
 
-**Der Film hört nicht abrupt auf:** der erste Abschnitt darunter („Der Aufbau") trägt das
-Schlussbild als eigene Ebene weiter und blendet es in den Kalkstein-Ton aus. Als Ebene innerhalb
-der Sektion, nicht mit `background-attachment:fixed`, weil das auf iPhones ruckelt.
-
-## 5. Statisches Hero (Handy, reduzierte Bewegung)
-
-- Headline: **„Ich schaue es mir an. Dann bekommen Sie es schriftlich."**
-- Subline: „Alex Stadelmann, Außenanlagen im Raum Pfullendorf. Pflaster, Erdarbeiten, Garten."
-- CTA: **Termin anfragen** · **Wie ich baue**
-- Hintergrund: das Schlussbild des Films, unangetastet. Der Text sitzt auf demselben Schild wie
-  im Film, es liegt keine Aufhellung über dem Bild.
-
-## 6. Was unter dem Hero kommt
+## 6. Die Reihenfolge darunter
 
 Alles trichtert auf **einen** Anker: `#termin` (das Kontaktformular am Ende).
 
-**Nav:** Alex Außenanlagen · Der Aufbau · So läuft's · Leistungen · Fragen · Button „Termin anfragen"
+**Nav:** Alex Außenanlagen · Leistungen · Der Aufbau · So läuft's · Fragen · Button „Termin anfragen"
 
-**A. Der Aufbau (Übergang aus dem Schlussbild)**
+Reihenfolge nach der Reihenfolge der Fragen: erst „macht der meinen Job", dann „warum der und
+nicht der Billigere", dann „was passiert, wenn ich anfrage", dann die Einwände, dann das Formular.
+
+**A. Leistungen (drei Bildkarten)**
+1. **Pflasterarbeiten** — „Einfahrt, Hofeinfahrt, Terrasse, Wege, Randsteine, Treppen."
+2. **Bagger- und Erdarbeiten** — „Aushub, Planum, Verdichten, Kanalgräben, Abtrag und Auffüllung."
+3. **Garten- und Außenanlagen** — „Rasenflächen, Beete, Hangbefestigung, Zäune, Pflege der Fläche danach."
+
+**B. Der Aufbau**
 - Kicker (mono): `WAS UNTER DEM STEIN LIEGT`
 - Headline: „Eine Einfahrt ist vier Schichten tief."
 - Text: „Oben liegen acht Zentimeter Stein. Darunter Splitt, darunter Schotter, darunter der
   gewachsene Boden mit dem richtigen Gefälle. Wer an der untersten Schicht spart, sieht es nach
   dem ersten Winter. Deshalb steht in meinem Angebot jede Schicht einzeln drin."
 
-**B. So läuft's (drei Schritte, drei Bilder, alle gleich behandelt)**
+**D. So läuft's (drei Schritte, drei Bilder, alle gleich behandelt)**
 1. `SCHRITT 1` — „Ich komme vorbei." — „Wir gehen die Fläche zusammen ab, ich messe auf. Das kostet Sie nichts."
 2. `SCHRITT 2` — „Sie bekommen es schriftlich." — „Jede Position einzeln: Aushub, Schotter, Splitt, Stein, Entsorgung. Kein Pauschalzettel."
 3. `SCHRITT 3` — „Wir bauen." — „Ein fester Termin, ein Ansprechpartner. Am Ende ist die Baustelle sauber."
 
-**C. Der Mitmach-Moment: der Aufbau-Schnitt** (das eine gestaltete Element zum Anfassen)
+**C. Der Mitmach-Moment: der Aufbau-Schnitt** (steht direkt hinter „Der Aufbau", weil es dasselbe Argument zum Anfassen ist)
 - Kicker (mono): `ZIEH DEN SCHNITT AUF`
 - Headline: „Schauen Sie mal drunter."
 - Der Besucher zieht einen Regler und schneidet den Aufbau von oben nach unten auf.
@@ -163,16 +157,16 @@ und der Satz zur Bildherkunft (siehe unten).
 
 ## 8. Die Technik-Liste
 
-Wie bei Tagwerk, inklusive der dort gemessenen Abweichung: **der Hero läuft als Bildfolge auf
-einer Zeichenfläche mit Überblendung zwischen den Einzelbildern**, nicht als Video. Dazu
-dt-normalisierter Lerp mit ruhender rAF-Schleife, DOM-Schreibzugriffe nur bei Änderung,
-Band-Pacing mit Flick-Test, die fünf Gates für das statische Hero live über change-Listener,
-Seite komplett ohne die Bildfolge, Schriften im Projekt, Qualitätsboden.
+Ein einziges HTML-File, kein Framework, kein Build-Schritt. Schriften im Projekt. Auftritte beim
+Scrollen als Einblendung, `prefers-reduced-motion` schaltet sie live in beide Richtungen ab.
+Formular mit Prüfung der Pflichtfelder. Der Aufbau-Regler ist mit Tastatur bedienbar.
 
-**Achtung, anderer Weg als bei Tagwerk:** Der Film ist hell und stark. Statt das Bild für den
-Text aufzuhellen, bekommt der Text seine eigene dunkle Fläche. Über dem Bild liegt nichts.
-Der Kontrast wird genauso gemessen, Boden 3,5 zu 1, und weil die Schrift jetzt hell auf dunkel
-sitzt, zählt das **hellste** Pixel unter dem Text statt des dunkelsten.
+**Gemessen statt geschätzt:** 1.374 KB komplett, Ladezeit lokal 74 ms, 0 Konsolenfehler, der
+Haupt-Knopf endet bei 547 px und steht damit über der Kante, und auf 375, 768 und 1440 px ragt
+Element für Element nichts seitlich heraus.
+
+**Kein Scroll-Film.** Die Bildfolge (12 MB, 141 Einzelbilder) ist entfernt. Sie liegt in der
+Git-Geschichte, falls sie je wieder gebraucht wird.
 
 ## 9. Das Copy-Gate
 

@@ -128,10 +128,13 @@ Nach jeder Änderung an `seite/` die Vorschau neu bauen.
 Gehört zum **Webseitenbau**, nicht zur Agentur. Echtes Unternehmen: Garten- und Außenanlagen,
 Bagger- und Erdarbeiten, Pflaster. Aufbau: `seite/`, `arbeitsdateien/`, `design-paket.md`.
 
-**Hier keine `vorschau/`:** Der Öffnen-Knopf zeigt direkt auf `seite/index.html` über githack.
-Die selbstenthaltende Vorschau musste den Film auf 820 px herunterrechnen, damit die eine Datei
-nicht zu groß wird, und genau das sah verpixelt aus. Tagwerk und Chinatown behalten ihre
-Vorschauen.
+**Kein Scroll-Film.** Der Nutzer hat die Scroll-Animation abbestellt, die Seite ist jetzt eine
+normale Verkaufsseite: Hero mit Angebot über der Kante, Vertrauensleiste, Leistungen, der Unterbau
+als Argument samt Regler zum Anfassen, Ablauf, Fragen, Formular. Alles trichtert auf `#termin`.
+Die alte Bildfolge liegt in der Git-Geschichte.
+
+**Hier keine `vorschau/`:** Der Öffnen-Knopf zeigt direkt auf `seite/index.html` über githack,
+also auf genau das, was online ginge. Tagwerk und Chinatown behalten ihre Vorschauen.
 
 **Weil das Unternehmen echt ist, wurde nichts erfunden:** keine Kundenstimmen, keine Preise, keine
 Kontaktdaten. Diese Stellen sind sichtbare Platzhalter. Vor dem Livegang fehlen noch Telefon,

@@ -3,14 +3,8 @@
 Webseite für **Alex Stadelmann**: Garten- und Außenanlagen, Bagger- und Erdarbeiten,
 Pflasterarbeiten im Raum Pfullendorf.
 
-Beim Scrollen sinkt die Kamera über einem Garten herab und kommt dicht an der Kante zur Ruhe,
-wo die Platte an die Bepflanzung stößt. Darunter beginnt die echte Seite.
-
-**Der Film ist das Hauptelement der Seite.** Über dem Bild liegt kein Schleier, es läuft in voller
-Farbe durch. Vier Textmomente sitzen darauf, jeder auf einem eigenen dunklen Schild, statt das Bild
-für sie aufzuhellen. Zwischen den Schildern läuft die Fahrt ohne Einblendung weiter.
-
-Gebaut nach dem Ablauf aus dem Skill `10k-websites`.
+Eine normale Verkaufsseite: das Angebot steht sofort da, darunter Leistungen, der Unterbau als
+Argument, der Ablauf, die häufigen Fragen und das Formular. **Kein Scroll-Film mehr.**
 
 ---
 
@@ -18,18 +12,29 @@ Gebaut nach dem Ablauf aus dem Skill `10k-websites`.
 
 | Was | Öffnen |
 |---|---|
-| 🌿 **Die komplette Seite** — Scroll-Fahrt, der Aufbau-Schnitt zum Ziehen, Leistungen, Fragen, Kontaktformular. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/alex-aussenanlagen/seite/index.html)** |
+| 🌿 **Die komplette Seite** | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/alex-aussenanlagen/seite/index.html)** |
 
-> Der Knopf liefert immer den aktuellen Stand aus `main`. Wenn die Seite alt aussieht, einmal hart neu laden.
+> Der Knopf liefert immer den aktuellen Stand aus `main`. Wenn die Seite alt aussieht, einmal hart
+> neu laden. Er zeigt direkt auf `seite/index.html`, also genau auf das, was online gehen würde.
 
-> **Wichtig zum Zeigen:** langsam nach unten scrollen. Die Fahrt hängt am Scrollen, sie läuft nicht
-> von allein. **Auf dem Handy** siehst du bewusst ein Standbild statt der Fahrt, das hält die Seite
-> dort schnell.
+---
 
-**Der Knopf zeigt jetzt direkt auf die echte Seite**, nicht mehr auf eine heruntergerechnete
-Vorschau-Datei. Du siehst also genau das, was online gehen würde, in voller Schärfe. Die
-Einzelbilder wiegen zusammen 12 MB und laden hinter dem Ladering nach, während die Seite schon
-benutzbar ist. Erst wenn der Ring leer ist, ist die Fahrt vollständig.
+## Wie die Seite verkauft
+
+Die Reihenfolge ist nicht Geschmack, sondern die Reihenfolge, in der ein Interessent fragt:
+
+| # | Abschnitt | Beantwortet |
+|---|---|---|
+| 1 | **Hero** | Was macht der, wo, und was habe ich davon. Zwei Knöpfe, der wichtigste zuerst. |
+| 2 | **Vertrauensleiste** | Die vier Einwände, die sofort kommen: kostet das was, ist das ein Pauschalpreis, holt der Subunternehmer, ist der aus der Gegend. |
+| 3 | **Leistungen** | Macht der überhaupt meinen Job. Drei Bildkarten. |
+| 4 | **Der Aufbau** | Warum er und nicht der Billigere. Vier Schichten, 42 cm. |
+| 5 | **Der Schnitt zum Ziehen** | Dasselbe Argument zum Anfassen. Der Regler zeigt, was unter dem Stein liegt. |
+| 6 | **So läuft's** | Was passiert, wenn ich anfrage. Drei Schritte. |
+| 7 | **Fragen** | Die Einwände, die den Abschluss verhindern, allen voran der Quadratmeterpreis. |
+| 8 | **Termin** | Drei Zusagen direkt über dem Formular, dann das Formular. |
+
+Alles führt auf **einen** Anker: `#termin`. Der Knopf in der Navigation bleibt immer sichtbar.
 
 ---
 
@@ -39,11 +44,15 @@ benutzbar ist. Erst wenn der Ring leer ist, ist die Fahrt vollständig.
 |---|---|
 | **Telefon, E-Mail, Anschrift** | sichtbarer Platzhalter im Footer. Das Formular zeigt nur seine Danke-Zeile und verschickt nichts. |
 | **Impressum und Datenschutz** | Hinweis im Footer. Beides ist in Deutschland Pflicht. |
-| **Echte Fotos** | Hinweis, dass Bilder und Fahrt KI-erzeugt sind. Sie sind als Platzhalter gedacht. |
+| **Echte Fotos** | Hinweis, dass die Bilder KI-erzeugt sind. Sie sind als Platzhalter gedacht. |
 | **Echte Kundenstimmen** | bewusst keine erfunden. Stattdessen drei Zusagen über dem Formular, die Alex selbst geben kann. |
 | **Preise** | keine Zahlen auf der Seite. Die Frage nach dem Quadratmeterpreis wird ehrlich beantwortet, ohne eine Zahl zu behaupten. |
 
 Nichts davon ist erfunden worden. Sobald Alex die Angaben schickt, sind es kleine Änderungen.
+
+**Ein Telefonknopf fehlt bewusst.** Bei einem Handwerker ist der Anruf der stärkste Weg zum
+Auftrag. Sobald Alex' Nummer da ist, gehört sie in die Navigation und als fester Balken unten
+aufs Handy.
 
 ---
 
@@ -52,44 +61,23 @@ Nichts davon ist erfunden worden. Sobald Alex die Angaben schickt, sind es klein
 | Ordner | Was drin ist |
 |---|---|
 | `seite/` | **Die echte Webseite.** `index.html` plus `assets/`. Genau dieser Ordner geht online, nichts anderes. |
-| `arbeitsdateien/` | Startbilder, Einzelbilder aus dem Film, Prüfbilder aus dem Selbsttest. Rohvideo bleibt lokal. |
-| `design-paket.md` | Der komplette Plan, geschrieben **vor** der ersten Generierung: Marken-Idee, Farben, Schriften, jeder Text. |
+| `arbeitsdateien/` | Rohmaterial und Prüfbilder aus dem Selbsttest. Bleibt lokal. |
+| `design-paket.md` | Der Plan hinter der Seite: Marken-Idee, Farben, Schriften, jeder Text. |
 
 ---
 
 ## Was die Seite technisch kann
 
-- **Der Hero ist eine Bildfolge auf einer Zeichenfläche**, kein Video. Grund ist eine Messung aus
-  dem vorigen Projekt: bei einem Video muss der Browser für jede Scrollposition neu hinspringen,
-  dabei kamen nur 4 bis 10 Bilder pro Sekunde an. Zwischen zwei Einzelbildern wird überblendet.
-  Gemessen kalt und ohne Zwischenspeicher: **80 verschiedene Bildzustände auf 80 mögliche
-  Scrollpositionen**, die Fahrt folgt dem Scrollen also eins zu eins.
-- **Die Bilder werden vorgewärmt.** Ein Bild zum ersten Mal zu zeichnen kostet das Entpacken,
-  gemessen **14,6 ms**; dasselbe Bild danach **0 ms**. Bei 60 Bildern pro Sekunde stehen 16,7 ms
-  zur Verfügung, ausgerechnet die *erste* Fahrt wäre also abgehackt gewesen. Deshalb zeichnet die
-  Seite nach dem Laden jedes Bild einmal, solange du noch oben stehst.
-- **Auflösung:** 1440 px pro Einzelbild, aus einem 1934-px-Original. Vorher waren es 1000 px, und
-  in der Vorschau-Datei sogar nur 820 px, was auf einem breiten Fenster sichtbar verpixelt war.
-- **Die Fahrt ist lang:** 900vh Scrollweg.
-- **Die Landung ist gebaut, nicht gefilmt.** Der Generator ließ die Kamera bis zum Schluss gleich
-  schnell fahren. Deshalb bremst die Steuerung: das letzte Viertel Scrollweg verlangsamt
-  gleichmäßig bis zum Stillstand.
-- **Kein Filter über dem Bild.** Weder ein aufhellender Schleier noch eine Vignette. Der Text
-  bringt seinen Kontrast über sein eigenes dunkles Schild mit, und die Navigation über eine
-  schmale dunkle Leiste, die nur über dem Film erscheint.
-- **Gewicht:** die Seite selbst wiegt gut 1 MB inklusive Schriften und aller Abschnittsbilder.
-  Die Bildfolge wiegt 12 MB und lädt hinter dem Ladering nach. Handys laden sie nie.
+- **Ein einziges HTML-File**, kein Framework, kein Build-Schritt, kein Server-Code.
+- **Gewicht gemessen: 1.374 KB** komplett, mit allen Bildern und Schriften. Ladezeit lokal 74 ms.
+  Zum Vergleich: die vorige Fassung mit dem Scroll-Film zog 12 MB Einzelbilder nach.
 - Schriften liegen im Projekt, es geht keine Anfrage an Google.
-- Ohne die Bildfolge ist die Seite trotzdem vollständig.
-- **Lesbarkeit gemessen, nicht geschätzt:** helle Schrift auf dunklem Schild, also zählt das
-  hellste Pixel unter dem Text.
-
-  | | Überschrift | Fließtext | betontes Wort |
-  |---|---|---|---|
-  | Schild 1 | 13,7 | 12,0 | 6,5 |
-  | Schild 2 | 13,6 | 11,9 | 6,5 |
-  | Schild 3 | 13,2 | 11,6 | 6,3 |
-  | Schild 4 | 11,3 | 9,9 | 5,4 |
-  | Handy | 11,2 | | |
-
-  Die Navigation über dem Film liegt zwischen 5,5 und 13,3. Der Boden ist 3,5.
+- **Das Angebot steht über der Kante:** der Haupt-Knopf endet gemessen bei 547 px, also weit vor
+  den 900 px eines normalen Laptop-Fensters. Auf 375x667 ist er ebenfalls ohne Scrollen sichtbar.
+- **Nichts ragt seitlich heraus**, gemessen auf 375, 768 und 1440 px, und zwar Element für Element.
+  Vorher gab es dort einen echten Fehler: Angaben wie `width:40ch` erzwangen in Grid-Spalten eine
+  Spalte breiter als das Fenster, und `overflow-x:clip` hat den abgeschnittenen Text nur versteckt.
+- **Bewegung nur als Einblendung** beim Scrollen, und `prefers-reduced-motion` schaltet sie ab,
+  in beide Richtungen live.
+- **0 Konsolenfehler.** Formular prüft leere Pflichtfelder und zeigt die Danke-Zeile.
+- Der Aufbau-Regler ist mit Tastatur bedienbar und hat ein verstecktes Label.
