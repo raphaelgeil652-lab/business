@@ -1,0 +1,542 @@
+<title>Raphaels Cockpit</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --grund:#f2f4f3; --flaeche:#ffffff; --flaeche-2:#e9edec;
+  --tinte:#14201e; --gedaempft:#5c6b68; --blass:#94a5a1;
+  --linie:#dde3e1; --linie-zart:#e9eeec;
+  --akzent:#1f5f5b; --akzent-zart:#1f5f5b12;
+  --offen:#b4762a; --offen-zart:#b4762a18;
+  --gut:#3f7d4f; --gut-zart:#3f7d4f18;
+  --kritisch:#a8423a; --kritisch-zart:#a8423a15;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --rand:10px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --grund:#0e1513; --flaeche:#15201e; --flaeche-2:#1b2725;
+    --tinte:#e4eae7; --gedaempft:#8b9a96; --blass:#63736f;
+    --linie:#23302d; --linie-zart:#1c2826;
+    --akzent:#56b0a6; --akzent-zart:#56b0a618;
+    --offen:#d9a04e; --offen-zart:#d9a04e1c;
+    --gut:#6aa877; --gut-zart:#6aa8771c;
+    --kritisch:#cf6f63; --kritisch-zart:#cf6f6318;
+  }
+}
+:root[data-theme="dark"]{
+  --grund:#0e1513; --flaeche:#15201e; --flaeche-2:#1b2725;
+  --tinte:#e4eae7; --gedaempft:#8b9a96; --blass:#63736f;
+  --linie:#23302d; --linie-zart:#1c2826;
+  --akzent:#56b0a6; --akzent-zart:#56b0a618;
+  --offen:#d9a04e; --offen-zart:#d9a04e1c;
+  --gut:#6aa877; --gut-zart:#6aa8771c;
+  --kritisch:#cf6f63; --kritisch-zart:#cf6f6318;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--grund);color:var(--tinte);
+  font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;
+}
+.huelle{max-width:760px;margin:0 auto;padding-inline:clamp(16px,4vw,28px);padding-block:0 64px}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:var(--akzent)}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--akzent);outline-offset:2px;border-radius:4px}
+
+/* Kopf */
+header{padding-block:26px 20px;display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+header h1{font-size:1.32rem}
+.stand{margin-left:auto;font:500 .72rem/1.4 var(--mono);color:var(--blass);text-align:right}
+.stand b{display:block;color:var(--gedaempft);font-weight:500}
+
+/* Aufmacher: was als Nächstes kommt */
+.naechstes{
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:var(--rand);
+  padding:20px 22px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap;
+}
+.naechstes .wann{font:600 2.1rem/1 var(--mono);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.naechstes .was{font-size:1.02rem;font-weight:500}
+.naechstes .wo{color:var(--gedaempft);font-size:.86rem}
+.naechstes .tag{
+  font:500 .7rem/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--gedaempft);width:100%;
+}
+
+/* Abschnitte */
+section{margin-top:34px}
+.kopfzeile{display:flex;align-items:baseline;gap:10px;padding-bottom:9px;border-bottom:1px solid var(--linie)}
+.kopfzeile h2{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;color:var(--gedaempft)}
+.zaehler{font:500 .78rem/1 var(--mono);color:var(--blass);margin-left:auto;font-variant-numeric:tabular-nums}
+
+/* Schichtangebote */
+.schicht{
+  display:flex;gap:14px;align-items:center;padding:14px 2px;border-bottom:1px solid var(--linie-zart);
+  flex-wrap:wrap;
+}
+.schicht:last-child{border-bottom:0}
+.datum{
+  flex:0 0 auto;width:52px;text-align:center;border-radius:8px;padding:6px 0;
+  background:var(--flaeche-2);
+}
+.datum .d{font:600 1.15rem/1 var(--mono);font-variant-numeric:tabular-nums}
+.datum .m{font:500 .64rem/1.6 var(--mono);text-transform:uppercase;color:var(--gedaempft);letter-spacing:.06em}
+.schicht .mitte{flex:1 1 150px;min-width:0}
+.schicht .zeit{font:500 1rem/1.3 var(--mono);font-variant-numeric:tabular-nums}
+.schicht .wochentag{color:var(--gedaempft);font-size:.82rem}
+.pille{
+  display:inline-block;font:500 .68rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 8px;border-radius:99px;white-space:nowrap;
+}
+.p-offen{background:var(--offen-zart);color:var(--offen)}
+.p-gut{background:var(--gut-zart);color:var(--gut)}
+.p-krit{background:var(--kritisch-zart);color:var(--kritisch)}
+.knopf{
+  border:1px solid var(--linie);border-radius:99px;padding:8px 15px;font-size:.85rem;font-weight:500;
+  background:var(--flaeche);transition:border-color .18s,color .18s;white-space:nowrap;
+}
+.knopf:hover:not(:disabled){border-color:var(--akzent);color:var(--akzent)}
+.knopf:disabled{opacity:.5;cursor:default}
+.knopf.haupt{background:var(--akzent-zart);border-color:color-mix(in srgb,var(--akzent) 40%,transparent);color:var(--akzent)}
+
+/* Kalender */
+.termin{display:flex;gap:14px;align-items:baseline;padding:11px 2px;border-bottom:1px solid var(--linie-zart)}
+.termin:last-child{border-bottom:0}
+.termin .t-zeit{font:500 .88rem/1.4 var(--mono);color:var(--gedaempft);flex:0 0 104px;font-variant-numeric:tabular-nums}
+.termin .t-titel{flex:1;min-width:0}
+
+/* Posteingang */
+.faecher{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:9px;margin-top:14px}
+.fach{background:var(--flaeche);border:1px solid var(--linie);border-radius:9px;padding:12px 13px}
+.fach .n{font:500 .68rem/1.3 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--gedaempft)}
+.fach .z{font:600 1.6rem/1.15 var(--mono);font-variant-numeric:tabular-nums;margin-top:2px}
+.fach.warn .z{color:var(--kritisch)}
+.fach.geld .z{color:var(--offen)}
+.mail{padding:11px 2px;border-bottom:1px solid var(--linie-zart)}
+.mail:last-child{border-bottom:0}
+.mail .betreff{font-size:.92rem;font-weight:500}
+.mail .von{color:var(--blass);font:400 .76rem/1.5 var(--mono);margin-top:2px;word-break:break-all}
+
+/* Zustände */
+.leer{color:var(--blass);font-size:.88rem;padding-block:16px;font-style:italic}
+.laedt{color:var(--blass);font-size:.88rem;padding-block:16px}
+.laedt::after{content:"";display:inline-block;width:1em;text-align:left;animation:punkte 1.4s steps(4) infinite}
+@keyframes punkte{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.problem{
+  background:var(--kritisch-zart);border:1px solid color-mix(in srgb,var(--kritisch) 28%,transparent);
+  border-radius:9px;padding:13px 15px;font-size:.87rem;line-height:1.55;margin-top:12px;
+}
+.problem b{display:block;margin-bottom:3px;color:var(--kritisch)}
+.hinweis{color:var(--gedaempft);font-size:.83rem;line-height:1.55;margin-top:10px}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--linie);color:var(--blass);font-size:.78rem;line-height:1.6}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+
+<div class="huelle">
+<header>
+  <h1>Raphaels Cockpit</h1>
+  <div class="stand"><b id="standTag">—</b><span id="standZeit">wird geladen</span></div>
+</header>
+
+<div class="naechstes" id="naechstes">
+  <span class="tag">Als Nächstes</span>
+  <span class="wann" id="nWann">—</span>
+  <span class="was" id="nWas">wird geladen</span>
+</div>
+
+<div id="keinZugriff" hidden></div>
+
+<section id="sSchichten">
+  <div class="kopfzeile"><h2>Offene Schichtangebote</h2><span class="zaehler" id="zSchichten"></span></div>
+  <div id="schichten"><p class="laedt">Sling-Mails werden gelesen</p></div>
+  <p class="hinweis" id="hSchichten" hidden>Angebote aus Sling-Mails, die noch nicht in deinem Kalender stehen. „Eintragen“ legt den Termin an — dass du die Schicht auch in Sling übernimmst, musst du dort selbst machen.</p>
+</section>
+
+<section id="sKalender">
+  <div class="kopfzeile"><h2>Kalender · nächste 14 Tage</h2><span class="zaehler" id="zKalender"></span></div>
+  <div id="kalender"><p class="laedt">Kalender wird gelesen</p></div>
+</section>
+
+<section id="sPost">
+  <div class="kopfzeile"><h2>Posteingang · letzte 48 Stunden</h2><span class="zaehler" id="zPost"></span></div>
+  <div class="faecher" id="faecher"></div>
+  <div id="postListe"><p class="laedt">Posteingang wird gelesen</p></div>
+</section>
+
+<footer>
+  Liest live aus deinem Gmail und deinem Google Kalender, mit deinen Zugangsdaten.
+  Nichts wird gespeichert, nichts verschickt, keine Mail gelöscht oder archiviert.
+  Der einzige schreibende Knopf ist „Eintragen“ — und den drückst du.
+</footer>
+</div>
+
+<script>
+"use strict";
+
+/* ===== Hilfen ===== */
+const $ = s => document.querySelector(s);
+const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad = n => String(n).padStart(2, "0");
+const MONATE = {january:1,february:2,march:3,april:4,may:5,june:6,july:7,august:8,september:9,october:10,november:11,december:12};
+const M_KURZ = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+const W_KURZ = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+
+const heuteIso = () => { const d = new Date(); return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); };
+const vonIso = s => new Date(s + "T00:00:00");
+function tageBis(iso){
+  const a = vonIso(heuteIso()), b = vonIso(iso);
+  return Math.round((b - a) / 86400000);
+}
+function relativ(iso){
+  const t = tageBis(iso);
+  if(t === 0) return "heute";
+  if(t === 1) return "morgen";
+  if(t === 2) return "übermorgen";
+  return W_KURZ[vonIso(iso).getDay()];
+}
+
+/* "02:00 PM" -> "14:00" */
+function zeit24(s){
+  const m = String(s).trim().match(/^(\d{1,2}):(\d{2})\s*([AP])M$/i);
+  if(!m) return null;
+  let h = parseInt(m[1], 10);
+  const min = m[2], halb = m[3].toUpperCase();
+  if(halb === "A" && h === 12) h = 0;
+  if(halb === "P" && h !== 12) h += 12;
+  return pad(h) + ":" + min;
+}
+const plus = (hhmm, stunden) => {
+  const [h, m] = hhmm.split(":").map(Number);
+  return pad((h + stunden) % 24) + ":" + pad(m);
+};
+
+/* ===== Sling-Mails auswerten ===== */
+/* Die Mails haben ein festes Format, zum Beispiel:
+   "A new shift is available on Monday · September 14 from 01:00 PM to 03:00 PM"
+   "You have a new shift on Tuesday · September 08 02:00 PM"
+   "You were unassigned from your shift on Friday · September 11 12:00 PM"
+   Im Link steht zusätzlich das Datum als jj-mm-tt — das ist die verlässlichste Quelle. */
+function datumAusLink(text){
+  const m = text.match(/[?&]date[=\s]+(\d{2})-(\d{2})-(\d{2})/);
+  return m ? "20" + m[1] + "-" + m[2] + "-" + m[3] : null;
+}
+function datumAusText(monatWort, tag, gesendet){
+  const mo = MONATE[String(monatWort).toLowerCase()];
+  if(!mo) return null;
+  const bezug = gesendet ? new Date(gesendet) : new Date();
+  let jahr = bezug.getFullYear();
+  // Jahreswechsel: Dezember-Mail, Januar-Schicht
+  if(mo < bezug.getMonth() + 1 - 6) jahr += 1;
+  return jahr + "-" + pad(mo) + "-" + pad(parseInt(tag, 10));
+}
+
+function schichtenAus(text, gesendet){
+  const raus = [];
+  const datum = (mo, tg) => datumAusLink(text) || datumAusText(mo, tg, gesendet);
+
+  let m = text.match(/A new shift is available on\s+\w+\s*[·-]\s*(\w+)\s+(\d{1,2})\s+from\s+(\d{1,2}:\d{2}\s*[AP]M)\s+to\s+(\d{1,2}:\d{2}\s*[AP]M)/i);
+  if(m){
+    const d = datum(m[1], m[2]), a = zeit24(m[3]), e = zeit24(m[4]);
+    if(d && a && e) raus.push({art:"angeboten", datum:d, start:a, ende:e});
+  }
+  m = text.match(/You have a new shift on\s+\w+\s*[·-]\s*(\w+)\s+(\d{1,2})\s+(\d{1,2}:\d{2}\s*[AP]M)/i);
+  if(m){
+    const d = datum(m[1], m[2]), a = zeit24(m[3]);
+    if(d && a) raus.push({art:"zugeteilt", datum:d, start:a, ende:null});
+  }
+  m = text.match(/You were unassigned from your shift on\s+\w+\s*[·-]\s*(\w+)\s+(\d{1,2})\s+(\d{1,2}:\d{2}\s*[AP]M)/i);
+  if(m){
+    const d = datum(m[1], m[2]), a = zeit24(m[3]);
+    if(d && a) raus.push({art:"abgesagt", datum:d, start:a, ende:null});
+  }
+  return raus;
+}
+
+/* ===== Posteingang einsortieren ===== */
+const SICHER = /security@mail\.instagram\.com|account\.tiktok\.com|accounts\.google\.com|noreply@email\.apple\.com|informational@email\.snapchat\.com/i;
+const SICHER_WORT = /sicherheitswarnung|verifizier|bestätigungscode|6-stellig|new device login|password|passwort|benutzername wurde|anmeldung/i;
+const GELD_WORT = /rechnung|zahlung|mahnung|lastschrift|abbuchung|invoice|receipt|speicher ist voll|speicher voll|abo|verlängert sich|preiserhöhung|kündigungsfrist|beitrag/i;
+const LAERM = /temuemail\.com|outletcity\.com|bestsecret\.com|isabelbernard\.com|elusa\.de|europapark\.de|newsletterversand\.zeit\.de|activtrades\.com|news\.naga\.com|scalable\.capital|jobrapidoalert\.com|notification@service\.tiktok\.com|notifications@vercel\.com|email\.snapchat\.com|insideapple\.apple\.com|email\.claude\.com/i;
+
+function fach(absender, betreff, ausschnitt){
+  const a = String(absender || ""), t = (betreff || "") + " " + (ausschnitt || "");
+  if(/getsling\.com/i.test(a))                       return "schicht";
+  if(SICHER.test(a) || SICHER_WORT.test(t))          return "sicher";
+  if(GELD_WORT.test(t))                              return "geld";
+  if(LAERM.test(a))                                  return "laerm";
+  return "sonst";
+}
+
+/* ===== Anzeige ===== */
+let kalenderTermine = null;   // aus Google Kalender
+let offeneSchichten = null;   // aus Sling-Mails
+const eingetragen = new Set();
+
+function zeigeStand(){
+  const j = new Date();
+  $("#standTag").textContent = W_KURZ[j.getDay()] + ", " + j.getDate() + ". " + M_KURZ[j.getMonth()];
+  $("#standZeit").textContent = "Stand " + pad(j.getHours()) + ":" + pad(j.getMinutes());
+}
+
+function zeigeNaechstes(){
+  if(!kalenderTermine){ return; }
+  const jetzt = new Date();
+  const kommend = kalenderTermine
+    .map(e => ({ ...e, ab: new Date(e.startIso) }))
+    .filter(e => e.ab >= jetzt)
+    .sort((a, b) => a.ab - b.ab);
+
+  if(!kommend.length){
+    $("#nWann").textContent = "—";
+    $("#nWas").textContent = "Nichts eingetragen.";
+    return;
+  }
+  const e = kommend[0];
+  const iso = e.startIso.slice(0, 10);
+  $("#nWann").textContent = e.ganztags ? relativ(iso) : pad(e.ab.getHours()) + ":" + pad(e.ab.getMinutes());
+  $("#nWas").textContent = e.titel;
+  const wo = e.ganztags ? vonIso(iso).toLocaleDateString("de-DE",{day:"numeric",month:"long"})
+                        : relativ(iso) + (e.ort ? " · " + e.ort : "");
+  let span = $("#naechstes .wo");
+  if(!span){ span = document.createElement("span"); span.className = "wo"; $("#naechstes").appendChild(span); }
+  span.textContent = wo;
+}
+
+function zeigeSchichten(){
+  const ziel = $("#schichten");
+  if(!offeneSchichten){ return; }
+
+  // Angebote, die schon im Kalender stehen, fallen raus
+  const belegt = new Set((kalenderTermine || [])
+    .filter(e => /wakepark|schicht/i.test(e.titel))
+    .map(e => e.startIso.slice(0, 16)));
+
+  const offen = offeneSchichten.filter(s => {
+    const key = s.datum + "T" + s.start;
+    return !belegt.has(key) && !eingetragen.has(key);
+  });
+
+  $("#zSchichten").textContent = offen.length ? offen.length + " offen" : "";
+  $("#hSchichten").hidden = offen.length === 0;
+
+  if(!offen.length){
+    ziel.innerHTML = '<p class="leer">Keine offenen Angebote. Alles, was angeboten wurde, steht im Kalender oder ist vorbei.</p>';
+    return;
+  }
+  ziel.innerHTML = offen.map(s => {
+    const d = vonIso(s.datum);
+    const ende = s.ende || plus(s.start, 2);
+    const unklar = !s.ende;
+    return '<div class="schicht" data-key="' + s.datum + "T" + s.start + '">'
+      + '<div class="datum"><div class="d">' + d.getDate() + '</div><div class="m">' + M_KURZ[d.getMonth()] + '</div></div>'
+      + '<div class="mitte"><div class="zeit">' + s.start + "–" + ende + (unklar ? " ?" : "") + '</div>'
+      + '<div class="wochentag">' + relativ(s.datum) + (unklar ? " · Ende stand nicht in der Mail" : "") + '</div></div>'
+      + '<span class="pille p-offen">angeboten</span>'
+      + '<button class="knopf haupt" data-eintragen="' + s.datum + "|" + s.start + "|" + ende + '">Eintragen</button>'
+      + "</div>";
+  }).join("");
+
+  ziel.querySelectorAll("[data-eintragen]").forEach(b => b.addEventListener("click", () => eintragen(b)));
+}
+
+function zeigeKalender(){
+  const ziel = $("#kalender");
+  if(!kalenderTermine) return;
+  const grenze = new Date(); grenze.setDate(grenze.getDate() + 14);
+  const jetzt = new Date();
+  const liste = kalenderTermine
+    .map(e => ({ ...e, ab: new Date(e.startIso) }))
+    .filter(e => e.ab >= new Date(jetzt.getFullYear(), jetzt.getMonth(), jetzt.getDate()) && e.ab <= grenze)
+    .sort((a, b) => a.ab - b.ab);
+
+  $("#zKalender").textContent = liste.length ? liste.length : "";
+  if(!liste.length){
+    ziel.innerHTML = '<p class="leer">Nichts eingetragen in den nächsten 14 Tagen.</p>';
+    return;
+  }
+  ziel.innerHTML = liste.map(e => {
+    const iso = e.startIso.slice(0, 10);
+    const zeit = e.ganztags ? "ganztags" : pad(e.ab.getHours()) + ":" + pad(e.ab.getMinutes());
+    return '<div class="termin"><div class="t-zeit">' + esc(relativ(iso)) + " · " + zeit + "</div>"
+      + '<div class="t-titel">' + esc(e.titel) + (e.ort ? ' <span class="wochentag" style="color:var(--blass)">· ' + esc(e.ort) + "</span>" : "") + "</div></div>";
+  }).join("");
+}
+
+/* ===== Schreiben: Schicht in den Kalender ===== */
+async function eintragen(knopf){
+  const [datum, start, ende] = knopf.dataset.eintragen.split("|");
+  knopf.disabled = true;
+  const alt = knopf.textContent;
+  knopf.textContent = "wird angelegt…";
+  try{
+    const mcp = window.claude && window.claude.use ? await window.claude.use("mcp") : null;
+    if(!mcp) throw { code: "capability_disabled", message: "Kein Zugriff." };
+    await mcp.callTool("Google Calendar", "create_event", {
+      summary: "Wakepark Schicht",
+      location: "Wakepark Pfullendorf",
+      startTime: datum + "T" + start + ":00",
+      endTime: datum + "T" + ende + ":00",
+      timeZone: "Europe/Berlin",
+      description: "Aus einer Sling-Benachrichtigung übernommen."
+    });
+    eingetragen.add(datum + "T" + start);
+    const zeile = knopf.closest(".schicht");
+    zeile.querySelector(".pille").className = "pille p-gut";
+    zeile.querySelector(".pille").textContent = "im Kalender";
+    knopf.remove();
+    try{ await mcp.invalidate("Google Calendar"); }catch(e){}
+  }catch(e){
+    knopf.disabled = false;
+    knopf.textContent = alt;
+    const code = (e && e.code) || "upstream_error";
+    const zeile = knopf.closest(".schicht");
+    let txt;
+    if(code === "needs_reauth")            txt = "Google Kalender neu verbinden: claude.ai → Einstellungen → Connectors.";
+    else if(code === "server_not_connected") txt = "Google Kalender ist nicht verbunden.";
+    else if(code === "not_in_manifest")    txt = "Du hast dieser Seite den Kalenderzugriff nicht erlaubt.";
+    else if(code === "blocked_by_policy")  txt = "Der Kalenderzugriff ist hier gesperrt.";
+    else if(code === "tool_error")         txt = "Der Kalender hat abgelehnt: " + (e.message || "unbekannt");
+    else                                   txt = "Hat nicht geklappt — der Termin kann trotzdem angelegt worden sein. Schau im Kalender nach, bevor du es nochmal versuchst.";
+    let p = zeile.querySelector(".problem");
+    if(!p){ p = document.createElement("div"); p.className = "problem"; p.style.flexBasis = "100%"; zeile.appendChild(p); }
+    p.innerHTML = "<b>Nicht eingetragen</b>" + esc(txt);
+  }
+}
+
+/* ===== Fehlertexte ===== */
+function fehlerText(code, dienst){
+  if(code === "needs_reauth")          return dienst + " neu verbinden: claude.ai → Einstellungen → Connectors.";
+  if(code === "server_not_connected")  return dienst + " ist für dich nicht verbunden. In claude.ai unter Einstellungen → Connectors hinzufügen.";
+  if(code === "selection_required")    return "Du hast mehrere " + dienst + "-Verbindungen. Wähl im Hinweis oben eine aus.";
+  if(code === "not_in_manifest")       return "Du hast dieser Seite den Zugriff auf " + dienst + " nicht erlaubt. Seite neu laden, um noch einmal gefragt zu werden.";
+  if(code === "blocked_by_policy")     return "Der Zugriff auf " + dienst + " ist gesperrt.";
+  if(code === "approval_required")     return "Der Zugriff auf " + dienst + " muss erst freigegeben werden.";
+  if(code === "tool_error")            return dienst + " hat die Anfrage abgelehnt.";
+  return dienst + " antwortet gerade nicht. Lad die Seite in einem Moment neu.";
+}
+function zeigeProblem(zielId, code, dienst){
+  const el = $(zielId);
+  el.innerHTML = '<div class="problem"><b>' + esc(dienst) + " nicht erreichbar</b>" + esc(fehlerText(code, dienst)) + "</div>";
+}
+
+/* ===== Start ===== */
+zeigeStand();
+
+(async function los(){
+  const mcp = window.claude && window.claude.use ? await window.claude.use("mcp") : null;
+  if(!mcp){
+    $("#keinZugriff").hidden = false;
+    $("#keinZugriff").innerHTML = '<div class="problem"><b>Keine Verbindung zu deinen Daten</b>'
+      + "Diese Seite lebt davon, dass sie Gmail und den Google Kalender lesen darf. "
+      + "Öffne sie über claude.ai, dann wirst du gefragt.</div>";
+    $("#nWas").textContent = "Keine Verbindung.";
+    ["#schichten","#kalender","#postListe"].forEach(s => $(s).innerHTML = '<p class="leer">Ohne Verbindung nichts anzuzeigen.</p>');
+    return;
+  }
+
+  /* --- Kalender --- */
+  const von = new Date(); von.setHours(0,0,0,0);
+  const bis = new Date(); bis.setDate(bis.getDate() + 21);
+  mcp.watchTool("Google Calendar", "list_events", {
+    startTime: von.toISOString(), endTime: bis.toISOString(),
+    orderBy: "startTime", pageSize: 50
+  }, ev => {
+    if(ev.type === "error"){
+      if(kalenderTermine) return;                 // Altbestand stehen lassen
+      zeigeProblem("#kalender", ev.error.code, "Google Kalender");
+      $("#nWas").textContent = "Kalender nicht erreichbar.";
+      return;
+    }
+    const p = ev.result.payload || {};
+    kalenderTermine = (p.events || []).map(e => ({
+      id: e.id,
+      titel: e.summary || "(ohne Titel)",
+      ort: e.location || "",
+      ganztags: !!(e.start && e.start.date && !e.start.dateTime),
+      startIso: (e.start && (e.start.dateTime || (e.start.date + "T00:00:00"))) || ""
+    })).filter(e => e.startIso);
+    zeigeKalender(); zeigeNaechstes(); zeigeSchichten();
+  }, { refetchInterval: 300000 });
+
+  /* --- Sling-Mails --- */
+  mcp.watchTool("Gmail", "search_threads", {
+    query: "from:sling@getsling.com newer_than:21d", pageSize: 25, view: "THREAD_VIEW_MINIMAL"
+  }, async ev => {
+    if(ev.type === "error"){
+      if(offeneSchichten) return;
+      zeigeProblem("#schichten", ev.error.code, "Gmail");
+      return;
+    }
+    const ids = (ev.result.payload && ev.result.payload.threads || []).map(t => t.id).slice(0, 14);
+    if(!ids.length){
+      offeneSchichten = []; zeigeSchichten(); return;
+    }
+    // Die Suche liefert pro Thread nur die ältesten Nachrichten — deshalb jeden Thread ganz holen.
+    const alle = [];
+    for(const id of ids){
+      try{
+        const r = await mcp.callTool("Gmail", "get_thread", { threadId: id, messageFormat: "PLAIN_TEXT" });
+        for(const m of (r.payload && r.payload.messages) || []){
+          for(const s of schichtenAus(m.plaintextBody || m.snippet || "", m.date)) alle.push(s);
+        }
+      }catch(e){ /* einzelner Thread scheitert: Rest trotzdem zeigen */ }
+    }
+    // Absagen heben Zuteilungen auf; Angebote, die schon zugeteilt wurden, sind keine Angebote mehr
+    const abgesagt = new Set(alle.filter(s => s.art === "abgesagt").map(s => s.datum + "T" + s.start));
+    const zugeteilt = new Set(alle.filter(s => s.art === "zugeteilt").map(s => s.datum + "T" + s.start));
+    const heute = heuteIso();
+    const gesehen = new Set();
+    offeneSchichten = alle
+      .filter(s => s.art === "angeboten")
+      .filter(s => s.datum >= heute)
+      .filter(s => { const k = s.datum + "T" + s.start; return !abgesagt.has(k) && !zugeteilt.has(k); })
+      .filter(s => { const k = s.datum + "T" + s.start; if(gesehen.has(k)) return false; gesehen.add(k); return true; })
+      .sort((a, b) => (a.datum + a.start).localeCompare(b.datum + b.start));
+    zeigeSchichten();
+  }, { refetchInterval: 600000 });
+
+  /* --- Posteingang --- */
+  mcp.watchTool("Gmail", "search_threads", {
+    query: "in:inbox newer_than:2d", pageSize: 50, view: "THREAD_VIEW_MINIMAL"
+  }, ev => {
+    if(ev.type === "error"){
+      zeigeProblem("#postListe", ev.error.code, "Gmail");
+      $("#faecher").innerHTML = "";
+      return;
+    }
+    const threads = (ev.result.payload && ev.result.payload.threads) || [];
+    const zaehler = { schicht:0, sicher:0, geld:0, laerm:0, sonst:0 };
+    const wichtig = [];
+    for(const t of threads){
+      const m = (t.messages && t.messages[t.messages.length - 1]) || {};
+      const f = fach(m.sender, m.subject, m.snippet);
+      zaehler[f]++;
+      if(f === "sicher" || f === "geld" || f === "sonst"){
+        wichtig.push({ fach:f, betreff:m.subject || "(kein Betreff)", von:m.sender || "" });
+      }
+    }
+    $("#zPost").textContent = threads.length + " Mails";
+    $("#faecher").innerHTML =
+        fachKachel("Sicherheit", zaehler.sicher, "warn")
+      + fachKachel("Geld, Fristen", zaehler.geld, "geld")
+      + fachKachel("Schichten", zaehler.schicht, "")
+      + fachKachel("Sonstiges", zaehler.sonst, "")
+      + fachKachel("Werbung", zaehler.laerm, "");
+
+    $("#postListe").innerHTML = wichtig.length
+      ? wichtig.slice(0, 12).map(w =>
+          '<div class="mail"><div class="betreff">'
+          + '<span class="pille ' + (w.fach === "sicher" ? "p-krit" : w.fach === "geld" ? "p-offen" : "p-gut") + '">'
+          + (w.fach === "sicher" ? "Sicherheit" : w.fach === "geld" ? "Geld" : "sonst") + "</span> "
+          + esc(w.betreff) + '</div><div class="von">' + esc(w.von) + "</div></div>").join("")
+      : '<p class="leer">Nichts, was dich betrifft. Der Rest ist Werbung.</p>';
+  }, { refetchInterval: 300000 });
+})();
+
+function fachKachel(name, zahl, klasse){
+  return '<div class="fach ' + klasse + '"><div class="n">' + esc(name) + '</div><div class="z">' + zahl + "</div></div>";
+}
+</script>
