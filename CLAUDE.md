@@ -155,6 +155,12 @@ und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt i
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,
 `ghl-n8n-aufbau.md` + `n8n/`, `tech-stack.md`, `klienten-journey.md`
 
+### `recherche/` — Marktrecherche, gehört zu keinem der zwei Geschäfte
+`digitale-produkte-nischen-2026.md` — Nischen-Analyse für Affiliate-Verkauf (CopeCart/Digistore24),
+mit Quellen. **Reine Recherche, keine Entscheidung** — Clickculture und der Webseitenbau bleiben
+davon unberührt. Kernaussage: Affiliate löst das 7k-Ziel nicht, ist aber als zweite
+Monetarisierung derselben Betriebsbesuche interessant.
+
 ### `grundlagen/` — gemeinsam, nischenneutral
 - `agentur-playbook.md` — **Master-Playbook (Grundlage, nicht ändern außer auf Ansage).**
 - `so-funktioniert-alles.md` — Einsteiger-Überblick + Glossar
