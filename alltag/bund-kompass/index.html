@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#15181c">
+<title>Bund-Kompass</title>
+<style>
+:root{
+  --bg:#15181c; --surface:#1d2128; --surface-2:#242932; --line:#2f3541;
+  --text:#e9ecea; --muted:#98a1ac; --dim:#6d7683;
+  --accent:#8d9c66; --accent-soft:#8d9c661f;
+  --good:#6f9e6a; --warn:#c9a44c; --bad:#b4614f;
+  --r:14px; --pad:clamp(16px,4vw,28px);
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.wrap{max-width:820px;margin:0 auto;padding-inline:var(--pad);padding-block:0}
+h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.015em}
+p{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,select{font:inherit;color:inherit}
+
+/* ---------- Kopf ---------- */
+header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#1a1e24,#15181c)}
+.head{display:flex;align-items:baseline;gap:10px;padding-block:18px 14px;flex-wrap:wrap}
+.head h1{font-size:1.15rem}
+.head .sub{color:var(--dim);font-size:.82rem;font-family:var(--mono)}
+
+/* ---------- Reiter ---------- */
+nav{position:sticky;top:0;z-index:20;background:#15181ce6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-block:8px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;padding:8px 13px;border-radius:999px;color:var(--muted);
+  font-size:.9rem;white-space:nowrap;border:1px solid transparent;transition:.14s;
+}
+.tab:hover{color:var(--text)}
+.tab[aria-selected="true"]{background:var(--accent-soft);color:var(--accent);border-color:#8d9c6644}
+.tab .n{font-family:var(--mono);font-size:.76rem;opacity:.7;margin-left:5px}
+
+main{padding-block:24px 64px}
+section[hidden]{display:none!important}
+.stack{display:flex;flex-direction:column;gap:18px}
+
+/* ---------- Karten ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.card > h2{font-size:1rem;margin-bottom:4px}
+.card .lead{color:var(--muted);font-size:.88rem}
+
+/* ---------- Countdown ---------- */
+.count{text-align:center;padding-block:28px}
+.count .days{
+  font-family:var(--mono);font-size:clamp(3.6rem,17vw,6rem);line-height:.92;
+  font-weight:600;letter-spacing:-.04em;color:var(--accent);
+}
+.count .label{color:var(--muted);font-size:.9rem;margin-top:8px}
+.count .date{color:var(--dim);font-size:.82rem;margin-top:14px;font-family:var(--mono)}
+.setdate{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+input[type=date],input[type=text],input[type=number]{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:9px;
+  padding:9px 11px;min-width:0;
+}
+input:focus-visible,button:focus-visible,.tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:9px;
+  padding:9px 15px;font-size:.9rem;transition:.14s;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-accent{background:var(--accent-soft);border-color:#8d9c6655;color:var(--accent)}
+
+/* ---------- Fortschritts-Kacheln ---------- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{background:var(--surface-2);border:1px solid var(--line);border-radius:11px;padding:13px 14px}
+.tile .t{color:var(--dim);font-size:.74rem;text-transform:uppercase;letter-spacing:.07em}
+.tile .v{font-family:var(--mono);font-size:1.5rem;margin-top:3px;letter-spacing:-.02em}
+.tile .v small{font-size:.8rem;color:var(--dim);letter-spacing:0}
+.bar{height:4px;border-radius:99px;background:var(--line);margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .3s}
+
+/* ---------- Listen ---------- */
+.grp{margin-top:18px}
+.grp:first-of-type{margin-top:10px}
+.grp > h3{
+  font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);
+  padding-bottom:7px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;
+}
+.grp > h3 span{font-family:var(--mono);letter-spacing:0;text-transform:none}
+.item{display:flex;gap:11px;align-items:flex-start;padding:10px 2px;border-bottom:1px solid #ffffff0a}
+.item:last-child{border-bottom:0}
+.item input[type=checkbox]{
+  appearance:none;flex:0 0 20px;width:20px;height:20px;margin-top:1px;border:1.5px solid #48505c;
+  border-radius:6px;background:var(--surface-2);cursor:pointer;position:relative;transition:.14s;
+}
+.item input[type=checkbox]:hover{border-color:var(--accent)}
+.item input[type=checkbox]:checked{background:var(--accent);border-color:var(--accent)}
+.item input[type=checkbox]:checked::after{
+  content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+  border:solid #15181c;border-width:0 2.2px 2.2px 0;transform:rotate(42deg);
+}
+.item label{flex:1;cursor:pointer;font-size:.95rem}
+.item label .hint{display:inline-block;width:100%;color:var(--dim);font-size:.8rem;margin-top:2px;line-height:1.45}
+.item input:checked + label{color:var(--dim);text-decoration:line-through;text-decoration-color:#ffffff30}
+.item input:checked + label .hint{text-decoration:none}
+.del{color:var(--dim);font-size:1.1rem;padding:0 6px;line-height:1}
+.del:hover{color:var(--bad)}
+.addrow{display:flex;gap:8px;margin-top:14px}
+.addrow input{flex:1}
+
+.note{
+  background:#c9a44c14;border:1px solid #c9a44c33;border-radius:10px;padding:12px 14px;
+  color:#e6d4a8;font-size:.85rem;line-height:1.55;
+}
+.note b{color:#f0e3c2}
+
+/* ---------- Fitness ---------- */
+.disc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:14px}
+.d{background:var(--surface-2);border:1px solid var(--line);border-radius:11px;padding:14px}
+.d .name{font-size:.9rem;font-weight:600}
+.d .min{color:var(--dim);font-size:.78rem;margin-top:2px;font-family:var(--mono)}
+.d .cur{font-family:var(--mono);font-size:1.7rem;margin-top:10px;letter-spacing:-.02em}
+.d .st{font-size:.78rem;margin-top:4px;font-weight:600}
+.ok{color:var(--good)} .no{color:var(--bad)} .neutral{color:var(--dim)} .warn-t{color:var(--warn)}
+
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:8px}
+.f label{display:block;color:var(--dim);font-size:.76rem;margin-bottom:4px}
+.f input{width:100%}
+
+.tbl{width:100%;border-collapse:collapse;margin-top:6px;font-size:.88rem}
+.tbl th{
+  text-align:left;color:var(--dim);font-weight:500;font-size:.72rem;text-transform:uppercase;
+  letter-spacing:.07em;padding:7px 8px;border-bottom:1px solid var(--line);
+}
+.tbl td{padding:9px 8px;border-bottom:1px solid #ffffff0a;font-family:var(--mono)}
+.tbl td:first-child{color:var(--muted)}
+.scroller{overflow-x:auto}
+
+/* ---------- Karteikarten ---------- */
+.flash{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);
+  padding:34px 20px;text-align:center;min-height:190px;
+  display:flex;flex-direction:column;justify-content:center;gap:10px;cursor:pointer;
+}
+.flash .q{font-size:1.15rem;line-height:1.4}
+.flash .a{font-size:1.5rem;color:var(--accent);font-weight:600;letter-spacing:-.02em}
+.flash .grp-name{color:var(--dim);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em}
+.flash .tap{color:var(--dim);font-size:.8rem}
+.fbtns{display:flex;gap:10px;margin-top:12px}
+.fbtns .btn{flex:1;text-align:center}
+.deckpick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{padding:7px 13px;border:1px solid var(--line);border-radius:999px;font-size:.85rem;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:#8d9c6655;color:var(--accent)}
+
+footer{color:var(--dim);font-size:.78rem;line-height:1.6;padding-block:26px;border-top:1px solid var(--line)}
+.reset{color:var(--dim);text-decoration:underline}
+.reset:hover{color:var(--bad)}
+</style>
+</head>
+<body>
+
+<header><div class="wrap head">
+  <h1>Bund-Kompass</h1>
+  <span class="sub" id="headsub">alles vor dem Dienstantritt an einem Ort</span>
+</div></header>
+
+<nav><div class="wrap"><div class="tabs" role="tablist">
+  <button class="tab" role="tab" data-p="start" aria-selected="true">Übersicht</button>
+  <button class="tab" role="tab" data-p="regeln">Regeln<span class="n" id="nregeln"></span></button>
+  <button class="tab" role="tab" data-p="packen">Packen<span class="n" id="npacken"></span></button>
+  <button class="tab" role="tab" data-p="fitness">Fitness<span class="n" id="nfitness"></span></button>
+  <button class="tab" role="tab" data-p="lernen">Dienstgrade</button>
+</div></div></nav>
+
+<main class="wrap">
+
+<!-- ÜBERSICHT -->
+<section id="p-start" class="stack">
+  <div class="card count">
+    <div class="days" id="cdays">—</div>
+    <div class="label" id="clabel">Wann geht's los?</div>
+    <div class="date" id="cdate"></div>
+    <div class="setdate">
+      <input type="date" id="dateInput" aria-label="Datum des Dienstantritts">
+      <button class="btn btn-accent" id="dateSave">Datum merken</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Wo du stehst</h2>
+    <p class="lead">Wird automatisch aus den anderen Reitern gefüllt.</p>
+    <div class="tiles" style="margin-top:14px" id="tiles"></div>
+  </div>
+
+  <div class="note">
+    <b>Das Wichtigste zuerst:</b> Der Einberufungsbescheid schlägt alles hier.
+    Was drin steht — Termin, Ort, Packliste, mitzubringende Papiere — gilt.
+    Diese Seite ist dein Gedächtnis drumherum, keine amtliche Quelle.
+  </div>
+</section>
+
+<!-- REGELN -->
+<section id="p-regeln" hidden class="stack">
+  <div class="card">
+    <h2>Vorher regeln</h2>
+    <p class="lead">Der Kram, den man garantiert vergisst und der von drinnen schwer zu klären ist.</p>
+    <div id="tasks"></div>
+    <div class="addrow">
+      <input type="text" id="taskNew" placeholder="Eigene Aufgabe …">
+      <button class="btn" id="taskAdd">+</button>
+    </div>
+  </div>
+</section>
+
+<!-- PACKEN -->
+<section id="p-packen" hidden class="stack">
+  <div class="card">
+    <h2>Packliste</h2>
+    <p class="lead">Zum Abhaken am Handy. Der Spind ist kleiner als du denkst — weniger ist besser.</p>
+    <div id="pack"></div>
+    <div class="addrow">
+      <input type="text" id="packNew" placeholder="Eigenes Teil …">
+      <button class="btn" id="packAdd">+</button>
+    </div>
+  </div>
+</section>
+
+<!-- FITNESS -->
+<section id="p-fitness" hidden class="stack">
+  <div class="card">
+    <h2>Basis-Fitness-Test</h2>
+    <p class="lead">Drei Disziplinen. Trag ein, was du geschafft hast — die Seite rechnet den Rest.</p>
+    <div class="disc" id="discs"></div>
+  </div>
+
+  <div class="card">
+    <h2>Neuer Versuch</h2>
+    <div class="form">
+      <div class="f"><label for="fD">Datum</label><input type="date" id="fD"></div>
+      <div class="f"><label for="fS">Sprint 11×10 m (Sek.)</label><input type="number" id="fS" step="0.1" inputmode="decimal" placeholder="z. B. 54.2"></div>
+      <div class="f"><label for="fH">Klimmhang (Sek.)</label><input type="number" id="fH" step="1" inputmode="numeric" placeholder="z. B. 14"></div>
+      <div class="f"><label for="fL">1000 m (min:sek)</label><input type="text" id="fL" inputmode="numeric" placeholder="z. B. 5:48"></div>
+    </div>
+    <button class="btn btn-accent" id="fSave" style="margin-top:12px">Versuch speichern</button>
+  </div>
+
+  <div class="card">
+    <h2>Verlauf</h2>
+    <div class="scroller"><table class="tbl" id="hist"></table></div>
+  </div>
+
+  <div class="note">
+    Die Mindestmarken hier sind die geläufigen Werte zum Bestehen. Die amtliche Punktetabelle
+    und die genaue Durchführung bekommst du beim Karriereberater bzw. vor Ort — <b>verlass dich
+    für Zahlen nicht auf diese Seite</b>, sondern nutz sie zum Dranbleiben.
+  </div>
+
+  <div class="card">
+    <h2>Trainingswoche, die das abdeckt</h2>
+    <p class="lead">Drei Einheiten reichen. Entscheidend ist, dass du sie machst.</p>
+    <div id="plan"></div>
+  </div>
+</section>
+
+<!-- DIENSTGRADE -->
+<section id="p-lernen" hidden class="stack">
+  <div class="card">
+    <h2>Karteikarten</h2>
+    <p class="lead">Tippen dreht die Karte um. „Sitzt" legt sie weiter hinten wieder rein.</p>
+    <div class="deckpick" id="decks" style="margin-top:14px"></div>
+    <div class="flash" id="flash"><div class="tap">Karte lädt …</div></div>
+    <div class="fbtns">
+      <button class="btn" id="fbAgain">Nochmal</button>
+      <button class="btn btn-accent" id="fbOk">Sitzt</button>
+    </div>
+    <p class="lead" style="margin-top:12px" id="deckstat"></p>
+  </div>
+
+  <div class="card">
+    <h2>Der ganze Stapel auf einen Blick</h2>
+    <p class="lead">Zum Drüberlesen, wenn dir die Karten zu langsam gehen. Zeigt immer den Stapel, der oben ausgewählt ist.</p>
+    <div class="scroller"><table class="tbl" id="ranktbl"></table></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  Läuft komplett auf deinem Gerät. Alles, was du einträgst, bleibt im Browser dieses Geräts —
+  nichts wird verschickt. Leerst du die Browserdaten, ist es weg.<br>
+  Angaben zu Test, Packliste und Formalien sind Orientierung, keine amtliche Auskunft —
+  im Zweifel Einberufungsbescheid oder Karriereberater.<br><br>
+  <button class="reset" id="reset">Alles zurücksetzen</button>
+</footer>
+</main>
+
+<script>
+"use strict";
+
+/* ============ Daten ============ */
+
+const TASKS = [
+  ["Papiere & Behörden", [
+    ["t1","Einberufungsbescheid komplett lesen","Termin, Ort, Uhrzeit und die amtliche Mitbringliste rausschreiben. Alles andere richtet sich danach."],
+    ["t2","Personalausweis prüfen","Muss über die ganze Dienstzeit gültig sein. Verlängern dauert Wochen."],
+    ["t3","Reisepass prüfen","Nur wichtig, falls Auslandsverwendung denkbar ist — dann aber früh."],
+    ["t4","Impfpass suchen","Wird beim Eingang gebraucht. Wenn er weg ist: Hausarzt kann Ersatz ausstellen."],
+    ["t5","Sozialversicherungsnummer notieren","Steht auf der Meldebescheinigung der Rentenversicherung oder der Gehaltsabrechnung."],
+    ["t6","Steuer-ID notieren","Elfstellig, steht auf dem Steuerbescheid oder dem Brief vom Bundeszentralamt."],
+    ["t7","Führerschein einpacken",""],
+    ["t8","Biometrische Passbilder machen","4–6 Stück. Braucht man öfter, als man denkt."]
+  ]],
+  ["Geld & Verträge", [
+    ["g1","Kontoverbindung an die Bundeswehr melden","Ohne IBAN kein Sold."],
+    ["g2","Daueraufträge und Lastschriften durchgehen","Was läuft weiter, was kann weg? Einmal komplett auf dem Kontoauszug durchsehen."],
+    ["g3","Handytarif prüfen","Kleiner Tarif reicht meist. Manche Anbieter haben eigene Konditionen für Soldaten — fragen kostet nichts."],
+    ["g4","Fitnessstudio: ruhen lassen oder kündigen","Viele Studios stellen den Vertrag ruhend, wenn du den Bescheid vorlegst. Immer schriftlich."],
+    ["g5","Abos durchgehen","Streaming, Apps, Zeitschriften, Gaming — läuft sonst monatelang leer mit."],
+    ["g6","Passwörter und 2FA sichern","Codes nicht nur auf dem einen Handy. Backup-Codes ausdrucken und daheim lassen."]
+  ]],
+  ["Versicherung & Gesundheit", [
+    ["v1","Krankenkasse Bescheid geben","Während der Dienstzeit läuft die medizinische Versorgung über die Truppe. Die Kasse muss das wissen."],
+    ["v2","Private KV: Anwartschaft klären","Damit du später ohne neue Gesundheitsprüfung zurückkommst. Nur relevant, wenn privat versichert."],
+    ["v3","Haftpflicht prüfen","Läuft meist weiter und ist günstig — nicht vorschnell kündigen."],
+    ["v4","Zahnarzt vorher","Wehtuende Zähne in der Grundausbildung sind der Klassiker."],
+    ["v5","Brille/Kontaktlinsen: Ersatz besorgen","Eine Ersatzbrille ist Pflichtprogramm. Linsen großzügig bevorraten."],
+    ["v6","Dauermedikamente: Vorrat + Attest","Vorher mit dem Arzt klären, was du brauchst und wie du es dokumentierst."]
+  ]],
+  ["Auto, Wohnen, Post", [
+    ["a1","Auto: Stilllegung oder Saisonkennzeichen rechnen","Wenn es Monate steht, spart das echtes Geld. Einmal durchrechnen."],
+    ["a2","Kfz-Versicherung informieren",""],
+    ["a3","Post regeln","Nachsendeauftrag oder jemand, der zuverlässig den Briefkasten leert. Behördenpost hat Fristen."],
+    ["a4","Meldeadresse klären","Wo bist du gemeldet, wohin geht amtliche Post?"],
+    ["a5","Zimmer aufräumen","Was bleibt, was kommt weg. Machst du sonst nie."],
+    ["a6","Ersatzschlüssel hinterlegen","Bei Eltern oder jemandem, dem du traust."]
+  ]],
+  ["Persönliches", [
+    ["p1","Vertrauensperson benennen","Jemand, der für dich etwas regeln kann, wenn du nicht drankommst. Ggf. mit Vollmacht."],
+    ["p2","Wichtige Nummern auf Papier","Handy ist nicht immer greifbar. Zettel in den Geldbeutel."],
+    ["p3","Leuten sagen, wann du erreichbar bist","Erspart dir und ihnen Missverständnisse in den ersten Wochen."],
+    ["p4","Fitness ehrlich testen","Einmal den echten BFT durchziehen, bevor es zählt. Siehe Reiter Fitness."],
+    ["p5","Haare kurz vorher schneiden",""]
+  ]]
+];
+
+const PACK = [
+  ["Papiere — die müssen mit", [
+    ["k1","Einberufungsbescheid",""],
+    ["k2","Personalausweis",""],
+    ["k3","Impfpass",""],
+    ["k4","Sozialversicherungsausweis",""],
+    ["k5","Bankkarte / IBAN",""],
+    ["k6","Führerschein",""],
+    ["k7","Passbilder (4–6)",""],
+    ["k8","Ärztliche Unterlagen, falls vorhanden","Atteste, Medikamentenplan, Allergiepass."]
+  ]],
+  ["Praktisch — ohne das wird's unangenehm", [
+    ["k10","Vorhängeschloss für den Spind","Das vergisst fast jeder und es ist am ersten Tag sofort wichtig. Lieber zwei."],
+    ["k11","Waschzeug","Klein halten, es wird viel bewegt."],
+    ["k12","2 Handtücher + 1 kleines fürs Sport",""],
+    ["k13","Duschlatschen","Gemeinschaftsdusche. Nicht diskutabel."],
+    ["k14","Unterwäsche ~7×",""],
+    ["k15","Socken ~7× plus gute dicke","Dünne Baumwollsocken in Stiefeln = Blasen."],
+    ["k16","Laufschuhe, eingelaufen","Keine nagelneuen. Neue Schuhe plus viel Laufen ist eine schlechte Kombination."],
+    ["k17","Sportsachen",""],
+    ["k18","Schlafsachen",""],
+    ["k19","Wecker mit Batterie","Verlass dich nicht nur aufs Handy."],
+    ["k20","Kugelschreiber + kleines Notizbuch","Du schreibst mehr mit, als du erwartest."],
+    ["k21","Bargeld ~50 €",""]
+  ]],
+  ["Macht das Leben leichter", [
+    ["k30","Blasenpflaster","Das nützlichste Teil auf der ganzen Liste."],
+    ["k31","Kleines Nähzeug",""],
+    ["k32","Schuhputzzeug",""],
+    ["k33","Taschenlampe",""],
+    ["k34","Ohrstöpsel","Mehrbettzimmer. Schlaf ist Leistung."],
+    ["k35","Powerbank + 2 Ladekabel",""],
+    ["k36","Sonnencreme + Lippenpflege",""],
+    ["k37","Wäschesack + ein paar Kleiderbügel",""],
+    ["k38","Gefrierbeutel","Hält im Feld alles trocken, wiegt nichts."]
+  ]],
+  ["Lieber dalassen", [
+    ["k40","Teure Elektronik und Kopfhörer","Spind, Enge, viele Leute. Nimm Ersetzbares mit."],
+    ["k41","Wertsachen und Schmuck",""],
+    ["k42","Messer über das Erlaubte hinaus","Was zulässig ist, steht im Bescheid bzw. in der Kasernenordnung. Im Zweifel: dalassen."],
+    ["k43","Alkohol und alles Illegale","Beendet die Sache schneller, als sie angefangen hat."],
+    ["k44","Zu viel Kleidung","Der Spind ist klein und du bekommst ohnehin Uniform."]
+  ]],
+  ["Stellt die Bundeswehr", [
+    ["k50","Uniform und Kampfanzug","Nur zum Wissen — nicht selbst kaufen."],
+    ["k51","Kampfstiefel",""],
+    ["k52","Feldgepäck und Ausrüstung",""],
+    ["k53","Bettwäsche (meist)","Steht im Bescheid. Wenn nicht: selbst mitbringen."]
+  ]]
+];
+
+/* Basis-Fitness-Test: die drei Disziplinen mit den geläufigen Mindestmarken.
+   "Puffer" ist meine Empfehlung, kein amtlicher Wert. */
+const DISCS = [
+  {id:"sprint", name:"Sprinttest 11×10 m", unit:"s", min:60,  puffer:50,  lower:true,
+   hint:"Pendellauf, immer volle Wende. Technik an der Wende bringt mehr als Tempo."},
+  {id:"hang",   name:"Klimmhang",          unit:"s", min:5,   puffer:20,  lower:false,
+   hint:"Kinn über der Stange halten. Trainierbar in wenigen Wochen."},
+  {id:"lauf",   name:"1000-m-Lauf",        unit:"",  min:390, puffer:330, lower:true, time:true,
+   hint:"Die Disziplin, die am meisten Vorlauf braucht — Ausdauer kommt langsamer als Kraft."}
+];
+
+const PLAN = [
+  ["Tag 1 — Intervalle","6 × 400 m zügig, dazwischen 2 min gehen. Vorher 10 min locker einlaufen. Das zieht die 1000-m-Zeit runter."],
+  ["Tag 2 — Kraft & Hang","3 × so lang wie möglich am Klimmhang halten, dazwischen 2 min Pause. Dazu negative Klimmzüge, Rudern, Liegestütze. 25 Minuten reichen."],
+  ["Tag 3 — Dauerlauf","30–40 min in einem Tempo, bei dem du noch sprechen könntest. Baut die Grundlage, auf der alles andere steht."],
+  ["Einmal pro Woche extra","Den Pendellauf üben: 11 × 10 m, echte Wende, echte Zeit. 5 Minuten, aber du lernst die Technik."],
+  ["Alle 2–3 Wochen","Kompletten Test durchziehen und hier eintragen. Sonst weißt du nicht, ob das Training wirkt."]
+];
+
+const DECKS = {
+  "Mannschaften": [
+    ["Kein Abzeichen auf der Schulterklappe","Schütze / Jäger / Kanonier / Flieger / Matrose","Die Bezeichnung hängt von der Truppengattung ab — gleicher Rang."],
+    ["1 Winkel","Gefreiter",""],
+    ["2 Winkel","Obergefreiter",""],
+    ["3 Winkel","Hauptgefreiter",""],
+    ["4 Winkel","Stabsgefreiter",""],
+    ["5 Winkel","Oberstabsgefreiter",""],
+    ["Über dem Oberstabsgefreiten, seit 2021 neu","Korporal, darüber Stabskorporal","Wurden 2021 eingeführt, damit erfahrene Mannschaften aufsteigen können."]
+  ],
+  "Unteroffiziere": [
+    ["Tresse an drei Seiten der Schulterklappe","Unteroffizier","Erster Unteroffiziersdienstgrad, noch ohne Portepee."],
+    ["Tresse rundum, kein Stern","Stabsunteroffizier",""],
+    ["Tresse rundum + 1 Stern","Feldwebel","Ab hier: Unteroffizier mit Portepee."],
+    ["Tresse rundum + 2 Sterne","Oberfeldwebel",""],
+    ["Tresse rundum + 3 Sterne","Hauptfeldwebel",""],
+    ["Tresse rundum + 4 Sterne","Stabsfeldwebel",""],
+    ["Tresse rundum + 5 Sterne","Oberstabsfeldwebel",""],
+    ["Der Kompaniefeldwebel — im Alltag „der Spieß\"","Kompaniefeldwebel","Kein eigener Dienstgrad, sondern die Funktion. Zuständig für den ganzen inneren Dienst der Kompanie."]
+  ],
+  "Offiziere": [
+    ["1 Stern auf glattem Schulterstück","Leutnant",""],
+    ["2 Sterne","Oberleutnant",""],
+    ["3 Sterne","Hauptmann",""],
+    ["4 Sterne, Schulterstück wie Hauptmann","Stabshauptmann","Offizier des militärfachlichen Dienstes."],
+    ["1 Stern auf geflochtenem Schulterstück","Major","Ab hier Stabsoffizier."],
+    ["2 Sterne, geflochten","Oberstleutnant",""],
+    ["3 Sterne, geflochten","Oberst",""],
+    ["1 Stern, Generalsschulterstück mit Eichenlaub","Brigadegeneral",""],
+    ["2 Sterne, General","Generalmajor",""],
+    ["3 Sterne, General","Generalleutnant",""],
+    ["4 Sterne, General","General",""]
+  ],
+  "Marine": [
+    ["Marine-Entsprechung zum Unteroffizier","Maat",""],
+    ["Marine-Entsprechung zum Stabsunteroffizier","Obermaat",""],
+    ["Marine-Entsprechung zum Feldwebel","Bootsmann","Danach Ober-, Haupt-, Stabs-, Oberstabsbootsmann."],
+    ["Marine-Entsprechung zum Leutnant","Leutnant zur See",""],
+    ["Marine-Entsprechung zum Hauptmann","Kapitänleutnant",""],
+    ["Marine-Entsprechung zum Major","Korvettenkapitän",""],
+    ["Marine-Entsprechung zum Oberstleutnant","Fregattenkapitän",""],
+    ["Marine-Entsprechung zum Oberst","Kapitän zur See",""],
+    ["Marine-Entsprechung zum Brigadegeneral","Flottillenadmiral","Danach Konteradmiral, Vizeadmiral, Admiral."]
+  ],
+  "Abkürzungen": [
+    ["AGA","Allgemeine Grundausbildung","Die ersten Wochen, die jeder durchläuft."],
+    ["BFT","Basis-Fitness-Test","Die drei Disziplinen im Reiter Fitness."],
+    ["UvD","Unteroffizier vom Dienst","Hat für seinen Zeitraum die Aufsicht im Bereich."],
+    ["GvD","Gefreiter vom Dienst","Unterstützt den UvD, meist am Eingang bzw. auf der Wache."],
+    ["Kp","Kompanie","Darunter: Zug (Zg), darunter Gruppe (Grp)."],
+    ["Btl","Bataillon","Mehrere Kompanien."],
+    ["Spieß","Kompaniefeldwebel","Die Person, an die du dich bei fast allem Organisatorischen wendest."],
+    ["Formaldienst","Exerzieren","Antreten, Marschieren, Grundstellung — Drill auf dem Platz."],
+    ["Stube","Das Zimmer auf der Unterkunft","Wird kontrolliert. Ordnung ist dort keine Meinungsfrage."]
+  ]
+};
+
+/* ============ Speicher ============ */
+const KEY = "bund-kompass-v1";
+const blank = () => ({datum:"", done:{}, packDone:{}, bft:[], eigene:[], eigenePack:[], cards:{}, deck:"Mannschaften"});
+let S = blank();
+try{ const raw = localStorage.getItem(KEY); if(raw) S = Object.assign(blank(), JSON.parse(raw)); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+const $  = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ============ Reiter ============ */
+$$(".tab").forEach(t => t.addEventListener("click", () => {
+  $$(".tab").forEach(x => x.setAttribute("aria-selected", String(x === t)));
+  $$("main > section").forEach(s => s.hidden = (s.id !== "p-" + t.dataset.p));
+  window.scrollTo({top:0, behavior:"instant"});
+}));
+
+/* ============ Countdown ============ */
+function renderCount(){
+  const inp = $("#dateInput");
+  if(S.datum) inp.value = S.datum;
+  if(!S.datum){
+    $("#cdays").textContent = "—";
+    $("#clabel").textContent = "Trag dein Datum ein, dann zählt es runter.";
+    $("#cdate").textContent = "";
+    return;
+  }
+  const heute = new Date(); heute.setHours(0,0,0,0);
+  const ziel  = new Date(S.datum + "T00:00:00");
+  const tage  = Math.round((ziel - heute) / 86400000);
+  const fmt = ziel.toLocaleDateString("de-DE",{weekday:"long", day:"2-digit", month:"long", year:"numeric"});
+
+  if(tage > 0){
+    $("#cdays").textContent = tage;
+    $("#clabel").textContent = tage === 1 ? "Tag bis zum Dienstantritt" : "Tage bis zum Dienstantritt";
+    const wo = Math.floor(tage/7), re = tage % 7;
+    $("#cdate").textContent = fmt + (wo ? "  ·  " + wo + " Wochen" + (re ? " und " + re + " Tage" : "") : "");
+  } else if(tage === 0){
+    $("#cdays").textContent = "0";
+    $("#clabel").textContent = "Heute ist es so weit.";
+    $("#cdate").textContent = fmt;
+  } else {
+    $("#cdays").textContent = Math.abs(tage);
+    $("#clabel").textContent = "Tage seit dem Dienstantritt";
+    $("#cdate").textContent = fmt;
+  }
+}
+$("#dateSave").addEventListener("click", () => {
+  S.datum = $("#dateInput").value; save(); renderCount(); renderTiles();
+});
+
+/* ============ Checklisten ============ */
+function buildList(host, groups, doneMap, eigeneArr, eigeneKey){
+  let html = "";
+  groups.forEach(([titel, items]) => {
+    const auf = items.filter(i => doneMap[i[0]]).length;
+    html += '<div class="grp"><h3>' + esc(titel) + '<span>' + auf + "/" + items.length + "</span></h3>";
+    items.forEach(([id, text, hint]) => html += row(id, text, hint, doneMap[id], false));
+    html += "</div>";
+  });
+  if(eigeneArr.length){
+    const auf = eigeneArr.filter(i => doneMap[i.id]).length;
+    html += '<div class="grp"><h3>Eigene<span>' + auf + "/" + eigeneArr.length + "</span></h3>";
+    eigeneArr.forEach(i => html += row(i.id, i.text, "", doneMap[i.id], true));
+    html += "</div>";
+  }
+  host.innerHTML = html;
+
+  host.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener("change", () => {
+    if(cb.checked) doneMap[cb.dataset.id] = true; else delete doneMap[cb.dataset.id];
+    save(); updateCounts(host); renderTiles();
+  }));
+  host.querySelectorAll(".del").forEach(b => b.addEventListener("click", () => {
+    const id = b.dataset.id;
+    S[eigeneKey] = S[eigeneKey].filter(i => i.id !== id);
+    delete doneMap[id]; save(); renderAllLists(); renderTiles();
+  }));
+}
+/* Nur die Zaehler nachziehen, statt die ganze Liste neu zu zeichnen —
+   sonst springt auf dem Handy bei jedem Haken die Ansicht. */
+function updateCounts(host){
+  host.querySelectorAll(".grp").forEach(g => {
+    const boxen = g.querySelectorAll('input[type=checkbox]');
+    const auf = Array.from(boxen).filter(b => b.checked).length;
+    const span = g.querySelector("h3 span");
+    if(span) span.textContent = auf + "/" + boxen.length;
+  });
+}
+function row(id, text, hint, checked, loeschbar){
+  return '<div class="item">'
+    + '<input type="checkbox" id="c-' + id + '" data-id="' + id + '"' + (checked ? " checked" : "") + ">"
+    + '<label for="c-' + id + '">' + esc(text)
+    + (hint ? '<span class="hint">' + esc(hint) + "</span>" : "") + "</label>"
+    + (loeschbar ? '<button class="del" data-id="' + id + '" title="löschen">&times;</button>' : "")
+    + "</div>";
+}
+function renderAllLists(){
+  buildList($("#tasks"), TASKS, S.done,     S.eigene,     "eigene");
+  buildList($("#pack"),  PACK,  S.packDone, S.eigenePack, "eigenePack");
+}
+function addCustom(inputSel, arrKey){
+  const inp = $(inputSel), text = inp.value.trim();
+  if(!text) return;
+  S[arrKey].push({id:"x" + Date.now().toString(36), text});
+  inp.value = ""; save(); renderAllLists(); renderTiles();
+}
+$("#taskAdd").addEventListener("click", () => addCustom("#taskNew","eigene"));
+$("#packAdd").addEventListener("click", () => addCustom("#packNew","eigenePack"));
+$("#taskNew").addEventListener("keydown", e => { if(e.key === "Enter") addCustom("#taskNew","eigene"); });
+$("#packNew").addEventListener("keydown", e => { if(e.key === "Enter") addCustom("#packNew","eigenePack"); });
+
+const zaehle = (groups, eigene, doneMap) => {
+  const alle = groups.flatMap(g => g[1]).map(i => i[0]).concat(eigene.map(i => i.id));
+  return [alle.filter(id => doneMap[id]).length, alle.length];
+};
+
+/* ============ Fitness ============ */
+const mmss = sek => Math.floor(sek/60) + ":" + String(Math.round(sek%60)).padStart(2,"0");
+function parseZeit(v){
+  v = String(v).trim(); if(!v) return null;
+  if(v.includes(":")){
+    const [m,s] = v.split(":");
+    const mi = parseInt(m,10), se = parseFloat(s);
+    if(isNaN(mi) || isNaN(se)) return null;
+    return mi*60 + se;
+  }
+  const n = parseFloat(v.replace(",","."));
+  return isNaN(n) ? null : n;
+}
+const zeigt = (d,w) => d.time ? mmss(w) : w + (d.unit ? " " + d.unit : "");
+const bestanden = (d,w) => d.lower ? w <= d.min : w >= d.min;
+
+function besterWert(d){
+  const werte = S.bft.map(e => e[d.id]).filter(w => typeof w === "number");
+  if(!werte.length) return null;
+  return d.lower ? Math.min(...werte) : Math.max(...werte);
+}
+function letzterWert(d){
+  for(let i = S.bft.length - 1; i >= 0; i--) if(typeof S.bft[i][d.id] === "number") return S.bft[i][d.id];
+  return null;
+}
+function renderFitness(){
+  $("#discs").innerHTML = DISCS.map(d => {
+    const w = letzterWert(d), b = besterWert(d);
+    let st = '<div class="st neutral">noch kein Versuch</div>', cur = "—";
+    if(w !== null){
+      cur = zeigt(d,w);
+      const knapp = d.lower ? w > d.min*0.9 : w < d.min*1.25;
+      if(!bestanden(d,w))                              st = '<div class="st no">noch nicht bestanden</div>';
+      else if(d.lower ? w <= d.puffer : w >= d.puffer) st = '<div class="st ok">sicher bestanden</div>';
+      else if(knapp)                                   st = '<div class="st warn-t">bestanden, aber knapp</div>';
+      else                                             st = '<div class="st ok">bestanden</div>';
+    }
+    const bestZeile = (b !== null && b !== w) ? '<div class="min">beste: ' + zeigt(d,b) + "</div>" : "";
+    return '<div class="d"><div class="name">' + d.name + "</div>"
+      + '<div class="min">Mindestmarke ' + (d.lower ? "≤ " : "≥ ") + zeigt(d,d.min) + "</div>"
+      + '<div class="cur">' + cur + "</div>" + st + bestZeile
+      + '<div class="min" style="margin-top:8px;font-family:inherit;line-height:1.45">' + d.hint + "</div></div>";
+  }).join("");
+
+  const t = $("#hist");
+  if(!S.bft.length){
+    t.innerHTML = '<tr><td style="color:var(--dim);font-family:inherit;padding:14px 8px">Noch nichts eingetragen. Der erste Versuch ist der wichtigste — der sagt dir, wo du stehst.</td></tr>';
+  } else {
+    let h = "<tr><th>Datum</th><th>Sprint</th><th>Hang</th><th>1000 m</th><th></th></tr>";
+    S.bft.slice().reverse().forEach(e => {
+      h += "<tr><td>" + new Date(e.d + "T00:00:00").toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",year:"2-digit"}) + "</td>";
+      DISCS.forEach(d => {
+        const w = e[d.id];
+        h += typeof w === "number"
+          ? '<td class="' + (bestanden(d,w) ? "ok" : "no") + '">' + zeigt(d,w) + "</td>"
+          : '<td class="neutral">—</td>';
+      });
+      h += '<td><button class="del" data-k="' + e.k + '" title="löschen">&times;</button></td></tr>';
+    });
+    t.innerHTML = h;
+    t.querySelectorAll(".del").forEach(b => b.addEventListener("click", () => {
+      S.bft = S.bft.filter(e => e.k !== b.dataset.k); save(); renderFitness(); renderTiles();
+    }));
+  }
+
+  $("#plan").innerHTML = PLAN.map(([t2,txt]) =>
+    '<div class="item" style="padding:11px 2px"><div><label style="cursor:auto">' + esc(t2)
+    + '<span class="hint">' + esc(txt) + "</span></label></div></div>").join("");
+}
+$("#fSave").addEventListener("click", () => {
+  const d = $("#fD").value || new Date().toISOString().slice(0,10);
+  const s = parseZeit($("#fS").value), h = parseZeit($("#fH").value), l = parseZeit($("#fL").value);
+  if(s === null && h === null && l === null){ alert("Trag mindestens eine Disziplin ein."); return; }
+  const e = {k:"b" + Date.now().toString(36), d};
+  if(s !== null) e.sprint = s;
+  if(h !== null) e.hang = h;
+  if(l !== null) e.lauf = l;
+  S.bft.push(e); S.bft.sort((a,b) => a.d.localeCompare(b.d));
+  save();
+  $("#fS").value = $("#fH").value = $("#fL").value = "";
+  renderFitness(); renderTiles();
+});
+
+/* ============ Karteikarten ============ */
+let aktuell = null, umgedreht = false;
+function deckListe(){ return DECKS[S.deck] || []; }
+function kartenId(i){ return S.deck + "#" + i; }
+function naechste(){
+  const liste = deckListe();
+  if(!liste.length){ aktuell = null; return; }
+  const gewicht = liste.map((_,i) => {
+    const box = (S.cards[kartenId(i)] || 0);
+    return Math.max(1, 6 - box*2);
+  });
+  const summe = gewicht.reduce((a,b) => a+b, 0);
+  let r = Math.random() * summe, idx = 0;
+  for(let i = 0; i < gewicht.length; i++){ r -= gewicht[i]; if(r <= 0){ idx = i; break; } }
+  if(idx === aktuell && liste.length > 1) idx = (idx + 1) % liste.length;
+  aktuell = idx; umgedreht = false;
+}
+function renderFlash(){
+  $("#decks").innerHTML = Object.keys(DECKS).map(n =>
+    '<button class="chip" data-d="' + esc(n) + '" aria-pressed="' + (n === S.deck) + '">' + esc(n) + "</button>").join("");
+  $("#decks").querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+    S.deck = c.dataset.d; save(); aktuell = null; naechste(); renderFlash();
+  }));
+
+  const liste = deckListe();
+  if(aktuell === null) naechste();
+  const k = liste[aktuell];
+  if(!k){ $("#flash").innerHTML = '<div class="tap">Kein Stapel.</div>'; return; }
+
+  $("#flash").innerHTML = umgedreht
+    ? '<div class="grp-name">' + esc(S.deck) + '</div><div class="q">' + esc(k[0]) + '</div><div class="a">' + esc(k[1]) + "</div>"
+      + (k[2] ? '<div class="tap">' + esc(k[2]) + "</div>" : "")
+    : '<div class="grp-name">' + esc(S.deck) + '</div><div class="q">' + esc(k[0]) + '</div><div class="tap">tippen zum Umdrehen</div>';
+
+  const sitzt = liste.filter((_,i) => (S.cards[kartenId(i)] || 0) >= 2).length;
+  $("#deckstat").textContent = sitzt + " von " + liste.length
+    + " Karten sitzen — eine Karte gilt als gelernt, wenn du sie zweimal hintereinander konntest.";
+
+  const t = $("#ranktbl");
+  let h = "<tr><th>Merkmal</th><th>Heißt</th></tr>";
+  liste.forEach(k2 => h += "<tr><td>" + esc(k2[0]) + '</td><td style="color:var(--text)">' + esc(k2[1]) + "</td></tr>");
+  t.innerHTML = h;
+}
+$("#flash").addEventListener("click", () => { umgedreht = !umgedreht; renderFlash(); });
+$("#fbOk").addEventListener("click", () => {
+  const id = kartenId(aktuell);
+  S.cards[id] = Math.min(3, (S.cards[id] || 0) + 1); save(); naechste(); renderFlash();
+});
+$("#fbAgain").addEventListener("click", () => {
+  S.cards[kartenId(aktuell)] = 0; save(); naechste(); renderFlash();
+});
+
+/* ============ Übersicht ============ */
+function renderTiles(){
+  const [tA,tN] = zaehle(TASKS, S.eigene, S.done);
+  const [pA,pN] = zaehle(PACK,  S.eigenePack, S.packDone);
+  const geschafft = DISCS.filter(d => { const w = letzterWert(d); return w !== null && bestanden(d,w); }).length;
+  const getestet  = DISCS.filter(d => letzterWert(d) !== null).length;
+
+  const kachel = (t,v,sub,a,b) =>
+    '<div class="tile"><div class="t">' + t + '</div><div class="v">' + v
+    + (sub ? " <small>" + sub + "</small>" : "") + "</div>"
+    + '<div class="bar"><i style="width:' + (b ? Math.round(a/b*100) : 0) + '%"></i></div></div>';
+
+  $("#tiles").innerHTML =
+      kachel("Vorher regeln", tA, "/ " + tN, tA, tN)
+    + kachel("Gepackt",       pA, "/ " + pN, pA, pN)
+    + kachel("BFT bestanden", geschafft, "/ 3", geschafft, 3)
+    + kachel("Disziplinen getestet", getestet, "/ 3", getestet, 3);
+
+  $("#nregeln").textContent  = tA + "/" + tN;
+  $("#npacken").textContent  = pA + "/" + pN;
+  $("#nfitness").textContent = geschafft + "/3";
+}
+
+/* ============ Reset ============ */
+$("#reset").addEventListener("click", () => {
+  if(!confirm("Wirklich alles löschen? Datum, Haken, Testergebnisse und Lernstand sind dann weg.")) return;
+  S = blank(); save();
+  renderCount(); renderAllLists(); renderFitness(); renderFlash(); renderTiles();
+});
+
+/* ============ Start ============ */
+$("#fD").value = new Date().toISOString().slice(0,10);
+renderCount(); renderAllLists(); renderFitness(); renderFlash(); renderTiles();
+</script>
+</body>
+</html>

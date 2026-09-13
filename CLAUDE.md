@@ -35,6 +35,18 @@ kann, siehe Alex.
 Gebaute Seiten: **`nischen/tagwerk/`** (Demo, erfundene Kaffeemarke) und
 **`nischen/alex-aussenanlagen/`** (echter Kunde, Pfullendorf).
 
+## `alltag/` — persönlich, kein Business
+
+`alltag/` steht bewusst außerhalb von beidem: **weder Agentur noch Webseitenbau.** Persönliche
+Werkzeuge für den Nutzer selbst. Hier gelten keine Agentur-Preise, kein `10k-websites`, keine
+Nischen-Leitplanken — und umgekehrt fließt von hier nichts in die Geschäftsdoku zurück.
+
+Aktuell: **`alltag/bund-kompass/`** — eine einzelne HTML-Datei fürs Handy (Countdown bis zum
+Dienstantritt, Erledigen-Liste, Packliste, Basis-Fitness-Test mit Verlauf, Dienstgrade-Karteikarten).
+Alles offline, Speicherung nur im Browser des Geräts. Inhalte sind bewusst als Orientierung
+gekennzeichnet, nicht als amtliche Auskunft — **keine erfundenen Punktetabellen oder Vorschriften
+ergänzen.** Im Zweifel gilt der Einberufungsbescheid.
+
 ## Zwei Nischen, zwei Ordner
 
 | Nische | Status | Ordner |
@@ -151,6 +163,9 @@ sondern ein Gastro-Einzelauftrag. **Nicht mit dem Kfz-Angebot oder dessen Preise
 **Eine Quelle für die Speisekarte:** `webseite/tools/speisekarte-uebernehmen.py` überträgt Gerichte
 und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt in der Webseite.
 
+### `alltag/` — persönlich
+`bund-kompass/index.html` (eine Datei, offline, Handy) + `README.md`. Siehe Abschnitt oben.
+
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,
 `ghl-n8n-aufbau.md` + `n8n/`, `tech-stack.md`, `klienten-journey.md`
@@ -179,8 +194,15 @@ und **`10k-websites`** (unverändert, maßgeblich für den Webseitenbau, siehe o
 
 ## Aktueller Stand
 
-Kfz-Nische ist **vollständig aufgesetzt**: Businessplan, Service-Baukasten, Landingpage, Pitch-Seite,
-Verkaufsskript, Vertrag, Onboarding-Mail, Fahrplan. **Noch keine Klienten, Lead-Liste noch zu füllen.**
+**Das Agentur-Geschäft ruht.** Der Nutzer hat im September 2026 gesagt: er geht bald zum Bund,
+deshalb lohnt sich der Aufbau gerade nicht. Also **nicht von selbst zur Akquise drängen** und keine
+Verkaufsarbeit vorschlagen, solange er das nicht wieder aufgreift. Die unten stehenden Ziele und
+Termine stammen aus der Zeit davor und sind überholt — sie bleiben stehen, damit alles vollständig
+ist, wenn er zurückkommt.
+
+Inhaltlich ist die Kfz-Nische **vollständig aufgesetzt**: Businessplan, Service-Baukasten, Landingpage,
+Pitch-Seite, Verkaufsskript, Vertrag, Onboarding-Mail, Fahrplan. **Noch keine Klienten, Lead-Liste
+noch zu füllen.**
 
 **Ziel: 7.000 € bis 01.10.2026** → **3–4 Abschlüsse im August**, davon mindestens 2 in der ersten
 Monatshälfte (je früher die Unterschrift, desto mehr Retainer-Monate zählen noch vor dem Stichtag).
