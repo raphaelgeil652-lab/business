@@ -9,3 +9,9 @@ noch zum Webseitenbau. Keine Kundenarbeit, keine Preise, keine Nische.
 | **Bund-Kompass** | Countdown, Erledigen-Liste, Packliste, Basis-Fitness-Test, Dienstgrade. | [▶ Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/claude/alltags-tools-situation-kma4qf/alltag/bund-kompass/index.html) |
 
 Beide laufen offline und speichern nur im Browser des Geräts.
+
+## Posteingang & Automationen
+
+[`posteingang/`](posteingang/) — der Befund zum Gmail-Konto (9.846 Mails, 8.981 ungelesen, null
+Labels), die vier angelegten Labels, fertige Gmail-Filter zum Einrichten, die Abmelde-Liste und
+der Text für die tägliche Morgenbriefing-Routine.
