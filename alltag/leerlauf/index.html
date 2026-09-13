@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f4ee">
+<title>Leerlauf</title>
+<style>
+:root{
+  --paper:#f7f4ee; --card:#fffdf9; --ink:#232019; --muted:#6b6558; --faint:#a9a294;
+  --line:#e6e0d4; --line-soft:#efeadf; --accent:#7a6549; --accent-soft:#7a654914;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,ui-serif,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --pad:clamp(20px,5vw,34px);
+  --ease:cubic-bezier(.4,.14,.3,1);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#17150f; --card:#1e1c15; --ink:#e9e4d6; --muted:#968f7e; --faint:#6a6456;
+    --line:#2d2a20; --line-soft:#24221a; --accent:#b09570; --accent-soft:#b0957014;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--sans);
+  padding-bottom:env(safe-area-inset-bottom);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:660px;margin:0 auto;padding-inline:var(--pad)}
+h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.01em}
+p{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+textarea,input,select{font:inherit;color:inherit}
+[hidden]{display:none!important}
+
+/* ---------- Kopf ---------- */
+.top{padding-block:28px 8px;display:flex;align-items:center;gap:14px;min-height:74px}
+.zurueck{
+  color:var(--faint);font-size:.88rem;padding:6px 12px 6px 0;transition:color .2s var(--ease);
+  display:flex;align-items:center;gap:7px;
+}
+.zurueck:hover{color:var(--accent)}
+.zurueck::before{content:"←";font-size:1rem}
+.titel{font-family:var(--serif);font-size:1.05rem;letter-spacing:.01em}
+.top .titel.gross{font-size:1.6rem}
+
+/* ---------- Startseite ---------- */
+.intro{font-family:var(--serif);font-size:1.22rem;line-height:1.55;color:var(--muted);margin-block:6px 34px;max-width:30em}
+.raeume{border-top:1px solid var(--line)}
+.raum{
+  display:block;width:100%;padding-block:19px;border-bottom:1px solid var(--line);
+  transition:padding-left .28s var(--ease);
+}
+.raum:hover,.raum:focus-visible{padding-left:9px;outline:none}
+.raum .n{font-family:var(--serif);font-size:1.24rem;display:block;letter-spacing:-.005em}
+.raum:hover .n{color:var(--accent)}
+.raum .d{color:var(--muted);font-size:.9rem;margin-top:3px;line-height:1.5;display:block;max-width:44em}
+.raum .z{
+  float:right;color:var(--faint);font-size:.78rem;font-variant-numeric:tabular-nums;
+  margin-top:6px;margin-left:14px;
+}
+.fuss{color:var(--faint);font-size:.8rem;line-height:1.65;padding-block:32px 60px}
+.fuss a,.fuss button{color:var(--faint);text-decoration:underline;text-underline-offset:2px}
+.fuss button:hover{color:var(--accent)}
+
+/* ---------- Räume allgemein ---------- */
+main{padding-bottom:70px}
+.hinweis{color:var(--muted);font-size:.9rem;line-height:1.6;margin-bottom:24px;max-width:40em}
+.blatt{
+  background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px;
+}
+.frage-t{font-family:var(--serif);font-size:1.5rem;line-height:1.42;letter-spacing:-.01em}
+@media(min-width:600px){.frage-t{font-size:1.7rem}}
+
+textarea{
+  width:100%;background:transparent;border:0;border-radius:0;resize:vertical;
+  font-family:var(--serif);font-size:1.08rem;line-height:1.75;padding:0;min-height:9em;
+}
+textarea:focus{outline:none}
+textarea::placeholder{color:var(--faint)}
+.feld{
+  background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px 22px;
+  transition:border-color .25s var(--ease);
+}
+.feld:focus-within{border-color:var(--accent)}
+
+.knopf{
+  border:1px solid var(--line);border-radius:99px;padding:10px 20px;font-size:.9rem;
+  transition:.22s var(--ease);text-align:center;background:var(--card);
+}
+.knopf:hover{border-color:var(--accent);color:var(--accent)}
+.knopf.voll{background:var(--accent-soft);border-color:#7a654944;color:var(--accent)}
+.knopf.leise{border-color:transparent;background:none;color:var(--faint);padding-inline:4px}
+.knopf.leise:hover{color:var(--accent)}
+.reihe{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.rechts{margin-left:auto}
+
+.status{color:var(--faint);font-size:.83rem;min-height:1.4em;transition:opacity .5s var(--ease)}
+
+/* ---------- Rückblick / Listen ---------- */
+.trenner{margin-top:44px;padding-top:8px;border-top:1px solid var(--line)}
+.trenner h3{
+  font-size:.74rem;text-transform:uppercase;letter-spacing:.11em;color:var(--faint);
+  padding-block:14px 4px;font-weight:500;
+}
+.eintrag{padding-block:16px;border-bottom:1px solid var(--line-soft)}
+.eintrag .dat{color:var(--faint);font-size:.76rem;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.eintrag .fr{color:var(--muted);font-size:.88rem;margin-top:4px;font-style:italic}
+.eintrag .aw{font-family:var(--serif);font-size:1rem;line-height:1.65;margin-top:7px;white-space:pre-wrap}
+.leer{color:var(--faint);font-size:.9rem;font-style:italic;padding-block:18px}
+
+/* ---------- Fenster ---------- */
+.fenster-buehne{
+  min-height:58vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:26px;text-align:center;
+}
+.fenster-buehne.laeuft .verblasst{opacity:0;transition:opacity 2.4s var(--ease);pointer-events:none}
+.fenster-buehne .verblasst{transition:opacity .5s var(--ease)}
+.linie{width:min(340px,80vw);height:1px;background:var(--line);position:relative;overflow:hidden}
+.linie i{
+  position:absolute;inset:0 auto 0 0;width:0;background:var(--accent);
+  transition:width 1s linear;
+}
+.rest{font-family:var(--serif);font-size:2.6rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.fertig{font-family:var(--serif);font-size:1.35rem;line-height:1.5}
+
+/* ---------- Münze ---------- */
+.muenze-stufe{text-align:center;padding-block:14px}
+.gross-serif{font-family:var(--serif);font-size:1.5rem;line-height:1.45}
+.ergebnis{font-family:var(--serif);font-size:2.6rem;letter-spacing:-.02em;margin-block:12px}
+
+/* ---------- Jahr ---------- */
+.monat{margin-bottom:18px}
+.monat h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.11em;color:var(--faint);font-weight:500;margin-bottom:7px}
+.tage{display:flex;flex-wrap:wrap;gap:4px}
+.tag{
+  width:15px;height:15px;border-radius:3px;border:1px solid var(--line);background:transparent;
+  padding:0;transition:.18s var(--ease);cursor:pointer;
+}
+.tag:hover{border-color:var(--accent);transform:scale(1.22)}
+.tag.heute{box-shadow:0 0 0 2px var(--paper),0 0 0 3px var(--accent)}
+.tag.zukunft{opacity:.32;cursor:default}
+.tag.zukunft:hover{transform:none;border-color:var(--line)}
+.tag[data-f="1"]{background:#cfd8c4}.tag[data-f="2"]{background:#a9bb99}
+.tag[data-f="3"]{background:#d8c9a8}.tag[data-f="4"]{background:#c9a88f}
+.tag[data-f="5"]{background:#b08b86}
+@media (prefers-color-scheme:dark){
+  .tag[data-f="1"]{background:#4a5540}.tag[data-f="2"]{background:#657a56}
+  .tag[data-f="3"]{background:#7a6b4c}.tag[data-f="4"]{background:#7d5f4a}
+  .tag[data-f="5"]{background:#6f4f4b}
+}
+.farbwahl{display:flex;gap:8px;margin-top:12px}
+.farbwahl button{width:30px;height:30px;border-radius:6px;border:1px solid var(--line);transition:.18s}
+.farbwahl button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--accent)}
+.wort{
+  width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);
+  font-family:var(--serif);font-size:1.2rem;padding:6px 0;margin-top:6px;
+}
+.wort:focus{outline:none;border-color:var(--accent)}
+
+/* ---------- Brief ---------- */
+.siegel{
+  display:flex;gap:14px;align-items:baseline;padding-block:15px;border-bottom:1px solid var(--line-soft);
+}
+.siegel .w{font-family:var(--serif);font-size:1.02rem}
+.siegel .k{color:var(--faint);font-size:.78rem;font-variant-numeric:tabular-nums;margin-left:auto;white-space:nowrap}
+.wahl{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.wahl button{border:1px solid var(--line);border-radius:99px;padding:8px 15px;font-size:.85rem;transition:.2s}
+.wahl button[aria-pressed="true"]{background:var(--accent-soft);border-color:#7a654944;color:var(--accent)}
+
+/* ---------- Auflösen (Seite vergessen) ---------- */
+.loest-auf{animation:aufloesen 1.5s var(--ease) forwards}
+@keyframes aufloesen{
+  0%{opacity:1;filter:blur(0)}
+  100%{opacity:0;filter:blur(7px);transform:translateY(-9px)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top">
+    <button class="zurueck" id="zurueck" hidden>zurück</button>
+    <span class="titel gross" id="titel">Leerlauf</span>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- ============ START ============ -->
+<section id="r-start">
+  <p class="intro">Neun Werkzeuge, die nichts von dir wollen. Kein Ziel, keine Serie, keine Erinnerung, die dich anpiept. Nimm eins, wenn dir danach ist.</p>
+  <div class="raeume" id="raeume"></div>
+  <div class="fuss">
+    Alles bleibt auf diesem Gerät — kein Konto, kein Server, nichts wird verschickt.
+    Leerst du die Browserdaten, ist es weg.<br><br>
+    <button id="reset">Alles zurücksetzen</button>
+  </div>
+</section>
+
+<!-- ============ FRAGE ============ -->
+<section id="r-frage" hidden>
+  <p class="hinweis">Eine Frage pro Tag. Du kannst sie beantworten oder einfach stehen lassen.</p>
+  <div class="blatt">
+    <p class="frage-t" id="frageText"></p>
+  </div>
+  <div class="feld" style="margin-top:14px">
+    <textarea id="frageAw" placeholder="…" aria-label="Deine Antwort"></textarea>
+  </div>
+  <div class="reihe">
+    <span class="status" id="frageStatus"></span>
+    <button class="knopf leise rechts" id="frageAndere">eine andere Frage</button>
+  </div>
+  <div class="trenner"><h3>Früher</h3><div id="frageListe"></div></div>
+</section>
+
+<!-- ============ PARKPLATZ ============ -->
+<section id="r-park" hidden>
+  <p class="hinweis">Schreib den Gedanken auf, der gerade im Kreis läuft, und stell ihn ab. Du siehst ihn erst in vierzehn Tagen wieder — dann fragt die Seite einmal, ob er noch ein Thema ist.</p>
+  <div id="parkFaellig"></div>
+  <div class="feld">
+    <textarea id="parkText" placeholder="Was geht dir im Kopf rum?" aria-label="Gedanke"></textarea>
+  </div>
+  <div class="reihe">
+    <button class="knopf voll" id="parkAb">Abstellen</button>
+    <span class="status" id="parkStatus"></span>
+  </div>
+  <div class="trenner"><h3>Bilanz</h3><p class="hinweis" id="parkBilanz" style="margin-top:10px"></p>
+    <button class="knopf leise" id="parkZeigen">trotzdem nachsehen</button>
+    <div id="parkListe" hidden></div>
+  </div>
+</section>
+
+<!-- ============ UMWEG ============ -->
+<section id="r-umweg" hidden>
+  <p class="hinweis">Eine Regel zum Loslaufen. Kein Ziel, keine Strecke, keine Karte. Kopfhörer bleiben zu Hause.</p>
+  <div class="blatt" id="umwegBlatt"></div>
+  <div class="reihe"><button class="knopf voll" id="umwegNeu">Umweg auswürfeln</button></div>
+</section>
+
+<!-- ============ SEITE ============ -->
+<section id="r-seite" hidden>
+  <p class="hinweis">Schreib, so lange du willst. Am Ende entscheidest du, ob es bleibt.</p>
+  <div class="feld">
+    <textarea id="seiteText" placeholder="…" style="min-height:16em" aria-label="Freies Schreiben"></textarea>
+  </div>
+  <div class="reihe">
+    <button class="knopf" id="seiteBehalten">Behalten</button>
+    <button class="knopf leise" id="seiteVergessen">Vergessen</button>
+    <span class="status" id="seiteStatus"></span>
+  </div>
+  <div class="trenner"><h3>Behalten</h3><div id="seiteListe"></div></div>
+</section>
+
+<!-- ============ FENSTER ============ -->
+<section id="r-fenster" hidden>
+  <div class="fenster-buehne" id="fensterBuehne">
+    <div class="verblasst" id="fensterWahl">
+      <p class="hinweis" style="text-align:center;margin-bottom:20px">Wie lange willst du nichts tun?</p>
+      <div class="reihe" style="justify-content:center">
+        <button class="knopf" data-min="2">2 Minuten</button>
+        <button class="knopf" data-min="5">5 Minuten</button>
+        <button class="knopf" data-min="10">10 Minuten</button>
+        <button class="knopf" data-min="20">20 Minuten</button>
+      </div>
+    </div>
+    <div id="fensterLauf" hidden>
+      <div class="rest verblasst" id="fensterRest"></div>
+      <div class="linie" style="margin:24px auto 0"><i id="fensterLinie"></i></div>
+      <div class="reihe verblasst" style="justify-content:center;margin-top:26px">
+        <button class="knopf leise" id="fensterStop">abbrechen</button>
+      </div>
+      <p class="status verblasst" style="text-align:center;margin-top:4px">Tippen holt die Anzeige zurück.</p>
+    </div>
+    <div id="fensterEnde" hidden><p class="fertig" id="fensterEndeText"></p>
+      <div class="reihe" style="justify-content:center"><button class="knopf" id="fensterNochmal">nochmal</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÜNZE ============ -->
+<section id="r-muenze" hidden>
+  <div id="muenze1" class="muenze-stufe">
+    <p class="hinweis" style="text-align:center">Eine Entscheidung, bei der du nicht weiterkommst.</p>
+    <div class="feld" style="text-align:left">
+      <textarea id="muenzeFrage" placeholder="Worum geht's?" style="min-height:4em" aria-label="Deine Frage"></textarea>
+    </div>
+    <div class="reihe" style="justify-content:center"><button class="knopf voll" id="muenzeWerfen">Münze werfen</button></div>
+  </div>
+  <div id="muenze2" class="muenze-stufe" hidden>
+    <p class="gross-serif">Die Münze liegt. Bevor du hinschaust:<br>Was hast du dir gerade gewünscht?</p>
+    <div class="reihe" style="justify-content:center;margin-top:22px">
+      <button class="knopf" data-w="Kopf">Kopf</button>
+      <button class="knopf" data-w="Zahl">Zahl</button>
+    </div>
+  </div>
+  <div id="muenze3" class="muenze-stufe" hidden>
+    <p class="hinweis" style="text-align:center" id="muenzeFrageEcho"></p>
+    <div class="ergebnis" id="muenzeErgebnis"></div>
+    <p class="gross-serif" id="muenzeSpruch"></p>
+    <div class="reihe" style="justify-content:center"><button class="knopf leise" id="muenzeNeu">nochmal</button></div>
+  </div>
+</section>
+
+<!-- ============ BRIEF ============ -->
+<section id="r-brief" hidden>
+  <p class="hinweis">Schreib dir etwas und leg fest, wann du es wiedersiehst. Bis dahin ist es zu.</p>
+  <div class="feld">
+    <textarea id="briefText" placeholder="Lieber ich, …" aria-label="Brief an dich"></textarea>
+  </div>
+  <div class="wahl" id="briefWahl">
+    <button data-t="90" aria-pressed="true">in 3 Monaten</button>
+    <button data-t="180" aria-pressed="false">in 6 Monaten</button>
+    <button data-t="365" aria-pressed="false">in einem Jahr</button>
+    <button data-t="1095" aria-pressed="false">in drei Jahren</button>
+  </div>
+  <div class="reihe">
+    <button class="knopf voll" id="briefSiegeln">Zumachen</button>
+    <span class="status" id="briefStatus"></span>
+  </div>
+  <div class="trenner"><h3>Liegt bereit</h3><div id="briefListe"></div></div>
+</section>
+
+<!-- ============ JAHR ============ -->
+<section id="r-jahr" hidden>
+  <p class="hinweis">Ein Kästchen pro Tag. Ein Wort, eine Farbe, mehr geht nicht. Keine Auswertung, keine Statistik — nur das Bild, das am Ende dasteht.</p>
+  <div id="jahrGitter"></div>
+  <div id="jahrEditor" hidden class="blatt" style="margin-top:20px">
+    <div class="eintrag" style="border:0;padding:0">
+      <span class="dat" id="jahrDatum"></span>
+      <input class="wort" id="jahrWort" maxlength="28" placeholder="Ein Wort" aria-label="Ein Wort für diesen Tag">
+      <div class="farbwahl" id="jahrFarben"></div>
+      <div class="reihe">
+        <button class="knopf voll" id="jahrSpeichern">Eintragen</button>
+        <button class="knopf leise" id="jahrLoeschen">leeren</button>
+        <button class="knopf leise rechts" id="jahrZu">schließen</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STUPS ============ -->
+<section id="r-stups" hidden>
+  <p class="hinweis">Eine kleine Sache für heute. Du kannst sie machen oder nicht — es fragt nie jemand nach.</p>
+  <div class="blatt"><p class="frage-t" id="stupsText"></p></div>
+  <div class="reihe"><button class="knopf leise rechts" id="stupsAnderer">etwas anderes</button></div>
+</section>
+
+</main>
+
+<script>
+"use strict";
+
+/* ================= Inhalte ================= */
+
+const FRAGEN = [
+  "Welche Gewohnheit hast du übernommen, ohne dich je dafür entschieden zu haben?",
+  "Was hast du heute gehört, das du sonst überhört hättest?",
+  "Wovon hast du zuletzt gedacht „das mache ich später\" — wie lange ist das jetzt her?",
+  "Was hat dich diese Woche länger beschäftigt, als es verdient hat?",
+  "Wen hast du lange nicht gesehen, ohne dass es einen Grund dafür gäbe?",
+  "Was kannst du gut, ohne dass es jemand von dir weiß?",
+  "Was hast du zuletzt aufgegeben — und war es richtig?",
+  "Was würdest du heute machen, wenn niemand etwas von dir wollte?",
+  "Woran merkst du, dass es dir gut geht? Nicht was du dann denkst — woran du es merkst.",
+  "Wovor drückst du dich gerade, und was wäre das Schlimmste, das passieren könnte?",
+  "Was hast du als Kind stundenlang gemacht, ohne dass es jemand von dir verlangt hat?",
+  "Welche Entscheidung von vor einem Jahr siehst du heute anders?",
+  "Was sagst du oft, ohne es wirklich zu meinen?",
+  "Wo warst du das letzte Mal, ohne ein Ziel zu haben?",
+  "Was ist an deinem Alltag gerade eigentlich ganz gut?",
+  "Welcher Mensch hat dich verändert, ohne es zu wissen?",
+  "Was hast du zuletzt zu Ende gebracht?",
+  "Was würdest du tun, wenn du es hinterher niemandem erzählen dürftest?",
+  "Welche Musik hast du zuletzt gehört, ohne nebenbei etwas anderes zu machen?",
+  "Worüber hast du zuletzt richtig gelacht?",
+  "Was nervt dich an dir selbst — und seit wann eigentlich?",
+  "Welchen Rat gibst du anderen, den du selbst nicht befolgst?",
+  "Was war das Letzte, das dich überrascht hat?",
+  "Wenn dein Tag heute ein Satz wäre — welcher?",
+  "Was hast du heute nicht gesagt, obwohl du es hättest sagen können?",
+  "Was fehlt dir gerade, das kein Geld kostet?",
+  "Wovon hast du zu viel? Wovon zu wenig?",
+  "Wer denkt in diesem Moment vielleicht an dich?",
+  "Was war heute anders als gestern?",
+  "Welchen Umweg würdest du gehen, wenn Zeit egal wäre?",
+  "Was hast du zuletzt gelernt, ohne es zu wollen?",
+  "Woran erkennst du, dass du müde bist — bevor du es merkst?",
+  "Was hältst du am Laufen, das niemand bemerkt?",
+  "Welchen Gegenstand in deinem Zimmer könntest du schwer ersetzen — und warum eigentlich?",
+  "Was hast du zuletzt weggeworfen und nie vermisst?",
+  "Was machst du, wenn dir langweilig ist? Und wann war das zuletzt der Fall?",
+  "Welche Frage hat dir lange keiner mehr gestellt?",
+  "Was würdest du dir selbst mit fünfzehn nicht glauben?",
+  "Welcher Ort fällt dir ein, wenn du „ruhig\" denkst?",
+  "Was wolltest du schon mal sagen und hast es nie getan?",
+  "Was tust du nur, weil andere es auch tun?",
+  "Wann hast du zuletzt gemerkt, dass du dich geirrt hast?",
+  "Was ist dir wichtiger geworden, ohne dass du es geplant hast?",
+  "Welche Sache besitzt du, die eigentlich jemand anderem gehören sollte?",
+  "Was machst du gerade nur, weil du damit angefangen hast?",
+  "Wen beneidest du — und worum genau?",
+  "Was war dein letzter richtig guter Tag? Woran lag es?",
+  "Was würdest du an dir behalten, wenn du alles andere ändern könntest?",
+  "Welche Entscheidung schiebst du vor dir her, obwohl du sie längst getroffen hast?",
+  "Wann hast du zuletzt jemandem wirklich zugehört, ohne nebenbei zu überlegen, was du sagst?",
+  "Wofür hättest du dich bedanken sollen?",
+  "Was hoffst du, wird in einem Jahr anders sein?"
+];
+
+const STUPSE = [
+  "Heute ein Weg ohne Kopfhörer.",
+  "Eine Mahlzeit ohne Bildschirm.",
+  "Leg das Handy für eine Stunde in einen anderen Raum.",
+  "Schreib jemandem, an den du in letzter Zeit gedacht hast. Ohne Anlass.",
+  "Geh einmal ohne Ziel vor die Tür.",
+  "Hör ein Album von vorne bis hinten. Ganz.",
+  "Schreib drei Sätze mit der Hand auf Papier.",
+  "Kauf heute nichts.",
+  "Frag jemanden etwas, das du wirklich wissen willst.",
+  "Schau zehn Minuten aus dem Fenster, ohne etwas dabei zu tun.",
+  "Räum eine einzige Schublade auf. Nur eine.",
+  "Koch etwas, das länger dauert, als es müsste.",
+  "Lass das Radio im Auto aus.",
+  "Sag einmal ehrlich, wie es dir geht, wenn dich jemand fragt.",
+  "Geh ohne Handy ins Bett.",
+  "Setz dich zehn Minuten irgendwohin, ohne etwas zu lesen.",
+  "Ruf jemanden an, statt zu schreiben.",
+  "Nimm heute den längeren Weg.",
+  "Iss langsamer, als du musst.",
+  "Schreib auf, was du heute nicht geschafft hast — und lass es dann gut sein.",
+  "Steh zwanzig Minuten früher auf und mach nichts damit.",
+  "Geh raus, wenn das Wetter schlecht ist.",
+  "Sortier deine Fotos vom letzten Monat. Lösch die Hälfte.",
+  "Sag heute einmal nein, ohne dich zu erklären.",
+  "Trink deinen Kaffee im Sitzen, ohne Handy in der Hand.",
+  "Schau dir an, was direkt vor deiner Haustür wächst.",
+  "Lass eine Nachricht heute einfach mal ein paar Stunden liegen.",
+  "Geh eine Straße entlang, die du noch nie gegangen bist.",
+  "Räum den Platz auf, an dem du am meisten sitzt.",
+  "Denk an etwas, das gut gelaufen ist, und erzähl es niemandem."
+];
+
+const UMWEG = {
+  dauer: ["zehn Minuten","zwanzig Minuten","eine halbe Stunde","vierzig Minuten","so lange du magst"],
+  regel: [
+    "Bieg an jeder Kreuzung dahin ab, wo es leiser ist.",
+    "Bieg abwechselnd links und rechts ab, bis es nicht mehr geht.",
+    "Nimm immer die Straße, die schmaler aussieht.",
+    "Nimm dreimal eine Abzweigung, die du noch nie genommen hast.",
+    "Geh los und kehr um, sobald dir etwas auffällt, das du noch nie bemerkt hast.",
+    "Geh in die Richtung, in die du sonst nie gehst.",
+    "Folge dem Weg, auf dem am wenigsten Autos fahren.",
+    "Geh dorthin, wo du als Kind oft warst.",
+    "Geh so langsam, dass es dir fast unangenehm ist.",
+    "Nimm jede Abzweigung, an der ein Baum steht.",
+    "Geh der Sonne nach — oder dorthin, wo sie vorhin war.",
+    "Lauf den Weg, den du sonst mit dem Auto fährst."
+  ],
+  achte: [
+    "Wie viele Fenster offen stehen.",
+    "Was du hörst, wenn du stehenbleibst und zwanzig Sekunden wartest.",
+    "Wie der Boden unter dir wechselt.",
+    "Wie viele verschiedene Bäume du unterscheiden kannst.",
+    "Wie viele Leute auf ihr Handy schauen. Und ob du dazugehörst.",
+    "Türen. Welche würdest du streichen lassen?",
+    "Was am Himmel gerade passiert.",
+    "Welche Häuser bewohnt aussehen und welche nicht.",
+    "Wonach es riecht, und wo es wechselt.",
+    "Was hier früher mal war.",
+    "Wo jemand sich Mühe gegeben hat, ohne dass es jemand sieht.",
+    "Wie sich dein eigener Schritt anhört."
+  ]
+};
+
+const RAEUME = [
+  ["frage",  "Eine Frage am Tag",  "Eine Frage, die man nicht in zwei Sekunden beantwortet. Antwort optional."],
+  ["park",   "Der Gedankenparkplatz", "Stell den Gedanken ab, der im Kreis läuft. In vierzehn Tagen fragt die Seite nach."],
+  ["umweg",  "Der Umweg",          "Eine Regel zum Loslaufen. Kein Ziel, keine Karte."],
+  ["seite",  "Die Seite, die du wegwirfst", "Schreib, so lange du willst. Am Ende: behalten oder vergessen."],
+  ["fenster","Fenster",            "Ein Timer, der nichts tut. Der Bildschirm wird leer, du schaust raus."],
+  ["muenze", "Die Münze, die dich durchschaut", "Wirf sie — und merk, was du dir insgeheim gewünscht hast."],
+  ["brief",  "Brief an dich",      "Schreib dir etwas, das erst in Monaten wieder aufgeht."],
+  ["jahr",   "Das Jahr auf einer Seite", "Ein Kästchen pro Tag. Ein Wort, eine Farbe, sonst nichts."],
+  ["stups",  "Der Stups",          "Eine kleine analoge Sache für heute. Fragt nie nach."]
+];
+
+const FARBEN = ["1","2","3","4","5"];
+const PARK_TAGE = 14;
+
+/* ================= Grundlagen ================= */
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad = n => String(n).padStart(2,"0");
+const iso = d => d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate());
+const heute = () => iso(new Date());
+const vonIso = s => new Date(s + "T00:00:00");
+const tageZwischen = (a,b) => Math.round((vonIso(b) - vonIso(a)) / 86400000);
+const lang = s => vonIso(s).toLocaleDateString("de-DE",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+const kurz = s => vonIso(s).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",year:"2-digit"});
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+
+/* Aus einem Text eine feste Zahl machen — damit dieselbe Frage
+   den ganzen Tag dieselbe bleibt, aber morgen eine andere kommt. */
+function streu(text){
+  let h = 2166136261;
+  for(let i = 0; i < text.length; i++){ h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return Math.abs(h);
+}
+const tagesWahl = (datum, salz, n) => streu(datum + "|" + salz) % n;
+const zufall = arr => arr[Math.floor(Math.random() * arr.length)];
+
+/* ================= Speicher ================= */
+const KEY = "leerlauf-v1";
+const leer = () => ({antworten:{}, park:[], seiten:[], briefe:[], jahr:{}, stupsExtra:{}, frageExtra:{}});
+let S = leer();
+try{ const roh = localStorage.getItem(KEY); if(roh) S = Object.assign(leer(), JSON.parse(roh)); }catch(e){}
+let speicherWarnung = false;
+function sichern(){
+  try{ localStorage.setItem(KEY, JSON.stringify(S)); }
+  catch(e){
+    if(!speicherWarnung){ speicherWarnung = true; alert("Dieses Gerät lässt kein Speichern zu (privates Fenster?). Du kannst alles nutzen, aber nichts bleibt erhalten."); }
+  }
+}
+
+/* ================= Räume wechseln ================= */
+let raum = "start";
+function zeige(name){
+  raum = name;
+  document.querySelectorAll("main > section").forEach(s => s.hidden = (s.id !== "r-" + name));
+  const start = name === "start";
+  $("#zurueck").hidden = start;
+  const t = $("#titel");
+  t.classList.toggle("gross", start);
+  t.textContent = start ? "Leerlauf" : (RAEUME.find(r => r[0] === name) || [,"Leerlauf"])[1];
+  if(!start && typeof oeffner[name] === "function") oeffner[name]();
+  if(name !== "fenster") fensterAbbrechen();
+  window.scrollTo({top:0, behavior:"instant"});
+}
+$("#zurueck").addEventListener("click", () => zeige("start"));
+
+function renderStart(){
+  const zahl = {
+    frage: Object.keys(S.antworten).filter(d => (S.antworten[d].a||"").trim()).length,
+    park:  S.park.filter(p => !p.erledigt).length,
+    seite: S.seiten.length,
+    brief: S.briefe.filter(b => !b.geoeffnet).length,
+    jahr:  Object.keys(S.jahr).length
+  };
+  const wort = {
+    frage: n => n + (n === 1 ? " Antwort" : " Antworten"),
+    park:  n => n + " abgestellt",
+    seite: n => n + (n === 1 ? " Seite" : " Seiten"),
+    brief: n => n + (n === 1 ? " Brief" : " Briefe"),
+    jahr:  n => n + (n === 1 ? " Tag" : " Tage")
+  };
+  $("#raeume").innerHTML = RAEUME.map(([id,name,be]) => {
+    const n = zahl[id];
+    const z = (n > 0) ? '<span class="z">' + wort[id](n) + "</span>" : "";
+    return '<button class="raum" data-r="' + id + '">' + z
+      + '<span class="n">' + esc(name) + '</span><span class="d">' + esc(be) + "</span></button>";
+  }).join("");
+  document.querySelectorAll(".raum").forEach(b => b.addEventListener("click", () => zeige(b.dataset.r)));
+}
+
+/* ================= 1 · Frage ================= */
+function frageIndex(){
+  const d = heute();
+  if(typeof S.frageExtra[d] === "number") return S.frageExtra[d];
+  return tagesWahl(d, "frage", FRAGEN.length);
+}
+let frageTimer = null;
+/* Solange etwas im Feld steht, verschwindet der Wechsel-Knopf — sonst waere
+   der Text nach einem Fehltipp weg vom Bildschirm. */
+function frageWechselZeigen(){
+  $("#frageAndere").hidden = $("#frageAw").value.trim().length > 0;
+}
+function renderFrage(){
+  const d = heute(), i = frageIndex();
+  $("#frageText").textContent = FRAGEN[i];
+  $("#frageAw").value = (S.antworten[d] && S.antworten[d].i === i) ? (S.antworten[d].a || "") : "";
+  $("#frageStatus").textContent = "";
+  frageWechselZeigen();
+
+  const alt = Object.keys(S.antworten)
+    .filter(k => k !== d && (S.antworten[k].a || "").trim())
+    .sort().reverse();
+  $("#frageListe").innerHTML = alt.length
+    ? alt.map(k => '<div class="eintrag"><div class="dat">' + kurz(k)
+        + '</div><div class="fr">' + esc(FRAGEN[S.antworten[k].i] || "") + '</div><div class="aw">'
+        + esc(S.antworten[k].a) + "</div></div>").join("")
+    : '<p class="leer">Noch nichts. Kommt von selbst.</p>';
+}
+$("#frageAw").addEventListener("input", () => {
+  const d = heute();
+  S.antworten[d] = {i: frageIndex(), a: $("#frageAw").value};
+  frageWechselZeigen();
+  clearTimeout(frageTimer);
+  frageTimer = setTimeout(() => {
+    sichern();
+    const st = $("#frageStatus");
+    st.style.opacity = "1"; st.textContent = "gesichert";
+    setTimeout(() => { st.style.opacity = "0"; }, 1400);
+  }, 600);
+});
+$("#frageAndere").addEventListener("click", () => {
+  const d = heute();
+  let i = frageIndex(), neu = i;
+  while(neu === i && FRAGEN.length > 1) neu = Math.floor(Math.random() * FRAGEN.length);
+  S.frageExtra[d] = neu;
+  if(S.antworten[d] && !(S.antworten[d].a || "").trim()) delete S.antworten[d];
+  sichern(); renderFrage();
+});
+
+/* ================= 2 · Gedankenparkplatz ================= */
+function renderPark(){
+  const d = heute();
+  const faellig = S.park.filter(p => !p.erledigt && tageZwischen(p.angelegt, d) >= PARK_TAGE);
+
+  $("#parkFaellig").innerHTML = faellig.length
+    ? faellig.map(p =>
+        '<div class="blatt" style="margin-bottom:14px">'
+        + '<div class="dat" style="color:var(--faint);font-size:.76rem">Vor '
+        + tageZwischen(p.angelegt, d) + ' Tagen abgestellt</div>'
+        + '<p class="frage-t" style="font-size:1.2rem;margin-top:8px">' + esc(p.text) + "</p>"
+        + '<div class="reihe"><button class="knopf" data-weg="' + p.id + '">Hat sich erledigt</button>'
+        + '<button class="knopf leise" data-noch="' + p.id + '">Beschäftigt mich noch</button></div></div>').join("")
+      + '<p class="hinweis">Sag einmal, wie es ausgegangen ist — dann ist es raus.</p>'
+    : "";
+
+  $("#parkFaellig").querySelectorAll("[data-weg]").forEach(b => b.addEventListener("click", () => {
+    const p = S.park.find(x => x.id === b.dataset.weg);
+    if(p){ p.erledigt = true; p.ausgang = "weg"; }
+    sichern(); renderPark(); renderStart();
+  }));
+  $("#parkFaellig").querySelectorAll("[data-noch]").forEach(b => b.addEventListener("click", () => {
+    const p = S.park.find(x => x.id === b.dataset.noch);
+    if(p){ p.erledigt = true; p.ausgang = "noch"; }
+    sichern(); renderPark(); renderStart();
+  }));
+
+  const beantwortet = S.park.filter(p => p.erledigt);
+  const weg = beantwortet.filter(p => p.ausgang === "weg").length;
+  const offen = S.park.filter(p => !p.erledigt).length;
+  let txt = "";
+  if(offen) txt += offen === 1 ? "Ein Gedanke liegt hier. " : offen + " Gedanken liegen hier. ";
+  if(beantwortet.length >= 2){
+    txt += "Von " + beantwortet.length + " abgestellten hat sich " + weg
+        + (weg === 1 ? " von selbst erledigt." : " von selbst erledigt.");
+  } else if(!offen){
+    txt += "Noch nichts abgestellt.";
+  }
+  $("#parkBilanz").textContent = txt;
+  $("#parkZeigen").hidden = offen === 0;
+  if($("#parkListe").hidden === false) parkListeZeigen();
+}
+function parkListeZeigen(){
+  const d = heute();
+  const offen = S.park.filter(p => !p.erledigt);
+  $("#parkListe").innerHTML = offen.map(p =>
+    '<div class="eintrag"><div class="dat">abgestellt am ' + kurz(p.angelegt)
+    + " · noch " + Math.max(0, PARK_TAGE - tageZwischen(p.angelegt, d)) + " Tage"
+    + '</div><div class="aw">' + esc(p.text) + "</div></div>").join("");
+  $("#parkListe").hidden = false;
+  $("#parkZeigen").hidden = true;
+}
+$("#parkZeigen").addEventListener("click", parkListeZeigen);
+$("#parkAb").addEventListener("click", () => {
+  const t = $("#parkText").value.trim();
+  if(!t) return;
+  S.park.push({id:uid(), text:t, angelegt:heute(), erledigt:false});
+  sichern();
+  $("#parkText").value = "";
+  $("#parkListe").hidden = true;
+  const st = $("#parkStatus");
+  st.style.opacity = "1";
+  st.textContent = "Abgestellt. Bis in " + PARK_TAGE + " Tagen.";
+  setTimeout(() => { st.style.opacity = "0"; }, 3000);
+  renderPark(); renderStart();
+});
+
+/* ================= 3 · Umweg ================= */
+function renderUmweg(){
+  $("#umwegBlatt").innerHTML =
+      '<div class="dat" style="color:var(--faint);font-size:.76rem;letter-spacing:.04em">' + zufall(UMWEG.dauer).toUpperCase() + "</div>"
+    + '<p class="frage-t" style="margin-top:10px">' + esc(zufall(UMWEG.regel)) + "</p>"
+    + '<p class="hinweis" style="margin-top:18px;margin-bottom:0"><strong style="font-weight:500;color:var(--ink)">Achte unterwegs auf:</strong><br>'
+    + esc(zufall(UMWEG.achte)) + "</p>";
+}
+$("#umwegNeu").addEventListener("click", renderUmweg);
+
+/* ================= 4 · Die Seite ================= */
+function renderSeite(){
+  $("#seiteListe").innerHTML = S.seiten.length
+    ? S.seiten.slice().reverse().map(s =>
+        '<div class="eintrag"><div class="dat">' + kurz(s.datum)
+        + ' <button class="knopf leise" data-del="' + s.id + '" style="font-size:.76rem">löschen</button>'
+        + '</div><div class="aw">' + esc(s.text) + "</div></div>").join("")
+    : '<p class="leer">Nichts behalten. Auch gut.</p>';
+  $("#seiteListe").querySelectorAll("[data-del]").forEach(b => b.addEventListener("click", () => {
+    S.seiten = S.seiten.filter(x => x.id !== b.dataset.del);
+    sichern(); renderSeite(); renderStart();
+  }));
+}
+function seiteMeldung(t){
+  const st = $("#seiteStatus");
+  st.style.opacity = "1"; st.textContent = t;
+  setTimeout(() => { st.style.opacity = "0"; }, 2600);
+}
+$("#seiteBehalten").addEventListener("click", () => {
+  const t = $("#seiteText").value.trim();
+  if(!t) return;
+  S.seiten.push({id:uid(), datum:heute(), text:t});
+  sichern(); $("#seiteText").value = "";
+  seiteMeldung("Behalten."); renderSeite(); renderStart();
+});
+$("#seiteVergessen").addEventListener("click", () => {
+  const feld = $("#seiteText");
+  if(!feld.value.trim()) return;
+  feld.classList.add("loest-auf");
+  setTimeout(() => {
+    feld.value = ""; feld.classList.remove("loest-auf");
+    seiteMeldung("Weg.");
+  }, 1500);
+});
+
+/* ================= 5 · Fenster ================= */
+let fensterEnde = 0, fensterTakt = null, fensterRuhe = null, fensterMin = 0;
+function fensterAbbrechen(){
+  clearInterval(fensterTakt); clearTimeout(fensterRuhe);
+  fensterTakt = null; fensterEnde = 0;
+  $("#fensterBuehne").classList.remove("laeuft");
+  $("#fensterLauf").hidden = true; $("#fensterEnde").hidden = true; $("#fensterWahl").hidden = false;
+  document.title = "Leerlauf";
+}
+function fensterStart(min){
+  fensterMin = min;
+  fensterEnde = Date.now() + min*60000;
+  $("#fensterWahl").hidden = true; $("#fensterEnde").hidden = true; $("#fensterLauf").hidden = false;
+  fensterTick();
+  fensterTakt = setInterval(fensterTick, 1000);
+  fensterWachRuecken();
+}
+function fensterTick(){
+  const rest = Math.max(0, fensterEnde - Date.now());
+  const sek = Math.ceil(rest/1000);
+  $("#fensterRest").textContent = Math.floor(sek/60) + ":" + pad(sek % 60);
+  const anteil = 1 - rest / (fensterMin*60000);
+  $("#fensterLinie").style.width = Math.min(100, anteil*100) + "%";
+  if(rest <= 0){
+    clearInterval(fensterTakt); clearTimeout(fensterRuhe); fensterTakt = null;
+    $("#fensterBuehne").classList.remove("laeuft");
+    $("#fensterLauf").hidden = true;
+    $("#fensterEndeText").textContent = fensterMin === 2
+      ? "Zwei Minuten. Mehr war nicht nötig."
+      : "Das waren " + fensterMin + " Minuten, in denen nichts passiert ist.";
+    $("#fensterEnde").hidden = false;
+    document.title = "fertig — Leerlauf";
+  }
+}
+$("#fensterWahl").querySelectorAll("[data-min]").forEach(b =>
+  b.addEventListener("click", () => fensterStart(parseInt(b.dataset.min, 10))));
+$("#fensterStop").addEventListener("click", fensterAbbrechen);
+$("#fensterNochmal").addEventListener("click", fensterAbbrechen);
+/* Solange der Timer laeuft, holt ein Tippen irgendwo die Oberflaeche zurueck.
+   Dieser erste Tipp zaehlt nur dafuer — er darf keinen Knopf ausloesen, den man
+   im verblassten Zustand ja gar nicht sehen kann. */
+function fensterWachRuecken(){
+  clearTimeout(fensterRuhe);
+  fensterRuhe = setTimeout(() => {
+    if(fensterTakt) $("#fensterBuehne").classList.add("laeuft");
+  }, 4000);
+}
+document.addEventListener("click", e => {
+  if(!fensterTakt) return;
+  const buehne = $("#fensterBuehne");
+  if(buehne.classList.contains("laeuft")){
+    e.preventDefault(); e.stopPropagation();
+    buehne.classList.remove("laeuft");
+  }
+  fensterWachRuecken();
+}, true);
+
+/* ================= 6 · Münze ================= */
+let muenzeErg = null;
+function muenzeReset(){
+  muenzeErg = null;
+  $("#muenze1").hidden = false; $("#muenze2").hidden = true; $("#muenze3").hidden = true;
+}
+$("#muenzeWerfen").addEventListener("click", () => {
+  muenzeErg = Math.random() < 0.5 ? "Kopf" : "Zahl";
+  $("#muenze1").hidden = true; $("#muenze2").hidden = false;
+});
+$("#muenze2").querySelectorAll("[data-w]").forEach(b => b.addEventListener("click", () => {
+  const gewollt = b.dataset.w;
+  const frage = $("#muenzeFrage").value.trim();
+  $("#muenzeFrageEcho").textContent = frage;
+  $("#muenzeErgebnis").textContent = muenzeErg;
+  $("#muenzeSpruch").textContent = gewollt === muenzeErg
+    ? "Du wolltest " + gewollt + ". Dann ist es leicht."
+    : "Du wolltest " + gewollt + ". Die Münze ist egal — du weißt es schon.";
+  $("#muenze2").hidden = true; $("#muenze3").hidden = false;
+}));
+$("#muenzeNeu").addEventListener("click", muenzeReset);
+
+/* ================= 7 · Brief ================= */
+let briefTage = 90;
+$("#briefWahl").querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+  briefTage = parseInt(b.dataset.t, 10);
+  $("#briefWahl").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+}));
+function renderBrief(){
+  const d = heute();
+  const zu = S.briefe.filter(b => !b.geoeffnet);
+  const auf = zu.filter(b => tageZwischen(d, b.oeffnet) <= 0);
+  const wartet = zu.filter(b => tageZwischen(d, b.oeffnet) > 0);
+  const gelesen = S.briefe.filter(b => b.geoeffnet);
+
+  let h = "";
+  auf.forEach(b => h += '<div class="blatt" style="margin-bottom:14px">'
+    + '<div class="dat" style="color:var(--faint);font-size:.76rem">Geschrieben am ' + kurz(b.geschrieben) + "</div>"
+    + '<p class="aw" style="font-size:1.08rem;margin-top:10px">' + esc(b.text) + "</p>"
+    + '<div class="reihe"><button class="knopf" data-gelesen="' + b.id + '">Gelesen</button></div></div>');
+  wartet.forEach(b => h += '<div class="siegel"><span class="w">Brief vom ' + kurz(b.geschrieben)
+    + '</span><span class="k">öffnet in ' + tageZwischen(d, b.oeffnet) + " Tagen</span></div>");
+  gelesen.forEach(b => h += '<div class="eintrag"><div class="dat">' + kurz(b.geschrieben)
+    + " → gelesen</div><div class=\"aw\">" + esc(b.text) + "</div></div>");
+  $("#briefListe").innerHTML = h || '<p class="leer">Noch nichts unterwegs.</p>';
+
+  $("#briefListe").querySelectorAll("[data-gelesen]").forEach(x => x.addEventListener("click", () => {
+    const b = S.briefe.find(y => y.id === x.dataset.gelesen);
+    if(b) b.geoeffnet = true;
+    sichern(); renderBrief(); renderStart();
+  }));
+}
+$("#briefSiegeln").addEventListener("click", () => {
+  const t = $("#briefText").value.trim();
+  if(!t) return;
+  const auf = new Date(); auf.setDate(auf.getDate() + briefTage);
+  S.briefe.push({id:uid(), text:t, geschrieben:heute(), oeffnet:iso(auf), geoeffnet:false});
+  sichern();
+  $("#briefText").value = "";
+  const st = $("#briefStatus");
+  st.style.opacity = "1"; st.textContent = "Zu. Geht auf am " + kurz(iso(auf)) + ".";
+  setTimeout(() => { st.style.opacity = "0"; }, 3600);
+  renderBrief(); renderStart();
+});
+
+/* ================= 8 · Das Jahr ================= */
+let jahrTag = null, jahrFarbe = "";
+function renderJahr(){
+  const jetzt = new Date(), j = jetzt.getFullYear(), d = heute();
+  let h = "";
+  for(let m = 0; m < 12; m++){
+    const name = new Date(j, m, 1).toLocaleDateString("de-DE",{month:"long"});
+    const anzahl = new Date(j, m+1, 0).getDate();
+    h += '<div class="monat"><h4>' + name + '</h4><div class="tage">';
+    for(let t = 1; t <= anzahl; t++){
+      const k = j + "-" + pad(m+1) + "-" + pad(t);
+      const e = S.jahr[k];
+      const zukunft = k > d;
+      h += '<button class="tag' + (k === d ? " heute" : "") + (zukunft ? " zukunft" : "") + '"'
+        + ' data-t="' + k + '"' + (e && e.f ? ' data-f="' + e.f + '"' : "")
+        + ' title="' + esc(kurz(k) + (e && e.w ? " · " + e.w : "")) + '"'
+        + (zukunft ? " disabled" : "") + "></button>";
+    }
+    h += "</div></div>";
+  }
+  $("#jahrGitter").innerHTML = h;
+  $("#jahrGitter").querySelectorAll(".tag:not(.zukunft)").forEach(b =>
+    b.addEventListener("click", () => jahrOeffnen(b.dataset.t)));
+
+  $("#jahrFarben").innerHTML = FARBEN.map(f =>
+    '<button data-f="' + f + '" class="tag" style="width:30px;height:30px;border-radius:6px" data-farbe="' + f + '"></button>').join("")
+    + '<button data-f="" class="tag" style="width:30px;height:30px;border-radius:6px" title="ohne Farbe"></button>';
+  $("#jahrFarben").querySelectorAll("button").forEach(b => {
+    if(b.dataset.farbe) b.setAttribute("data-f", b.dataset.farbe);
+    b.addEventListener("click", () => {
+      jahrFarbe = b.dataset.f;
+      $("#jahrFarben").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    });
+  });
+}
+function jahrOeffnen(k){
+  jahrTag = k;
+  const e = S.jahr[k] || {};
+  jahrFarbe = e.f || "";
+  $("#jahrDatum").textContent = lang(k);
+  $("#jahrWort").value = e.w || "";
+  $("#jahrFarben").querySelectorAll("button").forEach(x =>
+    x.setAttribute("aria-pressed", String((x.dataset.f || "") === jahrFarbe)));
+  $("#jahrEditor").hidden = false;
+  $("#jahrEditor").scrollIntoView({behavior:"smooth", block:"nearest"});
+  $("#jahrWort").focus();
+}
+$("#jahrSpeichern").addEventListener("click", () => {
+  if(!jahrTag) return;
+  const w = $("#jahrWort").value.trim();
+  if(!w && !jahrFarbe) delete S.jahr[jahrTag];
+  else S.jahr[jahrTag] = {w, f:jahrFarbe};
+  sichern(); $("#jahrEditor").hidden = true; renderJahr(); renderStart();
+});
+$("#jahrLoeschen").addEventListener("click", () => {
+  if(jahrTag) delete S.jahr[jahrTag];
+  sichern(); $("#jahrEditor").hidden = true; renderJahr(); renderStart();
+});
+$("#jahrZu").addEventListener("click", () => { $("#jahrEditor").hidden = true; });
+
+/* ================= 9 · Stups ================= */
+function stupsIndex(){
+  const d = heute();
+  if(typeof S.stupsExtra[d] === "number") return S.stupsExtra[d];
+  return tagesWahl(d, "stups", STUPSE.length);
+}
+function renderStups(){ $("#stupsText").textContent = STUPSE[stupsIndex()]; }
+$("#stupsAnderer").addEventListener("click", () => {
+  const d = heute();
+  let i = stupsIndex(), neu = i;
+  while(neu === i && STUPSE.length > 1) neu = Math.floor(Math.random() * STUPSE.length);
+  S.stupsExtra[d] = neu; sichern(); renderStups();
+});
+
+/* ================= Start ================= */
+const oeffner = {
+  frage: renderFrage, park: renderPark, umweg: renderUmweg, seite: renderSeite,
+  fenster: fensterAbbrechen, muenze: muenzeReset, brief: renderBrief,
+  jahr: () => { $("#jahrEditor").hidden = true; renderJahr(); }, stups: renderStups
+};
+
+$("#reset").addEventListener("click", () => {
+  if(!confirm("Wirklich alles löschen? Antworten, abgestellte Gedanken, behaltene Seiten, Briefe und das Jahr sind dann weg.")) return;
+  S = leer(); sichern(); renderStart(); zeige("start");
+});
+
+renderStart();
+zeige("start");
+</script>
+</body>
+</html>

@@ -41,11 +41,27 @@ Gebaute Seiten: **`nischen/tagwerk/`** (Demo, erfundene Kaffeemarke) und
 Werkzeuge für den Nutzer selbst. Hier gelten keine Agentur-Preise, kein `10k-websites`, keine
 Nischen-Leitplanken — und umgekehrt fließt von hier nichts in die Geschäftsdoku zurück.
 
-Aktuell: **`alltag/bund-kompass/`** — eine einzelne HTML-Datei fürs Handy (Countdown bis zum
-Dienstantritt, Erledigen-Liste, Packliste, Basis-Fitness-Test mit Verlauf, Dienstgrade-Karteikarten).
-Alles offline, Speicherung nur im Browser des Geräts. Inhalte sind bewusst als Orientierung
-gekennzeichnet, nicht als amtliche Auskunft — **keine erfundenen Punktetabellen oder Vorschriften
-ergänzen.** Im Zweifel gilt der Einberufungsbescheid.
+Beide Werkzeuge sind je **eine einzelne HTML-Datei**, offline lauffähig, fürs Handy gebaut,
+Speicherung ausschließlich im `localStorage` des Geräts. Keine Schriften, Bibliotheken oder Bilder
+von außen.
+
+**`alltag/leerlauf/`** — der Schwerpunkt. Neun Räume, die bewusst nichts bezwecken: Frage am Tag,
+Gedankenparkplatz (Gedanke abstellen, nach 14 Tagen fragt die Seite nach), Umweg-Generator, freies
+Schreiben mit „Behalten oder Vergessen", Fenster-Timer (Oberfläche verblasst), Münze mit
+Wunsch-Zwischenfrage, Brief an sich selbst mit Öffnungsdatum, das Jahr als 365 Kästchen, täglicher
+Stups.
+
+**Die Leitplanke dort: keine Serien, keine Streaks, keine Benachrichtigungen, keine Auswertung.**
+Der Nutzer will Zeit mit sich selbst, nicht noch eine App, die etwas von ihm verlangt. Jede
+Ergänzung, die zu Regelmäßigkeit drängt oder Verhalten misst, widerspricht dem Zweck — nicht
+einbauen, auch nicht gut gemeint. Einzige erlaubte Zählung ist die Bilanz im Gedankenparkplatz,
+weil genau sie die Pointe des Raums ist.
+
+**`alltag/bund-kompass/`** — älter, vom Nutzer nicht weiterverfolgt (er wollte ausdrücklich keine
+Bundeswehr-Werkzeuge). Bleibt liegen, bis er dazu etwas sagt. Countdown bis zum Dienstantritt,
+Erledigen-Liste, Packliste, Basis-Fitness-Test mit Verlauf, Dienstgrade-Karteikarten. Inhalte sind
+als Orientierung gekennzeichnet, nicht als amtliche Auskunft — **keine erfundenen Punktetabellen
+oder Vorschriften ergänzen.** Im Zweifel gilt der Einberufungsbescheid.
 
 ## Zwei Nischen, zwei Ordner
 
@@ -164,7 +180,8 @@ sondern ein Gastro-Einzelauftrag. **Nicht mit dem Kfz-Angebot oder dessen Preise
 und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt in der Webseite.
 
 ### `alltag/` — persönlich
-`bund-kompass/index.html` (eine Datei, offline, Handy) + `README.md`. Siehe Abschnitt oben.
+`leerlauf/index.html` (neun Räume, der Schwerpunkt) und `bund-kompass/index.html` (liegt),
+je eine Datei plus `README.md`. Siehe Abschnitt oben.
 
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,

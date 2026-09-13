@@ -83,7 +83,8 @@ die Kamera über einem Garten herab. Details und die offenen Punkte:
 
 | Was | Öffnen |
 |---|---|
-| **Bund-Kompass** ⭐ Countdown, Erledigen-Liste, Packliste, Basis-Fitness-Test, Dienstgrade. Läuft offline am Handy. | **[▶ Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/claude/alltags-tools-situation-kma4qf/alltag/bund-kompass/index.html)** |
+| **Leerlauf** ⭐ Neun Werkzeuge, die nichts von dir wollen: Frage am Tag, Gedankenparkplatz, Umweg, freies Schreiben, Fenster, Münze, Brief an dich, das Jahr auf einer Seite, Stups. | **[▶ Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/claude/alltags-tools-situation-kma4qf/alltag/leerlauf/index.html)** |
+| Bund-Kompass — Countdown, Packliste, Fitness-Test, Dienstgrade. | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/claude/alltags-tools-situation-kma4qf/alltag/bund-kompass/index.html) |
 
 Details: [`alltag/`](alltag/)
 
@@ -99,7 +100,7 @@ Details: [`alltag/`](alltag/)
 | 📂 **[nischen/tagwerk/](nischen/tagwerk/)** | Demo-Webseite Tagwerk: das Vorzeige-Stück für Webseitenbau | zum Herzeigen |
 | 📂 **[nischen/alex-aussenanlagen/](nischen/alex-aussenanlagen/)** | Webseite für Alex Stadelmann, Pfullendorf | bei Kundenarbeit |
 | 📂 [anleitungen/](anleitungen/) | Wie-geht-was: Meta, Google, Hosting, n8n — **gilt für beide Nischen** | bei Bedarf |
-| 📂 **[alltag/](alltag/)** | **Persönliche Werkzeuge** — kein Business. Aktuell: Bund-Kompass | jetzt gerade |
+| 📂 **[alltag/](alltag/)** | **Persönliche Werkzeuge** — kein Business. Leerlauf + Bund-Kompass | jetzt gerade |
 | 📂 [grundlagen/](grundlagen/) | Playbook, Einsteiger-Überblick, Lern-System — **gilt für beide Nischen** | nachschlagen |
 
 Details zu jeder Datei: [`CLAUDE.md`](CLAUDE.md)
