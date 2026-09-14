@@ -1,128 +1,110 @@
-# März — Übergang
+# März — Zurück ins Geschäft
 
-> Angebot bauen, erste Gespräche vorbereiten. Das Business darf zurück.
-> Wochen 23–26 · 01.03. bis 28.03.2027
+**Wochen 23 bis 26 · 1. bis 28. März**
 
 ---
 
-## Die Logik dieses Monats
+## Worum es diesen Monat geht
 
-Fünf Monate lang war Business gesperrt. Jetzt kommt es zurück — aber nicht als Rückkehr zum
-September. Sondern als **Prüfung**: Hat sich das, was du gebaut hast, auf die Straße übertragen?
+Fünf Monate war Business gesperrt. Jetzt kommt es zurück.
 
-Der März beantwortet eine einzige Frage:
+Aber nicht als Rückkehr zum September. Der März beantwortet genau eine Frage:
 
-> **Führst du jetzt Gespräche anders als im September — und siehst man das?**
+> **Führst du jetzt Gespräche anders als vorher — und merkt man das?**
 
-Nicht: Hast du abgeschlossen. Nicht: Verdienst du Geld. Das kommt im April. Der März misst
-Übertragung, nicht Umsatz.
+Nicht: Hast du abgeschlossen. Nicht: Hast du Geld verdient. Das kommt im April.
+Der März misst, ob das Gelernte auf der Straße ankommt.
 
 ---
 
 ## Der Ablauf
 
-| Woche | Auftrag | Erfolgsmaß |
+| Woche | Was du machst | Woran du Erfolg misst |
 |---|---|---|
-| 23 (01.–07.03.) | **Angebot auf einer Seite**, handschriftlich, 5 Absätze | Passt auf eine Seite |
-| 24 (08.–14.03.) | **2 reale Gespräche** vor Ort, mit Vorbereitung und Nachbesprechung | Redeanteil < 30 %, 3 neue Erkenntnisse |
-| 25 (15.–21.03.) | **3 weitere Gespräche**, mit einer selbst gezogenen Änderung | Die Änderung ist benennbar |
-| 26 (22.–28.03.) | **Abnahme** + zwei Seiten nebeneinander · **Gate** | Beide Seiten liegen im Heft |
+| 23 (1.–7.3.) | Angebot auf eine Seite, mit der Hand | Es passt auf eine Seite |
+| 24 (8.–14.3.) | Zwei echte Gespräche in Betrieben | Wenig geredet, drei neue Erkenntnisse |
+| 25 (15.–21.3.) | Drei weitere Gespräche | Du kannst sagen, was du anders gemacht hast |
+| 26 (22.–28.3.) | Abrechnung über sechs Monate | Zwei Seiten liegen nebeneinander |
 
 ---
 
-## Woche 23 — das Angebot auf einer Seite
+## Zum Angebot (Woche 23)
 
-Handschriftlich, fünf Absätze, in dieser Reihenfolge:
+Handschriftlich, fünf Absätze:
 
-1. **Für wen.** So eng, dass jemand sagen kann „das bin ich" oder „das bin ich nicht".
-2. **Welches Problem.** In seinen Worten, nicht in deinen. (Das Material dafür hast du: 12
-   protokollierte Gespräche aus dem Januar sind dein Rohstoff für seine Sprache.)
-3. **Was du lieferst.** Konkret, zählbar, mit Zeitangabe.
-4. **Was es kostet.** Zahl. Keine „ab"-Preise, kein „je nach".
-5. **Warum du.** Der schwerste Absatz. Im September wäre er gelogen gewesen. Jetzt hast du
-   sechs Monate Belege — nutze sie, aber nur die echten.
+1. **Für wen** ist das?
+2. **Welches Problem** hat der — in seinen Worten, nicht in deinen
+3. **Was lieferst du** — konkret, mit Zeitangabe
+4. **Was kostet es** — eine Zahl
+5. **Warum du** — der schwerste Absatz
 
-Wenn es nicht auf eine Seite passt, verstehst du dein eigenes Angebot noch nicht. Dann kürzen,
-nicht erklären.
+Dein Material für Absatz 2 hast du längst: die zwölf Gespräche aus dem Januar sind
+gesammelte Kundensprache.
 
-Die fachliche Grundlage dafür liegt bereits im Repo (`nischen/autowerkstaetten/`). Die ist
-unverändert gültig — der Unterschied liegt nicht im Angebot, sondern in dem, der es vorträgt.
+Die fachlichen Grundlagen liegen fertig im Repo (`nischen/autowerkstaetten/`).
+Die sind unverändert gültig. **Der Unterschied liegt nicht im Angebot, sondern in dem,
+der es vorträgt.**
 
 ---
 
-## Wochen 24 und 25 — die Gespräche
+## Zu den Gesprächen (Wochen 24 und 25)
 
-**Vorher** (eine Seite, handschriftlich):
-- Was weiß ich über diesen Betrieb? (10 Minuten Recherche reichen)
-- Meine drei offenen Fragen für dieses Gespräch
-- Mein Ziel: Was will ich am Ende **wissen** (nicht: was will ich verkauft haben)
-- Mein Kodexsatz für heute: welcher gilt in diesem Gespräch besonders
+**Vorher** — eine halbe Seite:
+- Was weiß ich über diesen Betrieb? (Zehn Minuten Recherche reichen.)
+- Meine drei offenen Fragen
+- Was will ich am Ende **wissen**? Nicht: was will ich verkauft haben.
+- Welche meiner Regeln gilt heute besonders?
 
-**Währenddessen** — das volle Set aus dem Januar: offene Fragen, 2:1 Rückspiegelungen,
-drei Sekunden Pause, Redeanteil unter 30 %.
-
-**Danach** (sofort, im Auto, bevor du losfährst):
-- Redeanteil geschätzt
+**Danach** — sofort, im Auto, bevor du losfährst:
+- Wie viel habe ich geredet?
 - Drei Dinge, die ich vorher nicht wusste
-- Der Moment, in dem ich den Punkt verloren habe
-- Ein Muster aus der Oktober-Liste, in das ich zurückgefallen bin (es gibt immer eins)
+- Der Moment, wo ich den Faden verloren habe
+- In welches alte Muster bin ich zurückgefallen? (Es gibt immer eins.)
 
-**Erfolg ist nicht Abschluss.** Erfolg ist: drei neue Erkenntnisse und ein Redeanteil unter
-30 %. Wer im März auf Abschluss misst, wirft sechs Monate Aufbau weg, um sich im
-Verkaufsgespräch wieder wie im September zu verhalten — reden, drücken, hoffen.
-
----
-
-## Woche 26 — die Abnahme
-
-Der letzte Akt. Anderthalb Stunden, am besten am Sonntag im Zug oder zu Hause am Tisch.
-
-**1. Alles nebeneinanderlegen:**
-- die 7 Standortbestimmungs-Bögen (26.09. · 01.11. · 29.11. · 20.12. · 31.01. · 28.02. · 28.03.)
-- die 6 Gates: bestanden / nicht bestanden
-- das Register: Einträge, Haken, Kreuze pro Monat
-- der Kodex
-- das Nein-Register, das Feldbuch, die Gesprächsprotokolle
-
-**2. Abnahme mit mir** ([`../werkzeuge/claude-rituale.md`](../werkzeuge/claude-rituale.md), Ritual 5).
-45 Minuten. Ich gehe die Zahlen durch und sage dir, was sich bewegt hat und was nicht —
-beides, ungeschönt.
-
-**3. Eine Seite schreiben:** *„Was ich jetzt bin, was ich im September nicht war."*
-Belege, keine Gefühle. Jeder Satz braucht ein Ereignis dahinter.
-
-**4. Und dann das hier:** Du holst die gefaltete Seite aus dem Heft, die du am 27.09.2026
-geschrieben und seitdem nicht angefasst hast. Du liest sie. Und schreibst darunter, was davon
-eingetreten ist.
-
-Das ist das Ende des Programms. Nicht der Kodex, nicht die Zahlen — **die zwei Seiten
-nebeneinander.** Das ist der Beweis, um den es von Anfang an ging: nicht dass du dich
-verändert hast, sondern dass du **einem Menschen glauben kannst, der dir vor sechs Monaten
-etwas versprochen hat.** Diesem Menschen. Dir.
+**Erfolg ist hier nicht der Abschluss.** Wer im März auf Abschluss misst, verhält sich im
+Gespräch wieder wie im September: reden, drücken, hoffen. Und wirft damit sechs Monate weg.
 
 ---
 
-## Gate März
+## Die Abrechnung (Woche 26)
 
-- [ ] **≥ 25 Einträge** im Register
-- [ ] **Angebot auf einer Seite**, fertig
-- [ ] **≥ 5 reale Gespräche** geführt und nachbesprochen
+Der letzte Akt. Anderthalb Stunden.
+
+1. **Alles nebeneinanderlegen:** sieben Selbsttests, sechs Monatsprüfungen, das Heft,
+   deine Regeln, die Nein-Liste, die Gesprächsliste.
+2. **Mir schreiben.** Ich gehe die Zahlen durch und sage dir, was sich bewegt hat und
+   was nicht. Beides, ungeschönt.
+3. **Eine Seite schreiben:** *Was ich jetzt bin, was ich im September nicht war.*
+   Zu jedem Satz ein Ereignis. Keine Gefühle.
+4. **Und dann:** Du holst die gefaltete Seite raus, die du am 27. September geschrieben und
+   seitdem nicht angefasst hast. Du liest sie. Und schreibst darunter, was davon
+   eingetreten ist.
+
+Das ist das Ende. Nicht die Regeln, nicht die Zahlen — **die zwei Seiten nebeneinander.**
+Darum ging es von Anfang an: nicht dass du dich verändert hast, sondern dass du einem
+Menschen glauben kannst, der dir vor sechs Monaten etwas versprochen hat. Diesem Menschen. Dir.
+
+---
+
+## Monatsprüfung März
+
+Am 28. März. Alle drei erfüllt = bestanden.
+
+- [ ] Mindestens **25 Tage** im Heft
+- [ ] Das **Angebot** steht auf einer Seite
+- [ ] **Fünf echte Gespräche** geführt und aufgeschrieben
 
 ---
 
 ## Und dann? Der April
 
-Nicht Teil dieses Programms, aber du sollst wissen, dass es weitergeht:
-
-- **Die Warteliste** (letzte Seite im Heft) wird zum ersten Mal geöffnet. Alles, was dir in
-  sechs Monaten eingefallen ist und was du weggelegt hast. Du wirst überrascht sein, wie
-  vieles davon sich erledigt hat.
-- **`Wiederaufnahme-April.md`** aus dem September wird abgearbeitet.
-- **Das Tagesprotokoll läuft weiter.** Nicht als Projekt, sondern weil es dann seit einem
-  halben Jahr läuft und drei Minuten kostet. Das ist der Punkt, an dem aus einem Programm
-  eine Gewohnheit geworden ist.
-- **Die Agentur startet richtig** — mit dem, was im Repo längst steht, und mit einem
-  Menschen, der Gespräche führen kann.
+- **Die Ideen-Liste** ganz hinten im Heft wird zum ersten Mal geöffnet. Du wirst überrascht
+  sein, wie viel davon sich von selbst erledigt hat.
+- **Das Business läuft wieder an** — mit dem, was im Repo längst fertig steht, und mit
+  einem Menschen, der Gespräche führen kann.
+- **Die drei Zeilen laufen weiter.** Nicht als Projekt. Weil sie dann seit einem halben
+  Jahr laufen und drei Minuten kosten. Das ist der Punkt, an dem aus einem Plan eine
+  Gewohnheit geworden ist.
 
 ---
 

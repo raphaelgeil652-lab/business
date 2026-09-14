@@ -50,7 +50,7 @@ Ende deine eigene Trefferquote, was fast niemand über sich weiß.
 
 ---
 
-## Blatt 1 — Die Grundlinie (Woche 10, für 5 Personen)
+## Blatt 1 — Der Normalzustand (Woche 10, für 5 Personen)
 
 ```
 Name / Kennzeichen: ____________________
@@ -150,7 +150,7 @@ Werkstattinhabers trägt:
 
 | In der Kaserne | Beim Kunden |
 |---|---|
-| Grundlinie einer Person | Wie ist der Inhaber normalerweise — bevor ich über Geld rede? |
+| Normalzustand einer Person | Wie ist der Inhaber normalerweise — bevor ich über Geld rede? |
 | Abweichung bemerken | Wo wird er einsilbig? Da liegt das Thema. |
 | „Wobei wird er lebendig?" | Der Einstieg. Immer. |
 | Dominanz / Prestige | Wer entscheidet hier wirklich — der Chef oder der Meister? |

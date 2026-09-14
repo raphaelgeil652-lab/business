@@ -43,19 +43,33 @@ persönlich (01.10.2026 – 28.03.2027, während des Dienstes in der Kaserne). E
 Agentur und dem Webseitenbau **nichts** zu tun und wird nicht mit ihnen vermischt — keine
 Agentur-Sprache, keine Kunden, keine Preise.
 
-Kern: jeden Abend ein kleines Versprechen ins Heft (180-mal), jede Woche ein konkreter
-Handlungsauftrag, jeden Monat ein Gate mit drei prüfbaren Kriterien. Sechs Monatsthemen:
-Bestandsaufnahme · Nein sagen · Menschen lesen · Fragen und Zuhören · eigene Standards ·
-Übergang zurück ins Geschäft. Dazu eine eigene Spur zur Ablösung nach der Trennung.
+Kern: jeden Abend ein kleines Versprechen ins Heft (180-mal), jede Woche eine konkrete
+Aufgabe, jeden Monat eine Prüfung mit drei prüfbaren Kriterien. Sechs Monatsthemen:
+Hinschauen · Nein sagen · Menschen verstehen · Fragen und Zuhören · eigene Regeln ·
+zurück ins Geschäft. Dazu eine eigene Spur zum Loskommen nach der Trennung.
 Alle harten Regeln sind mit Forschung belegt (`entwicklung/forschung/quellen.md`), samt
 ehrlichem Abschnitt, was **nicht** belegt ist.
 
+**Sprache: bewusst einfach — das ist eine ausdrückliche Vorgabe des Nutzers.** Alles in
+einfachen, kurzen Sätzen, ausführlich, mit Schritt-für-Schritt-Anleitungen, damit er nie
+überlegen muss, was zu tun ist. Fachwörter sind rausgeschrieben oder direkt erklärt (Glossar
+in `wie-es-funktioniert.md`). Feste Begriffe, die überall gleich heißen: **das Heft · das
+Versprechen · die drei Zeilen · die Aufgabe der Woche · die Beobachtungsfrage · die
+Sonntagsfragen · die Monatsprüfung · der Selbsttest.** Keine neue Fachsprache einführen —
+kein „Gate", kein „Register", kein „Protokoll", kein „Prompt".
+
 **Für die Zeit des Programms gilt:** Das Business liegt von Oktober bis Februar auf Standby,
 ab März kommt es kontrolliert zurück. Wochenenden zu Hause sind ausdrücklich business-frei.
-In [`entwicklung/werkzeuge/claude-rituale.md`](entwicklung/werkzeuge/claude-rituale.md) stehen
-fünf feste Termine mit fertigen Prompts (Monatsabnahme, Druckgespräch, Gesprächs-Nachbesprechung,
-Kodex-Prüfung, Abschlussabnahme). Bei diesen Terminen ist **Ehrlichkeit wichtiger als
-Ermutigung** — ein nicht bestandenes Gate wird so benannt, nicht schöngeredet.
+In [`entwicklung/werkzeuge/mit-claude-arbeiten.md`](entwicklung/werkzeuge/mit-claude-arbeiten.md)
+stehen fünf feste Termine mit fertigen Texten zum Kopieren (Monatsabrechnung · wenn es nicht
+läuft · Gespräch nachbesprechen · Regeln prüfen · Schluss-Abrechnung). Bei diesen Terminen ist
+**Ehrlichkeit wichtiger als Ermutigung** — eine nicht bestandene Monatsprüfung wird so
+benannt, nicht schöngeredet.
+
+**Läuft außerdem:** ein Artifact als Handy-Begleiter (Feldkompass — zeigt täglich von selbst,
+was dran ist) und eine tägliche Routine um 12:00, die eine Push-Meldung mit der Tagesaufgabe
+aufs Handy schickt. Die Routine trägt den Wochenplan im Prompt — wird der Plan geändert,
+muss die Routine mitgeändert werden.
 
 ---
 
@@ -195,10 +209,11 @@ sondern ein Gastro-Einzelauftrag. **Nicht mit dem Kfz-Angebot oder dessen Preise
 und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt in der Webseite.
 
 ### `entwicklung/` — persönliches 6-Monats-Programm (kein Geschäft)
-- `README.md` — Einstieg · `programm.md` — die Architektur · `26-wochen-plan.md` — das Arbeitsdokument
-- `monate/` (00-vorbereitung bis 06-maerz), `werkzeuge/` (Tagesprotokoll, Zug-Bogen,
-  Ablöse-Protokoll, Nein-Baukasten, Menschen-Feldbuch, Gesprächsführung, Standards,
-  Standortbestimmung, Leseplan, Körper, Claude-Rituale)
+- `README.md` — Einstieg · `wie-es-funktioniert.md` — einmal lesen, dann ist alles klar (mit Glossar) · `26-wochen-plan.md` — das Arbeitsdokument
+- `monate/` — `00-vorbereitung.md` (Countdown bis 1.10.) bis `06-maerz.md`
+- `werkzeuge/` — `tagesprotokoll.md`, `sonntag-im-zug.md`, `trennung.md`, `nein-sagen.md`,
+  `menschen-lesen.md`, `gespraeche-fuehren.md`, `standards.md`, `selbsttest.md`,
+  `leseplan.md`, `koerper.md`, `mit-claude-arbeiten.md`
 - `drucksachen/taschenkarten.html` — 8 Karten zum Ausdrucken (Kaserne, ohne Handy nutzbar)
 - `forschung/quellen.md` — Belege mit Links, plus „was NICHT belegt ist"
 

@@ -1,326 +1,694 @@
-# Der 26-Wochen-Plan
+# Was du in welcher Woche machst
 
-**Das Arbeitsdokument.** Alles andere kannst du einmal lesen und weglegen. Hier schaust du
-jeden Sonntagabend rein, wenn du im Zug zurück sitzt, und liest den Auftrag für die Woche.
+**So benutzt du diese Datei:** Du liest immer nur die Woche, in der du gerade bist.
+Nicht vorlesen. Was in Woche 14 kommt, ist heute egal und macht es nur unübersichtlich.
 
-## So liest du eine Woche
+Jede Woche steht hier so:
 
-| Feld | Bedeutung |
-|---|---|
-| **Auftrag** | Die eine Handlung. Machst du oder machst du nicht. Es gibt kein „teilweise". |
-| **Feldfrage** | Die Frage, die du Mo–Fr in der Kaserne mitträgst. Abends ein Satz dazu ins Heft. |
-| **Zugfrage** | Zusätzlich zum Standard-Bogen auf der Rückfahrt. |
-| **Bestanden wenn** | Das Kriterium. Kreuz oder Haken am Sonntag. |
+- **Deine Aufgabe** — die eine Sache. Gemacht oder nicht gemacht.
+- **So machst du es** — Schritt für Schritt, damit du nicht überlegen musst.
+- **Im Kopf mittragen** — eine Frage, auf die du in der Kaserne achtest. Abends ein Satz dazu ins Heft.
+- **Fertig, wenn** — woran du am Sonntag siehst, ob du es geschafft hast.
 
-Warum Aufträge statt Themen: Der Wunsch, sich zu verändern, verändert nichts — auch das
-*Annehmen* einer Aufgabe verändert nichts. Nur das **Ausführen** konkreter Verhaltensaufgaben
-bewegt Persönlichkeitsmerkmale messbar. Deshalb ist hier jede Woche eine Handlung, kein Vorsatz.
+Dazu läuft immer: **jeden Abend die drei Zeilen ins Heft.** Das steht nicht bei jeder Woche
+nochmal dabei, gilt aber jeden einzelnen Tag.
 
 ---
 
-# OKTOBER — Bestandsaufnahme
-*„Wo verliere ich mich?" — Muster erkennen, ehrlich aufschreiben.*
+# OKTOBER — Hinschauen
 
-### Woche 1 · 01.–04.10.2026 (Do–So) — Der Anfang
-- **Auftrag:** Am **ersten Abend** in der Kaserne: Register anlegen, erstes Versprechen schreiben.
-  Noch am selben Abend: **Ablöse-Protokoll Schritt 1** (entfolgen, stummschalten, Chatverlauf
-  archivieren). Beides an Tag 1. Nicht an Tag 3.
-- **Feldfrage:** Zehn Namen lernen und behalten. Nur Namen.
-- **Zugfrage:** (Hinfahrt: noch kein Zug — du fährst hin.) Sonntag: Wie fühlt sich Tag 4 an,
-  und was davon ist Umstellung, was ist echt?
-- **Bestanden wenn:** 4/4 Einträge im Register **und** Schritt 1 erledigt.
+*Diesen Monat änderst du noch nichts. Du guckst nur hin und schreibst auf.
+Das fühlt sich passiv an, ist aber der unangenehmste Teil: Du siehst dir vier Wochen lang
+zu, wie du Dinge tust, die du inzwischen erkennst — und machst sie trotzdem weiter.
+Das ist Absicht. Geändert wird im November.*
 
-### Woche 2 · 05.–11.10. — Die Verbieger-Liste
-- **Auftrag:** Jeden Abend **eine Situation** notieren, in der du dich heute verbogen hast:
-  zugestimmt ohne zuzustimmen, gelacht ohne es lustig zu finden, geschwiegen statt zu
-  widersprechen. Fünf Einträge in fünf Tagen. Kein Bewerten, nur Sammeln.
-- **Feldfrage:** Wer antwortet zuerst, wenn der Ausbilder eine Frage in die Runde stellt?
-  Immer dieselben?
-- **Zugfrage:** Was haben die fünf Situationen gemeinsam?
-- **Bestanden wenn:** ≥ 4 Einträge auf der Verbieger-Liste.
-- **Buch ab dieser Woche:** *Wenn ich nein sage, fühle ich mich schuldig* (M. J. Smith).
+---
 
-### Woche 3 · 12.–18.10. — Die erste Reibung
-- **Auftrag:** **Dreimal** aussprechen, was du wirklich denkst, wo du sonst geschwiegen hättest.
-  Klein und harmlos: Essen, Musik, Arbeitsaufteilung auf der Stube. Es geht nicht um Konflikt,
-  es geht um den körperlichen Moment vor dem Satz.
-- **Feldfrage:** Wer wird um Hilfe gebeten, obwohl er keinen Dienstgrad hat — und wobei genau?
-- **Zugfrage:** Was ist passiert, nachdem du es gesagt hast? Und was hattest du erwartet?
-- **Bestanden wenn:** 3 dokumentierte Male, mit Reaktion dahinter.
+### Woche 1 · 1. bis 4. Oktober (Do–So)
 
-### Woche 4 · 19.–25.10. — Die vier Abende
-- **Auftrag:** **Ablöse-Protokoll Schritt 2**: vier Abende hintereinander je 15 Minuten
-  ungefiltert über die Beziehung schreiben — was war, was du dir schöngeredet hast, was du
-  vermisst, was du nicht vermisst. Keine Rechtschreibung, kein Zurücklesen, keine Adressatin.
-  Das ist das am besten untersuchte Schreibprotokoll der klinischen Psychologie (Pennebaker).
-  Es ist an Abend 2 unangenehm. Das gehört dazu.
-- **Feldfrage:** Grundlinie von drei Leuten beschreiben: Wie sind sie, wenn nichts los ist?
-- **Zugfrage:** Was wusstest du vorher nicht über diese Beziehung?
-- **Bestanden wenn:** 4 von 4 Abenden geschrieben.
+**Deine Aufgabe:** Am ersten Abend anfangen. Beides, an Tag 1.
 
-### Woche 5 · 26.10.–01.11. — Die Musterliste
-- **Auftrag:** Aus der Verbieger-Liste und den vier Abenden **7 Muster** herausziehen. Ein Muster
-  ist ein Satz nach dem Bau: *„Immer wenn ___, dann mache ich ___, weil ich ___ vermeiden will."*
-  Beispiel: *„Immer wenn jemand enttäuscht guckt, sage ich zu, weil ich vermeiden will, dass
-  er schlecht von mir denkt."*
-- **Feldfrage:** Welches deiner 7 Muster kannst du heute bei jemand anderem beobachten?
-- **Zugfrage:** Welches der 7 kostet dich am meisten Geld, Zeit oder Selbstachtung?
-- **Bestanden wenn:** 7 Muster stehen, in dieser Satzform. **Gate Oktober.**
-- **Buch:** *…trotzdem Ja zum Leben sagen* (V. Frankl).
+**So machst du es:**
+1. Abends auf dem Bett: Heft raus. Datum drauf. Die drei Zeilen schreiben.
+   (Zeile 1 lässt du diesmal frei — du hattest gestern noch kein Versprechen.)
+2. Dein erstes Versprechen für morgen aufschreiben. Klein.
+3. Dann das Handy nehmen und **sie unsichtbar machen**: entfolgen, stummschalten,
+   Chatverlauf in ein Archiv schieben. Bilder in einen Ordner, den du im Alltag nicht siehst.
+   Nichts löschen — nur wegräumen.
+4. Einen Satz ins Heft: warum du das gerade gemacht hast.
+
+**Warum am ersten Abend und nicht später?** Weil du es am ersten Abend einfach machst.
+Ab Tag zwei verhandelst du jeden Abend neu mit dir, und irgendwann verlierst du.
+
+**Im Kopf mittragen:** Zehn Namen lernen. Mehr nicht.
+
+**Fertig, wenn:** vier Tage im Heft stehen und sie unsichtbar ist.
+
+---
+
+### Woche 2 · 5. bis 11. Oktober
+
+**Deine Aufgabe:** Jeden Abend eine Situation aufschreiben, in der du dich heute verbogen hast.
+
+**Was „verbogen" heißt:** Du hast zugestimmt, obwohl du anderer Meinung warst.
+Du hast gelacht, obwohl du es nicht lustig fandest. Du hast geschwiegen, obwohl dich etwas
+gestört hat. Du hast Ja gesagt, obwohl du Nein wolltest.
+
+**So machst du es:**
+- Eine eigene Seite hinten im Heft. Überschrift: *Wo ich mich verbiege.*
+- Jeden Abend eine Zeile. Nur was passiert ist, keine Bewertung.
+- **Nicht:** *„Ich bin ein Weichei, typisch ich."*
+  **Sondern:** *„Kamerad fragte, ob ich seinen Dienst übernehme. Habe Ja gesagt. Wollte nicht."*
+
+**Im Kopf mittragen:** Wer antwortet zuerst, wenn der Ausbilder eine Frage in die Runde stellt?
+Immer dieselben?
+
+**Fertig, wenn:** mindestens vier Zeilen auf der Seite stehen.
+
+---
+
+### Woche 3 · 12. bis 18. Oktober
+
+**Deine Aufgabe:** Dreimal sagen, was du wirklich denkst — an Stellen, wo du sonst schweigst.
+
+**Wichtig: klein und harmlos.** Es geht nicht um Streit. Es geht um den Moment kurz bevor
+du etwas sagst, wo dir das Herz hochgeht. Den willst du kennenlernen.
+
+**So machst du es:**
+- Gute Gelegenheiten: Essen, Musik auf der Stube, wer was aufräumt, welchen Film ihr guckt.
+- Du sagst deine Meinung in einem Satz. Ruhig. Ohne Vorrede, ohne „ich weiß auch nicht, aber…".
+- **Beispiel:** Alle wollen Pizza, du willst keine. Statt „ist mir egal" sagst du:
+  *„Ich hab keinen Bock auf Pizza. Macht ihr, ich hol mir was anderes."*
+- Danach schreibst du auf, was passiert ist. **Meistens passiert nichts.** Genau das ist der Lerneffekt.
+
+**Im Kopf mittragen:** Wer wird um Hilfe gebeten, obwohl er keinen Dienstgrad hat? Und wobei?
+
+**Fertig, wenn:** drei Situationen im Heft stehen, mit der Reaktion dahinter.
+
+---
+
+### Woche 4 · 19. bis 25. Oktober
+
+**Deine Aufgabe:** Vier Abende hintereinander je 15 Minuten über die Beziehung schreiben.
+
+**So machst du es:**
+- Montag bis Donnerstag. Stift und Papier, nicht tippen.
+- Wecker auf 15 Minuten. Durchschreiben, nicht absetzen, nicht nachdenken.
+- Rechtschreibung egal. Zusammenhang egal. Wenn dir nichts einfällt, schreibst du den
+  letzten Satz nochmal ab, bis wieder was kommt.
+- Nach 15 Minuten aufhören. Auch wenn du drin bist. Nicht nachlesen.
+
+**Die vier Abende haben je ein Thema:**
+
+| Abend | Worüber du schreibst |
+|---|---|
+| Montag | Was war. Die ganze Geschichte von vorne. Auch da, wo du nicht gut aussiehst. |
+| Dienstag | Was du dir schöngeredet hast. Was du gesehen und weggeschoben hast. Was Freunde gesagt haben und du nicht hören wolltest. |
+| Mittwoch | Was du wirklich vermisst — und wie viel davon **sie** ist. Wie viel ist Gewohnheit? Wie viel ist einfach nicht-allein-sein? |
+| Donnerstag | Was du mitnimmst. Was du nie wieder machst. Was du beim nächsten Mal früher sagst. |
+
+**Dienstag ist der schlimmste Abend. Er ist auch der, der wirkt.** Wer am Dienstag aufhört,
+hat sich den unangenehmen Teil geholt und den nützlichen weggelassen.
+
+Danach: die vier Blätter falten und ganz nach hinten ins Heft. Du liest sie erst im Februar wieder.
+
+**Im Kopf mittragen:** Beschreibe drei Leute: Wie sind sie, wenn nichts los ist?
+
+**Fertig, wenn:** vier Abende geschrieben sind.
+
+---
+
+### Woche 5 · 26. Oktober bis 1. November
+
+**Deine Aufgabe:** Aus allem, was du im Oktober aufgeschrieben hast, sieben Sätze bauen.
+
+**Der Satzbau ist immer gleich:**
+
+> **„Immer wenn ______, dann mache ich ______, weil ich ______ vermeiden will."**
+
+**Beispiele:**
+- *„Immer wenn jemand enttäuscht guckt, sage ich zu, weil ich vermeiden will, dass er
+  schlecht von mir denkt."*
+- *„Immer wenn es still wird, rede ich, weil ich die Stille nicht aushalte."*
+- *„Immer wenn ich unsicher bin, mache ich einen Witz, weil ich vermeiden will, dass man
+  es mir ansieht."*
+
+**So machst du es:** Lies deine Verbieger-Seite durch. Was kommt mehrfach vor?
+Daraus baust du die Sätze. Nimm dir dafür den Sonntag, nicht zwischendurch.
+
+**Wichtig:** Kein Urteil über dich selbst. Nur Auslöser, Handlung, Grund.
+
+**Im Kopf mittragen:** Welchen deiner sieben Sätze siehst du heute bei jemand anderem?
+
+**Fertig, wenn:** sieben Sätze in dieser Form stehen. → **Monatsprüfung Oktober**
 
 ---
 
 # NOVEMBER — Nein sagen
-*Klein anfangen, konkret üben, dokumentieren.*
 
-Ab jetzt läuft das **Nein-Register**: eine Seite hinten im Heft. Jede Zeile: Datum · zu wem ·
-worum es ging · wie du es gesagt hast · wie es sich angefühlt hat · was tatsächlich passiert ist.
-Die letzte Spalte ist die wichtigste — dort steht fast immer: *nichts*.
+*Jetzt änderst du etwas. Fast alle deine sieben Sätze haben dieselbe Wurzel: Du sagst Ja,
+um etwas zu vermeiden. Nein sagen ist kein Trick — es ist die Übung, ein unangenehmes Gefühl
+auszuhalten, statt es sofort wegzumachen.*
 
-### Woche 6 · 02.–08.11. — Das nackte Nein
-- **Auftrag:** **Drei Neins** zu Kleinigkeiten, ohne Ausrede, ohne Begründung. Wortlaut:
-  *„Nee, mach ich nicht."* / *„Passt mir heute nicht."* Punkt. Kein „weil". Eine Begründung ist
-  eine Einladung zum Verhandeln.
-- **Feldfrage:** Wie sagen andere hier Nein? Wer kann es, wer nicht — und was passiert danach?
-- **Zugfrage:** Bei welchem der drei war der Impuls am stärksten, doch noch etwas hinterherzuschieben?
-- **Bestanden wenn:** 3 Zeilen im Nein-Register.
+**Ab jetzt hast du eine neue Seite hinten im Heft: die Nein-Liste.**
 
-### Woche 7 · 09.–15.11. — Stehenbleiben
-- **Auftrag:** **Drei Neins, die einmal angezweifelt werden** — und du bleibst dabei. Technik:
-  ruhig denselben Satz wiederholen, ohne neue Argumente zu liefern (*„Ich versteh dich. Mach
-  ich trotzdem nicht."*). Wer Druck macht, macht fast immer genau einen letzten Versuch.
-  Halte den aus, und es ist vorbei.
-- **Feldfrage:** Wer in deiner Gruppe kriegt seinen Willen, ohne laut zu werden — und wie?
-- **Zugfrage:** Was hast du befürchtet, und was ist davon eingetreten?
-- **Bestanden wenn:** 3 Neins, jedes mit mindestens einer Widerrede überlebt.
-- **Buch:** *Kompromisslos verhandeln* (C. Voss).
+```
+Datum | zu wem | worum ging es | wie hab ich's gesagt | wie hat es sich angefühlt (1-10) | was ist DANACH passiert
+```
 
-### Woche 8 · 16.–22.11. — Das teure Nein
-- **Auftrag:** **Zwei Neins zu Leuten, die dir etwas bedeuten.** Familie, Freunde, jemand aus
-  der Stube, der dir wichtig geworden ist. Das sind die einzigen Neins, die wirklich zählen.
-  Alles davor war Aufwärmen.
-- **Feldfrage:** Bei wem fällt es dir hier am schwersten — und was genau befürchtest du bei ihm?
-- **Zugfrage:** Ist die Beziehung dadurch schlechter geworden? Ehrlich?
-- **Bestanden wenn:** 2 Neins zu wichtigen Personen, dokumentiert.
+Die letzte Spalte ist die wichtigste. Da wird fast immer stehen: **nichts.**
 
-### Woche 9 · 23.–29.11. — Die Stunde dazwischen
-- **Auftrag:** **Dreimal** auf eine Anfrage antworten mit: *„Ich sag dir in einer Stunde
-  Bescheid."* Dann tatsächlich eine Stunde nichts tun und **danach** entscheiden. Das ist die
-  Technik, die du am längsten brauchen wirst: Die meisten Ja's fallen nicht aus Überzeugung,
-  sondern aus Geschwindigkeit.
-- **Feldfrage:** Wie viele deiner heutigen Zusagen wären nach einer Stunde noch dieselben gewesen?
-- **Zugfrage:** November-Bilanz: Wie viele Neins insgesamt? Welches war das teuerste?
-- **Bestanden wenn:** 3× Pause genutzt **und** ≥ 10 Neins im Monat gesamt. **Gate November.**
+40 fertige Sätze für jede Lage: [`werkzeuge/nein-sagen.md`](werkzeuge/nein-sagen.md)
 
 ---
 
-# DEZEMBER — Menschen lesen
-*Motive, Status, Körpersprache — aber nach der belastbaren Methode, nicht nach der Legende.*
+### Woche 6 · 2. bis 8. November
 
-**Lies vor Woche 10 unbedingt `werkzeuge/menschen-feldbuch.md`.** Darin steht auch, warum die
-bekannte „55 % Körpersprache"-Regel ein Mythos ist und was stattdessen tatsächlich funktioniert:
-**Grundlinie kennen, Abweichung bemerken, Vermutung aufschreiben, nachprüfen.**
+**Deine Aufgabe:** Dreimal Nein sagen. Ohne Begründung.
 
-### Woche 10 · 30.11.–06.12. — Grundlinien
-- **Auftrag:** **Fünf Personen**, je eine Grundlinie in vier Zeilen: Wie redet er, wenn nichts
-  los ist? Wie steht er? Wie viel sagt er? Wie reagiert er auf eine Frage, die er nicht mag?
-  Ohne Grundlinie ist jede Deutung Kaffeesatz — „verschränkte Arme" bedeutet bei dem einen
-  Ablehnung und beim anderen, dass ihm kalt ist.
-- **Feldfrage:** Wer verändert sich am stärksten, wenn ein Vorgesetzter den Raum betritt?
-- **Zugfrage:** Bei wem war die Grundlinie am schwersten zu fassen — und warum?
-- **Bestanden wenn:** 5 Grundlinien stehen.
+**Die Regel:** Nein plus höchstens ein Satz. **Kein „weil".**
+Sobald du begründest, diskutiert ihr über deinen Grund statt über deine Entscheidung.
 
-### Woche 11 · 07.–13.12. — Die zwei Wege nach oben
-- **Auftrag:** **Deine Gruppe kartieren.** In Gruppen wird Status auf genau zwei Wegen
-  vergeben: **Dominanz** (durch Druck, Lautstärke, Drohung erzwungen) und **Prestige**
-  (freiwillig gegeben, weil jemand etwas kann). Beide funktionieren, aber nur Prestige macht
-  beliebt. Ordne 8 Leute ein: D, P oder keins. Zu jedem **eine Szene als Beleg.**
-- **Feldfrage:** Wenn es eng wird — auf wen hören die Leute *wirklich*? Auf den Dienstgrad
-  oder auf jemand anderen?
-- **Zugfrage:** Auf welchem Weg versuchst du selbst, Respekt zu bekommen? Belege?
-- **Bestanden wenn:** 8 Einordnungen mit je einer Szene.
-- **Buch:** *Was jeder Körper sagt* (J. Navarro) — **mit dem Vorbehalt aus dem Feldbuch:**
-  lies das als Katalog von Vermutungen, nicht als Wörterbuch. Es ist gutes Beobachtungstraining
-  und schlechte Wahrheit.
+**So klingt das:**
+- *„Nee, mach ich nicht."*
+- *„Passt mir nicht."*
+- *„Da bin ich raus."*
+- *„Nicht mein Ding, aber viel Spaß euch."*
 
-### Woche 12 · 14.–20.12. — Vorhersagen
-- **Auftrag:** **Acht schriftliche Vorhersagen**, jeweils vor dem Ereignis. Bau:
-  *„Ich vermute, dass ___, weil ich ___ beobachtet habe."* Dann nachprüfen und ehrlich abhaken.
-  Beispiele: Wer meldet sich freiwillig. Wer fehlt am Freitag. Wer sagt im Gespräch als Erstes
-  Nein. Wer wird bei der Aufgabe rot.
-- **Feldfrage:** Bei welcher Art Vorhersage liegst du daneben — Stimmung, Absicht oder Verhalten?
-- **Zugfrage:** Wo hast du dich getäuscht, weil du wolltest, dass es so ist?
-- **Bestanden wenn:** 8 Vorhersagen, davon ≥ 8 nachgeprüft. **Gate Dezember (vorgezogen).**
+Freundlich sein ist erlaubt. Warm sein ist erlaubt. **Erklären ist nicht erlaubt.**
 
-### Woche 13 · 21.–27.12. — Waffenruhe
-- **Auftrag:** **Nur die drei Zeilen.** Kein Wochenauftrag, keine Feldfrage, kein Gate-Druck.
-  Weihnachten, Familie, Zuhause. Das ist geplant, nicht nachlässig — ein Programm, das durch
-  Feiertage gefahren wird, geht an Feiertagen kaputt.
-- **Die einzige Regel:** An den Tagen, an denen es schwer wird (und das sind bei einer frischen
-  Trennung die Feiertage), gilt die Notfallkarte. Nichts weiter.
-- **Bestanden wenn:** ≥ 5 der 7 Tage einen Eintrag haben. Mehr wird nicht verlangt.
+**So machst du es:** Kleinigkeiten. Jemand will, dass du mitkommst, was ausleihst,
+was übernimmst. Einmal am Tag reicht.
+
+**Im Kopf mittragen:** Wie sagen andere hier Nein? Wer kann es, wer nicht — und was passiert danach?
+
+**Fertig, wenn:** drei Zeilen auf der Nein-Liste stehen.
 
 ---
 
-# JANUAR — Fragen stellen und zuhören
-*Das ist Sales. Nicht Reden.*
+### Woche 7 · 9. bis 15. November
 
-Der aktivste Monat, mit Absicht: Die Mitte ist die gefährlichste Stelle jedes langen Vorhabens.
-Ein voller Kalender schlägt Motivation.
+**Deine Aufgabe:** Dreimal Nein sagen und dabei bleiben, wenn nachgehakt wird.
 
-**Ab jetzt läuft das Gesprächsprotokoll** (`werkzeuge/gespraechsfuehrung.md`): Datum · mit wem ·
-Dauer · geschätzter Redeanteil · Anzahl offener Fragen · der eine Satz, der am meisten gebracht hat.
+**Der Trick:** Du wiederholst denselben Satz. Du bringst **kein neues Argument**.
+Jedes neue Argument ist eine neue Angriffsfläche.
 
-### Woche 14 · 28.12.–03.01. — Anlauf
-- **Auftrag:** **Drei Gespräche mit ausschließlich offenen Fragen.** Keine Ja/Nein-Frage,
-  kein „oder?". Nur: Wie, was, seit wann, erzähl mal, wie kam das. Wer offene Fragen stellt
-  und zurückspiegelt, bekommt anderes Material — das ist die Grundmechanik von
-  Gesprächsführung in Beratung wie im Verkauf.
-- **Zugfrage:** Wo bist du in eine geschlossene Frage gerutscht, und warum genau da?
-- **Bestanden wenn:** 3 protokollierte Gespräche.
-- **Buch:** *Die 1%-Methode* (J. Clear).
+**So klingt das:**
+> *„Komm schon, dauert doch nur zwanzig Minuten."*
+> — *„Versteh ich. Mach ich trotzdem nicht."*
+> *„Du hast doch sonst auch immer."*
+> — *„Stimmt. Diesmal nicht."*
+> *„Jetzt sei kein Arsch."*
+> — *„Bleibt trotzdem nein."*
 
-### Woche 15 · 04.–10.01. — Unter dreißig
-- **Auftrag:** **Drei Gespräche mit Redeanteil unter 30 %.** Nach jedem sofort schätzen und
-  eintragen. Du wirst deinen Anteil anfangs deutlich unterschätzen — das ist der Punkt der Übung.
-- **Feldfrage:** Wer hier redet viel und sagt nichts? Woran merkt man es?
-- **Zugfrage:** Was hast du erfahren, was du bei mehr Redeanteil nie erfahren hättest?
-- **Bestanden wenn:** 3 Gespräche protokolliert, Redeanteil geschätzt.
+Ruhig bleiben. Langsam sprechen. Langweilig sein. **Langweilig gewinnt.**
 
-### Woche 16 · 11.–17.01. — Zurückspiegeln
-- **Auftrag:** **Doppelt so viele Rückspiegelungen wie Fragen.** Eine Rückspiegelung ist eine
-  Aussage, keine Frage: *„Das ging dir gegen den Strich."* / *„Du hast das Gefühl, du machst
-  das allein."* Das ist die schwerste und wirksamste Einzelfertigkeit im ganzen Handwerk.
-  Zuhören von hoher Qualität — aufmerksam, ohne Urteil — senkt beim Gegenüber die Abwehr und
-  führt dazu, dass er tiefer in sein eigenes Thema geht. Genau das brauchst du später im
-  Werkstatt-Gespräch.
-- **Feldfrage:** Wie reagieren Leute, wenn du zurückspiegelst statt nachzufragen?
-- **Zugfrage:** Wann wurde es still — und was kam nach der Stille?
-- **Bestanden wenn:** 3 Gespräche, Verhältnis grob 2:1 erreicht.
+**Was du wissen solltest:** Wer Druck macht, macht fast immer genau **einen** letzten Versuch.
+Hältst du den aus, ist es vorbei. Genau da bist du bisher umgefallen.
 
-### Woche 17 · 18.–24.01. — Drei Sekunden
-- **Auftrag:** **Nach jeder Antwort deines Gegenübers drei Sekunden warten**, bevor du redest.
-  Innerlich mitzählen. Klingt lächerlich, ist brutal schwer und verändert Gespräche mehr als
-  jede Formulierung. Das Wertvollste kommt fast immer **nach** der ersten Pause.
-- **Feldfrage:** Wer hier hält Stille aus, wer füllt sie sofort?
-- **Zugfrage:** Was kam in den drei Sekunden, das sonst nie gekommen wäre?
-- **Bestanden wenn:** 3 Gespräche mit bewusster Pause.
-- **Buch:** *Deutsch für junge Profis* (W. Schneider) — für den Nebenskill Schreiben.
+**Im Kopf mittragen:** Wer kriegt hier seinen Willen, ohne laut zu werden? Wie macht er das?
 
-### Woche 18 · 25.–31.01. — Alles zusammen
-- **Auftrag:** **Drei echte Gespräche** mit dem vollen Set: offene Fragen, 2:1 Rückspiegelungen,
-  drei Sekunden, Redeanteil unter 30 %. Mindestens eines davon mit jemandem, mit dem du sonst
-  nicht redest.
-- **Zugfrage:** Monatsbilanz: 12 Gespräche — welches hat sich am meisten verändert angefühlt?
-- **Bestanden wenn:** ≥ 12 protokollierte Gespräche im Januar, ≥ 3 davon unter 30 % Redeanteil.
-  **Gate Januar.**
+**Fertig, wenn:** drei Neins, bei denen mindestens einmal nachgehakt wurde.
 
 ---
 
-# FEBRUAR — Eigene Standards
-*Schriftlich festhalten: was ist nicht verhandelbar.*
+### Woche 8 · 16. bis 22. November
 
-Der Monat, auf den die vier davor hinauslaufen. Du schreibst keine Wunschliste — du **liest aus
-deinen eigenen vier Monaten heraus**, wofür du tatsächlich stehst. Werkzeug: `werkzeuge/standards.md`.
+**Deine Aufgabe:** Zweimal Nein sagen zu Menschen, die dir etwas bedeuten.
 
-### Woche 19 · 01.–07.02. — Rohmaterial
-- **Auftrag:** Alle Hefte von Oktober bis Januar durchgehen und **jeden Satz markieren, der
-  zweimal oder öfter vorkommt.** Nicht schreiben, nur sammeln. Die Standards stehen schon da,
-  du hast sie nur noch nicht erkannt.
-- **Feldfrage:** Welche Regel befolgst du hier täglich, ohne dass sie jemand aufgeschrieben hat?
-- **Zugfrage:** Welcher Satz taucht am häufigsten auf?
-- **Bestanden wenn:** Rohliste mit ≥ 15 Fundstellen.
-- **Buch:** *Meditationen* (Marc Aurel, Reclam) — kein Lehrbuch, ein Dienstheft. Genau wie deins.
+**Das ist die härteste Woche im ganzen Programm.**
 
-### Woche 20 · 08.–14.02. — Zwölf Sätze
-- **Auftrag:** **12 Kodex-Sätze** schreiben. Form: *„Ich ___."* Gegenwart, aktiv, konkret,
-  ohne „versuche", ohne „möglichst". Falsch: *„Ich versuche, ehrlicher zu sein."*
-  Richtig: *„Ich sage innerhalb von 24 Stunden ab, wenn ich nicht will — nicht am selben Tag."*
-- **Feldfrage:** Welcher deiner 12 Sätze würde hier sofort auffallen, wenn du ihn lebst?
-- **Zugfrage:** Welcher Satz ist geklaut (aus einem Buch, von einem Vorbild) und welcher ist deiner?
-- **Bestanden wenn:** 12 Sätze stehen.
+Nein zu Fremden kostet nichts. Du hast bei Fremden nie befürchtet, dass etwas kaputtgeht.
+Deshalb zählen nur die hier: Familie, alte Freunde, jemand auf der Stube, der dir wichtig
+geworden ist.
 
-### Woche 21 · 15.–21.02. — Beleg oder raus
-- **Auftrag:** Zu **jedem** Satz eine reale Situation aus den letzten fünf Monaten schreiben,
-  in der er dich etwas gekostet hat. **Sätze ohne Beleg werden gestrichen.** Wenn am Ende
-  nur sechs übrig bleiben: dann sind es sechs. Sechs gelebte schlagen zwölf gewünschte.
-- **Zugfrage:** Welchen Satz wolltest du behalten, obwohl du keinen Beleg hattest? Warum?
-- **Bestanden wenn:** ≥ 7 belegte Sätze übrig.
+**So machst du es:**
+- Such dir eine echte Sache, kein Testballon. Etwas, wo du sonst Ja gesagt hättest.
+- Gleiche Regeln wie Woche 6: Nein, ein Satz, keine Begründung. Warm im Ton.
+- Danach **nicht nachfragen**, ob es okay war. Das ist der schwerste Teil.
+- Schreib auf, was du befürchtet hast — und was tatsächlich passiert ist.
 
-### Woche 22 · 22.–28.02. — Der Belastungstest
-- **Auftrag:** Eine Woche **bewusst nach Kodex** leben und jeden Abend eintragen, wo er
-  gerieben hat. Ein Kodex, der eine Woche lang nie reibt, ist zu weich formuliert.
-- **Zugfrage:** Welcher Satz war diese Woche am teuersten? Bleibt er?
-- **Bestanden wenn:** Kodex steht, unterschrieben, datiert, ≥ 7 Sätze mit Belegen.
-  **Gate Februar.**
+**Im Kopf mittragen:** Bei wem fällt es dir am schwersten? Und was genau befürchtest du bei ihm?
+
+**Fertig, wenn:** zwei Neins zu wichtigen Menschen auf der Liste stehen.
 
 ---
 
-# MÄRZ — Übergang
-*Angebot bauen, erste Gespräche vorbereiten. Jetzt darf das Business zurück.*
+### Woche 9 · 23. bis 29. November
 
-### Woche 23 · 01.–07.03. — Eine Seite
-- **Auftrag:** **Dein Angebot auf einer Seite**, handschriftlich zuerst: Für wen, welches
-  Problem, was genau du lieferst, was es kostet, warum ausgerechnet du. Fünf Absätze.
-  Danach mit mir zusammen schärfen. Wenn es nicht auf eine Seite passt, verstehst du es noch nicht.
-- **Zugfrage:** Was daran ist anders als im September — und liegt das am Angebot oder an dir?
-- **Bestanden wenn:** Eine Seite, fünf Absätze, lesbar.
-- **Buch:** *Ego ist dein Feind* (R. Holiday) — richtiges Buch für genau diesen Moment.
+**Deine Aufgabe:** Dreimal auf eine Anfrage antworten mit „Ich sag dir in einer Stunde Bescheid."
 
-### Woche 24 · 08.–14.03. — Erste zwei
-- **Auftrag:** **Zwei reale Gespräche** — vor Ort, Betrieb, Mensch. Vorher: eine Seite
-  Vorbereitung. Nachher: Nachbesprechung mit mir nach dem Protokoll. Erfolg ist hier nicht
-  Abschluss. Erfolg ist Redeanteil unter 30 % und drei Dinge erfahren, die du nicht wusstest.
-- **Zugfrage:** Wo bist du in ein altes Muster aus der Oktober-Liste zurückgefallen?
-- **Bestanden wenn:** 2 Gespräche geführt und protokolliert.
+**Warum das der wichtigste Satz des Monats ist:** Die meisten Ja's fallen nicht, weil du
+überzeugt bist. Sie fallen, weil es schnell gehen muss. Jemand fragt, es entsteht eine Lücke,
+du füllst sie.
 
-### Woche 25 · 15.–21.03. — Drei weitere
-- **Auftrag:** **Drei weitere Gespräche.** Diesmal mit einer bewussten Änderung gegenüber den
-  ersten beiden — eine, die du selbst aus der Nachbesprechung gezogen hast.
-- **Zugfrage:** Was hat sich zwischen Gespräch 1 und Gespräch 5 verändert?
-- **Bestanden wenn:** 5 Gespräche gesamt im März.
+**So machst du es:**
+1. Jemand fragt dich etwas.
+2. Du sagst: *„Ich sag dir in einer Stunde Bescheid."*
+3. Du machst eine Stunde lang nichts damit.
+4. Danach entscheidest du. Ja oder Nein — beides ist richtig.
 
-### Woche 26 · 22.–28.03. — Abnahme
-- **Auftrag:** Die **Schlussabnahme** (`werkzeuge/claude-rituale.md`, Ritual 5): die 7
-  Selbstbild-Bögen nebeneinander, die 6 Gates, das Register, der Kodex. Dann schreibst du
-  **eine Seite: „Was ich jetzt bin, was ich im September nicht war."** Belege, keine Gefühle.
-- **Der letzte Satz des Programms:** Du liest die Seite, die du Ende September geschrieben hast
-  (*„Was will ich in diesen 6 Monaten wirklich"*) — und schreibst darunter, was davon
-  eingetreten ist.
-- **Bestanden wenn:** Beide Seiten liegen nebeneinander im Heft. **Gate März.**
+Diesen Satz wirst du später als Selbstständiger jede Woche brauchen. In beide Richtungen.
+
+**Im Kopf mittragen:** Wie viele deiner heutigen Zusagen wären nach einer Stunde noch dieselben gewesen?
+
+**Fertig, wenn:** dreimal die Stunde genutzt **und** insgesamt mindestens zehn Neins im
+November auf der Liste. → **Monatsprüfung November**
 
 ---
 
-## Der Überblick auf einem Blatt
+# DEZEMBER — Menschen verstehen
 
-| W | Datum | Auftrag in vier Worten | Zählstand |
-|---|---|---|---|
-| 1 | 01.–04.10. | Register + Ablöse Schritt 1 | |
-| 2 | 05.–11.10. | Fünf Verbieger-Situationen | |
-| 3 | 12.–18.10. | Dreimal aussprechen | |
-| 4 | 19.–25.10. | Vier Abende schreiben | |
-| 5 | 26.10.–01.11. | Sieben Muster | **Gate Okt** |
-| 6 | 02.–08.11. | Drei nackte Neins | |
-| 7 | 09.–15.11. | Drei Neins stehenbleiben | |
-| 8 | 16.–22.11. | Zwei teure Neins | |
-| 9 | 23.–29.11. | Dreimal eine Stunde Pause | **Gate Nov** |
-| 10 | 30.11.–06.12. | Fünf Grundlinien | |
-| 11 | 07.–13.12. | Acht Leute einordnen | |
-| 12 | 14.–20.12. | Acht Vorhersagen prüfen | **Gate Dez** |
-| 13 | 21.–27.12. | Waffenruhe, nur drei Zeilen | |
-| 14 | 28.12.–03.01. | Drei Gespräche, offene Fragen | |
-| 15 | 04.–10.01. | Redeanteil unter 30 % | |
-| 16 | 11.–17.01. | Zurückspiegeln 2:1 | |
-| 17 | 18.–24.01. | Drei Sekunden Stille | |
-| 18 | 25.–31.01. | Volles Set, drei Gespräche | **Gate Jan** |
-| 19 | 01.–07.02. | Rohmaterial sammeln | |
-| 20 | 08.–14.02. | Zwölf Sätze schreiben | |
-| 21 | 15.–21.02. | Beleg oder raus | |
-| 22 | 22.–28.02. | Belastungstest Kodex | **Gate Feb** |
-| 23 | 01.–07.03. | Angebot auf eine Seite | |
-| 24 | 08.–14.03. | Zwei reale Gespräche | |
-| 25 | 15.–21.03. | Drei weitere Gespräche | |
-| 26 | 22.–28.03. | Abnahme + zwei Seiten | **Gate Mär** |
+*Bevor du anfängst, lies [`werkzeuge/menschen-lesen.md`](werkzeuge/menschen-lesen.md).
+Darin steht auch, warum „93 % der Kommunikation ist Körpersprache" falsch ist und was
+stattdessen wirklich funktioniert.*
 
-Diese Tabelle gehört ausgedruckt an deine Spindtür. Sie ist in `drucksachen/taschenkarten.html`
-als Karte 8 enthalten.
+**Die Methode in vier Schritten:**
+
+1. **Normalzustand** — Wie ist der Mensch, wenn nichts los ist?
+2. **Was ist heute anders?**
+3. **Vermutung aufschreiben** — bevor du weißt, ob sie stimmt.
+4. **Nachgucken** — hat es gestimmt? Ehrlich abhaken.
+
+Schritt 4 ist der ganze Unterschied. Ohne ihn sammelst du nur Bestätigung für das,
+was du sowieso gedacht hast.
+
+---
+
+### Woche 10 · 30. November bis 6. Dezember
+
+**Deine Aufgabe:** Fünf Leute beschreiben — wie sie sind, wenn nichts los ist.
+
+**So machst du es:** Pro Person vier Zeilen ins Heft:
+- Redet er viel oder wenig? Laut oder leise?
+- Wie steht oder sitzt er, wenn er entspannt ist?
+- Was macht er, wenn ihm eine Frage nicht passt?
+- **Wobei wird er lebendig?** ← die wichtigste Zeile
+
+**Warum das zuerst kommt:** Ohne Normalzustand kannst du nichts deuten. Verschränkte Arme
+heißen bei dem einen Abwehr und beim anderen, dass ihm kalt ist. Du kannst nur erkennen,
+was **anders** ist, wenn du weißt, wie **normal** aussieht.
+
+**Im Kopf mittragen:** Wer verändert sich am stärksten, wenn ein Vorgesetzter reinkommt?
+
+**Fertig, wenn:** fünf Beschreibungen im Heft stehen.
+
+---
+
+### Woche 11 · 7. bis 13. Dezember
+
+**Deine Aufgabe:** Acht Leute einordnen — wie haben sie sich ihren Platz verschafft?
+
+**Es gibt genau zwei Wege, wie jemand in einer Gruppe nach oben kommt:**
+
+| | **Über Druck** | **Über Können** |
+|---|---|---|
+| Wie er es macht | laut, drohend, er hat was in der Hand | er kann etwas, das die Gruppe braucht |
+| Was die anderen fühlen | Vorsicht, Angst | Respekt |
+| Mag man ihn? | eher nicht | ja |
+| Woran du ihn erkennst | es wird still, wenn er kommt | er **wird gefragt**, obwohl er keinen Rang hat |
+| Wenn der Druck wegfällt | Platz weg | Platz bleibt |
+
+**So machst du es:** Acht Leute auf eine Seite. Hinter jeden: Druck, Können oder keins.
+Und dazu **eine Szene**, an der du es festmachst. Ohne Szene zählt es nicht.
+
+**Am Ende der Woche die Pflichtfrage an dich selbst:**
+Auf welchem Weg versuchst **du** Respekt zu bekommen? Welche Szene beweist das?
+
+**Im Kopf mittragen:** Wenn es eng wird — auf wen hören die Leute wirklich? Auf den Dienstgrad
+oder auf jemand anderen?
+
+**Fertig, wenn:** acht Einordnungen mit je einer Szene.
+
+---
+
+### Woche 12 · 14. bis 20. Dezember
+
+**Deine Aufgabe:** Acht Vorhersagen aufschreiben — und alle acht nachprüfen.
+
+**Der Satzbau:** *„Ich vermute, dass ______, weil ich ______ beobachtet habe."*
+
+**Gute Vorhersagen:**
+- Wer meldet sich gleich freiwillig?
+- Wer beschwert sich als Erster, wenn der Plan sich ändert?
+- Wer fehlt am Freitagnachmittag?
+- Wer sagt bei der Frage in die Runde als Erster Nein?
+- Wem wird geglaubt, auch wenn er unsicher wirkt?
+
+**So machst du es:** Erst aufschreiben, dann abwarten, dann abhaken: gestimmt oder nicht.
+Bei jedem Fehltreffer eine Zeile: *Was habe ich übersehen — und wollte ich, dass es so ist?*
+
+Die zweite Frage klärt mehr als die erste. Man liegt am häufigsten da falsch,
+wo einem ein Ergebnis lieber wäre.
+
+**Fertig, wenn:** acht Vorhersagen aufgeschrieben und alle acht nachgeprüft.
+→ **Monatsprüfung Dezember** (schon am 20., wegen Weihnachten)
+
+---
+
+### Woche 13 · 21. bis 27. Dezember
+
+**Deine Aufgabe: keine.**
+
+Weihnachten, Familie, zu Hause. In dieser Woche machst du **nur die drei Zeilen**.
+Kein Auftrag, keine Beobachtungsfrage, kein Druck.
+
+Das ist nicht Nachlässigkeit. Ein Plan, den man mit voller Last durch die Feiertage fährt,
+geht an den Feiertagen kaputt. Jedes Mal.
+
+**Eine Sache gilt trotzdem:** Die Feiertage sind nach einer Trennung die härtesten Tage.
+Alle sind zu zweit, alle fragen, und du hast Zeit. Vor jeder Nachricht an sie:
+erst die Notfallkarte durchgehen. Danach darfst du entscheiden.
+
+**Fertig, wenn:** an fünf von sieben Tagen etwas im Heft steht. Mehr will ich nicht.
+
+---
+
+# JANUAR — Fragen und zuhören
+
+*Der Monat, aus dem später dein Beruf wird. Und der vollste — mit Absicht: Die Mitte ist
+die gefährlichste Stelle. Der Anfang ist vorbei, das Ende ist weit, draußen ist es dunkel.
+Wer dann etwas zu tun hat, kommt durch.*
+
+**Warum das wichtig ist:** Die meisten glauben, Verkaufen heißt Reden. Das ist der teuerste
+Irrtum der Branche. Wenn du jemandem richtig zuhörst, wird er offener und sagt dir sein
+Problem klarer, als er es je einem Vertreter gesagt hat. Danach musst du ihn nicht mehr
+überzeugen — du musst nur noch anschließen.
+
+**Ab jetzt hast du eine neue Seite hinten im Heft: die Gesprächsliste.**
+
+```
+Datum | mit wem | wie lange | wie viel % habe ich geredet | der eine Satz, der am meisten gebracht hat
+```
+
+Alle Werkzeuge und 30 fertige Fragen: [`werkzeuge/gespraeche-fuehren.md`](werkzeuge/gespraeche-fuehren.md)
+
+---
+
+### Woche 14 · 28. Dezember bis 3. Januar
+
+**Deine Aufgabe:** Drei Gespräche führen, in denen du nur offene Fragen stellst.
+
+**Was eine offene Frage ist:** Eine, auf die man nicht mit Ja, Nein oder einer Zahl
+antworten kann.
+
+| Statt | Frag |
+|---|---|
+| „Läuft's gut?" | „Wie läuft's gerade?" |
+| „Bist du zufrieden?" | „Was stört dich am meisten?" |
+| „Machst du das schon lange?" | „Wie bist du da reingekommen?" |
+| „War das schlimm?" | „Wie war das für dich?" |
+
+**Die stärkste ist gar keine Frage:** *„Erzähl mal."*
+
+**So machst du es:** Such dir drei Leute. Rede zehn Minuten mit jedem. Stell nur offene
+Fragen. Danach sofort eine Zeile in die Gesprächsliste.
+
+**Im Kopf mittragen:** Wo bist du doch in eine Ja/Nein-Frage gerutscht — und warum gerade da?
+
+**Fertig, wenn:** drei Gespräche in der Liste stehen.
+
+---
+
+### Woche 15 · 4. bis 10. Januar
+
+**Deine Aufgabe:** Drei Gespräche, in denen du weniger als ein Drittel der Zeit redest.
+
+**So machst du es:** Nach jedem Gespräch schätzt du: Wie viel Prozent habe ich geredet?
+Und trägst es ein.
+
+**Hilfe beim Schätzen:** Wer hat mehr ganze Sätze gesagt? Wer hat das Thema gewechselt?
+Wer hat eine Geschichte erzählt? Wenn du eine Geschichte erzählt hast, warst du über 50 %.
+
+**Was dabei passiert:** Du wirst deinen Anteil am Anfang deutlich unterschätzen.
+Genau darum geht es — nicht um die Zahl, sondern darum, dass dein Gefühl dafür ehrlicher wird.
+
+**Im Kopf mittragen:** Wer redet hier viel und sagt nichts? Woran merkt man das?
+
+**Fertig, wenn:** drei Gespräche mit geschätztem Redeanteil in der Liste.
+
+---
+
+### Woche 16 · 11. bis 17. Januar
+
+**Deine Aufgabe:** Doppelt so oft nachsagen wie fragen.
+
+**Was „nachsagen" heißt:** Du sagst in deinen eigenen Worten, was du verstanden hast.
+Als **Aussage**, nicht als Frage.
+
+- *„Das ging dir gegen den Strich."*
+- *„Du hast das Gefühl, du machst das hier alleine."*
+- *„Für dich war das eigentlich längst entschieden."*
+
+**Warum keine Frage?** „Ging dir das gegen den Strich?" verlangt eine Antwort und fühlt sich
+wie ein Verhör an. Eine Aussage lädt ein. Und wenn du danebenliegst, korrigiert dein
+Gegenüber dich — und liefert dir dabei genau das, was du wissen wolltest.
+**Falsch nachsagen ist oft wertvoller als richtig.**
+
+**So machst du es:** Auf zwei Nachsagen kommt eine Frage. Ungefähr. Niemand zählt mit.
+
+**Im Kopf mittragen:** Wie reagieren Leute, wenn du nachsagst statt nachzufragen?
+
+**Fertig, wenn:** drei Gespräche, in denen du mehr nachgesagt als gefragt hast.
+
+---
+
+### Woche 17 · 18. bis 24. Januar
+
+**Deine Aufgabe:** Nach jeder Antwort drei Sekunden warten, bevor du redest.
+
+**So machst du es:** Der andere hört auf zu reden. Du zählst innerlich bis drei.
+Dann erst sagst du etwas.
+
+Das fühlt sich an wie zehn Sekunden. Es ist die billigste Verbesserung, die es gibt:
+Das Wertvollste kommt fast immer **nach** der ersten Pause — das, was jemand sagt,
+wenn er merkt, dass ihm keiner ins Wort fällt.
+
+**Zweite Anwendung, fürs ganze Leben:** drei Sekunden schweigen nach einer wichtigen
+eigenen Aussage. Nach einem Preis, nach einem Nein, nach einer unangenehmen Frage.
+Wer nach dem Preis weiterredet, verhandelt gegen sich selbst.
+
+**Im Kopf mittragen:** Wer hält hier Stille aus, wer füllt sie sofort?
+
+**Fertig, wenn:** drei Gespräche mit bewussten Pausen.
+
+---
+
+### Woche 18 · 25. bis 31. Januar
+
+**Deine Aufgabe:** Drei Gespräche mit allem, was du im Januar gelernt hast.
+
+Also: offene Fragen, doppelt so oft nachsagen wie fragen, drei Sekunden Pause,
+unter einem Drittel Redeanteil.
+
+**Mindestens eines davon mit jemandem, mit dem du sonst nie redest.**
+
+**Fertig, wenn:** im Januar mindestens zwölf Gespräche in der Liste stehen,
+davon drei unter einem Drittel Redeanteil. → **Monatsprüfung Januar**
+
+---
+
+# FEBRUAR — Deine eigenen Regeln
+
+*Darauf laufen vier Monate hinaus. Du denkst dir keine Regeln aus. Du liest sie aus deinen
+eigenen Heften heraus. Ausgedachte Regeln halten drei Wochen. Herausgelesene halten,
+weil sie schon gehalten haben.*
+
+Hilfe und Beispiele: [`werkzeuge/standards.md`](werkzeuge/standards.md)
+
+---
+
+### Woche 19 · 1. bis 7. Februar
+
+**Deine Aufgabe:** Alle Hefte von Oktober bis Januar durchblättern und markieren, was
+mehrfach vorkommt.
+
+**So machst du es:** Nichts formulieren, nur sammeln. Zettel daneben, Strichliste.
+Schau gezielt an vier Stellen nach:
+- Zeile 2 von jedem Tag („Wo war ich nicht ehrlich zu mir?") — was steht da immer wieder?
+- Deine sieben Sätze aus dem Oktober.
+- Die Nein-Liste — wovon hast du dich ferngehalten, als es hart wurde?
+- Die Sonntagsfrage „Wo habe ich Ja gesagt und Nein gemeint?"
+
+**Fertig, wenn:** mindestens 15 Fundstellen auf deinem Zettel stehen.
+
+---
+
+### Woche 20 · 8. bis 14. Februar
+
+**Deine Aufgabe:** Zwölf Sätze schreiben, die mit „Ich" anfangen.
+
+**Der Bauplan:** *„Ich ______."* — Gegenwart. Konkret. Ohne Weichmacher.
+
+**Verboten sind:** „versuche", „möglichst", „eigentlich", „will", „in der Regel".
+
+| Untauglich | Warum | Tauglich |
+|---|---|---|
+| „Ich versuche, ehrlicher zu sein." | „versuche" macht jedes Scheitern zum Erfolg | „Ich sage innerhalb von 24 Stunden ab, wenn ich nicht will." |
+| „Ich bin diszipliniert." | Eigenschaft, nicht prüfbar | „Ich mache, was ich abends aufgeschrieben habe, auch wenn ich morgens anders fühle." |
+| „Ich lasse mich nicht ausnutzen." | sagt nicht, was du tust | „Ich sage einmal Nein und erkläre es nicht." |
+| „Ich bin für meine Freunde da." | klingt gut, kostet nichts | „Ich sage zu oder ab. Ich lasse nichts offen." |
+
+**Der Test für jeden Satz:** Kannst du heute Abend mit Ja oder Nein sagen, ob du ihn
+heute gehalten hast?
+
+**Fertig, wenn:** zwölf Sätze stehen. Zwölf, weil gleich gekürzt wird.
+
+---
+
+### Woche 21 · 15. bis 21. Februar
+
+**Deine Aufgabe:** Zu jedem Satz eine echte Situation schreiben, in der er dich etwas
+gekostet hat. **Sätze ohne Situation werden gestrichen.**
+
+**Was „gekostet" heißt:** Bequemlichkeit, einen Abend, einen Kontakt, Zustimmung, Geld,
+dass jemand sauer war.
+
+Das tut weh, weil du deine schönsten Sätze streichen wirst. Genau darum geht es:
+**Eine Regel, die dich noch nie etwas gekostet hat, ist keine Regel. Das ist eine Meinung
+über dich selbst.** Meinungen über dich hattest du im September schon.
+
+Wenn am Ende sechs übrig bleiben, sind es sechs. Sechs gelebte schlagen zwölf gewünschte.
+Die anderen kommen auf eine zweite Liste: „Kandidaten". Die nimmst du ins nächste halbe Jahr mit.
+
+**Fertig, wenn:** mindestens sieben Sätze mit Situation übrig sind.
+
+---
+
+### Woche 22 · 22. bis 28. Februar
+
+**Deine Aufgabe:** Eine Woche lang bewusst nach deinen Sätzen leben und aufschreiben,
+wo es zwickt.
+
+**So liest du das Ergebnis:**
+- Zwickt nie → zu weich formuliert. Nachschärfen.
+- Zwickt täglich an deiner **Bequemlichkeit** → richtig so. Das ist der Sinn.
+- Zwickt täglich an deinem **Leben** (Arbeit unmöglich, alle sauer) → zu eng. Umformulieren.
+
+Dann: alles sauber abschreiben, unterschreiben, Datum drauf. Von Hand, eigene Seite.
+Der Akt zählt.
+
+**Fertig, wenn:** die Sätze unterschrieben und datiert im Heft stehen.
+→ **Monatsprüfung Februar**
+
+---
+
+# MÄRZ — Zurück ins Geschäft
+
+*Fünf Monate war Business gesperrt. Jetzt kommt es zurück — aber nicht als Rückkehr zum
+September. Der März beantwortet eine Frage: Führst du Gespräche jetzt anders als vorher?
+Nicht: Hast du verkauft. Das kommt im April.*
+
+---
+
+### Woche 23 · 1. bis 7. März
+
+**Deine Aufgabe:** Dein Angebot auf eine Seite schreiben. Mit der Hand.
+
+**Fünf Absätze, in dieser Reihenfolge:**
+1. **Für wen** ist das? So eng, dass jemand sagen kann „das bin ich" oder „das bin ich nicht".
+2. **Welches Problem** hat der? In seinen Worten, nicht in deinen. (Dein Material dafür:
+   die zwölf Gespräche aus dem Januar.)
+3. **Was lieferst du?** Konkret, zählbar, mit Zeitangabe.
+4. **Was kostet es?** Eine Zahl. Kein „ab", kein „je nachdem".
+5. **Warum du?** Der schwerste Absatz. Im September wäre er gelogen gewesen.
+   Jetzt hast du sechs Monate Belege.
+
+Passt es nicht auf eine Seite, verstehst du dein eigenes Angebot noch nicht.
+Dann kürzen — nicht mehr erklären.
+
+**Fertig, wenn:** eine Seite, fünf Absätze, lesbar.
+
+---
+
+### Woche 24 · 8. bis 14. März
+
+**Deine Aufgabe:** Zwei echte Gespräche in Betrieben führen.
+
+**Vorher** (eine halbe Seite, handschriftlich):
+- Was weiß ich über diesen Betrieb? (Zehn Minuten Recherche reichen.)
+- Meine drei offenen Fragen für heute.
+- Was will ich am Ende **wissen**? (Nicht: was will ich verkauft haben.)
+- Welche meiner Regeln gilt heute besonders?
+
+**Währenddessen:** alles aus dem Januar. Offene Fragen, nachsagen, drei Sekunden,
+wenig reden.
+
+**Danach** (sofort, im Auto):
+- Wie viel habe ich geredet?
+- Drei Dinge, die ich vorher nicht wusste.
+- Der Moment, wo ich den Faden verloren habe.
+- In welches alte Muster bin ich zurückgefallen? (Es gibt immer eins.)
+
+**Erfolg ist hier nicht der Abschluss.** Erfolg ist: drei neue Erkenntnisse und wenig
+geredet. Wer im März auf Abschluss misst, verhält sich wieder wie im September.
+
+**Fertig, wenn:** zwei Gespräche geführt und aufgeschrieben.
+
+---
+
+### Woche 25 · 15. bis 21. März
+
+**Deine Aufgabe:** Drei weitere Gespräche — mit einer Sache, die du bewusst anders machst.
+
+Die Änderung ziehst du aus den ersten beiden Gesprächen. Schreib sie vorher auf,
+damit du hinterher weißt, ob sie gewirkt hat.
+
+**Fertig, wenn:** fünf Gespräche im März insgesamt.
+
+---
+
+### Woche 26 · 22. bis 28. März
+
+**Deine Aufgabe:** Abrechnung. Anderthalb Stunden.
+
+**So machst du es:**
+
+1. **Alles nebeneinanderlegen:** die sieben Selbsttests, die sechs Monatsprüfungen,
+   das Heft, deine Regeln, die Nein-Liste, die Gesprächsliste.
+2. **Mir schreiben** — der fertige Text steht in
+   [`werkzeuge/mit-claude-arbeiten.md`](werkzeuge/mit-claude-arbeiten.md).
+   Ich gehe die Zahlen durch und sage dir, was sich bewegt hat und was nicht. Beides.
+3. **Eine Seite schreiben:** *Was ich jetzt bin, was ich im September nicht war.*
+   Zu jedem Satz gehört ein Ereignis. Keine Gefühle.
+4. **Und dann das hier:** Du holst die gefaltete Seite aus dem Heft, die du am 27. September
+   geschrieben und seitdem nicht angefasst hast. Du liest sie. Und schreibst darunter,
+   was davon eingetreten ist.
+
+**Fertig, wenn:** beide Seiten nebeneinander im Heft liegen.
+→ **Monatsprüfung März** — und das Programm ist durch.
+
+---
+
+# Alle 26 Wochen auf einen Blick
+
+| Woche | Datum | Was du machst |
+|---|---|---|
+| 1 | 1.–4.10. | Anfangen: Heft + sie unsichtbar machen |
+| 2 | 5.–11.10. | Fünf Situationen aufschreiben, wo du dich verbogen hast |
+| 3 | 12.–18.10. | Dreimal sagen, was du wirklich denkst |
+| 4 | 19.–25.10. | Vier Abende schreiben, je 15 Minuten |
+| 5 | 26.10.–1.11. | Sieben Sätze bauen · **Prüfung Oktober** |
+| 6 | 2.–8.11. | Dreimal Nein ohne Begründung |
+| 7 | 9.–15.11. | Dreimal Nein, und dabei bleiben |
+| 8 | 16.–22.11. | Zweimal Nein zu Menschen, die dir wichtig sind |
+| 9 | 23.–29.11. | Dreimal „in einer Stunde Bescheid" · **Prüfung November** |
+| 10 | 30.11.–6.12. | Fünf Leute beschreiben |
+| 11 | 7.–13.12. | Acht Leute einordnen: Druck oder Können |
+| 12 | 14.–20.12. | Acht Vorhersagen nachprüfen · **Prüfung Dezember** |
+| 13 | 21.–27.12. | Pause. Nur die drei Zeilen |
+| 14 | 28.12.–3.1. | Drei Gespräche, nur offene Fragen |
+| 15 | 4.–10.1. | Drei Gespräche, wenig reden |
+| 16 | 11.–17.1. | Nachsagen statt fragen |
+| 17 | 18.–24.1. | Drei Sekunden warten |
+| 18 | 25.–31.1. | Alles zusammen · **Prüfung Januar** |
+| 19 | 1.–7.2. | Alte Hefte durchgehen |
+| 20 | 8.–14.2. | Zwölf Sätze schreiben |
+| 21 | 15.–21.2. | Sätze ohne Beleg streichen |
+| 22 | 22.–28.2. | Eine Woche danach leben · **Prüfung Februar** |
+| 23 | 1.–7.3. | Angebot auf eine Seite |
+| 24 | 8.–14.3. | Zwei echte Gespräche |
+| 25 | 15.–21.3. | Drei weitere Gespräche |
+| 26 | 22.–28.3. | Abrechnung · **Prüfung März** |
+
+Diese Tabelle ist auch auf den Taschenkarten und gehört an deine Spindtür.

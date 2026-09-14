@@ -143,7 +143,7 @@ ganze Übung, alles andere sind nur Sätze.**
 
 ---
 
-## Das Nein-Register (hinten im Heft, ab November)
+## Das Nein-Liste (hinten im Heft, ab November)
 
 ```
 Datum | zu wem | worum | wie gesagt (Stufe) | wie es sich anfühlte (1-10) | was DANACH passiert ist

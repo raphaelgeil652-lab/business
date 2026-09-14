@@ -15,17 +15,19 @@ Diese Startseite ist deine Übersicht.
 
 ---
 
-## 🧭 Persönlich: die sechs Monate (01.10.2026 – 28.03.2027)
+## 🧭 Persönlich: die sechs Monate (1.10.2026 – 28.3.2027)
 
-Kein Geschäft, sondern das geführte 6-Monats-Programm für dich selbst — täglich ein kleines
-Versprechen, wöchentlich ein Auftrag, monatlich ein Gate.
+Kein Geschäft, sondern dein 6-Monats-Programm: jeden Abend ein kleines Versprechen ins Heft,
+jede Woche eine Aufgabe, jeden Monat eine Prüfung. 10 Minuten am Tag.
 
 | Was | Öffnen |
 |---|---|
-| **Der Einstieg** ⭐ Übersicht, Mechanik, alle Werkzeuge | [`entwicklung/`](entwicklung/) |
-| **Jetzt dran:** 17 Tage Vorbereitung bis zum Start | [`entwicklung/monate/00-vorbereitung.md`](entwicklung/monate/00-vorbereitung.md) |
-| Das Arbeitsdokument: 26 Wochen, je ein Auftrag | [`entwicklung/26-wochen-plan.md`](entwicklung/26-wochen-plan.md) |
-| **Taschenkarten zum Ausdrucken** (Brusttasche + Spindtür) | [▶ Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/entwicklung/drucksachen/taschenkarten.html) |
+| **Fang hier an** ⭐ Einmal lesen, dann verstehst du das Ganze | [`entwicklung/wie-es-funktioniert.md`](entwicklung/wie-es-funktioniert.md) |
+| **Jetzt dran:** was bis zum 1. Oktober zu tun ist, Tag für Tag | [`entwicklung/monate/00-vorbereitung.md`](entwicklung/monate/00-vorbereitung.md) |
+| Die Übersicht über alles | [`entwicklung/`](entwicklung/) |
+| Was du in welcher Woche machst | [`entwicklung/26-wochen-plan.md`](entwicklung/26-wochen-plan.md) |
+| **Karten zum Ausdrucken** (Brusttasche + Spindtür) | [▶ Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/entwicklung/drucksachen/taschenkarten.html) |
+| **Feldkompass fürs Handy** — zeigt jeden Tag, was dran ist | [▶ Öffnen](https://claude.ai/artifact/X2fZ1E124Rm5zYk6ckzEka) |
 
 ---
 

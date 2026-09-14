@@ -1,106 +1,98 @@
-# Oktober — Bestandsaufnahme
+# Oktober — Hinschauen
 
-> **Wo verliere ich mich?** Muster erkennen, ehrlich aufschreiben.
-> Wochen 1–5 · 01.10. bis 01.11.2026
-
----
-
-## Warum dieser Monat zuerst kommt
-
-Du kannst nichts ablegen, was du nicht benennen kannst. „Ich bin zu nett" ist keine Erkenntnis,
-das ist ein Etikett. Eine Erkenntnis sieht so aus:
-
-> *„Immer wenn jemand enttäuscht guckt, sage ich zu, weil ich vermeiden will, dass er schlecht
-> von mir denkt."*
-
-Der Unterschied: Das zweite hat einen **Auslöser**, eine **Handlung** und einen **Preis**.
-Damit kann man arbeiten. Mit „zu nett" kann man nur unzufrieden sein.
-
-Der Oktober macht also nur eines: **Material sammeln.** Fünf Wochen lang nichts verändern,
-nur sehen. Das fühlt sich passiv an und ist es nicht — es ist die unbequemste Phase des
-ganzen Programms, weil du zusehen musst, wie du Dinge tust, die du inzwischen erkennst,
-und sie trotzdem erst mal weiter tust.
-
-**Das ist Absicht. Ändern kommt im November.**
+**Wochen 1 bis 5 · 1. Oktober bis 1. November**
 
 ---
 
-## Die Grundregel des Monats
+## Worum es diesen Monat geht
 
-> **Erst zählen, dann urteilen.**
+Du änderst noch nichts. Du guckst nur hin.
 
-Du notierst, was passiert ist. Nicht, was es über dich aussagt. „Ich habe zugesagt, obwohl
-ich nicht wollte" — fertig. Nicht: „Ich bin ein Schwächling, ich mache das immer, typisch."
-Die zweite Fassung fühlt sich ehrlicher an, ist aber nur lauter. Und sie liefert null
-Information darüber, *wann* es passiert.
+Diesen Monat schreibst du auf, wo du dich verbiegst: wo du Ja sagst und Nein meinst,
+wo du lachst ohne es lustig zu finden, wo du schweigst obwohl dich etwas stört.
+
+Am Ende des Monats hast du daraus sieben Sätze gebaut, die dein Muster beschreiben.
+
+**Warum nicht sofort ändern?** Weil du nichts ablegen kannst, was du nicht benennen kannst.
+„Ich bin zu nett" ist kein Befund, das ist ein Etikett. Damit kannst du nichts machen.
+
+Das hier schon:
+
+> *„Immer wenn jemand enttäuscht guckt, sage ich zu, weil ich vermeiden will,
+> dass er schlecht von mir denkt."*
+
+Der Unterschied: Es gibt einen Auslöser, eine Handlung und einen Grund. Damit kann man arbeiten.
+
+---
+
+## Die Regel für diesen Monat
+
+**Erst zählen, dann urteilen.**
+
+Du schreibst auf, was passiert ist. Nicht, was es über dich aussagt.
+
+- **Nicht:** *„Ich bin ein Schwächling, ich mache das immer, typisch ich."*
+- **Sondern:** *„Kamerad fragte, ob ich seinen Dienst übernehme. Habe Ja gesagt. Wollte nicht."*
+
+Die erste Fassung fühlt sich ehrlicher an. Sie ist nur lauter. Und sie sagt dir nicht,
+**wann** es passiert.
 
 ---
 
 ## Der Ablauf
 
-| Woche | Auftrag | Kern |
-|---|---|---|
-| 1 (01.–04.10.) | Register starten · Ablöse Schritt 1 | Der Anfang muss an Tag 1 sein, nicht an Tag 3 |
-| 2 (05.–11.10.) | Fünf Verbieger-Situationen | Rohmaterial |
-| 3 (12.–18.10.) | Dreimal aussprechen | Erste Reibung, klein |
-| 4 (19.–25.10.) | Vier Abende schreiben | Ablöse-Protokoll, der harte Teil |
-| 5 (26.10.–01.11.) | Sieben Muster formulieren | Verdichtung + **Gate** |
+| Woche | Was du machst |
+|---|---|
+| 1 (1.–4.10.) | Anfangen: Heft + sie unsichtbar machen. Beides an Tag 1. |
+| 2 (5.–11.10.) | Jeden Abend eine Situation aufschreiben, wo du dich verbogen hast |
+| 3 (12.–18.10.) | Dreimal sagen, was du wirklich denkst |
+| 4 (19.–25.10.) | Vier Abende schreiben, je 15 Minuten |
+| 5 (26.10.–1.11.) | Sieben Sätze bauen |
 
-Details: [`../26-wochen-plan.md`](../26-wochen-plan.md)
-
----
-
-## Das Feldlabor startet
-
-Du hast in deinem Entwurf geschrieben, dass die Kaserne das beste Feldlabor für Sales ist,
-das es gibt. Stimmt. Aber im Oktober beobachtest du noch nicht *sie* — du beobachtest **dich
-in ihrer Gegenwart.**
-
-Die eine Frage, die den ganzen Monat mitläuft:
-
-> **Wer bin ich, wenn mich keiner kennt?**
-
-Du bist in einer seltenen Lage: 100 Leute, von denen niemand deine Geschichte kennt. Keine
-Rolle, die du seit der Schule mit dir schleppst. Was du dort in Woche 1 aufbaust, baust du
-aus dem Nichts — und deshalb siehst du in diesen ersten Tagen so deutlich wie sonst nie,
-**welche Rolle du automatisch einnimmst, wenn du frei wählen könntest.**
-
-Der Lustige? Der Unauffällige? Der Hilfsbereite? Der, der alles mitmacht? Schreib es in
-Woche 2 auf. Das ist eines deiner sieben Muster, garantiert.
-
-Nebenbei: Dass so ein Dienst Persönlichkeit tatsächlich verändert, ist untersucht — in einer
-großen Längsschnittstudie mit deutschen Wehrdienstleistenden sank die Verträglichkeit messbar
-und blieb fünf Jahre später noch gesenkt. Die Umgebung formt, ob du willst oder nicht.
-**Die Frage ist nur, ob du daneben stehst und zuschaust oder mitsteuerst.** Genau das machst
-du hier.
+Wie genau, steht in [`../26-wochen-plan.md`](../26-wochen-plan.md).
 
 ---
 
-## Die häufigsten Fehler im Oktober
+## Eine Sache, die nur in diesem Monat geht
 
-| Fehler | Warum er kommt | Was du stattdessen machst |
-|---|---|---|
-| **Zu große Versprechen in Woche 1** | Der Anfangsschwung. | Halbiere. In Woche 1 ist „zehn Seiten lesen" richtig, nicht „eine Stunde". |
-| **Das Heft erst am Wochenende führen** | Abends zu müde. | Zeile 1 und 3 gehen in 90 Sekunden. Nachträglich geschriebene Tage sind Erfindungen. |
-| **Muster als Vorwurf formulieren** | Du bist wütend auf dich. | Auslöser · Handlung · Preis. Ohne Adjektive über dich selbst. |
-| **Ablöse-Protokoll aufschieben** | „Erst mal ankommen." | Der erste Abend ist der einzige, an dem du es ohne Verhandlung schaffst. Danach verhandelst du jeden Tag neu. |
-| **Woche 4 abkürzen** | Die vier Schreibabende sind unangenehm. | Abend 2 ist der schlimmste, Abend 4 der, der wirkt. Wer bei 2 aufhört, hat sich den unangenehmen Teil ohne den nützlichen geholt. |
+Du bist in einer seltenen Lage: 100 Leute, die deine Geschichte nicht kennen.
+Keine Rolle, die du seit der Schule mit dir rumschleppst.
+
+Deshalb siehst du in diesen ersten Wochen so klar wie sonst nie, **welche Rolle du von
+allein einnimmst, wenn du frei wählen könntest.**
+
+Der Lustige? Der Unauffällige? Der Hilfsbereite? Der, der alles mitmacht?
+
+Schreib es auf. Das ist einer deiner sieben Sätze, ziemlich sicher.
 
 ---
 
-## Gate Oktober
+## Die häufigsten Fehler
 
-Alle drei am 01.11. erfüllt = bestanden.
+| Fehler | Was du stattdessen machst |
+|---|---|
+| Zu große Versprechen in Woche 1 | Halbieren. „Zehn Seiten lesen", nicht „eine Stunde". |
+| Das Heft erst am Wochenende nachtragen | Zeile 1 und 3 dauern 90 Sekunden. Nachträglich geschriebene Tage sind erfunden. |
+| Die sieben Sätze als Vorwurf formulieren | Auslöser, Handlung, Grund. Keine Adjektive über dich. |
+| Sie erst später unsichtbar machen | Am ersten Abend, sonst verhandelst du jeden Tag neu. |
+| Die vier Schreibabende abkürzen | Dienstag ist der schlimmste, Donnerstag der, der wirkt. Wer am Dienstag aufhört, hat sich nur den unangenehmen Teil geholt. |
 
-- [ ] **≥ 28 Einträge** im Register (von 31 Tagen)
-- [ ] **Musterliste mit 7 Mustern**, jedes in der Form *„Immer wenn ___, dann ___, weil ich ___ vermeiden will"*
-- [ ] **Ablöse-Protokoll Wochen 1–4 vollständig** durchgezogen (Schritt 1 + vier Schreibabende)
+---
 
-**Danach: Monatsabnahme mit mir.** Prompt in [`../werkzeuge/claude-rituale.md`](../werkzeuge/claude-rituale.md), Ritual 1.
+## Monatsprüfung Oktober
+
+Am 1. November guckst du nach. Alle drei erfüllt = bestanden.
+
+- [ ] Mindestens **28 Tage** im Heft (von 31)
+- [ ] **Sieben Sätze** in der Form „Immer wenn…, dann…, weil ich… vermeiden will"
+- [ ] Sie ist unsichtbar **und** die vier Schreibabende sind gemacht
+
+Danach schreibst du mir — fertiger Text in
+[`../werkzeuge/mit-claude-arbeiten.md`](../werkzeuge/mit-claude-arbeiten.md).
 
 ---
 
 ## Der Satz für diesen Monat
 
-> **Ich verändere im Oktober nichts. Ich schaue nur hin — und schreibe auf, was ich sehe,
+> **Ich ändere im Oktober nichts. Ich gucke hin und schreibe auf, was ich sehe —
 > auch wenn es mir nicht gefällt.**

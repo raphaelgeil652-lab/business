@@ -80,7 +80,7 @@ Distanzierte Selbstansprache („Raphael hat …") dämpft in EEG- und fMRT-Unte
 emotionale Reaktion — **ohne** die Marker kognitiver Anstrengung zu erhöhen. Eine der
 wenigen Regulationsstrategien, die praktisch nichts kosten.
 
-→ Deshalb Feld 3 im Zug-Bogen und der Sonntagabend im Tagesprotokoll.
+→ Deshalb Feld 3 im Sonntagsbogen und der Sonntagabend im Tagesprotokoll.
 
 - Moser, Kross u. a. (2017) — [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5495792/)
 - Orvell u. a. (2021) — [SAGE](https://journals.sagepub.com/doi/abs/10.1177/2167702620951539)
@@ -90,7 +90,7 @@ wenigen Regulationsstrategien, die praktisch nichts kosten.
 Im direkten Vergleich dreier Strategien senkte **negative Neubewertung des Ex-Partners**
 Verliebtheit und Bindung, **Ablenkung** hob die Stimmung, ließ die Bindung aber unverändert.
 
-→ Deshalb Abend 3 im Ablöse-Protokoll („Was ich mir schöngeredet habe") und die Einordnung
+→ Deshalb Abend 3 im Trennungs-Kapitel („Was ich mir schöngeredet habe") und die Einordnung
 von Ablenkung als Schmerzmittel.
 
 - Langeslag & Sanchez, *Down-regulation of love feelings after a romantic break-up* — [PDF](https://www.umsl.edu/~langeslags/pdfs/LangeslagSanchez_inpress.pdf)
@@ -101,7 +101,7 @@ von Ablenkung als Schmerzmittel.
 464 Personen: Wer den Ex-Partner online beobachtete, berichtete mehr Belastung, mehr Sehnsucht
 und **weniger persönliches Wachstum** — zusätzlich zu allem Offline-Kontakt.
 
-→ Regel 1 im Ablöse-Protokoll. **Achtung:** Das ist eine Querschnittsstudie; der
+→ Regel 1 im Trennungs-Kapitel. **Achtung:** Das ist eine Querschnittsstudie; der
 Ursache-Wirkungs-Pfeil ist nicht bewiesen. Die praktische Empfehlung ist trotzdem eindeutig,
 weil die Kosten des Nicht-Schauens bei null liegen.
 
@@ -150,7 +150,7 @@ auszusprechen — über fünf Experimente, davon eines vorregistriert.
 
 - Itzchakov, DeMarree, Kluger & Turjeman-Levi (2018), *The Listener Sets the Tone* — [PubMed](https://pubmed.ncbi.nlm.nih.gov/29347879/)
 - Itzchakov & Kluger (2017) — [PubMed](https://pubmed.ncbi.nlm.nih.gov/27856728/)
-- Offene Fragen / Rückspiegeln als Technik (OARS) — [NCBI Bookshelf](https://www.ncbi.nlm.nih.gov/books/NBK571068/)
+- Offene Fragen / Nachsagen als Technik (OARS) — [NCBI Bookshelf](https://www.ncbi.nlm.nih.gov/books/NBK571068/)
 
 ## 14. Eigene Werte aufschreiben wirkt messbar
 
@@ -168,7 +168,7 @@ Von Banduras vier Quellen (eigene Erfolge, Vorbilder, Zuspruch, körperlicher Zu
 erste die mit Abstand stärkste — und Erfolge gegen Widerstand erzeugen belastbarere
 Überzeugung als mühelose.
 
-→ Das ist die theoretische Begründung für Säule 0: 180 gehaltene Versprechen als 180 Belege.
+→ Das ist die theoretische Begründung für das tägliche Versprechen: 180 gehaltene Versprechen als 180 Belege.
 
 - Übersicht — [Simply Psychology](https://www.simplypsychology.org/self-efficacy.html)
 
@@ -235,5 +235,5 @@ ehrlich in [`../werkzeuge/leseplan.md`](../werkzeuge/leseplan.md).
 
 Alle oben genannten Befunde sind **Durchschnitte über Gruppen**. Sie sagen, was in einer
 Stichprobe im Mittel passiert ist — nicht, was bei dir passieren wird. Deshalb ist die
-Standortbestimmung ein Teil dieses Programms: **Am Ende ist die einzige Studie, die über
-dich etwas aussagt, deine eigene.** Sieben Bögen, sechs Gates, ein Register.
+Selbsttest ein Teil dieses Programms: **Am Ende ist die einzige Studie, die über
+dich etwas aussagt, deine eigene.** Sieben Bögen, sechs Monatsprüfungen, ein Heft.

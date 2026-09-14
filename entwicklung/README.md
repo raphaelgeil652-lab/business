@@ -1,88 +1,106 @@
-# Sechs Monate — das geführte Programm
+# Sechs Monate
 
-**01.10.2026 → 28.03.2027 · 180 Tage · 26 Wochen**
+**1. Oktober 2026 bis 28. März 2027**
 
-Nicht Business aufbauen. Sondern die Person aufbauen, die danach das Business trägt.
+Du machst sechs Monate lang jeden Tag eine kleine Sache und schreibst sie auf.
+Dazu jede Woche eine Aufgabe. Das ist alles.
 
-> Dieser Ordner gehört **nicht** zur Agentur und nicht zum Webseitenbau. Er ist persönlich.
-> Alles Geschäftliche bleibt unverändert dort, wo es ist.
-
----
-
-## Wenn du nur drei Minuten hast
-
-1. **Heute:** [`monate/00-vorbereitung.md`](monate/00-vorbereitung.md) — 17 Tage Countdown bis zum Start.
-2. **Einmal ganz lesen:** [`programm.md`](programm.md) — wie das Ding funktioniert und warum.
-3. **Ausdrucken:** [`drucksachen/taschenkarten.html`](drucksachen/taschenkarten.html) — 8 Karten
-   für die Brusttasche, plus der 26-Wochen-Plan für die Spindtür.
-   [▶ im Browser öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/entwicklung/drucksachen/taschenkarten.html)
-4. **Aufs Handy:** der **[Feldkompass](https://claude.ai/artifact/X2fZ1E124Rm5zYk6ckzEka)** —
-   zeigt von selbst, welcher Tag, welche Woche und welcher Auftrag gerade dran ist, dazu die
-   Notfallkarten. Zum Lesezeichen machen. Geschrieben wird trotzdem im Heft.
+**Aufwand: 10 Minuten am Tag. Sonntags 20 Minuten mehr.**
 
 ---
 
-## Der Aufbau
+## Fang hier an
 
-| Datei | Was drinsteht | Wie oft du reinschaust |
+**1.** Lies [`wie-es-funktioniert.md`](wie-es-funktioniert.md). Einmal, in Ruhe.
+Danach verstehst du das Ganze. 15 Minuten.
+
+**2.** Dann [`monate/00-vorbereitung.md`](monate/00-vorbereitung.md).
+Da steht, was du bis zum 1. Oktober machst — Tag für Tag.
+
+**3.** Druck dir die Karten aus:
+[▶ Taschenkarten öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/entwicklung/drucksachen/taschenkarten.html)
+Acht Karten für die Brusttasche, plus der Wochenplan für die Spindtür.
+
+**4.** Der [Feldkompass](https://claude.ai/artifact/X2fZ1E124Rm5zYk6ckzEka) aufs Handy.
+Der zeigt dir jeden Tag von selbst, was heute dran ist. Zum Startbildschirm hinzufügen.
+
+---
+
+## Was das Ganze soll
+
+Nicht: mehr wissen. Nicht: ein besserer Mensch werden.
+
+Sondern: **dass du dir selbst glaubst, wenn du dir etwas vornimmst.**
+
+Das geht nur auf eine Art — indem du dir 180 Mal etwas vornimmst und es 180 Mal machst.
+Deshalb sind die Aufgaben klein. Klein und gemacht schlägt groß und nicht gemacht.
+
+---
+
+## Der Ablauf
+
+| Wann | Was | Wie lange |
 |---|---|---|
-| **[`programm.md`](programm.md)** | Die Architektur: Säule 0, die vier Säulen, Gates, Regeln, Forschungsgrundlage, was schiefgehen wird | einmal ganz, danach selten |
-| **[`26-wochen-plan.md`](26-wochen-plan.md)** ⭐ | **Das Arbeitsdokument.** Jede Woche ein Auftrag, eine Feldfrage, ein Kriterium | jeden Sonntag |
-| [`monate/`](monate/) | Sieben Monatsseiten: Warum, Methode, typische Fehler, Gate | am Monatsanfang |
-| [`werkzeuge/`](werkzeuge/) | Die Vorlagen und Baukästen | wenn du sie brauchst |
-| [`drucksachen/`](drucksachen/) | Die Karten zum Ausdrucken | einmal, im September |
-| [`forschung/quellen.md`](forschung/quellen.md) | Belege für jede harte Regel — und was **nicht** belegt ist | wenn du zweifelst |
+| **Jeden Abend** | Drei Zeilen ins Heft, dann erst das Handy | 10 Min |
+| **Die Woche über** | Eine Aufgabe aus dem Wochenplan | — |
+| **Freitag im Zug** | Handy ins Gepäckfach, lesen | 1 Std |
+| **Samstag** | Nichts. Zu Hause sein | — |
+| **Sonntag im Zug** | Fünf Fragen, eine Sache streichen | 20 Min |
+| **Monatsende** | Zählen, Selbsttest, Prüfung, mir schreiben | 30 Min |
 
-### Die Werkzeuge im Einzelnen
+---
+
+## Die sechs Monate
+
+| Monat | Thema | Was du am Ende hast |
+|---|---|---|
+| [Oktober](monate/01-oktober.md) | Hinschauen | Sieben Sätze, die dein Muster beschreiben |
+| [November](monate/02-november.md) | Nein sagen | Zehn Neins, aufgeschrieben |
+| [Dezember](monate/03-dezember.md) | Menschen verstehen | Acht geprüfte Vorhersagen |
+| [Januar](monate/04-januar.md) | Fragen und zuhören | Zwölf Gespräche, aufgeschrieben |
+| [Februar](monate/05-februar.md) | Deine eigenen Regeln | Sieben Sätze, unterschrieben |
+| [März](monate/06-maerz.md) | Zurück ins Geschäft | Ein Angebot, fünf echte Gespräche |
+
+---
+
+## Alle Dateien
+
+**Die zwei, die du wirklich brauchst:**
+
+| Datei | Wofür |
+|---|---|
+| [`wie-es-funktioniert.md`](wie-es-funktioniert.md) | Einmal lesen, dann verstehst du alles |
+| [`26-wochen-plan.md`](26-wochen-plan.md) | Jeden Sonntag: was diese Woche dran ist |
+
+**Hilfen, wenn du sie brauchst** — nicht alle auf einmal lesen:
 
 | Datei | Wofür | Ab wann |
 |---|---|---|
-| [`tagesprotokoll.md`](werkzeuge/tagesprotokoll.md) | Die drei Zeilen, der Vertrag, 60 Versprechen zum Abschreiben | Tag 1 |
-| [`wochenreview.md`](werkzeuge/wochenreview.md) | Der Zug-Bogen, 20 Minuten auf der Rückfahrt | Woche 1 |
-| [`abloese-protokoll.md`](werkzeuge/abloese-protokoll.md) | Die Trennungs-Spur: Schnitt, vier Abende, Wiederaufbau, Filterfrage | Tag 1 |
-| [`nein-baukasten.md`](werkzeuge/nein-baukasten.md) | 40 Sätze, vier Eskalationsstufen, das Nein-Register | November |
-| [`menschen-feldbuch.md`](werkzeuge/menschen-feldbuch.md) | Grundlinie, Status, Vorhersagen — und was am Thema Mythos ist | Dezember |
-| [`gespraechsfuehrung.md`](werkzeuge/gespraechsfuehrung.md) | Der Hauptskill: 30 Fragen, Rückspiegeln, Redeanteil | Januar |
-| [`standards.md`](werkzeuge/standards.md) | Die Kodex-Werkstatt | Februar |
-| [`standortbestimmung.md`](werkzeuge/standortbestimmung.md) | Der Messbogen, 7× auszufüllen | 26.09. |
-| [`leseplan.md`](werkzeuge/leseplan.md) | 10 Bücher, je eine Leitfrage, ehrliche Einordnung | Woche 2 |
-| [`koerper.md`](werkzeuge/koerper.md) | Schlaf und Essen. Zwei Seiten, mehr nicht | einmal |
-| [`claude-rituale.md`](werkzeuge/claude-rituale.md) ⭐ | **Fünf fertige Prompts** für die festen Termine mit mir | monatlich |
+| [`werkzeuge/tagesprotokoll.md`](werkzeuge/tagesprotokoll.md) | Die drei Zeilen + 60 fertige Versprechen zum Abschreiben | Tag 1 |
+| [`werkzeuge/trennung.md`](werkzeuge/trennung.md) | Wie du von ihr loskommst | Tag 1 |
+| [`werkzeuge/sonntag-im-zug.md`](werkzeuge/sonntag-im-zug.md) | Die fünf Sonntagsfragen | Woche 1 |
+| [`werkzeuge/selbsttest.md`](werkzeuge/selbsttest.md) | Der Fragebogen, 7× | ab 26.09. |
+| [`werkzeuge/koerper.md`](werkzeuge/koerper.md) | Schlaf und Essen. Zwei Seiten | einmal |
+| [`werkzeuge/nein-sagen.md`](werkzeuge/nein-sagen.md) | 40 fertige Sätze | November |
+| [`werkzeuge/menschen-lesen.md`](werkzeuge/menschen-lesen.md) | Wie man Leute wirklich liest | Dezember |
+| [`werkzeuge/gespraeche-fuehren.md`](werkzeuge/gespraeche-fuehren.md) | Fragen, zuhören, weniger reden | Januar |
+| [`werkzeuge/standards.md`](werkzeuge/standards.md) | Deine eigenen Regeln bauen | Februar |
+| [`werkzeuge/leseplan.md`](werkzeuge/leseplan.md) | 10 Bücher für die Zugfahrten | freiwillig |
+| [`werkzeuge/mit-claude-arbeiten.md`](werkzeuge/mit-claude-arbeiten.md) | Fertige Texte zum Kopieren, wenn du mir schreibst | monatlich |
+| [`forschung/quellen.md`](forschung/quellen.md) | Warum die Regeln so sind, mit Belegen | wenn du zweifelst |
 
 ---
 
-## Die Mechanik in fünf Sätzen
+## Wenn du nicht weiterweißt
 
-1. **Jeden Abend ein kleines Versprechen** für morgen, am nächsten Abend Haken oder Kreuz.
-   180-mal. Das ist der Kern, alles andere ist Aufbau.
-2. **Jede Woche ein Auftrag** — eine Handlung, kein Thema. Denn nur ausgeführtes Verhalten
-   verändert Persönlichkeit, nicht die Absicht dazu.
-3. **Jeden Sonntag 20 Minuten im Zug:** Bogen ausfüllen, eine Sache streichen, eine anpassen.
-4. **Jeden Monat ein Gate** mit drei Kriterien, die man abhaken kann oder nicht — plus eine
-   Abnahme mit mir, bei der nichts schöngeredet wird.
-5. **Nie zwei Tage hintereinander leer.**
+Schreib mir. Wirklich — dafür ist das hier da.
+Fertige Texte zum Kopieren stehen in [`werkzeuge/mit-claude-arbeiten.md`](werkzeuge/mit-claude-arbeiten.md),
+aber du kannst auch einfach schreiben, was los ist.
 
 ---
-
-## Die Monate
-
-| Monat | Thema | Gate |
-|---|---|---|
-| [Oktober](monate/01-oktober.md) | Bestandsaufnahme — wo verliere ich mich? | 7 Muster · 28 Einträge · Ablöse-Protokoll durch |
-| [November](monate/02-november.md) | Nein sagen | 10 Neins, davon 2 zu wichtigen Menschen |
-| [Dezember](monate/03-dezember.md) | Menschen lesen | 25 Feldnotizen · 8 geprüfte Vorhersagen |
-| [Januar](monate/04-januar.md) | Fragen stellen und zuhören | 12 Gespräche · 3 unter 30 % Redeanteil |
-| [Februar](monate/05-februar.md) | Eigene Standards | Kodex mit ≥ 7 belegten Sätzen |
-| [März](monate/06-maerz.md) | Übergang | Angebot steht · 5 reale Gespräche |
-
----
-
-## Der Satz, um den es geht
 
 > Der harte Kopf kommt nicht aus Büchern. Er kommt daraus, sich sechs Monate lang jeden Tag
-> ein kleines Versprechen zu geben und es zu halten. **180 Mal. Danach glaubt man sich selbst.**
+> ein kleines Versprechen zu geben und es zu halten. **180 Mal. Danach glaubst du dir selbst.**
 
-Das ist dein Satz. Dieses Programm ist nur die Maschine drumherum, die dafür sorgt, dass er
-auch im Januar um 22:15 noch gilt.
-
-**Dein nächster Schritt:** [`monate/00-vorbereitung.md`](monate/00-vorbereitung.md)
+Das ist dein eigener Satz. Der Rest hier ist nur die Maschine drumherum, damit er auch im
+Januar um halb elf abends noch gilt.

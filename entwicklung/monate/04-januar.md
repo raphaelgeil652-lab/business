@@ -1,142 +1,99 @@
-# Januar — Fragen stellen und zuhören
+# Januar — Fragen und zuhören
 
-> Das ist Sales. Nicht Reden.
-> Wochen 14–18 · 28.12.2026 bis 31.01.2027
-
----
-
-## Warum der Januar der schwerste Monat ist — und warum er der vollste ist
-
-Die Mitte ist die gefährlichste Stelle jedes langen Vorhabens. Der Anfangsschwung ist weg,
-das Ende ist weit, draußen ist es dunkel und kalt, und der Reiz des Neuen ist restlos
-aufgebraucht. Genau deshalb steht hier der aktivste Monat: **12 protokollierte Gespräche.**
-
-Ein voller Kalender schlägt Motivation. Wer im Januar etwas zu tun hat, kommt durch.
+**Wochen 14 bis 18 · 28. Dezember bis 31. Januar**
 
 ---
 
-## Der Kern: Zuhören ist keine Höflichkeit, es ist ein Werkzeug
+## Worum es diesen Monat geht
 
-Die meisten glauben, Verkaufen sei Reden. Das ist der teuerste Irrtum der Branche.
+Das hier ist der Monat, aus dem später dein Beruf wird.
 
-Was tatsächlich untersucht ist: **Zuhören von hoher Qualität — aufmerksam, ohne Urteil,
-ohne sofortige Gegenrede — senkt beim Gegenüber die Abwehr und führt dazu, dass er tiefer
-in sein eigenes Thema geht.** Er formuliert klarer, entdeckt seine eigenen Widersprüche und
-redet sich selbst in Richtung Entscheidung.
+Die meisten glauben, Verkaufen heißt Reden. Das ist der teuerste Irrtum der Branche.
 
-Übersetzt in deine Zukunft: Der Werkstattinhaber, dem du zuhörst, sagt dir sein Problem
-schärfer, als er es je einem Vertreter gesagt hat — und zwar nicht dir zuliebe, sondern weil
-gutes Zuhören die Abwehr wegnimmt, die sonst dazwischensteht. Danach musst du ihn nicht mehr
-überzeugen. Du musst nur noch anschließen.
+Was wirklich passiert, wenn du jemandem richtig zuhörst: Er wird lockerer, geht tiefer in
+sein eigenes Thema und sagt dir sein Problem klarer, als er es je einem Vertreter gesagt hat.
+Danach musst du ihn nicht mehr überzeugen — du musst nur noch anschließen.
 
-**Das ist der Grund, warum dieser Monat existiert.** Und es ist der Grund, warum er in der
-Kaserne trainiert wird und nicht später beim Kunden: Beim Kunden ist es zu teuer zu üben.
+**Deshalb übst du das in der Kaserne und nicht später beim Kunden.** Beim Kunden ist Üben
+zu teuer.
+
+---
+
+## Warum der Januar so voll ist
+
+Die Mitte ist die gefährlichste Stelle bei allem, was lange dauert. Der Anfangsschwung ist
+weg, das Ende ist weit, draußen ist es dunkel und kalt.
+
+Genau deshalb steht hier der aktivste Monat: **zwölf Gespräche.**
+Ein voller Kalender schlägt Motivation.
 
 ---
 
 ## Die vier Werkzeuge
 
-### 1. Offene Fragen (Woche 14)
+**1. Offene Fragen** (Woche 14)
+Eine Frage, auf die man nicht mit Ja, Nein oder einer Zahl antworten kann.
+Nicht *„Läuft's gut?"*, sondern *„Wie läuft's gerade?"*
+Die stärkste ist gar keine Frage: *„Erzähl mal."*
 
-Eine offene Frage ist eine, auf die man nicht mit Ja, Nein oder einer Zahl antworten kann.
+**2. Nachsagen** (Woche 16)
+Du sagst in deinen Worten, was du verstanden hast — als Aussage, nicht als Frage.
+*„Das ging dir gegen den Strich."*
+Wenn du danebenliegst, korrigiert er dich und liefert dir dabei genau das, was du
+wissen wolltest. **Falsch nachsagen ist oft wertvoller als richtig.**
 
-| Zu | Auf |
-|---|---|
-| „Läuft's gut?" | „Wie läuft's gerade?" |
-| „Bist du zufrieden damit?" | „Was stört dich am meisten daran?" |
-| „Machst du das schon lange?" | „Wie bist du da reingekommen?" |
-| „War das schlimm?" | „Wie war das für dich?" |
+**3. Drei Sekunden** (Woche 17)
+Nach jeder Antwort drei Sekunden warten. Das Wertvollste kommt fast immer nach der ersten
+Pause — das, was jemand sagt, wenn ihm keiner ins Wort fällt.
 
-Und die stärkste von allen, weil sie keine Frage ist: **„Erzähl mal."**
-
-### 2. Rückspiegeln (Woche 16)
-
-Das schwerste Werkzeug und das wirksamste. Eine Rückspiegelung ist eine **Aussage**, keine
-Frage — du sagst in deinen Worten, was du verstanden hast, und hältst dann die Klappe.
-
-> *„Das ging dir gegen den Strich."*
-> *„Du hast das Gefühl, du machst das hier alleine."*
-> *„Für dich war das eigentlich schon entschieden."*
-
-Warum eine Aussage und keine Frage: Eine Frage („Ging dir das gegen den Strich?") verlangt
-eine Antwort und macht daraus ein Verhör. Eine Aussage lädt ein — und wenn du danebenliegst,
-korrigiert dein Gegenüber dich und liefert dabei **genau das Material, das du wolltest.**
-Eine falsche Rückspiegelung ist fast wertvoller als eine richtige.
-
-**Richtwert: doppelt so viele Rückspiegelungen wie Fragen.** Das ist die Faustregel aus der
-Gesprächsführung in Beratung und Therapie, und sie gilt eins zu eins am Küchentisch eines
-Werkstattinhabers.
-
-### 3. Die drei Sekunden (Woche 17)
-
-Nach der Antwort deines Gegenübers: **drei Sekunden warten.** Innerlich zählen.
-
-Das fühlt sich endlos an und ist die billigste Verbesserung, die es gibt. Das Wertvollste
-kommt fast immer **nach** der ersten Pause — das, was jemand sagt, wenn er merkt, dass ihm
-niemand ins Wort fällt. In der Kaserne kannst du das 50-mal üben, ohne dass es jemand merkt.
-
-### 4. Der Redeanteil (Woche 15)
-
-Nach jedem Gespräch schätzen: Wie viel Prozent habe ich geredet? Eintragen.
-
-Du wirst deinen Anteil anfangs **deutlich unterschätzen**. Das ist der eigentliche Zweck der
-Übung — nicht die Zahl, sondern die Korrektur deines Gefühls für die Zahl. Ziel: unter 30 %.
-
----
-
-## Das Gesprächsprotokoll
-
-Ab Woche 14 im Heft, eine Zeile pro Gespräch:
-
-```
-Datum | mit wem | Dauer | Redeanteil | offene Fragen | Rückspiegelungen | der eine Satz, der am meisten gebracht hat
-```
-
-Die letzte Spalte ist die, die du im März wieder liest. Dort sammelt sich dein persönliches
-Repertoire: die Sätze, die bei *dir* funktionieren, in *deiner* Stimme. Keine Verkaufsformeln
-aus Büchern — deine eigenen, im Feld getesteten.
-
-Vorlage und 40 Fragen: [`../werkzeuge/gespraechsfuehrung.md`](../werkzeuge/gespraechsfuehrung.md)
+**4. Weniger reden** (Woche 15)
+Nach jedem Gespräch schätzen, wie viel du geredet hast. Ziel: unter ein Drittel.
+Du wirst dich am Anfang deutlich unterschätzen. Das ist der Sinn der Übung.
 
 ---
 
 ## Der Ablauf
 
-| Woche | Auftrag |
+| Woche | Was du machst |
 |---|---|
-| 14 (28.12.–03.01.) | 3 Gespräche mit ausschließlich offenen Fragen |
-| 15 (04.–10.01.) | 3 Gespräche mit Redeanteil unter 30 % |
-| 16 (11.–17.01.) | 3 Gespräche mit 2:1 Rückspiegelungen zu Fragen |
-| 17 (18.–24.01.) | 3 Gespräche mit drei Sekunden Pause nach jeder Antwort |
-| 18 (25.–31.01.) | 3 Gespräche mit dem vollen Set · **Gate** |
+| 14 (28.12.–3.1.) | Drei Gespräche, nur offene Fragen |
+| 15 (4.–10.1.) | Drei Gespräche, unter ein Drittel Redeanteil |
+| 16 (11.–17.1.) | Doppelt so oft nachsagen wie fragen |
+| 17 (18.–24.1.) | Drei Sekunden warten nach jeder Antwort |
+| 18 (25.–31.1.) | Alles zusammen, drei Gespräche |
+
+30 fertige Fragen: [`../werkzeuge/gespraeche-fuehren.md`](../werkzeuge/gespraeche-fuehren.md)
 
 ---
 
-## Die Falle dieses Monats
+## Die Falle in diesem Monat
 
-**Techniken machen unecht, bevor sie echt machen.** In Woche 14 und 15 wirst du dich
-wie ein schlechter Schauspieler fühlen. Dein Gegenüber merkt, dass du etwas machst.
+**Techniken machen unecht, bevor sie echt machen.**
 
-Das geht vorbei — aber nur, wenn du es weitermachst. Es geht nicht vorbei, indem du
-darüber nachdenkst.
+In Woche 14 und 15 wirst du dich wie ein schlechter Schauspieler fühlen. Dein Gegenüber
+merkt, dass du etwas machst. Das ist normal und geht vorbei — aber nur, wenn du weitermachst.
+Es geht nicht vorbei, indem du darüber nachdenkst.
 
-Zwei Leitplanken:
-- **Nicht bei denen üben, bei denen es wehtut.** Nicht bei deiner Familie, nicht bei ihr.
-  Bei Kameraden, bei Fremden, an der Essenausgabe, im Zug.
-- **Interesse lässt sich nicht simulieren, aber es lässt sich wecken.** Wenn dich jemand
-  langweilt: Suche die eine Sache, bei der er lebendig wird, und frag dort nach.
-  Es gibt bei jedem eine. Das Finden dieser Stelle **ist** die Fertigkeit.
+**Zwei Regeln dazu:**
+
+- **Nicht bei denen üben, bei denen es wehtut.** Nicht bei deiner Familie. Nicht bei ihr.
+  Bei Kameraden, Fremden, an der Essensausgabe, im Zug.
+- **Interesse kann man nicht spielen, aber wecken.** Wenn dich jemand langweilt, such die
+  eine Sache, bei der er lebendig wird, und frag da nach. Es gibt bei jedem eine.
+  **Diese Stelle zu finden ist die eigentliche Fähigkeit.**
 
 ---
 
-## Gate Januar
+## Monatsprüfung Januar
 
-- [ ] **≥ 28 Einträge** im Register
-- [ ] **≥ 12 protokollierte Gespräche**
-- [ ] **≥ 3 Gespräche mit geschätztem Redeanteil unter 30 %**
+Am 31. Januar. Alle drei erfüllt = bestanden.
+
+- [ ] Mindestens **28 Tage** im Heft
+- [ ] Mindestens **zwölf Gespräche** auf der Liste
+- [ ] Davon mindestens **drei** mit unter einem Drittel Redeanteil
 
 ---
 
 ## Der Satz für diesen Monat
 
-> **Wer fragt, führt. Wer redet, verkauft nichts — er unterhält nur.**
+> **Wer fragt, führt. Wer redet, verkauft nichts — der unterhält nur.**

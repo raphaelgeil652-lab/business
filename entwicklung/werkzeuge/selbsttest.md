@@ -1,4 +1,4 @@
-# Die Standortbestimmung — der Bogen, den du siebenmal ausfüllst
+# Der Selbsttest — der Bogen, den du siebenmal ausfüllst
 
 **7 × 30 Minuten über 6 Monate.** Das ist deine Messung. Ohne sie weißt du im März nicht,
 ob sich etwas geändert hat — du fühlst nur, und Gefühle über den eigenen Fortschritt sind
@@ -7,11 +7,11 @@ der unzuverlässigste Datenpunkt, den es gibt.
 | Bogen | Datum | Anlass |
 |---|---|---|
 | 1 | **26.09.2026** | Nulllinie, vor dem Start |
-| 2 | 01.11.2026 | Gate Oktober |
-| 3 | 29.11.2026 | Gate November |
-| 4 | 20.12.2026 | Gate Dezember |
-| 5 | 31.01.2027 | Gate Januar |
-| 6 | 28.02.2027 | Gate Februar |
+| 2 | 01.11.2026 | Monatsprüfung Oktober |
+| 3 | 29.11.2026 | Monatsprüfung November |
+| 4 | 20.12.2026 | Monatsprüfung Dezember |
+| 5 | 31.01.2027 | Monatsprüfung Januar |
+| 6 | 28.02.2027 | Monatsprüfung Februar |
 | 7 | **28.03.2027** | Abschluss |
 
 > **Das ist kein psychologisches Testverfahren.** Es ist eine Selbsteinschätzung nach immer
@@ -69,9 +69,9 @@ Summe:    __    __    __    __    __    __    __
 ## Teil 2 — Die Zahlen des Monats
 
 ```
-Register:     Einträge ___ / ___ Tage      Haken ___     Kreuze ___
+Heft:     Einträge ___ / ___ Tage      Haken ___     Kreuze ___
 Neins:        ___ gesamt, davon ___ zu wichtigen Menschen
-Feldnotizen:  ___
+Notizen über Leute:  ___
 Gespräche:    ___ protokolliert
 Bücher:       ___ zu Ende gelesen
 
@@ -103,10 +103,10 @@ Je zwei bis vier Sätze. Nicht mehr. Handschriftlich.
 
 ---
 
-## Teil 4 — Das Gate
+## Teil 4 — Die Monatsprüfung
 
 ```
-Gate ________:   [ ] bestanden     [ ] nicht bestanden
+Monatsprüfung ________:   [ ] bestanden     [ ] nicht bestanden
 
   Kriterium 1: ______________________________  [ ] ja  [ ] nein
   Kriterium 2: ______________________________  [ ] ja  [ ] nein
@@ -130,7 +130,7 @@ Drei Dinge, auf die du achtest:
 2. **Wo sich nichts bewegt.** Ein Wert, der über vier Bögen konstant bleibt, ist entweder
    erledigt oder nie angefasst worden. Beides solltest du wissen.
 3. **Wo die Zahl steigt und die Realität nicht.** Wenn Frage 7 („Nein ohne Erklärung") steigt,
-   aber im Nein-Register nichts steht, misst du dein Selbstbild und nicht dein Verhalten.
+   aber im Nein-Liste nichts steht, misst du dein Selbstbild und nicht dein Verhalten.
    **Die Zahlen aus Teil 2 sind die Kontrolle für die Skalen aus Teil 1.** Genau dafür sind
    sie da.
 

@@ -1,12 +1,12 @@
-# Das Tagesprotokoll — die drei Zeilen
+# Die drei Zeilen — was du jeden Abend machst
 
-**10 Minuten. Jeden Abend. 180-mal.** Das ist Säule 0. Wenn alles andere ausfällt, das hier nicht.
+**10 Minuten. Jeden Abend. 180 Mal.** Wenn alles andere ausfällt, das hier nicht.
 
 ---
 
-## Der Vertrag (Seite 1 im Heft, von Hand)
+## Der Vertrag (Seite 1 im Heft)
 
-Schreib das ab, unterschreib es, datier es. Nicht kopieren, nicht ausdrucken — schreiben.
+Schreib das ab. Mit der Hand. Unterschreib es. Datum drauf.
 
 ```
                         VERTRAG
@@ -15,12 +15,12 @@ Ich, ________________, verspreche mir für 180 Tage,
 vom 01.10.2026 bis zum 28.03.2027:
 
 Ich schreibe jeden Abend drei Zeilen in dieses Heft.
-Ich gebe mir jeden Abend ein Versprechen für den nächsten Tag.
+Ich nehme mir jeden Abend eine Sache für den nächsten Tag vor.
 Ich mache am nächsten Abend einen Haken oder ein Kreuz. Ohne Ausrede.
 Ich lasse nie zwei Tage hintereinander leer.
-Ich rede mir kein Gate schön.
+Ich rede mir keine Monatsprüfung schön.
 
-Ich mache das nicht, weil ich mich verbessern will.
+Ich mache das nicht, um besser zu werden.
 Ich mache das, damit ich mir am Ende glaube, wenn ich mir etwas sage.
 
 ________________            ____________
@@ -29,12 +29,25 @@ Unterschrift                Datum
 
 ---
 
-## Die Seite pro Tag
+## Wann du schreibst
+
+**Wenn du dich abends zum ersten Mal auf dein Bett setzt.**
+
+Nicht um eine bestimmte Uhrzeit — die nimmt dir der Dienst dauernd weg.
+Sondern wenn du dich hinsetzt. Das machst du jeden Abend.
+
+**Heft zuerst, Handy danach.** Immer in dieser Reihenfolge.
+
+---
+
+## Was du schreibst
+
+So sieht eine Seite aus:
 
 ```
 Tag ___ von 180        Datum: __.__.____
 
-1  GEHALTEN?   ✓  /  ✗       (Versprechen von gestern)
+1  GEHALTEN?   ✓  /  ✗
 
 2  EHRLICH?    Wo war ich heute nicht ehrlich zu mir?
    _______________________________________________
@@ -42,62 +55,61 @@ Tag ___ von 180        Datum: __.__.____
 3  MORGEN:     ________________________________
 ```
 
-Mehr nicht. Kein Dankbarkeitsteil, keine Stimmungsskala, keine Tagesbewertung.
-Alles, was du zusätzlich einbaust, verlängert die Zeit — und was länger als zehn Minuten
-dauert, wird im Januar um 22:15 nicht mehr gemacht.
+Mehr nicht. Keine Stimmungsskala, keine Tagesnote, keine Dankbarkeitsliste.
+Alles, was länger als zehn Minuten dauert, machst du im Januar um 22:15 nicht mehr.
 
-**Die drei Zusätze, die jeweils nur einmal die Woche gelten:**
+### Zeile 1 — Hast du gehalten, was du dir gestern vorgenommen hast?
 
-| Wann | Zusatz |
-|---|---|
-| **Sonntagabend** | Zeile 2 in der **dritten Person** schreiben: *„Raphael hat heute ___."* Senkt die emotionale Ladung, ohne Anstrengung. |
-| **Nach dem Zapfenstreich, Mo–Fr** | Eine Beobachtung des Tages, ein Satz, ins Feldbuch hinten. |
-| **Freitagabend** | Ein Satz: Was war diese Woche der unangenehmste Moment — und was habe ich dabei gemacht? |
+Haken oder Kreuz. Sonst nichts. Keine Erklärung, keine Ausrede.
 
----
+### Zeile 2 — Wo warst du heute nicht ehrlich zu dir?
 
-## Zeile 2: die wichtigste Zeile
+Ein Satz. Zum Beispiel:
+- *„Ich habe gesagt, ist mir egal. War es nicht."*
+- *„Ich habe den Anruf nicht gemacht und mir eingeredet, es war keine Zeit."*
+- *„Ich habe gelacht, obwohl ich es scheiße fand."*
 
-*„Wo war ich heute nicht ehrlich zu mir?"* — das ist deine eigene Frage und die stärkste
-im ganzen Entwurf. Sie funktioniert, weil sie nicht nach Fehlern fragt, sondern nach
-**Selbstbetrug**, und Selbstbetrug ist das einzige Hindernis, das man nicht umgehen kann.
-
-Wenn dir nichts einfällt, sind das die Ersatzfragen (rotierend, nicht alle auf einmal):
-
+**Wenn dir nichts einfällt**, nimm eine dieser Fragen:
 - Wo habe ich heute Ja gesagt und Nein gemeint?
-- Was habe ich heute vermieden und mir dann erklärt, warum es klug war?
+- Was habe ich vermieden und mir dann erklärt, warum das klug war?
 - Wem wollte ich heute gefallen?
-- Was habe ich heute gesagt, das ich so nicht denke?
-- Was habe ich heute aus Langeweile gemacht und hinterher „Entspannung" genannt?
-- Welchen Gedanken habe ich heute dreimal gehabt und keinmal aufgeschrieben?
+- Was habe ich aus Langeweile gemacht und hinterher „Entspannung" genannt?
 
-**„Nichts" ist eine gültige Antwort — aber höchstens zweimal die Woche.** Wer an fünf Tagen
-„nichts" schreibt, schaut nicht hin.
+„Nichts" ist eine erlaubte Antwort. **Aber höchstens zweimal die Woche** —
+wer fünfmal „nichts" schreibt, guckt nicht hin.
+
+**Jeden Sonntag schreibst du Zeile 2 mit deinem Namen statt mit „ich":**
+*„Raphael hat wieder nichts gesagt, obwohl es ihn gestört hat."*
+Das fühlt sich beim ersten Mal albern an. Es sorgt dafür, dass du nüchterner draufguckst.
+
+### Zeile 3 — Was nimmst du dir für morgen vor?
+
+Ein Satz. Eine Sache. Klein.
 
 ---
 
-## Zeile 3: das Versprechen
+## Was ein gutes Versprechen ist
 
-### Die fünf Regeln
+**Die fünf Regeln:**
 
-1. **Eins.** Nicht drei.
-2. **Konkret bis zum Ort oder zur Uhrzeit.**
-3. **Zu 100 % in deiner Hand** — nichts, wofür jemand anders mitspielen muss.
-4. **An einem 5-Uhr-Tag mit vier Stunden Schlaf noch machbar.**
-5. **Heute Abend mit Ja/Nein prüfbar.**
+1. **Eine Sache.** Nicht drei.
+2. **Konkret.** Mit Ort oder Zeitpunkt.
+3. **Nur du.** Nichts, wofür jemand anders mitspielen muss.
+4. **Klein genug für einen schlechten Tag.** 5 Uhr aufgestanden, vier Stunden geschlafen,
+   Tag war lang — und du schaffst es trotzdem.
+5. **Heute Abend mit Ja oder Nein zu beantworten.**
 
-### Die Zumutungsregel
-
-Spürst du beim Aufschreiben **keinen** kleinen Widerstand, ist es zu klein — mach es 20 %
-unbequemer. Denkst du „das wird knapp", ist es richtig. Denkst du „das schaffe ich nie",
-ist es zu groß.
+**Die Zumutungsregel:**
+Spürst du beim Aufschreiben **keinen** kleinen Widerstand, ist es zu klein — mach es
+ein bisschen unbequemer. Denkst du „das wird knapp", ist es genau richtig.
+Denkst du „das schaffe ich nie", ist es zu groß.
 
 ---
 
 ## 60 Versprechen zum Abschreiben
 
-Für die Abende, an denen dir nichts einfällt. Nicht der Reihe nach abarbeiten — aussuchen,
-was heute unbequem ist.
+Für die Abende, an denen dir nichts einfällt. Nicht der Reihe nach durchgehen —
+such dir aus, was heute unbequem ist.
 
 ### Körper (1–10)
 1. Vor dem Frühsport eine Flasche Wasser leer trinken.
@@ -173,30 +185,35 @@ was heute unbequem ist.
 
 ---
 
-## Wenn es nicht klappt
+---
 
-**Ein Kreuz ist normal.** Es wird eingetragen, nicht weggelassen, plus ein Satz, was den Tag
-gekippt hat.
+## Wenn du es nicht geschafft hast
 
-**Zwei Kreuze hintereinander** = Wiederaufnahme am dritten Tag (Notfallkarte 7). Fünf Minuten:
+**Ein Kreuz gehört dazu.** Es kommt ins Heft, mit Datum. Du streichst es nicht raus,
+du holst nichts nach. Ein Satz dazu: was hat den Tag gekippt?
+
+**Zwei Kreuze hintereinander** sind der einzige Alarm im ganzen Programm.
+Dann machst du am dritten Tag das hier — fünf Minuten:
+
 1. Beide Tage nachträglich als Kreuz eintragen, mit Datum. Nicht nachholen.
-2. Einen Satz: Was war los?
+2. Ein Satz: was war los?
 3. Das nächste Versprechen **halbieren**.
-4. Weitermachen. Kein Neustart, keine Erklärung, keine Strafe.
+4. Weitermachen. Kein Neustart. Keine Erklärung. Keine Strafe.
 
-Ein einzelner verpasster Tag beeinträchtigt die Gewohnheitsbildung nachweislich nicht.
-Was schadet, ist die Deutung („jetzt ist eh alles hin") — und die kannst du hiermit abkürzen.
+**Warum so genau?** Weil fast niemand aufhört, weil er einen Tag verpasst hat.
+Man hört auf wegen des Gedankens danach: „Jetzt ist es eh egal."
+Ein verpasster Tag macht nichts kaputt. Der Gedanke schon.
 
 ---
 
-## Die Monatsbilanz (letzter Tag des Monats, 3 Minuten)
+## Am Monatsende zählen (3 Minuten)
 
 ```
 Monat: __________
-Einträge: ___ / ___ Tage
+Tage geschrieben: ___ von ___
 Haken: ___     Kreuze: ___
-Das häufigste Wort in Zeile 2 diesen Monat: __________
+Das Wort, das in Zeile 2 am häufigsten vorkam: __________
 ```
 
 Die letzte Zeile ist die interessanteste. Nach drei Monaten siehst du dein Grundmuster
-schwarz auf weiß — ohne dass du es gesucht hast.
+schwarz auf weiß — ohne dass du danach gesucht hast.

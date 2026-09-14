@@ -72,8 +72,8 @@ vorkommt.** Dazu gezielt nachsehen:
 
 - Zeile 2 („Wo war ich nicht ehrlich zu mir?") — was steht da immer wieder?
 - Die 7 Muster aus dem Oktober — jedes Muster hat einen Standard als Gegenstück
-- Das Nein-Register — wovon hast du dich ferngehalten, als es hart wurde?
-- Die vier Abende aus dem Ablöse-Protokoll — was hast du dir dort geschworen?
+- Das Nein-Liste — wovon hast du dich ferngehalten, als es hart wurde?
+- Die vier Abende aus dem Trennungs-Kapitel — was hast du dir dort geschworen?
 - Feld 2 der Zug-Bögen („Ja gesagt, Nein gemeint") — wo immer wieder dasselbe?
 
 **Ziel: ≥ 15 Fundstellen.** Noch keine Formulierung, nur Zettel.
@@ -147,7 +147,7 @@ ihn behalten und umdeuten, bis er wieder passt — ist die, die dich sechs Monat
 
 ## Prüfung mit mir (Ende Februar)
 
-Ritual 4 in [`claude-rituale.md`](claude-rituale.md). Du legst die Sätze vor, ich suche gezielt:
+Ritual 4 in [`mit-claude-arbeiten.md`](mit-claude-arbeiten.md). Du legst die Sätze vor, ich suche gezielt:
 
 - Sätze ohne echten Beleg
 - Sätze mit versteckten Weichmachern

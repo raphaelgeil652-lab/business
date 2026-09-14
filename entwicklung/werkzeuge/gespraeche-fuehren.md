@@ -13,7 +13,7 @@ nach sechs Monaten wirklich können sollst. Alles andere in diesem Ordner arbeit
   Werkstätten, nicht mit Anzeigentexten.
 - Du kannst es **in der Kaserne trainieren, ohne dass es jemand merkt.** Hunderte Gespräche
   mit Fremden unter Druck, kostenlos. Diese Dichte hast du nie wieder.
-- Es ist **messbar** — Redeanteil, offene Fragen, Rückspiegelungen. Und was messbar ist,
+- Es ist **messbar** — Redeanteil, offene Fragen, Nachsagen. Und was messbar ist,
   wird besser.
 
 ---
@@ -88,9 +88,9 @@ Abschluss.** Und sie sind offene Fragen — genau der Grund, warum du sie hier �
 
 ---
 
-## Werkzeug 2 — Rückspiegeln
+## Werkzeug 2 — Nachsagen (statt nachfragen)
 
-Eine Rückspiegelung ist eine **Aussage**, keine Frage. Du sagst in deinen Worten, was du
+Nachsagen heißt: Du machst eine **Aussage**, keine Frage. Du sagst in deinen Worten, was du
 verstanden hast — und schweigst dann.
 
 > *„Das ging dir gegen den Strich."*
@@ -100,10 +100,10 @@ verstanden hast — und schweigst dann.
 
 **Warum keine Frage:** Eine Frage („Ging dir das gegen den Strich?") verlangt eine Antwort und
 macht ein Verhör daraus. Eine Aussage lädt ein. Und wenn du danebenliegst, **korrigiert dich
-dein Gegenüber und liefert dabei genau das Material, das du wolltest.** Eine falsche
-Rückspiegelung ist oft wertvoller als eine richtige.
+dein Gegenüber und liefert dabei genau das Material, das du wolltest.**
+Ein falsches Nachsagen ist oft wertvoller als ein richtiges.
 
-**Richtwert: doppelt so viele Rückspiegelungen wie Fragen.** Das ist die Faustregel aus der
+**Richtwert: doppelt so viele Nachsagen wie Fragen.** Das ist die Faustregel aus der
 professionellen Gesprächsführung, und sie gilt eins zu eins am Küchentisch.
 
 **Drei Bauarten:**
@@ -143,10 +143,10 @@ Wer hat Beispiele erzählt? Wenn du eine Geschichte erzählt hast, warst du übe
 
 ---
 
-## Das Gesprächsprotokoll (ab Woche 14)
+## Das Gesprächsliste (ab Woche 14)
 
 ```
-Datum | mit wem | Dauer | Redeanteil % | offene Fr. | Rückspiegelungen | Der eine Satz, der am meisten gebracht hat
+Datum | mit wem | Dauer | Redeanteil % | offene Fr. | Nachsagen | Der eine Satz, der am meisten gebracht hat
 ------+---------+-------+--------------+------------+------------------+-------------------------------------------
 ```
 
@@ -162,7 +162,7 @@ Verkaufsformeln aus Büchern — eigene, im Feld getestete.
 |---|---|---|
 | **Die Lösung liefern, bevor das Problem fertig erzählt ist** | Du merkst nach zwei Sätzen, „was er machen müsste" | Erst wenn er dich fragt. Und dann noch mal warten. |
 | **Zuhören, um zu antworten** | Du planst deinen Satz, während er redet | Ein Wort mitschreiben statt einen Satz denken |
-| **Die Kette von Fragen** | Vier Fragen hintereinander ohne Rückspiegelung | Nach jeder zweiten Frage eine Aussage |
+| **Die Kette von Fragen** | Vier Fragen hintereinander ohne Nachsagen | Nach jeder zweiten Frage eine Aussage |
 | **Die Lücke füllen** | Stille macht dich nervös, du redest rein | Drei Sekunden zählen. Immer. |
 
 ---
@@ -173,7 +173,7 @@ Verkaufsformeln aus Büchern — eigene, im Feld getestete.
 |---|---|---|
 | 14 | Nur offene Fragen | 3 Gespräche, keine geschlossene Frage |
 | 15 | Redeanteil | 3 Gespräche unter 30 % |
-| 16 | Rückspiegeln | 3 Gespräche, 2:1 zu Fragen |
+| 16 | Nachsagen | 3 Gespräche, 2:1 zu Fragen |
 | 17 | Drei Sekunden | 3 Gespräche mit bewusster Pause |
 | 18 | Alles zusammen | 3 Gespräche, volles Set |
 
