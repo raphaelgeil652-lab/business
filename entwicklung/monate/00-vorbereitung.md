@@ -135,10 +135,23 @@ Eine Seite, mit der Hand, am Stück, ohne Pause, ohne Zurücklesen.
 3. Was kostet es mich, wenn ich es nicht mache? Konkret. In fünf Jahren.
 4. Was ist der eine Satz, den ich mir im Januar um halb elf abends selbst sagen muss?
 
-Dann falten und ganz hinten ins Heft. **Du liest sie erst am 28. März 2027 wieder.**
-Nicht vorher. Auch nicht, wenn es schlecht läuft — gerade dann nicht.
+**Zu Frage 4, weil sie am wichtigsten ist:** Es kommt ein Abend im Januar. Dunkel, kalt, du
+bist müde, alles fühlt sich sinnlos an, und du willst hinschmeißen. An so einem Abend liest
+niemand einen Monatsplan. An so einem Abend brauchst du **einen Satz**, den du dir selbst
+gesagt hast, als es dir noch gut ging.
 
-Der Satz aus Frage 4 kommt auf die erste Taschenkarte.
+So einer könnte das sein — deiner muss anders klingen, das ist der Punkt:
+
+- *„Ich habe es mir versprochen. Das reicht."*
+- *„Ich mache das nicht, weil ich Lust habe. Ich mache es, weil ich es gesagt habe."*
+- *„Der von gestern Abend wusste mehr als der von jetzt."*
+- *„Noch zehn Minuten, dann ist es erledigt."*
+
+Er muss **dich** treffen, nicht gut klingen. Schreib den Satz am 28.09. von Hand auf die
+erste Taschenkarte — die mit den drei leeren Linien. Die trägst du dann in der Brusttasche.
+
+Dann die Seite falten und ganz hinten ins Heft. **Du liest sie erst am 28. März 2027 wieder.**
+Nicht vorher. Auch nicht, wenn es schlecht läuft — gerade dann nicht.
 
 ---
 
@@ -200,7 +213,7 @@ Wenn ich in den Zug einsteige,
 | Fr 25.09. | | Puffer. (Den wirst du brauchen.) |
 | **Sa 26.09.** | ✅ | **Selbsttest ausfüllen.** 30 Minuten, allein, ehrlich. |
 | **So 27.09.** | ✅ | **Die eine Seite schreiben.** Mit der Hand, am Stück. |
-| Mo 28.09. | | Packen. Erste Taschenkarte beschriften. |
+| Mo 28.09. | | Packen. Deinen Satz aus Frage 4 auf die erste Taschenkarte schreiben. |
 | **Di 29.09.** | ✅ | **Die drei Sätze aufschreiben und laut sagen.** |
 | **Mi 30.09.** | ✅ | Die drei Menschen. Früh ins Bett. |
 | **Do 01.10.** | ▶ | **Tag 1.** Abends: erster Eintrag + sie unsichtbar machen. |
