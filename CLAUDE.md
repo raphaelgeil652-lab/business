@@ -32,8 +32,9 @@ Gebaute Webseiten liegen unter `nischen/<name>/`, weil der Nutzer dort sucht. Au
 selbstenthaltende Datei zum Herzeigen — außer wenn der Öffnen-Knopf direkt auf `seite/` zeigen
 kann, siehe Alex.
 
-Gebaute Seiten: **`nischen/tagwerk/`** (Demo, erfundene Kaffeemarke) und
-**`nischen/alex-aussenanlagen/`** (echter Kunde, Pfullendorf).
+Gebaute Seiten: **`nischen/tagwerk/`** (Demo, erfundene Kaffeemarke),
+**`nischen/alex-aussenanlagen/`** (echter Kunde, Pfullendorf) und
+**`nischen/wakepark-pfullendorf/`** (Wasserskianlage am Seepark Linzgau).
 
 ## Zwei Nischen, zwei Ordner
 
@@ -139,6 +140,25 @@ also auf genau das, was online ginge. Tagwerk und Chinatown behalten ihre Vorsch
 **Weil das Unternehmen echt ist, wurde nichts erfunden:** keine Kundenstimmen, keine Preise, keine
 Kontaktdaten. Diese Stellen sind sichtbare Platzhalter. Vor dem Livegang fehlen noch Telefon,
 E-Mail, Impressum und Datenschutz sowie echte Fotos.
+
+### `nischen/wakepark-pfullendorf/` — Webseite für den Wakepark Pfullendorf
+Gehört zum **Webseitenbau**, nicht zur Agentur. Wasserskianlage am Seepark Linzgau, Ziel der
+Seite sind Buchungen und Kursanfragen. Aufbau: `seite/` (index.html + assets, nur das geht
+online), `arbeitsdateien/rohmaterial/` samt `HERKUNFT.md`, `design-paket.md`, `README.md`.
+
+**Kein Scroll-Film, keine KI-Bilder auf der Seite.** Der Nutzer hat ausdrücklich nur den Auftrag
+aus dem Chat gelten lassen: eine hochwertige Webseite mit starker Typografie, klarer Führung,
+CTAs, Social Proof, Leistungen, Vorteilen, FAQ und starkem Abschluss. Die Fotos sind echt und
+stammen vom Park, die Farben kommen aus dem Wappen des Parks (Braun, Sonnenuntergang-Amber,
+Creme, dazu das Türkis des Sees).
+
+**Weil das Unternehmen echt ist, wurde nichts erfunden:** keine Kundenstimmen (drei sichtbar
+markierte Platzhalter), keine Zeitkarten-Preise. Vor dem Livegang fehlen Impressum, Datenschutz,
+echte Gästestimmen und die Freigabe der Bildrechte. Ein Foto stammt von cablemekka.com, nicht
+vom Park. **Keine `vorschau/`:** der Öffnen-Knopf zeigt über githack direkt auf `seite/index.html`.
+
+Schriften liegen selbst gehostet unter `seite/assets/fonts/`, es geht kein Aufruf zu Google
+Fonts raus. Das ist Absicht und darf nicht auf ein CDN zurückgedreht werden.
 
 ### `nischen/chinatown/` — Einzelkunde China Restaurant Chinatown
 Liegt bewusst unter `nischen/`, weil der Nutzer dort sucht — inhaltlich ist es **keine Nische**,

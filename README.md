@@ -11,6 +11,7 @@ Diese Startseite ist deine Übersicht.
 | 🍳 Küchenstudios | zurückgestellt (vollständig erhalten) | [`nischen/kuechenstudios/`](nischen/kuechenstudios/) |
 | ☕ **Tagwerk** (Demo-Webseite, erfundene Kaffeemarke) | Vorzeige-Stück für Webseitenbau | [`nischen/tagwerk/`](nischen/tagwerk/) |
 | 🌿 **Alex Außenanlagen** (Pfullendorf) | Webseiten-Kunde: Garten, Erdarbeiten, Pflaster | [`nischen/alex-aussenanlagen/`](nischen/alex-aussenanlagen/) |
+| 🏄 **Wakepark Pfullendorf** | Webseiten-Entwurf: Wasserskianlage am Seepark Linzgau | [`nischen/wakepark-pfullendorf/`](nischen/wakepark-pfullendorf/) |
 
 ---
 
@@ -56,6 +57,21 @@ kommen daneben rein. Alles erfunden, kein echter Kunde. Details: [`nischen/tagwe
 | Was | Öffnen |
 |---|---|
 | **Die komplette Seite** ⭐ Langsam nach unten scrollen, der Film ist ans Scrollen gekoppelt. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/tagwerk/vorschau/tagwerk-komplett.html)** |
+
+### 🏄 Wakepark Pfullendorf — Webseite (Wasserskianlage)
+
+Entwurf für den Wakepark am Seepark Linzgau. Ziel sind Buchungen und Kursanfragen.
+Farben und Motiv kommen aus dem eigenen Wappen des Parks, die Fotos sind echt.
+Details: [`nischen/wakepark-pfullendorf/`](nischen/wakepark-pfullendorf/)
+
+| Was | Öffnen |
+|---|---|
+| **Die komplette Seite** ⭐ Hero, Vorteile, Angebot, Anlage, Preise, Fragen, Formular. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/claude/wakepark-pfullendorf-website-m5kotc/nischen/wakepark-pfullendorf/seite/index.html)** |
+
+> Der Link zeigt auf den Entwicklungszweig. Nach dem Zusammenführen mit `main` wird daraus
+> `.../business/main/nischen/wakepark-pfullendorf/seite/index.html`.
+> ⚠️ **Noch nicht live-fertig:** Impressum, Datenschutz, echte Gästestimmen und die Freigabe
+> der Bildrechte fehlen. Die Liste steht im README der Seite.
 
 ### 🌿 Alex Außenanlagen — Webseite (Pfullendorf)
 

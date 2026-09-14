@@ -1,0 +1,1187 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.className+=" js"</script>
+<title>Wakepark Pfullendorf | Wakeboarden und Wasserski am Seepark Linzgau</title>
+<meta name="description" content="5-Mast-Anlage, eigener Übungslift und 12 Hindernisse am Seepark Linzgau. Anfänger stehen im ersten Kurs, Fortgeschrittene haben Rails und Kicker. Zeitkarte buchen oder Kurs anfragen.">
+<meta name="theme-color" content="#2f1d13">
+<meta name="author" content="Wakepark Pfullendorf">
+<link rel="canonical" href="https://www.wakepark-pfullendorf.de/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wakepark Pfullendorf">
+<meta property="og:title" content="Wakepark Pfullendorf | Wakeboarden und Wasserski am Seepark Linzgau">
+<meta property="og:description" content="Drei Sekunden zwischen sitzen und stehen. 5-Mast-Anlage, Übungslift und 12 Hindernisse, 25 km vom Bodensee.">
+<!-- BEIM LIVEGANG ERSETZEN: absolute URL der fertigen Domain eintragen -->
+<meta property="og:url" content="https://www.wakepark-pfullendorf.de/">
+<meta property="og:image" content="https://www.wakepark-pfullendorf.de/assets/hero-gischt.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 1 30 5v13c0 7-6 11-14 13C8 29 2 25 2 18V5z' fill='%232f1d13'/%3E%3Cpath d='M16 4 27 7v11c0 5.5-4.6 8.8-11 10.6C9.6 26.8 5 23.5 5 18V7z' fill='%23f0a52e'/%3E%3Cpath d='M5 13h22v3.2H5zm0 5.4h22v3.2H5z' fill='%23c1440e'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/hero-gischt.jpg" fetchpriority="high">
+<!-- Schriften liegen auf dem eigenen Server. Kein Aufruf zu Google, also
+     geht auch keine Besucher-IP dorthin. -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-black-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/schriften.css">
+
+<style>
+/* ============================================================
+   WAKEPARK PFULLENDORF
+   Farbwelt direkt aus dem Vereinswappen: tiefes Braun,
+   Sonnenuntergang-Amber, Creme. Dazu das Türkis des Sees.
+   Signature: die Sonnenstreifen aus dem Logo.
+   ============================================================ */
+
+:root{
+  --cream:#f6ecd9;
+  --cream-2:#efe1c6;
+  --paper:#fffaf0;
+  --brown:#2f1d13;
+  --brown-2:#4a3022;
+  --brown-3:#1d110a;
+  --muted:#6b5544;
+  --amber:#f0a52e;
+  --orange:#e2701d;
+  --rust:#c1440e;          /* Flaechen: Knopf-Hintergrund */
+  --rust-ink:#a8380a;      /* dieselbe Farbe fuer kleine Schrift, 5,5:1 auf Creme */
+  --rust-hover:#a53709;
+  --teal:#12787c;
+  --line:rgba(47,29,19,.16);
+  --line-strong:rgba(47,29,19,.34);
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+
+  --pad:clamp(20px,5vw,64px);
+  --maxw:1240px;
+  --r:14px;
+
+  --shadow-s:0 1px 2px rgba(47,29,19,.07),0 4px 14px rgba(47,29,19,.06);
+  --shadow-m:0 2px 6px rgba(47,29,19,.08),0 18px 48px rgba(47,29,19,.12);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:hidden;overflow-x:clip;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  overflow-x:hidden;overflow-x:clip;
+  margin:0;
+  background:var(--cream);
+  color:var(--brown);
+  font:400 clamp(16px,1.02vw + 13px,18px)/1.62 "Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%;display:block}
+img{height:auto}
+
+/* --- Feste Umgebungsebene: sehr langsam wandernder Sonnenschein --- */
+.ambient{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(60% 45% at 78% 6%,rgba(240,165,46,.20),transparent 62%),
+    radial-gradient(48% 40% at 8% 88%,rgba(18,120,124,.13),transparent 66%);
+  animation:drift 90s var(--ease) -22s infinite alternate;
+}
+@keyframes drift{from{transform:translate3d(-2.2%,-1.4%,0) scale(1.04)}to{transform:translate3d(2.6%,1.8%,0) scale(1.1)}}
+.grain{
+  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Typografie --- */
+h1,h2,h3,.display{
+  font-family:"Archivo Black","Hanken Grotesk",system-ui,sans-serif;
+  font-weight:400;
+  line-height:.94;
+  letter-spacing:-.022em;
+  text-transform:uppercase;
+  margin:0;
+  text-wrap:balance;
+}
+h1{font-size:clamp(2.6rem,7.4vw,6.2rem)}
+h2{font-size:clamp(2rem,4.6vw,3.9rem)}
+h3{font-size:clamp(1.12rem,1.5vw,1.42rem);line-height:1.08;letter-spacing:-.012em}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+a{color:inherit}
+
+.kicker{
+  font-family:"DM Mono",ui-monospace,Menlo,Consolas,monospace;
+  font-weight:500;font-size:.73rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--rust-ink);margin:0 0 1.15rem;display:flex;align-items:center;gap:.7rem;
+}
+.kicker::before{content:"";width:26px;height:3px;flex:none;background:linear-gradient(90deg,var(--amber),var(--rust))}
+.lede{font-size:clamp(1.06rem,.5vw + .96rem,1.3rem);color:var(--muted);max-width:56ch}
+.mono{font-family:"DM Mono",ui-monospace,Menlo,Consolas,monospace;font-weight:500}
+
+/* --- Bausteine --- */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+section{position:relative;z-index:1}
+.band{padding-block:clamp(72px,9.5vw,146px)}
+.band--tint{background:var(--cream-2)}
+.band--dark{background:var(--brown);color:var(--cream)}
+.band--dark .lede{color:rgba(246,236,217,.74)}
+.band--dark .kicker{color:var(--amber)}
+.band--dark .kicker::before{background:linear-gradient(90deg,var(--amber),var(--orange))}
+
+/* Die Sonnenstreifen, das durchgehende Motiv */
+.stripes{display:block;height:9px;width:100%;border-radius:99px;
+  background:linear-gradient(180deg,var(--amber) 0 33.33%,var(--orange) 33.33% 66.66%,var(--rust) 66.66% 100%)}
+.band-rule{height:3px;border:0;margin:0;
+  background:linear-gradient(90deg,var(--amber),var(--orange) 34%,var(--rust) 62%,transparent)}
+
+/* --- Knöpfe --- */
+.btn{
+  position:relative;overflow:hidden;isolation:isolate;
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  font-family:"Archivo Black",sans-serif;font-size:.86rem;letter-spacing:.055em;text-transform:uppercase;
+  padding:1.02rem 1.6rem;border-radius:var(--r);border:2px solid transparent;
+  text-decoration:none;cursor:pointer;
+  transition:transform .4s var(--ease-out),box-shadow .4s var(--ease-out),background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease);
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn--primary{background:var(--rust);color:#fffaf0;box-shadow:0 3px 0 rgba(47,29,19,.3),var(--shadow-s)}
+.btn--primary::before{
+  content:"";position:absolute;inset:0;z-index:-1;opacity:0;
+  background:linear-gradient(180deg,var(--amber) 0 33.33%,var(--orange) 33.33% 66.66%,var(--rust) 66.66% 100%);
+  transform:translateY(58%);transition:transform .52s var(--ease-out),opacity .3s var(--ease);
+}
+.btn--primary:hover{box-shadow:0 5px 0 rgba(47,29,19,.34),var(--shadow-m);color:var(--brown)}
+.btn--primary:hover::before{transform:translateY(0);opacity:1}
+.btn--ghost{border-color:var(--line-strong);color:var(--brown);background:transparent}
+.btn--ghost:hover{border-color:var(--brown);background:rgba(47,29,19,.05)}
+.btn--onphoto{background:rgba(255,250,240,.94);color:var(--brown);backdrop-filter:blur(8px);box-shadow:var(--shadow-s)}
+.btn--onphoto:hover{background:#fffaf0}
+.btn--sm{padding:.72rem 1.05rem;font-size:.73rem}
+.btn-row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+@media (max-width:560px){.hero .btn-row .btn{flex:1 1 100%}}
+
+.textlink{
+  display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;font-weight:700;color:var(--rust-ink);
+  border-bottom:2px solid transparent;transition:border-color .3s var(--ease),gap .3s var(--ease);
+}
+.textlink:hover{border-bottom-color:var(--rust-ink);gap:.75rem}
+.textlink .arw{transition:transform .35s var(--ease-out)}
+.textlink:hover .arw{transform:translateX(3px)}
+
+:focus-visible{outline:3px solid var(--rust);outline-offset:3px;border-radius:4px}
+.band--dark :focus-visible{outline-color:var(--amber)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--brown);color:var(--cream);padding:.9rem 1.2rem;border-radius:0 0 var(--r) 0;text-decoration:none;font-weight:700}
+.skip:focus{left:0}
+
+/* ============================ KOPF ============================ */
+.hdr{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background-color .45s var(--ease),box-shadow .45s var(--ease),backdrop-filter .45s var(--ease);
+}
+.hdr__in{display:flex;align-items:center;gap:clamp(12px,2vw,30px);padding-block:14px;transition:padding-block .45s var(--ease)}
+.hdr.is-stuck{background:rgba(246,236,217,.93);backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 1px 0 var(--line),0 10px 34px rgba(47,29,19,.09)}
+.hdr.is-stuck .hdr__in{padding-block:8px}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;margin-right:auto;flex:none}
+.brand img{width:50px;height:50px;transition:width .45s var(--ease),height .45s var(--ease);filter:drop-shadow(0 2px 5px rgba(47,29,19,.22))}
+.hdr.is-stuck .brand img{width:40px;height:40px}
+.brand b{font-family:"Archivo Black",sans-serif;font-size:.86rem;letter-spacing:-.005em;line-height:1.02;text-transform:uppercase;display:block}
+.brand span{font-family:"DM Mono",monospace;font-weight:500;font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.brand-txt{opacity:0;transform:translateX(-6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.hdr.is-stuck .brand-txt{opacity:1;transform:none}
+.nav{display:flex;gap:clamp(10px,1.5vw,24px);align-items:center}
+.nav a{
+  text-decoration:none;font-weight:700;font-size:.9rem;padding:.4rem 0;position:relative;
+  color:var(--brown);transition:color .3s var(--ease);
+}
+.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:.1rem;height:2px;background:var(--rust-ink);transition:right .38s var(--ease-out)}
+.nav a:hover::after,.nav a.is-active::after{right:0}
+.hdr:not(.is-stuck) .nav a{color:var(--cream);text-shadow:0 1px 10px rgba(29,17,10,.55)}
+.hdr:not(.is-stuck) .brand b{color:var(--cream);text-shadow:0 1px 10px rgba(29,17,10,.55)}
+.hdr:not(.is-stuck) .brand span{color:rgba(246,236,217,.8)}
+.status{
+  display:inline-flex;align-items:center;gap:.5rem;flex:none;
+  font-family:"DM Mono",monospace;font-weight:500;font-size:.7rem;letter-spacing:.06em;
+  padding:.44rem .74rem;border-radius:99px;border:1px solid var(--line-strong);
+  background:rgba(255,250,240,.9);color:var(--brown);white-space:nowrap;
+}
+.status .dot{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none;position:relative}
+.status.is-open .dot{background:#2e9e52}
+.status.is-open .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid #2e9e52;opacity:.55;animation:ping 2.6s var(--ease) infinite}
+@keyframes ping{0%{transform:scale(.7);opacity:.6}70%,100%{transform:scale(1.5);opacity:0}}
+.hdr .btn{flex:none}
+@media (max-width:1080px){.nav{display:none}}
+@media (max-width:620px){.status{display:none}.hdr .btn{padding:.66rem .9rem;font-size:.7rem}}
+
+/* ============================ HERO ============================ */
+.hero{position:relative;min-height:min(96svh,880px);display:flex;align-items:flex-end;overflow:hidden;background:var(--brown-3)}
+.hero__ph{position:absolute;inset:0}
+.hero__ph img{width:100%;height:100%;object-fit:cover;object-position:52% 48%;
+  transform:scale(1.07);animation:heroIn 2.4s var(--ease-out) forwards}
+@keyframes heroIn{to{transform:scale(1)}}
+/* Nur so dunkel wie noetig: das Foto soll lesbar bleiben,
+   die Schrift darueber trotzdem sitzen. */
+.hero__veil{position:absolute;inset:0;
+  background:
+    linear-gradient(to top,rgba(29,17,10,.9) 0%,rgba(29,17,10,.56) 22%,rgba(29,17,10,.08) 52%,rgba(29,17,10,.34) 100%),
+    radial-gradient(74% 54% at 24% 74%,rgba(29,17,10,.46),transparent 72%);
+}
+/* Sonnenbogen aus dem Wappen, hinter der Überschrift */
+.hero__sun{
+  position:absolute;right:-8%;top:-14%;width:min(58vw,720px);aspect-ratio:1;border-radius:50%;
+  background:conic-gradient(from 210deg,rgba(240,165,46,.22),rgba(226,112,29,.12) 28%,transparent 55%);
+  filter:blur(2px);animation:sunturn 120s linear infinite;
+}
+@keyframes sunturn{to{transform:rotate(360deg)}}
+.hero__in{position:relative;width:100%;padding-block:clamp(40px,7vw,86px) clamp(26px,3vw,40px)}
+.hero h1{color:#fffaf0;text-shadow:0 2px 6px rgba(29,17,10,.5),0 14px 46px rgba(29,17,10,.55);max-width:15ch}
+.hero .kicker{color:var(--amber)}
+.hero .kicker::before{background:linear-gradient(90deg,var(--amber),var(--orange))}
+.hero__sub{color:rgba(255,250,240,.9);font-size:clamp(1.04rem,.6vw + .92rem,1.28rem);max-width:48ch;margin:1.5rem 0 2rem;text-shadow:0 1px 4px rgba(29,17,10,.6)}
+.hero__fine{
+  margin-top:1.5rem;display:flex;align-items:flex-start;gap:.6rem;
+  color:rgba(255,250,240,.78);font-size:.9rem;max-width:44ch;text-shadow:0 1px 4px rgba(29,17,10,.7);
+}
+.hero__fine svg{flex:none;margin-top:.2rem;color:var(--amber)}
+.hero__stripes{position:absolute;left:var(--pad);bottom:0;width:clamp(110px,16vw,210px);height:9px;
+  border-radius:99px 99px 0 0;
+  background:linear-gradient(90deg,var(--amber) 0 33.33%,var(--orange) 33.33% 66.66%,var(--rust) 66.66% 100%)}
+
+/* Einblendung der Hero-Zeilen */
+.rise{opacity:0;transform:translateY(22px);animation:rise .95s var(--ease-out) forwards}
+.rise.d1{animation-delay:.14s}.rise.d2{animation-delay:.28s}.rise.d3{animation-delay:.42s}.rise.d4{animation-delay:.56s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* ======================= FAKTENLEISTE ======================= */
+.facts{background:var(--brown);color:var(--cream);padding-block:clamp(26px,3.4vw,44px);position:relative;z-index:1}
+.facts__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.6vw,40px)}
+.fact{display:flex;flex-direction:column;gap:.24rem;padding-left:1rem;border-left:3px solid var(--amber)}
+.fact:nth-child(2){border-left-color:var(--orange)}
+.fact:nth-child(3){border-left-color:var(--rust)}
+.fact:nth-child(4){border-left-color:var(--teal)}
+.fact b{font-family:"Archivo Black",sans-serif;font-size:clamp(1.15rem,1.72vw,1.78rem);line-height:1.02;text-transform:uppercase;letter-spacing:-.028em;hyphens:auto}
+.fact span{font-size:.84rem;color:rgba(246,236,217,.66);line-height:1.34}
+@media (max-width:760px){.facts__grid{grid-template-columns:1fr 1fr;gap:20px}}
+@media (max-width:430px){.facts__grid{grid-template-columns:1fr;gap:16px}}
+
+/* ======================= VORTEILE ======================= */
+.split{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:clamp(30px,5vw,80px);align-items:start}
+@media (max-width:920px){.split{grid-template-columns:1fr;gap:34px}}
+.split__head{position:sticky;top:104px}
+@media (max-width:920px){.split__head{position:static}}
+
+.plus{list-style:none;margin:0;padding:0;display:grid;gap:clamp(14px,1.8vw,22px)}
+.plus li{
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(14px,2vw,26px);align-items:start;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+  padding:clamp(18px,2.4vw,28px);
+  transition:transform .5s var(--ease-out),box-shadow .5s var(--ease-out),border-color .4s var(--ease);
+}
+.plus li:hover{transform:translateY(-3px);box-shadow:var(--shadow-m);border-color:var(--line-strong)}
+.crest{width:46px;height:52px;flex:none;filter:drop-shadow(0 2px 4px rgba(47,29,19,.2))}
+.plus h3{margin-bottom:.4rem}
+.plus p{color:var(--muted);font-size:.98rem}
+
+/* ======================= LEISTUNGEN ======================= */
+.offers{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(14px,1.8vw,22px)}
+.offer{
+  grid-column:span 2;position:relative;display:flex;flex-direction:column;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  transition:transform .55s var(--ease-out),box-shadow .55s var(--ease-out);
+}
+.offer:hover{transform:translateY(-4px);box-shadow:var(--shadow-m)}
+.offer--wide{grid-column:span 3}
+.offer__ph{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--brown-2)}
+.offer__ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+.offer:hover .offer__ph img{transform:scale(1.045)}
+.offer__body{padding:clamp(18px,2.2vw,26px);display:flex;flex-direction:column;gap:.55rem;flex:1}
+.offer__body p{color:var(--muted);font-size:.96rem;flex:1}
+.tag{
+  align-self:flex-start;font-family:"DM Mono",monospace;font-weight:500;font-size:.68rem;letter-spacing:.09em;
+  text-transform:uppercase;padding:.34rem .62rem;border-radius:99px;
+  background:rgba(193,68,14,.12);color:var(--rust-ink);border:1px solid rgba(193,68,14,.3);
+}
+.tag--teal{background:rgba(18,120,124,.12);color:#0c5f62;border-color:rgba(18,120,124,.3)}
+.offer__ph .tag{position:absolute;left:14px;top:14px;background:rgba(255,250,240,.94);border-color:transparent;backdrop-filter:blur(6px)}
+@media (max-width:980px){.offers{grid-template-columns:repeat(4,1fr)}.offer,.offer--wide{grid-column:span 2}}
+@media (max-width:620px){.offers{grid-template-columns:1fr}.offer,.offer--wide{grid-column:span 1}}
+
+/* ======================= ABLAUF ======================= */
+.flow{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(30px,5vw,72px);align-items:center}
+@media (max-width:920px){.flow{grid-template-columns:1fr}}
+.flow__ph{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-m)}
+.flow__ph img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:52% 42%}
+.flow__ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(29,17,10,.34),transparent 46%)}
+.flow__cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:#fffaf0;font-size:.86rem;text-shadow:0 1px 6px rgba(29,17,10,.8)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{
+  counter-increment:s;position:relative;padding:clamp(16px,2vw,22px) 0 clamp(16px,2vw,22px) clamp(56px,6vw,76px);
+  border-bottom:1px solid var(--line);
+}
+.steps li:last-child{border-bottom:0}
+.steps li::before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:0;top:clamp(16px,2vw,22px);
+  font-family:"Archivo Black",sans-serif;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1;
+  color:transparent;-webkit-text-stroke:2px var(--line-strong);
+  transition:color .45s var(--ease),-webkit-text-stroke-color .45s var(--ease);
+}
+.steps li:hover::before{color:var(--rust-ink);-webkit-text-stroke-color:var(--rust-ink)}
+.steps h3{margin-bottom:.34rem}
+.steps p{color:var(--muted);font-size:.98rem}
+
+/* ======================= DIE ANLAGE ======================= */
+.rig{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);gap:clamp(28px,4vw,60px);align-items:center}
+@media (max-width:920px){.rig{grid-template-columns:1fr}}
+.rig__ph{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:0 30px 70px rgba(29,17,10,.4)}
+.rig__ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.rig__pin{
+  position:absolute;font-family:"DM Mono",monospace;font-weight:500;font-size:.68rem;letter-spacing:.06em;
+  background:rgba(255,250,240,.95);color:var(--brown);padding:.36rem .6rem;border-radius:99px;
+  box-shadow:var(--shadow-s);white-space:nowrap;
+}
+.rig__pin::before{content:"";position:absolute;left:-5px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 3px rgba(255,250,240,.95)}
+@media (max-width:620px){.rig__pin{display:none}}
+.obs{list-style:none;margin:0 0 1.6rem;padding:0;display:grid;gap:.1rem}
+.obs li{display:flex;align-items:baseline;gap:.9rem;padding:.72rem 0;border-bottom:1px dashed rgba(246,236,217,.2)}
+.obs li:last-child{border-bottom:0}
+.obs b{font-family:"Archivo Black",sans-serif;font-size:1.36rem;color:var(--amber);min-width:2.1ch;text-align:right;line-height:1}
+.obs span{font-size:.99rem}
+.obs em{font-style:normal;color:rgba(246,236,217,.58);font-size:.88rem;display:block;line-height:1.35}
+
+/* ======================= SOCIAL PROOF ======================= */
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,22px)}
+@media (max-width:860px){.proof{grid-template-columns:1fr}}
+.quote{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+  padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:1rem;position:relative;min-height:212px;
+}
+.quote--ph{background:repeating-linear-gradient(135deg,rgba(47,29,19,.028) 0 12px,transparent 12px 24px),var(--paper);border-style:dashed}
+.quote__mark{font-family:"Archivo Black",sans-serif;font-size:2.6rem;line-height:.5;color:var(--amber)}
+.quote p{font-size:1.02rem}
+.quote__ph-line{height:.82em;border-radius:99px;background:rgba(47,29,19,.09)}
+.quote__ph-line+.quote__ph-line{margin-top:.55em}
+.quote footer{font-family:"DM Mono",monospace;font-weight:500;font-size:.73rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-top:auto}
+.badge-ph{
+  position:absolute;right:14px;top:14px;font-family:"DM Mono",monospace;font-weight:500;font-size:.62rem;
+  letter-spacing:.1em;text-transform:uppercase;padding:.26rem .5rem;border-radius:99px;
+  background:rgba(193,68,14,.12);color:var(--rust-ink);border:1px solid rgba(193,68,14,.3);
+}
+.boss{
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,2.4vw,30px);align-items:center;
+  background:var(--brown);color:var(--cream);border-radius:var(--r);padding:clamp(22px,3vw,34px);
+  margin-top:clamp(22px,3vw,34px);
+}
+.boss__crest{width:76px;height:86px;flex:none}
+.boss h3{margin-bottom:.4rem;color:var(--amber)}
+.boss p{color:rgba(246,236,217,.76);font-size:.99rem;max-width:64ch}
+@media (max-width:620px){.boss{grid-template-columns:1fr}.boss__crest{width:60px;height:68px}}
+
+/* ======================= PREISE + ZEITEN ======================= */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.4vw,50px);align-items:start}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,34px)}
+.card h3{margin-bottom:1.3rem;padding-bottom:1rem;border-bottom:3px solid transparent;
+  border-image:linear-gradient(90deg,var(--amber),var(--orange) 40%,var(--rust) 70%,transparent) 1}
+.rate{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.72rem 0;border-bottom:1px dashed var(--line)}
+.rate:last-of-type{border-bottom:0}
+.rate>span:first-child{font-weight:500}
+.rate .mono{font-size:1.02rem;white-space:nowrap}
+.rate small{display:block;color:var(--muted);font-size:.83rem;font-weight:400;line-height:1.3}
+.note{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+.hours{list-style:none;margin:0;padding:0}
+.hours li{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px dashed var(--line);font-size:.96rem}
+.hours li:last-child{border-bottom:0}
+.hours li.is-now{background:linear-gradient(90deg,rgba(240,165,46,.2),transparent);
+  margin-inline:-.7rem;padding-inline:.7rem;border-radius:8px;font-weight:700}
+.hours .mono{white-space:nowrap;color:var(--muted)}
+@media (max-width:560px){
+  .hours li{flex-direction:column;align-items:flex-start;gap:.2rem}
+  .hours .mono{white-space:normal;font-size:.88rem}
+  .rate{gap:.6rem}
+}
+.hours li.is-now .mono{color:var(--brown)}
+
+/* ======================= FAQ ======================= */
+.faq{max-width:900px;margin-inline:auto}
+.q{border-bottom:1px solid var(--line)}
+.q:first-of-type{border-top:1px solid var(--line)}
+.q__btn{
+  width:100%;background:none;border:0;cursor:pointer;text-align:left;color:inherit;font:inherit;
+  display:flex;align-items:center;gap:1.2rem;padding:clamp(18px,2.2vw,26px) 0;
+  font-family:"Archivo Black",sans-serif;font-size:clamp(1rem,1.3vw,1.24rem);line-height:1.18;
+  text-transform:uppercase;letter-spacing:-.012em;
+  transition:color .3s var(--ease);
+}
+.q__btn:hover{color:var(--rust-ink)}
+.q__ic{position:relative;flex:none;margin-left:auto;width:30px;height:30px;border-radius:50%;border:2px solid var(--line-strong);
+  display:grid;place-items:center;transition:background-color .4s var(--ease),border-color .4s var(--ease),transform .5s var(--ease-out)}
+.q__ic::before,.q__ic::after{content:"";position:absolute;width:12px;height:2.5px;border-radius:2px;background:var(--brown);transition:transform .45s var(--ease-out),background-color .4s var(--ease)}
+.q__ic::after{transform:rotate(90deg)}
+.q[open] .q__ic{background:var(--rust);border-color:var(--rust);transform:rotate(180deg)}
+.q[open] .q__ic::before,.q[open] .q__ic::after{background:#fffaf0}
+.q[open] .q__ic::after{transform:rotate(0)}
+.js .q__panel{overflow:hidden;display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease-out)}
+.js .q.is-open .q__panel{grid-template-rows:1fr}
+.q__inner{min-height:0}
+.q__inner>div{padding:0 0 clamp(20px,2.4vw,28px);color:var(--muted);max-width:70ch}
+.q summary{list-style:none}
+.q summary::-webkit-details-marker{display:none}
+
+/* ======================= ABSCHLUSS ======================= */
+.close{position:relative;overflow:hidden;background:var(--brown-3);color:var(--cream)}
+.close__ph{position:absolute;inset:0}
+.close__ph img{width:100%;height:100%;object-fit:cover;object-position:50% 62%;opacity:.62}
+.close__veil{position:absolute;inset:0;background:
+  linear-gradient(to right,rgba(29,17,10,.92) 0%,rgba(29,17,10,.74) 46%,rgba(29,17,10,.38) 100%)}
+.close__in{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(34px,5vw,80px);align-items:center;padding-block:clamp(72px,9vw,132px)}
+@media (max-width:940px){.close__in{grid-template-columns:1fr}}
+.close h2{color:#fffaf0;max-width:14ch}
+.close .lede{color:rgba(246,236,217,.82);margin-top:1.3rem}
+.close__meta{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.8rem}
+.chip{font-family:"DM Mono",monospace;font-weight:500;font-size:.72rem;letter-spacing:.06em;
+  padding:.44rem .75rem;border-radius:99px;border:1px solid rgba(246,236,217,.28);color:rgba(246,236,217,.88)}
+
+/* ======================= FORMULAR ======================= */
+.form{background:rgba(255,250,240,.97);color:var(--brown);border-radius:var(--r);padding:clamp(22px,3vw,36px);box-shadow:0 30px 70px rgba(29,17,10,.45)}
+.form h3{margin-bottom:.45rem}
+.form__intro{color:var(--muted);font-size:.94rem;margin-bottom:1.4rem}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.f{display:flex;flex-direction:column;gap:.34rem}
+.f--full{grid-column:1/-1}
+.f label{font-family:"DM Mono",monospace;font-weight:500;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.f input,.f select,.f textarea{
+  font:inherit;font-size:.96rem;color:var(--brown);background:#fff;
+  border:1.5px solid var(--line-strong);border-radius:10px;padding:.72rem .85rem;width:100%;
+  transition:border-color .3s var(--ease),box-shadow .3s var(--ease);
+}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--rust);box-shadow:0 0 0 3px rgba(193,68,14,.16)}
+.f textarea{resize:vertical;min-height:96px}
+.form .btn{width:100%;margin-top:1.1rem}
+.form__fine{margin-top:.9rem;color:var(--muted);font-size:.82rem}
+.form__ok{
+  display:none;gap:.8rem;align-items:flex-start;margin-top:1.1rem;padding:.95rem 1.05rem;border-radius:10px;
+  background:rgba(46,158,82,.1);border:1px solid rgba(46,158,82,.32);font-size:.92rem;
+}
+.form__ok.is-on{display:flex;animation:rise .55s var(--ease-out) forwards}
+.form__ok svg{flex:none;margin-top:.15rem;color:#2e9e52}
+@media (max-width:520px){.fields{grid-template-columns:1fr}}
+
+/* ======================= FUSS ======================= */
+.ft{background:var(--brown-3);color:rgba(246,236,217,.72);padding-block:clamp(48px,6vw,80px) 30px;position:relative;z-index:1}
+.ft__grid{display:grid;grid-template-columns:1.35fr 1fr 1fr 1.05fr;gap:clamp(24px,3vw,44px)}
+@media (max-width:860px){.ft__grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.ft__grid{grid-template-columns:1fr}}
+.ft h4{font-family:"DM Mono",monospace;font-weight:500;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin:0 0 1rem}
+.ft a{color:rgba(246,236,217,.8);text-decoration:none;transition:color .3s var(--ease)}
+.ft a:hover{color:var(--amber)}
+.ft ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.93rem}
+.ft ul li{overflow-wrap:anywhere}
+.ft__brand img{width:88px;height:88px;margin-bottom:1rem}
+.ft__bottom{margin-top:clamp(34px,4vw,54px);padding-top:22px;border-top:1px solid rgba(246,236,217,.14);
+  display:flex;flex-wrap:wrap;gap:.8rem 1.6rem;justify-content:space-between;font-size:.8rem;color:rgba(246,236,217,.5)}
+.todo{
+  margin-top:22px;padding:.95rem 1.1rem;border-radius:10px;border:1px dashed rgba(240,165,46,.4);
+  background:rgba(240,165,46,.07);color:rgba(246,236,217,.78);font-size:.83rem;line-height:1.55;
+}
+.todo b{color:var(--amber)}
+
+/* ======================= AUFTRITTE ======================= */
+.js .rv{opacity:0;transform:translateY(26px)}
+.rv{transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+.js .rv-g>*{opacity:0;transform:translateY(24px)}
+.rv-g>*{transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+.rv-g.in>*{opacity:1;transform:none}
+.rv-g.in>*:nth-child(1){transition-delay:.04s}
+.rv-g.in>*:nth-child(2){transition-delay:.12s}
+.rv-g.in>*:nth-child(3){transition-delay:.2s}
+.rv-g.in>*:nth-child(4){transition-delay:.28s}
+.rv-g.in>*:nth-child(5){transition-delay:.36s}
+.rv-g.done>*{transition-delay:0s !important}
+
+/* ======================= REDUCED MOTION ======================= */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;transition-delay:0s !important}
+  .rv,.rv-g>*{opacity:1 !important;transform:none !important}
+  .rise{opacity:1 !important;transform:none !important}
+  .hero__ph img{transform:none}
+}
+body.paused *,body.paused *::before,body.paused *::after{animation-play-state:paused !important}
+
+@media (pointer:coarse){
+  .btn{min-height:46px}
+  .q__btn{min-height:52px}
+  .nav a{min-height:44px;display:inline-flex;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div class="ambient" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Wappen-Form, einmal definiert und mehrfach benutzt -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0a52e"/><stop offset="50%" stop-color="#e2701d"/><stop offset="100%" stop-color="#c1440e"/>
+    </linearGradient>
+    <symbol id="crest" viewBox="0 0 46 52">
+      <path d="M23 1 44 7v24c0 12-10 17.5-21 20C12 48.5 2 43 2 31V7z" fill="url(#sunset)"/>
+      <path d="M23 1 44 7v24c0 12-10 17.5-21 20C12 48.5 2 43 2 31V7z" fill="none" stroke="#2f1d13" stroke-width="2.6"/>
+      <path d="M3 21h40v3.4H3zm0 6.4h40v3.4H3z" fill="#2f1d13" opacity=".2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="#top" aria-label="Wakepark Pfullendorf, zum Seitenanfang">
+      <img src="assets/logo.png" width="50" height="50" alt="Wappen des Wakepark Pfullendorf">
+      <span class="brand-txt"><b>Wakepark</b><span>Pfullendorf</span></span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#vorteile">Warum hier</a>
+      <a href="#angebot">Angebot</a>
+      <a href="#erstes-mal">Erstes Mal</a>
+      <a href="#anlage">Die Anlage</a>
+      <a href="#preise">Preise</a>
+      <a href="#fragen">Fragen</a>
+    </nav>
+    <span class="status" id="status" aria-live="polite"><span class="dot"></span><span id="status-txt">Saison bis 18. Oktober</span></span>
+    <a class="btn btn--primary btn--sm" href="#buchen">Zeitkarte buchen</a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<span id="top"></span>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" aria-labelledby="h1">
+  <div class="hero__ph" aria-hidden="true">
+    <img src="assets/hero-gischt.jpg" width="1134" height="755" alt="" fetchpriority="high">
+  </div>
+  <div class="hero__sun" aria-hidden="true"></div>
+  <div class="hero__veil" aria-hidden="true"></div>
+  <div class="wrap hero__in">
+    <p class="kicker rise">Seepark Linzgau · 25 km vom Bodensee</p>
+    <h1 id="h1" class="rise d1">Zwischen sitzen<br>und stehen liegen<br>drei Sekunden.</h1>
+    <p class="hero__sub rise d2">Am Kabel zieht dich ein Seil, kein Boot. Du hängst im Wasser, drückst dich dagegen, und dann läufst du. Mehr ist es nicht.</p>
+    <div class="btn-row rise d3">
+      <a class="btn btn--primary" href="#buchen">Zeitkarte buchen</a>
+      <a class="btn btn--onphoto" href="#kurs">Anfängerkurs anfragen</a>
+    </div>
+    <p class="hero__fine rise d4">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      Im Normalbetrieb ohne Anmeldung. Schwimmweste, Wasserski und Kneeboard sind bei jeder Zeitkarte dabei.
+    </p>
+  </div>
+  <span class="hero__stripes" aria-hidden="true"></span>
+</section>
+
+<!-- ======================= FAKTENLEISTE ======================= -->
+<section class="facts" aria-label="Die Anlage in Zahlen">
+  <div class="wrap">
+    <div class="facts__grid rv-g">
+      <div class="fact"><b>5 Masten</b><span>die große Bahn für alle, die schon stehen</span></div>
+      <div class="fact"><b>Übungslift</b><span>System 2.0, zieht dich langsam und geradeaus</span></div>
+      <div class="fact"><b>12 Hindernisse</b><span>3 Boxen, 5 Rails, 2 Kicker, 2 Specials</span></div>
+      <div class="fact"><b>Ab 8 Jahren</b><span>Kurse mit Materialkunde und Einweisung</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= VORTEILE ======================= -->
+<section class="band" id="vorteile" aria-labelledby="h-vorteile">
+  <div class="wrap split">
+    <div class="split__head rv">
+      <p class="kicker">Warum hier</p>
+      <h2 id="h-vorteile">Am Kabel lernst du es an einem Nachmittag.</h2>
+      <p class="lede" style="margin-top:1.2rem">Hinter dem Boot wartest du darauf, dass jemand Gas gibt. Am Kabel läuft das Seil einfach weiter, und der nächste Versuch kommt in zwei Minuten. Deshalb geht es hier so viel schneller.</p>
+      <p style="margin-top:1.5rem"><a class="textlink" href="#kurs">Anfängerkurs anfragen <span class="arw" aria-hidden="true">→</span></a></p>
+    </div>
+
+    <ul class="plus rv-g">
+      <li>
+        <svg class="crest" aria-hidden="true"><use href="#crest"/></svg>
+        <div>
+          <h3>Das Seil macht die Arbeit</h3>
+          <p>Du musst nicht stark sein und nicht paddeln. Du sitzt im Wasser, das Seil nimmt dich mit, du drückst dich dagegen und stehst. Wer beim ersten Versuch fällt, ist nach zwei Minuten wieder dran.</p>
+        </div>
+      </li>
+      <li>
+        <svg class="crest" aria-hidden="true"><use href="#crest"/></svg>
+        <div>
+          <h3>Erst der Übungslift, dann die große Bahn</h3>
+          <p>Der Übungslift System 2.0 zieht geradeaus und langsam, ohne Kurven. Genau dafür ist er da. Wenn du sicher stehst, wechselst du auf die 5-Mast-Anlage und fährst die ganze Runde.</p>
+        </div>
+      </li>
+      <li>
+        <svg class="crest" aria-hidden="true"><use href="#crest"/></svg>
+        <div>
+          <h3>Du brauchst nichts mitzubringen</h3>
+          <p>Schwimmweste, Wasserski und Kneeboard gehören zu jeder Zeitkarte, ohne Aufpreis. Neopren gibt es ab 7 Euro, ein Anfängerboard ab 8 Euro. Badesachen und ein Handtuch reichen.</p>
+        </div>
+      </li>
+      <li>
+        <svg class="crest" aria-hidden="true"><use href="#crest"/></svg>
+        <div>
+          <h3>Der Tag hört am Wasser nicht auf</h3>
+          <p>Shop und Café liegen direkt an der Bahn, das Bootshaus nebenan. Dazu Liegewiese, Beachvolleyball, Minigolf und Wasserspielplatz im Seepark. Wer nicht fährt, langweilt sich trotzdem nicht.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ======================= LEISTUNGEN ======================= -->
+<section class="band band--tint" id="angebot" aria-labelledby="h-angebot">
+  <div class="wrap">
+    <div class="rv" style="max-width:62ch;margin-bottom:clamp(30px,4vw,54px)">
+      <p class="kicker">Das Angebot</p>
+      <h2 id="h-angebot">Fünf Wege auf die Bahn.</h2>
+      <p class="lede" style="margin-top:1.2rem">Spontan vorbeikommen, mit Einweisung starten oder die ganze Anlage für euch buchen. Die Preise für Zeitkarten stehen im Buchungssystem, alles andere steht hier.</p>
+    </div>
+
+    <div class="offers rv-g">
+      <article class="offer offer--wide">
+        <div class="offer__ph"><span class="tag">Ohne Anmeldung</span><img src="assets/kicker-gegenlicht.jpg" width="1200" height="627" alt="Fahrer springt im Abendlicht über ein Hindernis der Anlage" loading="lazy"></div>
+        <div class="offer__body">
+          <h3>Zeitkarte</h3>
+          <p>Stunde oder Tag an der großen Bahn. Während der Öffnungszeiten kannst du einfach kommen. Ein Wakesys-Konto legst du vorher in zwei Minuten online an, dann geht es an der Kasse schneller.</p>
+          <a class="textlink" href="#buchen">Online buchen <span class="arw" aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="offer offer--wide">
+        <div class="offer__ph"><span class="tag">Anmeldung nötig</span><img src="assets/crew-detail.jpg" width="1000" height="562" alt="Drei Fahrer im Neoprenanzug mit Schwimmweste tragen ihre Boards zum Wasser" loading="lazy"></div>
+        <div class="offer__body">
+          <h3>Anfängerkurs</h3>
+          <p>Materialkunde, kurze Theorie am Ufer, dann Wasser. Ab 8 Jahren. Du lernst, wie du im Wasser sitzt, wann du dich gegen den Zug lehnst und wie du loslässt, bevor es unangenehm wird.</p>
+          <a class="textlink" href="#kurs">Kurs anfragen <span class="arw" aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="offer">
+        <div class="offer__body">
+          <span class="tag tag--teal">Für Gruppen</span>
+          <h3>Bahn exklusiv</h3>
+          <p>Die komplette Anlage für euch allein. Geburtstag, Firmenausflug, Verein, Schulklasse. Ab 21 Personen kommt ein Aufschlag dazu.</p>
+          <a class="textlink" href="#kurs">Gruppe anfragen <span class="arw" aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="offer">
+        <div class="offer__body">
+          <span class="tag tag--teal">Nur vor Ort</span>
+          <h3>Bananaboat</h3>
+          <p>Für alle, die eigentlich nur zuschauen wollten. Tickets gibt es an der Kasse oder auf Anfrage, nicht im Onlineshop.</p>
+          <a class="textlink" href="#kontakt">Vor Ort fragen <span class="arw" aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="offer">
+        <div class="offer__body">
+          <span class="tag">Ab 7 Euro</span>
+          <h3>Verleih</h3>
+          <p>Neopren kurz 7 Euro, lang 8 Euro. Anfängerboard 8 Euro, Pro-Board 12 Euro. Weste, Wasserski und Kneeboard kosten nichts extra.</p>
+          <a class="textlink" href="#preise">Alle Preise <span class="arw" aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ERSTES MAL ======================= -->
+<section class="band" id="erstes-mal" aria-labelledby="h-erstes">
+  <div class="wrap flow">
+    <figure class="flow__ph rv" style="margin:0">
+      <img src="assets/crew-zum-wasser.jpg" width="760" height="1388" alt="Drei Fahrer im Neoprenanzug gehen mit Boards und Westen zum Ufer" loading="lazy">
+      <figcaption class="flow__cap">Vom Verleih zum Steg sind es zwei Minuten.</figcaption>
+    </figure>
+
+    <div>
+      <div class="rv">
+        <p class="kicker">Dein erster Tag</p>
+        <h2 id="h-erstes">Vom Parkplatz aufs Wasser in zwanzig Minuten.</h2>
+      </div>
+      <ol class="steps rv-g" style="margin-top:clamp(20px,2.6vw,32px)">
+        <li>
+          <h3>Ankommen</h3>
+          <p>Bannholzer Weg 18, direkt am Ostufer. Parken, an die Kasse, Wakesys-Konto anlegen, falls du noch keins hast.</p>
+        </li>
+        <li>
+          <h3>Anziehen</h3>
+          <p>Neopren und Weste aus dem Verleih, Umkleide und Spind sind vor Ort. Helm gibt es dazu, wenn du an die Hindernisse willst.</p>
+        </li>
+        <li>
+          <h3>Einweisung</h3>
+          <p>Wie du im Wasser sitzt, wann du dich gegen den Zug lehnst, wie du loslässt. Das dauert keine zehn Minuten und spart dir die halbe Lernzeit.</p>
+        </li>
+        <li>
+          <h3>Fahren</h3>
+          <p>Erste Runden am Übungslift, dann auf die große Bahn. Am Start steht ein Hebler, der dich abpasst und dir sagt, was du beim nächsten Mal anders machst.</p>
+        </li>
+      </ol>
+      <p class="rv" style="margin-top:clamp(22px,2.6vw,32px)">
+        <a class="btn btn--primary" href="#buchen">Zeitkarte buchen</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DIE ANLAGE ======================= -->
+<section class="band band--dark" id="anlage" aria-labelledby="h-anlage">
+  <div class="wrap rig">
+    <figure class="rig__ph rv" style="margin:0">
+      <img src="assets/anlage-luftbild.jpg" width="1500" height="1126" alt="Luftaufnahme des Seepark Linzgau mit der Wakeboardbahn und den Hindernissen im türkisen Wasser" loading="lazy">
+      <span class="rig__pin" style="left:65%;top:33%">Die große Bahn</span>
+      <span class="rig__pin" style="left:36%;top:58%">Hindernisse</span>
+      <span class="rig__pin" style="left:15%;top:69%">Start und Verleih</span>
+      <span class="rig__pin" style="left:9%;top:84%">Strand</span>
+    </figure>
+
+    <div>
+      <div class="rv">
+        <p class="kicker">Die Anlage</p>
+        <h2 id="h-anlage">Ein Baggersee, zwei Lifte, zwölf Hindernisse.</h2>
+        <p class="lede" style="margin-top:1.2rem">Das Wasser ist klar und flach am Ufer. Die Anlage wurde 2025 technisch überholt, das Betriebsgebäude ist neu, und beim Update war Wakeboard-Profi Jens Geißler dabei.</p>
+      </div>
+      <ul class="obs rv-g" style="margin-top:clamp(22px,2.8vw,34px)">
+        <li><b>5</b><span>Mast-Anlage <em>die große Runde über den ganzen See</em></span></li>
+        <li><b>1</b><span>Übungslift System 2.0 <em>geradeaus, langsam, zum Starten lernen</em></span></li>
+        <li><b>3</b><span>Boxen <em>der einfachste Einstieg ins Obstacle-Fahren</em></span></li>
+        <li><b>5</b><span>Rails <em>vom flachen Slider bis zur Kante</em></span></li>
+        <li><b>2</b><span>Kicker <em>wenn du den ersten Airtime-Moment suchst</em></span></li>
+        <li><b>2</b><span>Specials <em>Unit Ollie Barrier und Riffelrohr</em></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SOCIAL PROOF ======================= -->
+<section class="band" id="stimmen" aria-labelledby="h-stimmen">
+  <div class="wrap">
+    <div class="rv" style="max-width:62ch;margin-bottom:clamp(26px,3.2vw,40px)">
+      <p class="kicker">Wer dahintersteht</p>
+      <h2 id="h-stimmen">Hier arbeiten Leute, die selbst fahren.</h2>
+    </div>
+
+    <div class="boss rv" style="margin-top:0">
+      <svg class="boss__crest" aria-hidden="true"><use href="#crest"/></svg>
+      <div>
+        <h3>Helgi Kolvidsson und das Team</h3>
+        <p>Der Park ist im Frühjahr 2025 an einen neuen Betreiber übergegangen und hat am 1. Mai 2025 wieder aufgemacht. Beim technischen Update war Wakeboard-Profi Jens Geißler dabei. Seitdem stehen Helgi und sein Team hier, dazu die Hebler an den Startplätzen: Dan, Fabi, Flo, Simon, Moritz und die anderen. Alle fahren selbst. Wenn du eine Frage zu deinem Start hast, fragst du jemanden, der sie selbst hatte.</p>
+      </div>
+    </div>
+
+    <h3 class="rv" style="margin:clamp(40px,5vw,66px) 0 1.4rem;font-size:clamp(1rem,1.2vw,1.2rem)">Was Gäste sagen</h3>
+
+    <div class="proof rv-g">
+      <blockquote class="quote quote--ph">
+        <span class="badge-ph">Platzhalter</span>
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <div aria-hidden="true">
+          <div class="quote__ph-line" style="width:96%"></div>
+          <div class="quote__ph-line" style="width:88%"></div>
+          <div class="quote__ph-line" style="width:62%"></div>
+        </div>
+        <p class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Platz für eine echte Gästestimme.</p>
+        <footer>Gästestimme folgt</footer>
+      </blockquote>
+
+      <blockquote class="quote quote--ph">
+        <span class="badge-ph">Platzhalter</span>
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <div aria-hidden="true">
+          <div class="quote__ph-line" style="width:92%"></div>
+          <div class="quote__ph-line" style="width:97%"></div>
+          <div class="quote__ph-line" style="width:48%"></div>
+        </div>
+        <p class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Platz für eine echte Gästestimme.</p>
+        <footer>Gästestimme folgt</footer>
+      </blockquote>
+
+      <blockquote class="quote quote--ph">
+        <span class="badge-ph">Platzhalter</span>
+        <span class="quote__mark" aria-hidden="true">“</span>
+        <div aria-hidden="true">
+          <div class="quote__ph-line" style="width:88%"></div>
+          <div class="quote__ph-line" style="width:94%"></div>
+          <div class="quote__ph-line" style="width:70%"></div>
+        </div>
+        <p class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Platz für eine echte Gästestimme.</p>
+        <footer>Gästestimme folgt</footer>
+      </blockquote>
+    </div>
+
+    <p class="rv" style="margin-top:1.2rem;color:var(--muted);font-size:.9rem;max-width:70ch">
+      Hier stehen keine erfundenen Bewertungen. Die drei Felder werden mit echten Zitaten von Gästen gefüllt, sobald sie freigegeben sind.
+    </p>
+  </div>
+</section>
+
+<!-- ======================= PREISE UND ZEITEN ======================= -->
+<section class="band band--tint" id="preise" aria-labelledby="h-preise">
+  <div class="wrap">
+    <div class="rv" style="max-width:62ch;margin-bottom:clamp(28px,3.6vw,46px)">
+      <p class="kicker">Preise und Zeiten</p>
+      <h2 id="h-preise">Was es kostet, wann es geht.</h2>
+    </div>
+
+    <div class="two rv-g">
+      <div class="card">
+        <h3>Verleih</h3>
+        <div class="rate"><span>Neoprenanzug kurz<small>Bei kompletter Bahnbuchung 8 Euro</small></span><span class="mono">7 €</span></div>
+        <div class="rate"><span>Neoprenanzug lang<small>Bei kompletter Bahnbuchung 10 Euro</small></span><span class="mono">8 €</span></div>
+        <div class="rate"><span>Wakeboard für Anfänger<small>Bei kompletter Bahnbuchung 10 Euro</small></span><span class="mono">8 €</span></div>
+        <div class="rate"><span>Wakeboard Pro<small>Bei kompletter Bahnbuchung 14 Euro</small></span><span class="mono">12 €</span></div>
+        <div class="rate"><span>Schwimmweste, Wasserski, Kneeboard<small>Bei jeder Zeitkarte und Bahnbuchung dabei</small></span><span class="mono">0 €</span></div>
+        <p class="note">Die Preise gelten bis 20 Personen. Ab 21 Personen kommt ein Aufschlag dazu. Zeitkarten und Stundenkarten kaufst du vor Ort oder im Buchungssystem, dort stehen auch die aktuellen Preise.</p>
+        <p style="margin-top:1.1rem"><a class="btn btn--primary" href="#buchen">Zum Buchungssystem</a></p>
+      </div>
+
+      <div class="card">
+        <h3>Saison 2026</h3>
+        <ul class="hours" id="hours">
+          <li data-m="3"><span>29. bis 31. März</span><span class="mono">So 12–19</span></li>
+          <li data-m="4"><span>April</span><span class="mono">Mi–Fr 14–19 · Sa/So 12–19</span></li>
+          <li data-m="5"><span>Mai</span><span class="mono">Di–Fr 14–21 · Sa/So 12–21</span></li>
+          <li data-m="6"><span>Juni</span><span class="mono">Mo–Fr 14–21 · Sa/So 12–21</span></li>
+          <li data-m="7"><span>1. Juli bis 13. September</span><span class="mono">täglich 12–21</span></li>
+          <li data-m="9"><span>14. bis 30. September</span><span class="mono">Di–Fr 14–19 · Sa/So 12–19</span></li>
+          <li data-m="10"><span>1. bis 18. Oktober</span><span class="mono">Di–Fr 14–19 · Sa/So 12–19</span></li>
+          <li data-m="11"><span>Ab 19. Oktober</span><span class="mono">Winterschlaf</span></li>
+        </ul>
+        <p class="note">Wetter kann die Zeiten ändern, Aktuelles steht auf Instagram. Das Büro ist dienstags und freitags von 9 bis 18 Uhr erreichbar, für Verleih und Veranstaltungen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FAQ ======================= -->
+<section class="band" id="fragen" aria-labelledby="h-fragen">
+  <div class="wrap">
+    <div class="rv faq" style="margin-bottom:clamp(26px,3.2vw,42px)">
+      <p class="kicker">Fragen</p>
+      <h2 id="h-fragen">Was vor dem ersten Mal alle fragen.</h2>
+    </div>
+
+    <div class="faq rv-g">
+      <details class="q">
+        <summary class="q__btn">Ich war noch nie auf einem Board. Reicht das?<span class="q__ic" aria-hidden="true"></span></summary>
+        <div class="q__panel"><div class="q__inner"><div>
+          Ja, und du bist damit die Mehrheit. Im Anfängerkurs bekommst du Materialkunde, eine kurze Theorie am Ufer und dann Wasser. Am Übungslift zieht dich das Seil langsam und geradeaus, ohne Kurve. Wer beim ersten Versuch fällt, steht oft beim dritten. Ab 8 Jahren.
+        </div></div></div>
+      </details>
+
+      <details class="q">
+        <summary class="q__btn">Muss ich vorher buchen?<span class="q__ic" aria-hidden="true"></span></summary>
+        <div class="q__panel"><div class="q__inner"><div>
+          Im Normalbetrieb nicht. Du kannst während der Öffnungszeiten einfach an die große Bahn kommen. Anmelden musst du dich nur für den Anfängerkurs und für die exklusive Bahnbuchung. Beides läuft über booking@wakepark-pfullendorf.de. Ein Wakesys-Konto vorher anzulegen spart dir Zeit an der Kasse.
+        </div></div></div>
+      </details>
+
+      <details class="q">
+        <summary class="q__btn">Was muss ich mitbringen?<span class="q__ic" aria-hidden="true"></span></summary>
+        <div class="q__panel"><div class="q__inner"><div>
+          Badesachen, Handtuch, etwas zu trinken. Schwimmweste, Wasserski und Kneeboard sind bei jeder Zeitkarte dabei. Neoprenanzug und Board leihst du für 7 bis 12 Euro vor Ort. Eigenes Material kannst du natürlich mitbringen.
+        </div></div></div>
+      </details>
+
+      <details class="q">
+        <summary class="q__btn">Wie fit muss ich sein?<span class="q__ic" aria-hidden="true"></span></summary>
+        <div class="q__panel"><div class="q__inner"><div>
+          Fitter, als du denkst, musst du nicht sein. Der Zug macht die Arbeit, du hältst nur dagegen. Was du am nächsten Tag merkst, sind Unterarme und Rumpf. Das legt sich nach zwei, drei Besuchen. Schwimmen können solltest du.
+        </div></div></div>
+      </details>
+
+      <details class="q">
+        <summary class="q__btn">Und wenn es regnet?<span class="q__ic" aria-hidden="true"></span></summary>
+        <div class="q__panel"><div class="q__inner"><div>
+          Regen ist kein Grund abzusagen. Du bist ohnehin nass, und der Neopren hält warm. Bei Gewitter oder starkem Wind steht die Anlage still, das entscheidet das Team vor Ort. Kurzfristige Änderungen stehen auf Instagram.
+        </div></div></div>
+      </details>
+
+      <details class="q">
+        <summary class="q__btn">Wir sind eine Gruppe. Geht das?<span class="q__ic" aria-hidden="true"></span></summary>
+        <div class="q__panel"><div class="q__inner"><div>
+          Dafür gibt es die exklusive Bahnbuchung: die komplette Anlage für euch. Geburtstag, Firmenausflug, Verein, Schulklasse. Bis 20 Personen gelten die normalen Verleihpreise, ab 21 Personen kommt ein Aufschlag dazu. Anfragen gehen an booking@wakepark-pfullendorf.de oder über das Formular unten.
+        </div></div></div>
+      </details>
+
+      <details class="q">
+        <summary class="q__btn">Kann ich mitkommen, ohne zu fahren?<span class="q__ic" aria-hidden="true"></span></summary>
+        <div class="q__panel"><div class="q__inner"><div>
+          Klar. Shop und Café liegen direkt an der Bahn, das Bootshaus nebenan. Im Seepark gibt es Liegewiese, Beachvolleyball, Minigolf und einen Wasserspielplatz. Wohnmobile stehen direkt am See.
+        </div></div></div>
+      </details>
+
+      <details class="q">
+        <summary class="q__btn">Wann ist überhaupt Saison?<span class="q__ic" aria-hidden="true"></span></summary>
+        <div class="q__panel"><div class="q__inner"><div>
+          Vom 29. März bis zum 18. Oktober 2026. Ab dem 19. Oktober geht die Anlage in den Winterschlaf. Im Hochsommer, vom 1. Juli bis 13. September, läuft die Bahn täglich von 12 bis 21 Uhr.
+        </div></div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ABSCHLUSS ======================= -->
+<section class="close" id="kontakt" aria-labelledby="h-close">
+  <div class="close__ph" aria-hidden="true"><img src="assets/abend-anlage.jpg" width="1134" height="755" alt="" loading="lazy"></div>
+  <div class="close__veil" aria-hidden="true"></div>
+  <div class="wrap close__in">
+    <div class="rv">
+      <p class="kicker">Letzter Aufruf</p>
+      <h2 id="h-close">Das Wasser wartet nicht bis nächstes Jahr.</h2>
+      <p class="lede">Am 18. Oktober ist Schluss, danach steht die Bahn bis Ende März. Bis dahin läuft sie jeden Tag, an dem das Wetter mitspielt.</p>
+      <div class="close__meta">
+        <span class="chip">Bannholzer Weg 18, 88630 Pfullendorf</span>
+        <span class="chip">07552 4086901</span>
+        <span class="chip">Verleih 0172 3056278</span>
+      </div>
+      <p style="margin-top:2rem">
+        <a class="btn btn--primary" id="buchen" href="https://wakepark-pfullendorf.wakesys.com/browser/index.php" target="_blank" rel="noopener">Zeitkarte online buchen</a>
+      </p>
+    </div>
+
+    <div class="form rv" id="kurs">
+      <h3>Kurs, Gruppe oder Firmenevent</h3>
+      <p class="form__intro">Alles, was nicht über den Onlineshop läuft, geht über dieses Formular. Antwort kommt aus dem Büro.</p>
+      <form id="anfrage" novalidate>
+        <div class="fields">
+          <div class="f f--full"><label for="n">Name</label><input id="n" name="n" type="text" autocomplete="name" required></div>
+          <div class="f"><label for="e">E-Mail</label><input id="e" name="e" type="email" autocomplete="email" required></div>
+          <div class="f"><label for="t">Telefon (freiwillig)</label><input id="t" name="t" type="tel" autocomplete="tel"></div>
+          <div class="f"><label for="w">Worum geht es?</label>
+            <select id="w" name="w">
+              <option>Anfängerkurs</option>
+              <option>Gruppe oder Geburtstag</option>
+              <option>Firmenevent</option>
+              <option>Schulklasse oder Verein</option>
+              <option>Etwas anderes</option>
+            </select>
+          </div>
+          <div class="f"><label for="p">Wie viele seid ihr?</label><input id="p" name="p" type="number" min="1" max="200" inputmode="numeric" placeholder="z. B. 12"></div>
+          <div class="f f--full"><label for="d">Wunschtermin</label><input id="d" name="d" type="text" placeholder="z. B. Samstag, 27. Juni, nachmittags"></div>
+          <div class="f f--full"><label for="m">Nachricht</label><textarea id="m" name="m" placeholder="Wie viele Anfänger sind dabei? Braucht ihr Neopren?"></textarea></div>
+        </div>
+        <button class="btn btn--primary" type="submit">Anfrage senden</button>
+        <p class="form__fine">Das öffnet dein E-Mail-Programm mit der fertigen Nachricht an booking@wakepark-pfullendorf.de. Büro: dienstags und freitags 9 bis 18 Uhr.</p>
+        <div class="form__ok" id="ok" role="status">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Deine E-Mail ist vorbereitet und offen. Abschicken nicht vergessen. Falls sich nichts geöffnet hat, schreib direkt an <a href="mailto:booking@wakepark-pfullendorf.de" style="color:inherit">booking@wakepark-pfullendorf.de</a>.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FUSS ======================= -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__grid">
+      <div class="ft__brand">
+        <img src="assets/logo.png" width="88" height="88" alt="Wappen des Wakepark Pfullendorf" loading="lazy">
+        <p style="font-size:.93rem;max-width:34ch">Wakeboarden und Wasserski am Ostufer des Seepark Linzgau, 25 km vom Bodensee.</p>
+        <span class="stripes" style="max-width:120px;margin-top:1rem" aria-hidden="true"></span>
+      </div>
+
+      <div>
+        <h4>Anfahrt</h4>
+        <ul>
+          <li>Bannholzer Weg 18<br>88630 Pfullendorf</li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Bannholzer+Weg+18+88630+Pfullendorf" target="_blank" rel="noopener">In Google Maps öffnen</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+4975524086901">07552 4086901</a></li>
+          <li><a href="tel:+491723056278">0172 3056278 (Verleih)</a></li>
+          <li><a href="mailto:booking@wakepark-pfullendorf.de">booking@wakepark-pfullendorf.de</a></li>
+          <li><a href="mailto:marketing@wakepark-pfullendorf.de">marketing@wakepark-pfullendorf.de</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Saison und Social</h4>
+        <ul>
+          <li>29. März bis 18. Oktober 2026</li>
+          <li>Büro: Di und Fr, 9 bis 18 Uhr</li>
+          <li><a href="https://www.instagram.com/wakeparkfullendorf/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#buchen">Zeitkarte buchen</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="todo">
+      <b>Vor dem Livegang noch zu erledigen:</b> Impressum und Datenschutzerklärung ergänzen, die Gästestimmen mit echten Zitaten füllen, Öffnungszeiten und Verleihpreise gegen den aktuellen Stand prüfen. Die Fotos stammen vom Park und von cablemekka.com und brauchen vor der Veröffentlichung eine Freigabe.
+    </div>
+
+    <div class="ft__bottom">
+      <span>© <span id="jahr">2026</span> Wakepark Pfullendorf</span>
+      <span>Impressum und Datenschutz folgen</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* ---------- Jahr ---------- */
+  document.getElementById("jahr").textContent = new Date().getFullYear();
+
+  /* ---------- Kopfleiste ---------- */
+  var hdr = document.getElementById("hdr"), stuck = false;
+  function onScroll(){
+    var s = window.scrollY > 40;
+    if (s !== stuck){ stuck = s; hdr.classList.toggle("is-stuck", s); }
+    spy();
+  }
+  addEventListener("scroll", onScroll, {passive:true});
+
+  /* ---------- Aktiver Navi-Punkt ---------- */
+  var links = [].slice.call(document.querySelectorAll(".nav a[href^='#']"));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute("href")); });
+  var lastActive = -1;
+  function spy(){
+    var y = window.scrollY + innerHeight * 0.32, best = -1;
+    for (var i = 0; i < targets.length; i++){
+      if (targets[i] && targets[i].offsetTop <= y) best = i;
+    }
+    if (best !== lastActive){
+      if (lastActive > -1) links[lastActive].classList.remove("is-active");
+      if (best > -1) links[best].classList.add("is-active");
+      lastActive = best;
+    }
+  }
+
+  /* ---------- Auftritte beim Scrollen ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      el.classList.add("in");
+      io.unobserve(el);
+      if (el.classList.contains("rv-g")){
+        // Staffel-Verzoegerungen nach dem Auftritt zuruecknehmen,
+        // sonst haengt jeder spaetere Hover um die Staffelzeit hinterher.
+        setTimeout(function(){ el.classList.add("done"); }, 1400);
+      }
+    });
+  }, {rootMargin:"0px 0px -12% 0px", threshold:0.12});
+  [].forEach.call(document.querySelectorAll(".rv, .rv-g"), function(el){ io.observe(el); });
+
+  /* ---------- FAQ: animierte Hoehe ohne Sprung ---------- */
+  [].forEach.call(document.querySelectorAll(".q"), function(d){
+    var sum = d.querySelector("summary");
+    sum.addEventListener("click", function(ev){
+      ev.preventDefault();
+      if (d.open){
+        d.classList.remove("is-open");
+        if (reduce.matches){ d.open = false; return; }
+        setTimeout(function(){ d.open = false; }, 480);
+      } else {
+        d.open = true;
+        requestAnimationFrame(function(){ d.classList.add("is-open"); });
+      }
+    });
+  });
+
+  /* ---------- Heute geoeffnet? Aus den echten Saisonzeiten ---------- */
+  // [von-Monat, von-Tag, bis-Monat, bis-Tag, [Zeiten je Wochentag: So,Mo,Di,Mi,Do,Fr,Sa]]
+  // null = geschlossen, sonst [Startstunde, Endstunde]
+  var SAISON = [
+    [3,29, 3,31, [[12,19],null,null,null,null,null,null]],
+    [4, 1, 4,30, [[12,19],null,null,[14,19],[14,19],[14,19],[12,19]]],
+    [5, 1, 5,31, [[12,21],null,[14,21],[14,21],[14,21],[14,21],[12,21]]],
+    [6, 1, 6,30, [[12,21],[14,21],[14,21],[14,21],[14,21],[14,21],[12,21]]],
+    [7, 1, 9,13, [[12,21],[12,21],[12,21],[12,21],[12,21],[12,21],[12,21]]],
+    [9,14,10,18, [[12,19],null,[14,19],[14,19],[14,19],[14,19],[12,19]]]
+  ];
+  function zeitenFuer(d){
+    var m = d.getMonth() + 1, t = d.getDate();
+    for (var i = 0; i < SAISON.length; i++){
+      var s = SAISON[i], nachStart = (m > s[0]) || (m === s[0] && t >= s[1]),
+          vorEnde = (m < s[2]) || (m === s[2] && t <= s[3]);
+      if (nachStart && vorEnde) return s[4][d.getDay()];
+    }
+    return undefined; // ausserhalb der Saison
+  }
+  var st = document.getElementById("status"), stTxt = document.getElementById("status-txt");
+  (function setStatus(){
+    var now = new Date(), z = zeitenFuer(now);
+    if (z === undefined){ stTxt.textContent = "Winterpause · Start 29. März"; return; }
+    if (z === null){ stTxt.textContent = "Heute geschlossen"; return; }
+    var h = now.getHours() + now.getMinutes()/60;
+    if (h >= z[0] && h < z[1]){
+      st.classList.add("is-open");
+      stTxt.textContent = "Jetzt offen bis " + z[1] + " Uhr";
+    } else if (h < z[0]){
+      stTxt.textContent = "Heute ab " + z[0] + " Uhr";
+    } else {
+      stTxt.textContent = "Für heute zu · morgen wieder";
+    }
+  })();
+
+  /* ---------- Aktueller Saisonabschnitt in der Liste markieren ---------- */
+  (function markHours(){
+    var now = new Date(), m = now.getMonth() + 1, t = now.getDate(), key;
+    if (m === 3) key = "3";
+    else if (m === 4) key = "4";
+    else if (m === 5) key = "5";
+    else if (m === 6) key = "6";
+    else if (m === 7 || m === 8 || (m === 9 && t <= 13)) key = "7";
+    else if (m === 9) key = "9";
+    else if (m === 10 && t <= 18) key = "10";
+    else key = "11";
+    var li = document.querySelector('#hours li[data-m="' + key + '"]');
+    if (li) li.classList.add("is-now");
+  })();
+
+  /* ---------- Formular: baut eine fertige E-Mail ---------- */
+  var form = document.getElementById("anfrage"), ok = document.getElementById("ok");
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var g = function(id){ return (document.getElementById(id).value || "").trim(); };
+    var name = g("n"), mail = g("e");
+    if (!name || !mail){
+      var leer = !name ? document.getElementById("n") : document.getElementById("e");
+      leer.focus();
+      leer.style.borderColor = "#c1440e";
+      return;
+    }
+    var betreff = "Anfrage: " + g("w") + " (" + name + ")";
+    var text = [
+      "Hallo Wakepark-Team,", "",
+      "ich habe eine Anfrage über eure Webseite.", "",
+      "Worum geht es: " + g("w"),
+      "Name: " + name,
+      "E-Mail: " + mail,
+      g("t") ? "Telefon: " + g("t") : "",
+      g("p") ? "Personen: " + g("p") : "",
+      g("d") ? "Wunschtermin: " + g("d") : "",
+      "", g("m") || "", "",
+      "Viele Grüße", name
+    ].filter(function(z){ return z !== ""; }).join("\n");
+
+    location.href = "mailto:booking@wakepark-pfullendorf.de?subject="
+      + encodeURIComponent(betreff) + "&body=" + encodeURIComponent(text);
+    ok.classList.add("is-on");
+  });
+
+  /* ---------- Animationen im Hintergrundtab anhalten ---------- */
+  document.addEventListener("visibilitychange", function(){
+    document.body.classList.toggle("paused", document.hidden);
+  });
+
+  onScroll();
+})();
+</script>
+</body>
+</html>
