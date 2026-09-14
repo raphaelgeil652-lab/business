@@ -3,10 +3,7 @@
 Webseite für den Wakepark Pfullendorf (Wasserskianlage am Seepark Linzgau).
 Zielgruppe: Sportler von jung bis 60. Ziel: **Buchungen und Anfragen**.
 
-**[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/claude/wakepark-pfullendorf-website-m5kotc/nischen/wakepark-pfullendorf/seite/index.html)**
-
-Der Link zeigt auf den Entwicklungszweig. Nach dem Zusammenführen mit `main` wird daraus
-`.../business/main/nischen/wakepark-pfullendorf/seite/index.html`.
+**[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/wakepark-pfullendorf/seite/index.html)**
 
 ## Aufbau
 

@@ -66,10 +66,7 @@ Details: [`nischen/wakepark-pfullendorf/`](nischen/wakepark-pfullendorf/)
 
 | Was | Öffnen |
 |---|---|
-| **Die komplette Seite** ⭐ Hero, Vorteile, Angebot, Anlage, Preise, Fragen, Formular. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/claude/wakepark-pfullendorf-website-m5kotc/nischen/wakepark-pfullendorf/seite/index.html)** |
-
-> Der Link zeigt auf den Entwicklungszweig. Nach dem Zusammenführen mit `main` wird daraus
-> `.../business/main/nischen/wakepark-pfullendorf/seite/index.html`.
+| **Die komplette Seite** ⭐ Hero, Vorteile, Angebot, Anlage, Preise, Fragen, Formular. | **[▶ Seite öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/wakepark-pfullendorf/seite/index.html)** |
 > ⚠️ **Noch nicht live-fertig:** Impressum, Datenschutz, echte Gästestimmen und die Freigabe
 > der Bildrechte fehlen. Die Liste steht im README der Seite.
 
