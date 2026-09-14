@@ -36,6 +36,29 @@ Gebaute Seiten: **`nischen/tagwerk/`** (Demo, erfundene Kaffeemarke),
 **`nischen/alex-aussenanlagen/`** (echter Kunde, Pfullendorf) und
 **`nischen/wakepark-pfullendorf/`** (Wasserskianlage am Seepark Linzgau).
 
+## Dritter Bereich: persönliche Entwicklung (kein Geschäft)
+
+`entwicklung/` ist ein **6-Monats-Programm zur Persönlichkeitsentwicklung** für den Nutzer
+persönlich (01.10.2026 – 28.03.2027, während des Dienstes in der Kaserne). Es hat mit der
+Agentur und dem Webseitenbau **nichts** zu tun und wird nicht mit ihnen vermischt — keine
+Agentur-Sprache, keine Kunden, keine Preise.
+
+Kern: jeden Abend ein kleines Versprechen ins Heft (180-mal), jede Woche ein konkreter
+Handlungsauftrag, jeden Monat ein Gate mit drei prüfbaren Kriterien. Sechs Monatsthemen:
+Bestandsaufnahme · Nein sagen · Menschen lesen · Fragen und Zuhören · eigene Standards ·
+Übergang zurück ins Geschäft. Dazu eine eigene Spur zur Ablösung nach der Trennung.
+Alle harten Regeln sind mit Forschung belegt (`entwicklung/forschung/quellen.md`), samt
+ehrlichem Abschnitt, was **nicht** belegt ist.
+
+**Für die Zeit des Programms gilt:** Das Business liegt von Oktober bis Februar auf Standby,
+ab März kommt es kontrolliert zurück. Wochenenden zu Hause sind ausdrücklich business-frei.
+In [`entwicklung/werkzeuge/claude-rituale.md`](entwicklung/werkzeuge/claude-rituale.md) stehen
+fünf feste Termine mit fertigen Prompts (Monatsabnahme, Druckgespräch, Gesprächs-Nachbesprechung,
+Kodex-Prüfung, Abschlussabnahme). Bei diesen Terminen ist **Ehrlichkeit wichtiger als
+Ermutigung** — ein nicht bestandenes Gate wird so benannt, nicht schöngeredet.
+
+---
+
 ## Zwei Nischen, zwei Ordner
 
 | Nische | Status | Ordner |
@@ -170,6 +193,14 @@ sondern ein Gastro-Einzelauftrag. **Nicht mit dem Kfz-Angebot oder dessen Preise
 
 **Eine Quelle für die Speisekarte:** `webseite/tools/speisekarte-uebernehmen.py` überträgt Gerichte
 und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt in der Webseite.
+
+### `entwicklung/` — persönliches 6-Monats-Programm (kein Geschäft)
+- `README.md` — Einstieg · `programm.md` — die Architektur · `26-wochen-plan.md` — das Arbeitsdokument
+- `monate/` (00-vorbereitung bis 06-maerz), `werkzeuge/` (Tagesprotokoll, Zug-Bogen,
+  Ablöse-Protokoll, Nein-Baukasten, Menschen-Feldbuch, Gesprächsführung, Standards,
+  Standortbestimmung, Leseplan, Körper, Claude-Rituale)
+- `drucksachen/taschenkarten.html` — 8 Karten zum Ausdrucken (Kaserne, ohne Handy nutzbar)
+- `forschung/quellen.md` — Belege mit Links, plus „was NICHT belegt ist"
 
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,

@@ -15,6 +15,20 @@ Diese Startseite ist deine Übersicht.
 
 ---
 
+## 🧭 Persönlich: die sechs Monate (01.10.2026 – 28.03.2027)
+
+Kein Geschäft, sondern das geführte 6-Monats-Programm für dich selbst — täglich ein kleines
+Versprechen, wöchentlich ein Auftrag, monatlich ein Gate.
+
+| Was | Öffnen |
+|---|---|
+| **Der Einstieg** ⭐ Übersicht, Mechanik, alle Werkzeuge | [`entwicklung/`](entwicklung/) |
+| **Jetzt dran:** 17 Tage Vorbereitung bis zum Start | [`entwicklung/monate/00-vorbereitung.md`](entwicklung/monate/00-vorbereitung.md) |
+| Das Arbeitsdokument: 26 Wochen, je ein Auftrag | [`entwicklung/26-wochen-plan.md`](entwicklung/26-wochen-plan.md) |
+| **Taschenkarten zum Ausdrucken** (Brusttasche + Spindtür) | [▶ Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/entwicklung/drucksachen/taschenkarten.html) |
+
+---
+
 ## ▶ Seiten zum Zeigen (fertig gerendert öffnen)
 
 Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad als Lesezeichen speichern.

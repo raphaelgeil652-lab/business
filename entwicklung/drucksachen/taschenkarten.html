@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taschenkarten — 6 Monate</title>
+<style>
+  :root{
+    --ink:#14161a; --mid:#4a4f57; --line:#c9ccd2; --accent:#1f3a5f; --warn:#7a2d1f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#eceef1;color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .hinweis{max-width:760px;margin:24px auto 8px;padding:20px 24px;background:#fff;
+    border:1px solid var(--line);border-radius:4px;font-size:14px;line-height:1.55;}
+  .hinweis h1{font-size:20px;margin:0 0 10px;letter-spacing:.02em;}
+  .hinweis p{margin:6px 0;color:var(--mid);}
+  .hinweis b{color:var(--ink);}
+  .bogen{display:flex;flex-wrap:wrap;gap:0;max-width:760px;margin:16px auto;background:#fff;
+    border:1px solid var(--line);}
+  .karte{width:50%;min-height:360px;padding:16px 18px 14px;border:1px dashed var(--line);
+    display:flex;flex-direction:column;}
+  .nr{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);
+    border-bottom:1px solid var(--ink);padding-bottom:4px;margin-bottom:10px;
+    display:flex;justify-content:space-between;align-items:baseline;}
+  .nr b{font-size:12px;letter-spacing:.06em;color:var(--ink);}
+  .karte h2{font-size:15px;margin:0 0 8px;line-height:1.25;}
+  .karte p{font-size:12px;line-height:1.5;margin:0 0 7px;}
+  .karte ol,.karte ul{font-size:12px;line-height:1.5;margin:0 0 7px;padding-left:18px;}
+  .karte li{margin-bottom:5px;}
+  .gross{font-size:14px;font-weight:600;line-height:1.35;}
+  .akzent{color:var(--accent);font-weight:600;}
+  .warn{color:var(--warn);font-weight:600;}
+  .kasten{border:1px solid var(--ink);padding:8px 10px;font-size:12px;line-height:1.45;margin:6px 0;}
+  .linie{border-bottom:1px solid var(--line);height:20px;margin:4px 0;}
+  .fuss{margin-top:auto;padding-top:8px;border-top:1px solid var(--line);
+    font-size:10px;color:var(--mid);letter-spacing:.04em;}
+  /* Karte 8: ganze Seite */
+  .planblatt{max-width:760px;margin:16px auto;background:#fff;border:1px solid var(--line);padding:22px 26px;}
+  .planblatt h2{font-size:17px;margin:0 0 4px;}
+  .planblatt .sub{font-size:11px;color:var(--mid);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;}
+  table{width:100%;border-collapse:collapse;font-size:11.5px;}
+  th,td{text-align:left;padding:3px 6px;border-bottom:1px solid #e3e5e9;vertical-align:top;}
+  th{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);border-bottom:1px solid var(--ink);}
+  td.w{width:34px;color:var(--mid);}
+  td.d{width:104px;color:var(--mid);white-space:nowrap;}
+  td.box{width:46px;}
+  tr.gate td{font-weight:700;}
+  tr.gate td.a{color:var(--accent);}
+  .kaestchen{display:inline-block;width:13px;height:13px;border:1px solid var(--ink);}
+
+  @media print{
+    @page{size:A4 portrait;margin:8mm;}
+    html,body{background:#fff;}
+    .hinweis{display:none;}
+    .bogen{max-width:none;margin:0;border:none;page-break-after:always;}
+    .karte{width:50%;height:138mm;min-height:0;page-break-inside:avoid;}
+    .planblatt{max-width:none;margin:0;border:none;padding:0;page-break-before:always;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hinweis">
+  <h1>Taschenkarten — 01.10.2026 bis 28.03.2027</h1>
+  <p><b>Drucken:</b> Strg/Cmd + P → A4, Hochformat, Ränder „Standard“. Es kommen zwei Blätter:
+  vier Karten auf Blatt 1, drei Karten auf Blatt 2, danach der 26-Wochen-Plan als ganze Seite.
+  An den gestrichelten Linien schneiden.</p>
+  <p><b>Wohin:</b> Karten 1, 3 und 4 in die Brusttasche. Karten 2, 5, 6, 7 ins Heft.
+  Der Plan an die Spindtür.</p>
+  <p><b>Warum Papier:</b> Weil das Handy im Spind liegt, wenn du diese Karten brauchst.
+  Das ist keine Nostalgie, das ist der Punkt.</p>
+</div>
+
+<div class="bogen">
+
+  <!-- 1 -->
+  <div class="karte">
+    <div class="nr"><span>Karte 1</span><b>WARUM</b></div>
+    <h2>Der Satz und die fünf Ziele</h2>
+    <p style="font-size:11px;color:#4a4f57;">Hier trägst du von Hand den Satz ein, den du am
+    27.09. auf Frage 4 geschrieben hast:</p>
+    <div class="linie"></div><div class="linie"></div><div class="linie"></div>
+    <ol style="margin-top:8px;">
+      <li>Eigene Standards, die nicht verhandelbar sind</li>
+      <li>Menschen verstehen — Motive, Status, echtes Zuhören</li>
+      <li>Nein sagen können</li>
+      <li>Nichts mehr aus Langeweile oder Bestätigungssuche anfangen</li>
+      <li>Mir selbst glauben, wenn ich mir etwas sage</li>
+    </ol>
+    <p class="gross akzent">180 Tage. 180 kleine Versprechen. Danach glaube ich mir.</p>
+    <div class="fuss">In die Brusttasche.</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="karte">
+    <div class="nr"><span>Karte 2</span><b>DER ABEND</b></div>
+    <h2>Die drei Zeilen — 10 Minuten</h2>
+    <div class="kasten">
+      <b>1 GEHALTEN?</b> ✓ / ✗ — Versprechen von gestern<br>
+      <b>2 EHRLICH?</b> Wo war ich heute nicht ehrlich zu mir?<br>
+      <b>3 MORGEN:</b> Mein Versprechen für morgen
+    </div>
+    <p><b>Sonntags:</b> Zeile 2 in der dritten Person. „Raphael hat heute …“</p>
+    <p style="font-size:11px;color:#4a4f57;margin-top:6px;"><b>Die drei Auslöser:</b></p>
+    <ul>
+      <li>Stiefel schnüren → Versprechen einmal aufsagen</li>
+      <li>Auf dem Bett sitzen → Heft raus, <b>vor</b> dem Handy</li>
+      <li>In den Zug einsteigen → Handy ins Gepäckfach</li>
+    </ul>
+    <p class="warn">Ein gutes Versprechen ist so klein, dass ich es an einem 5-Uhr-Tag mit
+    vier Stunden Schlaf noch schaffe.</p>
+    <div class="fuss">Ins Heft, Seite 1.</div>
+  </div>
+
+  <!-- 3 -->
+  <div class="karte">
+    <div class="nr"><span>Karte 3</span><b>NOTFALL</b></div>
+    <h2>Bevor ich ihr schreibe</h2>
+    <ol>
+      <li>Was will ich wirklich, dass passiert, wenn ich das abschicke?</li>
+      <li><b>Wenn sie gar nicht antwortet: War die Nachricht dann trotzdem richtig?</b><br>
+      Nein → nicht schicken. Fertig.</li>
+      <li>Ist das heute das dritte Mal, dass ich deswegen das Handy in der Hand habe?<br>
+      Ja → stattdessen fünf Zeilen ins Heft, an sie gerichtet. Und nicht abschicken.</li>
+      <li>Wie viel habe ich letzte Nacht geschlafen?<br>
+      Unter 6 Stunden → morgen früh noch mal ansehen. Nicht jetzt.</li>
+    </ol>
+    <p class="gross">Danach darf ich entscheiden. Vorher nicht.</p>
+    <div class="fuss">In die Brusttasche. Die wichtigste Karte.</div>
+  </div>
+
+  <!-- 4 -->
+  <div class="karte">
+    <div class="nr"><span>Karte 4</span><b>23 UHR</b></div>
+    <h2>Wenn es spät ist und alles schwer wirkt</h2>
+    <p>Zu wenig Schlaf macht die Alarmzentrale im Gehirn reaktiver und schwächt gleichzeitig
+    die Bremse aus dem Stirnhirn.</p>
+    <p class="gross">Nicht ich bin gerade schwach. Mein Bremssystem ist offline.</p>
+    <p><b>Was jetzt gilt:</b></p>
+    <ul>
+      <li>Keine Nachricht an Menschen.</li>
+      <li>Keine Entscheidung über mein halbes Jahr.</li>
+      <li>Keine Bewertung, wie es läuft.</li>
+      <li>Der Gedanke, der mich wachhält, kommt ins Heft. Dann ist er geparkt.</li>
+    </ul>
+    <p>Alles davon darf ich morgen früh um 06:00 noch einmal ansehen. Meistens ist es dann weg.</p>
+    <div class="fuss">In die Brusttasche.</div>
+  </div>
+</div>
+
+<div class="bogen">
+  <!-- 5 -->
+  <div class="karte">
+    <div class="nr"><span>Karte 5</span><b>NEIN</b></div>
+    <h2>Die vier Stufen</h2>
+    <p><b>1 — Das einfache Nein.</b> Nein + höchstens ein Satz. <b>Keine Begründung.</b><br>
+    „Nee, mach ich nicht.“ · „Passt mir nicht.“ · „Da bin ich raus.“</p>
+    <p><b>2 — Wiederholen.</b> Derselbe Inhalt, ruhig, ohne neue Argumente.<br>
+    „Versteh ich. Mach ich trotzdem nicht.“ · „Stimmt. Diesmal nicht.“</p>
+    <p><b>3 — Benennen.</b> Das Verhalten, nicht die Person.<br>
+    „Du hast jetzt dreimal gefragt. Die Antwort bleibt.“</p>
+    <p><b>4 — Beenden.</b> „Das Thema ist für mich durch.“</p>
+    <div class="kasten"><b>Die Pause:</b> „Ich sag dir in einer Stunde Bescheid.“<br>
+    Die meisten Ja’s fallen aus Geschwindigkeit, nicht aus Überzeugung.</div>
+    <p class="warn">Nach dem Nein: drei Sekunden schweigen. Nichts nachschieben.</p>
+    <div class="fuss">Ins Heft.</div>
+  </div>
+
+  <!-- 6 -->
+  <div class="karte">
+    <div class="nr"><span>Karte 6</span><b>MENSCHEN</b></div>
+    <h2>Die Methode</h2>
+    <ol>
+      <li><b>Grundlinie:</b> Wie ist er, wenn nichts los ist?</li>
+      <li><b>Abweichung:</b> Was ist heute anders?</li>
+      <li><b>Vermutung:</b> schriftlich, <b>bevor</b> ich es weiß.</li>
+      <li><b>Prüfung:</b> nachschauen, ehrlich abhaken.</li>
+    </ol>
+    <div class="kasten">
+      <b>Dominanz</b> — Rang durch Druck. Es wird still, wenn er kommt.<br>
+      <b>Prestige</b> — Rang durch Können. Er <b>wird gefragt</b>, ohne Rang zu haben.<br>
+      Beides funktioniert. Nur eins hält, wenn der Druck wegfällt.
+    </div>
+    <p class="warn">Keine Geste hat eine feste Bedeutung. „93 % Körpersprache“ ist ein Mythos.</p>
+    <p><b>Die stärkste Frage:</b> Was hätte er davon? (Ruhe · Anerkennung · Kontrolle ·
+    Zugehörigkeit · Sicherheit · weniger Arbeit)</p>
+    <div class="fuss">Ins Heft.</div>
+  </div>
+
+  <!-- 7 -->
+  <div class="karte">
+    <div class="nr"><span>Karte 7</span><b>WIEDERAUFNAHME</b></div>
+    <h2>Zwei Tage leer — und jetzt?</h2>
+    <p>Ein Kreuz gehört dazu. <b>Zwei Kreuze hintereinander sind der definierte Ausstiegspunkt —
+    und der hat eine definierte Reaktion.</b> Fünf Minuten, am dritten Tag:</p>
+    <ol>
+      <li>Beide Tage nachträglich als Kreuz eintragen, mit Datum.<br>
+      <span style="color:#4a4f57;">Nicht rausstreichen. Nicht nachholen.</span></li>
+      <li>Ein Satz: Was hat diese Tage gekippt?</li>
+      <li>Das nächste Versprechen <b>halbieren</b>.</li>
+      <li>Weitermachen. Kein Neustart, keine Erklärung, keine Strafe.</li>
+    </ol>
+    <p class="gross">Ein verpasster Tag schadet nicht. Die Deutung schadet.</p>
+    <p style="font-size:11px;color:#4a4f57;">Ein Programm, das man an schlechten Tagen nicht
+    schafft, ist falsch dimensioniert — nicht der Mensch ist zu schwach.</p>
+    <div class="fuss">Ins Heft.</div>
+  </div>
+
+  <!-- Filterfrage -->
+  <div class="karte">
+    <div class="nr"><span>Karte 7b</span><b>FILTER</b></div>
+    <h2>Bevor ich etwas Neues anfange</h2>
+    <div class="kasten gross">
+      Wenn sie mir morgen sagt, dass sie nichts von mir will —<br>
+      wie viel von meinem heutigen Abend ändert sich dann?
+    </div>
+    <p><b>Viel</b> → das ist Bestätigungssuche. Nicht anfangen.</p>
+    <p><b>Wenig</b> → das ist eine Entscheidung. Dann darf ich.</p>
+    <p style="margin-top:8px;"><b>Wenn die erste Frage nicht reicht:</b></p>
+    <ul>
+      <li>Würde ich das auch machen, wenn ich es niemandem erzählen dürfte?</li>
+      <li>Bin ich hier, weil sie es ist — oder weil Samstagabend ist?</li>
+      <li>Wenn es in drei Wochen vorbei ist: bereue ich den Anfang?</li>
+    </ul>
+    <p style="font-size:11px;color:#4a4f57;">Nicht allein bleiben aus Prinzip. Nur nicht mehr
+    reinstolpern.</p>
+    <div class="fuss">In die Brusttasche.</div>
+  </div>
+</div>
+
+<div class="planblatt">
+  <h2>26 Wochen — der Überblick</h2>
+  <div class="sub">01.10.2026 → 28.03.2027 · an die Spindtür</div>
+  <table>
+    <tr><th>W</th><th>Datum</th><th>Auftrag</th><th>✓</th></tr>
+    <tr><td class="w">1</td><td class="d">01.–04.10.</td><td>Register anlegen + Ablöse Schritt 1</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">2</td><td class="d">05.–11.10.</td><td>Fünf Situationen, in denen ich mich verbogen habe</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">3</td><td class="d">12.–18.10.</td><td>Dreimal aussprechen, was ich denke</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">4</td><td class="d">19.–25.10.</td><td>Vier Abende schreiben (je 15 Min)</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr class="gate"><td class="w">5</td><td class="d">26.10.–01.11.</td><td class="a">Sieben Muster formulieren — GATE OKTOBER</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">6</td><td class="d">02.–08.11.</td><td>Drei Neins ohne Begründung</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">7</td><td class="d">09.–15.11.</td><td>Drei Neins, die eine Widerrede überleben</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">8</td><td class="d">16.–22.11.</td><td>Zwei Neins zu Menschen, die mir wichtig sind</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr class="gate"><td class="w">9</td><td class="d">23.–29.11.</td><td class="a">Dreimal „in einer Stunde“ — GATE NOVEMBER</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">10</td><td class="d">30.11.–06.12.</td><td>Fünf Grundlinien beschreiben</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">11</td><td class="d">07.–13.12.</td><td>Acht Leute einordnen: Dominanz / Prestige</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr class="gate"><td class="w">12</td><td class="d">14.–20.12.</td><td class="a">Acht Vorhersagen prüfen — GATE DEZEMBER</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">13</td><td class="d">21.–27.12.</td><td>Waffenruhe — nur die drei Zeilen</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">14</td><td class="d">28.12.–03.01.</td><td>Drei Gespräche, nur offene Fragen</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">15</td><td class="d">04.–10.01.</td><td>Drei Gespräche, Redeanteil unter 30 %</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">16</td><td class="d">11.–17.01.</td><td>Zurückspiegeln, doppelt so oft wie fragen</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">17</td><td class="d">18.–24.01.</td><td>Drei Sekunden Stille nach jeder Antwort</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr class="gate"><td class="w">18</td><td class="d">25.–31.01.</td><td class="a">Volles Set, drei Gespräche — GATE JANUAR</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">19</td><td class="d">01.–07.02.</td><td>Alte Hefte durchgehen, Rohmaterial sammeln</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">20</td><td class="d">08.–14.02.</td><td>Zwölf Kodex-Sätze schreiben</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">21</td><td class="d">15.–21.02.</td><td>Beleg oder raus — Sätze ohne Beleg streichen</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr class="gate"><td class="w">22</td><td class="d">22.–28.02.</td><td class="a">Belastungstest Kodex — GATE FEBRUAR</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">23</td><td class="d">01.–07.03.</td><td>Angebot auf eine Seite, handschriftlich</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">24</td><td class="d">08.–14.03.</td><td>Zwei reale Gespräche vor Ort</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr><td class="w">25</td><td class="d">15.–21.03.</td><td>Drei weitere Gespräche</td><td class="box"><span class="kaestchen"></span></td></tr>
+    <tr class="gate"><td class="w">26</td><td class="d">22.–28.03.</td><td class="a">Abnahme + die zwei Seiten — GATE MÄRZ</td><td class="box"><span class="kaestchen"></span></td></tr>
+  </table>
+  <p style="font-size:11px;color:#4a4f57;margin-top:14px;line-height:1.5;">
+    <b>Nie zwei Tage hintereinander leer.</b> · Jede Woche eine Sache streichen. ·
+    Die erste Stunde im Zug gehört dem Buch. · Kein Gate schönreden. ·
+    Wochenende zu Hause: kein Business. · Das Programm wird nicht erweitert.
+  </p>
+</div>
+
+</body>
+</html>
