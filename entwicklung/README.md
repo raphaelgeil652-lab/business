@@ -16,6 +16,9 @@ Nicht Business aufbauen. Sondern die Person aufbauen, die danach das Business tr
 3. **Ausdrucken:** [`drucksachen/taschenkarten.html`](drucksachen/taschenkarten.html) — 8 Karten
    für die Brusttasche, plus der 26-Wochen-Plan für die Spindtür.
    [▶ im Browser öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/entwicklung/drucksachen/taschenkarten.html)
+4. **Aufs Handy:** der **[Feldkompass](https://claude.ai/artifact/X2fZ1E124Rm5zYk6ckzEka)** —
+   zeigt von selbst, welcher Tag, welche Woche und welcher Auftrag gerade dran ist, dazu die
+   Notfallkarten. Zum Lesezeichen machen. Geschrieben wird trotzdem im Heft.
 
 ---
 
