@@ -55,6 +55,10 @@ Einfach vor den Befehl setzen. Ohne Angabe gilt der Wert in Klammern.
 | `OUTROZEILE="…"` | Unterzeile im Abspann (leer). |
 | `MODELL=small` | Genauigkeit beim Abtippen: `base` schnell, `small` besser, `medium` am besten (`small`). |
 | `TON=aus` | Schaltet das Angleichen der Lautstärke ab (an). |
+| `TEMPO=schnell` | Schnitttempo: `ruhig` 4,0 s · `normal` 2,8 s · `schnell` 2,0 s pro Einstellung (`normal`). |
+| `SCHLEIFE=an` | Hängt den Anfang hinten an, damit der Neustart nicht auffällt (aus). |
+| `FUELLER=aus` | Lässt „ähm" und „äh" stehen, statt sie rauszuschneiden (an). |
+| `RAHMEN=1` | Blendet die sicheren Zonen sichtbar ein — zum Prüfen, nicht zum Hochladen. |
 
 ---
 
@@ -97,6 +101,28 @@ stimmen die Originalzeiten nicht mehr — das rechnet `src/untertitel.ts` um.
 
 ---
 
+## Was die Recherche geändert hat
+
+Die ganze Machart steht belegt in **[`forschung/virale-videos.md`](forschung/virale-videos.md)** —
+mit Quellen und einem ehrlichen Abschnitt, was **nicht** belegt ist. Die kurze Fassung:
+
+| Befund | Was daraus im Werkzeug wurde |
+|---|---|
+| Die App legt ihre Knöpfe **über** das Video | Sicherheitsrahmen: unten 23 %, rechts 17 %, oben 6 %. Alle Texte sitzen drin. Prüfen mit `RAHMEN=1`. |
+| Einstellungen dauern 1–3 s, alle 1–2 s passiert etwas | Tempo-Voreinstellungen, neue Grundeinstellung 2,8 s statt 3,5 s |
+| Zuschauer entscheiden in 2–3 Sekunden | Hook startet bei 0,15 s. Das Werkzeug **warnt**, wenn keiner gesetzt ist. |
+| Tote Zeit raus | Pausen **und** Füllwörter („ähm", „äh") werden automatisch rausgeschnitten |
+| Zahlen halten den Blick | Zahlen und Preise in den Untertiteln werden farbig hinterlegt |
+| Schleifen verdoppeln die Sehdauer | `SCHLEIFE=an` hängt den Anfang hinten an |
+| Anzeigen, die mit dem Logo aufmachen, werden weggewischt | Abspann steht am Ende, nie am Anfang |
+| Plattformen liefern auf −14 LUFS aus | Ton wird nach jedem Rendern angeglichen |
+
+**Wichtig:** Der technische Teil ist belegt. Die Machart (Tempo, Zooms, Grafiken) ist
+begründete Nachahmung, kein Wissen — deshalb ist sie **einstellbar** und nicht
+festgeschraubt. Sobald eigene Zahlen da sind, wird nachjustiert.
+
+---
+
 ## Motion Graphics
 
 Fünf Bausteine liegen bereit. Sie stehen in `schnittplan.json` unter `grafiken`,
@@ -109,8 +135,13 @@ die Zeiten zählen dabei im **fertigen** Video, nicht im Rohvideo.
 | `stichwort` | Ein Wort knallt groß ins Bild. Für die Pointe. Sitzt unter dem Gesicht, nicht auf den Augen. |
 | `blitz` | Kurzer Wisch in der Akzentfarbe. Macht einen Schnitt sichtbar. |
 | `fortschritt` | Dünner Balken ganz unten, der mitläuft. |
+| `zahl` | Große Ziffer oben rechts, für Aufzählungen („1 von 3"). |
+| `pfeil` | Pfeil, der auf etwas zeigt und dabei wippt. `richtung`: oben, unten, links, rechts. |
 
-Dazu die Abspann-Karte `outro` — dunkle Fläche, Name, Strich, Unterzeile.
+Dazu zwei Arten von Schluss — **entweder oder**, nie beides:
+`outro` ist die Abspann-Karte (dunkle Fläche, Name, Strich, Unterzeile),
+`schleife` hängt den Anfang hinten an, damit der Neustart nicht auffällt.
+Eine Abspann-Karte zerstört die Schleife, deshalb schlägt die Schleife den Abspann.
 
 So sieht das aus:
 
@@ -144,7 +175,9 @@ Neue Bausteine kommen in `src/komponenten/Grafiken.tsx` dazu.
 - Maße und Bildrate werden aus dem Rohvideo übernommen
 - Handyvideos (`.mov` vom iPhone) werden richtig gedreht — sie liegen in der
   Datei quer und würden sonst als Querformat rauskommen
-- Motion Graphics: Titelband, Namensschild, Stichwort, Wisch, Balken, Abspann
+- Motion Graphics: Titelband, Namensschild, Stichwort, Zahl, Pfeil, Wisch, Balken, Abspann
+- Füllwörter („ähm", „äh") automatisch rausschneiden
+- Alle Texte im Sicherheitsrahmen, damit die App sie nicht überdeckt
 - Ton wird am Ende auf −14 LUFS angeglichen — den Pegel, mit dem TikTok,
   Instagram und YouTube ausliefern. Handyaufnahmen sind fast immer zu leise;
   ohne diesen Schritt wirkt das fertige Video tonlos, obwohl Ton drauf ist.
@@ -152,6 +185,8 @@ Neue Bausteine kommen in `src/komponenten/Grafiken.tsx` dazu.
 **Das geht nicht:**
 - Claude *sieht* und *hört* das Video nicht. Die Entscheidungen kommen aus dem
   Transkript — deshalb die Stellschrauben oben.
+- Die sichere Zone ändert sich je nach Format und Anzeigenart. TikTok sagt das
+  selbst. Vor dem Hochladen einmal in der App ansehen bleibt Pflicht.
 - „Maximale Viralität per Knopfdruck" gibt es nicht. Ein gutes Video braucht
   gutes Rohmaterial und einen guten Hook. Das Werkzeug spart die Fleißarbeit,
   nicht das Denken.
@@ -190,6 +225,8 @@ videoschnitt/
     src/komponenten/               Clip (Zoom), Untertitel, Hook-Text
     src/komponenten/Grafiken.tsx   die Motion-Graphics-Bausteine
     src/komponenten/Outro.tsx      die Abspann-Karte
+    src/sicherheitszonen.ts        wo die App ihre Knöpfe hinlegt
+    src/komponenten/Rahmenpruefung.tsx  blendet die sicheren Zonen ein (RAHMEN=1)
     werkzeuge/schneiden.mjs        der eine Befehl, der alles macht
     werkzeuge/transkribieren.mjs   Ton -> Wörter mit Zeiten
     werkzeuge/schnittplan.mjs      Pausen raus, Zooms setzen
@@ -198,6 +235,7 @@ videoschnitt/
     public/fonts/                  Schriften, selbst gehostet
     ausgabe/                       fertige Videos (nicht im Repo)
   arbeitsdateien/transkript.txt    zum Lesen, mit Zeiten und Pausen
+  forschung/virale-videos.md       worauf die Voreinstellungen beruhen, mit Quellen
 ```
 
 Videodateien werden bewusst **nicht** eingecheckt — sie sind groß und ändern sich

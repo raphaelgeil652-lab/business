@@ -12,7 +12,10 @@
  *   PAUSE=0.45   ab welcher Stille geschnitten wird, in Sekunden
  *   LUFT=0.12    wie viel Ruhe an jedem Schnittrand stehen bleibt
  *   MINLAENGE=0.5  kürzere Ausschnitte werden mit dem Nachbarn verschmolzen
- *   MAXSTUECK=3.5  längere Ausschnitte werden geteilt, damit der Zoom wechselt
+ *   TEMPO=schnell  Schnitttempo: ruhig (4,0 s) · normal (2,8 s) · schnell (2,0 s)
+ *   MAXSTUECK=3.5  überschreibt das Tempo mit einem eigenen Wert
+ *   SCHLEIFE=an   hängt den Anfang hinten an, damit der Neustart weich wirkt
+ *   FUELLER=aus   lässt Füllwörter („ähm", „äh") stehen, statt sie rauszuschneiden
  *   HOOK="Text"  großer Text über dem ersten Ausschnitt
  *   NAME="Raffi"  Namensschild, das am Anfang reinfährt
  *   ROLLE="Clickculture"  Unterzeile im Namensschild
@@ -28,7 +31,19 @@ import {resolve} from 'node:path';
 const PAUSE = Number(process.env.PAUSE ?? 0.45);
 const LUFT = Number(process.env.LUFT ?? 0.12);
 const MINLAENGE = Number(process.env.MINLAENGE ?? 0.5);
-const MAXSTUECK = Number(process.env.MAXSTUECK ?? 3.5);
+// Schnitttempo. Die Werte kommen aus der Recherche: bei der meistkopierten
+// Machart liegt die Einstellungslänge bei 1–3 Sekunden.
+// Siehe forschung/virale-videos.md, Punkt 2.
+const TEMPI = {ruhig: 4.0, normal: 2.8, schnell: 2.0};
+const TEMPO = process.env.TEMPO ?? 'normal';
+const MAXSTUECK = Number(process.env.MAXSTUECK ?? TEMPI[TEMPO] ?? TEMPI.normal);
+const SCHLEIFE = (process.env.SCHLEIFE ?? '').toLowerCase() === 'an';
+const FUELLER = (process.env.FUELLER ?? 'an').toLowerCase() !== 'aus';
+
+// Füllwörter fliegen raus wie Stille. Der Leitsatz der Machart lautet:
+// tote Zeit hat im Kurzvideo nichts verloren.
+// Siehe forschung/virale-videos.md, Punkt 2.
+const FUELLWOERTER = /^(ähm|äh|ähem|öhm|öh|ehm|em|hm|hmm|mhm|also)$/i;
 const HOOK = process.env.HOOK ?? '';
 const NAME = process.env.NAME ?? '';
 const ROLLE = process.env.ROLLE ?? '';
@@ -106,8 +121,38 @@ if (aktuell) {
   stuecke.push(aktuell);
 }
 
+// 1b. Fuellwoerter aus den Stuecken herausschneiden.
+const fuellstellen = FUELLER
+  ? woerter
+      .filter((w) => FUELLWOERTER.test(w.text.trim().replace(/[.,!?…]/g, '')))
+      .map((w) => ({von: w.startMs / 1000, bis: w.endMs / 1000}))
+  : [];
+
+const ohneFueller = [];
+for (const st of stuecke) {
+  let reste = [{...st}];
+  for (const f of fuellstellen) {
+    const neue = [];
+    for (const teil of reste) {
+      if (f.bis <= teil.von || f.von >= teil.bis) {
+        neue.push(teil);
+        continue;
+      }
+      // Vor und hinter dem Fuellwort bleibt jeweils ein Rest stehen.
+      if (f.von > teil.von) {
+        neue.push({von: teil.von, bis: f.von});
+      }
+      if (f.bis < teil.bis) {
+        neue.push({von: f.bis, bis: teil.bis});
+      }
+    }
+    reste = neue;
+  }
+  ohneFueller.push(...reste.filter((t) => t.bis - t.von > 0.15));
+}
+
 // 2. Luft an die Raender geben, an den Videogrenzen abschneiden.
-const mitLuft = stuecke.map((s) => ({
+const mitLuft = ohneFueller.map((s) => ({
   von: Math.max(0, s.von - LUFT),
   bis: Math.min(laenge, s.bis + LUFT),
 }));
@@ -213,7 +258,10 @@ const plan = {
   hook: HOOK,
   ausschnitte,
   grafiken,
-  ...(OUTRO ? {outro: {dauer: 1.4, text: OUTRO, unterzeile: process.env.OUTROZEILE ?? ''}} : {}),
+  ...(OUTRO && !SCHLEIFE
+    ? {outro: {dauer: 1.4, text: OUTRO, unterzeile: process.env.OUTROZEILE ?? ''}}
+    : {}),
+  ...(SCHLEIFE ? {schleife: {dauer: 0.5}} : {}),
 };
 
 writeFileSync(planPfad, JSON.stringify(plan, null, 2) + '\n');
@@ -225,11 +273,28 @@ console.log(
 );
 console.log(`  Ausschnitte:  ${ausschnitte.length}`);
 console.log(`  Bleibt:       ${behalten.toFixed(1)} s`);
-console.log(`  Rausgenommen: ${weg.toFixed(1)} s Pausen (${((weg / laenge) * 100).toFixed(0)} %)`);
+console.log(
+  `  Rausgenommen: ${weg.toFixed(1)} s Pausen und Füllwörter (${((weg / laenge) * 100).toFixed(0)} %)`,
+);
+if (fuellstellen.length > 0) {
+  console.log(`  Füllwörter:   ${fuellstellen.length} rausgeschnitten`);
+}
+console.log(`  Tempo:        ${process.env.MAXSTUECK ? 'eigener Wert' : TEMPO} (max. ${MAXSTUECK} s pro Einstellung)`);
 console.log(`  Grafiken:     ${grafiken.length}`);
 if (HOOK) {
   console.log(`  Hook:         „${HOOK}"`);
 }
-if (OUTRO) {
+if (SCHLEIFE) {
+  console.log('  Schluss:      Schleife (Anfang hängt hinten dran)');
+} else if (OUTRO) {
   console.log(`  Abspann:      „${OUTRO}"`);
+}
+
+// Der Hook ist der wichtigste Einzelfaktor: Zuschauer entscheiden in 2–3 Sekunden.
+// Siehe forschung/virale-videos.md, Punkt 1.
+if (!HOOK) {
+  console.log('');
+  console.log('  ⚠ Kein Hook gesetzt. Die ersten drei Sekunden entscheiden, ob');
+  console.log('    jemand weiterschaut. Setz einen:');
+  console.log('      HOOK="Dein Satz" npm run schneiden -- ' + eingabe);
 }

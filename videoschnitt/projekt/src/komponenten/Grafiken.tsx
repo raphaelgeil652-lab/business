@@ -7,6 +7,7 @@ import {
   useVideoConfig,
 } from 'remotion';
 import {TEXTSCHRIFT, TITELSCHRIFT} from '../schriften';
+import {rahmen} from '../sicherheitszonen';
 
 /**
  * Die Motion-Graphics-Bausteine.
@@ -21,6 +22,8 @@ export type Grafik =
   | {art: 'titelband'; von: number; bis: number; text: string; unterzeile?: string}
   | {art: 'namensschild'; von: number; bis: number; text: string; unterzeile?: string}
   | {art: 'stichwort'; von: number; bis: number; text: string}
+  | {art: 'zahl'; von: number; bis: number; text: string; unterzeile?: string}
+  | {art: 'pfeil'; von: number; bis: number; richtung?: 'oben' | 'unten' | 'links' | 'rechts'}
   | {art: 'blitz'; von: number; bis: number}
   | {art: 'fortschritt'; von: number; bis: number};
 
@@ -32,8 +35,9 @@ const Titelband: React.FC<{text: string; unterzeile?: string; laenge: number; ak
   akzent,
 }) => {
   const frame = useCurrentFrame();
-  const {fps, height} = useVideoConfig();
-  const s = height / 1920;
+  const {fps, width, height} = useVideoConfig();
+  const r = rahmen(width, height);
+  const s = r.s;
   const rein = spring({frame, fps, config: {damping: 18, stiffness: 150}});
   const raus = interpolate(frame, [laenge - 7, laenge], [1, 0], {
     extrapolateLeft: 'clamp',
@@ -41,7 +45,7 @@ const Titelband: React.FC<{text: string; unterzeile?: string; laenge: number; ak
   });
 
   return (
-    <AbsoluteFill style={{justifyContent: 'flex-start', paddingTop: 190 * s, opacity: raus}}>
+    <AbsoluteFill style={{justifyContent: 'flex-start', paddingTop: r.oben + 30 * s, opacity: raus}}>
       <div
         style={{
           transform: `translateX(${interpolate(rein, [0, 1], [-120 * s, 0])}px)`,
@@ -54,7 +58,7 @@ const Titelband: React.FC<{text: string; unterzeile?: string; laenge: number; ak
           style={{
             backgroundColor: 'rgba(8,10,14,0.92)',
             padding: `${20 * s}px ${34 * s}px`,
-            maxWidth: '86%',
+            maxWidth: r.nutzbareBreite,
           }}
         >
           <div
@@ -94,8 +98,9 @@ const Namensschild: React.FC<{
   akzent: string;
 }> = ({text, unterzeile, laenge, akzent}) => {
   const frame = useCurrentFrame();
-  const {fps, height} = useVideoConfig();
-  const s = height / 1920;
+  const {fps, width, height} = useVideoConfig();
+  const r = rahmen(width, height);
+  const s = r.s;
   const rein = spring({frame, fps, config: {damping: 20, stiffness: 130}});
   const raus = spring({
     frame: frame - (laenge - 12),
@@ -105,7 +110,7 @@ const Namensschild: React.FC<{
   const x = interpolate(rein, [0, 1], [-1.1, 0]) + interpolate(raus, [0, 1], [0, -1.1]);
 
   return (
-    <AbsoluteFill style={{justifyContent: 'flex-end', paddingBottom: 620 * s}}>
+    <AbsoluteFill style={{justifyContent: 'flex-end', paddingBottom: r.unten + 180 * s}}>
       <div
         style={{
           transform: `translateX(${x * 100}%)`,
@@ -152,8 +157,9 @@ const Stichwort: React.FC<{text: string; laenge: number; akzent: string}> = ({
   akzent,
 }) => {
   const frame = useCurrentFrame();
-  const {fps, height} = useVideoConfig();
-  const s = height / 1920;
+  const {fps, width, height} = useVideoConfig();
+  const r = rahmen(width, height);
+  const s = r.s;
   const pop = spring({frame, fps, config: {damping: 9, stiffness: 260, mass: 0.6}});
   const raus = interpolate(frame, [laenge - 6, laenge], [1, 0], {
     extrapolateLeft: 'clamp',
@@ -168,7 +174,7 @@ const Stichwort: React.FC<{text: string; laenge: number; akzent: string}> = ({
       style={{
         justifyContent: 'flex-end',
         alignItems: 'center',
-        paddingBottom: 560 * s,
+        paddingBottom: r.unten + 130 * s,
         opacity: raus,
       }}
     >
@@ -231,6 +237,120 @@ const Fortschritt: React.FC<{laenge: number; akzent: string}> = ({laenge, akzent
   );
 };
 
+/**
+ * Große Ziffer für Aufzählungen („1 von 3"). Zählt im Bild mit, wenn das Video
+ * eine Liste abarbeitet — der Zuschauer sieht, wie viel noch kommt.
+ */
+const Zahl: React.FC<{text: string; unterzeile?: string; laenge: number; akzent: string}> = ({
+  text,
+  unterzeile,
+  laenge,
+  akzent,
+}) => {
+  const frame = useCurrentFrame();
+  const {fps, width, height} = useVideoConfig();
+  const r = rahmen(width, height);
+  const s = r.s;
+  const pop = spring({frame, fps, config: {damping: 11, stiffness: 200}});
+  const raus = interpolate(frame, [laenge - 7, laenge], [1, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+
+  return (
+    <AbsoluteFill
+      style={{
+        justifyContent: 'flex-start',
+        alignItems: 'flex-end',
+        paddingTop: r.oben + 200 * s,
+        paddingRight: r.rechts,
+        opacity: raus,
+      }}
+    >
+      <div style={{textAlign: 'center', transform: `scale(${0.7 + pop * 0.3})`}}>
+        <div
+          style={{
+            fontFamily: TITELSCHRIFT,
+            fontSize: 150 * s,
+            lineHeight: 1,
+            color: akzent,
+            WebkitTextStroke: `${5 * s}px rgba(0,0,0,0.85)`,
+            paintOrder: 'stroke fill',
+          }}
+        >
+          {text}
+        </div>
+        {unterzeile ? (
+          <div
+            style={{
+              fontFamily: TEXTSCHRIFT,
+              fontSize: 32 * s,
+              color: '#fff',
+              backgroundColor: 'rgba(8,10,14,0.85)',
+              padding: `${4 * s}px ${12 * s}px`,
+              marginTop: 6 * s,
+            }}
+          >
+            {unterzeile}
+          </div>
+        ) : null}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** Pfeil, der auf etwas im Bild zeigt und dabei leicht pulsiert. */
+const Pfeil: React.FC<{
+  richtung: 'oben' | 'unten' | 'links' | 'rechts';
+  laenge: number;
+  akzent: string;
+}> = ({richtung, laenge, akzent}) => {
+  const frame = useCurrentFrame();
+  const {fps, width, height} = useVideoConfig();
+  const r = rahmen(width, height);
+  const s = r.s;
+  const pop = spring({frame, fps, config: {damping: 12, stiffness: 220}});
+  const raus = interpolate(frame, [laenge - 6, laenge], [1, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  // Leichtes Wippen in Zeigerichtung — ein stehender Pfeil wird übersehen.
+  const wippen = Math.sin((frame / fps) * Math.PI * 3) * 14 * s;
+  const drehung = {oben: 0, rechts: 90, unten: 180, links: 270}[richtung];
+  const versatz =
+    richtung === 'oben' || richtung === 'unten'
+      ? {transform: `translateY(${wippen}px)`}
+      : {transform: `translateX(${wippen}px)`};
+
+  return (
+    <AbsoluteFill
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        opacity: raus * pop,
+        paddingBottom: r.unten,
+      }}
+    >
+      <div style={versatz}>
+        <svg
+          width={150 * s}
+          height={150 * s}
+          viewBox="0 0 100 100"
+          style={{transform: `rotate(${drehung}deg) scale(${0.7 + pop * 0.3})`}}
+        >
+          <path
+            d="M50 8 L86 52 L64 52 L64 92 L36 92 L36 52 L14 52 Z"
+            fill={akzent}
+            stroke="rgba(0,0,0,0.85)"
+            strokeWidth={6}
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 export const Grafiken: React.FC<{grafiken: Grafik[]; fps: number; akzent: string}> = ({
   grafiken,
   fps,
@@ -256,6 +376,12 @@ export const Grafiken: React.FC<{grafiken: Grafik[]; fps: number; akzent: string
             ) : null}
             {g.art === 'stichwort' ? (
               <Stichwort text={g.text} laenge={laenge} akzent={akzent} />
+            ) : null}
+            {g.art === 'zahl' ? (
+              <Zahl text={g.text} unterzeile={g.unterzeile} laenge={laenge} akzent={akzent} />
+            ) : null}
+            {g.art === 'pfeil' ? (
+              <Pfeil richtung={g.richtung ?? 'unten'} laenge={laenge} akzent={akzent} />
             ) : null}
             {g.art === 'blitz' ? <Blitz laenge={laenge} akzent={akzent} /> : null}
             {g.art === 'fortschritt' ? <Fortschritt laenge={laenge} akzent={akzent} /> : null}

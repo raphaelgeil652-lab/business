@@ -15,6 +15,11 @@ ZIEL="${2:-ausgabe/${KOMPOSITION,,}.mp4}"
 
 ARGS=(remotion render src/index.ts "$KOMPOSITION" "$ZIEL")
 
+# RAHMEN=1 blendet die sicheren Zonen ein — zum Pruefen, nicht fuers Hochladen.
+if [ "${RAHMEN:-}" = "1" ]; then
+  ARGS+=(--props '{"rahmenPruefen":true}')
+fi
+
 for KANDIDAT in \
   /opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell \
   /opt/pw-browsers/chromium-*/chrome-linux/chrome; do

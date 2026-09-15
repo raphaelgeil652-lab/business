@@ -44,6 +44,12 @@ export type Videoplan = {
   grafiken?: Grafik[];
   /** Abspann-Karte am Ende. Weglassen = kein Abspann. */
   outro?: {dauer: number; text: string; unterzeile?: string};
+  /**
+   * Schleifen-Ende: hängt den Anfang des ersten Ausschnitts hinten an, damit der
+   * Neustart nicht auffällt. Schlägt den Abspann — beides zusammen geht nicht,
+   * ein Abspann zerstört die Schleife. Siehe forschung/virale-videos.md, Punkt 6.
+   */
+  schleife?: {dauer: number};
 };
 
 export const videoplan: Videoplan = {
@@ -63,6 +69,10 @@ export const schnittLaenge = (plan: Videoplan): number =>
     Math.round(plan.ausschnitte.reduce((summe, a) => summe + (a.bis - a.von), 0) * plan.fps),
   );
 
-/** Gesamtlänge des fertigen Videos in Frames, mit Abspann. */
+/** Was hinten drankommt: Schleife schlägt Abspann. */
+export const anhangDauer = (plan: Videoplan): number =>
+  plan.schleife ? plan.schleife.dauer : (plan.outro?.dauer ?? 0);
+
+/** Gesamtlänge des fertigen Videos in Frames, mit Anhang. */
 export const laengeInFrames = (plan: Videoplan): number =>
-  schnittLaenge(plan) + Math.round((plan.outro?.dauer ?? 0) * plan.fps);
+  schnittLaenge(plan) + Math.round(anhangDauer(plan) * plan.fps);

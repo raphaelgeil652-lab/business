@@ -2,6 +2,7 @@ import {AbsoluteFill, Sequence} from 'remotion';
 import {Clip} from './komponenten/Clip';
 import {Grafiken} from './komponenten/Grafiken';
 import {Outro} from './komponenten/Outro';
+import {Rahmenpruefung} from './komponenten/Rahmenpruefung';
 import {HookText} from './komponenten/HookText';
 import {Untertitel} from './komponenten/Untertitel';
 import './schriften';
@@ -15,7 +16,12 @@ import {woerterAufSchnittLegen, zeilenBauen, type Wort} from './untertitel';
  * der Hook-Text und die Wort-Untertitel. Beides kommt aus den Dateien in
  * `src/daten/` — fehlen die Untertitel, läuft das Video einfach ohne.
  */
-export const Kurzvideo: React.FC<{plan: Videoplan; woerter: Wort[]}> = ({plan, woerter}) => {
+export const Kurzvideo: React.FC<{
+  plan: Videoplan;
+  woerter: Wort[];
+  /** Blendet die sicheren Zonen ein. Beim Rendern mit RAHMEN=1 einschalten. */
+  rahmenPruefen?: boolean;
+}> = ({plan, woerter, rahmenPruefen}) => {
   const zeilen = plan.untertitel
     ? zeilenBauen(woerterAufSchnittLegen(woerter, plan.ausschnitte, plan.fps))
     : [];
@@ -48,7 +54,25 @@ export const Kurzvideo: React.FC<{plan: Videoplan; woerter: Wort[]}> = ({plan, w
       {plan.grafiken ? (
         <Grafiken grafiken={plan.grafiken} fps={plan.fps} akzent={plan.akzentfarbe} />
       ) : null}
-      {plan.outro ? (
+      {plan.schleife && plan.ausschnitte.length > 0 ? (
+        // Schleifen-Ende: der Anfang nochmal, damit der Neustart weich wirkt.
+        <Sequence
+          from={schnittLaenge(plan)}
+          durationInFrames={Math.round(plan.schleife.dauer * plan.fps)}
+        >
+          <Clip
+            ausschnitt={{
+              von: plan.ausschnitte[0].von,
+              bis: plan.ausschnitte[0].von + plan.schleife.dauer,
+              zoom: plan.ausschnitte[0].zoom,
+            }}
+            laengeInFrames={Math.round(plan.schleife.dauer * plan.fps)}
+            fps={plan.fps}
+            rohvideo={plan.rohvideo}
+          />
+        </Sequence>
+      ) : null}
+      {plan.outro && !plan.schleife ? (
         <Sequence
           from={schnittLaenge(plan)}
           durationInFrames={Math.round(plan.outro.dauer * plan.fps)}
@@ -61,6 +85,7 @@ export const Kurzvideo: React.FC<{plan: Videoplan; woerter: Wort[]}> = ({plan, w
           />
         </Sequence>
       ) : null}
+      {rahmenPruefen ? <Rahmenpruefung /> : null}
     </AbsoluteFill>
   );
 };

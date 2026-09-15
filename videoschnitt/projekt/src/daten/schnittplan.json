@@ -7,17 +7,18 @@
   "akzentfarbe": "#ffd60a",
   "hook": "",
   "ausschnitte": [
-    {"von": 0, "bis": 3.5, "zoom": [1, 1.1]},
-    {"von": 5, "bis": 9, "zoom": [1.14, 1.02]},
-    {"von": 12, "bis": 16, "zoom": [1.05, 1.16]}
+    {"von": 0, "bis": 2.8, "zoom": [1, 1.1]},
+    {"von": 5, "bis": 7.6, "zoom": [1.14, 1.02]},
+    {"von": 12, "bis": 14.5, "zoom": [1.05, 1.16]}
   ],
   "grafiken": [
-    {"art": "fortschritt", "von": 0, "bis": 11.5},
-    {"art": "titelband", "von": 0.2, "bis": 2.5, "text": "Thema des Videos", "unterzeile": "Unterzeile"},
+    {"art": "fortschritt", "von": 0, "bis": 7.9},
+    {"art": "titelband", "von": 0.15, "bis": 2.5, "text": "Thema des Videos", "unterzeile": "Unterzeile"},
     {"art": "namensschild", "von": 0.8, "bis": 3.2, "text": "Name", "unterzeile": "Firma"},
-    {"art": "blitz", "von": 3.5, "bis": 3.72},
-    {"art": "blitz", "von": 7.5, "bis": 7.72},
-    {"art": "stichwort", "von": 9.5, "bis": 10.4, "text": "Pointe"}
+    {"art": "blitz", "von": 2.8, "bis": 3.02},
+    {"art": "zahl", "von": 3.0, "bis": 5.2, "text": "1", "unterzeile": "von 3"},
+    {"art": "pfeil", "von": 5.6, "bis": 6.6, "richtung": "unten"},
+    {"art": "stichwort", "von": 6.8, "bis": 7.9, "text": "Pointe"}
   ],
   "outro": {"dauer": 1.4, "text": "Clickculture", "unterzeile": "Videoschnitt per Code"}
 }

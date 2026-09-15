@@ -224,6 +224,13 @@ Meta/Google. Ein Befehl macht alles — `npm run schneiden -- public/roh.mp4`: T
 einblenden, Motion Graphics setzen (Titelband, Namensschild, Stichwort, Wisch, Balken, Abspann),
 MP4 rendern. Handyvideos vom iPhone werden richtig gedreht. Technik: [Remotion](https://www.remotion.dev), kostenlos in unserer Größe.
 
+**Die Machart beruht auf Recherche:** `videoschnitt/forschung/virale-videos.md` hält fest, was
+belegt ist (sichere Zonen, −14 LUFS, Marke nach hinten — Meta-Zahlen) und was **nicht** belegt ist
+(alle Prozentzahlen zu Untertitel-Stilen, Textanimationen, Fortschrittsbalken). Daraus umgesetzt:
+Sicherheitsrahmen für alle Texte (`RAHMEN=1` zum Prüfen), Tempo-Voreinstellungen (`TEMPO=`),
+Füllwörter raus, Zahlen in Untertiteln hervorgehoben, Schleifen-Ende (`SCHLEIFE=an`), Warnung
+bei fehlendem Hook. Die Machart ist bewusst **einstellbar**, nicht festgeschraubt.
+
 Nachgebessert wird in `projekt/src/daten/schnittplan.json` (Zeiten, Zooms, Texte) — ein neuer
 Lauf überschreibt die Datei aber. **Videodateien kommen nicht ins Repo.** Schriften selbst
 gehostet, kein Google-Fonts-Aufruf. Der Werbeclip zeigt **sichtbare Platzhalter** statt

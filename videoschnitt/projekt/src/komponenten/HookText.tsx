@@ -1,5 +1,6 @@
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {TITELSCHRIFT} from '../schriften';
+import {rahmen} from '../sicherheitszonen';
 
 /**
  * Der grosse Text oben im Bild — der Hook. Faehrt rein, bleibt stehen,
@@ -10,8 +11,9 @@ export const HookText: React.FC<{text: string; laengeInFrames: number}> = ({
   laengeInFrames,
 }) => {
   const frame = useCurrentFrame();
-  const {fps, height} = useVideoConfig();
-  const s = height / 1920;
+  const {fps, width, height} = useVideoConfig();
+  const r = rahmen(width, height);
+  const s = r.s;
 
   const rein = spring({frame, fps, config: {damping: 16, stiffness: 180}});
   const raus = interpolate(frame, [laengeInFrames - 8, laengeInFrames], [1, 0], {
@@ -24,9 +26,9 @@ export const HookText: React.FC<{text: string; laengeInFrames: number}> = ({
       style={{
         justifyContent: 'flex-start',
         alignItems: 'center',
-        paddingTop: 200 * s,
-        paddingLeft: 70 * s,
-        paddingRight: 70 * s,
+        paddingTop: r.oben + 40 * s,
+        paddingLeft: r.links,
+        paddingRight: r.rechts,
         opacity: raus,
       }}
     >
@@ -39,6 +41,7 @@ export const HookText: React.FC<{text: string; laengeInFrames: number}> = ({
           fontSize: 60 * s,
           lineHeight: 1.1,
           textAlign: 'center',
+          maxWidth: r.nutzbareBreite,
           textTransform: 'uppercase',
           padding: `${18 * s}px ${28 * s}px`,
           borderRadius: 14 * s,

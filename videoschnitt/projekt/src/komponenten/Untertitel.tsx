@@ -1,21 +1,25 @@
 import {AbsoluteFill, Sequence, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {TITELSCHRIFT} from '../schriften';
+import {rahmen} from '../sicherheitszonen';
 import type {Zeile} from '../untertitel';
 
 /**
- * Untertitel im Kurzvideo-Stil: kurze Zeile unten im Bild, das gerade
- * gesprochene Wort farbig. Das haelt Zuschauer ohne Ton im Video.
+ * Untertitel im Kurzvideo-Stil: kurze Zeile, das gerade gesprochene Wort farbig.
+ * Das hält Zuschauer ohne Ton im Video — der häufigste Fall beim Scrollen.
+ *
+ * Die Zeile sitzt im Sicherheitsrahmen (`src/sicherheitszonen.ts`), also über der
+ * Bildunterschrift der App und links von den Knöpfen.
+ *
+ * Zahlen und Preise werden hervorgehoben. Begründung: Sie sind die Stelle, an der
+ * ein Zuschauer hängen bleibt („299 €", „3 Fehler", „30 %"). Das ist eine
+ * Entscheidung aus Erfahrung, kein Messergebnis — siehe forschung/virale-videos.md.
  */
-const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string; abstandUnten: number}> = ({
-  zeile,
-  akzentfarbe,
-  abstandUnten,
-}) => {
+const istZahl = (text: string) => /[0-9]|€|%/.test(text);
+
+const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string}> = ({zeile, akzentfarbe}) => {
   const frame = useCurrentFrame();
-  const {fps, height} = useVideoConfig();
-  // Alle Maße hängen an der Videohöhe, damit die Schrift bei einem kleinen
-  // Hochkantvideo nicht das halbe Bild zudeckt.
-  const s = height / 1920;
+  const {fps, width, height} = useVideoConfig();
+  const r = rahmen(width, height);
   const pop = spring({frame, fps, config: {damping: 14, stiffness: 220, mass: 0.5}});
 
   return (
@@ -23,9 +27,9 @@ const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string; abstandUnten: 
       style={{
         justifyContent: 'flex-end',
         alignItems: 'center',
-        paddingBottom: abstandUnten * s,
-        paddingLeft: 60 * s,
-        paddingRight: 60 * s,
+        paddingBottom: r.unten,
+        paddingLeft: r.links,
+        paddingRight: r.rechts,
       }}
     >
       <div
@@ -34,9 +38,10 @@ const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string; abstandUnten: 
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: `0 ${16 * s}px`,
+          alignItems: 'center',
+          gap: `${8 * r.s}px ${16 * r.s}px`,
+          maxWidth: r.nutzbareBreite,
           fontFamily: TITELSCHRIFT,
-          fontSize: 76 * s,
           lineHeight: 1.15,
           textTransform: 'uppercase',
           textAlign: 'center',
@@ -45,13 +50,19 @@ const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string; abstandUnten: 
         {zeile.woerter.map((w, i) => {
           const aktiv =
             frame + zeile.vonFrame >= w.vonFrame && frame + zeile.vonFrame < w.bisFrame;
+          const zahl = istZahl(w.text);
           return (
             <span
               key={`${w.text}-${i}`}
               style={{
-                color: aktiv ? akzentfarbe : '#ffffff',
-                textShadow: `0 ${6 * s}px 0 rgba(0,0,0,0.85), 0 0 ${22 * s}px rgba(0,0,0,0.9)`,
-                WebkitTextStroke: `${Math.max(2, 3 * s)}px rgba(0,0,0,0.9)`,
+                fontSize: (zahl ? 86 : 76) * r.s,
+                color: zahl ? '#0b0f14' : aktiv ? akzentfarbe : '#ffffff',
+                backgroundColor: zahl ? akzentfarbe : 'transparent',
+                padding: zahl ? `${2 * r.s}px ${12 * r.s}px` : 0,
+                textShadow: zahl
+                  ? 'none'
+                  : `0 ${6 * r.s}px 0 rgba(0,0,0,0.85), 0 0 ${22 * r.s}px rgba(0,0,0,0.9)`,
+                WebkitTextStroke: zahl ? undefined : `${Math.max(2, 3 * r.s)}px rgba(0,0,0,0.9)`,
                 paintOrder: 'stroke fill',
               }}
             >
@@ -64,11 +75,10 @@ const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string; abstandUnten: 
   );
 };
 
-export const Untertitel: React.FC<{
-  zeilen: Zeile[];
-  akzentfarbe: string;
-  abstandUnten?: number;
-}> = ({zeilen, akzentfarbe, abstandUnten = 320}) => {
+export const Untertitel: React.FC<{zeilen: Zeile[]; akzentfarbe: string}> = ({
+  zeilen,
+  akzentfarbe,
+}) => {
   return (
     <>
       {zeilen.map((zeile, i) => (
@@ -77,7 +87,7 @@ export const Untertitel: React.FC<{
           from={zeile.vonFrame}
           durationInFrames={Math.max(zeile.bisFrame - zeile.vonFrame, 6)}
         >
-          <ZeileAnzeigen zeile={zeile} akzentfarbe={akzentfarbe} abstandUnten={abstandUnten} />
+          <ZeileAnzeigen zeile={zeile} akzentfarbe={akzentfarbe} />
         </Sequence>
       ))}
     </>
