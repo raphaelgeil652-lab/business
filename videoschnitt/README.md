@@ -54,6 +54,7 @@ Einfach vor den Befehl setzen. Ohne Angabe gilt der Wert in Klammern.
 | `OUTRO="Clickculture"` | Abspann-Karte am Ende (leer). |
 | `OUTROZEILE="…"` | Unterzeile im Abspann (leer). |
 | `MODELL=small` | Genauigkeit beim Abtippen: `base` schnell, `small` besser, `medium` am besten (`small`). |
+| `TON=aus` | Schaltet das Angleichen der Lautstärke ab (an). |
 
 ---
 
@@ -144,6 +145,9 @@ Neue Bausteine kommen in `src/komponenten/Grafiken.tsx` dazu.
 - Handyvideos (`.mov` vom iPhone) werden richtig gedreht — sie liegen in der
   Datei quer und würden sonst als Querformat rauskommen
 - Motion Graphics: Titelband, Namensschild, Stichwort, Wisch, Balken, Abspann
+- Ton wird am Ende auf −14 LUFS angeglichen — den Pegel, mit dem TikTok,
+  Instagram und YouTube ausliefern. Handyaufnahmen sind fast immer zu leise;
+  ohne diesen Schritt wirkt das fertige Video tonlos, obwohl Ton drauf ist.
 
 **Das geht nicht:**
 - Claude *sieht* und *hört* das Video nicht. Die Entscheidungen kommen aus dem
@@ -227,7 +231,8 @@ Läuft und ist an echtem Material durchgetestet:
 
 - 47 s TikTok → 43 s Schnitt, 17 Ausschnitte, Untertitel im Takt
 - 8 s iPhone-Aufnahme (hochkant, `.mov`) → 5 Ausschnitte von Hand nachgeschärft,
-  Füllwort „Ähm" raus, Titelband, Namensschild, Stichwort, Abspann
+  Füllwort „Ähm" raus, Titelband, Namensschild, Stichwort, Abspann, Ton
+  von −32 dB auf −18 dB angehoben
 - Werbeclip rendert ohne Rohmaterial
 
 **Offen:** Ein längeres, echtes Verkaufsvideo — erst daran zeigt sich, ob die

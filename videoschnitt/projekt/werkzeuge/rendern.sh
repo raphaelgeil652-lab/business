@@ -26,4 +26,22 @@ done
 
 mkdir -p "$(dirname "$ZIEL")"
 npx "${ARGS[@]}"
+
+# Ton angleichen. Handyaufnahmen sind fast immer zu leise — auf dem Handy
+# klingt das Video dann tonlos, obwohl Ton drauf ist. Ziel ist -14 LUFS,
+# das ist der Wert, mit dem TikTok, Instagram und YouTube ausliefern.
+# Abschalten mit: TON=aus
+if [ "${TON:-an}" != "aus" ]; then
+  TMP="${ZIEL%.mp4}-ton.mp4"
+  if npx remotion ffmpeg -y -v error \
+      -i "$ZIEL" -af "loudnorm=I=-14:TP=-1.5:LRA=11" \
+      -c:v copy -c:a aac -b:a 192k -ar 48000 "$TMP"; then
+    mv "$TMP" "$ZIEL"
+    echo "Ton auf -14 LUFS angeglichen."
+  else
+    rm -f "$TMP"
+    echo "Ton konnte nicht angeglichen werden — das Video ist trotzdem fertig."
+  fi
+fi
+
 echo "Fertig: $ZIEL"
