@@ -221,7 +221,8 @@ und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt i
 Werkzeug für beide Geschäfte: Kurzvideos aus einer Aufnahme (Reels/TikTok) und Werbeclips für
 Meta/Google. Ein Befehl macht alles — `npm run schneiden -- public/roh.mp4`: Ton abtippen
 (Whisper, deutsch), Sprechpausen automatisch rausschneiden, Punch-in-Zooms setzen, Wort-Untertitel
-einblenden, MP4 rendern. Technik: [Remotion](https://www.remotion.dev), kostenlos in unserer Größe.
+einblenden, Motion Graphics setzen (Titelband, Namensschild, Stichwort, Wisch, Balken, Abspann),
+MP4 rendern. Handyvideos vom iPhone werden richtig gedreht. Technik: [Remotion](https://www.remotion.dev), kostenlos in unserer Größe.
 
 Nachgebessert wird in `projekt/src/daten/schnittplan.json` (Zeiten, Zooms, Texte) — ein neuer
 Lauf überschreibt die Datei aber. **Videodateien kommen nicht ins Repo.** Schriften selbst

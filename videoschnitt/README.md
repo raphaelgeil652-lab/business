@@ -48,7 +48,11 @@ Einfach vor den Befehl setzen. Ohne Angabe gilt der Wert in Klammern.
 | `MAXSTUECK=3` | Wie lang ein Ausschnitt höchstens wird, bevor geteilt wird (3.5). Kleiner = hektischer. |
 | `LUFT=0.2` | Wie viel Ruhe an jedem Schnittrand bleibt (0.12). Zu klein klingt abgehackt. |
 | `HOOK="…"` | Großer Text über dem ersten Ausschnitt (leer). |
-| `AKZENT="#ff0000"` | Farbe des gerade gesprochenen Wortes (`#ffd60a`). |
+| `AKZENT="#ff0000"` | Farbe für Untertitel-Wort, Balken und Grafiken (`#ffd60a`). |
+| `NAME="Raffi"` | Namensschild, das am Anfang von links reinfährt (leer). |
+| `ROLLE="Clickculture"` | Unterzeile im Namensschild (leer). |
+| `OUTRO="Clickculture"` | Abspann-Karte am Ende (leer). |
+| `OUTROZEILE="…"` | Unterzeile im Abspann (leer). |
 | `MODELL=small` | Genauigkeit beim Abtippen: `base` schnell, `small` besser, `medium` am besten (`small`). |
 
 ---
@@ -92,6 +96,43 @@ stimmen die Originalzeiten nicht mehr — das rechnet `src/untertitel.ts` um.
 
 ---
 
+## Motion Graphics
+
+Fünf Bausteine liegen bereit. Sie stehen in `schnittplan.json` unter `grafiken`,
+die Zeiten zählen dabei im **fertigen** Video, nicht im Rohvideo.
+
+| Baustein | Was es ist |
+|---|---|
+| `titelband` | Band oben im Bild mit Thema und Unterzeile. Fährt von links rein. |
+| `namensschild` | Klassischer Lower Third — Name und Firma, fährt rein und wieder raus. |
+| `stichwort` | Ein Wort knallt groß ins Bild. Für die Pointe. Sitzt unter dem Gesicht, nicht auf den Augen. |
+| `blitz` | Kurzer Wisch in der Akzentfarbe. Macht einen Schnitt sichtbar. |
+| `fortschritt` | Dünner Balken ganz unten, der mitläuft. |
+
+Dazu die Abspann-Karte `outro` — dunkle Fläche, Name, Strich, Unterzeile.
+
+So sieht das aus:
+
+```json
+"grafiken": [
+  {"art": "fortschritt", "von": 0, "bis": 11.5},
+  {"art": "titelband", "von": 0.2, "bis": 2.5, "text": "Thema", "unterzeile": "Unterzeile"},
+  {"art": "namensschild", "von": 0.8, "bis": 3.2, "text": "Name", "unterzeile": "Firma"},
+  {"art": "blitz", "von": 3.5, "bis": 3.72},
+  {"art": "stichwort", "von": 9.5, "bis": 10.4, "text": "Pointe"}
+],
+"outro": {"dauer": 1.4, "text": "Clickculture", "unterzeile": "Videoschnitt per Code"}
+```
+
+**Automatisch gesetzt** werden Fortschrittsbalken und ein Wisch auf jedem Schnitt.
+Namensschild und Abspann kommen dazu, wenn du `NAME=` und `OUTRO=` mitgibst.
+Titelband und Stichwort setzt man von Hand — die hängen am Inhalt, den kennt
+das Werkzeug nicht.
+
+Neue Bausteine kommen in `src/komponenten/Grafiken.tsx` dazu.
+
+---
+
 ## Was das Werkzeug kann — und was nicht
 
 **Das geht wirklich** (alles hier getestet, nicht behauptet):
@@ -100,6 +141,9 @@ stimmen die Originalzeiten nicht mehr — das rechnet `src/untertitel.ts` um.
 - Untertitel im Kurzvideo-Stil, das gesprochene Wort farbig
 - Großer Hook-Text, animierte Grafiken, Balken, Zahlen
 - Maße und Bildrate werden aus dem Rohvideo übernommen
+- Handyvideos (`.mov` vom iPhone) werden richtig gedreht — sie liegen in der
+  Datei quer und würden sonst als Querformat rauskommen
+- Motion Graphics: Titelband, Namensschild, Stichwort, Wisch, Balken, Abspann
 
 **Das geht nicht:**
 - Claude *sieht* und *hört* das Video nicht. Die Entscheidungen kommen aus dem
@@ -140,6 +184,8 @@ videoschnitt/
     src/Werbeclip.tsx              Werbeclip für Meta/Google
     src/untertitel.ts              rechnet Wortzeiten auf den Schnitt um
     src/komponenten/               Clip (Zoom), Untertitel, Hook-Text
+    src/komponenten/Grafiken.tsx   die Motion-Graphics-Bausteine
+    src/komponenten/Outro.tsx      die Abspann-Karte
     werkzeuge/schneiden.mjs        der eine Befehl, der alles macht
     werkzeuge/transkribieren.mjs   Ton -> Wörter mit Zeiten
     werkzeuge/schnittplan.mjs      Pausen raus, Zooms setzen
@@ -177,7 +223,12 @@ Nachlesen: <https://www.remotion.dev/license>
 
 ## Stand
 
-Läuft und ist durchgetestet: Abtippen, automatischer Schnitt, Untertitel im Takt,
-Rendern — einmal komplett an einem echten Video durchgelaufen (47 s Rohmaterial →
-43 s Schnitt, 17 Ausschnitte). Der Werbeclip ist fertig gerendert.
-**Noch kein eigenes Rohmaterial** — dafür fehlt eine eigene Aufnahme.
+Läuft und ist an echtem Material durchgetestet:
+
+- 47 s TikTok → 43 s Schnitt, 17 Ausschnitte, Untertitel im Takt
+- 8 s iPhone-Aufnahme (hochkant, `.mov`) → 5 Ausschnitte von Hand nachgeschärft,
+  Füllwort „Ähm" raus, Titelband, Namensschild, Stichwort, Abspann
+- Werbeclip rendert ohne Rohmaterial
+
+**Offen:** Ein längeres, echtes Verkaufsvideo — erst daran zeigt sich, ob die
+Voreinstellungen für `PAUSE` und `MAXSTUECK` passen.

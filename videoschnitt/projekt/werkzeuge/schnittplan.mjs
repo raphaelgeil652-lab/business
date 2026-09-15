@@ -14,6 +14,9 @@
  *   MINLAENGE=0.5  kürzere Ausschnitte werden mit dem Nachbarn verschmolzen
  *   MAXSTUECK=3.5  längere Ausschnitte werden geteilt, damit der Zoom wechselt
  *   HOOK="Text"  großer Text über dem ersten Ausschnitt
+ *   NAME="Raffi"  Namensschild, das am Anfang reinfährt
+ *   ROLLE="Clickculture"  Unterzeile im Namensschild
+ *   OUTRO="Clickculture"  Abspann-Karte am Ende
  *
  * Beispiel:
  *   PAUSE=0.6 HOOK="3 Fehler, die dich Kunden kosten" npm run schnittplan -- public/roh.mp4
@@ -27,6 +30,9 @@ const LUFT = Number(process.env.LUFT ?? 0.12);
 const MINLAENGE = Number(process.env.MINLAENGE ?? 0.5);
 const MAXSTUECK = Number(process.env.MAXSTUECK ?? 3.5);
 const HOOK = process.env.HOOK ?? '';
+const NAME = process.env.NAME ?? '';
+const ROLLE = process.env.ROLLE ?? '';
+const OUTRO = process.env.OUTRO ?? '';
 
 const eingabe = process.argv[2] ?? 'public/roh.mp4';
 const videoPfad = resolve(process.cwd(), eingabe);
@@ -46,22 +52,31 @@ if (!existsSync(untertitelPfad)) {
 const messen = () => {
   const roh = execFileSync(
     'npx',
-    ['remotion', 'ffprobe', '-v', 'error', '-show_entries',
-     'stream=width,height,avg_frame_rate:format=duration', '-of', 'json', videoPfad],
+    ['remotion', 'ffprobe', '-v', 'error', '-show_streams', '-show_format', '-of', 'json', videoPfad],
     {encoding: 'utf8'},
   );
   const daten = JSON.parse(roh.slice(roh.indexOf('{')));
-  const spur = daten.streams.find((s) => s.width) ?? {};
+  const spur = daten.streams.find((s) => s.codec_type === 'video') ?? {};
   const [zaehler, nenner] = String(spur.avg_frame_rate ?? '30/1').split('/');
+
+  // Handyvideos liegen oft quer in der Datei und werden erst beim Abspielen
+  // gedreht. Ohne diesen Schritt käme ein Hochkantvideo als Querformat raus.
+  const drehung = Math.abs(
+    (spur.side_data_list ?? []).find((d) => d.rotation !== undefined)?.rotation ??
+      Number(spur.tags?.rotate ?? 0),
+  );
+  const quer = drehung === 90 || drehung === 270;
+
   return {
-    breite: spur.width ?? 1080,
-    hoehe: spur.height ?? 1920,
+    breite: (quer ? spur.height : spur.width) ?? 1080,
+    hoehe: (quer ? spur.width : spur.height) ?? 1920,
     fps: Math.round(Number(zaehler) / Number(nenner || 1)) || 30,
     laenge: Number(daten.format?.duration ?? 0),
+    gedreht: quer,
   };
 };
 
-const {breite, hoehe, fps, laenge} = messen();
+const {breite, hoehe, fps, laenge, gedreht} = messen();
 const woerter = JSON.parse(readFileSync(untertitelPfad, 'utf8'));
 
 if (woerter.length === 0) {
@@ -167,6 +182,27 @@ const ausschnitte = geteilt.map((s, i) => {
 
 const behalten = ausschnitte.reduce((n, a) => n + (a.bis - a.von), 0);
 
+// 5. Motion Graphics setzen. Zeiten zaehlen ab hier im fertigen Video.
+const grafiken = [{art: 'fortschritt', von: 0, bis: behalten}];
+
+// Auf jedem Schnitt ein kurzer Wisch — das macht die Schnitte sichtbar,
+// statt sie zu verstecken.
+let stelle = 0;
+for (const a of ausschnitte.slice(0, -1)) {
+  stelle += a.bis - a.von;
+  grafiken.push({art: 'blitz', von: Number(stelle.toFixed(2)), bis: Number((stelle + 0.22).toFixed(2))});
+}
+
+if (NAME) {
+  grafiken.push({
+    art: 'namensschild',
+    von: 0.6,
+    bis: Math.min(behalten, 3.4),
+    text: NAME,
+    ...(ROLLE ? {unterzeile: ROLLE} : {}),
+  });
+}
+
 const plan = {
   rohvideo: eingabe.replace(/^public\//, ''),
   breite,
@@ -176,16 +212,24 @@ const plan = {
   akzentfarbe: process.env.AKZENT ?? '#ffd60a',
   hook: HOOK,
   ausschnitte,
+  grafiken,
+  ...(OUTRO ? {outro: {dauer: 1.4, text: OUTRO, unterzeile: process.env.OUTROZEILE ?? ''}} : {}),
 };
 
 writeFileSync(planPfad, JSON.stringify(plan, null, 2) + '\n');
 
 const weg = laenge - behalten;
 console.log(`Schnittplan geschrieben → src/daten/schnittplan.json`);
-console.log(`  Rohvideo:     ${laenge.toFixed(1)} s, ${breite}×${hoehe}, ${fps} fps`);
+console.log(
+  `  Rohvideo:     ${laenge.toFixed(1)} s, ${breite}×${hoehe}, ${fps} fps${gedreht ? ' (Hochkant, gedreht gespeichert)' : ''}`,
+);
 console.log(`  Ausschnitte:  ${ausschnitte.length}`);
 console.log(`  Bleibt:       ${behalten.toFixed(1)} s`);
 console.log(`  Rausgenommen: ${weg.toFixed(1)} s Pausen (${((weg / laenge) * 100).toFixed(0)} %)`);
+console.log(`  Grafiken:     ${grafiken.length}`);
 if (HOOK) {
   console.log(`  Hook:         „${HOOK}"`);
+}
+if (OUTRO) {
+  console.log(`  Abspann:      „${OUTRO}"`);
 }

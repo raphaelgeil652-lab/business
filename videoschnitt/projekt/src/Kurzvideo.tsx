@@ -1,9 +1,11 @@
 import {AbsoluteFill, Sequence} from 'remotion';
 import {Clip} from './komponenten/Clip';
+import {Grafiken} from './komponenten/Grafiken';
+import {Outro} from './komponenten/Outro';
 import {HookText} from './komponenten/HookText';
 import {Untertitel} from './komponenten/Untertitel';
 import './schriften';
-import type {Videoplan} from './schnitt';
+import {schnittLaenge, type Videoplan} from './schnitt';
 import {woerterAufSchnittLegen, zeilenBauen, type Wort} from './untertitel';
 
 /**
@@ -42,6 +44,22 @@ export const Kurzvideo: React.FC<{plan: Videoplan; woerter: Wort[]}> = ({plan, w
       })}
       {plan.untertitel ? (
         <Untertitel zeilen={zeilen} akzentfarbe={plan.akzentfarbe} />
+      ) : null}
+      {plan.grafiken ? (
+        <Grafiken grafiken={plan.grafiken} fps={plan.fps} akzent={plan.akzentfarbe} />
+      ) : null}
+      {plan.outro ? (
+        <Sequence
+          from={schnittLaenge(plan)}
+          durationInFrames={Math.round(plan.outro.dauer * plan.fps)}
+        >
+          <Outro
+            text={plan.outro.text}
+            unterzeile={plan.outro.unterzeile}
+            laenge={Math.round(plan.outro.dauer * plan.fps)}
+            akzent={plan.akzentfarbe}
+          />
+        </Sequence>
       ) : null}
     </AbsoluteFill>
   );

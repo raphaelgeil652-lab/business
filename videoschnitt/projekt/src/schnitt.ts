@@ -8,6 +8,7 @@
  * einen Ausschnitt rauswerfen, eine Sekunde verschieben, einen Zoom ändern.
  * Der nächste Lauf des Werkzeugs überschreibt die Datei aber wieder.
  */
+import type {Grafik} from './komponenten/Grafiken';
 import planDaten from './daten/schnittplan.json';
 import wortDaten from './daten/untertitel.json';
 import type {Wort} from './untertitel';
@@ -39,11 +40,15 @@ export type Videoplan = {
   akzentfarbe: string;
   /** Großer Text über dem ersten Ausschnitt. Leer = kein Hook. */
   hook?: string;
+  /** Motion Graphics. Zeiten zählen im fertigen Video, nicht im Rohvideo. */
+  grafiken?: Grafik[];
+  /** Abspann-Karte am Ende. Weglassen = kein Abspann. */
+  outro?: {dauer: number; text: string; unterzeile?: string};
 };
 
 export const videoplan: Videoplan = {
-  ...planDaten,
-  ausschnitte: (planDaten.ausschnitte as Ausschnitt[]).map((a) => ({
+  ...(planDaten as unknown as Videoplan),
+  ausschnitte: (planDaten.ausschnitte as unknown as Ausschnitt[]).map((a) => ({
     ...a,
     zoom: a.zoom ? ([a.zoom[0], a.zoom[1]] as [number, number]) : undefined,
   })),
@@ -51,11 +56,13 @@ export const videoplan: Videoplan = {
 
 export const woerter: Wort[] = wortDaten as Wort[];
 
-/** Gesamtlänge des fertigen Videos in Frames. */
-export const laengeInFrames = (plan: Videoplan): number =>
+/** Länge der Ausschnitte in Frames, ohne Abspann. */
+export const schnittLaenge = (plan: Videoplan): number =>
   Math.max(
     1,
-    Math.round(
-      plan.ausschnitte.reduce((summe, a) => summe + (a.bis - a.von), 0) * plan.fps,
-    ),
+    Math.round(plan.ausschnitte.reduce((summe, a) => summe + (a.bis - a.von), 0) * plan.fps),
   );
+
+/** Gesamtlänge des fertigen Videos in Frames, mit Abspann. */
+export const laengeInFrames = (plan: Videoplan): number =>
+  schnittLaenge(plan) + Math.round((plan.outro?.dauer ?? 0) * plan.fps);
