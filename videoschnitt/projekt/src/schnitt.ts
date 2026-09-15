@@ -1,11 +1,16 @@
 /**
- * DAS IST DIE EINE DATEI, DIE SICH PRO VIDEO AENDERT.
+ * Der Schnittplan.
  *
- * Hier steht, was aus dem Rohvideo wird: welche Stellen drinbleiben,
- * wo reingezoomt wird und welcher grosse Text eingeblendet wird.
- * Alles andere im Projekt bleibt gleich — genau wie bei der Landingpage:
- * ein Geruest, nur der Inhalt wird getauscht.
+ * Diese Datei liest nur — geschrieben wird der Plan von
+ * `werkzeuge/schnittplan.mjs` nach `src/daten/schnittplan.json`.
+ *
+ * Du kannst `src/daten/schnittplan.json` jederzeit von Hand nachbessern:
+ * einen Ausschnitt rauswerfen, eine Sekunde verschieben, einen Zoom ändern.
+ * Der nächste Lauf des Werkzeugs überschreibt die Datei aber wieder.
  */
+import planDaten from './daten/schnittplan.json';
+import wortDaten from './daten/untertitel.json';
+import type {Wort} from './untertitel';
 
 export type Ausschnitt = {
   /** Sekunde im Rohvideo, ab der dieser Ausschnitt gezeigt wird. */
@@ -13,12 +18,11 @@ export type Ausschnitt = {
   /** Sekunde im Rohvideo, bis zu der dieser Ausschnitt gezeigt wird. */
   bis: number;
   /**
-   * Zoom am Anfang und am Ende des Ausschnitts. 1 = Originalgroesse.
-   * [1, 1.15] faehrt langsam rein, [1.2, 1] faehrt langsam raus.
-   * Weglassen = kein Zoom.
+   * Zoom am Anfang und am Ende des Ausschnitts. 1 = Originalgröße.
+   * [1, 1.15] fährt langsam ran, [1.2, 1] fährt langsam raus.
    */
   zoom?: [number, number];
-  /** Grosser Text oben im Bild, z. B. der Hook oder ein Kapitel. Optional. */
+  /** Großer Text oben im Bild für diesen Ausschnitt. Optional. */
   text?: string;
 };
 
@@ -28,30 +32,26 @@ export type Videoplan = {
   breite: number;
   hoehe: number;
   fps: number;
-  /** Die Ausschnitte in der Reihenfolge, in der sie im fertigen Video laufen. */
   ausschnitte: Ausschnitt[];
-  /** Wort-Untertitel automatisch aus `public/untertitel.json` einblenden? */
+  /** Wort-Untertitel einblenden? */
   untertitel: boolean;
   /** Farbe, in der das gerade gesprochene Wort hervorgehoben wird. */
   akzentfarbe: string;
+  /** Großer Text über dem ersten Ausschnitt. Leer = kein Hook. */
+  hook?: string;
 };
 
 export const videoplan: Videoplan = {
-  rohvideo: 'roh.mp4',
-  breite: 1080,
-  hoehe: 1920,
-  fps: 30,
-  untertitel: true,
-  akzentfarbe: '#ffd60a',
-  ausschnitte: [
-    // Beispielplan. Wird pro Video ersetzt, sobald das Rohmaterial da ist.
-    {von: 0.0, bis: 3.5, zoom: [1.0, 1.12], text: 'Beispiel-Hook'},
-    {von: 5.0, bis: 9.0, zoom: [1.2, 1.02]},
-    {von: 12.0, bis: 16.0, zoom: [1.0, 1.1]},
-  ],
+  ...planDaten,
+  ausschnitte: (planDaten.ausschnitte as Ausschnitt[]).map((a) => ({
+    ...a,
+    zoom: a.zoom ? ([a.zoom[0], a.zoom[1]] as [number, number]) : undefined,
+  })),
 };
 
-/** Gesamtlaenge des fertigen Videos in Frames. */
+export const woerter: Wort[] = wortDaten as Wort[];
+
+/** Gesamtlänge des fertigen Videos in Frames. */
 export const laengeInFrames = (plan: Videoplan): number =>
   Math.max(
     1,

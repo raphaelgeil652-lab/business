@@ -1,117 +1,115 @@
 # Videoschnitt per Code
 
-Hier werden Videos **geschrieben statt geschnitten**: Schnitte, Zooms, Untertitel und
-Motion Graphics stehen als Code in einer Datei, und daraus wird eine fertige MP4-Datei
-gerendert. Grundlage ist [Remotion](https://www.remotion.dev).
+Hier werden Videos **geschrieben statt geschnitten**. Du legst eine Aufnahme ab,
+startest einen Befehl — und bekommst ein fertiges Hochkantvideo mit Schnitten,
+Zooms und Untertiteln zurück. Grundlage ist [Remotion](https://www.remotion.dev).
 
 Gedacht für zwei Sachen:
 
-1. **Kurzvideos** aus einem Rohvideo (Handyaufnahme) — für Reels, TikTok, Shorts.
+1. **Kurzvideos** aus einer Handyaufnahme — für Reels, TikTok, Shorts.
 2. **Werbeclips** für Meta und Google, ganz ohne Rohmaterial, nur aus Text und Bewegung.
 
 ---
 
-## Was wirklich geht — und was nicht
-
-Ein TikTok-Video hat behauptet, Claude schneidet dein Video ab jetzt selbstständig.
-Das stimmt ungefähr zur Hälfte. Ehrlich aufgeteilt:
-
-**Das geht wirklich:**
-- Rohvideo abtippen lassen, Wort für Wort mit Zeitstempel (auf Deutsch)
-- Pausen und Versprecher rausschneiden
-- Langsame Zooms auf jeden Ausschnitt
-- Untertitel im Kurzvideo-Stil, das gesprochene Wort farbig
-- Große Texte, Logos, Balken, Zahlen, animierte Grafiken
-- Alles in 1080 × 1920, fertig zum Hochladen
-
-**Das geht nicht:**
-- Claude *sieht* das Video nicht und *hört* es nicht. Die Entscheidungen kommen aus
-  dem Transkript und aus dem, was du dazu sagst.
-- „Maximale Viralität per Knopfdruck" gibt es nicht. Der Schnittplan ist eine
-  Entscheidung, keine Zauberei. Er wird gut, wenn das Rohmaterial gut ist.
-- Rendern dauert. Ein 60-Sekunden-Video braucht auf einem normalen Rechner ein paar
-  Minuten.
-
----
-
-## Der Ablauf in vier Schritten
-
-**Schritt 1 — einmalig einrichten**
+## Der eine Befehl
 
 ```bash
 cd videoschnitt/projekt
-npm install
+npm install                              # nur beim allerersten Mal
+npm run schneiden -- public/roh.mp4
 ```
 
-**Schritt 2 — Rohvideo ablegen**
+Das läuft dann von allein durch:
 
-Die Aufnahme als `videoschnitt/projekt/public/roh.mp4` speichern.
-Videodateien werden bewusst **nicht** mit ins Repo eingecheckt.
+| Schritt | Was passiert |
+|---|---|
+| 1. Abtippen | Der Ton wird Wort für Wort mit Zeitstempel mitgeschrieben (Deutsch). |
+| 2. Schnitt planen | Jede Sprechpause ab 0,45 s fliegt raus. Lange Stücke werden an Wortgrenzen geteilt, damit der Zoom wechselt. |
+| 3. Rendern | Fertige Datei in `ausgabe/kurzvideo.mp4`. |
 
-**Schritt 3 — abtippen lassen**
+Am Ende steht da, wie viel weg ist — zum Beispiel:
+`17 Ausschnitte · bleibt 43,0 s · rausgenommen 4,2 s Pausen (9 %)`
 
-```bash
-npm run transkribieren -- public/roh.mp4
-```
-
-Das schreibt zwei Dateien:
-- `public/untertitel.json` — die Untertitel fürs Video
-- `arbeitsdateien/transkript.txt` — zum Lesen, mit Zeiten und markierten Pausen
-
-Beim ersten Mal lädt das Werkzeug Whisper herunter (etwa 150 MB). Danach geht es schnell.
-Genauer wird es mit `MODELL=small` oder `MODELL=medium` davor — dauert dann länger.
-
-**Schritt 4 — Schnittplan schreiben und rendern**
-
-Der Schnittplan steht in `projekt/src/schnitt.ts`. Danach:
+**Mit Hook oben im Bild:**
 
 ```bash
-npm run kurzvideo     # fertiges Video -> ausgabe/kurzvideo.mp4
-npm run werbeclip     # Werbeclip      -> ausgabe/werbeclip.mp4
-npm start             # Vorschau im Browser, mit Zeitleiste zum Durchklicken
+HOOK="3 Fehler, die dich Kunden kosten" npm run schneiden -- public/roh.mp4
 ```
 
 ---
 
-## Die eine Datei, die sich pro Video ändert
+## Stellschrauben
 
-`projekt/src/schnitt.ts`. Ein Ausschnitt sieht so aus:
+Einfach vor den Befehl setzen. Ohne Angabe gilt der Wert in Klammern.
 
-```ts
-{von: 12.4, bis: 18.0, zoom: [1.0, 1.15], text: 'Das kostet dich Kunden'}
+| Schraube | Bedeutung |
+|---|---|
+| `PAUSE=0.6` | Ab welcher Stille geschnitten wird, in Sekunden (0.45). Größer = ruhiger. |
+| `MAXSTUECK=3` | Wie lang ein Ausschnitt höchstens wird, bevor geteilt wird (3.5). Kleiner = hektischer. |
+| `LUFT=0.2` | Wie viel Ruhe an jedem Schnittrand bleibt (0.12). Zu klein klingt abgehackt. |
+| `HOOK="…"` | Großer Text über dem ersten Ausschnitt (leer). |
+| `AKZENT="#ff0000"` | Farbe des gerade gesprochenen Wortes (`#ffd60a`). |
+| `MODELL=small` | Genauigkeit beim Abtippen: `base` schnell, `small` besser, `medium` am besten (`small`). |
+
+---
+
+## Einzelne Schritte
+
+Wenn du nicht alles auf einmal willst:
+
+```bash
+npm run transkribieren -- public/roh.mp4   # nur abtippen
+npm run schnittplan -- public/roh.mp4      # nur den Schnitt planen
+npm run kurzvideo                          # nur rendern
+npm run werbeclip                          # den Werbeclip rendern
+npm start                                  # Vorschau im Browser, mit Zeitleiste
+npm run pruefen                            # prüft den Code auf Fehler
+```
+
+`npm start` ist der ehrlichste Weg: Du siehst das Video im Browser, ziehst durch
+die Zeitleiste und siehst jede Änderung sofort, ohne auf das Rendern zu warten.
+
+---
+
+## Nachbessern von Hand
+
+Der geplante Schnitt steht in `projekt/src/daten/schnittplan.json`. Ein Ausschnitt
+sieht so aus:
+
+```json
+{"von": 12.4, "bis": 18.0, "zoom": [1.0, 1.15], "text": "Das kostet dich Kunden"}
 ```
 
 Gelesen: *nimm die Sekunden 12,4 bis 18,0 aus dem Rohvideo, fahre dabei langsam
-näher ran und blende oben diesen Text ein.* Mehrere Ausschnitte hintereinander
-ergeben den Schnitt. Was nicht aufgelistet ist, fliegt raus.
+näher ran und blende oben diesen Text ein.* Du kannst Zeilen löschen, Zeiten
+verschieben, Texte ergänzen — danach `npm run kurzvideo`.
+
+**Achtung:** Ein neuer Lauf von `npm run schneiden` überschreibt die Datei wieder.
+Wenn du von Hand nachgebessert hast, danach nur noch `npm run kurzvideo` benutzen.
 
 Die Untertitel rutschen automatisch mit: Sobald etwas rausgeschnitten wird,
 stimmen die Originalzeiten nicht mehr — das rechnet `src/untertitel.ts` um.
 
-Alles andere bleibt über alle Videos gleich. **Gleiches Prinzip wie bei den
-Service-Modulen: Gerüst bleibt, nur der Inhalt wird getauscht.**
-
 ---
 
-## Was drin liegt
+## Was das Werkzeug kann — und was nicht
 
-```
-videoschnitt/
-  README.md                    diese Datei
-  projekt/
-    src/schnitt.ts             der Schnittplan — die Datei, die sich ändert
-    src/Kurzvideo.tsx          das geschnittene Kurzvideo
-    src/Werbeclip.tsx          Werbeclip für Meta/Google, ohne Rohmaterial
-    src/untertitel.ts          rechnet die Wortzeiten auf den Schnitt um
-    src/schriften.ts           lädt die Schriften aus public/fonts/
-    src/komponenten/           Clip (Zoom), Untertitel, Hook-Text
-    werkzeuge/transkribieren.mjs   Video -> Untertitel + Transkript
-    werkzeuge/rendern.sh           rendert eine Komposition zu MP4
-    public/fonts/              Archivo Black + Hanken Grotesk, selbst gehostet
-```
+**Das geht wirklich** (alles hier getestet, nicht behauptet):
+- Pausen und Stille automatisch rausschneiden
+- Punch-in-Schnitte mit wechselnden Zooms
+- Untertitel im Kurzvideo-Stil, das gesprochene Wort farbig
+- Großer Hook-Text, animierte Grafiken, Balken, Zahlen
+- Maße und Bildrate werden aus dem Rohvideo übernommen
 
-Die Schriften liegen wie bei den Webseiten **selbst gehostet** im Projekt.
-Es geht kein Aufruf zu Google Fonts raus.
+**Das geht nicht:**
+- Claude *sieht* und *hört* das Video nicht. Die Entscheidungen kommen aus dem
+  Transkript — deshalb die Stellschrauben oben.
+- „Maximale Viralität per Knopfdruck" gibt es nicht. Ein gutes Video braucht
+  gutes Rohmaterial und einen guten Hook. Das Werkzeug spart die Fleißarbeit,
+  nicht das Denken.
+- Rendern dauert. Rechne mit etwa einer Minute pro Minute Video.
+- Das Abtippen ist nicht perfekt. Mit `MODELL=base` gibt es Fehler bei Namen und
+  Fachwörtern. Vor dem Hochladen einmal `arbeitsdateien/transkript.txt` überfliegen.
 
 ---
 
@@ -123,23 +121,48 @@ Die Texte stehen in `src/Werbeclip.tsx` unter `werbeclipStandard` und werden pro
 Kunde getauscht (Betrieb, Ort, Leistung, Angebot).
 
 **Die Bildflächen sind sichtbare Platzhalter.** Da gehören die echten
-Vorher/Nachher-Fotos des Betriebs rein — das stärkste Vertrauenselement der Branche.
-Erfundene Bilder kommen hier nicht rein, gleiche Regel wie bei den echten Kundenseiten.
+Vorher/Nachher-Fotos des Betriebs rein — das stärkste Vertrauenselement der Branche
+(siehe `nischen/autowerkstaetten/service-module.md`). Erfundene Bilder kommen hier
+nicht rein, gleiche Regel wie bei den echten Kundenseiten.
 
 ---
 
-## Zum Plugin
+## Was wo liegt
 
-Es gibt ein offizielles Remotion-Plugin für Claude Code:
-
-```bash
-claude plugin marketplace add remotion-dev/claude-code-plugin
-claude plugin install remotion@remotion
+```
+videoschnitt/
+  README.md                        diese Datei
+  projekt/
+    src/daten/schnittplan.json     der geplante Schnitt (wird erzeugt)
+    src/daten/untertitel.json      die Wörter mit Zeiten (wird erzeugt)
+    src/schnitt.ts                 liest beides ein
+    src/Kurzvideo.tsx              das geschnittene Kurzvideo
+    src/Werbeclip.tsx              Werbeclip für Meta/Google
+    src/untertitel.ts              rechnet Wortzeiten auf den Schnitt um
+    src/komponenten/               Clip (Zoom), Untertitel, Hook-Text
+    werkzeuge/schneiden.mjs        der eine Befehl, der alles macht
+    werkzeuge/transkribieren.mjs   Ton -> Wörter mit Zeiten
+    werkzeuge/schnittplan.mjs      Pausen raus, Zooms setzen
+    werkzeuge/rendern.sh           rendert zu MP4
+    public/roh.mp4                 deine Aufnahme (nicht im Repo)
+    public/fonts/                  Schriften, selbst gehostet
+    ausgabe/                       fertige Videos (nicht im Repo)
+  arbeitsdateien/transkript.txt    zum Lesen, mit Zeiten und Pausen
 ```
 
-**Nötig ist es nicht.** Remotion ist ein normales npm-Paket — dieses Projekt hier
-funktioniert ohne Plugin. Das Plugin bringt zusätzliches Remotion-Wissen mit,
-mehr nicht.
+Videodateien werden bewusst **nicht** eingecheckt — sie sind groß und ändern sich
+ständig. Die Schriften liegen wie bei den Webseiten **selbst gehostet** im Projekt,
+es geht kein Aufruf zu Google Fonts raus.
+
+---
+
+## Braucht es das Claude-Plugin?
+
+Nein. Es gibt ein offizielles Remotion-Plugin für Claude Code
+(`claude plugin marketplace add remotion-dev/claude-code-plugin`, dann
+`claude plugin install remotion@remotion`, geht nur im Terminal auf dem eigenen
+Rechner). Es bringt zusätzliches Remotion-Wissen mit, sonst nichts.
+**Dieses Projekt läuft ohne Plugin.**
 
 ---
 
@@ -154,6 +177,7 @@ Nachlesen: <https://www.remotion.dev/license>
 
 ## Stand
 
-Aufgesetzt und getestet: Rendern läuft, Untertitel werden erzeugt, der Werbeclip
-ist fertig gerendert worden. **Noch kein echtes Rohvideo verarbeitet** — dafür fehlt
-eine eigene Aufnahme.
+Läuft und ist durchgetestet: Abtippen, automatischer Schnitt, Untertitel im Takt,
+Rendern — einmal komplett an einem echten Video durchgelaufen (47 s Rohmaterial →
+43 s Schnitt, 17 Ausschnitte). Der Werbeclip ist fertig gerendert.
+**Noch kein eigenes Rohmaterial** — dafür fehlt eine eigene Aufnahme.

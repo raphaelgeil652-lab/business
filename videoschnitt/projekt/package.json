@@ -5,10 +5,12 @@
   "description": "Videoschnitt per Code mit Remotion — Kurzvideos, Ads und Motion Graphics fuer Clickculture",
   "scripts": {
     "start": "remotion studio src/index.ts",
-    "rendern": "remotion render src/index.ts",
+    "schneiden": "node werkzeuge/schneiden.mjs",
+    "transkribieren": "node werkzeuge/transkribieren.mjs",
+    "schnittplan": "node werkzeuge/schnittplan.mjs",
     "kurzvideo": "bash werkzeuge/rendern.sh Kurzvideo ausgabe/kurzvideo.mp4",
     "werbeclip": "bash werkzeuge/rendern.sh Werbeclip ausgabe/werbeclip.mp4",
-    "transkribieren": "node werkzeuge/transkribieren.mjs"
+    "pruefen": "tsc --noEmit"
   },
   "dependencies": {
     "@remotion/cli": "4.0.525",

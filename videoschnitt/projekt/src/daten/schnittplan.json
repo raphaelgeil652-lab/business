@@ -1,0 +1,14 @@
+{
+  "rohvideo": "roh.mp4",
+  "breite": 1080,
+  "hoehe": 1920,
+  "fps": 30,
+  "untertitel": true,
+  "akzentfarbe": "#ffd60a",
+  "hook": "",
+  "ausschnitte": [
+    {"von": 0, "bis": 3.5, "zoom": [1, 1.1]},
+    {"von": 5, "bis": 9, "zoom": [1.14, 1.02]},
+    {"von": 12, "bis": 16, "zoom": [1.05, 1.16]}
+  ]
+}

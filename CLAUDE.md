@@ -217,6 +217,19 @@ und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt i
 - `drucksachen/taschenkarten.html` — 8 Karten zum Ausdrucken (Kaserne, ohne Handy nutzbar)
 - `forschung/quellen.md` — Belege mit Links, plus „was NICHT belegt ist"
 
+### `videoschnitt/` — Videos per Code (Werkzeug, nicht Nische)
+Werkzeug für beide Geschäfte: Kurzvideos aus einer Aufnahme (Reels/TikTok) und Werbeclips für
+Meta/Google. Ein Befehl macht alles — `npm run schneiden -- public/roh.mp4`: Ton abtippen
+(Whisper, deutsch), Sprechpausen automatisch rausschneiden, Punch-in-Zooms setzen, Wort-Untertitel
+einblenden, MP4 rendern. Technik: [Remotion](https://www.remotion.dev), kostenlos in unserer Größe.
+
+Nachgebessert wird in `projekt/src/daten/schnittplan.json` (Zeiten, Zooms, Texte) — ein neuer
+Lauf überschreibt die Datei aber. **Videodateien kommen nicht ins Repo.** Schriften selbst
+gehostet, kein Google-Fonts-Aufruf. Der Werbeclip zeigt **sichtbare Platzhalter** statt
+erfundener Vorher/Nachher-Fotos — echte Fotos des Betriebs gehören da rein.
+Das Claude-Plugin für Remotion ist **nicht nötig**, das Projekt läuft ohne.
+Einstieg: `videoschnitt/README.md`.
+
 ### `anleitungen/` — gemeinsam, nischenneutral
 `meta-konto-einrichten.md`, `meta-anzeige-einrichten.md`, `landingpage-hosten.md`,
 `ghl-n8n-aufbau.md` + `n8n/`, `tech-stack.md`, `klienten-journey.md`

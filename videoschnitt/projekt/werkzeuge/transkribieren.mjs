@@ -9,7 +9,7 @@
  *   2. Whisper.cpp installieren, falls noch nicht da (einmalig, laedt ~150 MB)
  *   3. Video abtippen lassen, Wort fuer Wort mit Zeitstempel
  *   4. Ergebnis schreiben:
- *        public/untertitel.json      -> wird im Video eingeblendet
+ *        src/daten/untertitel.json     -> wird im Video eingeblendet
  *        arbeitsdateien/transkript.txt -> zum Lesen, mit Zeiten und Pausen
  *
  * Modell waehlen: MODELL=small npm run transkribieren -- public/roh.mp4
@@ -40,7 +40,7 @@ if (!eingabe) {
 const videoPfad = resolve(process.cwd(), eingabe);
 const whisperOrdner = resolve(process.cwd(), '.whisper');
 const wavPfad = join(whisperOrdner, 'ton.wav');
-const untertitelPfad = resolve(process.cwd(), 'public/untertitel.json');
+const untertitelPfad = resolve(process.cwd(), 'src/daten/untertitel.json');
 const transkriptPfad = resolve(process.cwd(), '../arbeitsdateien/transkript.txt');
 
 mkdirSync(whisperOrdner, {recursive: true});
@@ -68,9 +68,23 @@ const roh = await transcribe({
 });
 
 const {captions} = toCaptions({whisperCppOutput: roh});
-const woerter = captions
-  .filter((c) => c.text.trim() !== '')
-  .map((c) => ({text: c.text, startMs: c.startMs, endMs: c.endMs}));
+
+// Whisper liefert Wortteile: aus „Einkauf" werden „Eink" und „auf".
+// Teile ohne fuehrendes Leerzeichen gehoeren ans Wort davor — sonst stehen
+// zerrissene Woerter im Video.
+const woerter = [];
+for (const c of captions) {
+  if (c.text.trim() === '') {
+    continue;
+  }
+  const letztes = woerter[woerter.length - 1];
+  if (letztes && !c.text.startsWith(' ')) {
+    letztes.text += c.text;
+    letztes.endMs = c.endMs;
+  } else {
+    woerter.push({text: c.text, startMs: c.startMs, endMs: c.endMs});
+  }
+}
 
 writeFileSync(untertitelPfad, JSON.stringify(woerter, null, 1));
 
@@ -107,5 +121,5 @@ if (zeile.trim() !== '') {
 writeFileSync(transkriptPfad, text);
 
 console.log('4/4  Fertig.');
-console.log(`     ${woerter.length} Wörter → public/untertitel.json`);
+console.log(`     ${woerter.length} Wörter → src/daten/untertitel.json`);
 console.log('     Transkript mit Zeiten → arbeitsdateien/transkript.txt');

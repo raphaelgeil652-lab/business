@@ -1,5 +1,4 @@
-import {useEffect, useState} from 'react';
-import {AbsoluteFill, Sequence, continueRender, delayRender, staticFile} from 'remotion';
+import {AbsoluteFill, Sequence} from 'remotion';
 import {Clip} from './komponenten/Clip';
 import {HookText} from './komponenten/HookText';
 import {Untertitel} from './komponenten/Untertitel';
@@ -8,29 +7,16 @@ import type {Videoplan} from './schnitt';
 import {woerterAufSchnittLegen, zeilenBauen, type Wort} from './untertitel';
 
 /**
- * Das geschnittene Kurzvideo: Ausschnitte hintereinander, Zoom pro Ausschnitt,
- * grosser Hook-Text und Wort-Untertitel.
+ * Das geschnittene Kurzvideo.
  *
- * Die Untertitel kommen aus `public/untertitel.json`. Fehlt die Datei,
- * laeuft das Video ohne Untertitel durch — es bricht nichts ab.
+ * Ausschnitte laufen hintereinander, jeder mit seinem Zoom. Darüber liegen
+ * der Hook-Text und die Wort-Untertitel. Beides kommt aus den Dateien in
+ * `src/daten/` — fehlen die Untertitel, läuft das Video einfach ohne.
  */
-export const Kurzvideo: React.FC<{plan: Videoplan}> = ({plan}) => {
-  const [woerter, setWoerter] = useState<Wort[]>([]);
-  const [handle] = useState(() => delayRender('Untertitel laden'));
-
-  useEffect(() => {
-    if (!plan.untertitel) {
-      continueRender(handle);
-      return;
-    }
-    fetch(staticFile('untertitel.json'))
-      .then((res) => (res.ok ? res.json() : []))
-      .then((daten: Wort[]) => setWoerter(Array.isArray(daten) ? daten : []))
-      .catch(() => setWoerter([]))
-      .finally(() => continueRender(handle));
-  }, [handle, plan.untertitel]);
-
-  const zeilen = zeilenBauen(woerterAufSchnittLegen(woerter, plan.ausschnitte, plan.fps));
+export const Kurzvideo: React.FC<{plan: Videoplan; woerter: Wort[]}> = ({plan, woerter}) => {
+  const zeilen = plan.untertitel
+    ? zeilenBauen(woerterAufSchnittLegen(woerter, plan.ausschnitte, plan.fps))
+    : [];
 
   let start = 0;
 
@@ -40,6 +26,8 @@ export const Kurzvideo: React.FC<{plan: Videoplan}> = ({plan}) => {
         const laenge = Math.round((ausschnitt.bis - ausschnitt.von) * plan.fps);
         const von = start;
         start += laenge;
+        // Der Hook steht über dem ersten Ausschnitt, wenn dort kein eigener Text steht.
+        const text = ausschnitt.text ?? (i === 0 ? plan.hook : undefined);
         return (
           <Sequence key={i} from={von} durationInFrames={laenge}>
             <Clip
@@ -48,9 +36,7 @@ export const Kurzvideo: React.FC<{plan: Videoplan}> = ({plan}) => {
               fps={plan.fps}
               rohvideo={plan.rohvideo}
             />
-            {ausschnitt.text ? (
-              <HookText text={ausschnitt.text} laengeInFrames={laenge} />
-            ) : null}
+            {text ? <HookText text={text} laengeInFrames={laenge} /> : null}
           </Sequence>
         );
       })}

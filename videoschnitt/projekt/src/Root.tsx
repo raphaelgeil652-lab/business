@@ -1,12 +1,13 @@
 import {Composition} from 'remotion';
 import {Kurzvideo} from './Kurzvideo';
-import {laengeInFrames, videoplan} from './schnitt';
+import {laengeInFrames, videoplan, woerter} from './schnitt';
 import {Werbeclip, werbeclipStandard} from './Werbeclip';
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      {/* Geschnittenes Kurzvideo aus einem Rohvideo in public/. */}
+      {/* Das geschnittene Kurzvideo. Maße, Länge und Schnitt kommen aus
+          src/daten/schnittplan.json — geschrieben vom Werkzeug. */}
       <Composition
         id="Kurzvideo"
         component={Kurzvideo}
@@ -14,10 +15,10 @@ export const RemotionRoot: React.FC = () => {
         fps={videoplan.fps}
         width={videoplan.breite}
         height={videoplan.hoehe}
-        defaultProps={{plan: videoplan}}
+        defaultProps={{plan: videoplan, woerter}}
       />
 
-      {/* Werbeclip fuer Meta/Google — braucht kein Rohmaterial. */}
+      {/* Werbeclip für Meta/Google — braucht kein Rohmaterial. */}
       <Composition
         id="Werbeclip"
         component={Werbeclip}

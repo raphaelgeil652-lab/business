@@ -12,7 +12,10 @@ const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string; abstandUnten: 
   abstandUnten,
 }) => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
+  const {fps, height} = useVideoConfig();
+  // Alle Maße hängen an der Videohöhe, damit die Schrift bei einem kleinen
+  // Hochkantvideo nicht das halbe Bild zudeckt.
+  const s = height / 1920;
   const pop = spring({frame, fps, config: {damping: 14, stiffness: 220, mass: 0.5}});
 
   return (
@@ -20,9 +23,9 @@ const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string; abstandUnten: 
       style={{
         justifyContent: 'flex-end',
         alignItems: 'center',
-        paddingBottom: abstandUnten,
-        paddingLeft: 60,
-        paddingRight: 60,
+        paddingBottom: abstandUnten * s,
+        paddingLeft: 60 * s,
+        paddingRight: 60 * s,
       }}
     >
       <div
@@ -31,9 +34,9 @@ const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string; abstandUnten: 
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '0 16px',
+          gap: `0 ${16 * s}px`,
           fontFamily: TITELSCHRIFT,
-          fontSize: 76,
+          fontSize: 76 * s,
           lineHeight: 1.15,
           textTransform: 'uppercase',
           textAlign: 'center',
@@ -47,9 +50,8 @@ const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string; abstandUnten: 
               key={`${w.text}-${i}`}
               style={{
                 color: aktiv ? akzentfarbe : '#ffffff',
-                textShadow:
-                  '0 6px 0 rgba(0,0,0,0.85), 0 0 22px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,1)',
-                WebkitTextStroke: '3px rgba(0,0,0,0.9)',
+                textShadow: `0 ${6 * s}px 0 rgba(0,0,0,0.85), 0 0 ${22 * s}px rgba(0,0,0,0.9)`,
+                WebkitTextStroke: `${Math.max(2, 3 * s)}px rgba(0,0,0,0.9)`,
                 paintOrder: 'stroke fill',
               }}
             >
