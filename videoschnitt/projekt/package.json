@@ -1,0 +1,25 @@
+{
+  "name": "clickculture-videoschnitt",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Videoschnitt per Code mit Remotion — Kurzvideos, Ads und Motion Graphics fuer Clickculture",
+  "scripts": {
+    "start": "remotion studio src/index.ts",
+    "rendern": "remotion render src/index.ts",
+    "kurzvideo": "bash werkzeuge/rendern.sh Kurzvideo ausgabe/kurzvideo.mp4",
+    "werbeclip": "bash werkzeuge/rendern.sh Werbeclip ausgabe/werbeclip.mp4",
+    "transkribieren": "node werkzeuge/transkribieren.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.525",
+    "@remotion/fonts": "4.0.525",
+    "@remotion/install-whisper-cpp": "4.0.525",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.525"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}

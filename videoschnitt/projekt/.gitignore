@@ -1,0 +1,8 @@
+node_modules/
+ausgabe/
+public/roh*.mp4
+public/roh*.mov
+public/roh*.MP4
+public/roh*.MOV
+.whisper/
+tmp.json
