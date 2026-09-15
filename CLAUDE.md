@@ -218,11 +218,21 @@ und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt i
 - `forschung/quellen.md` — Belege mit Links, plus „was NICHT belegt ist"
 
 ### `videoschnitt/` — Videos per Code (Werkzeug, nicht Nische)
+**Für den Videoschnitt gilt `.claude/skills/videoschnitt/SKILL.md` plus seine `references/`.**
+Der Nutzer schickt Rohmaterial, Claude liefert ein fertiges Video — Kurzvideo, Vlog oder
+Werbeclip. Der Skill regelt den Ablauf, das Handwerk (Reiz alle 3 s, Perspektivwechsel auf
+jedem Schnitt, Hook in den ersten 3 s, Ton auf jedem Schnitt) und vor allem die **Abnahme**:
+Nach jedem Rendern Einzelbilder ziehen und ansehen, zehn Punkte prüfen, erst dann abliefern.
+Nie ein Video abliefern, das nicht angeschaut wurde.
+
 Werkzeug für beide Geschäfte: Kurzvideos aus einer Aufnahme (Reels/TikTok) und Werbeclips für
 Meta/Google. Ein Befehl macht alles — `npm run schneiden -- public/roh.mp4`: Ton abtippen
 (Whisper, deutsch), Sprechpausen automatisch rausschneiden, Punch-in-Zooms setzen, Wort-Untertitel
-einblenden, Motion Graphics setzen (Titelband, Namensschild, Stichwort, Wisch, Balken, Abspann),
-MP4 rendern. Handyvideos vom iPhone werden richtig gedreht. Technik: [Remotion](https://www.remotion.dev), kostenlos in unserer Größe.
+einblenden, Motion Graphics setzen, Farblook legen, Soundeffekte setzen, MP4 rendern.
+Handyvideos vom iPhone werden richtig gedreht. Dazu **Vlog-Modus** (mehrere Clips,
+echte Übergänge, Musik, Ortskarten), **acht Farblooks** (`src/looks.ts`) und **sieben
+selbst gebaute Soundeffekte** (`public/klang/`, erzeugt von `werkzeuge/klaenge-bauen.py` —
+keine Stock-Bibliothek). Technik: [Remotion](https://www.remotion.dev), kostenlos in unserer Größe.
 
 **Die Machart beruht auf Recherche:** `videoschnitt/forschung/virale-videos.md` hält fest, was
 belegt ist (sichere Zonen, −14 LUFS, Marke nach hinten — Meta-Zahlen) und was **nicht** belegt ist

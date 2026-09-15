@@ -175,6 +175,57 @@ nennen die Quellen 15–30 Sekunden als brauchbaren Bereich. Gute Shorts erreich
 
 ---
 
+## 10. Alle 3 Sekunden ein neuer Reiz
+
+**Befund:** In kurzen Videos (15–60 s) sollen Musterbrüche **alle 3–5 Sekunden**
+kommen — ein harter Schnitt, ein Zoom, ein Perspektivwechsel, ein Geräusch, eine
+Einblendung. Der Grund: Das Gehirn schaltet sonst in den Scroll-Leerlauf.
+Dieselbe Quelle nennt als Zahl, dass 65 % der Nutzer in den ersten 3 Sekunden
+entscheiden. Ein schneller Schnitt liest sich als Energie, ein langsames Ranfahren
+als Nähe, ein unerwarteter Zoom als Überraschung — die Reize haben also
+unterschiedliche Bedeutung, sie sind nicht austauschbar.
+
+**Belastbarkeit:** mittel. Die Beschreibung stimmt nachweislich (man kann es in
+jedem erfolgreichen Video nachzählen). Die Wirkungsbehauptung ist nicht belegt,
+und die Spanne „3–5 s" schwankt je nach Quelle.
+
+**Im Werkzeug umgesetzt:** Der Planer zählt alle Reize (Schnitte, Grafiken,
+Bildstöße, Klänge), rechnet die größte Lücke aus und **warnt**, wenn sie über
+3 Sekunden liegt. Einstellbar mit `REIZ=`.
+
+Quellen: [Edición Video Pro — Pattern Interrupts](https://edicionvideopro.com/en/editing-for-platforms-video-marketing/pattern-interrupts-tiktok-retention-guide/) ·
+[Joyspace — Pattern Interrupt](https://joyspace.ai/pattern-interrupt-reset-attention-span) ·
+[LightningIM — 12 Techniken](https://lightningim.com/12-powerful-pattern-interrupt-video-editing-techniques-that-boost-engagement/)
+
+---
+
+## 11. Vlogs folgen anderen Regeln als Talking Heads
+
+**Befund:** Beim Vlog trägt der **Übergang** die Bewegung von einer Aufnahme in die
+nächste. Ein Whip-Pan (Kamera reißt zur Seite, Bild wird unscharf) verbindet zwei
+Orte, ein Match Cut verbindet zwei ähnliche Formen oder Bewegungen. Für die Tonspur
+gilt J-Cut und L-Cut: Der Ton der nächsten Aufnahme setzt vor dem Bild ein (oder
+umgekehrt), damit der Schnitt nicht auffällt.
+
+Zum Tempo: **1–2 Sekunden pro Aufnahme bei Action, 4–6 Sekunden bei Landschaft oder
+Stimmung.** Wichtiger Hinweis aus derselben Quelle: Bei starkem Helligkeitsunterschied
+zwischen zwei Aufnahmen legt ein Whip-Pan den Unterschied offen, weil die Unschärfe
+die Lichter auseinanderzieht — deshalb vorher farblich angleichen.
+
+**Belastbarkeit:** hoch, was das Handwerk angeht. Das ist Schnittlehre, keine
+Plattform-Behauptung.
+
+**Im Werkzeug umgesetzt:** Eigene Komposition `Vlog` mit echten Übergängen
+(Whip, Zoom, Weißblitz und die Remotion-Übergänge), Musikspur mit weichem Ein- und
+Ausblenden, Orts- und Zeitkarten. Der Look wird über alle Szenen gleich gelegt —
+genau wegen des Helligkeitsproblems.
+
+Quellen: [Inside Editors — Übergänge](https://insideeditors.com/video-editing-transitions/) ·
+[Captions — sechs Schnittarten](https://captions.ai/blog/six-common-types-of-cuts-in-film) ·
+[Inside The Edit — Pacing](https://www.insidetheedit.com/blog/pacing-in-video-editing)
+
+---
+
 ## Was NICHT belegt ist
 
 Ehrlich aufgelistet, damit niemand später darauf baut:
@@ -196,7 +247,11 @@ Ehrlich aufgelistet, damit niemand später darauf baut:
    der Unternehmen kennt die Gewichtung. Alle Aussagen dazu sind Rückschlüsse aus
    Beobachtung.
 
-5. **Kein einziger Befund ist an deutschsprachigem Material aus einer lokalen Nische
+5. **Die Soundeffekte sind Handwerk, kein Befund.** Dass ein Whoosh auf dem Schnitt
+   das Video „gemachter" wirken lässt, ist meine Erfahrung und die gängige Praxis —
+   gemessen hat das niemand. Genauso die Farblooks.
+
+6. **Kein einziger Befund ist an deutschsprachigem Material aus einer lokalen Nische
    geprüft.** Alles kommt aus dem englischsprachigen Creator-Umfeld. Ob eine Kfz-Werkstatt
    in Pfullendorf dieselbe Machart braucht wie ein US-Unternehmer mit Millionenreichweite,
    ist offen. **Das entscheidet erst unser eigenes Material.**

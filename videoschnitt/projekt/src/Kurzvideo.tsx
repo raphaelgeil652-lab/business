@@ -1,6 +1,7 @@
 import {AbsoluteFill, Sequence} from 'remotion';
 import {Clip} from './komponenten/Clip';
 import {Grafiken} from './komponenten/Grafiken';
+import {Klangspur} from './komponenten/Klang';
 import {Outro} from './komponenten/Outro';
 import {Rahmenpruefung} from './komponenten/Rahmenpruefung';
 import {HookText} from './komponenten/HookText';
@@ -43,13 +44,26 @@ export const Kurzvideo: React.FC<{
               laengeInFrames={laenge}
               fps={plan.fps}
               rohvideo={plan.rohvideo}
+              lookName={plan.look}
+              punches={(plan.punches ?? [])
+                .filter((p) => p >= von / plan.fps && p < (von + laenge) / plan.fps)
+                .map((p) => p - von / plan.fps)}
             />
             {text ? <HookText text={text} laengeInFrames={laenge} /> : null}
           </Sequence>
         );
       })}
       {plan.untertitel ? (
-        <Untertitel zeilen={zeilen} akzentfarbe={plan.akzentfarbe} />
+        <Untertitel
+          zeilen={zeilen}
+          akzentfarbe={plan.akzentfarbe}
+          pausen={(plan.grafiken ?? [])
+            .filter((g) => g.art === 'stichwort')
+            .map((g) => ({
+              von: Math.round(g.von * plan.fps),
+              bis: Math.round(g.bis * plan.fps),
+            }))}
+        />
       ) : null}
       {plan.grafiken ? (
         <Grafiken grafiken={plan.grafiken} fps={plan.fps} akzent={plan.akzentfarbe} />
@@ -65,10 +79,12 @@ export const Kurzvideo: React.FC<{
               von: plan.ausschnitte[0].von,
               bis: plan.ausschnitte[0].von + plan.schleife.dauer,
               zoom: plan.ausschnitte[0].zoom,
+              rahmen: plan.ausschnitte[0].rahmen,
             }}
             laengeInFrames={Math.round(plan.schleife.dauer * plan.fps)}
             fps={plan.fps}
             rohvideo={plan.rohvideo}
+            lookName={plan.look}
           />
         </Sequence>
       ) : null}
@@ -85,6 +101,7 @@ export const Kurzvideo: React.FC<{
           />
         </Sequence>
       ) : null}
+      {plan.klaenge ? <Klangspur klaenge={plan.klaenge} fps={plan.fps} /> : null}
       {rahmenPruefen ? <Rahmenpruefung /> : null}
     </AbsoluteFill>
   );

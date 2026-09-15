@@ -1,0 +1,18 @@
+{
+  "breite": 1080,
+  "hoehe": 1920,
+  "fps": 30,
+  "look": "warm",
+  "akzentfarbe": "#ffd60a",
+  "musikLautstaerke": 0.22,
+  "szenen": [
+    {"datei": "vlog/01.mp4", "von": 0.6, "dauer": 2.4, "zoom": [1, 1.08], "rahmen": "weit", "titel": "Ort · Uhrzeit"},
+    {"datei": "vlog/02.mp4", "von": 0.6, "dauer": 2.0, "zoom": [1.1, 1], "rahmen": "nah", "uebergang": "whip", "uebergangDauer": 0.4},
+    {"datei": "vlog/03.mp4", "von": 0.6, "dauer": 2.6, "zoom": [1, 1.12], "rahmen": "weit", "uebergang": "zoom", "uebergangDauer": 0.4}
+  ],
+  "grafiken": [],
+  "klaenge": [
+    {"art": "whoosh-lang", "von": 2.28, "lautstaerke": 0.4},
+    {"art": "whoosh-lang", "von": 3.88, "lautstaerke": 0.4}
+  ]
+}

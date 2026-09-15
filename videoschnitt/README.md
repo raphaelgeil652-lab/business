@@ -1,5 +1,9 @@
 # Videoschnitt per Code
 
+> **Für Claude gibt es dazu einen Skill:** `.claude/skills/videoschnitt/`.
+> Schick einfach dein Rohmaterial in den Chat und sag, was du willst — den Rest
+> macht der Skill. Diese Datei hier ist für dich, wenn du selbst Hand anlegen willst.
+
 Hier werden Videos **geschrieben statt geschnitten**. Du legst eine Aufnahme ab,
 startest einen Befehl — und bekommst ein fertiges Hochkantvideo mit Schnitten,
 Zooms und Untertiteln zurück. Grundlage ist [Remotion](https://www.remotion.dev).
@@ -59,6 +63,10 @@ Einfach vor den Befehl setzen. Ohne Angabe gilt der Wert in Klammern.
 | `SCHLEIFE=an` | Hängt den Anfang hinten an, damit der Neustart nicht auffällt (aus). |
 | `FUELLER=aus` | Lässt „ähm" und „äh" stehen, statt sie rauszuschneiden (an). |
 | `RAHMEN=1` | Blendet die sicheren Zonen sichtbar ein — zum Prüfen, nicht zum Hochladen. |
+| `LOOK=kino` | Farblook: `natuerlich` · `hart` · `kino` · `warm` · `kalt` · `vintage` · `nacht` · `schwarzweiss` (`hart`). |
+| `KLANG=aus` | Schaltet die Soundeffekte ab (an). |
+| `REIZ=3` | Wie viele Sekunden höchstens ohne neuen Reiz vergehen dürfen (3). |
+| `NAME=` / `ROLLE=` | Namensschild, das am Anfang reinfährt (leer). |
 
 ---
 
@@ -120,6 +128,72 @@ mit Quellen und einem ehrlichen Abschnitt, was **nicht** belegt ist. Die kurze F
 **Wichtig:** Der technische Teil ist belegt. Die Machart (Tempo, Zooms, Grafiken) ist
 begründete Nachahmung, kein Wissen — deshalb ist sie **einstellbar** und nicht
 festgeschraubt. Sobald eigene Zahlen da sind, wird nachjustiert.
+
+---
+
+## Vlogs
+
+Mehrere Aufnahmen werden zu einem Film montiert — mit echten Übergängen, Musik und
+Ortskarten. Anderer Ablauf als beim Kurzvideo:
+
+```bash
+mkdir -p public/vlog
+cp ~/Downloads/vlog/*.mov public/vlog/     # deine Clips, Reihenfolge = Dateiname
+cp ~/Musik/track.mp3 public/musik.mp3      # Musik, wird automatisch erkannt
+PROCLIP=2 SZENE=2.6 LOOK=warm npm run vlogplan
+npm run vlog
+```
+
+| Schraube | Bedeutung |
+|---|---|
+| `SZENE=2.6` | wie lange eine Szene läuft |
+| `PROCLIP=2` | wie viele Szenen aus einer Aufnahme geschnitten werden |
+| `START=0.6` | Sekunden am Anfang jeder Aufnahme überspringen (Kamerawackler) |
+| `UEBERGANG=whip` | fester Übergang statt Abwechslung |
+| `MUSIKLAUT=0.22` | Lautstärke der Musik unter dem Originalton |
+
+**Übergänge:** `whip` (Bild wird zur Seite gerissen, unscharf — der Vlog-Standard),
+`zoom`, `weissblitz`, `blende`, `wisch`, `schieben`, `uhr`, `zugschnitt`, `hart`.
+Nicht jeder Wechsel braucht einen Effekt — `hart` gehört bewusst in die Mischung.
+
+---
+
+## Farblooks
+
+Jedes Video bekommt einen Look, sonst sieht es aus wie eine Handyaufnahme.
+
+| Look | Wofür |
+|---|---|
+| `natuerlich` | wenn es echt wirken muss (Kundenvideo, Beweis) |
+| `hart` | TikTok-Standard: knackig und laut |
+| `kino` | türkise Schatten, warme Haut — für Gesichter |
+| `warm` | Abendsonne, draußen |
+| `kalt` | sachlich — Werkstatt, Technik |
+| `vintage` | ausgewaschen und körnig |
+| `nacht` | blau, harte Tiefen |
+| `schwarzweiss` | Stilmittel, sparsam |
+
+Neuen Look anlegen: `src/looks.ts`, ein Eintrag mit Filter, Farbebenen, Körnung
+und Vignette. Dauert zwei Minuten.
+
+---
+
+## Soundeffekte
+
+Sieben Klänge, **selbst gebaut** (`werkzeuge/klaenge-bauen.py`) — keine
+Stock-Bibliothek, keine Lizenzfrage. Sie liegen in `public/klang/`.
+
+| Klang | Wann |
+|---|---|
+| `whoosh` | auf jedem Schnitt — das Wichtigste überhaupt |
+| `whoosh-lang` | auf weichen Übergängen im Vlog |
+| `impact` | Hook, harte Aussage |
+| `pop` | wenn eine Grafik aufspringt |
+| `riser` | eine Sekunde vor der Pointe |
+| `bass` | Schlusspunkt |
+| `klick` | kleine Einblendung |
+
+Der Planer setzt sie von allein. Ein Schnitt ohne Geräusch wirkt wie ein Aussetzer.
 
 ---
 

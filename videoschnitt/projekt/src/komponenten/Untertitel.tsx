@@ -75,13 +75,21 @@ const ZeileAnzeigen: React.FC<{zeile: Zeile; akzentfarbe: string}> = ({zeile, ak
   );
 };
 
-export const Untertitel: React.FC<{zeilen: Zeile[]; akzentfarbe: string}> = ({
-  zeilen,
-  akzentfarbe,
-}) => {
+export const Untertitel: React.FC<{
+  zeilen: Zeile[];
+  akzentfarbe: string;
+  /** Zeitfenster in Frames, in denen keine Untertitel laufen (z. B. unter einem Stichwort). */
+  pausen?: {von: number; bis: number}[];
+}> = ({zeilen, akzentfarbe, pausen = []}) => {
+  // Ein Stichwort sagt schon, was gesagt wird. Der Untertitel darunter waere
+  // dasselbe Wort zweimal im Bild.
+  const sichtbar = zeilen.filter(
+    (z) => !pausen.some((p) => z.vonFrame < p.bis && z.bisFrame > p.von),
+  );
+
   return (
     <>
-      {zeilen.map((zeile, i) => (
+      {sichtbar.map((zeile, i) => (
         <Sequence
           key={i}
           from={zeile.vonFrame}

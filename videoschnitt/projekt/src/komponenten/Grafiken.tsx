@@ -103,9 +103,9 @@ const Namensschild: React.FC<{
   const s = r.s;
   const rein = spring({frame, fps, config: {damping: 20, stiffness: 130}});
   const raus = spring({
-    frame: frame - (laenge - 12),
+    frame: frame - (laenge - 9),
     fps,
-    config: {damping: 20, stiffness: 130},
+    config: {damping: 26, stiffness: 320},
   });
   const x = interpolate(rein, [0, 1], [-1.1, 0]) + interpolate(raus, [0, 1], [0, -1.1]);
 
@@ -113,7 +113,7 @@ const Namensschild: React.FC<{
     <AbsoluteFill style={{justifyContent: 'flex-end', paddingBottom: r.unten + 180 * s}}>
       <div
         style={{
-          transform: `translateX(${x * 100}%)`,
+          transform: `translateX(${x * 130}%)`,
           alignSelf: 'flex-start',
           display: 'flex',
           alignItems: 'center',

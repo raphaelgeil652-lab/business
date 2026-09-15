@@ -1,6 +1,8 @@
 import {Composition} from 'remotion';
 import {Kurzvideo} from './Kurzvideo';
 import {laengeInFrames, videoplan, woerter} from './schnitt';
+import {Vlog} from './Vlog';
+import {vlogLaenge, vlogplan} from './vlogplan';
 import {Werbeclip, werbeclipStandard} from './Werbeclip';
 
 export const RemotionRoot: React.FC = () => {
@@ -16,6 +18,17 @@ export const RemotionRoot: React.FC = () => {
         width={videoplan.breite}
         height={videoplan.hoehe}
         defaultProps={{plan: videoplan, woerter}}
+      />
+
+      {/* Vlog: mehrere Aufnahmen mit echten Übergängen, Musik und Ortskarten. */}
+      <Composition
+        id="Vlog"
+        component={Vlog}
+        durationInFrames={vlogLaenge(vlogplan)}
+        fps={vlogplan.fps}
+        width={vlogplan.breite}
+        height={vlogplan.hoehe}
+        defaultProps={{plan: vlogplan}}
       />
 
       {/* Werbeclip für Meta/Google — braucht kein Rohmaterial. */}

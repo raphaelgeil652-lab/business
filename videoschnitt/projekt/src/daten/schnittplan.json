@@ -6,19 +6,132 @@
   "untertitel": true,
   "akzentfarbe": "#ffd60a",
   "hook": "",
+  "look": "hart",
   "ausschnitte": [
-    {"von": 0, "bis": 2.8, "zoom": [1, 1.1]},
-    {"von": 5, "bis": 7.6, "zoom": [1.14, 1.02]},
-    {"von": 12, "bis": 14.5, "zoom": [1.05, 1.16]}
+    {
+      "von": 0,
+      "bis": 1.21,
+      "zoom": [
+        1,
+        1.048
+      ],
+      "rahmen": "weit"
+    },
+    {
+      "von": 1.21,
+      "bis": 3.86,
+      "zoom": [
+        1.14,
+        1.02
+      ],
+      "rahmen": "nah"
+    },
+    {
+      "von": 4.13,
+      "bis": 5.2,
+      "zoom": [
+        1.021,
+        1.068
+      ],
+      "rahmen": "nah-links"
+    },
+    {
+      "von": 5.2,
+      "bis": 6.02,
+      "zoom": [
+        1.039,
+        1
+      ],
+      "rahmen": "nah-links"
+    },
+    {
+      "von": 6.02,
+      "bis": 8.3,
+      "zoom": [
+        1,
+        1.091
+      ],
+      "rahmen": "kopf"
+    }
   ],
   "grafiken": [
-    {"art": "fortschritt", "von": 0, "bis": 7.9},
-    {"art": "titelband", "von": 0.15, "bis": 2.5, "text": "Thema des Videos", "unterzeile": "Unterzeile"},
-    {"art": "namensschild", "von": 0.8, "bis": 3.2, "text": "Name", "unterzeile": "Firma"},
-    {"art": "blitz", "von": 2.8, "bis": 3.02},
-    {"art": "zahl", "von": 3.0, "bis": 5.2, "text": "1", "unterzeile": "von 3"},
-    {"art": "pfeil", "von": 5.6, "bis": 6.6, "richtung": "unten"},
-    {"art": "stichwort", "von": 6.8, "bis": 7.9, "text": "Pointe"}
+    {
+      "art": "fortschritt",
+      "von": 0,
+      "bis": 8.030000000000001
+    },
+    {
+      "art": "blitz",
+      "von": 1.21,
+      "bis": 1.43
+    },
+    {
+      "art": "blitz",
+      "von": 3.86,
+      "bis": 4.08
+    },
+    {
+      "art": "blitz",
+      "von": 4.93,
+      "bis": 5.15
+    },
+    {
+      "art": "blitz",
+      "von": 5.75,
+      "bis": 5.97
+    },
+    {
+      "art": "namensschild",
+      "von": 0.6,
+      "bis": 3.4,
+      "text": "Raffi",
+      "unterzeile": "Clickculture"
+    },
+    {
+      "art": "titelband",
+      "von": 0.15,
+      "bis": 2.6,
+      "text": "Jo, was geht?"
+    },
+    {
+      "art": "stichwort",
+      "von": 7.13,
+      "bis": 8.030000000000001,
+      "text": "Shit"
+    }
   ],
-  "outro": {"dauer": 1.4, "text": "Clickculture", "unterzeile": "Videoschnitt per Code"}
+  "punches": [
+    3.1,
+    6.9
+  ],
+  "klaenge": [
+    {
+      "art": "impact",
+      "von": 0.15
+    },
+    {
+      "art": "whoosh",
+      "von": 2.72
+    },
+    {
+      "art": "whoosh",
+      "von": 4.92
+    },
+    {
+      "art": "pop",
+      "von": 0.6
+    },
+    {
+      "art": "riser",
+      "von": 6.0,
+      "lautstaerke": 0.3
+    },
+    {
+      "art": "bass",
+      "von": 6.9
+    }
+  ],
+  "schleife": {
+    "dauer": 0.5
+  }
 }

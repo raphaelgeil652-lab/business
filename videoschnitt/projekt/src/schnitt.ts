@@ -25,6 +25,12 @@ export type Ausschnitt = {
   zoom?: [number, number];
   /** Großer Text oben im Bild für diesen Ausschnitt. Optional. */
   text?: string;
+  /**
+   * Bildausschnitt: weit · nah · nah-links · nah-rechts · kopf.
+   * Der Wechsel zwischen weit und nah lässt einen Schnitt wie eine zweite
+   * Kamera aussehen. Ohne ihn wirkt jeder Schnitt wie ein Bildsprung.
+   */
+  rahmen?: 'weit' | 'nah' | 'nah-links' | 'nah-rechts' | 'kopf';
 };
 
 export type Videoplan = {
@@ -38,6 +44,12 @@ export type Videoplan = {
   untertitel: boolean;
   /** Farbe, in der das gerade gesprochene Wort hervorgehoben wird. */
   akzentfarbe: string;
+  /** Farblook, siehe src/looks.ts: natuerlich · hart · kino · warm · kalt · vintage · nacht · schwarzweiss */
+  look?: string;
+  /** Sekunden im fertigen Video, an denen ein Bildstoß sitzt (betonte Wörter). */
+  punches?: number[];
+  /** Soundeffekte, Zeiten im fertigen Video. */
+  klaenge?: {art: string; von: number; lautstaerke?: number}[];
   /** Großer Text über dem ersten Ausschnitt. Leer = kein Hook. */
   hook?: string;
   /** Motion Graphics. Zeiten zählen im fertigen Video, nicht im Rohvideo. */

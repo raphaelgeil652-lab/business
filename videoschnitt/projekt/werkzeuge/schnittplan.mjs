@@ -16,6 +16,9 @@
  *   MAXSTUECK=3.5  überschreibt das Tempo mit einem eigenen Wert
  *   SCHLEIFE=an   hängt den Anfang hinten an, damit der Neustart weich wirkt
  *   FUELLER=aus   lässt Füllwörter („ähm", „äh") stehen, statt sie rauszuschneiden
+ *   LOOK=kino     Farblook: natuerlich · hart · kino · warm · kalt · vintage · nacht · schwarzweiss
+ *   KLANG=aus     schaltet die Soundeffekte ab
+ *   REIZ=3        wie viele Sekunden höchstens ohne neuen Reiz vergehen dürfen
  *   HOOK="Text"  großer Text über dem ersten Ausschnitt
  *   NAME="Raffi"  Namensschild, das am Anfang reinfährt
  *   ROLLE="Clickculture"  Unterzeile im Namensschild
@@ -44,6 +47,18 @@ const FUELLER = (process.env.FUELLER ?? 'an').toLowerCase() !== 'aus';
 // tote Zeit hat im Kurzvideo nichts verloren.
 // Siehe forschung/virale-videos.md, Punkt 2.
 const FUELLWOERTER = /^(ähm|äh|ähem|öhm|öh|ehm|em|hm|hmm|mhm|also)$/i;
+
+const LOOK = process.env.LOOK ?? 'hart';
+const KLANG = (process.env.KLANG ?? 'an').toLowerCase() !== 'aus';
+// Die Recherche nennt alle 3–5 Sekunden einen neuen Reiz, bei kurzen Videos eher 3.
+// Siehe forschung/virale-videos.md, Punkt 10.
+const REIZ = Number(process.env.REIZ ?? 3.0);
+
+/**
+ * Bildausschnitte im Wechsel. Zwei benachbarte Ausschnitte dürfen nie gleich sein —
+ * sonst sieht der Schnitt aus wie ein Aussetzer statt wie eine zweite Kamera.
+ */
+const RAHMENFOLGE = ['weit', 'nah', 'weit', 'nah-links', 'kopf', 'nah-rechts'];
 const HOOK = process.env.HOOK ?? '';
 const NAME = process.env.NAME ?? '';
 const ROLLE = process.env.ROLLE ?? '';
@@ -222,6 +237,7 @@ const ausschnitte = geteilt.map((s, i) => {
       Number((1 + (a - 1) * staerke).toFixed(3)),
       Number((1 + (b - 1) * staerke).toFixed(3)),
     ],
+    rahmen: RAHMENFOLGE[i % RAHMENFOLGE.length],
   };
 });
 
@@ -248,6 +264,77 @@ if (NAME) {
   });
 }
 
+if (HOOK) {
+  grafiken.push({
+    art: 'titelband',
+    von: 0.15,
+    bis: Math.min(behalten, 2.6),
+    text: HOOK,
+  });
+}
+
+// 5b. Woerter auf die Zeitleiste des fertigen Videos umrechnen. Das brauchen
+//     Punches, Stichwort und die Reizpruefung.
+const imSchnitt = [];
+let versatz = 0;
+for (const a of ausschnitte) {
+  for (const w of woerter) {
+    const start = w.startMs / 1000;
+    if (start < a.von || start >= a.bis) {
+      continue;
+    }
+    imSchnitt.push({
+      text: w.text.trim(),
+      zeit: Number((versatz + (start - a.von)).toFixed(2)),
+    });
+  }
+  versatz += a.bis - a.von;
+}
+
+// Punches sitzen auf Zahlen und Preisen — dort bleibt der Blick haengen.
+const punches = imSchnitt
+  .filter((w) => /[0-9]|€|%/.test(w.text))
+  .map((w) => w.zeit);
+
+// Das letzte gesprochene Wort ist fast immer die Pointe.
+const letztes = imSchnitt[imSchnitt.length - 1];
+if (letztes && behalten > 3) {
+  const wort = letztes.text.replace(/[.,!?…]/g, '');
+  if (wort.length >= 3) {
+    grafiken.push({
+      art: 'stichwort',
+      von: Math.max(0, letztes.zeit - 0.15),
+      bis: behalten,
+      text: wort,
+    });
+    punches.push(letztes.zeit);
+  }
+}
+
+// 5c. Tonebene. Ein Schnitt ohne Geraeusch wirkt wie ein Aussetzer.
+const klaenge = [];
+if (KLANG) {
+  let stelle2 = 0;
+  for (const a of ausschnitte.slice(0, -1)) {
+    stelle2 += a.bis - a.von;
+    // Der Whoosh startet kurz vor dem Schnitt, sonst kommt er zu spaet an.
+    klaenge.push({art: 'whoosh', von: Number(Math.max(0, stelle2 - 0.08).toFixed(2))});
+  }
+  if (HOOK) {
+    klaenge.push({art: 'impact', von: 0.15});
+  }
+  if (NAME) {
+    klaenge.push({art: 'pop', von: 0.6});
+  }
+  for (const p of punches) {
+    klaenge.push({art: 'pop', von: p, lautstaerke: 0.3});
+  }
+  if (letztes && behalten > 3) {
+    klaenge.push({art: 'riser', von: Math.max(0, letztes.zeit - 1.0), lautstaerke: 0.3});
+    klaenge.push({art: 'bass', von: letztes.zeit});
+  }
+}
+
 const plan = {
   rohvideo: eingabe.replace(/^public\//, ''),
   breite,
@@ -255,9 +342,12 @@ const plan = {
   fps,
   untertitel: true,
   akzentfarbe: process.env.AKZENT ?? '#ffd60a',
-  hook: HOOK,
+  hook: '',
+  look: LOOK,
   ausschnitte,
   grafiken,
+  punches: [...new Set(punches)].sort((a, b) => a - b),
+  klaenge,
   ...(OUTRO && !SCHLEIFE
     ? {outro: {dauer: 1.4, text: OUTRO, unterzeile: process.env.OUTROZEILE ?? ''}}
     : {}),
@@ -280,7 +370,32 @@ if (fuellstellen.length > 0) {
   console.log(`  Füllwörter:   ${fuellstellen.length} rausgeschnitten`);
 }
 console.log(`  Tempo:        ${process.env.MAXSTUECK ? 'eigener Wert' : TEMPO} (max. ${MAXSTUECK} s pro Einstellung)`);
+// 6. Reizpruefung: Wie lange laeuft das Video, ohne dass etwas passiert?
+const reize = [
+  ...ausschnitte.slice(1).map((_, i) =>
+    ausschnitte.slice(0, i + 1).reduce((n, a) => n + (a.bis - a.von), 0),
+  ),
+  ...grafiken.filter((g) => g.art !== 'fortschritt').map((g) => g.von),
+  ...punches,
+].sort((a, b) => a - b);
+
+let groessteLuecke = reize.length > 0 ? reize[0] : behalten;
+let luekeBei = 0;
+for (let i = 1; i < reize.length; i++) {
+  if (reize[i] - reize[i - 1] > groessteLuecke) {
+    groessteLuecke = reize[i] - reize[i - 1];
+    luekeBei = reize[i - 1];
+  }
+}
+if (reize.length > 0 && behalten - reize[reize.length - 1] > groessteLuecke) {
+  groessteLuecke = behalten - reize[reize.length - 1];
+  luekeBei = reize[reize.length - 1];
+}
+
 console.log(`  Grafiken:     ${grafiken.length}`);
+console.log(`  Klänge:       ${klaenge.length}`);
+console.log(`  Look:         ${LOOK}`);
+console.log(`  Reize:        ${reize.length} — größte Lücke ${groessteLuecke.toFixed(1)} s bei ${luekeBei.toFixed(1)} s`);
 if (HOOK) {
   console.log(`  Hook:         „${HOOK}"`);
 }
@@ -288,6 +403,13 @@ if (SCHLEIFE) {
   console.log('  Schluss:      Schleife (Anfang hängt hinten dran)');
 } else if (OUTRO) {
   console.log(`  Abspann:      „${OUTRO}"`);
+}
+
+if (groessteLuecke > REIZ) {
+  console.log('');
+  console.log(`  ⚠ ${groessteLuecke.toFixed(1)} s ohne neuen Reiz (ab Sekunde ${luekeBei.toFixed(1)}).`);
+  console.log(`    Empfohlen sind höchstens ${REIZ} s. Abhilfe: TEMPO=schnell,`);
+  console.log('    oder von Hand eine Grafik in diese Lücke setzen.');
 }
 
 // Der Hook ist der wichtigste Einzelfaktor: Zuschauer entscheiden in 2–3 Sekunden.
