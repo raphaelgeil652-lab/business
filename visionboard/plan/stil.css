@@ -1,0 +1,132 @@
+/* Plan bis 30 — Druckstil A4. Hell für gute Lesbarkeit und sparsamen Druck,
+   Titelseite dunkel wie das Visionboard. */
+@font-face { font-family: "BSD"; src: url(../druck/fonts/bsd.woff2) format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Plex"; src: url(../druck/fonts/plex.woff2) format("woff2"); font-weight: 500; }
+@font-face { font-family: "Schib"; src: url(../druck/fonts/schib-400.ttf) format("truetype"); font-weight: 400; }
+@font-face { font-family: "Schib"; src: url(../druck/fonts/schib-700.ttf) format("truetype"); font-weight: 700; }
+
+@page { size: A4; margin: 15mm 15mm 17mm 15mm; }
+@page titel { margin: 0; }
+
+:root {
+  --tinte: #0f1a1e;
+  --text: #22302f;
+  --grau: #5c6b6c;
+  --linie: #d9e0df;
+  --flaeche: #f1f4f3;
+  --nacht: #0b1316;
+  --morgenrot: #e36d27;
+  --gold: #a9822a;
+  --gut: #2f7d4f;
+  --warn: #b5452f;
+  --c-kaserne: #4f7d99;
+  --c-dubai: #a8803f;
+  --c-asien: #1f8f83;
+  --c-ausbildung: #b35d27;
+  --c-meister: #c27a36;
+  --c-betrieb: #b98611;
+  --c-schweiz: #c23a3c;
+  --c-ziel: #a9822a;
+  --k-vorsichtig: #8a9a9b;
+  --k-plan: #e36d27;
+  --k-stark: #1f8f83;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Schib", Arial, sans-serif; font-size: 9.4pt; line-height: 1.5; color: var(--text); background: #fff; }
+h1, h2, h3, .display { font-family: "BSD", "Arial Narrow", sans-serif; font-weight: 900; text-transform: uppercase; line-height: .92; color: var(--tinte); letter-spacing: .005em; }
+.mono, .etikett { font-family: "Plex", monospace; font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; }
+.etikett { color: var(--grau); }
+strong, b { font-weight: 700; color: var(--tinte); }
+p + p { margin-top: 2.2mm; }
+.zahl { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---------- Titelseite ---------- */
+.titelseite { page: titel; position: relative; width: 210mm; height: 297mm; overflow: hidden; background: var(--nacht); color: #eef1ec; break-after: page; }
+.titelseite img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.titelseite::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,19,22,.55) 0%, rgba(11,19,22,0) 22%, rgba(11,19,22,.1) 45%, rgba(11,19,22,.92) 72%, #0b1316 100%); }
+.titel-inhalt { position: absolute; inset: 0; z-index: 1; padding: 14mm 16mm 16mm; display: flex; flex-direction: column; justify-content: space-between; }
+.titel-kopf { display: flex; justify-content: space-between; color: #eef1ec; }
+.titelseite h1 { color: #eef1ec; font-size: 72pt; line-height: .82; }
+.titelseite h1 .g { color: #ff9a55; }
+.titel-unter { font-family: "BSD"; font-weight: 800; font-size: 17pt; text-transform: uppercase; line-height: 1; margin-top: 5mm; max-width: 150mm; color: #eef1ec; }
+.titel-zahlen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 9mm; border-top: .3mm solid rgba(238,241,236,.35); }
+.titel-zahlen div { padding: 3.5mm 3mm 0 0; }
+.titel-zahlen b { display: block; font-family: "BSD"; font-weight: 900; font-size: 22pt; line-height: 1; color: #eef1ec; }
+.titel-zahlen span { display: block; font-size: 7.6pt; color: #b8c4c3; margin-top: 1.5mm; line-height: 1.35; }
+.titel-hinweis { margin-top: 7mm; font-size: 7.6pt; color: #b8c4c3; max-width: 160mm; }
+
+/* ---------- Kapitel ---------- */
+.kapitel { break-before: page; }
+.kopf { display: grid; grid-template-columns: 1fr 58mm; gap: 6mm; align-items: end; padding-bottom: 4mm; border-bottom: .8mm solid var(--farbe, var(--tinte)); margin-bottom: 5mm; }
+.kopf .nr { font-family: "BSD"; font-weight: 900; font-size: 40pt; line-height: .8; color: transparent; -webkit-text-stroke: .35mm var(--farbe, var(--tinte)); }
+.kopf h2 { font-size: 30pt; margin-top: 2mm; }
+.kopf .wann { color: var(--farbe, var(--grau)); margin-top: 2.5mm; }
+.kopf .bild { height: 30mm; overflow: hidden; border-radius: 1mm; }
+.kopf .bild img { width: 100%; height: 100%; object-fit: cover; }
+.ziel-satz { font-size: 11pt; line-height: 1.45; color: var(--tinte); max-width: 165mm; margin-bottom: 5mm; }
+
+h3 { font-size: 14pt; margin: 6mm 0 2.5mm; }
+h3 .klein { font-family: "Plex"; font-weight: 500; font-size: 7pt; letter-spacing: .1em; color: var(--grau); margin-left: 2mm; }
+.zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.zwei > * { min-width: 0; }
+
+/* Schritte zum Abhaken */
+.schritte { list-style: none; counter-reset: s; display: grid; gap: 0; }
+.schritte li { counter-increment: s; display: grid; grid-template-columns: 4mm 22mm 1fr; gap: 2.5mm; align-items: baseline; padding: 1.9mm 0; border-top: .2mm solid var(--linie); break-inside: avoid; }
+.schritte li::before { content: ""; width: 3mm; height: 3mm; border: .3mm solid var(--farbe, var(--tinte)); border-radius: .3mm; transform: translateY(.5mm); }
+.schritte .wann { font-family: "Plex"; font-size: 6.8pt; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe, var(--grau)); }
+.schritte .was b { display: block; }
+.schritte .was span { display: block; color: var(--grau); font-size: 8.6pt; margin-top: .4mm; }
+
+/* Geldtabellen */
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; break-inside: avoid; }
+th, td { text-align: left; padding: 1.5mm 2mm 1.5mm 0; border-bottom: .2mm solid var(--linie); vertical-align: top; font-size: 8.8pt; }
+th { font-family: "Plex"; font-weight: 500; font-size: 6.8pt; letter-spacing: .08em; text-transform: uppercase; color: var(--grau); border-bottom: .4mm solid var(--tinte); }
+td.r, th.r { text-align: right; padding-right: 0; padding-left: 2mm; white-space: nowrap; }
+tr.summe td { font-weight: 700; color: var(--tinte); border-bottom: .4mm solid var(--tinte); border-top: .4mm solid var(--tinte); }
+tr.minus td.r { color: var(--warn); }
+.tabelle-notiz { font-size: 7.6pt; color: var(--grau); margin-top: 1.5mm; }
+
+/* Kästen */
+.kasten { background: var(--flaeche); border-radius: 1.2mm; padding: 3.5mm 4mm; break-inside: avoid; margin-top: 4mm; }
+.kasten h4 { font-family: "Plex"; font-weight: 500; font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; color: var(--farbe-k, var(--tinte)); margin-bottom: 1.8mm; }
+.kasten ul { list-style: none; display: grid; gap: 1.6mm; }
+.kasten li { padding-left: 4mm; position: relative; }
+.kasten li::before { content: ""; position: absolute; left: 0; top: 1.9mm; width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--farbe-k, var(--tinte)); }
+.kasten.geld { --farbe-k: var(--gold); background: #f6f1e4; }
+.kasten.achtung { --farbe-k: var(--warn); background: #f8ebe7; }
+.kasten.gut { --farbe-k: var(--gut); background: #e9f2ec; }
+.kasten.plan-b { --farbe-k: var(--grau); background: #fff; border: .3mm solid var(--linie); }
+
+/* Kennzahlen */
+.zahlen { display: grid; grid-template-columns: repeat(4, 1fr); border-top: .4mm solid var(--tinte); margin: 2mm 0 4mm; break-inside: avoid; }
+.zahlen > div { padding: 2.5mm 3mm 0 0; }
+.zahlen b { display: block; font-family: "BSD"; font-weight: 900; font-size: 19pt; line-height: 1; color: var(--tinte); font-variant-numeric: tabular-nums; }
+.zahlen span { display: block; font-size: 7.6pt; color: var(--grau); margin-top: 1.2mm; line-height: 1.35; }
+
+/* Zeitstrahl Übersicht */
+.phasen { display: grid; gap: 0; margin-top: 2mm; }
+.phasen > div { display: grid; grid-template-columns: 7mm 34mm 20mm 1fr 26mm; gap: 3mm; align-items: baseline; padding: 2mm 0; border-top: .2mm solid var(--linie); break-inside: avoid; }
+.phasen .p-nr { font-family: "BSD"; font-weight: 900; font-size: 13pt; color: var(--farbe); line-height: 1; }
+.phasen .p-titel { font-family: "BSD"; font-weight: 800; font-size: 11.5pt; text-transform: uppercase; color: var(--tinte); line-height: 1.05; }
+.phasen .p-zeit { font-family: "Plex"; font-size: 6.8pt; color: var(--grau); letter-spacing: .04em; }
+.phasen .p-geld { text-align: right; font-weight: 700; color: var(--tinte); font-variant-numeric: tabular-nums; }
+
+/* Kurven */
+.kurve { width: 100%; height: auto; display: block; }
+.kurve .gitter { stroke: var(--linie); stroke-width: .6; }
+.kurve .million { stroke: var(--gold); stroke-width: 1; stroke-dasharray: 4 3; }
+.kurve .marke { stroke: var(--grau); stroke-width: .6; stroke-dasharray: 2 2; }
+.kurve .achse { font-family: "Plex"; font-size: 8.5px; fill: var(--grau); }
+.legende { display: flex; gap: 5mm; flex-wrap: wrap; font-size: 8pt; color: var(--grau); margin-top: 1.5mm; }
+.legende i { display: inline-block; width: 5mm; height: .9mm; vertical-align: middle; margin-right: 1.5mm; background: var(--f); }
+
+.grosser-satz { font-family: "BSD"; font-weight: 800; font-size: 17pt; line-height: 1.05; text-transform: uppercase; color: var(--tinte); border-left: 1mm solid var(--morgenrot); padding-left: 4mm; margin: 5mm 0; break-inside: avoid; }
+.quellen { font-size: 7.6pt; line-height: 1.45; columns: 2; column-gap: 7mm; }
+.quellen li { break-inside: avoid; margin-bottom: 1.4mm; overflow-wrap: anywhere; }
+.quellen a { color: var(--text); text-decoration: none; }
+.klein-text { font-size: 8pt; color: var(--grau); }
+.bruch { break-before: page; }
+.keinbruch { break-inside: avoid; }
