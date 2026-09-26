@@ -5,8 +5,12 @@
 @font-face { font-family: "Schib"; src: url(../druck/fonts/schib-400.ttf) format("truetype"); font-weight: 400; }
 @font-face { font-family: "Schib"; src: url(../druck/fonts/schib-700.ttf) format("truetype"); font-weight: 700; }
 
-@page { size: A4; margin: 15mm 15mm 17mm 15mm; }
-@page titel { margin: 0; }
+@page {
+  size: A4; margin: 15mm 15mm 17mm 15mm;
+  @bottom-left { content: "Der Plan bis 30"; font-family: "Plex", monospace; font-size: 6.5pt; letter-spacing: .1em; color: #8a9696; text-transform: uppercase; }
+  @bottom-right { content: counter(page); font-family: "Plex", monospace; font-size: 7pt; color: #8a9696; }
+}
+@page titel { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
 
 :root {
   --tinte: #0f1a1e;
@@ -58,39 +62,39 @@ p + p { margin-top: 2.2mm; }
 .titel-hinweis { margin-top: 7mm; font-size: 7.6pt; color: #b8c4c3; max-width: 160mm; }
 
 /* ---------- Kapitel ---------- */
-.kapitel { break-before: page; }
+.kapitel { break-before: page; padding-top: .1mm; }
 .kopf { display: grid; grid-template-columns: 1fr 58mm; gap: 6mm; align-items: end; padding-bottom: 4mm; border-bottom: .8mm solid var(--farbe, var(--tinte)); margin-bottom: 5mm; }
-.kopf .nr { font-family: "BSD"; font-weight: 900; font-size: 40pt; line-height: .8; color: transparent; -webkit-text-stroke: .35mm var(--farbe, var(--tinte)); }
-.kopf h2 { font-size: 30pt; margin-top: 2mm; }
+.kopf .nr { font-family: "BSD"; font-weight: 900; font-size: 40pt; line-height: 1; margin-bottom: -2mm; color: transparent; -webkit-text-stroke: .35mm var(--farbe, var(--tinte)); }
+.kopf h2 { font-size: 30pt; margin-top: 1mm; padding-top: .5mm; }
 .kopf .wann { color: var(--farbe, var(--grau)); margin-top: 2.5mm; }
-.kopf .bild { height: 30mm; overflow: hidden; border-radius: 1mm; }
+.kopf .bild { height: 26mm; overflow: hidden; border-radius: 1mm; }
 .kopf .bild img { width: 100%; height: 100%; object-fit: cover; }
-.ziel-satz { font-size: 11pt; line-height: 1.45; color: var(--tinte); max-width: 165mm; margin-bottom: 5mm; }
+.ziel-satz { font-size: 10.5pt; line-height: 1.42; color: var(--tinte); max-width: 170mm; margin-bottom: 4mm; }
 
-h3 { font-size: 14pt; margin: 6mm 0 2.5mm; }
+h3 { font-size: 14pt; margin: 5mm 0 2.2mm; break-after: avoid; }
 h3 .klein { font-family: "Plex"; font-weight: 500; font-size: 7pt; letter-spacing: .1em; color: var(--grau); margin-left: 2mm; }
 .zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
 .zwei > * { min-width: 0; }
 
 /* Schritte zum Abhaken */
 .schritte { list-style: none; counter-reset: s; display: grid; gap: 0; }
-.schritte li { counter-increment: s; display: grid; grid-template-columns: 4mm 22mm 1fr; gap: 2.5mm; align-items: baseline; padding: 1.9mm 0; border-top: .2mm solid var(--linie); break-inside: avoid; }
+.schritte li { counter-increment: s; display: grid; grid-template-columns: 4mm 22mm 1fr; gap: 2.5mm; align-items: baseline; padding: 1.5mm 0; border-top: .2mm solid var(--linie); break-inside: avoid; }
 .schritte li::before { content: ""; width: 3mm; height: 3mm; border: .3mm solid var(--farbe, var(--tinte)); border-radius: .3mm; transform: translateY(.5mm); }
 .schritte .wann { font-family: "Plex"; font-size: 6.8pt; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe, var(--grau)); }
 .schritte .was b { display: block; }
 .schritte .was span { display: block; color: var(--grau); font-size: 8.6pt; margin-top: .4mm; }
 
 /* Geldtabellen */
-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; break-inside: avoid; }
+table { width: 100%; border-collapse: collapse; break-inside: avoid; }
 th, td { text-align: left; padding: 1.5mm 2mm 1.5mm 0; border-bottom: .2mm solid var(--linie); vertical-align: top; font-size: 8.8pt; }
 th { font-family: "Plex"; font-weight: 500; font-size: 6.8pt; letter-spacing: .08em; text-transform: uppercase; color: var(--grau); border-bottom: .4mm solid var(--tinte); }
-td.r, th.r { text-align: right; padding-right: 0; padding-left: 2mm; white-space: nowrap; }
+td.r, th.r { text-align: right; padding-right: 0; padding-left: 2mm; white-space: nowrap; font-variant-numeric: tabular-nums; }
 tr.summe td { font-weight: 700; color: var(--tinte); border-bottom: .4mm solid var(--tinte); border-top: .4mm solid var(--tinte); }
 tr.minus td.r { color: var(--warn); }
 .tabelle-notiz { font-size: 7.6pt; color: var(--grau); margin-top: 1.5mm; }
 
 /* Kästen */
-.kasten { background: var(--flaeche); border-radius: 1.2mm; padding: 3.5mm 4mm; break-inside: avoid; margin-top: 4mm; }
+.kasten { background: var(--flaeche); border-radius: 1.2mm; padding: 3.2mm 4mm; break-inside: avoid; margin-top: 3.5mm; }
 .kasten h4 { font-family: "Plex"; font-weight: 500; font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; color: var(--farbe-k, var(--tinte)); margin-bottom: 1.8mm; }
 .kasten ul { list-style: none; display: grid; gap: 1.6mm; }
 .kasten li { padding-left: 4mm; position: relative; }
@@ -108,7 +112,7 @@ tr.minus td.r { color: var(--warn); }
 
 /* Zeitstrahl Übersicht */
 .phasen { display: grid; gap: 0; margin-top: 2mm; }
-.phasen > div { display: grid; grid-template-columns: 7mm 34mm 20mm 1fr 26mm; gap: 3mm; align-items: baseline; padding: 2mm 0; border-top: .2mm solid var(--linie); break-inside: avoid; }
+.phasen > div { display: grid; grid-template-columns: 7mm 56mm 1fr 24mm; gap: 3mm; align-items: baseline; padding: 1.7mm 0; border-top: .2mm solid var(--linie); break-inside: avoid; }
 .phasen .p-nr { font-family: "BSD"; font-weight: 900; font-size: 13pt; color: var(--farbe); line-height: 1; }
 .phasen .p-titel { font-family: "BSD"; font-weight: 800; font-size: 11.5pt; text-transform: uppercase; color: var(--tinte); line-height: 1.05; }
 .phasen .p-zeit { font-family: "Plex"; font-size: 6.8pt; color: var(--grau); letter-spacing: .04em; }

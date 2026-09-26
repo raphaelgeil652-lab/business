@@ -28,6 +28,7 @@ jede Woche eine Aufgabe, jeden Monat eine Prüfung. 10 Minuten am Tag.
 | Was du in welcher Woche machst | [`entwicklung/26-wochen-plan.md`](entwicklung/26-wochen-plan.md) |
 | **Karten zum Ausdrucken** (Brusttasche + Spindtür) | [▶ Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/entwicklung/drucksachen/taschenkarten.html) |
 | **Feldkompass fürs Handy** — zeigt jeden Tag, was dran ist | [▶ Öffnen](https://claude.ai/artifact/X2fZ1E124Rm5zYk6ckzEka) |
+| **Der Plan bis 30** (PDF): Schritt für Schritt mit allen Zahlen, Anlage-Tipps und Quellen | [`visionboard/plan/plan-bis-30.pdf`](visionboard/plan/plan-bis-30.pdf) |
 | **Visionboard „Route bis 30“**: der ganze Weg von 18 bis 30, mit Bildern und Zielen zum Abhaken | [▶ Öffnen](https://claude.ai/artifact/FPkmkhHRkZguHMQVfShRHy) · [`visionboard/`](visionboard/) |
 
 ---

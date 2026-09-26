@@ -228,6 +228,13 @@ der Artifact-Datenbank (`db`, Dokument `visionboard/haken`, schreiben darf nur d
 im HTML — also auf allen Geräten gleich und von Claude per ArtifactData les- und setzbar.
 `hintergrund/` — zwei Handy-Hintergründe (1290 × 2796, iPhone-Sperrbildschirm): Berg und Porsche.
 Text liegt bewusst zwischen Uhr/Widgets oben und den Knöpfen unten.
+`plan/` — **„Der Plan bis 30“ als PDF** (`plan-bis-30.pdf`, 24 Seiten): Schritt-für-Schritt-Plan mit
+Geldrechnung in drei Szenarien (vorsichtig/Plan/stark), Anlage-Tipps (Revolut, Tagesgeld, ETF,
+Altersvorsorgedepot, Holding) und Quellen, recherchiert am 26.09.2026. Bauen: `python3 rechnung.py`
+(Monat-für-Monat-Rechnung, Annahmen oben in der Datei) → `python3 bauen.py` (Text) → `node pdf.js`.
+Wichtige Korrekturen gegenüber den Angaben des Nutzers stehen im Plan offen drin: Sold netto ca.
+2.250 € (effektiv 2.400 € mit Steuererstattung), Thailand nur 30 Tage visafrei, Arbeit am Wakepark
+dort illegal, Reisewarnung VAE, DTV erst ab 20.
 `druck/` — A4-Poster zum Aufhängen: `lebensweg-a4.html` ist die Quelle, `node pdf-bauen.js` baut
 daraus `lebensweg-a4.pdf` + `.png`. Weißer Rand von 7 mm, damit jeder Drucker alles druckt.
 Schriften lokal in `druck/fonts/` (die Fließtext-Schrift als feste TTF, die variable Version
