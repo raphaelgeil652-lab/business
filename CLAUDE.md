@@ -228,6 +228,10 @@ der Artifact-Datenbank (`db`, Dokument `visionboard/haken`, schreiben darf nur d
 im HTML — also auf allen Geräten gleich und von Claude per ArtifactData les- und setzbar.
 `hintergrund/` — zwei Handy-Hintergründe (1290 × 2796, iPhone-Sperrbildschirm): Berg und Porsche.
 Text liegt bewusst zwischen Uhr/Widgets oben und den Knöpfen unten.
+`druck/` — A4-Poster zum Aufhängen: `lebensweg-a4.html` ist die Quelle, `node pdf-bauen.js` baut
+daraus `lebensweg-a4.pdf` + `.png`. Weißer Rand von 7 mm, damit jeder Drucker alles druckt.
+Schriften lokal in `druck/fonts/` (die Fließtext-Schrift als feste TTF, die variable Version
+wurde im PDF mit Lücken zwischen den Buchstaben gesetzt).
 
 ### `videoschnitt/` — Videos per Code (Werkzeug, nicht Nische)
 **Für den Videoschnitt gilt `.claude/skills/videoschnitt/SKILL.md` plus seine `references/`.**
