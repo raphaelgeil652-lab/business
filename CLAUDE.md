@@ -235,6 +235,9 @@ Altersvorsorgedepot, Holding) und Quellen, recherchiert am 26.09.2026. Bauen: `p
 Wichtige Korrekturen gegenüber den Angaben des Nutzers stehen im Plan offen drin: Sold netto ca.
 2.250 € (effektiv 2.400 € mit Steuererstattung), Thailand nur 30 Tage visafrei, Arbeit am Wakepark
 dort illegal, Reisewarnung VAE, DTV erst ab 20.
+Den Plan gibt es auch als angeheftetes Artifact: https://claude.ai/artifact/LNbSPUx2RRS4EDfjJBfTqw
+(`visionboard/lebensplan.html` + `plan/web.css`, wird von `bauen.py` mit erzeugt; nach Änderungen
+neu veröffentlichen, damit der Link bleibt).
 `druck/` — A4-Poster zum Aufhängen: `lebensweg-a4.html` ist die Quelle, `node pdf-bauen.js` baut
 daraus `lebensweg-a4.pdf` + `.png`. Weißer Rand von 7 mm, damit jeder Drucker alles druckt.
 Schriften lokal in `druck/fonts/` (die Fließtext-Schrift als feste TTF, die variable Version

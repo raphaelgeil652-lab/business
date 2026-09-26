@@ -712,4 +712,12 @@ add('</section>')
 
 add('</body></html>')
 (HIER / "plan.html").write_text("\n".join(html))
+# Bildschirm-Fassung für das Artifact: liegt eine Ebene höher (visionboard/lebensplan.html)
+voll = "\n".join(html)
+koerper = voll[voll.index("<body>") + 6: voll.rindex("</body>")]
+koerper = koerper.replace('src="../bilder/', 'src="bilder/')
+(HIER.parent / "lebensplan.html").write_text(
+    '<title>Der Plan bis 30</title>\n'
+    '<meta name="description" content="Schritt-für-Schritt-Plan vom Abi bis zum eigenen Betrieb, der Million und dem Porsche, mit allen Zahlen.">\n'
+    '<link rel="stylesheet" href="plan/stil.css">\n<link rel="stylesheet" href="plan/web.css">\n' + koerper)
 print("plan.html geschrieben")

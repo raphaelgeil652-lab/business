@@ -1,0 +1,26 @@
+/* Bildschirm-Fassung des Plans (Artifact). Druckstil bleibt in stil.css. */
+@media screen {
+  html, body { background: #e9edec; }
+  body { padding: 16px; }
+  .titelseite, .kapitel { max-width: 210mm; margin: 0 auto 16px; background: #fff; border-radius: 4px; }
+  .kapitel { padding: 10mm 12mm 12mm; }
+  .titelseite { width: auto; height: auto; min-height: min(297mm, 140vw); }
+  .titel-inhalt { position: relative; min-height: inherit; }
+  .quellen { columns: 1; }
+  table { display: block; overflow-x: auto; }
+  thead, tbody { display: table; width: 100%; }
+}
+@media screen and (max-width: 640px) {
+  body { padding: 16px 0; font-size: 10.5pt; }
+  .kapitel { padding: 20px 16px; border-radius: 0; }
+  .titel-inhalt { padding: 24px 16px; }
+  .titelseite h1 { font-size: 52pt; }
+  .titel-zahlen, .zahlen { grid-template-columns: 1fr 1fr; row-gap: 3mm; }
+  .zwei { grid-template-columns: 1fr; gap: 0; }
+  .kopf { grid-template-columns: 1fr; }
+  .kopf .bild { height: 34vw; }
+  .phasen > div { grid-template-columns: 7mm 1fr auto; }
+  .phasen > div > span:nth-child(3) { grid-column: 2 / 4; }
+  .schritte li { grid-template-columns: 4mm 1fr; }
+  .schritte .was { grid-column: 2; }
+}
