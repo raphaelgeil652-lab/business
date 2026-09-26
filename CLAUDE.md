@@ -243,6 +243,13 @@ daraus `lebensweg-a4.pdf` + `.png`. Weißer Rand von 7 mm, damit jeder Drucker a
 Schriften lokal in `druck/fonts/` (die Fließtext-Schrift als feste TTF, die variable Version
 wurde im PDF mit Lücken zwischen den Buchstaben gesetzt).
 
+### `online-business/` — Online-Geschäft des Nutzers (eigenes Geschäft)
+`README.md`: Ergebnis zweier Web-Recherchen (26.09.2026). Hauptmodell **Kurzvideo-Abo** (390/690 €
+im Monat, remote, nutzt `videoschnitt/`), Türöffner **Webseite in 48 h** (690 € + 29 €/Monat).
+Mit Prognosen in drei Szenarien und Schritt-für-Schritt-Plan. Start erst ab März/April 2027, weil
+das Business von Oktober bis Februar ruht. Keine Kaltmails (§ 7 UWG), Nebentätigkeit beim
+Vorgesetzten anzeigen (§ 20 SG).
+
 ### `videoschnitt/` — Videos per Code (Werkzeug, nicht Nische)
 **Für den Videoschnitt gilt `.claude/skills/videoschnitt/SKILL.md` plus seine `references/`.**
 Der Nutzer schickt Rohmaterial, Claude liefert ein fertiges Video — Kurzvideo, Vlog oder
