@@ -142,6 +142,11 @@
   }
   .zaehler span { font-size: 13.5px; color: var(--nebel); line-height: 1.35; display: block; margin-top: 6px; }
 
+  .fortschritt { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 14px; margin-top: 14px; font-family: var(--mono); font-size: 12.5px; color: var(--firn); }
+  .f-spur { height: 6px; background: rgba(238,241,236,.14); border-radius: 3px; overflow: hidden; }
+  .f-spur i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--morgenrot), var(--gold)); border-radius: 3px; transition: width .5s ease; }
+  .ziele input:disabled { cursor: default; }
+
   /* ---------- Die Strecke (Zeitleiste) ---------- */
   .abschnitt { padding-block: clamp(64px, 10vw, 128px); }
   .abschnitt-kopf { display: grid; gap: 14px; margin-bottom: 36px; max-width: 760px; }
@@ -369,6 +374,10 @@
       <div><b id="z-kaserne">5</b><span id="z-kaserne-text">Tage bis zur Kaserne (01.10.2026)</span></div>
       <div><b id="z-reise">187</b><span id="z-reise-text">Tage bis zur großen Reise</span></div>
       <div><b id="z-dreissig">4.219</b><span>Tage bis zu meinem 30. Geburtstag (15.04.2038)</span></div>
+    </div>
+    <div class="fortschritt">
+      <span id="f-text">1 von 31 Zielen erledigt</span>
+      <div class="f-spur"><i id="f-balken"></i></div>
     </div>
   </div>
 </header>
@@ -633,7 +642,8 @@
 <footer>
   <div class="innen">
     <span>Route bis 30 · angefangen am 26.09.2026</span>
-    <span>Bilder mit KI erzeugt (Higgsfield) · Häkchen werden nur auf diesem Gerät gespeichert</span>
+    <span id="speicher-status">Häkchen werden nur auf diesem Gerät gespeichert</span>
+    <span>Bilder mit KI erzeugt (Higgsfield)</span>
   </div>
 </footer>
 
@@ -721,16 +731,81 @@
     if (heute >= d(k.dataset.von) && heute <= d(k.dataset.bis)) k.classList.add('jetzt');
   });
 
-  /* Häkchen merken, nur auf diesem Gerät */
+  /* Häkchen: im Claude-Konto gespeichert (auf allen Geräten gleich),
+     ohne Konto-Verbindung nur auf diesem Gerät. */
   var SCHLUESSEL = 'route-bis-30';
+  var boxen = Array.prototype.slice.call(document.querySelectorAll('.ziele input[type=checkbox]'));
+  var statusEl = document.getElementById('speicher-status');
   var stand = {};
   try { stand = JSON.parse(localStorage.getItem(SCHLUESSEL) || '{}') || {}; } catch (e) { stand = {}; }
-  document.querySelectorAll('.ziele input[type=checkbox]').forEach(function (c) {
-    if (Object.prototype.hasOwnProperty.call(stand, c.id)) c.checked = !!stand[c.id];
+  function hat(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+  function lokal() { try { localStorage.setItem(SCHLUESSEL, JSON.stringify(stand)); } catch (e) {} }
+  function zaehlen() {
+    var n = boxen.filter(function (c) { return c.checked; }).length;
+    document.getElementById('f-text').textContent = n + ' von ' + boxen.length + ' Zielen erledigt';
+    document.getElementById('f-balken').style.width = (n / boxen.length * 100).toFixed(1) + '%';
+  }
+  function anwenden(s) {
+    boxen.forEach(function (c) { if (hat(s, c.id)) c.checked = !!s[c.id]; });
+    zaehlen();
+  }
+  function status(t) { if (statusEl) statusEl.textContent = t; }
+  anwenden(stand);
+
+  var ref = null, schreibt = false, nochmal = false, timer = null;
+  function nurLesen() {
+    ref = null;
+    boxen.forEach(function (c) { c.disabled = true; });
+    status('Nur ansehen: Häkchen setzen kann nur der Besitzer');
+  }
+  function speichern() {
+    timer = null;
+    if (!ref) return;
+    if (schreibt) { nochmal = true; return; }
+    schreibt = true;
+    ref.set({ haken: Object.assign({}, stand), geaendert: new Date().toISOString() }).then(function () {
+      status('Gespeichert in deinem Konto · auf allen Geräten gleich');
+    }, function (e) {
+      if (e && e.code === 'invalid_argument') nurLesen();
+      else status('Gerade nicht gespeichert, beim nächsten Häkchen probiere ich es wieder');
+    }).then(function () {
+      schreibt = false;
+      if (nochmal) { nochmal = false; speichern(); }
+    });
+  }
+  boxen.forEach(function (c) {
     c.addEventListener('change', function () {
       stand[c.id] = c.checked;
-      try { localStorage.setItem(SCHLUESSEL, JSON.stringify(stand)); } catch (e) {}
+      lokal(); zaehlen();
+      if (ref) { clearTimeout(timer); timer = setTimeout(speichern, 400); }
     });
   });
+
+  var use = window.claude && window.claude.use ? window.claude.use('db') : Promise.resolve(null);
+  use.then(function (db) {
+    if (!db) { status('Häkchen werden nur auf diesem Gerät gespeichert'); return; }
+    ref = db.doc('visionboard/haken');
+    status('Verbinde mit deinem Konto …');
+    var erstes = true;
+    ref.onSnapshot(function (snap) {
+      if (!ref) return;
+      if (!snap.exists) {
+        /* Noch nichts im Konto: was auf diesem Gerät schon abgehakt ist, einmal übernehmen. */
+        if (erstes && Object.keys(stand).length) speichern();
+        else status('Gespeichert in deinem Konto · auf allen Geräten gleich');
+        erstes = false;
+        return;
+      }
+      erstes = false;
+      if (snap.metadata.hasPendingWrites || timer || schreibt) return;
+      var h = (snap.data() || {}).haken || {};
+      stand = Object.assign({}, h);
+      lokal(); anwenden(stand);
+      status('Gespeichert in deinem Konto · auf allen Geräten gleich');
+    }, function () {
+      status('Keine Verbindung zum Konto: Häkchen nur auf diesem Gerät');
+      ref = null;
+    });
+  }, function () { status('Häkchen werden nur auf diesem Gerät gespeichert'); });
 })();
 </script>

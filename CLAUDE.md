@@ -223,7 +223,9 @@ Dubai bei Justin → 4–5 Monate Asien (Wakeboard-Anlagen, Meta Ads, Sponsoring
 Dupwake) → Ausbildung Gebäudetechnik (verkürzt, zuhause wohnen) + Meister → alten Betrieb
 übernehmen → Schweiz → mit 30 (15.04.2038) Millionär und erster Porsche. `index.html` +
 `bilder/` (KI-Bilder von Higgsfield). Läuft als Artifact: https://claude.ai/artifact/FPkmkhHRkZguHMQVfShRHy
-— nach Änderungen dieselbe Datei neu veröffentlichen, damit der Link bleibt.
+— nach Änderungen dieselbe Datei neu veröffentlichen, damit der Link bleibt. Die Häkchen liegen in
+der Artifact-Datenbank (`db`, Dokument `visionboard/haken`, schreiben darf nur der Besitzer), nicht
+im HTML — also auf allen Geräten gleich und von Claude per ArtifactData les- und setzbar.
 
 ### `videoschnitt/` — Videos per Code (Werkzeug, nicht Nische)
 **Für den Videoschnitt gilt `.claude/skills/videoschnitt/SKILL.md` plus seine `references/`.**
