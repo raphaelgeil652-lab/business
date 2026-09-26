@@ -226,6 +226,8 @@ Dupwake) → Ausbildung Gebäudetechnik (verkürzt, zuhause wohnen) + Meister �
 — nach Änderungen dieselbe Datei neu veröffentlichen, damit der Link bleibt. Die Häkchen liegen in
 der Artifact-Datenbank (`db`, Dokument `visionboard/haken`, schreiben darf nur der Besitzer), nicht
 im HTML — also auf allen Geräten gleich und von Claude per ArtifactData les- und setzbar.
+`hintergrund/` — zwei Handy-Hintergründe (1290 × 2796, iPhone-Sperrbildschirm): Berg und Porsche.
+Text liegt bewusst zwischen Uhr/Widgets oben und den Knöpfen unten.
 
 ### `videoschnitt/` — Videos per Code (Werkzeug, nicht Nische)
 **Für den Videoschnitt gilt `.claude/skills/videoschnitt/SKILL.md` plus seine `references/`.**
