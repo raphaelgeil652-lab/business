@@ -217,6 +217,14 @@ und Preise aus `flyer/faltflyer.html`. Preise nur im Flyer pflegen, nie direkt i
 - `drucksachen/taschenkarten.html` — 8 Karten zum Ausdrucken (Kaserne, ohne Handy nutzbar)
 - `forschung/quellen.md` — Belege mit Links, plus „was NICHT belegt ist"
 
+### `visionboard/` — persönliches Visionboard „Route bis 30“ (kein Geschäft)
+Der Lebensweg des Nutzers von 18 bis 30 als eine Seite: Abi → Gebirgsjäger (01.10.2026) →
+Dubai bei Justin → 4–5 Monate Asien (Wakeboard-Anlagen, Meta Ads, Sponsoring-Ziel Slingshot oder
+Dupwake) → Ausbildung Gebäudetechnik (verkürzt, zuhause wohnen) + Meister → alten Betrieb
+übernehmen → Schweiz → mit 30 (15.04.2038) Millionär und erster Porsche. `index.html` +
+`bilder/` (KI-Bilder von Higgsfield). Läuft als Artifact: https://claude.ai/artifact/FPkmkhHRkZguHMQVfShRHy
+— nach Änderungen dieselbe Datei neu veröffentlichen, damit der Link bleibt.
+
 ### `videoschnitt/` — Videos per Code (Werkzeug, nicht Nische)
 **Für den Videoschnitt gilt `.claude/skills/videoschnitt/SKILL.md` plus seine `references/`.**
 Der Nutzer schickt Rohmaterial, Claude liefert ein fertiges Video — Kurzvideo, Vlog oder
