@@ -13,7 +13,7 @@ entfernt wie eine App.
 ## Der Bauplan (nach dem TikTok-Video von @journeyhannes)
 
 Links auf der Seite stehen zehn Kästchen, eins pro Bauteil. Gold = läuft, gestreift = teilweise,
-rot = fehlt, gestrichelt = optional. Tipp auf ein Kästchen, dann steht da, was los ist.
+rot = fehlt, gestrichelt = bewusst weggelassen. Tipp auf ein Kästchen, dann steht da, was los ist.
 
 | # | Bauteil | Bei dir | Stand |
 |---|---|---|---|
@@ -21,11 +21,11 @@ rot = fehlt, gestrichelt = optional. Tipp auf ein Kästchen, dann steht da, was 
 | 02 | Baumeister | Claude Code | läuft |
 | 03 | Ohren | Diktier-Taste der Tastatur | teilweise |
 | 04 | Stimme | Stimme deines Geräts | läuft |
-| 05 | Wake-Word „Hey Jarvis" | – | fehlt (geht auf claude.ai nicht) |
+| 05 | Wake-Word „Hey Jarvis" | – | bewusst weggelassen (bräuchte eigene App + API-Schlüssel) |
 | 06 | Gedächtnis | Datenbank, nur für dich | läuft |
 | 07 | Skills | Google Kalender + Gmail | läuft |
 | 08 | Telefon | Twilio | optional, kostet Geld |
-| 09 | Server 24/7 | Routine in der Cloud | fehlt noch |
+| 09 | Server 24/7 | Routine in der Cloud | bewusst weggelassen (kostenlos nachrüstbar) |
 | 10 | Dashboard | diese Seite, fürs Handy | läuft |
 
 Ehrlich gesagt: „Komplett gratis" wie im Video stimmt nur für einen Teil. Die Claude-API,
@@ -88,6 +88,14 @@ ergänzen und löschen. Nur du kannst sie sehen, auch wenn du die Seite mal teil
 
 Zum Start stehen vier Einträge aus diesem Repo drin (Agentur, Webseiten, Dienst bis März,
 Wochenenden business-frei). Lösch sie, wenn du sie nicht willst.
+
+## Auf dem iPhone
+
+- **Sprechen:** Mikrofon unten rechts auf der Tastatur.
+- **Du hörst nichts?** Lautstärke hochdrehen und den Stummschalter an der Seite prüfen. Einmal
+  auf „Probe hören“ in den Einstellungen tippen.
+- **Bessere Stimme:** iPhone-Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen →
+  Deutsch → eine „Premium“-Stimme laden, dann in Jarvis auswählen.
 
 ## Was er (noch) nicht kann
 

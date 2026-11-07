@@ -339,7 +339,7 @@ input[type=range]{accent-color:var(--gold);width:100%}
     </div>
     <p class="erklaer">Die zehn Bauteile eines eigenen Jarvis und was davon bei dir schon läuft.</p>
     <ol class="bauteile" id="bauteile"></ol>
-    <div class="hinweis"><b>Was noch fehlt</b>Ohren mit eigenem Mikrofon und „Hey Jarvis“ gehen auf claude.ai nicht, weil Seiten dort kein Mikrofon benutzen dürfen. Dafür braucht Jarvis eine eigene App. Sag Claude Code im Chat, wenn du die willst.</div>
+    <div class="hinweis"><b>Nachrüsten</b>Eigene Ohren und „Hey Jarvis“ gehen auf claude.ai nicht, weil Seiten dort kein Mikrofon benutzen dürfen. Dafür bräuchte Jarvis eine eigene App. Eine Morgenmeldung aufs Handy geht dagegen kostenlos. Sag Claude Code im Chat, wenn du eins davon willst.</div>
   </div>
 </dialog>
 
@@ -569,12 +569,12 @@ const BAUTEILE = [
   { nr: 2, name: "Baumeister", mittel: "Claude Code", s: "online", info: "Claude Code hat Jarvis gebaut und baut ihn weiter. Sag im Chat einfach, was er noch können soll." },
   { nr: 3, name: "Ohren", mittel: "Diktat der Tastatur", s: "teilweise", info: "Du sprichst über die Diktier-Taste deiner Tastatur. Ein eigenes Mikrofon dürfen Seiten auf claude.ai nicht benutzen. Echte Ohren gibt es nur mit einer eigenen App." },
   { nr: 4, name: "Stimme", mittel: "Stimme deines Geräts", von: "stimme" },
-  { nr: 5, name: "Wake-Word", mittel: "„Hey Jarvis“", s: "fehlt", info: "Dafür muss ein Mikrofon dauernd zuhören. Das geht nur mit einer eigenen App auf einem Gerät, das an bleibt." },
+  { nr: 5, name: "Wake-Word", mittel: "„Hey Jarvis“", s: "optional", info: "Bewusst weggelassen: Dafür müsste ein Mikrofon dauernd zuhören, und das geht nur mit einer eigenen App und einem bezahlten API-Schlüssel. Das Diktat der Tastatur reicht. Lässt sich jederzeit nachrüsten." },
   { nr: 6, name: "Gedächtnis", mittel: "Datenbank, nur für dich", von: "gedaechtnis" },
   { nr: 7, name: "Skills", mittel: "Kalender · Gmail (MCP)", von: "skills" },
   { nr: 8, name: "Telefon", mittel: "Twilio", s: "optional", info: "Jarvis anrufen oder per SMS erreichen. Kostet Geld und wird nicht gebraucht." },
-  { nr: 9, name: "Server 24/7", mittel: ROUTINE ? ROUTINE.mittel : "Routine in der Cloud", s: ROUTINE ? "online" : "fehlt",
-    info: ROUTINE ? ROUTINE.info : "Noch nicht eingerichtet. Eine Routine in der Cloud kann dir zu fester Uhrzeit einen Lagebericht aufs Handy schicken, ohne dass ein Rechner läuft." },
+  { nr: 9, name: "Server 24/7", mittel: ROUTINE ? ROUTINE.mittel : "Routine in der Cloud", s: ROUTINE ? "online" : "optional",
+    info: ROUTINE ? ROUTINE.info : "Bewusst weggelassen: Jarvis meldet sich nur, wenn du ihn öffnest. Eine kostenlose Routine in der Cloud könnte dir jederzeit einen Lagebericht aufs Handy schicken. Einfach Claude Code im Chat sagen." },
   { nr: 10, name: "Dashboard", mittel: "Diese Seite, fürs Handy", s: "online", info: "Läuft auf Handy und PC. Auf dem Handy: Teilen → Zum Home-Bildschirm." }
 ];
 const S_ANZEIGE = { bereit: "online", fragt: "wartet", fehlt: "fehlt", aus: "aus" };
