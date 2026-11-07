@@ -15,6 +15,17 @@ Diese Startseite ist deine Übersicht.
 
 ---
 
+## 🤖 Jarvis — dein persönlicher Assistent
+
+Kennt deinen Kalender und deine Mails, merkt sich, was du ihm sagst, und antwortet laut.
+Läuft auf Handy und PC. Bedienung: [`jarvis/`](jarvis/)
+
+| Was | Öffnen |
+|---|---|
+| **Jarvis** ⭐ Auf dem Handy zum Home-Bildschirm hinzufügen | [▶ Öffnen](https://claude.ai/artifact/EQVsZuyS62FKkcVa759dvj) |
+
+---
+
 ## 🧭 Persönlich: die sechs Monate (1.10.2026 – 28.3.2027)
 
 Kein Geschäft, sondern dein 6-Monats-Programm: jeden Abend ein kleines Versprechen ins Heft,
