@@ -10,6 +10,28 @@ entfernt wie eine App.
 
 ---
 
+## Der Bauplan (nach dem TikTok-Video von @journeyhannes)
+
+Links auf der Seite stehen zehn Kästchen, eins pro Bauteil. Gold = läuft, gestreift = teilweise,
+rot = fehlt, gestrichelt = optional. Tipp auf ein Kästchen, dann steht da, was los ist.
+
+| # | Bauteil | Bei dir | Stand |
+|---|---|---|---|
+| 01 | Gehirn | Claude über dein Konto (kein API-Schlüssel) | läuft |
+| 02 | Baumeister | Claude Code | läuft |
+| 03 | Ohren | Diktier-Taste der Tastatur | teilweise |
+| 04 | Stimme | Stimme deines Geräts | läuft |
+| 05 | Wake-Word „Hey Jarvis" | – | fehlt (geht auf claude.ai nicht) |
+| 06 | Gedächtnis | Datenbank, nur für dich | läuft |
+| 07 | Skills | Google Kalender + Gmail | läuft |
+| 08 | Telefon | Twilio | optional, kostet Geld |
+| 09 | Server 24/7 | Routine in der Cloud | fehlt noch |
+| 10 | Dashboard | diese Seite, fürs Handy | läuft |
+
+Ehrlich gesagt: „Komplett gratis" wie im Video stimmt nur für einen Teil. Die Claude-API,
+ElevenLabs über das Gratis-Kontingent hinaus, Twilio und ein Mac mini kosten Geld. Dein Jarvis
+läuft dagegen über dein Claude-Abo und kostet nichts extra.
+
 ## Was er kann
 
 | Du sagst zum Beispiel | Jarvis macht |

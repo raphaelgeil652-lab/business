@@ -2,35 +2,39 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Saira+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Saira+Condensed:wght@500;600;700&display=swap">
 <style>
-/* Layout: eine Nachtkonsole. Der Kern steht als Instrument links (am Handy oben),
-   das Gespräch läuft rechts, die Eingabe bleibt unten griffbereit. Bewusst nur dunkel. */
+/* Layout: ein goldenes HUD auf warmem Schwarz. Der Kern steht im Visier links (am Handy oben),
+   darunter Start-Log, Audio-Pegel und der Bauplan mit zehn Bauteilen. Rechts läuft das Gespräch,
+   die Eingabe bleibt unten griffbereit. Bewusst nur dunkel. */
 :root{
-  --bg:#0a0e13;
-  --panel:#0f151c;
-  --raise:#151d27;
-  --line:#1e2a37;
-  --line-strong:#2c3c4e;
-  --fg:#e3eaf1;
-  --muted:#8494a6;
-  --core:#92d3ff;
-  --brass:#dfae5f;
-  --brass-ink:#1b1307;
-  --ok:#6fcf97;
-  --warn:#f0c650;
-  --bad:#f07070;
+  --bg:#0f0908;
+  --glow:#3a1210;
+  --panel:#1a110e;
+  --raise:#241812;
+  --line:#3a281d;
+  --line-strong:#5a3f2a;
+  --fg:#f3e8d6;
+  --muted:#a8927b;
+  --gold:#ebb54d;
+  --gold-hell:#ffdc8f;
+  --gold-ink:#1f1404;
+  --rot:#dc4a3c;
+  --glut:#ef7a3c;
   --f-display:"Saira Condensed","Arial Narrow",system-ui,sans-serif;
   --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-  --t-xs:12px; --t-sm:14px; --t-md:16px; --t-lg:20px; --t-xl:30px;
+  --t-xxs:11px; --t-xs:12px; --t-sm:14px; --t-md:16px; --t-lg:20px; --t-xl:30px;
   color-scheme:dark;
 }
-html,body{background:var(--bg);color:var(--fg)}
-body{font:400 var(--t-md)/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+html{background:var(--bg)}
+body{
+  color:var(--fg);font:400 var(--t-md)/1.55 var(--f-body);-webkit-font-smoothing:antialiased;
+  background:radial-gradient(900px 520px at 18% 4%,var(--glow),transparent 70%) fixed,var(--bg);
+}
 *{box-sizing:border-box}
 button,input,select,textarea{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 .app{
   max-width:1180px;margin:0 auto;
@@ -41,67 +45,103 @@ button,input,select,textarea{font:inherit;color:inherit}
 
 /* Kopfzeile */
 .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px;border-bottom:1px solid var(--line)}
-.wordmark{display:flex;align-items:baseline;gap:12px;min-width:0}
-.wordmark b{font:700 22px/1 var(--f-display);letter-spacing:.34em;text-transform:uppercase}
-.wordmark span{font:500 var(--t-xs)/1 var(--f-mono);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wordmark{display:flex;flex-direction:column;gap:4px;min-width:0}
+.wordmark b{
+  font:700 26px/1 var(--f-display);letter-spacing:.16em;color:var(--gold);
+  text-shadow:0 0 18px color-mix(in srgb,var(--gold) 45%,transparent);
+}
+.wordmark span{font:500 var(--t-xxs)/1 var(--f-mono);color:var(--muted);letter-spacing:.22em;text-transform:uppercase;white-space:nowrap}
 .bar-actions{display:flex;gap:8px;flex-shrink:0}
 .ghost{
   display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 12px;
-  background:transparent;border:1px solid var(--line-strong);border-radius:6px;cursor:pointer;
+  background:transparent;border:1px solid var(--line-strong);border-radius:4px;cursor:pointer;
   font:600 var(--t-sm)/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--fg);
 }
-.ghost:hover{border-color:var(--muted)}
+.ghost:hover{border-color:var(--gold);color:var(--gold)}
 .ghost svg{width:16px;height:16px;flex-shrink:0}
 .ghost .zahl{font:500 var(--t-xs)/1 var(--f-mono);color:var(--muted);letter-spacing:0}
-@media (max-width:520px){ .ghost .wort{display:none} .wordmark span{display:none} }
+@media (max-width:560px){ .ghost .wort{display:none} }
 
 /* Konsole */
 .console{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding-block:18px 0}
 @media (min-width:900px){
-  .console{grid-template-columns:320px minmax(0,1fr);gap:48px;padding-top:28px}
-  .core-col{position:sticky;top:24px;align-self:start}
+  .console{grid-template-columns:340px minmax(0,1fr);gap:48px;padding-top:26px}
+  .core-col{position:sticky;top:20px;align-self:start}
 }
 
-.core-head{display:grid;grid-template-columns:116px minmax(0,1fr);gap:16px;align-items:center}
+.core-head{display:grid;grid-template-columns:132px minmax(0,1fr);gap:16px;align-items:center}
 @media (min-width:900px){ .core-head{grid-template-columns:1fr;justify-items:center;text-align:center} }
-#kern{width:116px;height:116px;display:block}
-@media (min-width:900px){ #kern{width:240px;height:240px} }
-.zustand{font:600 var(--t-xl)/1.05 var(--f-display);letter-spacing:.04em;text-transform:uppercase;margin:0;text-wrap:balance}
-.zustand[data-z="denkt"],.zustand[data-z="arbeitet"],.zustand[data-z="wartet"]{color:var(--brass)}
-.zustand[data-z="spricht"]{color:var(--core)}
+.visier{position:relative;padding:8px;width:132px}
+@media (min-width:900px){ .visier{width:276px;padding:14px} }
+.visier > i{position:absolute;width:16px;height:16px;border-color:var(--gold);border-style:solid;border-width:0;opacity:.85}
+.visier > i:nth-child(1){top:0;left:0;border-top-width:2px;border-left-width:2px}
+.visier > i:nth-child(2){top:0;right:0;border-top-width:2px;border-right-width:2px}
+.visier > i:nth-child(3){bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
+.visier > i:nth-child(4){bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+#kern{width:100%;aspect-ratio:1;max-width:100%;display:block}
+.zustand{font:700 var(--t-xl)/1.02 var(--f-display);letter-spacing:.05em;text-transform:uppercase;margin:0;text-wrap:balance;color:var(--fg)}
+.zustand[data-z="denkt"],.zustand[data-z="arbeitet"]{color:var(--glut)}
+.zustand[data-z="wartet"]{color:var(--rot)}
+.zustand[data-z="spricht"]{color:var(--gold)}
+.zustand[data-z="offline"]{color:var(--muted)}
 .uhr{font:400 var(--t-xs)/1.4 var(--f-mono);color:var(--muted);margin:6px 0 0;font-variant-numeric:tabular-nums;letter-spacing:.04em}
 
-.label{font:600 var(--t-xs)/1 var(--f-display);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
-.systeme{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
-@media (min-width:900px){ .systeme{justify-content:center} .core-col .label{text-align:center} }
-.chip{
-  display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;
-  border:1px solid var(--line);background:var(--panel);cursor:pointer;
-  font:500 var(--t-xs)/1 var(--f-mono);color:var(--fg)
+/* HUD: Start-Log und Audio-Pegel */
+.hud{display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:10px;margin-top:16px}
+.tafel{
+  border:1px solid var(--line-strong);background:color-mix(in srgb,var(--panel) 85%,transparent);
+  padding:10px 12px;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);
 }
-.chip i{width:7px;height:7px;border-radius:50%;background:var(--muted);flex-shrink:0}
-.chip[data-s="bereit"] i{background:var(--ok);box-shadow:0 0 8px color-mix(in srgb,var(--ok) 60%,transparent)}
-.chip[data-s="fragt"] i{background:transparent;border:1.5px solid var(--core)}
-.chip[data-s="fehlt"] i{background:var(--bad)}
-.chip[data-s="aus"]{color:var(--muted)}
+.tafel-titel{font:600 var(--t-xxs)/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+.bootlog{list-style:none;margin:0;padding:0;font:400 var(--t-xxs)/1.65 var(--f-mono);color:var(--gold);letter-spacing:.04em;min-height:9.9em}
+.bootlog li{display:flex;justify-content:space-between;gap:8px;white-space:nowrap;overflow:hidden}
+.bootlog li span{overflow:hidden;text-overflow:ellipsis}
+.bootlog li b{font-weight:600;flex-shrink:0}
+.bootlog li b[data-s="fehlt"]{color:var(--rot)}
+.bootlog li b[data-s="wartet"],.bootlog li b[data-s="aus"],.bootlog li b[data-s="teilweise"]{color:var(--muted)}
+.bootlog li.schluss{color:var(--gold-hell)}
+.pegel{display:flex;align-items:flex-end;gap:3px;height:52px}
+.pegel i{flex:1;background:var(--gold);height:100%;transform-origin:bottom;transform:scaleY(.08);border-radius:1px}
+.pegel i:nth-child(4n+3){background:var(--rot)}
+.pegel-status{font:500 var(--t-xxs)/1 var(--f-mono);letter-spacing:.1em;color:var(--fg);margin:8px 0 0;text-transform:uppercase}
+.pegel-status b{color:var(--gold);font-weight:600}
+.pegel-status b[data-s="offline"]{color:var(--rot)}
+
+/* Bauplan */
+.label{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font:600 var(--t-xs)/1 var(--f-display);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:20px 0 10px}
+.label .link{font:500 var(--t-xxs)/1 var(--f-mono);letter-spacing:.1em}
+.leiste{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px;list-style:none;margin:0;padding:0}
+.leiste button{
+  width:100%;aspect-ratio:1/1.05;display:grid;place-items:center;cursor:pointer;padding:0;
+  border:1px solid var(--line-strong);background:transparent;color:var(--muted);
+  font:600 var(--t-xxs)/1 var(--f-mono);font-variant-numeric:tabular-nums
+}
+.leiste button[data-s="online"]{background:color-mix(in srgb,var(--gold) 22%,transparent);border-color:var(--gold);color:var(--gold-hell)}
+.leiste button[data-s="wartet"]{border-color:var(--gold);color:var(--gold)}
+.leiste button[data-s="teilweise"]{border-color:color-mix(in srgb,var(--gold) 55%,var(--line));color:var(--gold);background:repeating-linear-gradient(135deg,transparent 0 4px,color-mix(in srgb,var(--gold) 14%,transparent) 4px 6px)}
+.leiste button[data-s="fehlt"]{border-color:color-mix(in srgb,var(--rot) 60%,var(--line));color:var(--rot)}
+.leiste button[data-s="optional"],.leiste button[data-s="aus"]{border-style:dashed}
+.leiste button:hover{filter:brightness(1.25)}
+.zaehler{font:600 var(--t-xs)/1 var(--f-mono);color:var(--gold);letter-spacing:.06em}
 
 .schnell{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .schnell button{
-  text-align:left;padding:11px 12px;border-radius:6px;cursor:pointer;
+  text-align:left;padding:11px 12px;border-radius:3px;cursor:pointer;
   background:var(--panel);border:1px solid var(--line);color:var(--fg);
   font:500 var(--t-sm)/1.3 var(--f-body)
 }
 .schnell button small{display:block;font:400 var(--t-xs)/1.3 var(--f-mono);color:var(--muted);margin-top:3px}
 .schnell button:hover:not(:disabled){border-color:var(--line-strong);background:var(--raise)}
-.schnell button.haupt{grid-column:1 / -1;border-color:color-mix(in srgb,var(--brass) 55%,var(--line));}
-.schnell button.haupt b{font:600 var(--t-md)/1.1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.schnell button.haupt{grid-column:1 / -1;border-color:var(--gold);background:color-mix(in srgb,var(--gold) 8%,var(--panel))}
+.schnell button.haupt b{font:700 var(--t-lg)/1 var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 .schnell button:disabled{opacity:.5;cursor:default}
 
 /* Gespräch */
 .talk-col{min-width:0;display:flex;flex-direction:column}
 .log{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px;padding-bottom:12px}
 .item{min-width:0}
-.stempel{font:500 11px/1 var(--f-mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.stempel{font:500 var(--t-xxs)/1 var(--f-mono);letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.jarvis .stempel{color:var(--gold)}
 .du{align-self:flex-end;max-width:min(560px,88%)}
 .du .text{background:var(--raise);border:1px solid var(--line);border-radius:12px 12px 2px 12px;padding:10px 14px;white-space:pre-wrap;overflow-wrap:anywhere}
 .du .stempel{text-align:right}
@@ -111,30 +151,30 @@ button,input,select,textarea{font:inherit;color:inherit}
 .jarvis .text p:last-child{margin-bottom:0}
 .jarvis .text ul{margin:.2em 0 .6em;padding-left:1.2em}
 .jarvis .text li{margin:.15em 0}
-.jarvis .text strong{font-weight:600;color:#fff}
+.jarvis .text li::marker{color:var(--gold)}
+.jarvis .text strong{font-weight:600;color:var(--gold-hell)}
 .jarvis .denkt{color:var(--muted);font-style:italic}
-.jarvis .notiz{font:400 var(--t-xs)/1.4 var(--f-mono);color:var(--warn);margin-top:6px}
+.jarvis .notiz{font:400 var(--t-xs)/1.4 var(--f-mono);color:var(--glut);margin-top:6px}
 .act{font:400 var(--t-xs)/1.45 var(--f-mono);color:var(--muted);padding-left:14px;border-left:1px solid var(--line-strong)}
-.act b{color:var(--fg);font-weight:500}
-.fehler{font:400 var(--t-sm)/1.45 var(--f-body);color:var(--fg);padding:10px 12px;border:1px solid color-mix(in srgb,var(--bad) 55%,var(--line));background:color-mix(in srgb,var(--bad) 8%,var(--bg));border-radius:6px}
+.fehler{font:400 var(--t-sm)/1.45 var(--f-body);color:var(--fg);padding:10px 12px;border:1px solid color-mix(in srgb,var(--rot) 60%,var(--line));background:color-mix(in srgb,var(--rot) 9%,var(--bg))}
 .fehler .knoepfe{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
 
-.confirm{border:1px solid var(--brass);border-radius:8px;padding:14px;background:color-mix(in srgb,var(--brass) 6%,var(--bg));max-width:520px}
-.confirm h3{margin:0 0 10px;font:600 var(--t-lg)/1.1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--brass)}
+.confirm{border:1px solid var(--gold);padding:14px;background:color-mix(in srgb,var(--gold) 7%,var(--bg));max-width:520px;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)}
+.confirm h3{margin:0 0 10px;font:700 var(--t-lg)/1.1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
 .confirm dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:0 0 12px}
 .confirm dt{font:500 var(--t-xs)/1.6 var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
 .confirm dd{margin:0;overflow-wrap:anywhere;white-space:pre-wrap}
 .confirm .knoepfe{display:flex;gap:8px;flex-wrap:wrap}
 .confirm .ergebnis{font:500 var(--t-xs)/1.4 var(--f-mono);color:var(--muted);margin:0}
 .voll{
-  min-height:40px;padding:0 16px;border-radius:6px;border:1px solid var(--brass);cursor:pointer;
-  background:var(--brass);color:var(--brass-ink);font:600 var(--t-sm)/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase
+  min-height:40px;padding:0 16px;border-radius:3px;border:1px solid var(--gold);cursor:pointer;
+  background:var(--gold);color:var(--gold-ink);font:700 var(--t-sm)/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase
 }
 .voll:hover{filter:brightness(1.08)}
 
 .willkommen .vorschlaege{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .vorschlag{padding:8px 12px;border-radius:999px;border:1px solid var(--line-strong);background:transparent;cursor:pointer;font:400 var(--t-sm)/1.2 var(--f-body);text-align:left}
-.vorschlag:hover{border-color:var(--core);color:var(--core)}
+.vorschlag:hover{border-color:var(--gold);color:var(--gold)}
 
 /* Eingabe */
 .composer{
@@ -142,70 +182,86 @@ button,input,select,textarea{font:inherit;color:inherit}
   padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));
   background:linear-gradient(to top,var(--bg) 78%,color-mix(in srgb,var(--bg) 0%,transparent));
 }
-.feld{display:flex;align-items:flex-end;gap:8px;background:var(--panel);border:1px solid var(--line-strong);border-radius:12px;padding:6px 6px 6px 6px}
-.feld:focus-within{border-color:var(--core)}
+.feld{display:flex;align-items:flex-end;gap:8px;background:var(--panel);border:1px solid var(--line-strong);border-radius:10px;padding:6px}
+.feld:focus-within{border-color:var(--gold)}
 #eingabe{flex:1;min-width:0;resize:none;border:0;background:transparent;outline:none;padding:9px 6px;max-height:180px;line-height:1.45}
 #eingabe::placeholder{color:var(--muted)}
-.rund{width:42px;height:42px;border-radius:9px;display:grid;place-items:center;cursor:pointer;flex-shrink:0;border:1px solid transparent;background:transparent;color:var(--muted)}
+.rund{width:42px;height:42px;border-radius:8px;display:grid;place-items:center;cursor:pointer;flex-shrink:0;border:1px solid transparent;background:transparent;color:var(--muted)}
 .rund svg{width:20px;height:20px}
 .rund:hover{color:var(--fg)}
-.rund.senden{background:var(--core);color:#071521}
+.rund.senden{background:var(--gold);color:var(--gold-ink)}
 .rund.senden:disabled{background:var(--raise);color:var(--muted);cursor:default}
-.rund.stopp{background:var(--brass);color:var(--brass-ink)}
-.rund.an{color:var(--core)}
+.rund.stopp{background:var(--rot);color:#fff}
+.rund.an{color:var(--gold)}
 .unterzeile{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px;font:400 var(--t-xs)/1.4 var(--f-mono);color:var(--muted)}
-.diktat{margin:8px 0 0;font:400 var(--t-sm)/1.5 var(--f-body);color:var(--fg);padding:10px 12px;border:1px dashed var(--line-strong);border-radius:8px}
-.diktat strong{color:var(--core);font-weight:600}
+.diktat{margin:8px 0 0;font:400 var(--t-sm)/1.5 var(--f-body);color:var(--fg);padding:10px 12px;border:1px dashed var(--line-strong)}
+.diktat strong{color:var(--gold);font-weight:600}
 .link{background:none;border:0;padding:0;cursor:pointer;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font:inherit}
-.link:hover{color:var(--fg)}
+.link:hover{color:var(--gold)}
 
 /* Seitenleisten */
 dialog.blatt{
-  margin:0 0 0 auto;height:100%;max-height:100%;width:min(440px,100%);max-width:100%;
+  margin:0 0 0 auto;height:100%;max-height:100%;width:min(460px,100%);max-width:100%;
   border:0;border-left:1px solid var(--line-strong);background:var(--panel);color:var(--fg);padding:0;
 }
-dialog.blatt::backdrop{background:rgba(3,6,9,.6)}
+dialog.blatt::backdrop{background:rgba(8,3,2,.65)}
 .blatt-innen{display:flex;flex-direction:column;height:100%;
   padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));
   padding-block:calc(16px + env(safe-area-inset-top,0px)) calc(20px + env(safe-area-inset-bottom,0px));overflow-y:auto}
 .blatt-kopf{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}
-.blatt h2{margin:0;font:700 var(--t-xl)/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase}
+.blatt h2{margin:0;font:700 var(--t-xl)/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
 .blatt .erklaer{color:var(--muted);font-size:var(--t-sm);margin:0 0 16px;max-width:60ch}
 .fakten{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .fakten li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;padding:12px 0;border-bottom:1px solid var(--line)}
 .fakten li p{margin:0;overflow-wrap:anywhere}
-.fakten li small{display:block;font:400 11px/1.4 var(--f-mono);color:var(--muted);margin-top:3px}
+.fakten li small{display:block;font:400 var(--t-xxs)/1.4 var(--f-mono);color:var(--muted);margin-top:3px}
 .leer{color:var(--muted);font-size:var(--t-sm);padding:12px 0}
 .neu{display:flex;gap:8px;margin-top:16px}
 .neu input{flex:1;min-width:0}
-.eingabefeld{background:var(--bg);border:1px solid var(--line-strong);border-radius:6px;padding:9px 10px;width:100%}
-.eingabefeld:focus{outline:none;border-color:var(--core)}
+.eingabefeld{background:var(--bg);border:1px solid var(--line-strong);border-radius:4px;padding:9px 10px;width:100%}
+.eingabefeld:focus{outline:none;border-color:var(--gold)}
 .zeile{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
 .zeile > label,.zeile > .titel{font:600 var(--t-xs)/1 var(--f-display);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .zeile .hilfe{font-size:var(--t-xs);color:var(--muted);margin:0}
 .wahl{display:flex;gap:8px;flex-wrap:wrap}
-.wahl label{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line-strong);border-radius:6px;cursor:pointer;font-size:var(--t-sm)}
-.wahl label:has(input:checked){border-color:var(--core);color:var(--core)}
-.wahl input{accent-color:var(--core)}
+.wahl label{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line-strong);border-radius:4px;cursor:pointer;font-size:var(--t-sm)}
+.wahl label:has(input:checked){border-color:var(--gold);color:var(--gold)}
+.wahl input{accent-color:var(--gold)}
 .schalter{display:flex;align-items:center;gap:10px;font-size:var(--t-sm)}
-.schalter input{width:18px;height:18px;accent-color:var(--core)}
-input[type=range]{accent-color:var(--core);width:100%}
+.schalter input{width:18px;height:18px;accent-color:var(--gold)}
+input[type=range]{accent-color:var(--gold);width:100%}
 .trenner{border:0;border-top:1px solid var(--line);margin:8px 0 18px}
+
+.bauteile{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.bauteile li{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px;border:1px solid var(--line);background:var(--bg)}
+.bauteile .nr{width:30px;height:30px;display:grid;place-items:center;font:600 var(--t-xs)/1 var(--f-mono);color:var(--gold-ink);background:var(--gold);clip-path:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0 50%)}
+.bauteile li[data-s="fehlt"] .nr{background:var(--rot);color:#fff}
+.bauteile li[data-s="optional"] .nr,.bauteile li[data-s="aus"] .nr,.bauteile li[data-s="wartet"] .nr{background:var(--line-strong);color:var(--fg)}
+.bauteile h3{margin:0;font:700 var(--t-md)/1.1 var(--f-display);letter-spacing:.08em;text-transform:uppercase}
+.bauteile .mittel{font:500 var(--t-xs)/1.3 var(--f-mono);color:var(--gold)}
+.bauteile .info{grid-column:2 / -1;margin:4px 0 0;font-size:var(--t-sm);color:var(--muted)}
+.pille{font:600 var(--t-xxs)/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:5px 7px;border:1px solid currentColor;white-space:nowrap}
+.pille[data-s="online"]{color:var(--gold)}
+.pille[data-s="wartet"]{color:var(--gold-hell)}
+.pille[data-s="teilweise"]{color:var(--glut)}
+.pille[data-s="fehlt"]{color:var(--rot)}
+.pille[data-s="optional"],.pille[data-s="aus"]{color:var(--muted)}
+.hinweis{margin-top:16px;padding:12px;border:1px solid color-mix(in srgb,var(--rot) 55%,var(--line));background:color-mix(in srgb,var(--rot) 8%,var(--bg));font-size:var(--t-sm)}
+.hinweis b{color:var(--rot);font:700 var(--t-xs)/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:6px}
 
 @media (prefers-reduced-motion:reduce){ *{scroll-behavior:auto!important} }
 </style>
 
 <div class="app">
   <header class="bar">
-    <div class="wordmark"><b>Jarvis</b><span id="kopfzeile">Persönlicher Assistent</span></div>
+    <div class="wordmark"><b>J.A.R.V.I.S.</b><span>Dein eigener KI-Assistent</span></div>
     <div class="bar-actions">
       <button class="ghost" id="knopf-gedaechtnis" type="button" aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 4a3 3 0 0 0-3 3v.2A3 3 0 0 0 4 10a3 3 0 0 0 1 2.2A3 3 0 0 0 6 17a3 3 0 0 0 3 3h0V4zM15 4a3 3 0 0 1 3 3v.2A3 3 0 0 1 20 10a3 3 0 0 1-1 2.2A3 3 0 0 1 18 17a3 3 0 0 1-3 3h0V4z"/></svg>
         <span class="wort">Gedächtnis</span><span class="zahl" id="fakten-zahl">0</span>
       </button>
-      <button class="ghost" id="knopf-einstellungen" type="button" aria-haspopup="dialog">
+      <button class="ghost" id="knopf-einstellungen" type="button" aria-haspopup="dialog" aria-label="Einstellungen">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
-        <span class="wort">Einstellungen</span>
       </button>
     </div>
   </header>
@@ -213,17 +269,28 @@ input[type=range]{accent-color:var(--core);width:100%}
   <main class="console">
     <section class="core-col" aria-label="Status">
       <div class="core-head">
-        <canvas id="kern" aria-hidden="true"></canvas>
+        <div class="visier"><i></i><i></i><i></i><i></i><canvas id="kern" aria-hidden="true"></canvas></div>
         <div>
           <p class="zustand" id="zustand" data-z="bereit" aria-live="polite">Bereit</p>
           <p class="uhr" id="uhr">&nbsp;</p>
         </div>
       </div>
 
-      <p class="label">Systeme</p>
-      <ul class="systeme" id="systeme"></ul>
+      <div class="hud">
+        <div class="tafel">
+          <ol class="bootlog" id="bootlog" aria-label="Start-Log"></ol>
+        </div>
+        <div class="tafel">
+          <p class="tafel-titel">Audio-Pegel</p>
+          <div class="pegel" id="pegel" aria-hidden="true"></div>
+          <p class="pegel-status">Status: <b id="pegel-status">Online</b></p>
+        </div>
+      </div>
 
-      <p class="label">Schnellzugriff</p>
+      <p class="label"><span>Bauplan · <span class="zaehler" id="bauplan-zahl">0/10</span> online</span><button type="button" class="link" id="knopf-bauplan">Details</button></p>
+      <ol class="leiste" id="leiste" aria-label="Bauplan, zehn Bauteile"></ol>
+
+      <p class="label"><span>Schnellzugriff</span></p>
       <div class="schnell" id="schnell">
         <button type="button" class="haupt" data-frage="lagebericht"><b>Lagebericht</b><small>Termine, wichtige Mails, was ansteht</small></button>
         <button type="button" data-frage="morgen">Morgen<small>Was steht an?</small></button>
@@ -263,6 +330,18 @@ input[type=range]{accent-color:var(--core);width:100%}
     </section>
   </main>
 </div>
+
+<dialog class="blatt" id="blatt-bauplan" aria-labelledby="titel-bauplan">
+  <div class="blatt-innen">
+    <div class="blatt-kopf">
+      <h2 id="titel-bauplan">Bauplan</h2>
+      <button class="ghost" type="button" data-schliessen>Schließen</button>
+    </div>
+    <p class="erklaer">Die zehn Bauteile eines eigenen Jarvis und was davon bei dir schon läuft.</p>
+    <ol class="bauteile" id="bauteile"></ol>
+    <div class="hinweis"><b>Was noch fehlt</b>Ohren mit eigenem Mikrofon und „Hey Jarvis“ gehen auf claude.ai nicht, weil Seiten dort kein Mikrofon benutzen dürfen. Dafür braucht Jarvis eine eigene App. Sag Claude Code im Chat, wenn du die willst.</div>
+  </div>
+</dialog>
 
 <dialog class="blatt" id="blatt-gedaechtnis" aria-labelledby="titel-gedaechtnis">
   <div class="blatt-innen">
@@ -382,10 +461,10 @@ function setzeZustand(z, text) {
 const F = {};
 function farbenLesen() {
   const cs = getComputedStyle(document.documentElement);
-  for (const k of ["core", "brass", "fg", "muted", "line-strong"]) F[k] = cs.getPropertyValue("--" + k).trim();
+  for (const k of ["gold", "gold-hell", "rot", "glut", "fg", "muted"]) F[k] = cs.getPropertyValue("--" + k).trim();
 }
 function rgba(hex, a) {
-  const h = hex.replace("#", ""); const n = parseInt(h.length === 3 ? h.split("").map(c => c + c).join("") : h, 16);
+  const h = String(hex || "#ffffff").replace("#", ""); const n = parseInt(h.length === 3 ? h.split("").map(c => c + c).join("") : h, 16);
   return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
 }
 const kern = { el: $("#kern"), ctx: null, dpr: 1, s: 0, winkel: 0, pegel: 0, letzt: 0 };
@@ -397,12 +476,12 @@ function kernGroesse() {
   if (ruhig) kernZeichnen(performance.now());
 }
 function kernZeichnen(ts) {
-  const { ctx } = kern; const s = kern.s; if (!s || !F.core) return;
+  const { ctx } = kern; const s = kern.s; if (!s || !F.gold) return;
   const dt = Math.min(64, ts - (kern.letzt || ts)); kern.letzt = ts;
   const aktiv = zustand === "denkt" || zustand === "arbeitet" || zustand === "wartet";
-  const farbe = aktiv ? F.brass : F.core;
+  const farbe = zustand === "wartet" ? F.rot : aktiv ? F.glut : zustand === "spricht" ? F["gold-hell"] : zustand === "offline" ? F.muted : F.gold;
   if (!ruhig) {
-    const v = zustand === "bereit" || zustand === "offline" ? 0.00018 : zustand === "spricht" ? 0.0004 : 0.0016;
+    const v = zustand === "bereit" || zustand === "offline" ? 0.00016 : zustand === "spricht" ? 0.00035 : 0.0015;
     kern.winkel += v * dt;
     kern.pegel *= 0.9;
     if (zustand === "spricht") kern.pegel = Math.max(kern.pegel, 0.35 + 0.25 * Math.sin(ts / 120) * Math.sin(ts / 330));
@@ -411,72 +490,177 @@ function kernZeichnen(ts) {
   ctx.clearRect(0, 0, s, s);
   const c = s / 2, R = s / 2 - 2;
   ctx.save(); ctx.translate(c, c);
-  // Skala: 60 Striche wie ein Zifferblatt, jeder fünfte lang
+  // Strahlen am Rand: 60 Striche, jeder fünfte rot und länger
   for (let i = 0; i < 60; i++) {
     const a = i / 60 * Math.PI * 2 - Math.PI / 2, lang = i % 5 === 0;
-    ctx.strokeStyle = lang ? rgba(F.fg, 0.5) : rgba(F.muted, 0.3);
-    ctx.lineWidth = lang ? 1.4 : 1;
+    ctx.strokeStyle = lang ? rgba(F.rot, 0.85) : rgba(F.gold, 0.28);
+    ctx.lineWidth = lang ? 1.6 : 1;
     const r2 = R - (lang ? R * 0.09 : R * 0.045);
     ctx.beginPath(); ctx.moveTo(Math.cos(a) * R, Math.sin(a) * R); ctx.lineTo(Math.cos(a) * r2, Math.sin(a) * r2); ctx.stroke();
   }
-  // Zeiger der aktuellen Minute
+  // Minutenzeiger
   const jetzt = new Date(); const am = (jetzt.getMinutes() + jetzt.getSeconds() / 60) / 60 * Math.PI * 2 - Math.PI / 2;
-  ctx.strokeStyle = rgba(F.brass, 0.9); ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(Math.cos(am) * (R - R * 0.14), Math.sin(am) * (R - R * 0.14)); ctx.lineTo(Math.cos(am) * (R + 0), Math.sin(am) * (R + 0)); ctx.stroke();
+  ctx.strokeStyle = rgba(F["gold-hell"], 0.95); ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(Math.cos(am) * (R - R * 0.15), Math.sin(am) * (R - R * 0.15)); ctx.lineTo(Math.cos(am) * R, Math.sin(am) * R); ctx.stroke();
+  // Gepunkteter Ring
+  ctx.save(); ctx.rotate(-kern.winkel * 0.6);
+  ctx.setLineDash([2, Math.max(4, R * 0.045)]); ctx.strokeStyle = rgba(F.gold, 0.7); ctx.lineWidth = Math.max(1.5, R * 0.018);
+  ctx.beginPath(); ctx.arc(0, 0, R * 0.86, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore(); ctx.setLineDash([]);
   // Drehende Bögen
   ctx.lineCap = "round";
   ctx.rotate(kern.winkel);
   ctx.strokeStyle = farbe; ctx.lineWidth = Math.max(2, R * 0.03);
   for (let k = 0; k < 3; k++) {
-    const st = k * Math.PI * 2 / 3; ctx.globalAlpha = 0.9;
-    ctx.beginPath(); ctx.arc(0, 0, R * 0.78, st, st + Math.PI * (aktiv ? 0.44 : 0.26)); ctx.stroke();
+    const st = k * Math.PI * 2 / 3; ctx.globalAlpha = 0.95;
+    ctx.beginPath(); ctx.arc(0, 0, R * 0.74, st, st + Math.PI * (aktiv ? 0.44 : 0.24)); ctx.stroke();
   }
   ctx.rotate(-kern.winkel * 2.4);
-  ctx.lineWidth = 1; ctx.globalAlpha = 0.45;
-  ctx.beginPath(); ctx.arc(0, 0, R * 0.66, 0, Math.PI * 1.55); ctx.stroke();
+  ctx.lineWidth = 1; ctx.globalAlpha = 0.5;
+  ctx.setLineDash([R * 0.08, R * 0.04]);
+  ctx.beginPath(); ctx.arc(0, 0, R * 0.62, 0, Math.PI * 1.6); ctx.stroke();
+  ctx.setLineDash([]);
   ctx.restore(); ctx.globalAlpha = 1;
   // Kern
-  let r0 = R * (0.34 + kern.pegel * 0.1);
+  let r0 = R * (0.3 + kern.pegel * 0.1);
   if (zustand === "wartet" && !ruhig) r0 *= 0.94 + 0.06 * Math.sin(ts / 260);
-  const g = ctx.createRadialGradient(c, c, 0, c, c, r0 * 1.7);
-  g.addColorStop(0, rgba(farbe, 0.95)); g.addColorStop(0.3, rgba(farbe, 0.5)); g.addColorStop(1, rgba(farbe, 0));
-  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, r0 * 1.7, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = rgba(farbe, 0.9); ctx.lineWidth = 1.5;
+  const g = ctx.createRadialGradient(c, c, 0, c, c, r0 * 1.8);
+  g.addColorStop(0, rgba(farbe, 0.95)); g.addColorStop(0.3, rgba(farbe, 0.45)); g.addColorStop(1, rgba(farbe, 0));
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(c, c, r0 * 1.8, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = rgba(farbe, 0.95); ctx.lineWidth = 1.5;
   ctx.beginPath(); ctx.arc(c, c, r0, 0, Math.PI * 2); ctx.stroke();
-  ctx.fillStyle = rgba("#ffffff", zustand === "offline" ? 0.25 : 0.85);
+  ctx.fillStyle = rgba("#fff6e0", zustand === "offline" ? 0.25 : 0.9);
   ctx.beginPath(); ctx.arc(c, c, Math.max(2.5, r0 * 0.16), 0, Math.PI * 2); ctx.fill();
 }
-function schleife(ts) { kernZeichnen(ts); requestAnimationFrame(schleife); }
+
+/* Audio-Pegel: 16 Balken, bewegen sich, solange Jarvis spricht */
+const balken = [];
+(function pegelBauen() { const p = $("#pegel"); for (let i = 0; i < 16; i++) { const b = el("i"); p.append(b); balken.push(b); } })();
+function pegelZeichnen(ts) {
+  const laut = zustand === "spricht" ? 0.55 + kern.pegel * 0.45 : zustand === "denkt" || zustand === "arbeitet" ? 0.18 : 0.06;
+  for (let i = 0; i < balken.length; i++) {
+    const welle = ruhig ? 0.5 : 0.5 + 0.5 * Math.sin(ts / (90 + i * 13) + i * 1.7) * Math.sin(ts / 410 + i);
+    const h = Math.max(0.06, Math.min(1, laut * (0.35 + 0.65 * Math.abs(welle))));
+    balken[i].style.transform = `scaleY(${h.toFixed(3)})`;
+  }
+}
+function schleife(ts) { kernZeichnen(ts); pegelZeichnen(ts); requestAnimationFrame(schleife); }
 
 function uhrStellen() {
   const d = new Date();
   const tag = d.toLocaleDateString("de-DE", { weekday: "short" }).replace(".", "").toUpperCase();
-  $("#uhr").textContent = `${tag} ${zwei(d.getDate())}.${zwei(d.getMonth() + 1)}.${d.getFullYear()} · ${zwei(d.getHours())}:${zwei(d.getMinutes())} · KW ${kw(d)}`;
+  $("#uhr").textContent = `${tag} ${zwei(d.getDate())}.${zwei(d.getMonth() + 1)}. · ${zwei(d.getHours())}:${zwei(d.getMinutes())} · KW ${kw(d)}`;
   if (ruhig) kernZeichnen(performance.now());
 }
 
-/* ---------- Systeme (Anzeige) ---------- */
+/* ---------- Systeme und Bauplan ---------- */
 const SYSTEME = {
-  claude: { name: "Denken", s: "fragt", info: "Jarvis denkt mit deinem Claude-Konto. Beim ersten Mal fragt claude.ai, ob die Seite das darf." },
-  kalender: { name: "Kalender", s: "fragt", info: "Google Kalender. Beim ersten Zugriff fragt claude.ai nach deiner Erlaubnis." },
-  gmail: { name: "Gmail", s: "fragt", info: "Gmail. Jarvis liest Mails und legt nur Entwürfe an, er sendet nie selbst." },
-  gedaechtnis: { name: "Gedächtnis", s: "fragt", info: "Das Gedächtnis wird geladen." },
-  stimme: { name: "Stimme", s: "bereit", info: "Die Stimme kommt von deinem Gerät." }
+  claude: { s: "fragt", info: "Jarvis denkt mit deinem Claude-Konto. Beim ersten Mal fragt claude.ai, ob die Seite das darf." },
+  kalender: { s: "fragt", info: "Google Kalender: claude.ai fragt beim ersten Zugriff nach deiner Erlaubnis." },
+  gmail: { s: "fragt", info: "Gmail: Jarvis liest Mails und legt nur Entwürfe an, er sendet nie selbst." },
+  gedaechtnis: { s: "fragt", info: "Das Gedächtnis wird geladen." },
+  stimme: { s: "bereit", info: "Die Stimme kommt von deinem Gerät." }
 };
 const SERVER = { "Google Calendar": "kalender", "Gmail": "gmail" };
+// Server 24/7: eine Routine in der Cloud, die sich von selbst meldet. Wird hier eingetragen, sobald sie läuft.
+const ROUTINE = null;
+const BAUTEILE = [
+  { nr: 1, name: "Gehirn", mittel: "Claude · dein Konto", von: "claude" },
+  { nr: 2, name: "Baumeister", mittel: "Claude Code", s: "online", info: "Claude Code hat Jarvis gebaut und baut ihn weiter. Sag im Chat einfach, was er noch können soll." },
+  { nr: 3, name: "Ohren", mittel: "Diktat der Tastatur", s: "teilweise", info: "Du sprichst über die Diktier-Taste deiner Tastatur. Ein eigenes Mikrofon dürfen Seiten auf claude.ai nicht benutzen. Echte Ohren gibt es nur mit einer eigenen App." },
+  { nr: 4, name: "Stimme", mittel: "Stimme deines Geräts", von: "stimme" },
+  { nr: 5, name: "Wake-Word", mittel: "„Hey Jarvis“", s: "fehlt", info: "Dafür muss ein Mikrofon dauernd zuhören. Das geht nur mit einer eigenen App auf einem Gerät, das an bleibt." },
+  { nr: 6, name: "Gedächtnis", mittel: "Datenbank, nur für dich", von: "gedaechtnis" },
+  { nr: 7, name: "Skills", mittel: "Kalender · Gmail (MCP)", von: "skills" },
+  { nr: 8, name: "Telefon", mittel: "Twilio", s: "optional", info: "Jarvis anrufen oder per SMS erreichen. Kostet Geld und wird nicht gebraucht." },
+  { nr: 9, name: "Server 24/7", mittel: ROUTINE ? ROUTINE.mittel : "Routine in der Cloud", s: ROUTINE ? "online" : "fehlt",
+    info: ROUTINE ? ROUTINE.info : "Noch nicht eingerichtet. Eine Routine in der Cloud kann dir zu fester Uhrzeit einen Lagebericht aufs Handy schicken, ohne dass ein Rechner läuft." },
+  { nr: 10, name: "Dashboard", mittel: "Diese Seite, fürs Handy", s: "online", info: "Läuft auf Handy und PC. Auf dem Handy: Teilen → Zum Home-Bildschirm." }
+];
+const S_ANZEIGE = { bereit: "online", fragt: "wartet", fehlt: "fehlt", aus: "aus" };
+const S_TEXT = { online: "Online", wartet: "Fragt", teilweise: "Teilweise", fehlt: "Fehlt", optional: "Optional", aus: "Aus" };
+function bauteilStand(b) {
+  if (!b.von) return { s: b.s, info: b.info };
+  if (b.von === "skills") {
+    const k = SYSTEME.kalender, g = SYSTEME.gmail;
+    let s;
+    if (k.s === "bereit" && g.s === "bereit") s = "online";
+    else if (k.s === "bereit" || g.s === "bereit") s = "teilweise";
+    else if (k.s === "fehlt" && g.s === "fehlt") s = "fehlt";
+    else s = "wartet";
+    return { s, info: `${k.info} ${g.info}` };
+  }
+  const sys = SYSTEME[b.von];
+  return { s: S_ANZEIGE[sys.s] || "wartet", info: sys.info };
+}
+function bauplanZeichnen() {
+  const leiste = $("#leiste"), liste = $("#bauteile");
+  leiste.textContent = ""; liste.textContent = "";
+  let online = 0;
+  for (const b of BAUTEILE) {
+    const { s, info } = bauteilStand(b);
+    if (s === "online") online++;
+    const li = el("li"); const k = el("button", null, zwei(b.nr)); k.type = "button"; k.dataset.s = s;
+    k.title = `${zwei(b.nr)} ${b.name}: ${S_TEXT[s]}`; k.setAttribute("aria-label", k.title);
+    k.addEventListener("click", () => bauplanOeffnen(b.nr));
+    li.append(k); leiste.append(li);
+    const zeile = el("li"); zeile.dataset.s = s; zeile.id = "bauteil-" + b.nr;
+    const mitte = el("div"); mitte.append(el("h3", null, b.name), el("div", "mittel", b.mittel));
+    const p = el("span", "pille", S_TEXT[s]); p.dataset.s = s;
+    zeile.append(el("span", "nr", zwei(b.nr)), mitte, p, el("p", "info", info));
+    liste.append(zeile);
+  }
+  $("#bauplan-zahl").textContent = `${online}/10`;
+}
+function bauplanOeffnen(nr) {
+  blattOeffnen("#blatt-bauplan");
+  if (nr) $("#bauteil-" + nr)?.scrollIntoView({ block: "center" });
+}
 function systemSetzen(key, s, info) {
   const sys = SYSTEME[key]; if (!sys) return;
   sys.s = s; if (info) sys.info = info;
-  const chip = $(`#sys-${key}`); if (chip) { chip.dataset.s = s; chip.title = sys.info; }
+  bauplanZeichnen(); bootAktualisieren();
 }
-function systemeZeichnen() {
-  const ul = $("#systeme"); ul.textContent = "";
-  for (const [key, sys] of Object.entries(SYSTEME)) {
-    const li = el("li"); const b = el("button", "chip"); b.type = "button"; b.id = "sys-" + key;
-    b.dataset.s = sys.s; b.title = sys.info; b.append(el("i"), document.createTextNode(sys.name));
-    b.addEventListener("click", () => notiz(`${sys.name}: ${SYSTEME[key].info}`));
-    li.append(b); ul.append(li);
+
+/* Start-Log */
+let bootFertig = false;
+function bootZeilen() {
+  const st = k => ({ bereit: ["Online", "online"], fragt: ["Bereit", "wartet"], fehlt: ["Fehlt", "fehlt"], aus: ["Aus", "aus"] })[SYSTEME[k].s] || ["…", "wartet"];
+  const skills = bauteilStand(BAUTEILE[6]);
+  const ged = SYSTEME.gedaechtnis.s === "bereit" ? [`${gedaechtnis.length} Einträge`, "online"] : st("gedaechtnis");
+  const offline = SYSTEME.claude.s === "fehlt";
+  return [
+    ["J.A.R.V.I.S. v1.1"],
+    ["Lade Module"],
+    ["Gehirn", ...st("claude")],
+    ["Gedächtnis", ...ged],
+    ["Skills", S_TEXT[skills.s], skills.s],
+    ["Stimme", ...st("stimme")],
+    ["Ohren", "Diktat", "teilweise"],
+    [offline ? "System offline" : "System online", null, null, true]
+  ];
+}
+function bootZeile([text, wert, s, schluss]) {
+  const li = el("li"); if (schluss) li.className = "schluss";
+  li.append(el("span", null, "> " + String(text).toUpperCase()));
+  if (wert) { const b = el("b", null, String(wert).toUpperCase()); b.dataset.s = s; li.append(b); }
+  return li;
+}
+function bootAktualisieren() {
+  if (!bootFertig) return;
+  const ol = $("#bootlog"); ol.textContent = "";
+  for (const z of bootZeilen()) ol.append(bootZeile(z));
+  const off = SYSTEME.claude.s === "fehlt";
+  const ps = $("#pegel-status"); ps.textContent = off ? "Offline" : "Online"; ps.dataset.s = off ? "offline" : "online";
+}
+async function bootStarten() {
+  const ol = $("#bootlog"); ol.textContent = "";
+  const zeilen = bootZeilen();
+  for (let i = 0; i < zeilen.length; i++) {
+    if (!ruhig) await warte(i < 2 ? 260 : 170);
+    ol.append(bootZeile(i < zeilen.length - 1 ? zeilen[i] : bootZeilen()[i]));
   }
+  bootFertig = true; bootAktualisieren();
 }
 
 /* ---------- Text darstellen ---------- */
@@ -548,7 +732,6 @@ function hinzufuegen(e, sichtbar = true) {
   if (sichtbar) { const li = eintragZeichnen(e); if (li) { log.append(li); nachUnten(); } return li; }
 }
 function aktivitaet(text) { hinzufuegen({ wer: "info", text, zeit: Date.now() }); }
-function notiz(text) { const li = el("li", "item act"); li.textContent = "› " + text; $(".willkommen")?.remove(); log.append(li); nachUnten(true); }
 function fehlerZeigen(text, knoepfe = []) {
   const li = el("li", "item fehler"); li.append(el("div", null, text));
   if (knoepfe.length) {
@@ -665,7 +848,7 @@ async function gedaechtnisStarten() {
   const uhr = setTimeout(() => systemSetzen("gedaechtnis", "fragt", "Das Gedächtnis antwortet noch nicht. Die Verbindung ist vielleicht langsam."), 10000);
   sammlung.orderBy("erstellt", "asc").onSnapshot(snap => {
     gedaechtnis = snap.docs.map(d => ({ id: d.id, ...(d.data() || {}) })).filter(f => typeof f.text === "string");
-    if (!snap.metadata.fromCache) { clearTimeout(uhr); systemSetzen("gedaechtnis", "bereit", `Jarvis kennt ${gedaechtnis.length} Einträge über dich.`); }
+    if (!snap.metadata.fromCache) { clearTimeout(uhr); systemSetzen("gedaechtnis", "bereit", `Jarvis kennt ${gedaechtnis.length} Einträge über dich. Nur du kannst sie sehen.`); }
     gedaechtnisZeichnen();
   }, err => {
     clearTimeout(uhr);
@@ -708,16 +891,18 @@ function mcpFehlerMerken(server, e) {
   if (c === "server_unavailable" || c === "tool_error" || c === "cancelled" || c === "upstream_error") return;
   systemSetzen(key, "fehlt", mcpText(server, e));
 }
+const DIENST = { "Google Calendar": "Kalender", "Gmail": "Gmail" };
 async function rufe(server, tool, input, { schreiben = false, signal } = {}) {
-  if (!mcp) throw new Error(`${server === "Gmail" ? "Gmail" : "Der Kalender"} ist in dieser Ansicht nicht verfügbar.`);
+  if (!mcp) throw new Error(`${DIENST[server]} ist in dieser Ansicht nicht verfügbar.`);
   const versuch = () => mcp.callTool(server, tool, input, schreiben ? { cache: false } : { signal });
+  const ok = () => { if (SYSTEME[SERVER[server]].s !== "bereit") systemSetzen(SERVER[server], "bereit", `${DIENST[server]} ist verbunden.`); };
   try {
-    const r = await versuch(); systemSetzen(SERVER[server], "bereit", `${server === "Gmail" ? "Gmail" : "Kalender"} ist verbunden.`);
+    const r = await versuch(); ok();
     return r?.payload ?? r;
   } catch (e) {
     if (!schreiben && e?.retryable) {
       await warte(Math.min(e.retryAfterMs ?? 600 + Math.random() * 900, 4000));
-      try { const r = await versuch(); systemSetzen(SERVER[server], "bereit"); return r?.payload ?? r; } catch (e2) { e = e2; }
+      try { const r = await versuch(); ok(); return r?.payload ?? r; } catch (e2) { e = e2; }
     }
     mcpFehlerMerken(server, e);
     throw new Error(mcpText(server, e));
@@ -734,7 +919,7 @@ async function verbindungenPruefen() {
     const { servers } = await mcp.listTools();
     for (const [server, key] of Object.entries(SERVER)) {
       const s = (servers || []).find(x => x.server === server);
-      const name = SYSTEME[key].name;
+      const name = DIENST[server];
       if (!s || !s.tools?.length) systemSetzen(key, "fehlt", `${name} ist nicht verbunden. In claude.ai unter Einstellungen → Connectors hinzufügen.`);
       else if (s.authStatus === "needs_reauth") systemSetzen(key, "fehlt", `${name} muss neu verbunden werden: claude.ai → Einstellungen → Connectors.`);
       else if (s.authStatus === "connected") systemSetzen(key, "bereit", `${name} ist verbunden.`);
@@ -779,7 +964,7 @@ function mailsKompakt(p) {
   return {
     treffer: threads.length,
     mails: threads.map(t => {
-      const m = (t.messages || [])[t.messages?.length - 1] || {};
+      const m = (t.messages || [])[(t.messages || []).length - 1] || {};
       const o = { thread_id: t.id, message_id: m.id, von: absender(m), betreff: m.subject || "(ohne Betreff)", datum: m.date, vorschau: entities(m.snippet || "").slice(0, 240) };
       if ((m.labelIds || []).includes("UNREAD")) o.ungelesen = true;
       const k = kategorie(m.labelIds); if (k) o.kategorie = k;
@@ -893,7 +1078,7 @@ function werkzeuge() {
         arbeit("Lese Mails");
         const n = Math.max(1, Math.min(20, Number(inp.anzahl) || 10));
         const r = mailsKompakt(await rufe("Gmail", "search_threads", { query: String(inp.suche || "in:inbox"), pageSize: n, view: "THREAD_VIEW_SUMMARY" }, { signal: ctx.signal }));
-        aktivitaet(`Gmail durchsucht: ${r.treffer} ${r.treffer === 1 ? "Treffer" : "Treffer"}`);
+        aktivitaet(`Gmail durchsucht: ${r.treffer} Treffer`);
         return r;
       }
     },
@@ -990,6 +1175,7 @@ So antwortest du:
 - Uhrzeiten als „14:30 Uhr“, Tage als „Montag, 9. November“.
 - Ruhig, präzise, aufmerksam. Trockener Humor ist erlaubt, aber selten. Keine Floskeln, keine Entschuldigungen in Schleife.
 - Wenn du etwas nicht weißt oder nicht kannst, sag es ehrlich in einem Satz. Erfinde nie Termine, Mails oder Fakten.
+- Fragt der Nutzer, was du kannst oder was dir fehlt: Du hast Gehirn, Gedächtnis, Kalender und Gmail, eine Stimme und hörst über die Diktier-Taste der Tastatur. Ein eigenes Mikrofon und „Hey Jarvis“ fehlen, weil Seiten auf claude.ai kein Mikrofon benutzen dürfen.
 ${werkzeugText}
 
 Was du über den Nutzer weißt (Gedächtnis, id in Klammern):
@@ -1069,7 +1255,7 @@ async function senden(text) {
     const eintrag = { wer: "jarvis", text: res.text, zeit: Date.now() };
     if (res.truncated) { eintrag.notiz = "Antwort wurde abgeschnitten. Frag nach dem Rest."; li.append(el("div", "notiz", eintrag.notiz)); }
     verlauf.push(eintrag); verlaufSichern();
-    systemSetzen("claude", "bereit", "Jarvis denkt mit deinem Claude-Konto.");
+    if (SYSTEME.claude.s !== "bereit") systemSetzen("claude", "bereit", "Jarvis denkt mit deinem Claude-Konto.");
   } catch (e) {
     const code = e && e.code;
     if (e && e.text && code !== "refused") {
@@ -1129,17 +1315,18 @@ function stimmeAnzeigen() {
   k.querySelector(".welle").toggleAttribute("hidden", !an); k.querySelector(".aus").toggleAttribute("hidden", an);
   $("#modus-anzeige").textContent = `${einstellungen.modus === "default" ? "Gründlich" : "Schnell"} · Stimme ${an ? "an" : "aus"}`;
   if (!synth) systemSetzen("stimme", "fehlt", "Dieses Gerät kann nicht vorlesen.");
-  else systemSetzen("stimme", an ? "bereit" : "aus", an ? "Jarvis liest seine Antworten vor." : "Vorlesen ist aus.");
+  else systemSetzen("stimme", an ? "bereit" : "aus", an ? "Jarvis liest seine Antworten mit der Stimme deines Geräts vor." : "Vorlesen ist aus. Einschalten mit dem Lautsprecher-Knopf unten.");
 }
 
 /* ---------- Seitenleisten ---------- */
-function blattOeffnen(id) { const d = $(id); if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", ""); }
+function blattOeffnen(id) { const d = $(id); if (d.open) return; if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", ""); }
 for (const d of document.querySelectorAll("dialog.blatt")) {
   d.addEventListener("click", e => {
     if (e.target !== d && !e.target.closest("[data-schliessen]")) return;
     if (typeof d.close === "function") d.close(); else d.removeAttribute("open");
   });
 }
+$("#knopf-bauplan").addEventListener("click", () => bauplanOeffnen());
 $("#knopf-gedaechtnis").addEventListener("click", () => { gedaechtnisZeichnen(); blattOeffnen("#blatt-gedaechtnis"); });
 $("#knopf-einstellungen").addEventListener("click", () => { einstellungenFuellen(); blattOeffnen("#blatt-einstellungen"); });
 $("#neu-fakt").addEventListener("submit", async e => {
@@ -1179,25 +1366,25 @@ $("#e-probe").addEventListener("click", () => {
 async function rechteOeffnen() {
   if (!rechte) { $("#e-rechte-hilfe").hidden = false; return; }
   try { await rechte.manage(); $("#e-rechte-hilfe").hidden = true; await verbindungenPruefen(); }
-  catch { $("#e-rechte-hilfe").hidden = false; blattOeffnen("#blatt-einstellungen"); einstellungenFuellen(); }
+  catch { einstellungenFuellen(); blattOeffnen("#blatt-einstellungen"); $("#e-rechte-hilfe").hidden = false; }
 }
 $("#e-rechte").addEventListener("click", rechteOeffnen);
 
 /* ---------- Start ---------- */
 farbenLesen();
-systemeZeichnen();
+bauplanZeichnen();
 stimmeAnzeigen();
 allesZeichnen();
 gedaechtnisZeichnen();
 uhrStellen(); setInterval(uhrStellen, 20000);
 kernGroesse();
 window.addEventListener("resize", kernGroesse);
-if (ruhig) kernZeichnen(performance.now()); else requestAnimationFrame(schleife);
+if (ruhig) { kernZeichnen(performance.now()); pegelZeichnen(0); } else requestAnimationFrame(schleife);
 if (synth) { stimmenLaden(); synth.addEventListener?.("voiceschanged", stimmenLaden); }
 knoepfeSetzen();
 if (verlauf.length) requestAnimationFrame(() => nachUnten(true));
 
-(async () => {
+const plattform = (async () => {
   const [s, r] = await Promise.all([nutzen("sample"), nutzen("permissions")]);
   sample = s; rechte = r;
   if (!sample) {
@@ -1215,7 +1402,7 @@ if (verlauf.length) requestAnimationFrame(() => nachUnten(true));
   }
   knoepfeSetzen();
 })();
-verbindungenPruefen();
-gedaechtnisStarten();
+// Das Start-Log läuft, sobald die ersten Antworten da sind, spätestens nach 2,5 Sekunden.
+Promise.race([Promise.allSettled([plattform, verbindungenPruefen(), gedaechtnisStarten()]), warte(2500)]).then(bootStarten);
 })();
 </script>
