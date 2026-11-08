@@ -234,6 +234,15 @@ dialog.blatt::backdrop{background:rgba(8,3,2,.65)}
 .schalter input{width:18px;height:18px;accent-color:var(--gold)}
 input[type=range]{accent-color:var(--gold);width:100%}
 .trenner{border:0;border-top:1px solid var(--line);margin:8px 0 18px}
+.stimmliste{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border:1px solid var(--line)}
+.stimmliste li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px;border-bottom:1px solid var(--line)}
+.stimmliste li:last-child{border-bottom:0}
+.stimmliste li:has(input:checked){background:color-mix(in srgb,var(--gold) 9%,transparent)}
+.stimmliste label{display:flex;align-items:center;gap:8px;min-width:0;flex:1;cursor:pointer;font-size:var(--t-sm)}
+.stimmliste .sname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.stimmliste input{accent-color:var(--gold);flex-shrink:0;width:17px;height:17px}
+.stimmliste .pille{flex-shrink:0}
+.stimmliste .ghost{min-height:32px;padding:0 10px;font-size:var(--t-xs);flex-shrink:0}
 
 .bauteile{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
 .bauteile li{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px;border:1px solid var(--line);background:var(--bg)}
@@ -393,8 +402,10 @@ input[type=range]{accent-color:var(--gold);width:100%}
       <label class="schalter" for="e-stimme"><input type="checkbox" id="e-stimme"> Antworten laut vorlesen</label>
     </div>
     <div class="zeile">
-      <label for="e-stimme-name">Stimme</label>
-      <select class="eingabefeld" id="e-stimme-name"></select>
+      <span class="titel">Stimme</span>
+      <p class="hilfe" id="e-stimme-zahl"></p>
+      <ul class="stimmliste" id="e-stimmliste" aria-label="Stimmen auf diesem Gerät"></ul>
+      <div><button class="ghost" type="button" id="e-neu-laden">Stimmen neu laden</button></div>
       <p class="hilfe" id="e-stimme-hilfe">Die Stimmen kommen von deinem Gerät.</p>
     </div>
     <div class="zeile">
@@ -454,7 +465,7 @@ function entities(s) { const t = document.createElement("textarea"); t.innerHTML
 
 /* ---------- Einstellungen ---------- */
 const einstellungen = Object.assign(
-  { anrede: "", form: "du", persona: "verliebt", stimme: true, stimmeName: "", tempo: 1, hoehe: 1, modus: "quick", version: 2 },
+  { anrede: "", form: "du", persona: "verliebt", stimme: true, stimmeName: "", tempo: 1, hoehe: 1, modus: "quick", version: 3 },
   speicher.lesen("jarvis.einstellungen", {})
 );
 const sichern = () => speicher.schreiben("jarvis.einstellungen", einstellungen);
@@ -464,6 +475,8 @@ if ((einstellungen.version || 1) < 2) {
   Object.assign(einstellungen, { persona: "verliebt", form: "du", stimmeName: "", tempo: 1, hoehe: 1, version: 2 });
   sichern();
 }
+// Version 3: Stimme einmal zurück auf Automatisch, damit eine neu geladene Premium-Stimme sofort greift.
+if (einstellungen.version < 3) { einstellungen.stimmeName = ""; einstellungen.version = 3; sichern(); }
 
 /* ---------- Verlauf ---------- */
 let verlauf = speicher.lesen("jarvis.verlauf", []);
@@ -871,11 +884,11 @@ function wachHalten(v) {
     synth.pause(); synth.resume();
   }, 9000);
 }
-function sprich(text) {
-  if (!stimmeAn()) return;
+function sprich(text, stimme, immer) {
+  if (!synth || (!immer && !stimmeAn())) return;
   const t = fuersOhr(text); if (!t || !/[\p{L}\p{N}]/u.test(t)) return;
   const u = new SpeechSynthesisUtterance(t);
-  const v = gewaehlteStimme(); if (v) u.voice = v;
+  const v = stimme || gewaehlteStimme(); if (v) u.voice = v;
   u.lang = v?.lang || "de-DE";
   u.rate = Number(einstellungen.tempo) || 1;
   u.pitch = Number(einstellungen.hoehe) || 1;
@@ -1434,16 +1447,38 @@ $("#neu-fakt").addEventListener("submit", async e => {
   try { await merken(v, "hand"); f.value = ""; } catch (err) { f.value = v; f.placeholder = String(err.message || err); }
 });
 
+// Die Liste zeigt genau die Stimmen, die Jarvis auf diesem Gerät sieht, jede zum Anhören.
 function stimmenAuswahl() {
-  const s = $("#e-stimme-name"); if (!s) return;
-  s.textContent = "";
-  if (!stimmen.length) { s.append(el("option", null, "Keine Stimme gefunden")); s.disabled = true; return; }
-  s.disabled = false;
-  const g = gewaehlteStimme();
-  stimmen.forEach((v, i) => {
-    const o = el("option", null, `${v.name} · ${GUETE_TEXT[stimmGuete(v)]}${istWeiblich(v) ? " · Frau" : ""}${i === 0 ? " · empfohlen" : ""}`);
-    o.value = v.voiceURI; if (g && v.voiceURI === g.voiceURI) o.selected = true; s.append(o);
-  });
+  const ul = $("#e-stimmliste"), zahl = $("#e-stimme-zahl"); if (!ul) return;
+  ul.textContent = "";
+  if (!synth) { zahl.textContent = "Dieses Gerät kann nicht vorlesen."; return; }
+  if (!stimmen.length) { zahl.textContent = "Jarvis sieht gerade keine Stimmen. Tipp auf „Stimmen neu laden“."; return; }
+  const beste = stimmen[0];
+  const gut = stimmen.filter(v => stimmGuete(v) >= 2).length;
+  zahl.textContent = `Jarvis sieht ${stimmen.length} deutsche ${stimmen.length === 1 ? "Stimme" : "Stimmen"}, davon ${gut} in Premium- oder erweiterter Qualität.`;
+  const gewaehltDa = stimmen.some(v => v.voiceURI === einstellungen.stimmeName);
+  const zeile = (wert, titel, v, nr) => {
+    const li = el("li"); const lab = el("label");
+    const r = el("input"); r.type = "radio"; r.name = "e-stimme-wahl"; r.value = wert; r.id = "e-stimme-" + nr;
+    r.checked = wert ? einstellungen.stimmeName === wert : !gewaehltDa;
+    r.addEventListener("change", () => { einstellungen.stimmeName = wert; sichern(); stimmeAnzeigen(); });
+    const g = stimmGuete(v);
+    const p = el("span", "pille", GUETE_TEXT[g]); p.dataset.s = g === 3 ? "online" : g === 2 ? "wartet" : "aus";
+    lab.append(r, el("span", "sname", titel), p);
+    const b = el("button", "ghost", "Anhören"); b.type = "button";
+    b.addEventListener("click", () => probe(v));
+    li.append(lab, b); return li;
+  };
+  ul.append(zeile("", `Automatisch: ${beste.name}`, beste, "auto"));
+  stimmen.forEach((v, i) => ul.append(zeile(v.voiceURI, /de[-_]DE/i.test(v.lang) ? v.name : `${v.name} (${v.lang})`, v, i)));
+}
+function probe(v) {
+  if (!synth) return;
+  entsperren(); sprechAus();
+  const n = einstellungen.anrede;
+  sprich(einstellungen.persona !== "butler"
+    ? `Hey${n ? " " + n : ""}, ich bin's. So klinge ich für dich, und ich hoffe ehrlich, dass dir meine Stimme gefällt, weil ich ab jetzt ziemlich oft mit dir reden werde.`
+    : `${gruss()}${n ? ", " + n : ""}. So klinge ich.`, v, true);
 }
 function einstellungenFuellen() {
   $(einstellungen.persona === "butler" ? "#e-persona-butler" : "#e-persona-verliebt").checked = true;
@@ -1456,7 +1491,7 @@ function einstellungenFuellen() {
   $("#e-hoehe").value = String(einstellungen.hoehe);
   $("#e-hoehe-wert").textContent = `${Number(einstellungen.hoehe).toFixed(2)}×`;
   $(einstellungen.modus === "default" ? "#e-modus-default" : "#e-modus-quick").checked = true;
-  $("#e-stimme-hilfe").textContent = synth ? "Die Stimmen kommen von deinem Gerät, die schönste Frauenstimme steht oben. Mehr Auswahl: in den iPhone-Einstellungen nach „Stimmen“ suchen und unter Deutsch eine Stimme mit „Premium“ oder „Erweitert“ laden." : "Dieses Gerät kann nicht vorlesen.";
+  $("#e-stimme-hilfe").textContent = synth ? "Neue Stimme auf dem iPhone geladen, aber sie fehlt in dieser Liste? Dann die App einmal ganz schließen: vom unteren Bildschirmrand hochwischen und kurz halten, dann die Claude-App (oder Safari) nach oben wegschieben. Danach Jarvis neu öffnen." : "Dieses Gerät kann nicht vorlesen.";
   stimmenAuswahl();
 }
 $("#e-anrede").addEventListener("change", e => { einstellungen.anrede = e.target.value.trim(); sichern(); if (!verlauf.length) allesZeichnen(); });
@@ -1469,17 +1504,10 @@ for (const r of document.querySelectorAll("input[name=e-persona]")) r.addEventLi
 for (const r of document.querySelectorAll("input[name=e-form]")) r.addEventListener("change", e => { einstellungen.form = e.target.value; sichern(); });
 for (const r of document.querySelectorAll("input[name=e-modus]")) r.addEventListener("change", e => { einstellungen.modus = e.target.value; sichern(); stimmeAnzeigen(); });
 $("#e-stimme").addEventListener("change", e => { einstellungen.stimme = e.target.checked; sichern(); if (!einstellungen.stimme) sprechAus(); stimmeAnzeigen(); });
-$("#e-stimme-name").addEventListener("change", e => { einstellungen.stimmeName = e.target.value; sichern(); stimmeAnzeigen(); });
+$("#e-neu-laden").addEventListener("click", () => { stimmenLaden(); });
 $("#e-tempo").addEventListener("input", e => { einstellungen.tempo = Number(e.target.value); $("#e-tempo-wert").textContent = `${einstellungen.tempo.toFixed(2)}×`; sichern(); });
 $("#e-hoehe").addEventListener("input", e => { einstellungen.hoehe = Number(e.target.value); $("#e-hoehe-wert").textContent = `${einstellungen.hoehe.toFixed(2)}×`; sichern(); });
-$("#e-probe").addEventListener("click", () => {
-  entsperren(); sprechAus(); const war = einstellungen.stimme; einstellungen.stimme = true;
-  const n = einstellungen.anrede;
-  sprich(einstellungen.persona !== "butler"
-    ? `Hey${n ? " " + n : ""}, ich bin's. So klinge ich für dich, und ich hoffe ehrlich, dass dir meine Stimme gefällt, weil ich ab jetzt ziemlich oft mit dir reden werde.`
-    : `${gruss()}${n ? ", " + n : ""}. So klinge ich.`);
-  einstellungen.stimme = war;
-});
+$("#e-probe").addEventListener("click", () => probe(gewaehlteStimme()));
 async function rechteOeffnen() {
   if (!rechte) { $("#e-rechte-hilfe").hidden = false; return; }
   try { await rechte.manage(); $("#e-rechte-hilfe").hidden = true; await verbindungenPruefen(); }
