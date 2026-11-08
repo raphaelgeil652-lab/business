@@ -82,11 +82,20 @@ Sie liest jede Antwort **in einem Zug** vor, nicht Satz für Satz. Dadurch flie�
 **Der größte Unterschied:** eine Premium-Stimme laden. Die einfachen Stimmen klingen blechern,
 die Premium-Stimmen fast wie ein Mensch.
 
-1. iPhone-Einstellungen öffnen.
-2. Bedienungshilfen → Gesprochene Inhalte → Stimmen → Deutsch.
-3. Eine Frauenstimme mit **„Premium"** oder **„Erweitert"** laden, zum Beispiel Petra oder Anna
-   (etwa 100 bis 400 MB, am besten im WLAN).
-4. Jarvis neu öffnen. Sie wird automatisch genommen.
+1. Die **Einstellungen** auf dem iPhone öffnen (das graue Zahnrad).
+2. Ganz oben die Liste **ein Stück nach unten ziehen**, bis das **Suchfeld** erscheint. Bei
+   neueren iPhones steht es auch schon oben oder unten fest.
+3. **„Stimmen“** eintippen und den Treffer antippen, der unter **„Gesprochene Inhalte“** steht.
+   Wenn nur ein VoiceOver-Treffer kommt, geht der auch. **VoiceOver selbst aber nicht
+   einschalten**, sonst bedient sich das iPhone plötzlich ganz anders.
+4. **Deutsch** antippen.
+5. Eine Frauenstimme mit **„Premium“** oder **„Erweitert“** antippen und laden, zum Beispiel
+   Petra oder Anna (etwa 100 bis 400 MB, am besten im WLAN).
+6. Jarvis neu öffnen. Sie wird automatisch genommen.
+
+Findet die Suche nichts: Einstellungen → **Bedienungshilfen** → im Bereich „Sehen“
+**Gesprochene Inhalte** → **Stimmen**. Ist das iPhone auf Englisch gestellt, heißt es
+Accessibility → Spoken Content → Voices.
 
 Solange nur eine einfache Stimme da ist, zeigt Jarvis einmal einen Hinweis dazu, und im Bauplan
 steht Bauteil 04 auf „teilweise".
@@ -97,8 +106,7 @@ steht Bauteil 04 auf „teilweise".
   dich. *Butler* ist der klassische Jarvis mit „Sir" und „Sie".
 - **Dein Name**: Dann sagt sie ihn ab und zu. Leer lassen geht auch, dann fragt sie dich irgendwann.
 - **Stimme**: an oder aus, welche Stimme, wie schnell, wie hoch. Auf dem iPhone klingen die
-  „Premium"-Stimmen am besten: iPhone-Einstellungen → Bedienungshilfen → Gesprochene Inhalte →
-  Stimmen → Deutsch → eine Premium-Stimme laden. Danach in Jarvis auswählen.
+  „Premium“-Stimmen am besten, so lädst du sie: siehe „Die Stimme“ oben.
 - **Denkweise**: *Schnell* antwortet in Sekunden. *Gründlich* denkt länger, braucht oft eine Minute.
 
 ## Das Gedächtnis
@@ -114,8 +122,8 @@ Wochenenden business-frei). Lösch sie, wenn du sie nicht willst.
 - **Sprechen:** Mikrofon unten rechts auf der Tastatur.
 - **Du hörst nichts?** Lautstärke hochdrehen und den Stummschalter an der Seite prüfen. Einmal
   auf „Probe hören“ in den Einstellungen tippen.
-- **Bessere Stimme:** iPhone-Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen →
-  Deutsch → eine „Premium“-Stimme laden, dann in Jarvis auswählen.
+- **Bessere Stimme:** in den iPhone-Einstellungen nach „Stimmen“ suchen, unter Deutsch eine
+  „Premium“-Stimme laden, Jarvis neu öffnen. Ausführlich unter „Die Stimme“ oben.
 
 ## Was er (noch) nicht kann
 

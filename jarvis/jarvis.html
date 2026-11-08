@@ -903,7 +903,7 @@ function stimmTipp() {
   const li = el("li", "item tipp"); li.id = "stimm-tipp";
   li.append(el("b", null, "Für eine schönere Stimme"));
   li.append(el("div", null, apple
-    ? "Gerade spricht eine einfache Stimme. Viel natürlicher klingt eine Premium-Stimme: iPhone-Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen → Deutsch → eine Frauenstimme mit „Premium“ oder „Erweitert“ laden, zum Beispiel Petra oder Anna. Danach Jarvis neu öffnen, sie wird automatisch genommen."
+    ? "Gerade spricht eine einfache Stimme. Viel natürlicher klingt eine Premium-Stimme. Öffne die iPhone-Einstellungen, zieh die Liste ganz oben ein Stück nach unten, bis das Suchfeld erscheint, und such nach „Stimmen“. Dort unter Deutsch eine Frauenstimme mit „Premium“ oder „Erweitert“ laden, zum Beispiel Petra oder Anna. Danach Jarvis neu öffnen, sie wird automatisch genommen."
     : "Gerade spricht eine einfache Stimme. Am natürlichsten klingen die Natural-Stimmen im Edge-Browser, zum Beispiel Seraphina oder Katja, oder eine Premium-Stimme auf dem iPhone."));
   const k = el("div", "knoepfe");
   const ok = el("button", "ghost", "Verstanden"); ok.type = "button";
@@ -1414,7 +1414,7 @@ function stimmeAnzeigen() {
   const v = gewaehlteStimme();
   if (!v) systemSetzen("stimme", "bereit", "Jarvis liest mit der Stimme deines Geräts vor.");
   else if (stimmGuete(v) >= 2) systemSetzen("stimme", "bereit", `Sie spricht mit ${v.name} (${GUETE_TEXT[stimmGuete(v)]}).`);
-  else systemSetzen("stimme", "teilweise", `Sie spricht mit ${v.name}, einer einfachen Stimme. Viel natürlicher klingt eine Premium- oder erweiterte Stimme: iPhone-Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen → Deutsch.`);
+  else systemSetzen("stimme", "teilweise", `Sie spricht mit ${v.name}, einer einfachen Stimme. Viel natürlicher klingt eine Premium- oder erweiterte Stimme: in den iPhone-Einstellungen nach „Stimmen“ suchen und unter Deutsch eine laden.`);
 }
 
 /* ---------- Seitenleisten ---------- */
@@ -1456,7 +1456,7 @@ function einstellungenFuellen() {
   $("#e-hoehe").value = String(einstellungen.hoehe);
   $("#e-hoehe-wert").textContent = `${Number(einstellungen.hoehe).toFixed(2)}×`;
   $(einstellungen.modus === "default" ? "#e-modus-default" : "#e-modus-quick").checked = true;
-  $("#e-stimme-hilfe").textContent = synth ? "Die Stimmen kommen von deinem Gerät, die schönste Frauenstimme steht oben. Mehr Auswahl: iPhone-Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen → Deutsch, dort eine Stimme mit „Premium“ oder „Erweitert“ laden." : "Dieses Gerät kann nicht vorlesen.";
+  $("#e-stimme-hilfe").textContent = synth ? "Die Stimmen kommen von deinem Gerät, die schönste Frauenstimme steht oben. Mehr Auswahl: in den iPhone-Einstellungen nach „Stimmen“ suchen und unter Deutsch eine Stimme mit „Premium“ oder „Erweitert“ laden." : "Dieses Gerät kann nicht vorlesen.";
   stimmenAuswahl();
 }
 $("#e-anrede").addEventListener("change", e => { einstellungen.anrede = e.target.value.trim(); sichern(); if (!verlauf.length) allesZeichnen(); });
