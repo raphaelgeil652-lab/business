@@ -261,6 +261,31 @@ input[type=range]{accent-color:var(--gold);width:100%}
 .hinweis{margin-top:16px;padding:12px;border:1px solid color-mix(in srgb,var(--rot) 55%,var(--line));background:color-mix(in srgb,var(--rot) 8%,var(--bg));font-size:var(--t-sm)}
 .hinweis b{color:var(--rot);font:700 var(--t-xs)/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:6px}
 
+/* Depot */
+.abschnitt{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.abschnitt h3{margin:0 0 8px;font:700 var(--t-lg)/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase}
+.depot-wert{font:700 42px/1 var(--f-display);color:var(--gold);letter-spacing:.02em;margin:6px 0 4px;font-variant-numeric:tabular-nums}
+.depot-plus{color:var(--gold-hell);font:600 var(--t-sm)/1.4 var(--f-mono)}
+.depot-minus{color:var(--rot);font:600 var(--t-sm)/1.4 var(--f-mono)}
+.depot-tabelle{width:100%;border-collapse:collapse;font-size:var(--t-sm);font-variant-numeric:tabular-nums;margin-top:10px}
+.depot-tabelle td{padding:7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.depot-tabelle td:first-child{overflow-wrap:anywhere}
+.depot-tabelle td:nth-child(n+2){text-align:right;white-space:nowrap;padding-left:10px}
+.depot-tabelle .minus{color:var(--rot)}
+.depot-tabelle .plus{color:var(--gold-hell)}
+.summen{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;margin:8px 0 0;font-size:var(--t-sm)}
+.summen dt{color:var(--muted)}
+.summen dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.status{font:400 var(--t-xs)/1.5 var(--f-mono);color:var(--muted);margin:8px 0 0}
+.status:empty{display:none}
+label.voll{display:inline-flex;align-items:center}
+.unsichtbar{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
+.knopfreihe{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pruefen{margin-top:14px;padding:12px;border:1px solid var(--gold);background:color-mix(in srgb,var(--gold) 6%,var(--bg))}
+.pruefen:empty{display:none}
+.pruefen > b{display:block;font:700 var(--t-xs)/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.warnung{color:var(--glut);font-size:var(--t-sm);margin:8px 0 0}
+
 @media (prefers-reduced-motion:reduce){ *{scroll-behavior:auto!important} }
 </style>
 
@@ -268,6 +293,10 @@ input[type=range]{accent-color:var(--gold);width:100%}
   <header class="bar">
     <div class="wordmark"><b>J.A.R.V.I.S.</b><span>Dein eigener KI-Assistent</span></div>
     <div class="bar-actions">
+      <button class="ghost" id="knopf-depot" type="button" aria-haspopup="dialog" aria-label="Depot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg>
+        <span class="wort">Depot</span>
+      </button>
       <button class="ghost" id="knopf-gedaechtnis" type="button" aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 4a3 3 0 0 0-3 3v.2A3 3 0 0 0 4 10a3 3 0 0 0 1 2.2A3 3 0 0 0 6 17a3 3 0 0 0 3 3h0V4zM15 4a3 3 0 0 1 3 3v.2A3 3 0 0 1 20 10a3 3 0 0 1-1 2.2A3 3 0 0 1 18 17a3 3 0 0 1-3 3h0V4z"/></svg>
         <span class="wort">Gedächtnis</span><span class="zahl" id="fakten-zahl">0</span>
@@ -308,7 +337,7 @@ input[type=range]{accent-color:var(--gold);width:100%}
         <button type="button" data-frage="morgen">Morgen<small>Was steht an?</small></button>
         <button type="button" data-frage="mails">Mails<small>Wichtiges, Ungelesenes</small></button>
         <button type="button" data-frage="woche">Diese Woche<small>Überblick bis Sonntag</small></button>
-        <button type="button" data-frage="ich">Über mich<small>Was weißt du?</small></button>
+        <button type="button" data-frage="depot">Depot<small>Wie steht es?</small></button>
       </div>
     </section>
 
@@ -367,6 +396,38 @@ input[type=range]{accent-color:var(--gold);width:100%}
       <input class="eingabefeld" id="neu-fakt-text" maxlength="400" placeholder="Neuer Eintrag, z. B. „Ich trinke Kaffee schwarz“" aria-label="Neuer Eintrag">
       <button class="voll" type="submit">Merken</button>
     </form>
+  </div>
+</dialog>
+
+<dialog class="blatt" id="blatt-depot" aria-labelledby="titel-depot">
+  <div class="blatt-innen">
+    <div class="blatt-kopf">
+      <h2 id="titel-depot">Depot</h2>
+      <button class="ghost" type="button" data-schliessen>Schließen</button>
+    </div>
+    <p class="erklaer">Trade Republic hat keine offizielle Schnittstelle. Deshalb gibst du Jarvis die Zahlen selbst: einen Screenshot für den aktuellen Stand und den Transaktionsexport für die Geschichte. Nur du kannst sie sehen.</p>
+
+    <div id="depot-stand"></div>
+    <div class="knopfreihe">
+      <label class="voll" for="depot-bild">Screenshot hochladen</label>
+      <input class="unsichtbar" type="file" id="depot-bild" accept="image/png,image/jpeg,image/webp" multiple>
+    </div>
+    <p class="status" id="depot-status-bild" aria-live="polite"></p>
+    <div class="pruefen" id="depot-pruefen"></div>
+    <p class="hilfe" style="font-size:var(--t-xs);color:var(--muted);margin:10px 0 0">In der Trade-Republic-App die Depot-Übersicht öffnen und einen Screenshot machen (Seitentaste und Lauter-Taste zusammen). Passen nicht alle Positionen auf einen Bildschirm, mach zwei Screenshots und wähl beide zusammen aus.</p>
+
+    <section class="abschnitt" aria-labelledby="titel-umsaetze">
+      <h3 id="titel-umsaetze">Umsätze</h3>
+      <div id="depot-umsaetze"></div>
+      <div class="knopfreihe">
+        <label class="ghost" for="depot-csv">Transaktionsexport hochladen</label>
+        <input class="unsichtbar" type="file" id="depot-csv" accept=".csv,text/csv,text/plain">
+      </div>
+      <p class="status" id="depot-status-csv" aria-live="polite"></p>
+      <p class="hilfe" style="font-size:var(--t-xs);color:var(--muted);margin:10px 0 0">In der Trade-Republic-App: Profil → Kontoauszüge → Transaktionsexport → Alle Transaktionen → Erstellen. Die Datei in „Dateien“ sichern und hier hochladen.</p>
+    </section>
+
+    <div class="hinweis"><b>Sicher</b>Jarvis liest nur. Er kann nicht handeln, gibt keine Kauf- oder Verkaufsempfehlungen und braucht nie deine PIN. Gib sie nirgends ein außer in der Trade-Republic-App.</div>
   </div>
 </dialog>
 
@@ -605,7 +666,7 @@ const BAUTEILE = [
   { nr: 4, name: "Stimme", mittel: "Stimme deines Geräts", von: "stimme" },
   { nr: 5, name: "Wake-Word", mittel: "„Hey Jarvis“", s: "optional", info: "Bewusst weggelassen: Dafür müsste ein Mikrofon dauernd zuhören, und das geht nur mit einer eigenen App und einem bezahlten API-Schlüssel. Das Diktat der Tastatur reicht. Lässt sich jederzeit nachrüsten." },
   { nr: 6, name: "Gedächtnis", mittel: "Datenbank, nur für dich", von: "gedaechtnis" },
-  { nr: 7, name: "Skills", mittel: "Kalender · Gmail (MCP)", von: "skills" },
+  { nr: 7, name: "Skills", mittel: "Kalender · Gmail · Depot", von: "skills" },
   { nr: 8, name: "Telefon", mittel: "Twilio", s: "optional", info: "Jarvis anrufen oder per SMS erreichen. Kostet Geld und wird nicht gebraucht." },
   { nr: 9, name: "Server 24/7", mittel: ROUTINE ? ROUTINE.mittel : "Routine in der Cloud", s: ROUTINE ? "online" : "optional",
     info: ROUTINE ? ROUTINE.info : "Bewusst weggelassen: Jarvis meldet sich nur, wenn du ihn öffnest. Eine kostenlose Routine in der Cloud könnte dir jederzeit einen Lagebericht aufs Handy schicken. Einfach Claude Code im Chat sagen." },
@@ -971,6 +1032,298 @@ async function merken(text, quelle) {
   return ref.id;
 }
 
+/* ---------- Depot (Trade Republic, nur lesend) ---------- */
+// Trade Republic hat keine offizielle Schnittstelle. Jarvis bekommt die Zahlen deshalb aus einem
+// Screenshot (aktueller Stand) und aus dem offiziellen Transaktionsexport (Geschichte). Keine PIN, kein Handel.
+let depot = { stand: null, umsaetze: null, verlauf: [] };
+let depotNeu = null;
+const eur = n => (Number(n) || 0).toLocaleString("de-DE", { style: "currency", currency: "EUR" });
+const prozent = n => `${Number(n) > 0 ? "+" : ""}${(Number(n) || 0).toLocaleString("de-DE", { maximumFractionDigits: 2 })} %`;
+const datumKurz = ts => ts ? new Date(ts).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" }) : "?";
+const datumZeit = ts => ts ? `${datumKurz(ts)}, ${uhrzeit(ts)} Uhr` : "?";
+const stueckText = n => (Number(n) || 0).toLocaleString("de-DE", { maximumFractionDigits: 6 });
+const zahlOderNull = v => { const n = typeof v === "number" ? v : zahl(v); return v == null || v === "" || !isFinite(n) ? null : n; };
+
+function zahl(s) {
+  if (typeof s === "number") return s;
+  let t = String(s ?? "").replace(/[^\d,.\-]/g, "");
+  if (!t || t === "-") return 0;
+  const k = t.lastIndexOf(","), p = t.lastIndexOf(".");
+  if (k > -1 && p > -1) t = k > p ? t.replace(/\./g, "").replace(",", ".") : t.replace(/,/g, "");
+  else if (k > -1) t = t.replace(",", ".");
+  const n = parseFloat(t);
+  return isFinite(n) ? n : 0;
+}
+function datumLesen(s) {
+  const m = String(s || "").match(/^(\d{1,2})\.(\d{1,2})\.(\d{2,4})/);
+  if (m) { const j = Number(m[3]) < 100 ? 2000 + Number(m[3]) : Number(m[3]); return new Date(j, Number(m[2]) - 1, Number(m[1])).getTime(); }
+  return Date.parse(s);
+}
+function csvLesen(text) {
+  text = String(text).replace(/^﻿/, "");
+  const erste = text.split(/\r?\n/, 1)[0] || "";
+  const trenner = [";", ",", "\t"].map(t => [t, erste.split(t).length]).sort((a, b) => b[1] - a[1])[0][0];
+  const zeilen = []; let feld = "", zeile = [], inQ = false;
+  const ende = () => { zeile.push(feld); feld = ""; if (zeile.some(f => f.trim())) zeilen.push(zeile); zeile = []; };
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQ) { if (c === '"') { if (text[i + 1] === '"') { feld += '"'; i++; } else inQ = false; } else feld += c; }
+    else if (c === '"') inQ = true;
+    else if (c === trenner) { zeile.push(feld); feld = ""; }
+    else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; ende(); }
+    else feld += c;
+  }
+  if (feld || zeile.length) ende();
+  const kopf = (zeilen.shift() || []).map(s => s.trim());
+  return { kopf, zeilen };
+}
+
+const BILD_PROMPT = `Das sind Screenshots aus der Trade-Republic-App, meistens die Depot-Übersicht. Lies die Zahlen genau ab. Erfinde nichts und lass Felder weg, die nicht zu sehen sind. Sind es mehrere Bilder, gehören sie zum selben Depot: Führe die Positionen zusammen, ohne doppelte.
+
+Antworte nur mit JSON in genau dieser Form:
+{"gesamtwert": 1234.56, "veraenderung_eur": 12.3, "veraenderung_prozent": 1.05, "zeitraum": "Seit Kauf", "cash": 100.0, "positionen": [{"name": "Apple", "wert": 500.12, "veraenderung_eur": 15.5, "veraenderung_prozent": 3.2, "stueck": 2.5}], "nicht_lesbar": false, "hinweis": ""}
+
+Zahlen als Dezimalzahl mit Punkt, ohne Währungszeichen und ohne Tausenderpunkt. Verluste mit Minus. "zeitraum" ist die Angabe, auf die sich die Veränderung bezieht, so wie sie in der App steht. "cash" nur, wenn ein Guthaben oder Cash-Betrag zu sehen ist. Ist kein Depot von Trade Republic zu sehen, setz "nicht_lesbar" auf true und erklär im "hinweis" in einem kurzen deutschen Satz, was auf dem Bild ist.`;
+
+function csvPrompt(kopf, zeilen) {
+  const probe = zeilen.slice(0, 6).map(z => z.join(" | ")).join("\n");
+  const kandidaten = {};
+  kopf.forEach((k, i) => {
+    if (Object.keys(kandidaten).length >= 8) return;
+    const werte = [...new Set(zeilen.map(z => (z[i] || "").trim()).filter(Boolean))];
+    if (werte.length && werte.length <= 40 && werte.some(w => /[A-Za-zÄÖÜäöü]/.test(w)) && !werte.every(w => /^\d{4}-\d{2}-\d{2}/.test(w))) kandidaten[k] = werte;
+  });
+  return `Das ist der Kopf und ein Auszug aus einem Transaktionsexport (CSV) von Trade Republic. Ordne die Spalten zu und sortiere die Werte der Spalte, die die Art der Buchung beschreibt, in Kategorien.
+
+Antworte nur mit JSON in genau dieser Form:
+{"spalten": {"datum": "Spaltenname", "typ": "Spaltenname", "name": "Spaltenname", "isin": "Spaltenname", "stueck": "Spaltenname", "betrag": "Spaltenname", "gebuehr": "Spaltenname", "steuer": "Spaltenname"}, "kategorien": {"Wert aus der Typ-Spalte": "kauf"}}
+
+Regeln: Nutze genau die Spaltennamen aus dem Kopf, oder null, wenn es keine passende Spalte gibt. datum ist das Buchungsdatum, betrag der Geldbetrag der Buchung in Euro, stueck die Anzahl Wertpapiere, name der Name des Wertpapiers. Erlaubte Kategorien: kauf, verkauf, dividende, zinsen, einzahlung, auszahlung, gebuehr, steuer, karte, sonstiges. Sparplan-Ausführungen und Round-ups sind kauf, Saveback ist kauf, Kartenzahlungen sind karte, Steuererstattungen sind steuer, Überweisungen auf das Konto sind einzahlung, Überweisungen weg vom Konto sind auszahlung. Ordne jeden vorkommenden Typ-Wert zu.
+
+Kopf: ${kopf.join(" | ")}
+
+Beispielzeilen:
+${probe}
+
+Spalten mit wenigen verschiedenen Werten:
+${Object.entries(kandidaten).map(([k, w]) => `${k}: ${w.join(", ")}`).join("\n")}`;
+}
+
+const KATEGORIEN = ["kauf", "verkauf", "dividende", "zinsen", "einzahlung", "auszahlung", "gebuehr", "steuer", "karte", "sonstiges"];
+function umsaetzeRechnen(kopf, zeilen, z) {
+  const sp = (z && z.spalten) || {};
+  const finde = name => { if (!name) return -1; const i = kopf.indexOf(name); return i >= 0 ? i : kopf.findIndex(k => k.toLowerCase() === String(name).toLowerCase()); };
+  const I = {};
+  for (const k of ["datum", "typ", "name", "isin", "stueck", "betrag", "gebuehr", "steuer"]) I[k] = finde(sp[k]);
+  if (I.betrag < 0) throw new Error("In der Datei habe ich keine Spalte mit Beträgen gefunden. Ist das der Transaktionsexport von Trade Republic?");
+  const kat = (z && z.kategorien) || {};
+  const zelle = (r, k) => I[k] >= 0 ? String(r[I[k]] ?? "").trim() : "";
+  const vorzeichen = I.stueck >= 0 && zeilen.some(r => zahl(zelle(r, "stueck")) < 0);
+  const summen = Object.fromEntries(KATEGORIEN.map(k => [k, 0]));
+  const pos = new Map(), liste = [];
+  let von = Infinity, bis = -Infinity;
+  for (const r of zeilen) {
+    let k = kat[zelle(r, "typ")];
+    if (!KATEGORIEN.includes(k)) k = "sonstiges";
+    const st = zahl(zelle(r, "stueck"));
+    // Verkäufe stehen manchmal nur als negative Stückzahl in einer gemeinsamen Handels-Zeile.
+    if ((k === "kauf" || k === "verkauf") && vorzeichen && st) k = st < 0 ? "verkauf" : "kauf";
+    const b = Math.abs(zahl(zelle(r, "betrag")));
+    summen[k] += b;
+    if (k !== "gebuehr") summen.gebuehr += Math.abs(zahl(zelle(r, "gebuehr")));
+    if (k !== "steuer") summen.steuer += Math.abs(zahl(zelle(r, "steuer")));
+    const t = datumLesen(zelle(r, "datum"));
+    if (isFinite(t)) { von = Math.min(von, t); bis = Math.max(bis, t); }
+    const name = zelle(r, "name"), isin = zelle(r, "isin");
+    if ((k === "kauf" || k === "verkauf" || k === "dividende") && (name || isin)) {
+      const key = isin || name;
+      const p = pos.get(key) || { name: name || isin, isin, stueck: 0, gekauft: 0, verkauft: 0, dividende: 0 };
+      if (name && (!p.name || p.name === isin)) p.name = name;
+      if (k === "kauf") { p.stueck += Math.abs(st); p.gekauft += b; }
+      else if (k === "verkauf") { p.stueck -= Math.abs(st); p.verkauft += b; }
+      else p.dividende += b;
+      pos.set(key, p);
+    }
+    liste.push({ t, art: k, name, betrag: ["verkauf", "dividende", "zinsen", "einzahlung"].includes(k) ? b : -b });
+  }
+  const r2 = n => Math.round(n * 100) / 100;
+  return {
+    buchungen: zeilen.length,
+    von: isFinite(von) ? von : null,
+    bis: isFinite(bis) ? bis : null,
+    summen: Object.fromEntries(Object.entries(summen).map(([k, v]) => [k, r2(v)])),
+    positionen: [...pos.values()]
+      .map(p => ({ name: String(p.name).slice(0, 80), isin: p.isin, stueck: Math.round(p.stueck * 1e6) / 1e6, gekauft: r2(p.gekauft), verkauft: r2(p.verkauft), dividende: r2(p.dividende), offen: p.stueck > 1e-6 }))
+      .sort((a, b) => b.gekauft - a.gekauft).slice(0, 60),
+    letzte: liste.filter(b => isFinite(b.t)).sort((a, b) => b.t - a.t).slice(0, 25)
+      .map(b => ({ datum: b.t, art: b.art, name: String(b.name).slice(0, 60), betrag: r2(b.betrag) }))
+  };
+}
+
+function standBereinigen(d) {
+  const pos = Array.isArray(d.positionen) ? d.positionen : [];
+  const s = {
+    gesamtwert: zahlOderNull(d.gesamtwert),
+    veraenderung_eur: zahlOderNull(d.veraenderung_eur),
+    veraenderung_prozent: zahlOderNull(d.veraenderung_prozent),
+    zeitraum: d.zeitraum ? String(d.zeitraum).slice(0, 40) : null,
+    cash: zahlOderNull(d.cash),
+    positionen: pos.filter(p => p && p.name && zahlOderNull(p.wert) != null).slice(0, 60).map(p => ({
+      name: String(p.name).slice(0, 80), wert: zahlOderNull(p.wert),
+      veraenderung_eur: zahlOderNull(p.veraenderung_eur), veraenderung_prozent: zahlOderNull(p.veraenderung_prozent), stueck: zahlOderNull(p.stueck)
+    }))
+  };
+  return s;
+}
+function positionsTabelle(positionen) {
+  const t = el("table", "depot-tabelle"); const tb = el("tbody");
+  for (const p of positionen) {
+    const tr = el("tr");
+    const v = p.veraenderung_prozent;
+    const zv = el("td", v == null ? null : v < 0 ? "minus" : "plus", v == null ? "" : prozent(v));
+    tr.append(el("td", null, p.name), el("td", null, eur(p.wert)), zv);
+    tb.append(tr);
+  }
+  t.append(tb); return t;
+}
+function standZeigen(ziel, s) {
+  ziel.append(el("div", "depot-wert", eur(s.gesamtwert)));
+  const teile = [s.veraenderung_eur != null ? `${s.veraenderung_eur > 0 ? "+" : ""}${eur(s.veraenderung_eur)}` : null,
+    s.veraenderung_prozent != null ? prozent(s.veraenderung_prozent) : null, s.zeitraum].filter(Boolean);
+  if (teile.length) ziel.append(el("div", Number(s.veraenderung_prozent ?? s.veraenderung_eur) < 0 ? "depot-minus" : "depot-plus", teile.join(" · ")));
+  if (s.cash != null) ziel.append(el("p", "status", `Guthaben ${eur(s.cash)}`));
+  if (s.positionen?.length) ziel.append(positionsTabelle(s.positionen));
+}
+function depotZeichnen() {
+  const box = $("#depot-stand"); box.textContent = "";
+  const s = depot.stand;
+  if (!sammlung) box.append(el("p", "leer", "Das Depot ist in dieser Ansicht nicht verfügbar. Öffne Jarvis in claude.ai."));
+  else if (!s) box.append(el("p", "leer", "Noch kein Stand. Lade einen Screenshot aus der Trade-Republic-App hoch."));
+  else { box.append(el("div", "stempel", `Stand vom ${datumZeit(s.datum)}`)); standZeigen(box, s); }
+  const u = $("#depot-umsaetze"); u.textContent = "";
+  const x = depot.umsaetze;
+  if (!x) { u.append(el("p", "leer", "Noch kein Transaktionsexport geladen.")); return; }
+  u.append(el("div", "stempel", `${x.buchungen} Buchungen · ${datumKurz(x.von)} bis ${datumKurz(x.bis)}`));
+  const dl = el("dl", "summen");
+  const zeilen = [["Eingezahlt", x.summen.einzahlung], ["Ausgezahlt", x.summen.auszahlung], ["Gekauft für", x.summen.kauf], ["Verkauft für", x.summen.verkauf],
+    ["Dividenden", x.summen.dividende], ["Zinsen", x.summen.zinsen], ["Gebühren", x.summen.gebuehr], ["Steuern", x.summen.steuer], ["Kartenzahlungen", x.summen.karte]];
+  for (const [k, v] of zeilen) if (v) dl.append(el("dt", null, k), el("dd", null, eur(v)));
+  u.append(dl);
+  const offen = (x.positionen || []).filter(p => p.offen);
+  if (offen.length) u.append(el("p", "status", `Laut Export gehalten: ${offen.map(p => `${p.name} (${stueckText(p.stueck)} Stück)`).join(", ")}`));
+}
+function depotStarten() {
+  if (!db) { depotZeichnen(); return; }
+  db.collection("depot").onSnapshot(snap => {
+    const docs = Object.fromEntries(snap.docs.map(d => [d.id, d.data()]));
+    depot.stand = docs.stand || null; depot.umsaetze = docs.umsaetze || null;
+    depotZeichnen();
+  }, () => depotZeichnen());
+  db.collection("depotverlauf").orderBy("datum", "desc").limit(12).onSnapshot(snap => {
+    depot.verlauf = snap.docs.map(d => d.data());
+  }, () => {});
+  depotZeichnen();
+}
+function bildFehler(e) {
+  switch (e && e.code) {
+    case "not_granted": return "Du hast Jarvis noch nicht erlaubt, Claude zu nutzen. Unter Einstellungen → Berechtigungen verwalten kannst du das ändern.";
+    case "images_unavailable": return "Bilder gehen in dieser Ansicht nicht. Öffne Jarvis in claude.ai.";
+    case "image_rejected": return "Das Bild ging nicht. Nimm einen normalen Screenshot (PNG oder JPG).";
+    case "invalid_json": return "Ich konnte die Zahlen nicht sicher lesen. Versuch es noch einmal oder mit einem schärferen Bild.";
+    case "rate_limited": return "Gerade zu viele Anfragen. Versuch es in ein paar Minuten noch mal.";
+    case "cancelled": return "Abgebrochen.";
+    default: return "Das hat nicht geklappt. Versuch es noch einmal.";
+  }
+}
+function pruefenZeigen() {
+  const box = $("#depot-pruefen"); box.textContent = "";
+  if (!depotNeu) return;
+  box.append(el("b", null, "Stimmt das so?"));
+  standZeigen(box, depotNeu);
+  const summe = depotNeu.positionen.reduce((a, p) => a + (p.wert || 0), 0);
+  if (depotNeu.positionen.length && Math.abs(summe - depotNeu.gesamtwert) > depotNeu.gesamtwert * 0.05)
+    box.append(el("p", "warnung", `Die Positionen ergeben zusammen ${eur(summe)}. Wahrscheinlich fehlen welche. Mach einen zweiten Screenshot und lade beide zusammen hoch, oder speichere trotzdem.`));
+  const k = el("div", "knopfreihe");
+  const ja = el("button", "voll", "Speichern"); ja.type = "button";
+  const nein = el("button", "ghost", "Verwerfen"); nein.type = "button";
+  ja.onclick = depotSpeichern;
+  nein.onclick = () => { depotNeu = null; box.textContent = ""; $("#depot-status-bild").textContent = ""; };
+  k.append(ja, nein); box.append(k);
+}
+async function depotSpeichern() {
+  if (!db || !depotNeu) return;
+  const stand = { ...depotNeu, datum: Date.now(), quelle: "screenshot" };
+  try {
+    await db.doc("depot/stand").set(stand);
+    await db.collection("depotverlauf").add({ datum: stand.datum, gesamtwert: stand.gesamtwert, veraenderung_prozent: stand.veraenderung_prozent });
+    depotNeu = null; $("#depot-pruefen").textContent = "";
+    $("#depot-status-bild").textContent = "Gespeichert. Jarvis kennt jetzt deinen Stand.";
+  } catch {
+    $("#depot-status-bild").textContent = "Speichern hat nicht geklappt. Versuch es noch einmal.";
+  }
+}
+$("#depot-bild").addEventListener("change", async e => {
+  const dateien = Array.from(e.target.files || []); e.target.value = "";
+  if (!dateien.length) return;
+  const st = $("#depot-status-bild");
+  depotNeu = null; $("#depot-pruefen").textContent = "";
+  if (!sample) { st.textContent = "Jarvis kann hier keine Bilder lesen. Öffne ihn in claude.ai."; return; }
+  if (!sammlung) { st.textContent = "Speichern geht in dieser Ansicht nicht. Öffne Jarvis in claude.ai."; return; }
+  const lim = await sample.limits().catch(() => null);
+  if (!lim || !lim.images) { st.textContent = bildFehler({ code: "images_unavailable" }); return; }
+  const bilder = dateien.slice(0, lim.images.maxCount || 4);
+  st.textContent = bilder.length === 1 ? "Lese den Screenshot …" : `Lese ${bilder.length} Screenshots …`;
+  try {
+    const d = await sample.json(BILD_PROMPT, { images: bilder, modelTier: "default" });
+    if (!d || d.nicht_lesbar || zahlOderNull(d.gesamtwert) == null) {
+      st.textContent = (d && d.hinweis) ? `${d.hinweis} Mach einen Screenshot von der Depot-Übersicht.` : "Auf dem Bild war kein Depotwert zu erkennen. Mach einen Screenshot von der Depot-Übersicht.";
+      return;
+    }
+    depotNeu = standBereinigen(d);
+    st.textContent = "";
+    pruefenZeigen();
+  } catch (err) { st.textContent = bildFehler(err); }
+});
+$("#depot-csv").addEventListener("change", async e => {
+  const datei = (e.target.files || [])[0]; e.target.value = "";
+  if (!datei) return;
+  const st = $("#depot-status-csv");
+  if (!sample || !sammlung) { st.textContent = "Das geht in dieser Ansicht nicht. Öffne Jarvis in claude.ai."; return; }
+  if (datei.size > 5 * 1024 * 1024) { st.textContent = "Die Datei ist zu groß. Exportiere einen kürzeren Zeitraum."; return; }
+  st.textContent = "Lese die Datei …";
+  try {
+    const { kopf, zeilen } = csvLesen(await datei.text());
+    if (kopf.length < 3 || !zeilen.length) throw new Error("Die Datei sieht nicht wie ein Transaktionsexport aus.");
+    st.textContent = `${zeilen.length} Buchungen gefunden, ordne sie zu …`;
+    const zuordnung = await sample.json(csvPrompt(kopf, zeilen), { modelTier: "default" });
+    const erg = umsaetzeRechnen(kopf, zeilen, zuordnung);
+    erg.datei = String(datei.name).slice(0, 120); erg.importiert = Date.now();
+    await db.doc("depot/umsaetze").set(erg);
+    st.textContent = `Fertig: ${erg.buchungen} Buchungen vom ${datumKurz(erg.von)} bis ${datumKurz(erg.bis)} übernommen. Prüf die Summen kurz mit der App.`;
+  } catch (err) { st.textContent = err && err.code ? bildFehler(err) : String((err && err.message) || err); }
+});
+function depotText() {
+  const { stand: s, umsaetze: u, verlauf } = depot;
+  if (!s && !u) return "Depot bei Trade Republic: noch keine Daten. Fragt er danach, erklär ihm, dass er oben über den Knopf Depot einen Screenshot aus der Trade-Republic-App und den Transaktionsexport hochladen kann. Eine direkte Verbindung gibt es nicht, weil Trade Republic keine offizielle Schnittstelle hat.";
+  const z = [];
+  if (s) {
+    const v = [s.veraenderung_eur != null ? `${s.veraenderung_eur > 0 ? "plus " : ""}${eur(s.veraenderung_eur)}` : "", s.veraenderung_prozent != null ? prozent(s.veraenderung_prozent) : "", s.zeitraum || ""].filter(Boolean).join(", ");
+    z.push(`Letzter Stand vom ${datumZeit(s.datum)}, aus einem Screenshot: Gesamtwert ${eur(s.gesamtwert)}${v ? `, Veränderung ${v}` : ""}${s.cash != null ? `, Guthaben ${eur(s.cash)}` : ""}.`);
+    if (s.positionen?.length) z.push("Positionen: " + s.positionen.slice(0, 30).map(p => `${p.name} ${eur(p.wert)}${p.veraenderung_prozent != null ? ` (${prozent(p.veraenderung_prozent)})` : ""}`).join("; ") + ".");
+  }
+  if (verlauf.length > 1) z.push("Frühere Stände: " + verlauf.slice(1, 7).map(x => `${datumKurz(x.datum)} ${eur(x.gesamtwert)}`).join(", ") + ".");
+  if (u) {
+    const m = u.summen || {};
+    z.push(`Aus dem Transaktionsexport, ${datumKurz(u.von)} bis ${datumKurz(u.bis)}, ${u.buchungen} Buchungen: eingezahlt ${eur(m.einzahlung)}, ausgezahlt ${eur(m.auszahlung)}, Käufe ${eur(m.kauf)}, Verkäufe ${eur(m.verkauf)}, Dividenden ${eur(m.dividende)}, Zinsen ${eur(m.zinsen)}, Gebühren ${eur(m.gebuehr)}, Steuern ${eur(m.steuer)}${m.karte ? `, Kartenzahlungen ${eur(m.karte)}` : ""}.`);
+    const offen = (u.positionen || []).filter(p => p.offen).slice(0, 30);
+    if (offen.length) z.push("Laut Export gehalten: " + offen.map(p => `${p.name}, ${stueckText(p.stueck)} Stück, gekauft für ${eur(p.gekauft)}${p.dividende ? `, Dividenden ${eur(p.dividende)}` : ""}`).join("; ") + ".");
+    if (u.letzte?.length) z.push("Letzte Buchungen: " + u.letzte.slice(0, 10).map(b => `${datumKurz(b.datum)} ${b.art}${b.name ? " " + b.name : ""} ${eur(b.betrag)}`).join("; ") + ".");
+  }
+  return `Depot bei Trade Republic, nur lesend und ohne Live-Kurse:
+${z.join("\n")}
+Regeln fürs Depot: Sag bei Depotzahlen immer, von wann der Stand ist. Ist er älter als drei Tage, schlag ihm lieb vor, einen neuen Screenshot hochzuladen. Du kannst nicht handeln und gibst keine Kauf- oder Verkaufsempfehlungen für einzelne Wertpapiere, erklären und einordnen darfst du. Beträge sprichst du gerundet aus, zum Beispiel ungefähr 1.250 Euro.`;
+}
+
 /* ---------- Connectoren ---------- */
 function mcpText(server, e) {
   const name = server === "Google Calendar" ? "Der Google Kalender" : "Gmail";
@@ -1283,8 +1636,10 @@ So sprichst du:
 - Nie Listen, Aufzählungszeichen, Überschriften, Tabellen, Emojis, Klammern oder Gedankenstriche. Mehrere Termine oder Mails erzählst du nacheinander in ganzen Sätzen.
 - Keine Abkürzungen, schreib zum Beispiel, ungefähr und so weiter aus. Uhrzeiten als 14:30 Uhr, Tage als Montag, der 9. November.
 - Keine Floskeln und keine Entschuldigungen in Schleife.
-- Fragt er, was du kannst oder was dir fehlt: Du hast Gehirn, Gedächtnis, Kalender und Gmail, eine Stimme und hörst über die Diktier-Taste der Tastatur. Ein eigenes Mikrofon und „Hey Jarvis“ fehlen, weil Seiten auf claude.ai kein Mikrofon benutzen dürfen.
+- Fragt er, was du kannst oder was dir fehlt: Du hast Gehirn, Gedächtnis, Kalender und Gmail, siehst sein Trade-Republic-Depot, sobald er dir einen Screenshot oder den Transaktionsexport gibt, hast eine Stimme und hörst über die Diktier-Taste der Tastatur. Ein eigenes Mikrofon und „Hey Jarvis“ fehlen, weil Seiten auf claude.ai kein Mikrofon benutzen dürfen.
 ${werkzeugText}
+
+${depotText()}
 
 Was du über den Nutzer weißt (Gedächtnis, id in Klammern):
 ${fakten}`;
@@ -1298,7 +1653,7 @@ const FRAGEN = {
   morgen: "Was steht morgen an?",
   mails: "Habe ich wichtige neue Mails? Werbung und Newsletter interessieren mich nicht.",
   woche: "Gib mir einen kurzen Überblick über meine Termine von heute bis Sonntag.",
-  ich: "Was weißt du über mich?"
+  depot: "Wie steht mein Depot?"
 };
 function knoepfeSetzen() {
   $("#knopf-senden").hidden = beschaeftigt;
@@ -1414,7 +1769,9 @@ $("#knopf-neu").addEventListener("click", () => {
   sprechAus(); verlauf = []; verlaufSichern(); allesZeichnen(); eingabe.focus();
 });
 $("#schnell").addEventListener("click", e => {
-  const b = e.target.closest("button[data-frage]"); if (b) senden(FRAGEN[b.dataset.frage]);
+  const b = e.target.closest("button[data-frage]"); if (!b) return;
+  const zusatz = b.dataset.frage === "lagebericht" && depot.stand ? " Und ganz kurz mein Depot laut letztem Stand." : "";
+  senden(FRAGEN[b.dataset.frage] + zusatz);
 });
 
 function stimmeAnzeigen() {
@@ -1439,6 +1796,7 @@ for (const d of document.querySelectorAll("dialog.blatt")) {
   });
 }
 $("#knopf-bauplan").addEventListener("click", () => bauplanOeffnen());
+$("#knopf-depot").addEventListener("click", () => { depotZeichnen(); blattOeffnen("#blatt-depot"); });
 $("#knopf-gedaechtnis").addEventListener("click", () => { gedaechtnisZeichnen(); blattOeffnen("#blatt-gedaechtnis"); });
 $("#knopf-einstellungen").addEventListener("click", () => { einstellungenFuellen(); blattOeffnen("#blatt-einstellungen"); });
 $("#neu-fakt").addEventListener("submit", async e => {
@@ -1548,6 +1906,6 @@ const plattform = (async () => {
   knoepfeSetzen();
 })();
 // Das Start-Log läuft, sobald die ersten Antworten da sind, spätestens nach 2,5 Sekunden.
-Promise.race([Promise.allSettled([plattform, verbindungenPruefen(), gedaechtnisStarten()]), warte(2500)]).then(bootStarten);
+Promise.race([Promise.allSettled([plattform, verbindungenPruefen(), gedaechtnisStarten().then(depotStarten)]), warte(2500)]).then(bootStarten);
 })();
 </script>

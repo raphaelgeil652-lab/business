@@ -89,6 +89,10 @@ diese Adresse neu veröffentlichen, nie eine zweite anlegen.
 - **Stimme:** Gerätestimme, automatisch die beste Frauenstimme (Premium > Erweitert > Einfach).
   Vorlesen absatzweise in einem Zug, nicht satzweise (satzweise klang abgehackt). Antworten im
   Prompt als fließende Sätze ohne Listen und Abkürzungen.
+- **Depot (Trade Republic), nur lesend:** keine offizielle API, deshalb Screenshot (Claude liest ihn,
+  Nutzer bestätigt) plus offizieller CSV-Transaktionsexport (Claude ordnet nur Spalten zu, gerechnet
+  wird in der Seite). **Nie PIN, nie pytr oder andere inoffizielle Zugänge, kein Handel, keine Kauf-
+  oder Verkaufsempfehlungen.** Daten in `db` unter `depot/` und `depotverlauf`.
 - Kein eigener Mikrofon-Knopf: claude.ai sperrt das Mikrofon für Seiten. Sprechen läuft über die
   Diktier-Taste der Tastatur, Antworten liest das Gerät vor.
 - Nicht mit Agentur, Webseitenbau oder `entwicklung/` vermischen. Jarvis kennt diese Dinge nur als

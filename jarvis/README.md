@@ -117,6 +117,42 @@ ergänzen und löschen. Nur du kannst sie sehen, auch wenn du die Seite mal teil
 Zum Start stehen vier Einträge aus diesem Repo drin (Agentur, Webseiten, Dienst bis März,
 Wochenenden business-frei). Lösch sie, wenn du sie nicht willst.
 
+## Dein Depot (Trade Republic)
+
+Knopf **Depot** oben. Trade Republic hat **keine offizielle Schnittstelle**, deshalb gibt es
+keine Live-Verbindung. Du gibst Jarvis die Zahlen selbst, das dauert eine Minute:
+
+**Aktueller Stand per Screenshot:**
+1. Trade-Republic-App öffnen, die **Depot-Übersicht** aufrufen.
+2. **Screenshot** machen: Seitentaste und Lauter-Taste gleichzeitig drücken.
+   Passen nicht alle Positionen auf einen Bildschirm: runterscrollen, zweiten Screenshot machen.
+3. In Jarvis: **Depot** → **Screenshot hochladen** → das Bild (oder beide) auswählen.
+4. Jarvis zeigt dir, was er gelesen hat. Stimmt es, tippst du **Speichern**.
+
+**Geschichte per Transaktionsexport** (gibt es bei Trade Republic seit April 2026):
+1. Trade-Republic-App → **Profil** → **Kontoauszüge** → **Transaktionsexport**.
+2. **Alle Transaktionen** wählen → **Erstellen** → die Datei in „Dateien“ sichern.
+3. In Jarvis: **Depot** → **Transaktionsexport hochladen** → die Datei auswählen.
+4. Jarvis rechnet aus: eingezahlt, gekauft, verkauft, Dividenden, Zinsen, Gebühren, Steuern,
+   und welche Wertpapiere du laut Export hältst. Vergleich die Summen einmal mit der App.
+
+Danach fragst du einfach: „Wie steht mein Depot?“ oder „Wie viel Dividende hab ich dieses Jahr
+bekommen?“ Beim **Lagebericht** erwähnt sie das Depot kurz mit.
+
+**Sicher:**
+- Jarvis **liest nur**. Er kann nicht kaufen, nicht verkaufen und kein Geld bewegen.
+- Er gibt **keine Kauf- oder Verkaufsempfehlungen** für einzelne Aktien.
+- Er braucht **nie deine PIN**. Gib sie nirgends ein außer in der Trade-Republic-App.
+  Wenn dich irgendwer oder irgendwas nach der PIN fragt, ist das ein Betrugsversuch.
+- Die Zahlen sind privat, nur du kannst sie sehen.
+- Es gibt **keine Live-Kurse**. Jarvis sagt dir immer dazu, von wann der Stand ist, und erinnert
+  dich, wenn er älter als drei Tage ist.
+
+Warum keine echte Verbindung? Die nachgebauten Zugänge (zum Beispiel
+[pytr](https://github.com/pytr-org/pytr)) brauchen deine Handynummer und PIN, laufen auf einem
+eigenen Server und gehen laut Berichten seit Ende 2025 teilweise kaputt. Mit deiner PIN in einem
+Skript könnte im schlimmsten Fall gehandelt werden. Das Risiko ist es nicht wert.
+
 ## Auf dem iPhone
 
 - **Sprechen:** Mikrofon unten rechts auf der Tastatur.
@@ -130,6 +166,7 @@ Wochenenden business-frei). Lösch sie, wenn du sie nicht willst.
 - **Von selbst melden.** Jarvis antwortet nur, wenn du ihn öffnest und fragst.
   Erinnerungen trägt er dir als Termin in den Kalender ein, dann meldet sich Google.
 - **Mails senden.** Absichtlich nicht. Nur Entwürfe.
+- **Handeln oder Live-Kurse.** Absichtlich nicht. Das Depot kennt er nur aus deinen Uploads.
 - **„Hey Jarvis" ohne Tippen.** Geht auf claude.ai nicht, siehe oben.
 
 ---
@@ -142,8 +179,11 @@ Wochenenden business-frei). Lösch sie, wenn du sie nicht willst.
   `list_events`, `create_event`, `search_threads`, `get_thread`, `create_draft`.
 - **Gedächtnis**: Datenbank der Seite (`db`), Sammlung `gedaechtnis`. Regel: nur der Besitzer
   liest und schreibt.
-- **Stimme**: die Sprachausgabe des Geräts (`speechSynthesis`), Satz für Satz, während die Antwort
-  noch hereinkommt.
+- **Depot**: Screenshot → Claude liest ihn über `sample` mit Bildern (`images: true`) → nach
+  Bestätigung in `depot/stand`, dazu ein kleiner Eintrag in `depotverlauf`. Transaktionsexport →
+  Claude ordnet nur die Spalten und Buchungsarten zu, **gerechnet wird in der Seite** → `depot/umsaetze`.
+  Gleiche Regel: nur der Besitzer liest und schreibt.
+- **Stimme**: die Sprachausgabe des Geräts (`speechSynthesis`), absatzweise in einem Zug.
 - Einstellungen und der letzte Gesprächsverlauf liegen nur im Browser des Geräts.
 
 **Ändern:** `jarvis.html` bearbeiten und mit dem Artifact-Werkzeug **an dieselbe Adresse**
