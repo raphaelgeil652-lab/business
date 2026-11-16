@@ -79,6 +79,14 @@ muss die Routine mitgeändert werden.
 |---|---|---|
 | **Kfz-Betriebe** | **aktiver Fokus** (seit Juli 2026) | `nischen/autowerkstaetten/` |
 | Küchenstudios | zurückgestellt, vollständig erhalten | `nischen/kuechenstudios/` |
+| Photovoltaik | **Probelauf** mit erfundenem Kunden (Nov. 2026), geplant mit Kollegen aus dem PV-Vertrieb | `nischen/photovoltaik/` |
+
+**Photovoltaik-Probelauf:** Grundlage ist das nischenneutrale Betriebshandbuch (Claude-Doc,
+https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN). `modul-photovoltaik.md` ist das Modul,
+`kunden/muster-solartechnik/` der **fiktive** Probekunde (alles dort ist als erfunden markiert).
+Preise dort sind nur ein Vorschlag (850 € / 1.500 €/Monat / 1.000 € Budget), nicht entschieden.
+Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
+Kfz-Vorlage tut beides noch nicht und sollte nachgezogen werden.
 
 **Warum gewechselt:** Vor-Ort-Besuche bei Küchenstudios im Juli 2026 zeigten verhaltene Resonanz.
 Kfz-Betriebe sind zahlreicher, Werbung gegenüber offener, fast immer inhabergeführt — und der erste

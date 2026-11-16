@@ -9,6 +9,7 @@ Diese Startseite ist deine Übersicht.
 |---|---|---|
 | 🚗 **Kfz-Betriebe** (Werkstätten, Aufbereiter, Folierer) | **aktiver Fokus** | [`nischen/autowerkstaetten/`](nischen/autowerkstaetten/) |
 | 🍳 Küchenstudios | zurückgestellt (vollständig erhalten) | [`nischen/kuechenstudios/`](nischen/kuechenstudios/) |
+| ☀️ Photovoltaik | Probelauf mit erfundenem Kunden | [`nischen/photovoltaik/`](nischen/photovoltaik/) |
 | ☕ **Tagwerk** (Demo-Webseite, erfundene Kaffeemarke) | Vorzeige-Stück für Webseitenbau | [`nischen/tagwerk/`](nischen/tagwerk/) |
 | 🌿 **Alex Außenanlagen** (Pfullendorf) | Webseiten-Kunde: Garten, Erdarbeiten, Pflaster | [`nischen/alex-aussenanlagen/`](nischen/alex-aussenanlagen/) |
 | 🏄 **Wakepark Pfullendorf** | Webseiten-Entwurf: Wasserskianlage am Seepark Linzgau | [`nischen/wakepark-pfullendorf/`](nischen/wakepark-pfullendorf/) |
