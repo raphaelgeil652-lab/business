@@ -1,0 +1,226 @@
+<!--
+  LANDINGPAGE · DAUERKAMPAGNE WIRTSCHAFTLICHKEITSPRÜFUNG · VORLAGE
+  Ziel der Anzeigen w1, w2, w3, w5. kunde-anlegen.py füllt {{…}} aus Steckbrief und rechengrundlage.json.
+  Die Prüfung gibt es erst nach der Eintragung: Schritte oben, Formular, dann Rückmeldung.
+  Netlify Forms mit Datei-Upload (Foto der Stromrechnung, optional). Pixel erst nach Zustimmung.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kostenlose Wirtschaftlichkeitsprüfung · Muster Solartechnik</title>
+<meta name="description" content="Rechnet sich Solar bei Ihnen? Kostenlose Wirtschaftlichkeitsprüfung für Ihr Haus, nach Eintragung berechnet.">
+<meta name="robots" content="noindex">
+<style>
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap;}
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap;}
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap;}
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap;}
+  :root{--bg:#ECEAE4;--ink:#1A1917;--muted:#6B665D;--line:#D6D2C8;--accent:#2F6B4F;--accent-ink:#FFFFFF;
+        --sans:"Inter Tight",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:500;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  h1,h2{margin:0;letter-spacing:-.03em;line-height:1.02;text-wrap:balance;}
+  p{margin:0;text-wrap:pretty;}
+  em{font-style:normal;color:var(--accent);}
+  a{color:inherit;}
+  .wrap{max-width:600px;margin:0 auto;padding:0 22px;}
+  .top{display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-weight:700;}
+  .top a{text-decoration:none;color:var(--accent);font-size:.92rem;}
+  .photo{width:100%;aspect-ratio:16/10;background:url(fotos/foto-3.jpg) 42% 18%/cover no-repeat;}
+  .hero{padding:28px 0 8px;}
+  .kicker{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+  .hero h1{font-size:clamp(2.3rem,10vw,3.2rem);font-weight:800;margin-top:10px;}
+  .hero .sub{font-size:1.1rem;margin-top:14px;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 4px;}
+  .steps div{border-top:1px solid var(--line);padding-top:10px;font-size:.88rem;font-weight:600;line-height:1.3;}
+  .steps b{display:block;font-size:1.6rem;font-weight:800;color:var(--accent);line-height:1;margin-bottom:4px;}
+  .beispiel{background:#FFFFFF;border:1px solid var(--line);border-radius:6px;padding:18px 18px 14px;margin:22px 0 0;}
+  .beispiel h2{font-size:1.05rem;font-weight:700;letter-spacing:-.01em;margin-bottom:10px;}
+  .beispiel table{width:100%;border-collapse:collapse;font-size:.95rem;}
+  .beispiel td{padding:8px 0;border-bottom:1px solid #ECE8E0;}
+  .beispiel td:last-child{text-align:right;font-weight:700;white-space:nowrap;}
+  .beispiel .alt{color:var(--muted);text-decoration:line-through;font-weight:600;margin-right:8px;}
+  .beispiel .neu{color:var(--accent);}
+  .beispiel .fine{font-size:.76rem;color:var(--muted);margin-top:10px;line-height:1.4;}
+  .card{background:#FFFFFF;color:#1A1917;border-radius:6px;padding:22px 20px;margin:24px 0 8px;border:1px solid var(--line);}
+  .card h2{font-size:1.45rem;font-weight:800;}
+  .card .hint{font-size:.92rem;color:#5E5A52;margin-top:6px;}
+  form{display:grid;gap:12px;margin-top:16px;}
+  label{font-size:.82rem;font-weight:700;}
+  input,select{display:block;width:100%;margin-top:5px;padding:13px 12px;border:1.5px solid #D9D4CA;border-radius:4px;font:inherit;font-size:1rem;background:#fff;color:#1A1917;}
+  input[type=file]{padding:10px;font-size:.9rem;}
+  input:focus,select:focus{outline:2px solid var(--accent);border-color:transparent;}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .opt{font-weight:500;color:#6B665D;}
+  .check{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:.86rem;color:#3A3732;}
+  .check input{width:20px;height:20px;margin:2px 0 0;flex:0 0 auto;}
+  .hp{position:absolute;left:-9999px;}
+  button,.btn{display:block;width:100%;border:0;border-radius:4px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;
+              font-size:1.08rem;padding:16px;cursor:pointer;text-align:center;text-decoration:none;}
+  .note{font-size:.8rem;color:#6B665D;margin-top:10px;text-align:center;}
+  section{padding:36px 0;border-top:1px solid var(--line);}
+  section h2{font-size:1.7rem;font-weight:800;margin-bottom:16px;}
+  ul.list{margin:0;padding:0;list-style:none;display:grid;gap:10px;}
+  ul.list li{padding-left:22px;position:relative;}
+  ul.list li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--accent);}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .tile{aspect-ratio:4/3;border:1.5px dashed var(--line);display:grid;place-items:center;text-align:center;font-size:.8rem;color:var(--muted);padding:10px;}
+  .review{border:1.5px dashed var(--line);padding:14px;margin-bottom:10px;color:var(--muted);font-size:.95rem;}
+  details{border-bottom:1px solid var(--line);padding:14px 0;}
+  summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px;}
+  summary::after{content:"+";color:var(--accent);font-weight:800;}
+  details[open] summary::after{content:"−";}
+  details p{color:var(--muted);margin-top:8px;font-size:.95rem;}
+  .final{text-align:center;}
+  .final p{color:var(--muted);margin:0 0 18px;}
+  footer{border-top:1px solid var(--line);padding:22px 0 110px;text-align:center;font-size:.84rem;color:var(--muted);line-height:1.8;}
+  .linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer;width:auto;display:inline;}
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--bg);border-top:1px solid var(--line);padding:10px 22px calc(10px + env(safe-area-inset-bottom));}
+  .sticky .btn{max-width:600px;margin:0 auto;}
+  @media (min-width:720px){.sticky{display:none;} footer{padding-bottom:24px;}}
+  .consent{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;color:var(--ink);border-top:1px solid var(--line);padding:16px 22px calc(16px + env(safe-area-inset-bottom));display:none;}
+  .consent.show{display:block;}
+  .consent p{max-width:600px;margin:0 auto 12px;font-size:.86rem;color:var(--muted);}
+  .consent .row{max-width:600px;margin:0 auto;}
+  .consent .ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
+</style>
+</head>
+<body>
+
+<div class="wrap"><div class="top"><span>Muster Solartechnik</span><a href="tel:+49XXXXXXXX">[Telefon für Rückrufe]</a></div></div>
+<div class="photo" role="img" aria-label="Wohnhaus mit Solaranlage auf dem Dach"></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Kostenlos &amp; unverbindlich</p>
+    <h1>Rechnet sich Solar <em>bei Ihnen?</em></h1>
+    <p class="sub">Tragen Sie sich ein. Wir rechnen Ersparnis und Amortisation für Ihr Haus durch und melden uns mit dem Ergebnis.</p>
+    <div class="steps">
+      <div><b>1</b>Kurz eintragen</div>
+      <div><b>2</b>Wir rechnen für Ihr Haus</div>
+      <div><b>3</b>Ergebnis per Telefon oder E-Mail</div>
+    </div>
+  </header>
+
+  <div class="beispiel">
+    <h2>So sieht ein Ergebnis aus (Beispiel)</h2>
+    <table>
+      <tr><td>Stromkosten pro Jahr</td><td><span class="alt">1.665 €</span><span class="neu">rund 500 €</span></td></tr>
+      <tr><td>Abschlag pro Monat</td><td><span class="alt">139 €</span><span class="neu">rund 42 €</span></td></tr>
+      <tr><td>Stromkosten in 20 Jahren ohne Solar</td><td>33.000 €</td></tr>
+    </table>
+    <p class="fine">Beispiel: 4.500 kWh/Jahr, 37 ct/kWh (BDEW 2026), 10 kWp + 10 kWh Speicher, ca. 70 % Eigenversorgung (HTW Berlin). Ohne Preissteigerung, Einspeisevergütung nicht eingerechnet. Keine Zusage: Ihr Ergebnis hängt von Verbrauch, Dach und Strompreis ab. Genau das rechnen wir nach Ihrer Eintragung.</p>
+  </div>
+
+  <div class="card" id="eintragen">
+    <h2>Prüfung anfordern</h2>
+    <p class="hint">30 Sekunden. Die Prüfung erstellen wir nach Ihrer Eintragung.</p>
+    <form name="wirtschaftlichkeit" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="danke.html" enctype="multipart/form-data">
+      <input type="hidden" name="form-name" value="wirtschaftlichkeit">
+      <input type="hidden" name="aktion" value="wirtschaftlichkeit">
+      <p class="hp"><label>Bitte leer lassen <input name="bot-field"></label></p>
+      <label>Name <input type="text" name="name" required autocomplete="name" placeholder="Ihr Name"></label>
+      <div class="row">
+        <label>Telefon <input type="tel" name="telefon" required autocomplete="tel" placeholder="Für Rückruf"></label>
+        <label>Postleitzahl <input type="text" name="plz" required inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="Ihre PLZ"></label>
+      </div>
+      <label>Sind Sie Eigentümer des Hauses?
+        <select name="eigentuemer" required>
+          <option value="">Bitte wählen …</option>
+          <option>Ja, Einfamilienhaus</option>
+          <option>Ja, Zwei- oder Mehrfamilienhaus</option>
+          <option>Nein, ich bin Mieter</option>
+        </select>
+      </label>
+      <div class="row">
+        <label>Verbrauch pro Jahr <span class="opt">(optional)</span> <input type="number" name="verbrauch_kwh" inputmode="numeric" min="0" placeholder="z. B. 4500 kWh"></label>
+        <label>Abschlag pro Monat <span class="opt">(optional)</span> <input type="number" name="abschlag_eur" inputmode="numeric" min="0" placeholder="z. B. 140 €"></label>
+      </div>
+      <label>Foto der Stromrechnung <span class="opt">(optional, macht die Prüfung genauer)</span> <input type="file" name="stromrechnung" accept="image/*,application/pdf"></label>
+      <label>E-Mail <span class="opt">(optional, für das Ergebnis)</span> <input type="email" name="email" autocomplete="email" placeholder="ihre@email.de"></label>
+      <label class="check"><input type="checkbox" name="einwilligung" required> <span>Ich bin einverstanden, dass meine Angaben für die Wirtschaftlichkeitsprüfung und die Kontaktaufnahme verwendet werden. Details im <a href="datenschutz.html">Datenschutz</a>.</span></label>
+      <input type="hidden" name="fbclid" id="f_fbclid"><input type="hidden" name="gclid" id="f_gclid">
+      <input type="hidden" name="utm_source" id="f_utm_source"><input type="hidden" name="utm_campaign" id="f_utm_campaign">
+      <button type="submit">Kostenlos eintragen</button>
+    </form>
+    <p class="note">Kostenlos und unverbindlich. Sie müssen danach nichts kaufen.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <h2>Was Sie bekommen</h2>
+    <ul class="list">
+      <li>Ihre Stromkosten heute und mit Solaranlage, mit oder ohne Speicher</li>
+      <li>Wie viel Strom Ihr Dach erzeugen kann und wie viel Sie davon selbst nutzen</li>
+      <li>Nach wie vielen Jahren sich die Anlage bezahlt macht</li>
+      <li>Auf Wunsch ein Festpreis-Angebot von Muster Solartechnik</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Anlagen, die wir montiert haben</h2>
+    <div class="tiles"><div class="tile">Foto vom Kunden:<br>Dach vorher</div><div class="tile">Foto vom Kunden:<br>Dach nachher</div></div>
+  </section>
+
+  <section>
+    <h2>Das sagen Kunden</h2>
+    <div class="review">[Echte Google-Bewertung 1] — [Vorname], [Ort]</div>
+    <div class="review">[Echte Google-Bewertung 2] — [Vorname], [Ort]</div>
+  </section>
+
+  <section>
+    <h2>Häufige Fragen</h2>
+    <details><summary>Wann bekomme ich die Prüfung?</summary><p>Nach Ihrer Eintragung. Wir rufen Sie werktags innerhalb einer Stunde an, klären offene Fragen und schicken Ihnen das Ergebnis.</p></details>
+    <details><summary>Was kostet das?</summary><p>Nichts. Die Prüfung ist kostenlos und verpflichtet Sie zu nichts.</p></details>
+    <details><summary>Wie genau ist die Rechnung?</summary><p>So genau wie Ihre Angaben. Mit einem Foto der Stromrechnung rechnen wir mit Ihrem echten Verbrauch und Preis statt mit Durchschnittswerten.</p></details>
+    <details><summary>Was passiert mit meiner Stromrechnung?</summary><p>Wir nutzen sie nur für Ihre Prüfung und geben sie nicht weiter. Details in der Datenschutzerklärung.</p></details>
+    <details><summary>Kann ich als Mieter mitmachen?</summary><p>Ja. Für eine Solaranlage braucht es aber die Zustimmung des Eigentümers.</p></details>
+  </section>
+
+  <section class="final">
+    <h2>Rechnet es sich bei Ihnen?</h2>
+    <p>Eintragen, wir rechnen, Sie bekommen das Ergebnis.</p>
+    <a class="btn" href="#eintragen">Kostenlos eintragen</a>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <b>Muster Solartechnik GmbH</b><br>[Straße und Hausnummer], [PLZ] [Ort] · <a href="tel:+49XXXXXXXX">[Telefon für Rückrufe]</a><br>Mo–Fr 8–17 Uhr<br>
+  <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> ·
+  <button class="linkbtn" type="button" id="consent-open">Cookie-Einstellungen</button>
+</div></footer>
+
+<div class="sticky"><a class="btn" href="#eintragen">Kostenlos eintragen</a></div>
+
+<div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook und Instagram ankommt. Dafür nutzen wir das Meta-Pixel, das Cookies setzt. Das geht nur mit Ihrer Zustimmung. Mehr dazu im <a href="datenschutz.html">Datenschutz</a>.</p>
+  <div class="row"><button class="ghost" type="button" id="consent-no">Nur notwendige</button><button type="button" id="consent-yes">Einverstanden</button></div>
+</div>
+
+<script>
+  var PIXEL_ID = 'PIXEL_ID', KEY = 'lp-consent';
+  function getC(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function setC(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+  function loadPixel(){
+    if (window.fbq || PIXEL_ID === 'PIXEL_ID') return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID); fbq('track', 'PageView');
+  }
+  (function(){
+    var box = document.getElementById('consent'), c = getC();
+    if (c === 'ja') loadPixel(); else if (c !== 'nein') box.classList.add('show');
+    document.getElementById('consent-yes').onclick = function(){ setC('ja'); box.classList.remove('show'); loadPixel(); };
+    document.getElementById('consent-no').onclick = function(){ setC('nein'); box.classList.remove('show'); };
+    document.getElementById('consent-open').onclick = function(){ box.classList.add('show'); };
+    var p = new URLSearchParams(location.search);
+    ['fbclid','gclid','utm_source','utm_campaign'].forEach(function(k){ var el = document.getElementById('f_' + k); if (el) el.value = p.get(k) || ''; });
+  })();
+</script>
+</body>
+</html>

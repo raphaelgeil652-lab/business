@@ -98,10 +98,15 @@ bewusst leer). Preise dort nur Vorschlag (850 € / 1.500 €/Monat / 1.000 € 
 jedes Kunden läuft in seinem Einzugsgebiet. **Harte Regel des Nutzers: Kein Pfullendorf und kein
 anderer fester Ort im PV-Material**; Anzeigen nennen gar keinen Ort („Fachbetrieb in Ihrer Region“).
 **Anzeigen-Standard (vom Nutzer festgelegt):** Solardach-Foto oben, darunter Angebot groß, ein Satz,
-Faktenzeile, CTA-Zeile, eine Schrift, keine Verläufe/Icons/Glow. **Einstieg sind ausschließlich drei
-Verlosungen:** ein kostenloses Solarmodul · 3 × 20 % Rabatt auf die erste Bestellung · 3 Stromspeicher
-gratis zur ersten Bestellung (nicht für alle) — kein anderes Gratis-Angebot. Je Verlosung eine
-Landingpage im Anzeigen-Stil. **githack zwischenspeichert alte Versionen** (sogar gelöschte Dateien):
+Faktenzeile, CTA-Zeile, eine Schrift, keine Verläufe/Icons/Glow. **Zwei Kampagnenarten (Nutzer-Entscheidung):**
+(1) **Dauerkampagne kostenlose Wirtschaftlichkeitsprüfung** — 5 Anzeigen, die das Ergebnis zeigen
+(Vorher/Nachher-Kosten, Abschlag, Prüfung, 60-Sekunden-Rechner, 20 Jahre), **die Prüfung gibt es
+sichtbar erst nach der Eintragung** (Schrittleiste „eintragen → wir rechnen → Ergebnis“); Landingpages
+`wirtschaftlichkeit.html` und `rechner.html`; Zahlen nur als gekennzeichnete Beispielrechnung aus
+`vorlagen/rechengrundlage.json` (einzige Quelle, jährlich prüfen). (2) **Saisonaktion Verlosungen,
+nur 2–3 × im Jahr** (Steckbrief „Verlosung gerade aktiv?“): ein kostenloses Solarmodul · 3 × 20 %
+Rabatt · 3 Stromspeicher, jeweils zur ersten Bestellung (nicht für alle), je eine Landingpage.
+Eine „Dach-Analyse“ wird nicht beworben. **githack zwischenspeichert alte Versionen** (sogar gelöschte Dateien):
 Öffnen-Links tragen `?v=N`, nach Änderungen N hochzählen. PV-Seiten laden keine Google Fonts und setzen
 das Pixel erst nach Zustimmung; die Kfz-Vorlage tut beides noch nicht und sollte nachgezogen werden.
 

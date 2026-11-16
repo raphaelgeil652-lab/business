@@ -8,11 +8,17 @@ Liest:     den Steckbrief + vorlagen/tabellen/00-agentur-stammdaten.xlsx
 Schreibt:  nischen/photovoltaik/kunden/<betrieb>/
              README.md               Überblick, Links, nächste Schritte
              steckbrief.xlsx          Kopie des Steckbriefs (die Quelle für alles)
-             fotos/                   HIER die echten Fotos des Kunden ablegen (1-modul.jpg, 2-rabatt.jpg, 3-speicher.jpg)
+             fotos/                   HIER die echten Fotos des Kunden ablegen (foto-1.jpg, foto-2.jpg, foto-3.jpg)
              dokumente/               Vereinbarung, Mails, Kampagnen, Teilnahmebedingungen …
              tabellen/                Onboarding + Anfragen-und-Report (werden nie überschrieben)
-             anzeigen/                anzeigen.html, vorschau.html, creatives/*.png
-             landingpage/             modul.html, rabatt.html, speicher.html, danke.html
+             anzeigen/                wirtschaftlichkeit.html (immer), verlosungen.html (nur bei aktiver Verlosung),
+                                      vorschau.html, creatives/*.png
+             landingpage/             wirtschaftlichkeit.html, rechner.html, danke.html,
+                                      bei aktiver Verlosung zusätzlich modul.html, rabatt.html, speicher.html
+
+Zwei Kampagnenarten: Dauerkampagne Wirtschaftlichkeitsprüfung (immer) und Saisonaktion Verlosung
+(2–3 × im Jahr, Steckbrief-Feld „Verlosung gerade aktiv?“). Die Beispielzahlen kommen aus
+vorlagen/rechengrundlage.json.
 
 Mehrfach ausführen ist ausdrücklich erlaubt: Nach jeder Änderung am Steckbrief oder an den
 Fotos einfach neu laufen lassen. Erzeugte Dateien werden ersetzt, die Tabellen in tabellen/
@@ -35,7 +41,10 @@ PV = VORLAGEN.parent
 KUNDEN = PV / "kunden"
 
 TEXTE_PRO_KUNDE = ["vereinbarung.md", "willkommens-mail.md", "rueckruf-leitfaden.md", "kampagnen.md",
-                   "teilnahmebedingungen.md", "report-mail.md", "abrechnung-mails.md"]
+                   "report-mail.md", "abrechnung-mails.md"]
+TEXTE_VERLOSUNG = ["teilnahmebedingungen.md"]
+VERLOSUNGS_SEITEN = ["modul.html", "rabatt.html", "speicher.html"]
+VERLOSUNGS_BILDER = ["1-gewinnspiel.png", "2-rabatt.png", "3-speicher.png"]
 MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September",
           "Oktober", "November", "Dezember"]
 EURO = {"ticket_von", "ticket_bis", "ticket_schnitt", "onboarding_preis", "retainer", "budget_meta", "budget_google"}
@@ -107,11 +116,53 @@ def felder(stb, agentur, namen):
                         else "Alle Beträge zzgl. 19 % Umsatzsteuer.")
     if not stb.get("pixel_id"):
         f["pixel_id"] = "PIXEL_ID"
+    if not stb.get("pruefung_dauer"):
+        f["pruefung_dauer"] = "2 Werktagen"
+    aktiv = str(stb.get("verlosung_aktiv") or "").lower() == "ja" or (
+        stb.get("verlosung_aktiv") is None and stb.get("aktion_ende") is not None)
+    f["_verlosung_aktiv"] = aktiv
+    if aktiv:
+        f["aktionen_text"] = (f"Saisonaktion: Verlosung eines kostenlosen Solarmoduls sowie von 3 × 20 % Rabatt und "
+                              f"3 Stromspeichern ({f['speicher']}) zur ersten Bestellung. Teilnahmeschluss: "
+                              f"{f['aktion_ende']}, Ziehung: {f['ziehung']}. Kosten und Einlösung der Gewinne trägt "
+                              f"der Auftraggeber.")
+        f["verlosung_absatz"] = (f"\n- Unsere Verlosung: Teilnahmeschluss {f['aktion_ende']}, Ziehung am {f['ziehung']}, "
+                                 f"verloster Speicher: {f['speicher']}. Bitte bestätigen Sie, dass Sie die Gewinne einlösen.")
+    else:
+        f["aktionen_text"] = "Saisonaktionen (Verlosungen) werden bei Bedarf gesondert in Textform vereinbart."
+        f["verlosung_absatz"] = ""
+    rechenwerte(f)
     return f
 
 
 def fuellen(text, f):
+    text = verlosungsbloecke(text, f.get("_verlosung_aktiv", False))
     return re.sub(r"\{\{(\w+)\}\}", lambda m: f.get(m.group(1), f"[{m.group(1)}]"), text)
+
+
+def verlosungsbloecke(text, aktiv):
+    """<!--VERLOSUNG--> … <!--/VERLOSUNG--> bleibt nur bei aktiver Verlosung (ohne die Markierungen)."""
+    muster = re.compile(r"<!--VERLOSUNG-->(.*?)<!--/VERLOSUNG-->\n?", re.S)
+    return muster.sub((lambda m: m.group(1)) if aktiv else "", text)
+
+
+def rechenwerte(f):
+    """Beispielrechnung aus rechengrundlage.json → Felder w_* und r_json."""
+    rg = json.loads((VORLAGEN / "rechengrundlage.json").read_text(encoding="utf-8"))
+    kwh, ct, eigen, jahre = rg["verbrauch_kwh"], rg["strompreis_ct"], rg["eigenversorgung_speicher_prozent"], rg["jahre"]
+    jahr = kwh * ct / 100
+    solar = jahr * (1 - eigen / 100)
+    tsd = lambda x: f"{x:,.0f}".replace(",", ".")
+    f.update({
+        "w_verbrauch": tsd(kwh), "w_verbrauch_zahl": str(kwh), "w_preis": str(ct), "w_preis_quelle": rg["strompreis_quelle"],
+        "w_eigen_quelle": rg["eigenversorgung_quelle"],
+        "w_kosten_jahr": euro(jahr), "w_kosten_solar_jahr": euro(round(solar / 10) * 10),
+        "w_abschlag": euro(round(jahr / 12)), "w_abschlag_solar": euro(round(solar / 12)),
+        "w_jahre": str(jahre), "w_kosten_jahre": euro(int(jahr * jahre // 1000) * 1000),
+        "w_annahmen": (f"Beispiel: {tsd(kwh)} kWh/Jahr, {ct} ct/kWh ({rg['strompreis_quelle']}), "
+                       f"{rg['anlage_text']}, ca. {eigen} % Eigenversorgung ({rg['eigenversorgung_quelle']})."),
+        "r_json": json.dumps({"preis_ct": ct, "spannen": {k: v for k, v in rg["rechner"].items() if not k.startswith("_")}}),
+    })
 
 
 def kopiere_ordner(quelle, ziel, nur_neu=False):
@@ -160,41 +211,59 @@ def main():
 
     # Dokumente
     (ziel / "dokumente").mkdir(exist_ok=True)
-    for name in TEXTE_PRO_KUNDE:
+    aktiv = f["_verlosung_aktiv"]
+    texte = TEXTE_PRO_KUNDE + (TEXTE_VERLOSUNG if aktiv else [])
+    for name in texte:
         text = (VORLAGEN / "texte" / name).read_text(encoding="utf-8")
         (ziel / "dokumente" / name).write_text(fuellen(text, f), encoding="utf-8")
-    print(f"✓ dokumente/ ({len(TEXTE_PRO_KUNDE)} Dateien)")
+    if not aktiv:
+        for name in TEXTE_VERLOSUNG:
+            (ziel / "dokumente" / name).unlink(missing_ok=True)
+    print(f"✓ dokumente/ ({len(texte)} Dateien) · Verlosung {'AKTIV' if aktiv else 'aus'}")
 
     # Landingpages
     lp = ziel / "landingpage"
     lp.mkdir(exist_ok=True)
     kopiere_ordner(VORLAGEN / "assets" / "fonts", lp / "fonts")
     kopiere_ordner(ziel / "fotos", lp / "fotos")
-    (lp / "danke.html").write_text(fuellen((VORLAGEN / "landingpage" / "danke.html").read_text(encoding="utf-8"), f), encoding="utf-8")
+    for name in ("danke.html", "wirtschaftlichkeit.html", "rechner.html"):
+        (lp / name).write_text(fuellen((VORLAGEN / "landingpage" / name).read_text(encoding="utf-8"), f), encoding="utf-8")
     aktion = {k: f[k] for k in ("betrieb", "betrieb_lang", "telefon", "telefon_link", "adresse",
                                 "oeffnungszeiten", "ziehung", "speicher", "pixel_id")}
     aktion.update({"_hinweis": "ERZEUGT aus steckbrief.xlsx — nicht von Hand ändern.",
                    "datum": f["aktion_ende_kurz"], "datum_voll": f["aktion_ende"]})
     (lp / "aktionen.json").write_text(json.dumps(aktion, ensure_ascii=False, indent=2), encoding="utf-8")
-    print("✓ landingpage/")
-    lade_lp_bauer().bauen(lp)
+    print("✓ landingpage/ (wirtschaftlichkeit.html, rechner.html, danke.html)")
+    if aktiv:
+        lade_lp_bauer().bauen(lp)
+    else:
+        for name in VERLOSUNGS_SEITEN:
+            (lp / name).unlink(missing_ok=True)
 
     # Anzeigen
     an = ziel / "anzeigen"
     an.mkdir(exist_ok=True)
     kopiere_ordner(VORLAGEN / "assets" / "fonts", an / "fonts")
     kopiere_ordner(ziel / "fotos", an / "fotos")
-    for name in ("anzeigen.html", "vorschau.html"):
+    (an / "anzeigen.html").unlink(missing_ok=True)  # alter Name
+    vorlagen_html = ["wirtschaftlichkeit.html", "vorschau.html"] + (["verlosungen.html"] if aktiv else [])
+    for name in vorlagen_html:
         (an / name).write_text(fuellen((VORLAGEN / "anzeigen" / name).read_text(encoding="utf-8"), f), encoding="utf-8")
-    try:
-        subprocess.run(["node", str(HIER / "creatives-rendern.js"), str(an / "anzeigen.html")], check=True,
-                       capture_output=True, text=True)
-        print("✓ anzeigen/creatives/ (3 Bilder gerendert)")
-    except Exception as e:
-        print("! Anzeigen-Bilder nicht gerendert (Node/Playwright fehlt?):", e)
+    if not aktiv:
+        (an / "verlosungen.html").unlink(missing_ok=True)
+        for name in VERLOSUNGS_BILDER:
+            (an / "creatives" / name).unlink(missing_ok=True)
+    for name in [n for n in vorlagen_html if n != "vorschau.html"]:
+        try:
+            subprocess.run(["node", str(HIER / "creatives-rendern.js"), str(an / name)], check=True,
+                           capture_output=True, text=True)
+            print(f"✓ anzeigen/creatives/ aus {name}")
+        except Exception as e:
+            print(f"! {name} nicht gerendert (Node/Playwright fehlt?):", e)
 
     # README
-    offen = [namen[k] for k, v in stb.items() if v is None and k not in ("notizen", "bisher")]
+    frei = {"notizen", "bisher"} | (set() if f["_verlosung_aktiv"] else {"aktion_ende", "ziehung", "speicher"})
+    offen = [namen[k] for k, v in stb.items() if v is None and k not in frei]
     readme = (VORLAGEN / "texte" / "_kunden-readme.md").read_text(encoding="utf-8")
     f["offen_liste"] = "\n".join(f"- [ ] {n}" for n in offen) or "- nichts, alles ausgefüllt"
     f["slug"] = ziel.name

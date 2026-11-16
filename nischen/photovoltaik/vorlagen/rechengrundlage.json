@@ -1,0 +1,18 @@
+{
+  "_hinweis": "Einzige Quelle für alle Beispielrechnungen in Anzeigen, Landingpages und Rechner. Einmal im Jahr prüfen (BDEW-Strompreisanalyse, HTW Berlin), dann alle Kunden neu erzeugen.",
+  "stand": "November 2026",
+  "verbrauch_kwh": 4500,
+  "strompreis_ct": 37,
+  "strompreis_quelle": "BDEW 2026",
+  "eigenversorgung_speicher_prozent": 70,
+  "eigenversorgung_quelle": "HTW Berlin",
+  "anlage_text": "10 kWp + 10 kWh Speicher",
+  "jahre": 20,
+  "rechner": {
+    "mit_speicher_sued": [60, 75],
+    "mit_speicher_ost_west": [55, 70],
+    "ohne_speicher_sued": [25, 35],
+    "ohne_speicher_ost_west": [22, 32],
+    "_hinweis": "Spannen der Eigenversorgung (Autarkie) in Prozent für den 60-Sekunden-Rechner. Grobe Erfahrungswerte aus HTW Berlin und Ratgeberseiten, bewusst als Spanne."
+  }
+}

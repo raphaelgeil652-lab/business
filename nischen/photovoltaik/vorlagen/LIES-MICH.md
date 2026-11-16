@@ -3,6 +3,19 @@
 Alles, was du für einen PV-Kunden brauchst, als feste Dateien. Für jeden Kunden in Deutschland
 gleich: **Steckbrief ausfüllen → ein Befehl → kompletter Kundenordner.**
 
+## Zwei Kampagnenarten
+
+| | Dauerkampagne: Wirtschaftlichkeitsprüfung | Saisonaktion: Verlosung |
+|---|---|---|
+| Wann | das ganze Jahr | 2–3 × im Jahr, Steckbrief „Verlosung gerade aktiv?“ = Ja |
+| Anzeigen | 5 (Vorher/Nachher, Abschlag, Prüfung, Rechner, 20 Jahre) | 3 (Modul, 20 %, Speicher) |
+| Landingpages | `wirtschaftlichkeit.html`, `rechner.html` | `modul.html`, `rabatt.html`, `speicher.html` |
+| Prinzip | Beispielrechnung im Bild, **Prüfung erst nach Eintragung** | 1 Modul bzw. je 3 Gewinner, zur ersten Bestellung |
+
+Die Beispielzahlen stehen an **einer** Stelle: [`rechengrundlage.json`](rechengrundlage.json)
+(Verbrauch, Strompreis, Eigenversorgung, Rechner-Spannen). Einmal im Jahr prüfen, dann alle Kunden
+neu erzeugen.
+
 ## So legst du einen neuen Kunden an
 
 1. **Einmalig:** [`tabellen/00-agentur-stammdaten.xlsx`](tabellen/00-agentur-stammdaten.xlsx)
@@ -18,8 +31,10 @@ gleich: **Steckbrief ausfüllen → ein Befehl → kompletter Kundenordner.**
    drei Anzeigen-Bildern, drei Landingpages, Onboarding- und Anfragen-Tabelle. Die `README.md`
    dort zeigt, was noch fehlt.
 5. Sobald echte Fotos, Pixel-ID oder Landingpage-Adresse da sind: Fotos in `kunden/<betrieb>/fotos/`
-   legen (Namen `1-modul.jpg`, `2-rabatt.jpg`, `3-speicher.jpg`), Steckbrief ergänzen und
+   legen (Namen `foto-1.jpg`, `foto-2.jpg`, `foto-3.jpg`), Steckbrief ergänzen und
    **dasselbe nochmal ausführen**. Tabellen und Fotos bleiben dabei erhalten.
+6. **Verlosung starten oder beenden:** im Steckbrief „Verlosung gerade aktiv?“ auf Ja/Nein, Daten
+   eintragen, neu erzeugen. Bei Nein verschwinden Verlosungsseiten, -bilder und Teilnahmebedingungen.
 
 ## Was hier liegt
 
@@ -45,7 +60,7 @@ Jede Tabelle hat eine Beispielzeile in grauer Kursivschrift: überschreiben oder
 | [`willkommens-mail.md`](texte/willkommens-mail.md) | Tag der Unterschrift: Fotos, Zugänge, Bestätigung der Verlosungen |
 | [`rueckruf-leitfaden.md`](texte/rueckruf-leitfaden.md) | für das Büro des Kunden: Anruf in 6 Schritten, SMS, Rückmeldung |
 | [`kampagnen.md`](texte/kampagnen.md) | Meta- und Google-Einstellungen, alle Anzeigentexte |
-| [`teilnahmebedingungen.md`](texte/teilnahmebedingungen.md) | Entwurf, vor Livegang rechtlich prüfen |
+| [`teilnahmebedingungen.md`](texte/teilnahmebedingungen.md) | nur bei Verlosung · Entwurf, vor Livegang rechtlich prüfen |
 | [`report-mail.md`](texte/report-mail.md) | monatlicher Report an den Kunden |
 | [`abrechnung-mails.md`](texte/abrechnung-mails.md) | Onboarding-Rechnung, Start des Retainers |
 
@@ -60,10 +75,14 @@ Jede Tabelle hat eine Beispielzeile in grauer Kursivschrift: überschreiben oder
 
 | Datei | Wofür |
 |---|---|
-| [`anzeigen/anzeigen.html`](anzeigen/anzeigen.html) | die drei Anzeigen im festgelegten Stil (Verlosung Modul, 20 %, Speicher) |
+| [`anzeigen/wirtschaftlichkeit.html`](anzeigen/wirtschaftlichkeit.html) | Dauerkampagne: 5 Anzeigen mit Beispielrechnung und Schritten „eintragen → wir rechnen → Ergebnis“ |
+| [`anzeigen/verlosungen.html`](anzeigen/verlosungen.html) | Saisonaktion: 3 Verlosungs-Anzeigen (Modul, 20 %, Speicher) |
 | [`anzeigen/vorschau.html`](anzeigen/vorschau.html) | so sehen sie im Feed und bei Google aus |
 | [`anzeigen/recherche.md`](anzeigen/recherche.md) | Recherche dazu, mit Quellen |
+| [`landingpage/wirtschaftlichkeit.html`](landingpage/wirtschaftlichkeit.html) | Dauerkampagne: Formular mit optionalem Foto der Stromrechnung |
+| [`landingpage/rechner.html`](landingpage/rechner.html) | Dauerkampagne: 60-Sekunden-Rechner (ehrliche Spanne) + Formular |
 | [`landingpage/danke.html`](landingpage/danke.html) | Danke-Seite nach dem Absenden |
+| Verlosungsseiten | erzeugt von [`werkzeuge/landingpages-bauen.py`](werkzeuge/landingpages-bauen.py) |
 | [`assets/`](assets/) | Schrift (selbst gehostet) und Platzhalterfotos (CC0) |
 
 ### Werkzeuge
@@ -77,8 +96,10 @@ Jede Tabelle hat eine Beispielzeile in grauer Kursivschrift: überschreiben oder
 
 ## Regeln, die im System stecken
 
-- **Einstieg sind nur die drei Verlosungen**, kein anderes Gratis-Angebot. Rabatt und Speicher
-  gibt es für je 3 Gewinner zur ersten Bestellung, nicht für alle.
+- **Dauerhaft läuft die Wirtschaftlichkeitsprüfung**; sie gibt es erst nach der Eintragung, das
+  zeigt jede Anzeige. **Verlosungen nur 2–3 × im Jahr**; Rabatt und Speicher für je 3 Gewinner zur
+  ersten Bestellung, nicht für alle.
+- **Zahlen nur als gekennzeichnete Beispielrechnung** mit Annahmen und Quelle, nie als Zusage.
 - **Kein fester Ort.** Anzeigen nennen keinen Ort; Kampagnen und Seiten nehmen den Ort aus dem Steckbrief.
 - **Nichts erfinden.** Leere Felder erscheinen sichtbar als `[Feldname]`, nie als ausgedachter Wert.
 - Pixel erst nach Zustimmung, Schrift selbst gehostet, keine Google Fonts.

@@ -18,16 +18,16 @@ Datum: 16.11.2026
 ### §1 Gegenstand
 
 Beworben wird: **Photovoltaikanlagen mit Stromspeicher für Ein- und Zweifamilienhäuser.**
-Aktionen der Kampagne: Verlosung eines kostenlosen Solarmoduls, Verlosung von 3 × 20 % Rabatt
-und von 3 Stromspeichern (10 kWh), jeweils einzulösen mit der ersten Bestellung.
-Teilnahmeschluss: 15.01.2027, Ziehung: 20.01.2027. Kosten und Einlösung der Gewinne trägt
-der Auftraggeber.
+Dauerkampagne: kostenlose Wirtschaftlichkeitsprüfung für Interessenten, erstellt nach deren
+Eintragung, Ergebnis innerhalb von 2 Werktagen. Die Anzeigen zeigen gekennzeichnete
+Beispielrechnungen.
+Saisonaktion: Verlosung eines kostenlosen Solarmoduls sowie von 3 × 20 % Rabatt und 3 Stromspeichern (10 kWh) zur ersten Bestellung. Teilnahmeschluss: 15.01.2027, Ziehung: 20.01.2027. Kosten und Einlösung der Gewinne trägt der Auftraggeber.
 Werbebudget: **1.000 € pro Monat** (Meta 700 €, Google 300 €).
 Einzugsgebiet: 40 km um [Ort].
 
 ### §2 Leistungen des Auftragnehmers
 
-- Erstellung und Betrieb von drei Landingpages (eine je Verlosung) inkl. Teilnahmebedingungen.
+- Erstellung und Betrieb der Landingpages (Wirtschaftlichkeitsprüfung, Rechner; bei Verlosungen je eine Aktionsseite inkl. Teilnahmebedingungen).
 - Einrichtung und laufende Betreuung von Werbung auf Meta (Facebook/Instagram) und Google Ads.
 - Weiterleitung jeder Anfrage per E-Mail an den Auftraggeber, unmittelbar nach Eingang.
 - Laufende Optimierung der Kampagnen.
@@ -42,7 +42,8 @@ Einzugsgebiet: 40 km um [Ort].
   seine eigenen Konten und Zahlungsmittel.
 - Rückruf auf Anfragen innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.
 - Rückmeldung zu jeder Anfrage: erreicht, Termin, Angebot, Auftrag, verloren.
-- Durchführung der Verlosungen: Ziehung zum genannten Datum, Benachrichtigung, Einlösung.
+- Erstellung der Wirtschaftlichkeitsprüfung für jede Eintragung innerhalb von 2 Werktagen.
+- Bei Verlosungen: Ziehung zum genannten Datum, Benachrichtigung, Einlösung der Gewinne.
 - Ausreichende Kapazität für die zusätzlich vermittelten Anfragen und Montagen.
 
 ### §4 Vergütung
@@ -68,7 +69,7 @@ DSGVO ergänzt.
 
 Ergebnisse hängen auch von Reaktionszeit, Angebotsqualität und Kapazität des Auftraggebers ab.
 Eine bestimmte Zahl von Aufträgen oder ein bestimmter Umsatz wird nicht garantiert. Werbeaussagen
-zu Verlosungen, Steuern oder Förderung werden nur mit Freigabe des Auftraggebers verwendet. Der
+zu Beispielrechnungen, Verlosungen, Steuern oder Förderung werden nur mit Freigabe des Auftraggebers verwendet. Der
 Auftragnehmer darf das Projekt mit Zustimmung als Referenz nennen.
 
 ### §8 Garantie

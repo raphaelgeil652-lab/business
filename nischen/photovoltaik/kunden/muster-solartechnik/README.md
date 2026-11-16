@@ -15,7 +15,8 @@ python3 nischen/photovoltaik/vorlagen/werkzeuge/kunde-anlegen.py nischen/photovo
 | Inhaber | Herr Markus Muster · [Telefon für Rückrufe] · [E-Mail (Anfragen gehen hierhin)] |
 | Adresse | [Straße und Hausnummer], [PLZ] [Ort] ([Bundesland]) |
 | Einzugsgebiet | 40 km |
-| Verlosungen | Teilnahmeschluss 15.01.2027, Ziehung 20.01.2027, Speicher: 10 kWh |
+| Dauerkampagne | Wirtschaftlichkeitsprüfung, Ergebnis innerhalb von 2 Werktagen |
+| Verlosung (aktiv) | Teilnahmeschluss 15.01.2027, Ziehung 20.01.2027, Speicher: 10 kWh |
 | Preise | Onboarding 850 € · Retainer 1.500 €/Monat ab erstem Auftrag |
 | Werbebudget | Meta 700 € + Google 300 € = 1.000 € pro Monat |
 
@@ -50,10 +51,12 @@ python3 nischen/photovoltaik/vorlagen/werkzeuge/kunde-anlegen.py nischen/photovo
 | Anzeigen-Bilder | [`anzeigen/creatives/`](anzeigen/creatives/) | Hochladen bei Meta |
 | Anzeigen-Vorschau | [`anzeigen/vorschau.html`](anzeigen/vorschau.html) | Zeigen im Videocall |
 | Landingpages | [`landingpage/`](landingpage/) | Ganzen Ordner auf app.netlify.com/drop ziehen |
-| Fotos | [`fotos/`](fotos/) | Echte Fotos des Kunden mit genau diesen Namen ablegen, dann neu erzeugen |
+| Fotos | [`fotos/`](fotos/) | Echte Fotos des Kunden als `foto-1.jpg`, `foto-2.jpg`, `foto-3.jpg` ablegen, dann neu erzeugen |
 
 **Öffnen im Browser** (nach dem Pushen; Zahl hinter `?v=` nach Änderungen hochzählen):
 [Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=1) ·
-[Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=1) ·
+[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=1) ·
+[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=1)
+· Verlosung: [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=1) ·
 [20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=1) ·
 [Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=1)

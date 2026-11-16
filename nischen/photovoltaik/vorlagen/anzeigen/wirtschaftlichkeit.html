@@ -1,0 +1,102 @@
+<!--
+  META-ANZEIGEN · DAUERKAMPAGNE WIRTSCHAFTLICHKEITSPRÜFUNG · VORLAGE (Standard für alle PV-Kunden)
+  Fünf Anzeigen, die das Ergebnis zeigen. Die Prüfung gibt es erst nach der Eintragung (Schrittleiste).
+  Zahlen kommen aus vorlagen/rechengrundlage.json, eingesetzt von kunde-anlegen.py. Nicht von Hand ändern.
+  Jede Zahl ist als Beispielrechnung mit Annahmen und Quelle gekennzeichnet (keine Zusage).
+-->
+<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><title>Anzeigen Wirtschaftlichkeit · PV</title><style>
+@font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-500-normal.woff2);font-weight:500;}
+@font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-600-normal.woff2);font-weight:600;}
+@font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-700-normal.woff2);font-weight:700;}
+@font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-800-normal.woff2);font-weight:800;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#888;display:flex;flex-direction:column;gap:40px;padding:40px;align-items:flex-start;-webkit-font-smoothing:antialiased;}
+.ad{width:1080px;height:1350px;position:relative;overflow:hidden;flex:0 0 auto;font-family:"Inter Tight",sans-serif;}
+.photo{position:absolute;left:0;top:0;width:1080px;height:560px;background-size:cover;background-repeat:no-repeat;}
+.band{position:absolute;left:0;right:0;top:560px;bottom:0;padding:52px 80px 0;}
+.kicker{font-size:26px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+h1{font-size:100px;font-weight:800;line-height:.98;letter-spacing:-.035em;margin-top:16px;}
+.sub{font-size:35px;font-weight:500;line-height:1.3;margin-top:24px;letter-spacing:-.01em;}
+.cta{position:absolute;left:80px;right:80px;bottom:118px;padding-top:22px;border-top:2px solid;font-size:35px;font-weight:700;display:flex;justify-content:space-between;align-items:center;letter-spacing:-.01em;}
+.cta span{font-size:48px;line-height:1;}
+.fine{position:absolute;left:80px;right:80px;bottom:44px;font-size:18px;line-height:1.35;}
+.alt{display:block;font-size:64px;font-weight:700;text-decoration:line-through;text-decoration-thickness:5px;letter-spacing:-.02em;}
+.arrow{font-size:40px;font-weight:600;display:block;margin:10px 0 4px;letter-spacing:0;}
+em{font-style:normal;}
+.a{background:#F3EFE7;color:#1A1917}.a .kicker,.a em,.a .cta span{color:#B4461F}.a .sub{color:#3A3732}.a .fine,.a .alt,.a .arrow{color:#7A756B}.a .cta{border-color:#1A1917}
+.b{background:#151515;color:#F3F1EC}.b .kicker,.b em,.b .cta span{color:#F0C24B}.b .sub{color:#D6D2C9}.b .fine,.b .alt,.b .arrow{color:#8F8B83}.b .cta{border-color:#F0C24B}
+.c{background:#ECEAE4;color:#1A1917}.c .kicker,.c em,.c .cta span{color:#2F6B4F}.c .sub{color:#3A3732}.c .fine{color:#7A756B}.c .cta{border-color:#1A1917}
+.d{background:#FFFFFF;color:#14202E}.d .kicker,.d em,.d .cta span{color:#1F4E8C}.d .sub{color:#3A4655}.d .fine{color:#7A8494}.d .cta{border-color:#14202E}
+.e{background:#1E2A23;color:#F1EEE6}.e .kicker,.e em,.e .cta span{color:#E9B949}.e .sub{color:#D3D6CF}.e .fine{color:#98A096}.e .cta{border-color:#E9B949}
+.steps{position:absolute;left:80px;right:80px;bottom:212px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.steps div{font-size:25px;font-weight:600;line-height:1.25;letter-spacing:-.01em;padding-top:14px;border-top:1px solid currentColor;}
+.steps b{display:block;font-size:44px;font-weight:800;line-height:1;margin-bottom:6px;}
+.a .steps div{border-color:#D6CFC2}.a .steps b{color:#B4461F}
+.b .steps div{border-color:#3A3835}.b .steps b{color:#F0C24B}
+.c .steps div{border-color:#D3CEC4}.c .steps b{color:#2F6B4F}
+.d .steps div{border-color:#D7DDE5}.d .steps b{color:#1F4E8C}
+.e .steps div{border-color:#3C4A40}.e .steps b{color:#E9B949}
+.photo{height:500px !important;}.band{top:500px !important;padding-top:44px !important;}
+h1{font-size:92px !important;}.sub{font-size:32px !important;margin-top:18px !important;}
+</style></head><body>
+
+<div class="ad a" data-creative="w1-vorher-nachher">
+ <div class="photo" style="background-image:url(fotos/foto-2.jpg);background-size:auto 720px;background-position:20% 0%;"></div>
+ <div class="band">
+  <p class="kicker">Beispielrechnung · Stromkosten pro Jahr</p>
+  <h1 style="margin-top:20px;"><span class="alt">{{w_kosten_jahr}}</span><em>rund {{w_kosten_solar_jahr}}</em></h1>
+  <p class="sub">So könnten Ihre Stromkosten mit Solaranlage und Speicher aussehen.</p>
+ </div>
+ <div class="steps"><div><b>1</b>Kurz eintragen</div><div><b>2</b>Wir rechnen für Ihr Haus</div><div><b>3</b>Ergebnis per Telefon oder E-Mail</div></div>
+ <div class="cta">Eintragen &amp; Prüfung erhalten <span>→</span></div>
+ <p class="fine">{{w_annahmen}} Einspeisevergütung nicht eingerechnet. Keine Zusage: Ihre Werte rechnen wir nach.</p>
+</div>
+
+<div class="ad b" data-creative="w2-abschlag">
+ <div class="photo" style="background-image:url(fotos/foto-1.jpg);background-position:58% 32%;"></div>
+ <div class="band">
+  <p class="kicker">Kommt Ihnen das bekannt vor?</p>
+  <h1><em>{{w_abschlag}}</em> Abschlag<br>im Monat?</h1>
+  <p class="sub">Mit eigener Solaranlage und Speicher könnten es rund {{w_abschlag_solar}} sein. Nach Ihrer Eintragung rechnen wir es mit Ihren echten Zahlen nach.</p>
+ </div>
+ <div class="steps"><div><b>1</b>Kurz eintragen</div><div><b>2</b>Wir rechnen für Ihr Haus</div><div><b>3</b>Ergebnis per Telefon oder E-Mail</div></div>
+ <div class="cta">Eintragen &amp; Zahlen prüfen lassen <span>→</span></div>
+ <p class="fine">{{w_annahmen}} Keine Zusage.</p>
+</div>
+
+<div class="ad c" data-creative="w3-pruefung">
+ <div class="photo" style="background-image:url(fotos/foto-3.jpg);background-position:42% 18%;"></div>
+ <div class="band">
+  <p class="kicker">Kostenlos &amp; unverbindlich</p>
+  <h1>Rechnet sich Solar <em>bei Ihnen?</em></h1>
+  <p class="sub">Ihre kostenlose Wirtschaftlichkeitsprüfung, nach Eintragung für Ihr Haus berechnet.</p>
+ </div>
+ <div class="steps"><div><b>1</b>Eintragen, Foto der Stromrechnung dazu</div><div><b>2</b>Wir rechnen Ersparnis und Amortisation</div><div><b>3</b>Ihre Prüfung per Telefon oder E-Mail</div></div>
+ <div class="cta">Jetzt eintragen <span>→</span></div>
+ <p class="fine">Mit echten Werten statt Pauschalen: Ihr Verbrauch, Ihr Dach, Ihr Strompreis.</p>
+</div>
+
+<div class="ad d" data-creative="w4-rechner">
+ <div class="photo" style="background-image:url(fotos/foto-1.jpg);background-size:auto 760px;background-position:70% 20%;"></div>
+ <div class="band">
+  <p class="kicker">60-Sekunden-Rechner</p>
+  <h1>Wie viel Strom erzeugen <em>Sie selbst?</em></h1>
+  <p class="sub">3 Fragen, sofort ein erstes Ergebnis.</p>
+ </div>
+ <div class="steps"><div><b>1</b>3 Fragen beantworten</div><div><b>2</b>Erste Schätzung sofort sehen</div><div><b>3</b>Eintragen: genaue Prüfung kostenlos</div></div>
+ <div class="cta">Jetzt ausrechnen <span>→</span></div>
+ <p class="fine">Die erste Schätzung ist eine Spanne. Die genaue Wirtschaftlichkeitsprüfung bekommen Sie nach Ihrer Eintragung.</p>
+</div>
+
+<div class="ad e" data-creative="w5-20-jahre">
+ <div class="photo" style="background-image:url(fotos/foto-2.jpg);background-size:auto 700px;background-position:30% 0%;"></div>
+ <div class="band">
+  <p class="kicker">Rechnen Sie mal nach</p>
+  <h1><em>{{w_kosten_jahre}}</em> für Strom in {{w_jahre}} Jahren.</h1>
+  <p class="sub">Wie viel davon könnten Sie auf Ihrem eigenen Dach erzeugen?</p>
+ </div>
+ <div class="steps"><div><b>1</b>Kurz eintragen</div><div><b>2</b>Wir rechnen für Ihr Haus</div><div><b>3</b>Ergebnis per Telefon oder E-Mail</div></div>
+ <div class="cta">Eintragen &amp; Prüfung erhalten <span>→</span></div>
+ <p class="fine">Beispiel: {{w_verbrauch}} kWh/Jahr × {{w_preis}} ct/kWh ({{w_preis_quelle}}) × {{w_jahre}} Jahre, ohne Preissteigerung. Keine Zusage: Ihre Werte rechnen wir nach.</p>
+</div>
+</body></html>

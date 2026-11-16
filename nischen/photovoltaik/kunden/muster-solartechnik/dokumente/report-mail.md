@@ -15,7 +15,8 @@ hier Ihre Zahlen für [Monat]:
 |---|---|
 | Werbeausgaben | [__] € |
 | Anfragen | [__] (Kosten pro Anfrage: [__] €) |
-| davon Modul / Rabatt / Speicher | [__] / [__] / [__] |
+| davon Wirtschaftlichkeit / Rechner | [__] / [__] |
+| davon Verlosung (falls aktiv) | [__] |
 | Ø Rückrufzeit | [__] Minuten |
 | Termine | [__] |
 | Angebote | [__] |

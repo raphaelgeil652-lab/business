@@ -104,10 +104,12 @@ STECKBRIEF = [
     ("montagedauer", "Montagedauer", "1–2 Tage", "Text für Landingpage", "text"),
     ("einzugsgebiet_km", "Einzugsgebiet (km um den Ort)", 40, "„Bis wie weit fahren Sie zur Montage?“", "zahl"),
     ("rueckruf_zusage", "Rückruf innerhalb 1 Stunde zugesagt?", "Ja", "Nein = kein Abschluss", "janein"),
-    ("§", "Verlosungen", None, None, None),
-    ("aktion_ende", "Teilnahmeschluss", "2027-01-15", "Datum", "datum"),
-    ("ziehung", "Datum der Ziehung", "2027-01-20", "Datum", "datum"),
-    ("speicher", "Speicher bei der Verlosung", "10 kWh", "Größe/Modell, das der Betrieb verlost", "text"),
+    ("§", "Kampagnen", None, None, None),
+    ("pruefung_dauer", "Wirtschaftlichkeitsprüfung zugesagt innerhalb", "2 Werktagen", "Dauerkampagne: so schnell bekommt der Interessent sein Ergebnis", "text"),
+    ("verlosung_aktiv", "Verlosung gerade aktiv?", "Ja", "Saisonaktion, 2–3 × im Jahr. Nein = nur Dauerkampagne", "janein"),
+    ("aktion_ende", "Verlosung: Teilnahmeschluss", "2027-01-15", "Datum, nur bei aktiver Verlosung", "datum"),
+    ("ziehung", "Verlosung: Datum der Ziehung", "2027-01-20", "Datum", "datum"),
+    ("speicher", "Verlosung: Speicher", "10 kWh", "Größe/Modell, das der Betrieb verlost", "text"),
     ("§", "Preise und Budget", None, None, None),
     ("vertragsbeginn", "Vertragsbeginn", "2026-11-16", "Datum der Unterschrift", "datum"),
     ("onboarding_preis", "Onboarding (einmalig)", 850, "€, deine Entscheidung", "euro"),
@@ -266,15 +268,18 @@ ONBOARDING = [
     ("Bis Tag 3", "Meta-Partnerzugriff (Seite, Werbekonto, Pixel)", "Kunde"),
     ("Bis Tag 3", "Google-Ads-Partnerzugriff", "Kunde"),
     ("Bis Tag 3", "Logo, Telefon, Adresse, Geschäftszeiten bestätigt", "Kunde"),
-    ("Bis Tag 3", "Verlosungen freigegeben: Enddatum, Ziehung, Speichergröße, Kosten", "Kunde"),
+    ("Bis Tag 3", "Wirtschaftlichkeitsprüfung: wer rechnet beim Kunden, Ergebnis innerhalb der Zusage", "Kunde"),
+    ("Bis Tag 3", "Nur bei Verlosung: Enddatum, Ziehung, Speichergröße, Kosten freigegeben", "Kunde"),
     ("Bis Tag 3", "Impressum und Datenschutzerklärung erhalten", "Kunde"),
-    ("Bis Tag 3", "Teilnahmebedingungen rechtlich geprüft", "Du"),
+    ("Bis Tag 3", "Nur bei Verlosung: Teilnahmebedingungen rechtlich geprüft", "Du"),
+    ("Bis Tag 3", "Beispielrechnungen in den Anzeigen einmal rechtlich geprüft", "Du"),
     ("Einrichtung", "Fotos des Kunden in anzeigen/fotos und landingpage/fotos gelegt", "Claude"),
     ("Einrichtung", "Kundenordner neu erzeugt (mit Pixel-ID und Fotos)", "Claude"),
     ("Einrichtung", "Landingpages auf Netlify hochgeladen, Formular-Benachrichtigung an Kunde und dich", "Du"),
-    ("Einrichtung", "Meta-Kampagne mit 3 Anzeigen angelegt (pausiert)", "Du"),
+    ("Einrichtung", "Meta: Dauerkampagne mit 5 Anzeigen angelegt (pausiert)", "Du"),
+    ("Einrichtung", "Nur bei Verlosung: Meta-Kampagne mit 3 Verlosungs-Anzeigen (pausiert)", "Du"),
     ("Einrichtung", "Google-Kampagne angelegt (pausiert)", "Du"),
-    ("Vor dem Livegang", "Test-Anfrage über jede der 3 Landingpages", "Du"),
+    ("Vor dem Livegang", "Test-Anfrage über jede Landingpage (inkl. Rechner und Foto-Upload)", "Du"),
     ("Vor dem Livegang", "Anfrage-Mail kommt beim Kunden an (Spam prüfen)", "Du"),
     ("Vor dem Livegang", "Pixel feuert erst nach Zustimmung (Events Manager → Testereignisse)", "Du"),
     ("Vor dem Livegang", "Advantage+ Creative-Verbesserungen und Multi-Advertiser aus", "Du"),
@@ -322,7 +327,7 @@ def onboarding():
 
 
 # ---------------------------------------------------------------- 03 Anfragen + Report
-ANF_COLS = ["Eingang (Datum, Uhrzeit)", "Name", "Telefon", "PLZ", "Eigentümer", "Verlosung", "Quelle",
+ANF_COLS = ["Eingang (Datum, Uhrzeit)", "Name", "Telefon", "PLZ", "Eigentümer", "Kampagne", "Quelle",
             "Rückruf (Datum, Uhrzeit)", "Reaktion (Min.)", "Termin?", "Angebot?", "Auftrag?",
             "Auftragswert (€)", "Status", "Notiz"]
 N = 500
@@ -340,7 +345,7 @@ def anfragen():
     ws.row_dimensions[4].height = 34
     from datetime import datetime
     bsp = [datetime(2027, 1, 3, 9, 12), "BEISPIEL Anna Muster", "0151 0000000", "12345", "Einfamilienhaus",
-           "Speicher", "Meta", datetime(2027, 1, 3, 9, 40), None, "Ja", "Ja", "Nein", None, "Angebot", "Will Speicher, Dach Süd"]
+           "Wirtschaftlichkeit", "Meta", datetime(2027, 1, 3, 9, 40), None, "Ja", "Ja", "Nein", None, "Angebot", "Will Speicher, Dach Süd"]
     for r in range(5, 5 + N):
         for col in range(1, 16):
             c = ws.cell(row=r, column=col)
@@ -356,7 +361,7 @@ def anfragen():
             ws.cell(row=5, column=col, value=v).font = EX_FONT
     rng = lambda c: f"{c}5:{c}{4+N}"
     liste(ws, rng("E"), ["Einfamilienhaus", "Mehrfamilienhaus", "Mieter"])
-    liste(ws, rng("F"), ["Modul", "Rabatt", "Speicher"])
+    liste(ws, rng("F"), ["Wirtschaftlichkeit", "Rechner", "Modul", "Rabatt", "Speicher"])
     liste(ws, rng("G"), ["Meta", "Google", "Sonstige"])
     for c in "JKL":
         liste(ws, rng(c), ["Ja", "Nein"])
@@ -397,7 +402,9 @@ def anfragen():
         ("Werbekosten", f"=SUMIFS(Werbekosten!$D$5:$D$28,Werbekosten!$A$5:$A$28,{von})", '#,##0 "€"', "aus Blatt Werbekosten"),
         ("Anfragen", f"=COUNTIFS({zeit})", "0", ""),
         ("Kosten pro Anfrage", "=IFERROR(B6/B7,0)", '#,##0 "€"', "wichtigste Steuerzahl"),
-        ("davon Verlosung Modul", f'=COUNTIFS({zeit},{col("F")},"Modul")', "0", ""),
+        ("davon Wirtschaftlichkeitsprüfung", f'=COUNTIFS({zeit},{col("F")},"Wirtschaftlichkeit")', "0", "Dauerkampagne"),
+        ("davon Rechner", f'=COUNTIFS({zeit},{col("F")},"Rechner")', "0", "Dauerkampagne"),
+        ("davon Verlosung Modul", f'=COUNTIFS({zeit},{col("F")},"Modul")', "0", "Saisonaktion"),
         ("davon Verlosung Rabatt", f'=COUNTIFS({zeit},{col("F")},"Rabatt")', "0", ""),
         ("davon Verlosung Speicher", f'=COUNTIFS({zeit},{col("F")},"Speicher")', "0", ""),
         ("Ø Reaktionszeit (Min.)", f"=IFERROR(AVERAGEIFS({col('I')},{zeit}),0)", "0", "Ziel: unter 60"),

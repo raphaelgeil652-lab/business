@@ -31,8 +31,9 @@ Alles läuft über Ihre eigenen Konten. Sie behalten jederzeit die Kontrolle.
 **3. Bestätigung**
 
 - Logo, Telefonnummer für Rückrufe, Adresse, Geschäftszeiten
-- Die drei Verlosungen: Teilnahmeschluss 15.01.2027, Ziehung am 20.01.2027, verloster
-  Speicher: 10 kWh. Bitte kurz bestätigen, dass Sie die Gewinne einlösen.
+- Wer bei Ihnen die Wirtschaftlichkeitsprüfungen rechnet. Zugesagt ist das Ergebnis innerhalb
+  von 2 Werktagen nach der Eintragung.
+- Unsere Verlosung: Teilnahmeschluss 15.01.2027, Ziehung am 20.01.2027, verloster Speicher: 10 kWh. Bitte bestätigen Sie, dass Sie die Gewinne einlösen.
 - Impressum und Datenschutzerklärung (oder den Link dazu)
 - Link zu Ihrem Google-Profil für die Bewertungen
 

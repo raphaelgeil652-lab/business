@@ -6,7 +6,7 @@ Normalerweise ruft kunde-anlegen.py das auf. Einzeln:
 Liest:   <ordner>/aktionen.json   (Name, Telefon, Datum, Speichergröße …)
 Schreibt: <ordner>/modul.html, rabatt.html, speicher.html
 
-Gleicher Stil wie die Anzeigen (anzeigen/anzeigen.html): Solardach-Foto, Angebot groß,
+Gleicher Stil wie die Anzeigen (anzeigen/verlosungen.html): Solardach-Foto, Angebot groß,
 eine Schrift (Inter Tight, selbst gehostet), keine Verläufe, kein Glow.
 Pixel lädt erst nach Zustimmung, keine Google Fonts.
 """
@@ -17,7 +17,7 @@ import sys
 VARIANTEN = {
     "modul": {
         "form": "verlosung-modul",
-        "foto": "1-modul.jpg", "foto_pos": "58% 32%", "foto_size": "cover",
+        "foto": "foto-1.jpg", "foto_pos": "58% 32%", "foto_size": "cover",
         "bg": "#F3EFE7", "ink": "#1A1917", "muted": "#6B665D", "surface": "#FFFFFF",
         "line": "#DDD6C9", "accent": "#B4461F", "accent_ink": "#FFFFFF",
         "title": "Gewinnen Sie ein Solarmodul",
@@ -31,7 +31,7 @@ VARIANTEN = {
     },
     "rabatt": {
         "form": "verlosung-rabatt",
-        "foto": "2-rabatt.jpg", "foto_pos": "20% 0%", "foto_size": "auto 150%",
+        "foto": "foto-2.jpg", "foto_pos": "20% 0%", "foto_size": "auto 150%",
         "bg": "#151515", "ink": "#F3F1EC", "muted": "#9B978F", "surface": "#222120",
         "line": "#34322F", "accent": "#F0C24B", "accent_ink": "#151515",
         "title": "20 % Rabatt gewinnen",
@@ -46,7 +46,7 @@ VARIANTEN = {
     },
     "speicher": {
         "form": "verlosung-speicher",
-        "foto": "3-speicher.jpg", "foto_pos": "42% 18%", "foto_size": "cover",
+        "foto": "foto-3.jpg", "foto_pos": "42% 18%", "foto_size": "cover",
         "bg": "#ECEAE4", "ink": "#1A1917", "muted": "#6B665D", "surface": "#FFFFFF",
         "line": "#D6D2C8", "accent": "#2F6B4F", "accent_ink": "#FFFFFF",
         "title": "3 Stromspeicher zu gewinnen",

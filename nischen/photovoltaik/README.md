@@ -1,8 +1,11 @@
 # Photovoltaik
 
 Agentur-Modell aus dem Betriebshandbuch für PV-Betriebe in **ganz Deutschland**, geplant mit
-einem Kollegen aus dem PV-Vertrieb. Einstieg für Hausbesitzer sind **drei Verlosungen**:
-ein kostenloses Solarmodul · 3 × 20 % Rabatt · 3 Stromspeicher (jeweils zur ersten Bestellung).
+einem Kollegen aus dem PV-Vertrieb. Zwei Kampagnenarten für Hausbesitzer:
+- **Dauerkampagne:** kostenlose Wirtschaftlichkeitsprüfung, nach der Eintragung, mit
+  Beispielrechnung in der Anzeige („1.665 € → rund 500 €“).
+- **Saisonaktion, 2–3 × im Jahr:** drei Verlosungen (kostenloses Modul · 3 × 20 % · 3 Speicher,
+  jeweils zur ersten Bestellung).
 
 **Status:** Probelauf mit dem erfundenen Kunden „Muster Solartechnik“. Noch kein echter Kunde.
 
@@ -14,10 +17,12 @@ ein kostenloses Solarmodul · 3 × 20 % Rabatt · 3 Stromspeicher (jeweils zur e
 | Betriebshandbuch (nischenneutral, Claude-Doc) | [Öffnen](https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) |
 
 **Ansehen** (Probekunde):
-[▶ Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=4) ·
-[▶ Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=4) ·
-[▶ 20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=4) ·
-[▶ Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=4)
+[▶ Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=5) ·
+[▶ Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=5) ·
+[▶ Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=5) ·
+Verlosung: [▶ Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=5) ·
+[▶ 20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=5) ·
+[▶ Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=5)
 
 ---
 
@@ -58,11 +63,11 @@ ein kostenloses Solarmodul · 3 × 20 % Rabatt · 3 Stromspeicher (jeweils zur e
 
 | # | Was | Datei / Link | Weiter |
 |---|---|---|---|
-| 15 | Fotos und Daten nachtragen | `K/fotos/`, `K/steckbrief.xlsx` | Echte Fotos als `1-modul.jpg`, `2-rabatt.jpg`, `3-speicher.jpg`; Pixel-ID, Telefon, Adresse in den Steckbrief → **Kundenordner neu erzeugen** |
-| 16 | Teilnahmebedingungen prüfen | `K/dokumente/teilnahmebedingungen.md` | Entwurf, einmal rechtlich prüfen lassen |
+| 15 | Fotos und Daten nachtragen | `K/fotos/`, `K/steckbrief.xlsx` | Echte Fotos als `foto-1.jpg`, `foto-2.jpg`, `foto-3.jpg`; Pixel-ID, Telefon, Adresse in den Steckbrief → **Kundenordner neu erzeugen** |
+| 16 | Rechtlich prüfen lassen | `K/anzeigen/creatives/w*.png`, `K/dokumente/teilnahmebedingungen.md` | Einmal: Beispielrechnungen in den Anzeigen; bei Verlosung die Teilnahmebedingungen |
 | 17 | Landingpages hochladen | [app.netlify.com/drop](https://app.netlify.com/drop) | Ordner `K/landingpage/` plus Impressum und Datenschutz des Kunden hineinziehen. Forms → Erkennung an, Benachrichtigung an Kunde und dich. Adresse in den Steckbrief, neu erzeugen. Anleitung: [`landingpage-hosten.md`](../../anleitungen/landingpage-hosten.md) |
 | 18 | Meta-Pixel | [Events Manager](https://business.facebook.com/events_manager2) | Pixel im Konto des Kunden anlegen, ID in den Steckbrief, neu erzeugen, neu hochladen |
-| 19 | Meta-Kampagne | [Werbeanzeigenmanager](https://adsmanager.facebook.com) · `K/dokumente/kampagnen.md` | 3 Anzeigen mit den Bildern aus `K/anzeigen/creatives/`, pausiert anlegen |
+| 19 | Meta-Kampagnen | [Werbeanzeigenmanager](https://adsmanager.facebook.com) · `K/dokumente/kampagnen.md` | Dauerkampagne mit 5 Anzeigen (`w1`–`w5`), bei Verlosung zusätzlich 3 Anzeigen; pausiert anlegen |
 | 20 | Google-Kampagne | [Google Ads](https://ads.google.com) · `K/dokumente/kampagnen.md` | Keywords, 15 Überschriften, 4 Beschreibungen, pausiert anlegen |
 | 21 | Testlauf | `K/tabellen/onboarding.xlsx` | Je eine Test-Anfrage über jede Seite, Mail beim Kunden? Pixel erst nach Zustimmung? |
 | 22 | Livegang | — | Kampagnen aktiv, Datum notieren (Start der 30-Tage-Garantie) |
@@ -74,7 +79,7 @@ ein kostenloses Solarmodul · 3 × 20 % Rabatt · 3 Stromspeicher (jeweils zur e
 | 23 | Anfragen eintragen | `K/tabellen/anfragen-und-report.xlsx` | Jede Anfrage eine Zeile, Rückmeldung des Kunden wöchentlich nachtragen |
 | 24 | Monatsreport | Blatt „Monatsreport“ · `K/dokumente/report-mail.md` | Monat eintragen, Zahlen in die Mail, 10 Minuten telefonieren |
 | 25 | Retainer starten | Monatsreport „Erster Auftrag“ · `K/dokumente/abrechnung-mails.md` | Ab dem Monat nach dem ersten Auftrag monatlich abrechnen |
-| 26 | Ziehung der Verlosung | Steckbrief „Datum der Ziehung“ | Kunde zieht und benachrichtigt; danach neue Verlosung mit neuem Datum im Steckbrief → neu erzeugen |
+| 26 | Verlosung 2–3 × im Jahr | Steckbrief „Verlosung gerade aktiv?“ | Ja + Daten eintragen → neu erzeugen → Verlosungs-Kampagne starten. Nach der Ziehung auf Nein → neu erzeugen. Die Dauerkampagne läuft immer weiter |
 
 ---
 
@@ -83,7 +88,8 @@ ein kostenloses Solarmodul · 3 × 20 % Rabatt · 3 Stromspeicher (jeweils zur e
 - **Rückruf in 1 Stunde.** Interessenten fragen parallel bei mehreren an.
 - **Einzugsgebiet pro Kunde.** Werberadius = wo er montiert. Im Gespräch fragen.
 - **Lange Entscheidung.** Erster unterschriebener Auftrag nach Wochen. Preisfrage dazu: siehe Steckbrief, Blatt „Rechnung intern“.
-- **Keine Ersparnis- oder Förderversprechen** in Anzeigen und auf den Seiten.
+- **Zahlen nur als Beispielrechnung** mit Annahmen und Quelle, nie als Versprechen. Keine Förderzusagen.
+- **Wirtschaftlichkeitsprüfung pünktlich liefern.** Wer zusagt „innerhalb von 2 Werktagen“, muss es halten.
 - **githack zwischenspeichert alte Fassungen.** Nach Änderungen die Zahl hinter `?v=` in den Links hochzählen.
 
 ## Offen mit dem Kollegen

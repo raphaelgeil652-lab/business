@@ -62,8 +62,9 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 | **Das System** ⭐ alle Tabellen, Texte, Anzeigen, Landingpages, Werkzeuge | [Öffnen](nischen/photovoltaik/vorlagen/LIES-MICH.md) |
 | **Fahrplan** 26 Schritte vom ersten Anruf bis zum laufenden Kunden | [Öffnen](nischen/photovoltaik/README.md) |
 | Steckbrief zum Ausfüllen | [Öffnen](nischen/photovoltaik/vorlagen/tabellen/01-steckbrief.xlsx) |
-| Anzeigen des Probekunden | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=4) |
-| Landingpages des Probekunden (je Verlosung) | [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=4) · [20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=4) · [Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=4) |
+| Anzeigen des Probekunden (beide Kampagnenarten) | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=5) |
+| Landingpages Dauerkampagne | [Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=5) · [Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=5) |
+| Landingpages Verlosung (2–3 × im Jahr) | [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=5) · [20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=5) · [Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=5) |
 | Betriebshandbuch (nischenneutral) | [Öffnen](https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) |
 
 ### 🏮 China Restaurant Chinatown — Einzelkunde (Pfullendorf)

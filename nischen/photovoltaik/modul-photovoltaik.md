@@ -27,7 +27,7 @@ Portalen und Konkurrenz anfragen.
 ## Anzeigen-Standard (gilt für alle PV-Kunden)
 
 Festgelegt im November 2026, nachdem drei aufwendigere Richtungen verworfen wurden.
-Vorlage: `vorlagen/anzeigen/anzeigen.html`, Recherche dazu: `vorlagen/anzeigen/recherche.md`.
+Vorlagen: `vorlagen/anzeigen/wirtschaftlichkeit.html` (Dauerkampagne) und `vorlagen/anzeigen/verlosungen.html` (Saisonaktion), Recherche dazu: `vorlagen/anzeigen/recherche.md`.
 
 - **Das Solardach ist das Bild.** Oben ca. 45 % der Fläche ein echtes Foto von Modulen auf
   einem Wohnhaus. Man muss in einer Sekunde sehen, dass es um Solar geht.
@@ -38,11 +38,18 @@ Vorlage: `vorlagen/anzeigen/anzeigen.html`, Recherche dazu: `vorlagen/anzeigen/r
 - Pro Anzeige eine Flächenfarbe: hell/rostrot, dunkel/gelb, hell/grün.
 - Format 1080 × 1350 (4:5), Text nicht an den unteren Rand.
 
-## Der Einstieg: drei Verlosungen
+## Der Einstieg: zwei Kampagnenarten
 
-Die drei Verlosungen sind der einzige Einstieg, ein anderes Gratis-Angebot wird nicht beworben
-(Entscheidung des Nutzers, November 2026). Nach der Anfrage ruft der Betrieb an und erstellt auf
-Wunsch ein Festpreis-Angebot.
+**Dauerkampagne (das ganze Jahr): kostenlose Wirtschaftlichkeitsprüfung.** Bei großen Käufen hilft
+es, das Ergebnis zu zeigen: Stromkosten vorher/nachher, der bekannte Abschlag, die Summe über
+20 Jahre, ein Rechner. Die Prüfung gibt es **erst nach der Eintragung**; jede Anzeige zeigt das mit
+den Schritten „eintragen → wir rechnen → Ergebnis“. Fünf Anzeigen, zwei Landingpages
+(`wirtschaftlichkeit.html` mit Foto-Upload der Stromrechnung, `rechner.html`).
+Beispielzahlen aus `vorlagen/rechengrundlage.json`: 4.500 kWh, 37 ct/kWh
+([BDEW, Okt. 2026](https://www.bdew.de/media/documents/BDEW_Strompreisanalyse_102026_1.pdf)),
+10 kWp + 10 kWh Speicher, ca. 70 % Eigenversorgung (HTW Berlin) → 1.665 € statt rund 500 € im Jahr.
+
+**Saisonaktion (2–3 × im Jahr): Verlosungen.**
 
 | Verlosung | Headline | Mechanik | Was der Betrieb vorher festlegen muss |
 |---|---|---|---|
@@ -50,9 +57,10 @@ Wunsch ein Festpreis-Angebot.
 | Verlosung 20 % | „20 % Rabatt gewinnen.“ | **3 Gewinner** bekommen 20 % auf ihre **erste Bestellung** | Rabatt auf echten Angebotspreis, Enddatum |
 | Verlosung Speicher | „3 Stromspeicher zu gewinnen.“ | **3 Gewinner** bekommen den Speicher gratis zur **ersten Bestellung** | Speichergröße, Enddatum |
 
-Alle drei sind Verlosungen, keine Rabatte für alle. Pflicht: Teilnahmebedingungen auf der
-Landingpage, Hinweis „Meta ist nicht beteiligt“, und bei Rabatt/Speicher vor der Teilnahme klar
-sagen, dass der Gewinn nur mit einer Bestellung eingelöst wird.
+Pflicht bei Verlosungen: Teilnahmebedingungen auf der Landingpage, Hinweis „Meta ist nicht
+beteiligt“, und bei Rabatt/Speicher vor der Teilnahme klar sagen, dass der Gewinn nur mit einer
+Bestellung eingelöst wird. Nach der Eintragung ruft der Betrieb an und erstellt auf Wunsch ein
+Festpreis-Angebot.
 
 ## Der Vorteil gegenüber Portalen (in jedem Gespräch nutzen)
 
@@ -105,7 +113,7 @@ Zweite Variante: Inhaber 20 Sekunden selbst vor der Kamera: „Ich bin [Name] au
 
 ## Regeln speziell für PV-Werbung
 
-- **Keine Ersparnis versprechen.** Kein „Sie sparen 80 %“, kein „Strom gratis“, keine Amortisationszeit als Zusage. Das hängt vom einzelnen Haus ab und ist ein Abmahnrisiko.
+- **Zahlen nur als Beispielrechnung.** Vorher/Nachher-Beträge immer mit offengelegten Annahmen und Quelle und dem Zusatz „keine Zusage“. Nie „Sie sparen garantiert …“, kein „Strom gratis“, keine Amortisationszeit als Versprechen. Das ist ein Abmahnrisiko (vgl. LG Frankfurt gegen Viessmann-Solarwerbung); einmal rechtlich prüfen lassen.
 - **0 % Mehrwertsteuer** darf genannt werden, mit der Bedingung: Anlagen bis 30 kWp auf oder an Wohngebäuden (§ 12 Abs. 3 UStG). Vorher mit dem Betrieb abstimmen.
 - **Keine Förderzusagen.** Förderprogramme ändern sich, nur nennen, was der Betrieb aktuell bestätigt.
 - **Keine Finanzierung in der Anzeige.** Ratenkauf oder Kredit in der Anzeige kann bei Meta eine Sonderkategorie für Finanzprodukte auslösen. Vor einem Test prüfen.

@@ -1,7 +1,7 @@
 <!--
   META-ANZEIGEN · VORLAGE (Standard für alle PV-Kunden)
   Drei Verlosungen: kostenloses Solarmodul · 3 × 20 % Rabatt · 3 Stromspeicher (jeweils zur ersten Bestellung).
-  Nicht von Hand ausfüllen: kunde-anlegen.py setzt {{betrieb}} und {{aktion_ende_kurz}} ein, kopiert
+  Nicht von Hand ausfüllen: kunde-anlegen.py setzt Muster Solartechnik und 15. Januar ein, kopiert
   fonts/ und fotos/ dazu und rendert creatives/*.png. Kein Ort in den Anzeigen.
   Stil: Solardach-Foto oben, Angebot groß, ein Satz, Faktenzeile, CTA-Zeile, eine Schrift (Inter Tight).
 -->
@@ -48,7 +48,7 @@
 
 <!-- 1 · GEWINNSPIEL — Solarmodul -->
 <div class="ad a" data-creative="1-gewinnspiel">
-  <div class="photo" style="background-image:url(fotos/1-modul.jpg);background-position:58% 32%;"></div>
+  <div class="photo" style="background-image:url(fotos/foto-1.jpg);background-position:58% 32%;"></div>
   <div class="band">
     <p class="kicker">Gewinnspiel</p>
     <h1>Gewinnen Sie ein <em>Solarmodul.</em></h1>
@@ -61,7 +61,7 @@
 
 <!-- 2 · VERLOSUNG 20 % -->
 <div class="ad b" data-creative="2-rabatt">
-  <div class="photo" style="background-image:url(fotos/2-rabatt.jpg);background-size:auto 760px;background-position:20% 0%;"></div>
+  <div class="photo" style="background-image:url(fotos/foto-2.jpg);background-size:auto 760px;background-position:20% 0%;"></div>
   <div class="band">
     <p class="kicker">Verlosung bis <span data-k="datum"></span></p>
     <h1><em>20 % Rabatt</em> gewinnen.</h1>
@@ -74,7 +74,7 @@
 
 <!-- 3 · VERLOSUNG STROMSPEICHER -->
 <div class="ad c" data-creative="3-speicher">
-  <div class="photo" style="background-image:url(fotos/3-speicher.jpg);background-position:42% 18%;"></div>
+  <div class="photo" style="background-image:url(fotos/foto-3.jpg);background-position:42% 18%;"></div>
   <div class="band">
     <p class="kicker">Verlosung bis <span data-k="datum"></span></p>
     <h1>3 Stromspeicher <em>zu gewinnen.</em></h1>
@@ -88,8 +88,8 @@
 <script>
   /* ===================== KUNDE — nur das hier pro Kunde ändern ===================== */
   var KUNDE = {
-    betrieb: '{{betrieb}}',
-    datum: '{{aktion_ende_kurz}}'          // Ende der Aktion
+    betrieb: 'Muster Solartechnik',
+    datum: '15. Januar'          // Ende der Aktion
   };
   /* ================================================================================= */
   document.querySelectorAll('[data-k]').forEach(function(el){ el.textContent = KUNDE[el.dataset.k] || ''; });
