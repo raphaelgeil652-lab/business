@@ -53,6 +53,17 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 > (Die drei Zeig-Seiten haben ihre Bilder eingebettet, deshalb klappt das. Die Vorlage in der letzten
 > Zeile lädt Bilder nach — die zeigst du beim Kunden aber ohnehin nicht.)
 
+### ☀️ Photovoltaik — Probelauf (erfundener Kunde „Muster Solartechnik“)
+
+**Alles zum Aufsetzen in einer Tabelle, Schritt für Schritt:** [`nischen/photovoltaik/`](nischen/photovoltaik/)
+
+| Was | Öffnen |
+|---|---|
+| **Fahrplan** ⭐ 20 Schritte mit Links, was du tust und wie es online geht | [Öffnen](nischen/photovoltaik/README.md) |
+| Betriebshandbuch (nischenneutral) | [Öffnen](https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) |
+| Landingpage des Probekunden | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/index.html) |
+| Stand und offene Punkte | [Öffnen](nischen/photovoltaik/kunden/muster-solartechnik/onboarding.md) |
+
 ### 🏮 China Restaurant Chinatown — Einzelkunde (Pfullendorf)
 
 Alles zu diesem Kunden: [`nischen/chinatown/`](nischen/chinatown/)
