@@ -40,11 +40,15 @@ Vorlage: `kunden/muster-solartechnik/anzeigen/anzeigen.html`, Recherche dazu: `.
 
 ## Gratis-Anker mit Aktionscharakter (für die Anzeigen)
 
-| Anker | Kicker / Headline | Was der Betrieb vorher festlegen muss |
-|---|---|---|
-| Gewinnspiel | „Gewinnen Sie ein Solarmodul.“ | Teilnahmebedingungen, Zeitraum, Ziehung, Hinweis „Meta ist nicht beteiligt“ |
-| 20 % Rabatt | „20 % auf Ihre Solaranlage.“ | Rabatt auf echten Angebotspreis, Enddatum; trägt er rund 20 % Marge-Verzicht? |
-| Speicher geschenkt | „Stromspeicher geschenkt.“ | Welche Speichergröße, Enddatum; Wert ca. 3.000–9.000 € |
+| Anker | Headline | Mechanik | Was der Betrieb vorher festlegen muss |
+|---|---|---|---|
+| Gewinnspiel Modul | „Gewinnen Sie ein Solarmodul.“ | Unter allen Anfragen wird **ein kostenloses Modul** verlost | Teilnahmebedingungen, Zeitraum, Ziehung |
+| Verlosung 20 % | „20 % Rabatt gewinnen.“ | **3 Gewinner** bekommen 20 % auf ihre **erste Bestellung** | Rabatt auf echten Angebotspreis, Enddatum |
+| Verlosung Speicher | „3 Stromspeicher zu gewinnen.“ | **3 Gewinner** bekommen den Speicher gratis zur **ersten Bestellung** | Speichergröße, Enddatum |
+
+Alle drei sind Verlosungen, keine Rabatte für alle. Pflicht: Teilnahmebedingungen auf der
+Landingpage, Hinweis „Meta ist nicht beteiligt“, und bei Rabatt/Speicher vor der Teilnahme klar
+sagen, dass der Gewinn nur mit einer Bestellung eingelöst wird.
 
 Die kostenlose Dach-Analyse bleibt der Einstieg auf der Landingpage, die Aktion ist der Haken in der Anzeige.
 

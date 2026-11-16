@@ -94,8 +94,9 @@ für Kfz und die Webseiten-Kunden. Anzeigen-Bilder
 kommen aus `anzeigen/anzeigen.html` (Name/Ort/Aktionsdatum unten in `KUNDE` tauschen) über
 `nischen/photovoltaik/tools/creatives-rendern.js`. **Anzeigen-Standard (vom Nutzer festgelegt):**
 Solardach-Foto oben, darunter Angebot groß, ein Satz, Faktenzeile, CTA-Zeile, eine Schrift, keine
-Verläufe/Icons/Glow. Anker in den Anzeigen: Gewinnspiel Solarmodul · 20 % Rabatt · Speicher
-geschenkt. Alle künftigen PV-Anzeigen lehnen sich daran an (Details im Modul). Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
+Verläufe/Icons/Glow. Anker in den Anzeigen sind **drei Verlosungen**: ein kostenloses
+Solarmodul · 3 × 20 % Rabatt auf die erste Bestellung · 3 Stromspeicher gratis zur ersten
+Bestellung (nicht für alle). Alle künftigen PV-Anzeigen lehnen sich daran an (Details im Modul). Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
 Kfz-Vorlage tut beides noch nicht und sollte nachgezogen werden.
 
 **Warum gewechselt:** Vor-Ort-Besuche bei Küchenstudios im Juli 2026 zeigten verhaltene Resonanz.

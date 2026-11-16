@@ -37,28 +37,31 @@ Ziel der Seite: `[Landingpage-URL]` (nach dem Hosten eintragen).
 
 Bilder: [`anzeigen/creatives/`](anzeigen/creatives/) · So sieht es aus: [`anzeigen/vorschau.html`](anzeigen/vorschau.html).
 Name, Ort und Aktionsdatum stehen unten in [`anzeigen/anzeigen.html`](anzeigen/anzeigen.html) (`KUNDE`).
-Die Landingpage muss zum Anker passen: Wer auf „Speicher geschenkt“ klickt, liest oben genau das.
+Die Landingpage muss zum Anker passen: Wer auf „3 Stromspeicher zu gewinnen“ klickt, liest oben genau das.
 
 **1 — Gewinnspiel Solarmodul** · Bild: `1-gewinnspiel.png` · Button: Registrieren
-- Primärtext: ☀️ Gewinnspiel für Hausbesitzer in Ihrer Region: Unter allen Anfragen bis 15. Januar verlosen wir ein Solarmodul für Ihr Dach. Dazu bekommen Sie eine kostenlose Dach-Analyse, ganz unverbindlich.
+- Primärtext: ☀️ Gewinnspiel für Hausbesitzer in Ihrer Region: Unter allen Anfragen bis 15. Januar verlosen wir ein kostenloses Modul. Dazu bekommen Sie eine kostenlose Dach-Analyse, ganz unverbindlich.
   👉 Jetzt teilnehmen.
 - Headline: Gewinnen Sie ein Solarmodul
 - Beschreibung: Teilnahme bis 15. Januar.
-- Pflicht: Teilnahmebedingungen auf der Landingpage, Hinweis, dass Meta nicht beteiligt ist.
 
-**2 — 20 % Rabatt** · Bild: `2-rabatt.png` · Button: Angebot erhalten
-- Primärtext: Nur bis 15. Januar: 20 % auf Ihre Solaranlage. Muster Solartechnik prüft Ihr Dach kostenlos, plant die Anlage für Ihren Verbrauch und montiert mit eigenem Team.
-  👉 Jetzt Rabatt sichern.
-- Headline: 20 % auf Ihre Solaranlage
-- Beschreibung: Aktion bis 15. Januar.
-- Pflicht: Rabatt nur auf einen echten Angebotspreis, nie auf einen vorher erhöhten.
+**2 — Verlosung 20 % Rabatt** · Bild: `2-rabatt.png` · Button: Registrieren
+- Primärtext: Verlosung bis 15. Januar: Unter allen Anfragen verlosen wir 3 × 20 % Rabatt auf die erste Bestellung Ihrer Solaranlage. Muster Solartechnik prüft Ihr Dach kostenlos und montiert mit eigenem Team.
+  👉 Jetzt teilnehmen.
+- Headline: 20 % Rabatt gewinnen
+- Beschreibung: 3 Gewinner, Verlosung bis 15. Januar.
 
-**3 — Speicher geschenkt** · Bild: `3-speicher.png` · Button: Angebot erhalten
-- Primärtext: Stromspeicher geschenkt: Zu jeder neuen Solaranlage von Muster Solartechnik gibt es den Speicher gratis dazu. Gilt bis 15. Januar. Die Dach-Analyse vor Ort ist kostenlos.
-  👉 Jetzt Angebot sichern.
-- Headline: Stromspeicher geschenkt
-- Beschreibung: Zu jeder neuen Solaranlage.
-- Pflicht: Speichergröße vorher mit dem Betrieb festlegen und auf der Landingpage nennen.
+**3 — Verlosung Stromspeicher** · Bild: `3-speicher.png` · Button: Registrieren
+- Primärtext: Wir verlosen 3 Stromspeicher! Unter allen Anfragen bis 15. Januar ziehen wir 3 Gewinner, die den Speicher gratis zu ihrer ersten Bestellung bekommen. Die Dach-Analyse vor Ort ist kostenlos.
+  👉 Jetzt teilnehmen.
+- Headline: 3 Stromspeicher zu gewinnen
+- Beschreibung: Gratis zur ersten Bestellung.
+
+**Pflicht für alle drei Verlosungen:** Teilnahmebedingungen auf der Landingpage (Zeitraum, wer
+teilnehmen darf, wie und wann gezogen wird, wie Gewinner benachrichtigt werden) und der Hinweis,
+dass Meta nicht beteiligt ist. Bei Rabatt und Speicher muss **klar dastehen, dass der Gewinn nur
+mit einer Bestellung eingelöst wird** — das ist erlaubt, aber nur, wenn es vor der Teilnahme
+deutlich gesagt wird. Rabatt nur auf einen echten Angebotspreis; Speichergröße festlegen.
 
 Alle drei Angebote (Kosten, Datum, Bedingungen) muss der Kunde schriftlich freigeben (§7 der Vereinbarung).
 
