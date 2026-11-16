@@ -81,18 +81,29 @@ muss die Routine mitgeändert werden.
 | Küchenstudios | zurückgestellt, vollständig erhalten | `nischen/kuechenstudios/` |
 | Photovoltaik | **Probelauf** mit erfundenem Kunden (Nov. 2026), geplant mit Kollegen aus dem PV-Vertrieb | `nischen/photovoltaik/` |
 
-**Photovoltaik-Probelauf:** Grundlage ist das nischenneutrale Betriebshandbuch (Claude-Doc,
-https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN). `modul-photovoltaik.md` ist das Modul,
-`kunden/muster-solartechnik/` der **fiktive** Probekunde (alles dort ist als erfunden markiert).
-Preise dort sind nur ein Vorschlag (850 € / 1.500 €/Monat / 1.000 € Budget), nicht entschieden.
-**Nicht standortgebunden:** PV-Kunden werden in ganz Deutschland gesucht (Verkauf per
-Telefon/Video); die Werbung jedes Kunden läuft in seinem eigenen Einzugsgebiet. Anzeigen-Bilder
-kommen aus `anzeigen/anzeigen.html` (Name/Ort/Aktionsdatum unten in `KUNDE` tauschen) über
-`nischen/photovoltaik/tools/creatives-rendern.js`. **Anzeigen-Standard (vom Nutzer festgelegt):**
-Solardach-Foto oben, darunter Angebot groß, ein Satz, Faktenzeile, CTA-Zeile, eine Schrift, keine
-Verläufe/Icons/Glow. Anker in den Anzeigen: Gewinnspiel Solarmodul · 20 % Rabatt · Speicher
-geschenkt. Alle künftigen PV-Anzeigen lehnen sich daran an (Details im Modul). Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
-Kfz-Vorlage tut beides noch nicht und sollte nachgezogen werden.
+**Photovoltaik:** Grundlage ist das nischenneutrale Betriebshandbuch (Claude-Doc,
+https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) und `modul-photovoltaik.md`.
+**Das Vorlagen-System `nischen/photovoltaik/vorlagen/` ist der Weg für jeden PV-Kunden**
+(Anleitung: `vorlagen/LIES-MICH.md`): ausfüllbare Tabellen (`tabellen/00–05*.xlsx`: Agentur-
+Stammdaten, Steckbrief mit Pflichtcheck, Onboarding, Anfragen-und-Report, Akquise, Rechnungen),
+Textvorlagen mit `{{feld}}`-Platzhaltern (`texte/`), Anzeigen- und Danke-Vorlage, Assets.
+`vorlagen/werkzeuge/kunde-anlegen.py <steckbrief.xlsx>` erzeugt `kunden/<betrieb>/` komplett
+(Dokumente, 3 Anzeigen-PNGs, 3 Landingpages, Tabellen-Kopien, README). **Nie erzeugte Dateien von
+Hand ändern** — Steckbrief, Vorlage oder Werkzeug ändern und neu erzeugen; `tabellen/` und `fotos/`
+im Kundenordner bleiben dabei erhalten. Leere Steckbrief-Felder erscheinen als `[Feldname]`, nichts
+wird erfunden. `tabellen-bauen.py` baut die leeren Tabellen neu (Agentur-Stammdaten bleiben).
+`kunden/muster-solartechnik/` ist der **fiktive** Probekunde, vom System erzeugt (Ort/Adresse/Telefon
+bewusst leer). Preise dort nur Vorschlag (850 € / 1.500 €/Monat / 1.000 € Budget), nicht entschieden.
+**Nicht standortgebunden:** PV-Kunden in ganz Deutschland (Verkauf per Telefon/Video); die Werbung
+jedes Kunden läuft in seinem Einzugsgebiet. **Harte Regel des Nutzers: Kein Pfullendorf und kein
+anderer fester Ort im PV-Material**; Anzeigen nennen gar keinen Ort („Fachbetrieb in Ihrer Region“).
+**Anzeigen-Standard (vom Nutzer festgelegt):** Solardach-Foto oben, darunter Angebot groß, ein Satz,
+Faktenzeile, CTA-Zeile, eine Schrift, keine Verläufe/Icons/Glow. **Einstieg sind ausschließlich drei
+Verlosungen:** ein kostenloses Solarmodul · 3 × 20 % Rabatt auf die erste Bestellung · 3 Stromspeicher
+gratis zur ersten Bestellung (nicht für alle) — kein anderes Gratis-Angebot. Je Verlosung eine
+Landingpage im Anzeigen-Stil. **githack zwischenspeichert alte Versionen** (sogar gelöschte Dateien):
+Öffnen-Links tragen `?v=N`, nach Änderungen N hochzählen. PV-Seiten laden keine Google Fonts und setzen
+das Pixel erst nach Zustimmung; die Kfz-Vorlage tut beides noch nicht und sollte nachgezogen werden.
 
 **Warum gewechselt:** Vor-Ort-Besuche bei Küchenstudios im Juli 2026 zeigten verhaltene Resonanz.
 Kfz-Betriebe sind zahlreicher, Werbung gegenüber offener, fast immer inhabergeführt — und der erste

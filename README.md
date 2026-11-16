@@ -9,7 +9,7 @@ Diese Startseite ist deine Übersicht.
 |---|---|---|
 | 🚗 **Kfz-Betriebe** (Werkstätten, Aufbereiter, Folierer) | **aktiver Fokus** | [`nischen/autowerkstaetten/`](nischen/autowerkstaetten/) |
 | 🍳 Küchenstudios | zurückgestellt (vollständig erhalten) | [`nischen/kuechenstudios/`](nischen/kuechenstudios/) |
-| ☀️ Photovoltaik | Probelauf mit erfundenem Kunden | [`nischen/photovoltaik/`](nischen/photovoltaik/) |
+| ☀️ Photovoltaik | Vorlagen-System fertig, Probelauf mit erfundenem Kunden | [`nischen/photovoltaik/`](nischen/photovoltaik/) |
 | ☕ **Tagwerk** (Demo-Webseite, erfundene Kaffeemarke) | Vorzeige-Stück für Webseitenbau | [`nischen/tagwerk/`](nischen/tagwerk/) |
 | 🌿 **Alex Außenanlagen** (Pfullendorf) | Webseiten-Kunde: Garten, Erdarbeiten, Pflaster | [`nischen/alex-aussenanlagen/`](nischen/alex-aussenanlagen/) |
 | 🏄 **Wakepark Pfullendorf** | Webseiten-Entwurf: Wasserskianlage am Seepark Linzgau | [`nischen/wakepark-pfullendorf/`](nischen/wakepark-pfullendorf/) |
@@ -55,15 +55,16 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 
 ### ☀️ Photovoltaik — Probelauf (erfundener Kunde „Muster Solartechnik“)
 
-**Alles zum Aufsetzen in einer Tabelle, Schritt für Schritt:** [`nischen/photovoltaik/`](nischen/photovoltaik/)
+**Komplettes System mit allen Vorlagen:** Steckbrief ausfüllen → ein Befehl → fertiger Kundenordner.
 
 | Was | Öffnen |
 |---|---|
-| **Fahrplan** ⭐ 26 Schritte mit Links, Anzeigen und Kundengewinnung in ganz Deutschland, was du tust und wie es online geht | [Öffnen](nischen/photovoltaik/README.md) |
+| **Das System** ⭐ alle Tabellen, Texte, Anzeigen, Landingpages, Werkzeuge | [Öffnen](nischen/photovoltaik/vorlagen/LIES-MICH.md) |
+| **Fahrplan** 26 Schritte vom ersten Anruf bis zum laufenden Kunden | [Öffnen](nischen/photovoltaik/README.md) |
+| Steckbrief zum Ausfüllen | [Öffnen](nischen/photovoltaik/vorlagen/tabellen/01-steckbrief.xlsx) |
+| Anzeigen des Probekunden | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=4) |
+| Landingpages des Probekunden (je Verlosung) | [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=4) · [20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=4) · [Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=4) |
 | Betriebshandbuch (nischenneutral) | [Öffnen](https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) |
-| **Anzeigen** ⭐ wie sie im Feed, in der Story und bei Google aussehen | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html) |
-| Landingpage des Probekunden | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/index.html) |
-| Stand und offene Punkte | [Öffnen](nischen/photovoltaik/kunden/muster-solartechnik/onboarding.md) |
 
 ### 🏮 China Restaurant Chinatown — Einzelkunde (Pfullendorf)
 

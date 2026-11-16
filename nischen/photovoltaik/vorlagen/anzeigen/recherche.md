@@ -84,7 +84,7 @@ Die ersten drei Anzeigen sahen nach Vorlage aus, und zwar aus diesen Gründen:
 | Typo | Newsreader 80 px, Kursiv als Betonung + Inter Tight | Inter Tight 84 px Extrabold + Plex Mono im Dokument | Inter Tight 108 px Bold, dritte Zeile grau |
 | Aufbau | Foto oben 62 %, Textfeld darunter, Linie, CTA | Überschrift, Blatt als Hauptmotiv, CTA-Zeile | Dreizeiler, Anruf-Karte, ein Satz, CTA-Zeile |
 | Text im Bild | „Wir montieren selbst. Mit eigenem Team.“ | „Erst der Preis. Dann die Entscheidung.“ + Positionen | „Eine Anfrage. Ein Betrieb. Ein Anruf.“ |
-| CTA | „Kostenlose Dach-Analyse anfragen →“ unter einer Linie | „Kostenlose Dach-Analyse · unverbindlich →“ | „Kostenlose Dach-Analyse anfragen →“ unter goldener Linie |
+| CTA | Textzeile mit Pfeil unter einer Linie | Textzeile mit Pfeil | Textzeile mit Pfeil unter goldener Linie |
 | Blickfang | Menschen tragen ein Modul | der markierte „Gesamtpreis: steht vorher fest“ | die zwei Anruf-Knöpfe |
 
 ## 5 · Qualitätskontrolle

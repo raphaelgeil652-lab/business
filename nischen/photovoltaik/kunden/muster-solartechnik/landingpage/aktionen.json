@@ -1,0 +1,14 @@
+{
+  "betrieb": "Muster Solartechnik",
+  "betrieb_lang": "Muster Solartechnik GmbH",
+  "telefon": "[Telefon für Rückrufe]",
+  "telefon_link": "+49XXXXXXXX",
+  "adresse": "[Straße und Hausnummer], [PLZ] [Ort]",
+  "oeffnungszeiten": "Mo–Fr 8–17 Uhr",
+  "ziehung": "20.01.2027",
+  "speicher": "10 kWh",
+  "pixel_id": "PIXEL_ID",
+  "_hinweis": "ERZEUGT aus steckbrief.xlsx — nicht von Hand ändern.",
+  "datum": "15. Januar",
+  "datum_voll": "15.01.2027"
+}

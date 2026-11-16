@@ -1,8 +1,6 @@
 <!--
-  DANKE-SEITE · MUSTER SOLARTECHNIK (FIKTIVER PROBEKUNDE)
-  Wird nach dem Absenden angezeigt (Netlify: action="danke.html").
-  Feuert das Meta-Pixel-Event "Lead" — aber nur, wenn auf der Startseite zugestimmt wurde.
-  Hier sitzt auch die Google-Ads-Conversion, sobald das Konto verbunden ist.
+  DANKE-SEITE · VORLAGE. kunde-anlegen.py füllt {{…}} aus dem Steckbrief.
+  Feuert das Pixel-Ereignis "Lead" nur nach Zustimmung auf der Aktionsseite.
 -->
 <!DOCTYPE html>
 <html lang="de">
@@ -41,24 +39,24 @@
   <div class="card">
     <div class="check">✓</div>
     <h1>Danke! Wir <em>melden uns</em>.</h1>
-    <p>Ihre Anfrage ist bei Muster Solartechnik angekommen.</p>
+    <p>Ihre Anfrage ist bei Muster Solartechnik angekommen. Kamen Sie über eine Verlosung, sind Sie jetzt dabei. Wir melden uns nach der Ziehung.</p>
 
     <div class="next">
       <b>So geht's weiter</b>
       <ol>
         <li>Wir rufen Sie werktags innerhalb einer Stunde zurück.</li>
-        <li>Wir machen einen Termin für die kostenlose Dach-Analyse aus.</li>
+        <li>Auf Wunsch planen wir Ihre Anlage und machen einen Termin aus.</li>
         <li>Sie bekommen ein Festpreis-Angebot und entscheiden in Ruhe.</li>
       </ol>
     </div>
 
-    <a class="btn" href="index.html">Zurück zur Startseite</a>
-    <span class="call">Lieber gleich sprechen? <a href="tel:+49XXXXXXXX">[Telefon]</a></span>
+    <a class="btn" href="javascript:history.back()">Zurück</a>
+    <span class="call">Lieber gleich sprechen? <a href="tel:+49XXXXXXXX">[Telefon für Rückrufe]</a></span>
   </div>
 
   <script>
     /* Lead nur melden, wenn auf der Startseite zugestimmt wurde. */
-    var PIXEL_ID = 'PIXEL_ID';         // [PIXEL_ID ersetzen]
+    var PIXEL_ID = 'PIXEL_ID';
     var ok = false; try { ok = localStorage.getItem('lp-consent') === 'ja'; } catch(e){}
     if (ok && PIXEL_ID !== 'PIXEL_ID') {
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
