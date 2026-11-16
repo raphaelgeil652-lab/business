@@ -40,9 +40,9 @@ Vorlage: `kunden/muster-solartechnik/anzeigen/anzeigen.html`, Recherche dazu: `.
 
 ## Der Einstieg: drei Verlosungen
 
-Die Verlosungen sind der einzige Einstieg. Eine „kostenlose Dach-Analyse“ wird **nicht** mehr
-beworben (Entscheidung des Nutzers, November 2026). Nach der Anfrage ruft der Betrieb an und
-erstellt ein Festpreis-Angebot, das ist normaler Ablauf, kein beworbenes Gratis-Angebot.
+Die drei Verlosungen sind der einzige Einstieg, ein anderes Gratis-Angebot wird nicht beworben
+(Entscheidung des Nutzers, November 2026). Nach der Anfrage ruft der Betrieb an und erstellt auf
+Wunsch ein Festpreis-Angebot.
 
 | Verlosung | Headline | Mechanik | Was der Betrieb vorher festlegen muss |
 |---|---|---|---|
