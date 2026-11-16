@@ -23,7 +23,7 @@ Datum: 16.11.2026
 ### §1 Gegenstand
 
 Beworben wird: **Photovoltaikanlagen mit Stromspeicher für Ein- und Zweifamilienhäuser**.
-Gratis-Angebot der Kampagne: **kostenlose Dach-Analyse vor Ort mit Festpreis-Angebot**.
+Aktionen der Kampagne: **Verlosung eines kostenlosen Solarmoduls, Verlosung von 3 × 20 % Rabatt und von 3 Stromspeichern auf die erste Bestellung**. Kosten und Bedingungen der Gewinne trägt und bestätigt der Auftraggeber.
 Vereinbartes Werbebudget: **1.000 €/Monat** (davon ca. 700 € Meta, ca. 300 € Google).
 Einzugsgebiet: [Radius] km um [Ort].
 Eine Änderung der beworbenen Leistung ist einvernehmlich in Textform möglich.

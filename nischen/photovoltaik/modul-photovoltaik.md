@@ -38,9 +38,13 @@ Vorlage: `kunden/muster-solartechnik/anzeigen/anzeigen.html`, Recherche dazu: `.
 - Pro Anzeige eine Flächenfarbe: hell/rostrot, dunkel/gelb, hell/grün.
 - Format 1080 × 1350 (4:5), Text nicht an den unteren Rand.
 
-## Gratis-Anker mit Aktionscharakter (für die Anzeigen)
+## Der Einstieg: drei Verlosungen
 
-| Anker | Headline | Mechanik | Was der Betrieb vorher festlegen muss |
+Die Verlosungen sind der einzige Einstieg. Eine „kostenlose Dach-Analyse“ wird **nicht** mehr
+beworben (Entscheidung des Nutzers, November 2026). Nach der Anfrage ruft der Betrieb an und
+erstellt ein Festpreis-Angebot, das ist normaler Ablauf, kein beworbenes Gratis-Angebot.
+
+| Verlosung | Headline | Mechanik | Was der Betrieb vorher festlegen muss |
 |---|---|---|---|
 | Gewinnspiel Modul | „Gewinnen Sie ein Solarmodul.“ | Unter allen Anfragen wird **ein kostenloses Modul** verlost | Teilnahmebedingungen, Zeitraum, Ziehung |
 | Verlosung 20 % | „20 % Rabatt gewinnen.“ | **3 Gewinner** bekommen 20 % auf ihre **erste Bestellung** | Rabatt auf echten Angebotspreis, Enddatum |
@@ -50,48 +54,19 @@ Alle drei sind Verlosungen, keine Rabatte für alle. Pflicht: Teilnahmebedingung
 Landingpage, Hinweis „Meta ist nicht beteiligt“, und bei Rabatt/Speicher vor der Teilnahme klar
 sagen, dass der Gewinn nur mit einer Bestellung eingelöst wird.
 
-**Landingpages dazu:** je Verlosung eine Seite im Anzeigen-Stil, erzeugt von
-`tools/landingpages-bauen.py` aus `landingpage/aktionen.json` (mit Teilnahmebedingungen als Entwurf).
-
-Die kostenlose Dach-Analyse bleibt der Einstieg auf der Landingpage, die Aktion ist der Haken in der Anzeige.
-
-## Gratis-Anker (Einstieg auf der Landingpage)
-
-> „Kostenlose Dach-Analyse vor Ort — Sie bekommen ein Festpreis-Angebot, bevor Sie sich entscheiden.“
-
-Variante, wenn der Betrieb aus der Ferne planen kann (Satellitenbild):
-> „Kostenloser Solar-Check für Ihr Dach — Ertrag und Festpreis in [X] Tagen, ohne Hausbesuch.“
-
 ## Der Vorteil gegenüber Portalen (in jedem Gespräch nutzen)
 
 Lead-Portale verkaufen dieselbe Anfrage oft an mehrere Betriebe. Unsere Anfragen kommen von
 der eigenen Seite des Betriebs und gehen nur an ihn. Er ruft als Einziger an.
 
-## Anzeigen (Meta)
+## Anzeigentexte (Meta)
 
-Drei Strukturen, alle führen auf denselben Gratis-Anker (gleiche Botschaft wie die Landingpage).
+Bilder aus der Anzeigen-Vorlage, ausgefüllte Texte pro Kunde in `kunden/<kunde>/kampagnen.md`.
+Button bei allen: **Registrieren**. Jede Anzeige zeigt auf ihre eigene Landingpage.
 
-**A — Gratis-Anker (Standard)**
-- Primärtext: Lohnt sich Solar auf Ihrem Dach? ☀️ [Betrieb] aus [Ort] kommt vorbei, prüft Ihr Dach und rechnet Ertrag und Speichergröße für Ihren Verbrauch. Sie bekommen ein Festpreis-Angebot und entscheiden erst danach. Unverbindlich.
-  👉 Jetzt kostenlose Dach-Analyse sichern.
-- Headline: Kostenlose Dach-Analyse in [Ort]
-- Beschreibung: Festpreis vorab, unverbindlich.
-- Button: Angebot erhalten
-
-**B — Betrieb aus der Region statt Vermittler**
-- Primärtext: Kein Callcenter, kein Vermittler. Ihre Solaranlage plant und montiert ein Team aus [Ort], mit festem Ansprechpartner von der Dach-Analyse bis zur Inbetriebnahme.
-  👉 Jetzt kostenlose Dach-Analyse anfragen.
-- Headline: Solaranlage vom Betrieb aus [Ort]
-- Beschreibung: Kostenlose Dach-Analyse, Festpreis vorab.
-- Button: Angebot erhalten
-- Nur verwenden, wenn der Betrieb wirklich mit eigenen Teams montiert.
-
-**C — Festpreis und 0 % Mehrwertsteuer**
-- Primärtext: Solaranlage mit Speicher zum Festpreis, und für Anlagen bis 30 kWp auf Ihrem Wohnhaus fallen 0 % Mehrwertsteuer an. [Betrieb] prüft Ihr Dach kostenlos und sagt Ihnen vorher, was es kostet.
-  👉 Jetzt kostenlose Dach-Analyse anfragen.
-- Headline: Solar zum Festpreis in [Ort]
-- Beschreibung: 0 % MwSt bis 30 kWp. Dach-Analyse kostenlos.
-- Button: Angebot erhalten
+- **Modul:** ☀️ Gewinnspiel für Hausbesitzer in Ihrer Region: Unter allen Anfragen bis [Datum] verlosen wir ein kostenloses Modul. Mitmachen dauert 30 Sekunden. 👉 Jetzt teilnehmen.
+- **20 %:** Verlosung bis [Datum]: Unter allen Anfragen verlosen wir 3 × 20 % Rabatt auf die erste Bestellung Ihrer Solaranlage. [Betrieb] plant und montiert mit eigenem Team. 👉 Jetzt teilnehmen.
+- **Speicher:** Wir verlosen 3 Stromspeicher! Unter allen Anfragen bis [Datum] ziehen wir 3 Gewinner, die den Speicher gratis zu ihrer ersten Bestellung bekommen. 👉 Jetzt teilnehmen.
 
 ## Google (Suche)
 
@@ -102,25 +77,25 @@ Keyword-Muster (Wortgruppe und genau passend): `photovoltaik [ort]` · `solaranl
 Ausschließende Keywords: `balkonkraftwerk` · `steckersolar` · `gebraucht` · `selber bauen` ·
 `diy` · `job` · `ausbildung` · `stellenangebot` · `gehalt` · `reinigung` · `mieter`
 
-## Landingpage
+## Landingpages
 
-- Headline: Kostenlose Dach-Analyse für Ihre Solaranlage — in [Ort].
-- Subline: [Betrieb] prüft Ihr Dach vor Ort und rechnet Ertrag und Speichergröße für Ihren Verbrauch. Sie bekommen ein Festpreis-Angebot und entscheiden erst danach.
-- Formular, so kurz wie möglich:
+Je Verlosung eine Seite im Anzeigen-Stil (`modul.html`, `rabatt.html`, `speicher.html`), erzeugt
+von `tools/landingpages-bauen.py` aus `landingpage/aktionen.json`. Oben steht wortgleich das
+Angebot der Anzeige.
 
 | Feld | Pflicht | Warum |
 |---|---|---|
 | Name | ja | |
 | Telefon | ja | Rückruf |
 | Postleitzahl | ja | Einzugsgebiet prüfen |
-| Eigentümer? (Einfamilienhaus / Zwei- oder Mehrfamilienhaus / Nein, Mieter) | ja | der wichtigste Filter, Mieter können meist nicht entscheiden |
-| Interesse (mit Speicher / ohne Speicher / Speicher nachrüsten / weiß noch nicht) | nein | |
+| Eigentümer? (Einfamilienhaus / Zwei- oder Mehrfamilienhaus / Nein, Mieter) | ja | der wichtigste Filter |
 | E-Mail | nein | |
+| Häkchen Teilnahmebedingungen | ja | Voraussetzung für die Verlosung |
 
 Stromverbrauch, Dachart und Ausrichtung klärt der Betrieb beim Rückruf.
 
 - **Vorher/Nachher heißt hier:** leeres Dach → fertige Anlage, dasselbe Haus aus derselben Perspektive. Drohnenfotos sind ideal.
-- FAQ: Kosten, „lohnt sich das noch?“, Speicher ja/nein, Montagedauer, Einspeisung. Keine Zahlen zur Einspeisevergütung: Sie ändern sich halbjährlich, und für 2027 ist eine Reform im Gespräch.
+- Keine Zahlen zur Einspeisevergütung: Sie ändern sich halbjährlich, und für 2027 ist eine Reform im Gespräch.
 
 ## Video-Hook (15–30 s, hochkant)
 

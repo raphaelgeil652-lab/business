@@ -62,7 +62,7 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 | **Fahrplan** ⭐ 26 Schritte mit Links, Anzeigen und Kundengewinnung in ganz Deutschland, was du tust und wie es online geht | [Öffnen](nischen/photovoltaik/README.md) |
 | Betriebshandbuch (nischenneutral) | [Öffnen](https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) |
 | **Anzeigen** ⭐ wie sie im Feed, in der Story und bei Google aussehen | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html) |
-| Landingpage des Probekunden | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/index.html) |
+| Landingpages des Probekunden (je Verlosung) | [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html) · [20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html) · [Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html) |
 | Stand und offene Punkte | [Öffnen](nischen/photovoltaik/kunden/muster-solartechnik/onboarding.md) |
 
 ### 🏮 China Restaurant Chinatown — Einzelkunde (Pfullendorf)

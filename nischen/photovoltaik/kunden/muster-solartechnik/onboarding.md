@@ -38,7 +38,7 @@ Nach 3 Tagen ohne Material: anrufen. Notfalls die nächste Montage selbst fotogr
 - [ ] **Du (einmalig):** Netlify-Konto und Google-Ads-Verwaltungskonto anlegen
 - [ ] Platzhalter auf der Landingpage füllen, sobald das Material da ist
 - [ ] Landingpage auf Netlify hosten, E-Mail-Benachrichtigung an Kunde **und** Agentur
-- [ ] Pixel-ID in `index.html` und `danke.html` eintragen
+- [ ] Pixel-ID in `aktionen.json` eintragen (Landingpages neu bauen) und in `danke.html`
 - [ ] Creatives schneiden (Videoschnitt-Werkzeug im Repo) und hochladen
 - [ ] Kampagnen in Meta und Google anlegen, noch pausiert
 

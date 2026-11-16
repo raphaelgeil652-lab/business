@@ -22,7 +22,7 @@ VARIANTEN = {
         "title": "Gewinnen Sie ein Solarmodul",
         "kicker": "Gewinnspiel bis {datum}",
         "h1": "Gewinnen Sie ein <em>Solarmodul.</em>",
-        "sub": "Unter allen Anfragen bis {datum} verlosen wir ein kostenloses Modul. Dazu bekommen Sie eine kostenlose Dach-Analyse für Ihr Haus.",
+        "sub": "Unter allen Anfragen bis {datum} verlosen wir ein kostenloses Modul. Mitmachen dauert 30 Sekunden.",
         "gewinn": "ein kostenloses Solarmodul",
         "schritt3": "Am {ziehung} ziehen wir den Gewinner und benachrichtigen ihn per Telefon oder E-Mail.",
         "einloesen": "Das Modul wird bei einer Solaranlage von {betrieb} mit eingebaut oder als Erweiterung montiert.",
@@ -36,7 +36,7 @@ VARIANTEN = {
         "title": "20 % Rabatt gewinnen",
         "kicker": "Verlosung bis {datum}",
         "h1": "<em>20 % Rabatt</em> gewinnen.",
-        "sub": "Wir verlosen 3 × 20 % Rabatt auf die erste Bestellung Ihrer Solaranlage. Teilnehmen heißt: Sie fragen Ihre kostenlose Dach-Analyse an.",
+        "sub": "Wir verlosen 3 × 20 % Rabatt auf die erste Bestellung Ihrer Solaranlage. Mitmachen dauert 30 Sekunden.",
         "gewinn": "20 % Rabatt auf die erste Bestellung einer Solaranlage (3 Gewinner)",
         "schritt3": "Am {ziehung} ziehen wir 3 Gewinner. Der Rabatt gilt auf den Angebotspreis Ihrer ersten Bestellung.",
         "einloesen": "Der Rabatt wird vom Angebotspreis der ersten Bestellung abgezogen. Eine Barauszahlung ist nicht möglich.",
@@ -51,7 +51,7 @@ VARIANTEN = {
         "title": "3 Stromspeicher zu gewinnen",
         "kicker": "Verlosung bis {datum}",
         "h1": "3 Stromspeicher <em>zu gewinnen.</em>",
-        "sub": "Unter allen Anfragen verlosen wir 3 Speicher gratis zu Ihrer ersten Bestellung. Teilnehmen heißt: Sie fragen Ihre kostenlose Dach-Analyse an.",
+        "sub": "Unter allen Anfragen verlosen wir 3 Speicher gratis zu Ihrer ersten Bestellung. Mitmachen dauert 30 Sekunden.",
         "gewinn": "ein Stromspeicher ({speicher}) gratis zur ersten Bestellung einer Solaranlage (3 Gewinner)",
         "schritt3": "Am {ziehung} ziehen wir 3 Gewinner. Der Speicher wird zusammen mit Ihrer ersten Bestellung kostenlos eingebaut.",
         "einloesen": "Der Speicher ({speicher}) wird mit der ersten Bestellung einer Solaranlage kostenlos geliefert und montiert. Eine Barauszahlung ist nicht möglich.",
@@ -71,7 +71,7 @@ SEITE = r"""<!--
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} · {betrieb}</title>
-<meta name="description" content="{title}: Verlosung bis {datum}. Mit Ihrer Anfrage für eine kostenlose Dach-Analyse nehmen Sie teil.">
+<meta name="description" content="{title}: Verlosung bis {datum}. Mit Ihrer Anfrage nehmen Sie teil.">
 <meta name="robots" content="noindex">
 <style>
   @font-face{{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap;}}
@@ -192,7 +192,7 @@ SEITE = r"""<!--
       <input type="hidden" name="utm_source" id="f_utm_source"><input type="hidden" name="utm_campaign" id="f_utm_campaign">
       <button type="submit">Jetzt teilnehmen</button>
     </form>
-    <p class="note">Die Dach-Analyse ist kostenlos und unverbindlich.</p>
+    <p class="note">Kostenlos und unverbindlich.</p>
   </div>
 </div>
 
@@ -201,7 +201,7 @@ SEITE = r"""<!--
     <h2>So läuft's</h2>
     <ol class="steps">
       <li><b>Anfrage schicken</b><span>Formular ausfüllen. Damit nehmen Sie an der Verlosung teil.</span></li>
-      <li><b>Kostenlose Dach-Analyse</b><span>Wir rufen Sie werktags innerhalb einer Stunde an und schauen uns Ihr Dach an. Sie bekommen ein Festpreis-Angebot.</span></li>
+      <li><b>Wir rufen Sie an</b><span>Werktags innerhalb einer Stunde. Auf Wunsch erstellen wir Ihnen ein Festpreis-Angebot für Ihre Solaranlage.</span></li>
       <li><b>Ziehung</b><span>{schritt3}</span></li>
     </ol>
   </section>
@@ -215,7 +215,6 @@ SEITE = r"""<!--
   <section>
     <h2>Alles aus einer Hand</h2>
     <ul class="list">
-      <li>Dach-Analyse vor Ort, kostenlos</li>
       <li>Planung mit Speicher, passend zu Ihrem Verbrauch</li>
       <li>Montage mit eigenem Team, kein Subunternehmer</li>
       <li>Anmeldung beim Netzbetreiber und Inbetriebnahme</li>
@@ -232,10 +231,10 @@ SEITE = r"""<!--
 
   <section>
     <h2>Häufige Fragen</h2>
-    <details><summary>Muss ich etwas kaufen, um teilzunehmen?</summary><p>Nein. Die Teilnahme ist kostenlos. Sie fragen eine kostenlose Dach-Analyse an, das ist alles.</p></details>
+    <details><summary>Muss ich etwas kaufen, um teilzunehmen?</summary><p>Nein. Die Teilnahme ist kostenlos. Sie schicken das Formular ab, das ist alles.</p></details>
     {faq_extra}
     <details><summary>Wann wird gezogen?</summary><p>Teilnahmeschluss ist der {datum}. Gezogen wird am {ziehung}. Gewinner benachrichtigen wir per Telefon oder E-Mail.</p></details>
-    <details><summary>Was kostet die Dach-Analyse?</summary><p>Nichts. Wir schauen uns Ihr Dach an, rechnen die Anlage für Ihren Verbrauch und nennen Ihnen einen Festpreis. Danach entscheiden Sie in Ruhe.</p></details>
+    <details><summary>Was passiert nach meiner Anfrage?</summary><p>Wir rufen Sie an. Wenn Sie möchten, planen wir Ihre Anlage passend zu Ihrem Verbrauch und nennen Ihnen einen Festpreis. Danach entscheiden Sie in Ruhe.</p></details>
     <details><summary>Kann ich als Mieter teilnehmen?</summary><p>Ja. Für eine Solaranlage braucht es aber die Zustimmung des Eigentümers.</p></details>
   </section>
 
@@ -248,13 +247,13 @@ SEITE = r"""<!--
     <p><b>Gewinn:</b> {gewinn}. {einloesen}</p>
     <p><b>Ziehung und Benachrichtigung:</b> Die Gewinner werden unter allen gültigen Teilnahmen per Zufall gezogen und per Telefon oder E-Mail benachrichtigt. Meldet sich ein Gewinner nicht innerhalb von 14 Tagen, wird neu gezogen.</p>
     <p><b>Ausschluss:</b> Mitarbeiter des Veranstalters und ihre Angehörigen. Der Rechtsweg ist ausgeschlossen.</p>
-    <p><b>Datenschutz:</b> Ihre Angaben verwenden wir für die Verlosung und für die Kontaktaufnahme zur Dach-Analyse. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    <p><b>Datenschutz:</b> Ihre Angaben verwenden wir für die Verlosung und für die Kontaktaufnahme zu Ihrer Anfrage. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
     <p><b>Hinweis:</b> Diese Aktion steht in keiner Verbindung zu Facebook oder Instagram und wird von Meta weder gesponsert noch unterstützt oder organisiert.</p>
   </section>
 
   <section class="final">
     <h2>Jetzt teilnehmen.</h2>
-    <p>Kostenlose Dach-Analyse, Verlosung bis {datum}.</p>
+    <p>Verlosung bis {datum}. Mitmachen dauert 30 Sekunden.</p>
     <a class="btn" href="#teilnehmen">Jetzt teilnehmen</a>
   </section>
 </div>

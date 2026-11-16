@@ -42,7 +42,7 @@ ausgegeben wird.
 - Was in einer Anlage mit Speicher bei Ihnen enthalten ist (Planung, Montage, Anmeldung …)
   und welche Preisspanne Sie nennen möchten
 - Wie viele Wochen Vorlauf Sie aktuell bis zur Montage haben
-- An welchen Tagen und Uhrzeiten Sie Dach-Analysen vor Ort machen können
+- Zustimmung zu den drei Verlosungen: Enddatum, Datum der Ziehung, Speichergröße und dass Sie die Gewinne tragen
 - Link zu Ihrem Google-Profil, für die Bewertungen auf der Seite
 - Impressum und Datenschutzerklärung (oder den Link dazu)
 

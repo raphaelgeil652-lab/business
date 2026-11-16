@@ -19,7 +19,7 @@ Stand: 16.11.2026 · Status: **Vertrag unterschrieben, Onboarding läuft** (Prob
 | Größe | 7 Mitarbeiter: 2 Montageteams, 1 Elektriker, 1 Büro |
 | Beworbene Leistung | **PV-Anlage mit Speicher für Ein- und Zweifamilienhäuser** |
 | Auftragswert | 15.000–25.000 € (Ø laut Inhaber ca. 18.000 €) |
-| Gratis-Anker | **Kostenlose Dach-Analyse vor Ort + Festpreis-Angebot** |
+| Einstieg | **Drei Verlosungen:** ein kostenloses Modul · 3 × 20 % Rabatt · 3 Stromspeicher (jeweils zur ersten Bestellung) |
 | Kapazität | 3–5 zusätzliche Beratungstermine pro Woche, ca. 4 zusätzliche Montagen pro Monat |
 | Montagevorlauf | [beim Kunden erfragen] |
 | Einzugsgebiet | [Radius] km um [Ort], im Gespräch erfragen („Bis wie weit fahren Sie zur Montage?“) |
