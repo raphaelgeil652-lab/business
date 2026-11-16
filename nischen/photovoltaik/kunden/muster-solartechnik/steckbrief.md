@@ -1,4 +1,4 @@
-# Steckbrief — Muster Solartechnik (Pfullendorf)
+# Steckbrief — Muster Solartechnik
 
 > ⚠️ **FIKTIVER PROBEKUNDE.** Den Betrieb gibt es nicht. Er dient als Probelauf für das
 > Onboarding nach dem Betriebshandbuch. Alles, was im Verkaufsgespräch geklärt wird, ist hier
@@ -15,14 +15,14 @@ Stand: 16.11.2026 · Status: **Vertrag unterschrieben, Onboarding läuft** (Prob
 |---|---|
 | Betrieb | Muster Solartechnik GmbH |
 | Inhaber / Entscheider | Markus Muster |
-| Ort | Pfullendorf |
+| Ort | [Ort] — bewusst offen: Kunden kommen aus ganz Deutschland, der Ort ist pro Kunde verschieden |
 | Größe | 7 Mitarbeiter: 2 Montageteams, 1 Elektriker, 1 Büro |
 | Beworbene Leistung | **PV-Anlage mit Speicher für Ein- und Zweifamilienhäuser** |
 | Auftragswert | 15.000–25.000 € (Ø laut Inhaber ca. 18.000 €) |
 | Gratis-Anker | **Kostenlose Dach-Analyse vor Ort + Festpreis-Angebot** |
 | Kapazität | 3–5 zusätzliche Beratungstermine pro Woche, ca. 4 zusätzliche Montagen pro Monat |
 | Montagevorlauf | [beim Kunden erfragen] |
-| Einzugsgebiet | 25 km um Pfullendorf |
+| Einzugsgebiet | [Radius] km um [Ort], im Gespräch erfragen („Bis wie weit fahren Sie zur Montage?“) |
 | Rückruf | Büro ruft Mo–Fr innerhalb 1 Stunde zurück, Zusage gegeben |
 | Bisherige Kundengewinnung | Empfehlungen + gekaufte Portal-Leads. Problem laut Inhaber: dieselbe Anfrage geht an 3–5 Betriebe, er ist oft zu spät |
 | Bildmaterial | Fotos von fertigen Anlagen vorhanden, Menge unklar. Drohne: [erfragen] |

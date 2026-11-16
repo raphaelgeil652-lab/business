@@ -86,7 +86,11 @@ https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN). `modul-photovoltaik.md` ist 
 `kunden/muster-solartechnik/` der **fiktive** Probekunde (alles dort ist als erfunden markiert).
 Preise dort sind nur ein Vorschlag (850 € / 1.500 €/Monat / 1.000 € Budget), nicht entschieden.
 **Nicht standortgebunden:** PV-Kunden werden in ganz Deutschland gesucht (Verkauf per
-Telefon/Video); die Werbung jedes Kunden läuft in seinem eigenen Einzugsgebiet. Anzeigen-Bilder
+Telefon/Video); die Werbung jedes Kunden läuft in seinem eigenen Einzugsgebiet.
+**Harte Regel des Nutzers: Kein Pfullendorf und kein anderer fester Ort im PV-Material.** Der
+Probekunde hat keinen Standort; wo beim echten Kunden sein Ort hingehört, steht `[Ort]`. Die
+Anzeigen nennen gar keinen Ort („Fachbetrieb in Ihrer Region“). Die Region Pfullendorf gilt nur
+für Kfz und die Webseiten-Kunden. Anzeigen-Bilder
 kommen aus `anzeigen/anzeigen.html` (Name/Ort/Aktionsdatum unten in `KUNDE` tauschen) über
 `nischen/photovoltaik/tools/creatives-rendern.js`. **Anzeigen-Standard (vom Nutzer festgelegt):**
 Solardach-Foto oben, darunter Angebot groß, ein Satz, Faktenzeile, CTA-Zeile, eine Schrift, keine

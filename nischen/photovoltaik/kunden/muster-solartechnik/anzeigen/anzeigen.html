@@ -3,7 +3,7 @@
   Drei Gratis-Anker: Gewinnspiel Solarmodul · 20 % Rabatt · Speicher geschenkt.
   Aufbau: Solardach oben, Angebot groß, ein erklärender Satz, Faktenzeile, Aufforderung.
   Feed 4:5 (1080x1350). Rendern: node ../../../tools/creatives-rendern.js anzeigen.html
-  Name, Ort, Aktionsdatum: unten in KUNDE eintragen, dann neu rendern.
+  Name und Aktionsdatum: unten in KUNDE eintragen. Kein Ort in den Anzeigen (Kunden in ganz Deutschland), dann neu rendern.
   Fotos: CC0-Platzhalter in fotos/, beim echten Kunden durch seine Anlagen ersetzen.
   STANDARD für alle PV-Anzeigen: Solardach-Foto oben (ca. 45 %), darunter Kicker, Angebot groß
   (Schlüsselwort farbig), ein Satz, Faktenzeile, CTA-Zeile mit Pfeil, Kleingedrucktes. Eine Schrift.
@@ -56,7 +56,7 @@
     <p class="kicker">Gewinnspiel</p>
     <h1>Gewinnen Sie ein <em>Solarmodul.</em></h1>
     <p class="sub">Unter allen Anfragen bis <span data-k="datum"></span> verlosen wir ein Modul für Ihr Dach.</p>
-    <p class="facts"><span data-k="betrieb"></span> · <span data-k="ort"></span> · eigene Montageteams</p>
+    <p class="facts"><span data-k="betrieb"></span> · Fachbetrieb in Ihrer Region</p>
   </div>
   <div class="cta">Jetzt teilnehmen <span>→</span></div>
   <p class="fine">Teilnahmebedingungen auf der Seite.</p>
@@ -69,7 +69,7 @@
     <p class="kicker">Aktion bis <span data-k="datum"></span></p>
     <h1><em>20 %</em> auf Ihre Solaranlage.</h1>
     <p class="sub">Für alle Anfragen bis zum <span data-k="datum"></span>.<br>Die Dach-Analyse ist kostenlos.</p>
-    <p class="facts"><span data-k="betrieb"></span> · <span data-k="ort"></span> · Festpreis vorab</p>
+    <p class="facts"><span data-k="betrieb"></span> · Festpreis vorab · eigene Montageteams</p>
   </div>
   <div class="cta">Rabatt sichern <span>→</span></div>
   <p class="fine">Rabatt auf den Angebotspreis. Details auf der Seite.</p>
@@ -82,7 +82,7 @@
     <p class="kicker">Nur für kurze Zeit</p>
     <h1>Stromspeicher <em>geschenkt.</em></h1>
     <p class="sub">Zu jeder neuen Solaranlage gibt es<br>den Stromspeicher gratis.</p>
-    <p class="facts"><span data-k="betrieb"></span> · <span data-k="ort"></span> · Montage mit eigenem Team</p>
+    <p class="facts"><span data-k="betrieb"></span> · Montage mit eigenem Team</p>
   </div>
   <div class="cta">Angebot sichern <span>→</span></div>
   <p class="fine">Gilt bis <span data-k="datum"></span>. Details auf der Seite.</p>
@@ -92,7 +92,6 @@
   /* ===================== KUNDE — nur das hier pro Kunde ändern ===================== */
   var KUNDE = {
     betrieb: 'Muster Solartechnik',
-    ort: 'Pfullendorf',
     datum: '15. Januar'          // Ende der Aktion
   };
   /* ================================================================================= */

@@ -23,11 +23,11 @@ Ziel der Seite: `[Landingpage-URL]` (nach dem Hosten eintragen).
 
 | Einstellung | Wert |
 |---|---|
-| Name | `Pfullendorf 25 km – 35-65+` |
+| Name | `[Ort] [Radius] km – 35-65+` |
 | Conversion-Ort | Website |
 | Pixel / Ereignis | Pixel des Kunden, „Lead“ (feuert auf der Danke-Seite). Misst der Pixel noch nicht: „Landing Page Views“ |
 | Tagesbudget | 23 € |
-| Ort | Pfullendorf + 25 km, „Personen, die an diesem Ort leben“ |
+| Ort | [Ort des Betriebs] + sein Einzugsgebiet, „Personen, die an diesem Ort leben“ |
 | Alter | 35–65+ |
 | Geschlecht | alle |
 | Detailliertes Targeting | leer |
@@ -40,14 +40,14 @@ Name, Ort und Aktionsdatum stehen unten in [`anzeigen/anzeigen.html`](anzeigen/a
 Die Landingpage muss zum Anker passen: Wer auf „Speicher geschenkt“ klickt, liest oben genau das.
 
 **1 — Gewinnspiel Solarmodul** · Bild: `1-gewinnspiel.png` · Button: Registrieren
-- Primärtext: ☀️ Gewinnspiel für Hausbesitzer in Pfullendorf und Umgebung: Unter allen Anfragen bis 15. Januar verlosen wir ein Solarmodul für Ihr Dach. Dazu bekommen Sie eine kostenlose Dach-Analyse, ganz unverbindlich.
+- Primärtext: ☀️ Gewinnspiel für Hausbesitzer in Ihrer Region: Unter allen Anfragen bis 15. Januar verlosen wir ein Solarmodul für Ihr Dach. Dazu bekommen Sie eine kostenlose Dach-Analyse, ganz unverbindlich.
   👉 Jetzt teilnehmen.
 - Headline: Gewinnen Sie ein Solarmodul
 - Beschreibung: Teilnahme bis 15. Januar.
 - Pflicht: Teilnahmebedingungen auf der Landingpage, Hinweis, dass Meta nicht beteiligt ist.
 
 **2 — 20 % Rabatt** · Bild: `2-rabatt.png` · Button: Angebot erhalten
-- Primärtext: Nur bis 15. Januar: 20 % auf Ihre Solaranlage. Muster Solartechnik aus Pfullendorf prüft Ihr Dach kostenlos, plant die Anlage für Ihren Verbrauch und montiert mit eigenem Team.
+- Primärtext: Nur bis 15. Januar: 20 % auf Ihre Solaranlage. Muster Solartechnik prüft Ihr Dach kostenlos, plant die Anlage für Ihren Verbrauch und montiert mit eigenem Team.
   👉 Jetzt Rabatt sichern.
 - Headline: 20 % auf Ihre Solaranlage
 - Beschreibung: Aktion bis 15. Januar.
@@ -66,7 +66,7 @@ Alle drei Angebote (Kosten, Datum, Bedingungen) muss der Kunde schriftlich freig
 
 Handy hochkant, vor einer fertigen Anlage oder im Lager, 20 Sekunden:
 
-> „Ich bin Markus Muster von Muster Solartechnik hier in Pfullendorf. Wir planen und montieren
+> „Ich bin Markus Muster von Muster Solartechnik hier in [Ort]. Wir planen und montieren
 > Solaranlagen mit unseren eigenen Teams, kein Vermittler, kein Callcenter. Wenn Sie wissen
 > wollen, was auf Ihrem Dach geht: Wir kommen vorbei, schauen uns das kostenlos an, und Sie
 > bekommen einen Festpreis. Link ist unten.“
@@ -87,11 +87,11 @@ Handy hochkant, vor einer fertigen Anlage oder im Lager, 20 Sekunden:
 
 | Einstellung | Wert |
 |---|---|
-| Name | `Suche – PV Pfullendorf` |
+| Name | `Suche – PV [Ort]` |
 | Typ | Suche (nur Suchnetzwerk, Display aus) |
 | Tagesbudget | 10 € |
 | Gebotsstrategie | Start: Klicks maximieren mit Höchst-CPC 3 €. Nach ca. 30 Conversions: Conversions maximieren |
-| Standort | Pfullendorf + 25 km, Option „Präsenz: Personen an diesem Ort oder regelmäßig dort“ |
+| Standort | [Ort des Betriebs] + Einzugsgebiet, Option „Präsenz: Personen an diesem Ort oder regelmäßig dort“ |
 | Sprache | Deutsch |
 | Conversion | Formular abgeschickt = Aufruf der Danke-Seite |
 | URL-Parameter | `utm_source=google&utm_campaign=pv-suche` |
@@ -99,15 +99,15 @@ Handy hochkant, vor einer fertigen Anlage oder im Lager, 20 Sekunden:
 Der Höchst-CPC ist ein Startwert, keine Erfahrungszahl. Nach der ersten Woche an die echten
 Klickpreise anpassen.
 
-### Keywords (Anzeigengruppe „PV Pfullendorf“)
+### Keywords (Anzeigengruppe „PV [Ort]“)
 
-Wortgruppe: `"photovoltaik pfullendorf"` · `"solaranlage pfullendorf"` · `"pv anlage pfullendorf"` ·
+Wortgruppe: `"photovoltaik [ort]"` · `"solaranlage [ort]"` · `"pv anlage [ort]"` ·
 `"photovoltaik mit speicher"` · `"solarteur"` · `"pv anlage kosten"` · `"stromspeicher nachrüsten"`
 
-Genau passend: `[photovoltaik pfullendorf]` · `[solaranlage pfullendorf]` · `[pv anlage pfullendorf]`
+Genau passend: `[photovoltaik [ort]]` · `[solaranlage [ort]]` · `[pv anlage [ort]]`
 
 Die Wortgruppen ohne Ortsnamen greifen nur im Standort-Radius, weil die Kampagne auf
-Pfullendorf + 25 km begrenzt ist.
+das Einzugsgebiet des Betriebs begrenzt ist.
 
 ### Ausschließende Keywords
 
@@ -116,14 +116,14 @@ Pfullendorf + 25 km begrenzt ist.
 
 ### Responsive Suchanzeige
 
-Überschriften (höchstens 30 Zeichen, alle geprüft):
+Überschriften (höchstens 30 Zeichen; mit dem echten Ort des Kunden die Länge neu prüfen):
 
-1. Solaranlage in Pfullendorf
-2. Photovoltaik in Pfullendorf
+1. Solaranlage in [Ort]
+2. Photovoltaik in [Ort]
 3. Kostenlose Dach-Analyse
 4. Festpreis-Angebot vorab
 5. PV-Anlage mit Speicher
-6. Betrieb aus Pfullendorf
+6. Betrieb aus [Ort]
 7. 0 % MwSt bis 30 kWp
 8. Eigene Montageteams
 9. Kein Vermittler, kein Portal
@@ -134,12 +134,12 @@ Pfullendorf + 25 km begrenzt ist.
 14. Rückruf am selben Tag
 15. Unverbindlich & kostenlos
 
-Beschreibungen (höchstens 90 Zeichen, alle geprüft):
+Beschreibungen (höchstens 90 Zeichen; mit dem echten Ort neu prüfen):
 
 1. Wir prüfen Ihr Dach vor Ort und rechnen Ertrag und Speicher für Ihren Verbrauch.
 2. Festpreis-Angebot, bevor Sie sich entscheiden. Ein Betrieb aus der Region.
 3. Für Anlagen bis 30 kWp auf Wohnhäusern fallen 0 % Mehrwertsteuer an.
-4. Eigene Montageteams aus Pfullendorf. Jetzt kostenlose Dach-Analyse anfragen.
+4. Eigene Montageteams aus [Ort]. Jetzt kostenlose Dach-Analyse anfragen.
 
 Überschrift 3 an Position 1 anheften, damit der Gratis-Anker immer sichtbar ist.
 

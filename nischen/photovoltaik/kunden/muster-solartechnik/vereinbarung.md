@@ -16,7 +16,7 @@ zwischen
 
 und
 
-**Auftraggeber:** Muster Solartechnik GmbH · [Anschrift], Pfullendorf · vertreten durch Markus Muster
+**Auftraggeber:** Muster Solartechnik GmbH · [Anschrift], [Ort] · vertreten durch Markus Muster
 
 Datum: 16.11.2026
 
@@ -25,7 +25,7 @@ Datum: 16.11.2026
 Beworben wird: **Photovoltaikanlagen mit Stromspeicher für Ein- und Zweifamilienhäuser**.
 Gratis-Angebot der Kampagne: **kostenlose Dach-Analyse vor Ort mit Festpreis-Angebot**.
 Vereinbartes Werbebudget: **1.000 €/Monat** (davon ca. 700 € Meta, ca. 300 € Google).
-Einzugsgebiet: 25 km um Pfullendorf.
+Einzugsgebiet: [Radius] km um [Ort].
 Eine Änderung der beworbenen Leistung ist einvernehmlich in Textform möglich.
 
 ### §2 Leistungen des Auftragnehmers
@@ -85,7 +85,7 @@ auf Aufträge.
 
 ---
 
-Pfullendorf, 16.11.2026
+[Ort], 16.11.2026
 
 Auftragnehmer: ________________________   Auftraggeber: ________________________
 [Name]                                     Markus Muster, Muster Solartechnik GmbH
