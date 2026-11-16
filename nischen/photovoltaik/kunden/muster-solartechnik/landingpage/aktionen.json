@@ -1,0 +1,15 @@
+{
+  "_hinweis": "Kundendaten fuer die drei Verlosungs-Landingpages. Nach jeder Aenderung: python3 nischen/photovoltaik/tools/landingpages-bauen.py <dieser Ordner>. [Eckige Klammern] fuellt der Kunde.",
+  "betrieb": "Muster Solartechnik",
+  "betrieb_lang": "Muster Solartechnik GmbH",
+  "inhaber": "Markus Muster",
+  "telefon": "[Telefon]",
+  "telefon_link": "+49XXXXXXXX",
+  "adresse": "[Adresse], [Ort]",
+  "oeffnungszeiten": "[Öffnungszeiten]",
+  "datum": "15. Januar",
+  "datum_voll": "15.01.2027",
+  "ziehung": "[Datum der Ziehung]",
+  "speicher": "[Speichergröße, z. B. 10 kWh]",
+  "pixel_id": "PIXEL_ID"
+}

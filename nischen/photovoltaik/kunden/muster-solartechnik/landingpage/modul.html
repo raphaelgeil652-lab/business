@@ -1,0 +1,235 @@
+<!--
+  LANDINGPAGE · Gewinnen Sie ein Solarmodul · Muster Solartechnik
+  ERZEUGT von nischen/photovoltaik/tools/landingpages-bauen.py aus aktionen.json — nicht von Hand ändern.
+  Teilnahmebedingungen sind ein ENTWURF: vor dem Livegang rechtlich prüfen lassen.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gewinnen Sie ein Solarmodul · Muster Solartechnik</title>
+<meta name="description" content="Gewinnen Sie ein Solarmodul: Verlosung bis 15. Januar. Mit Ihrer Anfrage für eine kostenlose Dach-Analyse nehmen Sie teil.">
+<meta name="robots" content="noindex">
+<style>
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap;}
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap;}
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap;}
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap;}
+  :root{--bg:#F3EFE7;--ink:#1A1917;--muted:#6B665D;--surface:#FFFFFF;--line:#DDD6C9;--accent:#B4461F;--accent-ink:#FFFFFF;
+        --sans:"Inter Tight",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:500;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  h1,h2{margin:0;letter-spacing:-.03em;line-height:1.02;text-wrap:balance;}
+  p{margin:0;text-wrap:pretty;}
+  em{font-style:normal;color:var(--accent);}
+  a{color:inherit;}
+  .wrap{max-width:600px;margin:0 auto;padding:0 22px;}
+
+  .top{display:flex;justify-content:space-between;align-items:center;padding:16px 0;font-weight:700;letter-spacing:-.01em;}
+  .top a{text-decoration:none;color:var(--accent);font-size:.92rem;}
+  .photo{width:100%;aspect-ratio:16/10;background:url(fotos/dach-ziegel.jpg) 58% 32%/cover no-repeat;}
+  .hero{padding:28px 0 8px;}
+  .kicker{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+  .hero h1{font-size:clamp(2.3rem,10vw,3.2rem);font-weight:800;margin-top:10px;}
+  .hero .sub{font-size:1.1rem;margin-top:14px;}
+  .facts{font-size:.9rem;color:var(--muted);margin-top:12px;}
+
+  .card{background:#FFFFFF;color:#1A1917;border-radius:6px;padding:22px 20px;margin:24px 0 8px;border:1px solid var(--line);}
+  .card h2{font-size:1.45rem;font-weight:800;}
+  .card .hint{font-size:.92rem;color:#5E5A52;margin-top:6px;}
+  form{display:grid;gap:12px;margin-top:16px;}
+  label{font-size:.82rem;font-weight:700;}
+  input,select{display:block;width:100%;margin-top:5px;padding:13px 12px;border:1.5px solid #D9D4CA;border-radius:4px;font:inherit;font-size:1rem;background:#fff;color:#1A1917;}
+  input:focus,select:focus{outline:2px solid var(--accent);border-color:transparent;}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .check{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:.86rem;color:#3A3732;}
+  .check input{width:20px;height:20px;margin:2px 0 0;flex:0 0 auto;}
+  .hp{position:absolute;left:-9999px;}
+  button,.btn{display:block;width:100%;border:0;border-radius:4px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;
+              font-size:1.08rem;padding:16px;cursor:pointer;text-align:center;text-decoration:none;}
+  .note{font-size:.8rem;color:#6B665D;margin-top:10px;text-align:center;}
+
+  section{padding:36px 0;border-top:1px solid var(--line);}
+  section h2{font-size:1.7rem;font-weight:800;margin-bottom:16px;}
+  ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;gap:16px;}
+  ol.steps li{counter-increment:s;position:relative;padding-left:46px;}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:4px;background:var(--accent);
+                       color:var(--accent-ink);display:grid;place-items:center;font-weight:800;}
+  ol.steps b{display:block;}
+  ol.steps span{color:var(--muted);font-size:.95rem;}
+  ul.list{margin:0;padding:0;list-style:none;display:grid;gap:10px;}
+  ul.list li{padding-left:22px;position:relative;}
+  ul.list li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--accent);}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .tile{aspect-ratio:4/3;border:1.5px dashed var(--line);display:grid;place-items:center;text-align:center;font-size:.8rem;color:var(--muted);padding:10px;}
+  .review{border:1.5px dashed var(--line);padding:14px;margin-bottom:10px;color:var(--muted);font-size:.95rem;}
+  details{border-bottom:1px solid var(--line);padding:14px 0;}
+  summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px;}
+  summary::after{content:"+";color:var(--accent);font-weight:800;}
+  details[open] summary::after{content:"−";}
+  details p{color:var(--muted);margin-top:8px;font-size:.95rem;}
+  .tnb{font-size:.86rem;color:var(--muted);}
+  .tnb p{margin-bottom:8px;}
+  .tnb b{color:var(--ink);}
+  .draft{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  .final{text-align:center;}
+  .final p{color:var(--muted);margin:0 0 18px;}
+  footer{border-top:1px solid var(--line);padding:22px 0 110px;text-align:center;font-size:.84rem;color:var(--muted);line-height:1.8;}
+  .linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer;width:auto;display:inline;}
+
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--bg);border-top:1px solid var(--line);
+           padding:10px 22px calc(10px + env(safe-area-inset-bottom));}
+  .sticky .btn{max-width:600px;margin:0 auto;}
+  @media (min-width:720px){.sticky{display:none;} footer{padding-bottom:24px;}}
+  .consent{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--surface);color:var(--ink);border-top:1px solid var(--line);
+            padding:16px 22px calc(16px + env(safe-area-inset-bottom));display:none;}
+  .consent.show{display:block;}
+  .consent p{max-width:600px;margin:0 auto 12px;font-size:.86rem;color:var(--muted);}
+  .consent .row{max-width:600px;margin:0 auto;}
+  .consent .ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
+</style>
+</head>
+<body>
+
+<div class="wrap"><div class="top"><span>Muster Solartechnik</span><a href="tel:+49XXXXXXXX">[Telefon]</a></div></div>
+<div class="photo" role="img" aria-label="Wohnhaus mit Solaranlage auf dem Dach"></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Gewinnspiel bis 15. Januar</p>
+    <h1>Gewinnen Sie ein <em>Solarmodul.</em></h1>
+    <p class="sub">Unter allen Anfragen bis 15. Januar verlosen wir ein kostenloses Modul. Dazu bekommen Sie eine kostenlose Dach-Analyse für Ihr Haus.</p>
+    <p class="facts">Muster Solartechnik · Fachbetrieb in Ihrer Region · eigene Montageteams</p>
+  </header>
+
+  <div class="card" id="teilnehmen">
+    <h2>Jetzt teilnehmen</h2>
+    <p class="hint">30 Sekunden. Mit Ihrer Anfrage sind Sie automatisch in der Verlosung.</p>
+    <form name="verlosung-modul" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="danke.html">
+      <input type="hidden" name="form-name" value="verlosung-modul">
+      <input type="hidden" name="aktion" value="verlosung-modul">
+      <p class="hp"><label>Bitte leer lassen <input name="bot-field"></label></p>
+      <label>Name <input type="text" name="name" required autocomplete="name" placeholder="Ihr Name"></label>
+      <div class="row">
+        <label>Telefon <input type="tel" name="telefon" required autocomplete="tel" placeholder="Für Rückruf"></label>
+        <label>Postleitzahl <input type="text" name="plz" required inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="Ihre PLZ"></label>
+      </div>
+      <label>Sind Sie Eigentümer des Hauses?
+        <select name="eigentuemer" required>
+          <option value="">Bitte wählen …</option>
+          <option>Ja, Einfamilienhaus</option>
+          <option>Ja, Zwei- oder Mehrfamilienhaus</option>
+          <option>Nein, ich bin Mieter</option>
+        </select>
+      </label>
+      <label>E-Mail (optional) <input type="email" name="email" autocomplete="email" placeholder="ihre@email.de"></label>
+      <label class="check"><input type="checkbox" name="bedingungen" required> <span>Ich akzeptiere die <a href="#bedingungen">Teilnahmebedingungen</a>. Die Teilnahme ist kostenlos und an keinen Kauf gebunden.</span></label>
+      <input type="hidden" name="fbclid" id="f_fbclid"><input type="hidden" name="gclid" id="f_gclid">
+      <input type="hidden" name="utm_source" id="f_utm_source"><input type="hidden" name="utm_campaign" id="f_utm_campaign">
+      <button type="submit">Jetzt teilnehmen</button>
+    </form>
+    <p class="note">Die Dach-Analyse ist kostenlos und unverbindlich.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <h2>So läuft's</h2>
+    <ol class="steps">
+      <li><b>Anfrage schicken</b><span>Formular ausfüllen. Damit nehmen Sie an der Verlosung teil.</span></li>
+      <li><b>Kostenlose Dach-Analyse</b><span>Wir rufen Sie werktags innerhalb einer Stunde an und schauen uns Ihr Dach an. Sie bekommen ein Festpreis-Angebot.</span></li>
+      <li><b>Ziehung</b><span>Am [Datum der Ziehung] ziehen wir den Gewinner und benachrichtigen ihn per Telefon oder E-Mail.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Anlagen, die wir montiert haben</h2>
+    <!-- [Echte Fotos des Kunden: Dach vorher/nachher. Kästen durch <img> ersetzen.] -->
+    <div class="tiles"><div class="tile">Foto vom Kunden:<br>Dach vorher</div><div class="tile">Foto vom Kunden:<br>Dach nachher</div></div>
+  </section>
+
+  <section>
+    <h2>Alles aus einer Hand</h2>
+    <ul class="list">
+      <li>Dach-Analyse vor Ort, kostenlos</li>
+      <li>Planung mit Speicher, passend zu Ihrem Verbrauch</li>
+      <li>Montage mit eigenem Team, kein Subunternehmer</li>
+      <li>Anmeldung beim Netzbetreiber und Inbetriebnahme</li>
+      <li>Festpreis, bevor Sie sich entscheiden</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Das sagen Kunden</h2>
+    <!-- [Echte Google-Bewertungen einsetzen. Nie erfinden. Schnitt höchstens 4,9.] -->
+    <div class="review">[Echte Google-Bewertung 1] — [Vorname], [Ort]</div>
+    <div class="review">[Echte Google-Bewertung 2] — [Vorname], [Ort]</div>
+  </section>
+
+  <section>
+    <h2>Häufige Fragen</h2>
+    <details><summary>Muss ich etwas kaufen, um teilzunehmen?</summary><p>Nein. Die Teilnahme ist kostenlos. Sie fragen eine kostenlose Dach-Analyse an, das ist alles.</p></details>
+    
+    <details><summary>Wann wird gezogen?</summary><p>Teilnahmeschluss ist der 15. Januar. Gezogen wird am [Datum der Ziehung]. Gewinner benachrichtigen wir per Telefon oder E-Mail.</p></details>
+    <details><summary>Was kostet die Dach-Analyse?</summary><p>Nichts. Wir schauen uns Ihr Dach an, rechnen die Anlage für Ihren Verbrauch und nennen Ihnen einen Festpreis. Danach entscheiden Sie in Ruhe.</p></details>
+    <details><summary>Kann ich als Mieter teilnehmen?</summary><p>Ja. Für eine Solaranlage braucht es aber die Zustimmung des Eigentümers.</p></details>
+  </section>
+
+  <section id="bedingungen" class="tnb">
+    <p class="draft">Entwurf — vor Livegang rechtlich prüfen</p>
+    <h2>Teilnahmebedingungen</h2>
+    <p><b>Veranstalter:</b> Muster Solartechnik GmbH, [Adresse], [Ort].</p>
+    <p><b>Zeitraum:</b> Teilnahme bis 15.01.2027, 23:59 Uhr. Ziehung am [Datum der Ziehung].</p>
+    <p><b>Teilnahme:</b> durch Absenden des Formulars auf dieser Seite. Teilnahmeberechtigt sind volljährige Personen mit Wohnsitz in Deutschland. Pro Person eine Teilnahme. Die Teilnahme ist kostenlos und nicht an einen Kauf gebunden.</p>
+    <p><b>Gewinn:</b> ein kostenloses Solarmodul. Das Modul wird bei einer Solaranlage von Muster Solartechnik mit eingebaut oder als Erweiterung montiert.</p>
+    <p><b>Ziehung und Benachrichtigung:</b> Die Gewinner werden unter allen gültigen Teilnahmen per Zufall gezogen und per Telefon oder E-Mail benachrichtigt. Meldet sich ein Gewinner nicht innerhalb von 14 Tagen, wird neu gezogen.</p>
+    <p><b>Ausschluss:</b> Mitarbeiter des Veranstalters und ihre Angehörigen. Der Rechtsweg ist ausgeschlossen.</p>
+    <p><b>Datenschutz:</b> Ihre Angaben verwenden wir für die Verlosung und für die Kontaktaufnahme zur Dach-Analyse. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    <p><b>Hinweis:</b> Diese Aktion steht in keiner Verbindung zu Facebook oder Instagram und wird von Meta weder gesponsert noch unterstützt oder organisiert.</p>
+  </section>
+
+  <section class="final">
+    <h2>Jetzt teilnehmen.</h2>
+    <p>Kostenlose Dach-Analyse, Verlosung bis 15. Januar.</p>
+    <a class="btn" href="#teilnehmen">Jetzt teilnehmen</a>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <b>Muster Solartechnik GmbH</b><br>[Adresse], [Ort] · <a href="tel:+49XXXXXXXX">[Telefon]</a><br>[Öffnungszeiten]<br>
+  <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> ·
+  <button class="linkbtn" type="button" id="consent-open">Cookie-Einstellungen</button>
+</div></footer>
+
+<div class="sticky"><a class="btn" href="#teilnehmen">Jetzt teilnehmen</a></div>
+
+<div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook und Instagram ankommt. Dafür nutzen wir das Meta-Pixel, das Cookies setzt. Das geht nur mit Ihrer Zustimmung. Mehr dazu im <a href="datenschutz.html">Datenschutz</a>.</p>
+  <div class="row"><button class="ghost" type="button" id="consent-no">Nur notwendige</button><button type="button" id="consent-yes">Einverstanden</button></div>
+</div>
+
+<script>
+  var PIXEL_ID = 'PIXEL_ID', KEY = 'lp-consent';
+  function getC(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  function setC(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+  function loadPixel(){
+    if (window.fbq || PIXEL_ID === 'PIXEL_ID') return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID); fbq('track', 'PageView');
+  }
+  (function(){
+    var box = document.getElementById('consent'), c = getC();
+    if (c === 'ja') loadPixel(); else if (c !== 'nein') box.classList.add('show');
+    document.getElementById('consent-yes').onclick = function(){ setC('ja'); box.classList.remove('show'); loadPixel(); };
+    document.getElementById('consent-no').onclick = function(){ setC('nein'); box.classList.remove('show'); };
+    document.getElementById('consent-open').onclick = function(){ box.classList.add('show'); };
+    var p = new URLSearchParams(location.search);
+    ['fbclid','gclid','utm_source','utm_campaign'].forEach(function(k){ var el = document.getElementById('f_' + k); if (el) el.value = p.get(k) || ''; });
+  })();
+</script>
+</body>
+</html>

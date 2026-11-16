@@ -50,6 +50,9 @@ Alle drei sind Verlosungen, keine Rabatte für alle. Pflicht: Teilnahmebedingung
 Landingpage, Hinweis „Meta ist nicht beteiligt“, und bei Rabatt/Speicher vor der Teilnahme klar
 sagen, dass der Gewinn nur mit einer Bestellung eingelöst wird.
 
+**Landingpages dazu:** je Verlosung eine Seite im Anzeigen-Stil, erzeugt von
+`tools/landingpages-bauen.py` aus `landingpage/aktionen.json` (mit Teilnahmebedingungen als Entwurf).
+
 Die kostenlose Dach-Analyse bleibt der Einstieg auf der Landingpage, die Aktion ist der Haken in der Anzeige.
 
 ## Gratis-Anker (Einstieg auf der Landingpage)

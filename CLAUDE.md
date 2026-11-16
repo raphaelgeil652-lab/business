@@ -96,7 +96,9 @@ kommen aus `anzeigen/anzeigen.html` (Name/Ort/Aktionsdatum unten in `KUNDE` taus
 Solardach-Foto oben, darunter Angebot groß, ein Satz, Faktenzeile, CTA-Zeile, eine Schrift, keine
 Verläufe/Icons/Glow. Anker in den Anzeigen sind **drei Verlosungen**: ein kostenloses
 Solarmodul · 3 × 20 % Rabatt auf die erste Bestellung · 3 Stromspeicher gratis zur ersten
-Bestellung (nicht für alle). Alle künftigen PV-Anzeigen lehnen sich daran an (Details im Modul). Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
+Bestellung (nicht für alle). Jede Verlosung hat eine eigene Landingpage im Anzeigen-Stil
+(`landingpage/modul|rabatt|speicher.html`), erzeugt von `tools/landingpages-bauen.py` aus
+`landingpage/aktionen.json` — nicht von Hand ändern, sondern JSON/Skript ändern und neu bauen. Alle künftigen PV-Anzeigen lehnen sich daran an (Details im Modul). Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
 Kfz-Vorlage tut beides noch nicht und sollte nachgezogen werden.
 
 **Warum gewechselt:** Vor-Ort-Besuche bei Küchenstudios im Juli 2026 zeigten verhaltene Resonanz.
