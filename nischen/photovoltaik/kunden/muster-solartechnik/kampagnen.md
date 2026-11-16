@@ -33,33 +33,36 @@ Ziel der Seite: `[Landingpage-URL]` (nach dem Hosten eintragen).
 | Detailliertes Targeting | leer |
 | Platzierungen | Advantage+ (automatisch) |
 
-### Anzeigen (3 Stück in der Gruppe)
+### Anzeigen (3 Stück in der Gruppe, je ein Gratis-Anker)
 
 Bilder: [`anzeigen/creatives/`](anzeigen/creatives/) · So sieht es aus: [`anzeigen/vorschau.html`](anzeigen/vorschau.html).
-Pro Anzeige Feed-Bild (4:5) und Story-Bild (9:16) zusammen hochladen.
+Name, Ort und Aktionsdatum stehen unten in [`anzeigen/anzeigen.html`](anzeigen/anzeigen.html) (`KUNDE`).
+Die Landingpage muss zum Anker passen: Wer auf „Speicher geschenkt“ klickt, liest oben genau das.
 
-Texte aus dem Modul, Platzhalter gefüllt. Button bei allen: **Angebot erhalten**.
+**1 — Gewinnspiel Solarmodul** · Bild: `1-gewinnspiel.png` · Button: Registrieren
+- Primärtext: ☀️ Gewinnspiel für Hausbesitzer in Pfullendorf und Umgebung: Unter allen Anfragen bis 15. Januar verlosen wir ein Solarmodul für Ihr Dach. Dazu bekommen Sie eine kostenlose Dach-Analyse, ganz unverbindlich.
+  👉 Jetzt teilnehmen.
+- Headline: Gewinnen Sie ein Solarmodul
+- Beschreibung: Teilnahme bis 15. Januar.
+- Pflicht: Teilnahmebedingungen auf der Landingpage, Hinweis, dass Meta nicht beteiligt ist.
 
-**A — Gratis-Anker** · Bilder: `a-feed.png` + `a-story.png` · später: Video Dach vorher → Montage → fertig
-- Primärtext: Lohnt sich Solar auf Ihrem Dach? ☀️ Muster Solartechnik aus Pfullendorf kommt vorbei, prüft Ihr Dach und rechnet Ertrag und Speichergröße für Ihren Verbrauch. Sie bekommen ein Festpreis-Angebot und entscheiden erst danach. Unverbindlich.
-  👉 Jetzt kostenlose Dach-Analyse sichern.
-- Headline: Kostenlose Dach-Analyse in Pfullendorf
-- Beschreibung: Festpreis vorab, unverbindlich.
+**2 — 20 % Rabatt** · Bild: `2-rabatt.png` · Button: Angebot erhalten
+- Primärtext: Nur bis 15. Januar: 20 % auf Ihre Solaranlage. Muster Solartechnik aus Pfullendorf prüft Ihr Dach kostenlos, plant die Anlage für Ihren Verbrauch und montiert mit eigenem Team.
+  👉 Jetzt Rabatt sichern.
+- Headline: 20 % auf Ihre Solaranlage
+- Beschreibung: Aktion bis 15. Januar.
+- Pflicht: Rabatt nur auf einen echten Angebotspreis, nie auf einen vorher erhöhten.
 
-**B — Betrieb aus der Region** · Bild: `b-feed.png` · später: Inhaber-Video, 20 s, selbst gefilmt
-- Primärtext: Kein Callcenter, kein Vermittler. Ihre Solaranlage plant und montiert ein Team aus Pfullendorf, mit festem Ansprechpartner von der Dach-Analyse bis zur Inbetriebnahme.
-  👉 Jetzt kostenlose Dach-Analyse anfragen.
-- Headline: Solaranlage vom Betrieb aus Pfullendorf
-- Beschreibung: Kostenlose Dach-Analyse, Festpreis vorab.
+**3 — Speicher geschenkt** · Bild: `3-speicher.png` · Button: Angebot erhalten
+- Primärtext: Stromspeicher geschenkt: Zu jeder neuen Solaranlage von Muster Solartechnik gibt es den Speicher gratis dazu. Gilt bis 15. Januar. Die Dach-Analyse vor Ort ist kostenlos.
+  👉 Jetzt Angebot sichern.
+- Headline: Stromspeicher geschenkt
+- Beschreibung: Zu jeder neuen Solaranlage.
+- Pflicht: Speichergröße vorher mit dem Betrieb festlegen und auf der Landingpage nennen.
 
-**C — Festpreis und 0 % MwSt** · Bilder: `c-feed.png` + `c-story.png` · später: bestes Foto einer fertigen Anlage
-- Primärtext: Solaranlage mit Speicher zum Festpreis, und für Anlagen bis 30 kWp auf Ihrem Wohnhaus fallen 0 % Mehrwertsteuer an. Muster Solartechnik prüft Ihr Dach kostenlos und sagt Ihnen vorher, was es kostet.
-  👉 Jetzt kostenlose Dach-Analyse anfragen.
-- Headline: Solar zum Festpreis in Pfullendorf
-- Beschreibung: 0 % MwSt bis 30 kWp. Dach-Analyse kostenlos.
-- Vorher vom Kunden freigeben lassen (§7 der Vereinbarung).
+Alle drei Angebote (Kosten, Datum, Bedingungen) muss der Kunde schriftlich freigeben (§7 der Vereinbarung).
 
-### Skript für das Inhaber-Video (Anzeige B)
+### Skript für ein Inhaber-Video (später als zusätzliche Anzeige)
 
 Handy hochkant, vor einer fertigen Anlage oder im Lager, 20 Sekunden:
 
@@ -72,7 +75,7 @@ Handy hochkant, vor einer fertigen Anlage oder im Lager, 20 Sekunden:
 
 - [ ] Advantage+ Creative-Verbesserungen aus (auf Anzeigenebene)
 - [ ] Multi-Advertiser-Anzeigen aus
-- [ ] URL-Parameter: `utm_source=meta&utm_campaign=pv-dachanalyse`
+- [ ] URL-Parameter: `utm_source=meta&utm_campaign=pv-[gewinnspiel|rabatt|speicher]`
 - [ ] Vorschau am Handy geprüft
 - [ ] Nach Freigabe eine Test-Anfrage über die Anzeige geschickt
 

@@ -87,8 +87,11 @@ https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN). `modul-photovoltaik.md` ist 
 Preise dort sind nur ein Vorschlag (850 € / 1.500 €/Monat / 1.000 € Budget), nicht entschieden.
 **Nicht standortgebunden:** PV-Kunden werden in ganz Deutschland gesucht (Verkauf per
 Telefon/Video); die Werbung jedes Kunden läuft in seinem eigenen Einzugsgebiet. Anzeigen-Bilder
-kommen aus `anzeigen/creatives.html` (Name/Ort oben tauschen) über
-`nischen/photovoltaik/tools/creatives-rendern.js`. Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
+kommen aus `anzeigen/anzeigen.html` (Name/Ort/Aktionsdatum unten in `KUNDE` tauschen) über
+`nischen/photovoltaik/tools/creatives-rendern.js`. **Anzeigen-Standard (vom Nutzer festgelegt):**
+Solardach-Foto oben, darunter Angebot groß, ein Satz, Faktenzeile, CTA-Zeile, eine Schrift, keine
+Verläufe/Icons/Glow. Anker in den Anzeigen: Gewinnspiel Solarmodul · 20 % Rabatt · Speicher
+geschenkt. Alle künftigen PV-Anzeigen lehnen sich daran an (Details im Modul). Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
 Kfz-Vorlage tut beides noch nicht und sollte nachgezogen werden.
 
 **Warum gewechselt:** Vor-Ort-Besuche bei Küchenstudios im Juli 2026 zeigten verhaltene Resonanz.

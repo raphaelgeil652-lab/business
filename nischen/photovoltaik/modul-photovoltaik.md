@@ -24,7 +24,31 @@ Stand der Marktzahlen: November 2026. Quellen unten, Einschätzung dazu jeweils 
 Kapazität (Montagevorlauf!) und Rückrufgeschwindigkeit, weil Interessenten parallel bei
 Portalen und Konkurrenz anfragen.
 
-## Gratis-Anker
+## Anzeigen-Standard (gilt für alle PV-Kunden)
+
+Festgelegt im November 2026, nachdem drei aufwendigere Richtungen verworfen wurden.
+Vorlage: `kunden/muster-solartechnik/anzeigen/anzeigen.html`, Recherche dazu: `.../anzeigen/recherche.md`.
+
+- **Das Solardach ist das Bild.** Oben ca. 45 % der Fläche ein echtes Foto von Modulen auf
+  einem Wohnhaus. Man muss in einer Sekunde sehen, dass es um Solar geht.
+- Darunter auf ruhiger, flacher Fläche: kleiner Kicker (z. B. „Aktion bis …“), **das Angebot groß**
+  mit dem Schlüsselwort in Farbe, ein erklärender Satz, eine Faktenzeile (Betrieb · Ort · Vorteil),
+  Aufforderung als Zeile mit Pfeil, Kleingedrucktes.
+- Eine Schrift (Inter Tight), keine Verläufe, kein Glow, keine Icons, keine Deko-Kästen.
+- Pro Anzeige eine Flächenfarbe: hell/rostrot, dunkel/gelb, hell/grün.
+- Format 1080 × 1350 (4:5), Text nicht an den unteren Rand.
+
+## Gratis-Anker mit Aktionscharakter (für die Anzeigen)
+
+| Anker | Kicker / Headline | Was der Betrieb vorher festlegen muss |
+|---|---|---|
+| Gewinnspiel | „Gewinnen Sie ein Solarmodul.“ | Teilnahmebedingungen, Zeitraum, Ziehung, Hinweis „Meta ist nicht beteiligt“ |
+| 20 % Rabatt | „20 % auf Ihre Solaranlage.“ | Rabatt auf echten Angebotspreis, Enddatum; trägt er rund 20 % Marge-Verzicht? |
+| Speicher geschenkt | „Stromspeicher geschenkt.“ | Welche Speichergröße, Enddatum; Wert ca. 3.000–9.000 € |
+
+Die kostenlose Dach-Analyse bleibt der Einstieg auf der Landingpage, die Aktion ist der Haken in der Anzeige.
+
+## Gratis-Anker (Einstieg auf der Landingpage)
 
 > „Kostenlose Dach-Analyse vor Ort — Sie bekommen ein Festpreis-Angebot, bevor Sie sich entscheiden.“
 

@@ -1,0 +1,102 @@
+<!--
+  META-ANZEIGEN (Standard) · PV · Probekunde Muster Solartechnik (FIKTIV)
+  Drei Gratis-Anker: Gewinnspiel Solarmodul · 20 % Rabatt · Speicher geschenkt.
+  Aufbau: Solardach oben, Angebot groß, ein erklärender Satz, Faktenzeile, Aufforderung.
+  Feed 4:5 (1080x1350). Rendern: node ../../../tools/creatives-rendern.js anzeigen.html
+  Name, Ort, Aktionsdatum: unten in KUNDE eintragen, dann neu rendern.
+  Fotos: CC0-Platzhalter in fotos/, beim echten Kunden durch seine Anlagen ersetzen.
+  STANDARD für alle PV-Anzeigen: Solardach-Foto oben (ca. 45 %), darunter Kicker, Angebot groß
+  (Schlüsselwort farbig), ein Satz, Faktenzeile, CTA-Zeile mit Pfeil, Kleingedrucktes. Eine Schrift.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Anzeigen · PV</title>
+<style>
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-500-normal.woff2) format("woff2");font-weight:500;}
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-600-normal.woff2) format("woff2");font-weight:600;}
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-700-normal.woff2) format("woff2");font-weight:700;}
+  @font-face{font-family:"Inter Tight";src:url(fonts/inter-tight-latin-800-normal.woff2) format("woff2");font-weight:800;}
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#888;display:flex;flex-direction:column;gap:40px;padding:40px;align-items:flex-start;-webkit-font-smoothing:antialiased;}
+  .ad{width:1080px;height:1350px;position:relative;overflow:hidden;flex:0 0 auto;font-family:"Inter Tight",sans-serif;}
+  .photo{position:absolute;left:0;top:0;width:1080px;height:600px;background-size:cover;background-repeat:no-repeat;}
+  .band{position:absolute;left:0;right:0;top:600px;bottom:0;padding:56px 80px 0;}
+  .kicker{font-size:26px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+  h1{font-size:108px;font-weight:800;line-height:.98;letter-spacing:-.035em;margin-top:18px;}
+  .sub{font-size:36px;font-weight:500;line-height:1.3;margin-top:26px;letter-spacing:-.01em;}
+  .facts{font-size:26px;font-weight:500;margin-top:24px;}
+  .cta{position:absolute;left:80px;right:80px;bottom:96px;padding-top:24px;border-top:2px solid;
+       font-size:36px;font-weight:700;display:flex;justify-content:space-between;align-items:center;letter-spacing:-.01em;}
+  .cta span{font-size:48px;line-height:1;}
+  .fine{position:absolute;left:80px;right:80px;bottom:50px;font-size:19px;}
+
+  .a{background:#F3EFE7;color:#1A1917;}
+  .a .kicker,.a h1 em,.a .cta span{color:#B4461F;}
+  .a .sub{color:#3A3732;} .a .facts,.a .fine{color:#7A756B;} .a .cta{border-color:#1A1917;}
+
+  .b{background:#151515;color:#F3F1EC;}
+  .b .kicker,.b h1 em,.b .cta span{color:#F0C24B;}
+  .b .sub{color:#D6D2C9;} .b .facts,.b .fine{color:#8F8B83;} .b .cta{border-color:#F0C24B;}
+
+  .c{background:#ECEAE4;color:#1A1917;}
+  .c .kicker,.c h1 em,.c .cta span{color:#2F6B4F;}
+  .c .sub{color:#3A3732;} .c .facts,.c .fine{color:#7A756B;} .c .cta{border-color:#1A1917;}
+  h1 em{font-style:normal;}
+</style>
+</head>
+<body>
+
+<!-- 1 · GEWINNSPIEL — Solarmodul -->
+<div class="ad a" data-creative="1-gewinnspiel">
+  <div class="photo" style="background-image:url(fotos/dach-ziegel.jpg);background-position:58% 32%;"></div>
+  <div class="band">
+    <p class="kicker">Gewinnspiel</p>
+    <h1>Gewinnen Sie ein <em>Solarmodul.</em></h1>
+    <p class="sub">Unter allen Anfragen bis <span data-k="datum"></span> verlosen wir ein Modul für Ihr Dach.</p>
+    <p class="facts"><span data-k="betrieb"></span> · <span data-k="ort"></span> · eigene Montageteams</p>
+  </div>
+  <div class="cta">Jetzt teilnehmen <span>→</span></div>
+  <p class="fine">Teilnahmebedingungen auf der Seite.</p>
+</div>
+
+<!-- 2 · 20 % RABATT -->
+<div class="ad b" data-creative="2-rabatt">
+  <div class="photo" style="background-image:url(fotos/dach-klinker.jpg);background-size:auto 760px;background-position:20% 0%;"></div>
+  <div class="band">
+    <p class="kicker">Aktion bis <span data-k="datum"></span></p>
+    <h1><em>20 %</em> auf Ihre Solaranlage.</h1>
+    <p class="sub">Für alle Anfragen bis zum <span data-k="datum"></span>.<br>Die Dach-Analyse ist kostenlos.</p>
+    <p class="facts"><span data-k="betrieb"></span> · <span data-k="ort"></span> · Festpreis vorab</p>
+  </div>
+  <div class="cta">Rabatt sichern <span>→</span></div>
+  <p class="fine">Rabatt auf den Angebotspreis. Details auf der Seite.</p>
+</div>
+
+<!-- 3 · SPEICHER GESCHENKT -->
+<div class="ad c" data-creative="3-speicher">
+  <div class="photo" style="background-image:url(fotos/strasse.jpg);background-position:42% 18%;"></div>
+  <div class="band">
+    <p class="kicker">Nur für kurze Zeit</p>
+    <h1>Stromspeicher <em>geschenkt.</em></h1>
+    <p class="sub">Zu jeder neuen Solaranlage gibt es<br>den Stromspeicher gratis.</p>
+    <p class="facts"><span data-k="betrieb"></span> · <span data-k="ort"></span> · Montage mit eigenem Team</p>
+  </div>
+  <div class="cta">Angebot sichern <span>→</span></div>
+  <p class="fine">Gilt bis <span data-k="datum"></span>. Details auf der Seite.</p>
+</div>
+
+<script>
+  /* ===================== KUNDE — nur das hier pro Kunde ändern ===================== */
+  var KUNDE = {
+    betrieb: 'Muster Solartechnik',
+    ort: 'Pfullendorf',
+    datum: '15. Januar'          // Ende der Aktion
+  };
+  /* ================================================================================= */
+  document.querySelectorAll('[data-k]').forEach(function(el){ el.textContent = KUNDE[el.dataset.k] || ''; });
+</script>
+</body>
+</html>
