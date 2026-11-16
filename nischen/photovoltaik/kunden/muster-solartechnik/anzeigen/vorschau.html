@@ -1,0 +1,116 @@
+<!--
+  ANZEIGEN-VORSCHAU · Muster Solartechnik (FIKTIVER PROBEKUNDE)
+  So sehen die Anzeigen im Facebook-Feed, in der Instagram-Story und bei Google aus.
+  Bilder: creatives/*.png (erzeugt aus creatives.html). Texte: ../kampagnen.md.
+  Zum Zeigen beim Kunden oder dem Kollegen — nicht zum Hochladen.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anzeigen · Muster Solartechnik</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--ink:#050505;--muted:#65676B;--line:#DADDE1;--bg:#F0F2F5;--accent:#FF6B2C;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);padding:24px 12px 48px;}
+  img{display:block;max-width:100%;}
+  .h{max-width:500px;margin:0 auto 6px;font-size:1.15rem;font-weight:800;text-align:center;}
+  .sub{max-width:500px;margin:0 auto 26px;font-size:.88rem;color:var(--muted);text-align:center;line-height:1.5;}
+  .sec{max-width:500px;margin:34px auto 12px;font-size:.78rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;}
+  .lbl{max-width:500px;margin:0 auto 8px;font-size:.74rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);}
+  .lbl small{display:block;color:var(--muted);font-weight:600;letter-spacing:0;text-transform:none;font-size:.82rem;margin-top:.25rem;line-height:1.45;}
+
+  .ad{max-width:500px;margin:0 auto 28px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  .top{display:flex;align-items:center;gap:10px;padding:12px 12px 8px;}
+  .pic{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#FF6B2C,#FFC93C);flex:0 0 auto;}
+  .who b{display:block;font-size:.9rem;}
+  .who span{font-size:.78rem;color:var(--muted);}
+  .txt{padding:0 12px 10px;font-size:.94rem;line-height:1.5;white-space:pre-line;}
+  .card{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#F7F8FA;border-top:1px solid var(--line);padding:10px 12px;}
+  .card .u{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;}
+  .card b{display:block;font-size:.95rem;line-height:1.25;}
+  .card small{display:block;font-size:.8rem;color:var(--muted);}
+  .card .btn{flex:0 0 auto;background:#E4E6EB;color:#050505;font-weight:700;font-size:.85rem;padding:.55em 1em;border-radius:8px;white-space:nowrap;}
+  .bar{display:flex;justify-content:space-around;padding:6px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;font-weight:600;}
+
+  .stories{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;max-width:600px;margin:0 auto 28px;}
+  .story{width:240px;position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;}
+  .story>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .story .rtop{position:absolute;top:10px;left:10px;right:10px;color:#fff;font-size:.72rem;}
+  .story .prog{height:2px;background:rgba(255,255,255,.5);border-radius:2px;margin-bottom:8px;}
+  .story .prog i{display:block;height:100%;width:35%;background:#fff;}
+  .story .acc{display:flex;align-items:center;gap:7px;}
+  .story .acc i{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#FF6B2C,#FFC93C);}
+  .story .cta{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;background:#fff;color:#050505;font-weight:700;font-size:.78rem;padding:.55em 1.1em;border-radius:999px;white-space:nowrap;}
+
+  .g{max-width:600px;margin:0 auto 28px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-family:Arial,sans-serif;}
+  .g .sp{font-size:.8rem;font-weight:700;color:#202124;margin-bottom:6px;}
+  .g .site{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+  .g .fav{width:26px;height:26px;border-radius:50%;background:#F1F3F4;display:grid;place-items:center;font-size:.8rem;}
+  .g .site b{display:block;font-size:.85rem;font-weight:400;color:#202124;}
+  .g .site span{font-size:.75rem;color:#4D5156;}
+  .g .t{color:#1A0DAB;font-size:1.2rem;line-height:1.3;margin:4px 0 4px;}
+  .g .d{color:#4D5156;font-size:.86rem;line-height:1.55;}
+
+  .note{max-width:500px;margin:0 auto 22px;font-size:.84rem;color:var(--muted);line-height:1.55;background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:12px 14px;}
+  .note b{color:var(--ink);}
+</style>
+</head>
+<body>
+
+  <div class="h">So sehen die Anzeigen aus</div>
+  <div class="sub">Probekunde „Muster Solartechnik“ (fiktiv).<br>Drei Feed-Anzeigen, zwei Storys, eine Google-Suchanzeige.</div>
+
+  <div class="note"><b>Wichtig:</b> Das sind die Start-Creatives, damit am ersten Tag etwas läuft. Sobald der Kunde echte Fotos (Dach vorher/nachher) und ein kurzes Video von sich schickt, kommen die als zusätzliche Anzeigen dazu. Echte Bilder schlagen jede Grafik.</div>
+
+  <div class="sec">Facebook &amp; Instagram · Feed</div>
+
+  <div class="lbl">Anzeige A — Gratis-Anker<small>Der Standard. Frage als Hook, kostenlose Dach-Analyse als Angebot.</small></div>
+  <div class="ad">
+    <div class="top"><div class="pic"></div><div class="who"><b>Muster Solartechnik</b><span>Gesponsert · 🌐</span></div></div>
+    <div class="txt">Lohnt sich Solar auf Ihrem Dach? ☀️ Muster Solartechnik aus Pfullendorf kommt vorbei, prüft Ihr Dach und rechnet Ertrag und Speichergröße für Ihren Verbrauch. Sie bekommen ein Festpreis-Angebot und entscheiden erst danach. Unverbindlich.
+👉 Jetzt kostenlose Dach-Analyse sichern.</div>
+    <img src="creatives/a-feed.png" alt="Anzeige A">
+    <div class="card"><div><span class="u">ihre-seite.netlify.app</span><b>Kostenlose Dach-Analyse in Pfullendorf</b><small>Festpreis vorab, unverbindlich.</small></div><span class="btn">Angebot erhalten</span></div>
+    <div class="bar"><span>👍 Gefällt mir</span><span>💬 Kommentieren</span><span>↗ Teilen</span></div>
+  </div>
+
+  <div class="lbl">Anzeige B — Betrieb aus der Region<small>Gegen Portale und Callcenter. Später durch das Inhaber-Video ersetzen.</small></div>
+  <div class="ad">
+    <div class="top"><div class="pic"></div><div class="who"><b>Muster Solartechnik</b><span>Gesponsert · 🌐</span></div></div>
+    <div class="txt">Kein Callcenter, kein Vermittler. Ihre Solaranlage plant und montiert ein Team aus Pfullendorf, mit festem Ansprechpartner von der Dach-Analyse bis zur Inbetriebnahme.
+👉 Jetzt kostenlose Dach-Analyse anfragen.</div>
+    <img src="creatives/b-feed.png" alt="Anzeige B">
+    <div class="card"><div><span class="u">ihre-seite.netlify.app</span><b>Solaranlage vom Betrieb aus Pfullendorf</b><small>Kostenlose Dach-Analyse, Festpreis vorab.</small></div><span class="btn">Angebot erhalten</span></div>
+    <div class="bar"><span>👍 Gefällt mir</span><span>💬 Kommentieren</span><span>↗ Teilen</span></div>
+  </div>
+
+  <div class="lbl">Anzeige C — Festpreis und 0 % MwSt<small>Rationaler Winkel. Vor dem Start vom Kunden freigeben lassen.</small></div>
+  <div class="ad">
+    <div class="top"><div class="pic"></div><div class="who"><b>Muster Solartechnik</b><span>Gesponsert · 🌐</span></div></div>
+    <div class="txt">Solaranlage mit Speicher zum Festpreis, und für Anlagen bis 30 kWp auf Ihrem Wohnhaus fallen 0 % Mehrwertsteuer an. Muster Solartechnik prüft Ihr Dach kostenlos und sagt Ihnen vorher, was es kostet.
+👉 Jetzt kostenlose Dach-Analyse anfragen.</div>
+    <img src="creatives/c-feed.png" alt="Anzeige C">
+    <div class="card"><div><span class="u">ihre-seite.netlify.app</span><b>Solar zum Festpreis in Pfullendorf</b><small>0 % MwSt bis 30 kWp. Dach-Analyse kostenlos.</small></div><span class="btn">Angebot erhalten</span></div>
+    <div class="bar"><span>👍 Gefällt mir</span><span>💬 Kommentieren</span><span>↗ Teilen</span></div>
+  </div>
+
+  <div class="sec">Instagram &amp; Facebook · Story / Reels</div>
+  <div class="stories">
+    <div class="story"><img src="creatives/a-story.png" alt="Story A"><div class="rtop"><div class="prog"><i></i></div><div class="acc"><i></i><b>muster.solartechnik</b>&nbsp;· Gesponsert</div></div><span class="cta">Angebot erhalten</span></div>
+    <div class="story"><img src="creatives/c-story.png" alt="Story C"><div class="rtop"><div class="prog"><i></i></div><div class="acc"><i></i><b>muster.solartechnik</b>&nbsp;· Gesponsert</div></div><span class="cta">Angebot erhalten</span></div>
+  </div>
+
+  <div class="sec">Google · Suchanzeige</div>
+  <div class="lbl" style="max-width:600px;">Bei „solaranlage pfullendorf“<small>Google mischt die 15 Überschriften und 4 Beschreibungen selbst. Das ist eine mögliche Kombination.</small></div>
+  <div class="g">
+    <div class="sp">Gesponsert</div>
+    <div class="site"><span class="fav">☀️</span><div><b>Muster Solartechnik</b><span>ihre-seite.netlify.app</span></div></div>
+    <div class="t">Kostenlose Dach-Analyse | Solaranlage in Pfullendorf | Festpreis-Angebot vorab</div>
+    <div class="d">Wir prüfen Ihr Dach vor Ort und rechnen Ertrag und Speicher für Ihren Verbrauch. Für Anlagen bis 30 kWp auf Wohnhäusern fallen 0 % Mehrwertsteuer an.</div>
+  </div>
+
+</body>
+</html>

@@ -35,21 +35,24 @@ Ziel der Seite: `[Landingpage-URL]` (nach dem Hosten eintragen).
 
 ### Anzeigen (3 Stück in der Gruppe)
 
+Bilder: [`anzeigen/creatives/`](anzeigen/creatives/) · So sieht es aus: [`anzeigen/vorschau.html`](anzeigen/vorschau.html).
+Pro Anzeige Feed-Bild (4:5) und Story-Bild (9:16) zusammen hochladen.
+
 Texte aus dem Modul, Platzhalter gefüllt. Button bei allen: **Angebot erhalten**.
 
-**A — Gratis-Anker** · Creative: Video Dach vorher → Montage → fertig (hochkant, Untertitel)
+**A — Gratis-Anker** · Bilder: `a-feed.png` + `a-story.png` · später: Video Dach vorher → Montage → fertig
 - Primärtext: Lohnt sich Solar auf Ihrem Dach? ☀️ Muster Solartechnik aus Pfullendorf kommt vorbei, prüft Ihr Dach und rechnet Ertrag und Speichergröße für Ihren Verbrauch. Sie bekommen ein Festpreis-Angebot und entscheiden erst danach. Unverbindlich.
   👉 Jetzt kostenlose Dach-Analyse sichern.
 - Headline: Kostenlose Dach-Analyse in Pfullendorf
 - Beschreibung: Festpreis vorab, unverbindlich.
 
-**B — Betrieb aus der Region** · Creative: Inhaber-Video, 20 s, selbst gefilmt
+**B — Betrieb aus der Region** · Bild: `b-feed.png` · später: Inhaber-Video, 20 s, selbst gefilmt
 - Primärtext: Kein Callcenter, kein Vermittler. Ihre Solaranlage plant und montiert ein Team aus Pfullendorf, mit festem Ansprechpartner von der Dach-Analyse bis zur Inbetriebnahme.
   👉 Jetzt kostenlose Dach-Analyse anfragen.
 - Headline: Solaranlage vom Betrieb aus Pfullendorf
 - Beschreibung: Kostenlose Dach-Analyse, Festpreis vorab.
 
-**C — Festpreis und 0 % MwSt** · Creative: bestes Foto einer fertigen Anlage, kein Text im Bild
+**C — Festpreis und 0 % MwSt** · Bilder: `c-feed.png` + `c-story.png` · später: bestes Foto einer fertigen Anlage
 - Primärtext: Solaranlage mit Speicher zum Festpreis, und für Anlagen bis 30 kWp auf Ihrem Wohnhaus fallen 0 % Mehrwertsteuer an. Muster Solartechnik prüft Ihr Dach kostenlos und sagt Ihnen vorher, was es kostet.
   👉 Jetzt kostenlose Dach-Analyse anfragen.
 - Headline: Solar zum Festpreis in Pfullendorf

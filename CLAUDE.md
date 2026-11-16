@@ -85,7 +85,10 @@ muss die Routine mitgeändert werden.
 https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN). `modul-photovoltaik.md` ist das Modul,
 `kunden/muster-solartechnik/` der **fiktive** Probekunde (alles dort ist als erfunden markiert).
 Preise dort sind nur ein Vorschlag (850 € / 1.500 €/Monat / 1.000 € Budget), nicht entschieden.
-Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
+**Nicht standortgebunden:** PV-Kunden werden in ganz Deutschland gesucht (Verkauf per
+Telefon/Video); die Werbung jedes Kunden läuft in seinem eigenen Einzugsgebiet. Anzeigen-Bilder
+kommen aus `anzeigen/creatives.html` (Name/Ort oben tauschen) über
+`nischen/photovoltaik/tools/creatives-rendern.js`. Die PV-Landingpage lädt keine Google Fonts und setzt das Pixel erst nach Zustimmung; die
 Kfz-Vorlage tut beides noch nicht und sollte nachgezogen werden.
 
 **Warum gewechselt:** Vor-Ort-Besuche bei Küchenstudios im Juli 2026 zeigten verhaltene Resonanz.

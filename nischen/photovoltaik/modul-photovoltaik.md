@@ -17,6 +17,7 @@ Stand der Marktzahlen: November 2026. Quellen unten, Einschätzung dazu jeweils 
 | Entscheidung | Wochen bis wenige Monate, meist mehrere Angebote im Vergleich |
 | Saison | ganzjährig. Ob der Winter schwächer läuft, zeigen erst eigene Zahlen. |
 | Budget-Richtwert | ca. 1.000 €/Monat, davon ca. 70 % Meta, 30 % Google |
+| Zielradius | das Einzugsgebiet des Betriebs, im Gespräch fragen („Bis wie weit fahren Sie zur Montage?“). Bei PV oft größer als die 25 km aus dem Handbuch; Start mit seiner Angabe, nach 20–50 Anfragen prüfen |
 | Kosten pro Anfrage | grob 30–90 € (Branchenquellen, kaum deutsche Daten). Nach 20–50 Anfragen mit eigenen Zahlen ersetzen. |
 
 **Kundenfilter:** Kriterium 1 (Auftragswert) ist hier nie das Problem. Die Engpässe sind
