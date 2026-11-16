@@ -27,7 +27,7 @@ Portalen und Konkurrenz anfragen.
 ## Anzeigen-Standard (gilt für alle PV-Kunden)
 
 Festgelegt im November 2026, nachdem drei aufwendigere Richtungen verworfen wurden.
-Vorlage: `kunden/muster-solartechnik/anzeigen/anzeigen.html`, Recherche dazu: `.../anzeigen/recherche.md`.
+Vorlage: `vorlagen/anzeigen/anzeigen.html`, Recherche dazu: `vorlagen/anzeigen/recherche.md`.
 
 - **Das Solardach ist das Bild.** Oben ca. 45 % der Fläche ein echtes Foto von Modulen auf
   einem Wohnhaus. Man muss in einer Sekunde sehen, dass es um Solar geht.
@@ -80,7 +80,7 @@ Ausschließende Keywords: `balkonkraftwerk` · `steckersolar` · `gebraucht` · 
 ## Landingpages
 
 Je Verlosung eine Seite im Anzeigen-Stil (`modul.html`, `rabatt.html`, `speicher.html`), erzeugt
-von `tools/landingpages-bauen.py` aus `landingpage/aktionen.json`. Oben steht wortgleich das
+von `vorlagen/werkzeuge/kunde-anlegen.py` aus dem Steckbrief. Oben steht wortgleich das
 Angebot der Anzeige.
 
 | Feld | Pflicht | Warum |

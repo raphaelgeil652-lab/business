@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Baut die drei Verlosungs-Landingpages (modul / rabatt / speicher) für einen PV-Kunden.
 
-Aufruf:  python3 nischen/photovoltaik/tools/landingpages-bauen.py <kunde>/landingpage
+Normalerweise ruft kunde-anlegen.py das auf. Einzeln:
+         python3 nischen/photovoltaik/vorlagen/werkzeuge/landingpages-bauen.py <kunde>/landingpage
 Liest:   <ordner>/aktionen.json   (Name, Telefon, Datum, Speichergröße …)
 Schreibt: <ordner>/modul.html, rabatt.html, speicher.html
 
@@ -16,7 +17,7 @@ import sys
 VARIANTEN = {
     "modul": {
         "form": "verlosung-modul",
-        "foto": "dach-ziegel.jpg", "foto_pos": "58% 32%", "foto_size": "cover",
+        "foto": "1-modul.jpg", "foto_pos": "58% 32%", "foto_size": "cover",
         "bg": "#F3EFE7", "ink": "#1A1917", "muted": "#6B665D", "surface": "#FFFFFF",
         "line": "#DDD6C9", "accent": "#B4461F", "accent_ink": "#FFFFFF",
         "title": "Gewinnen Sie ein Solarmodul",
@@ -30,7 +31,7 @@ VARIANTEN = {
     },
     "rabatt": {
         "form": "verlosung-rabatt",
-        "foto": "dach-klinker.jpg", "foto_pos": "20% 0%", "foto_size": "auto 150%",
+        "foto": "2-rabatt.jpg", "foto_pos": "20% 0%", "foto_size": "auto 150%",
         "bg": "#151515", "ink": "#F3F1EC", "muted": "#9B978F", "surface": "#222120",
         "line": "#34322F", "accent": "#F0C24B", "accent_ink": "#151515",
         "title": "20 % Rabatt gewinnen",
@@ -45,7 +46,7 @@ VARIANTEN = {
     },
     "speicher": {
         "form": "verlosung-speicher",
-        "foto": "strasse.jpg", "foto_pos": "42% 18%", "foto_size": "cover",
+        "foto": "3-speicher.jpg", "foto_pos": "42% 18%", "foto_size": "cover",
         "bg": "#ECEAE4", "ink": "#1A1917", "muted": "#6B665D", "surface": "#FFFFFF",
         "line": "#D6D2C8", "accent": "#2F6B4F", "accent_ink": "#FFFFFF",
         "title": "3 Stromspeicher zu gewinnen",
@@ -62,7 +63,7 @@ VARIANTEN = {
 
 SEITE = r"""<!--
   LANDINGPAGE · {title} · {betrieb}
-  ERZEUGT von nischen/photovoltaik/tools/landingpages-bauen.py aus aktionen.json — nicht von Hand ändern.
+  ERZEUGT von vorlagen/werkzeuge/kunde-anlegen.py (Steckbrief) — nicht von Hand ändern.
   Teilnahmebedingungen sind ein ENTWURF: vor dem Livegang rechtlich prüfen lassen.
 -->
 <!DOCTYPE html>
@@ -297,10 +298,9 @@ SEITE = r"""<!--
 """
 
 
-def main():
-    if len(sys.argv) != 2:
-        sys.exit("Aufruf: python3 landingpages-bauen.py <ordner mit aktionen.json>")
-    ordner = pathlib.Path(sys.argv[1])
+def bauen(ordner):
+    """Baut modul/rabatt/speicher.html in <ordner> aus <ordner>/aktionen.json."""
+    ordner = pathlib.Path(ordner)
     kunde = json.loads((ordner / "aktionen.json").read_text(encoding="utf-8"))
     for name, v in VARIANTEN.items():
         daten = dict(kunde)
@@ -311,8 +311,10 @@ def main():
             for q, a in v["faq_extra"])
         ziel = ordner / f"{name}.html"
         ziel.write_text(SEITE.format(**daten), encoding="utf-8")
-        print("✓", ziel)
+        print("  ✓", ziel.name)
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        sys.exit("Aufruf: python3 landingpages-bauen.py <ordner mit aktionen.json>")
+    bauen(sys.argv[1])

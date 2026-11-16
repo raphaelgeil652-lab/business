@@ -1,0 +1,74 @@
+<!--
+  DANKE-SEITE · VORLAGE. kunde-anlegen.py füllt {{…}} aus dem Steckbrief.
+  Feuert das Pixel-Ereignis "Lead" nur nach Zustimmung auf der Aktionsseite.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danke — wir melden uns · {{betrieb}}</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--bg:#0E1013;--surface:#181C22;--ink:#F3F5F7;--muted:#98A2AE;--line:rgba(255,255,255,.11);
+    --accent:#FF6B2C;--accent-deep:#E8511A;--ok:#35C26A;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;}
+  *{box-sizing:border-box;}
+  body{margin:0;min-height:100svh;display:grid;place-items:center;background:var(--bg);color:var(--ink);
+       font-family:var(--sans);line-height:1.6;padding:24px;-webkit-font-smoothing:antialiased;}
+  .card{max-width:520px;text-align:center;}
+  .check{width:64px;height:64px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;
+         margin:0 auto 1.3rem;font-size:1.9rem;font-weight:800;}
+  h1{font-weight:800;font-size:clamp(2rem,7vw,2.7rem);line-height:1.07;letter-spacing:-.025em;margin:0 0 .7rem;text-wrap:balance;}
+  h1 em{font-style:normal;color:var(--accent);}
+  p{color:var(--muted);font-size:1.05rem;margin:0 0 1.5rem;text-wrap:pretty;}
+  .next{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;
+        text-align:left;margin-bottom:1.5rem;}
+  .next b{display:block;font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;}
+  .next ol{margin:0;padding-left:1.2rem;color:var(--muted);font-size:.95rem;}
+  .next li{margin-bottom:.35rem;}
+  .next li:last-child{margin-bottom:0;}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;
+       padding:.95em 1.7em;border-radius:12px;transition:background .2s ease;}
+  .btn:hover{background:var(--accent-deep);}
+  .call{display:block;margin-top:1.1rem;color:var(--muted);font-size:.9rem;}
+  .call a{color:var(--accent);font-weight:700;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="check">✓</div>
+    <h1>Danke! Wir <em>melden uns</em>.</h1>
+    <p>Ihre Anfrage ist bei {{betrieb}} angekommen. Kamen Sie über eine Verlosung, sind Sie jetzt dabei. Wir melden uns nach der Ziehung.</p>
+
+    <div class="next">
+      <b>So geht's weiter</b>
+      <ol>
+        <li>Wir rufen Sie werktags innerhalb einer Stunde zurück.</li>
+        <li>Auf Wunsch planen wir Ihre Anlage und machen einen Termin aus.</li>
+        <li>Sie bekommen ein Festpreis-Angebot und entscheiden in Ruhe.</li>
+      </ol>
+    </div>
+
+    <a class="btn" href="javascript:history.back()">Zurück</a>
+    <span class="call">Lieber gleich sprechen? <a href="tel:{{telefon_link}}">{{telefon}}</a></span>
+  </div>
+
+  <script>
+    /* Lead nur melden, wenn auf der Startseite zugestimmt wurde. */
+    var PIXEL_ID = '{{pixel_id}}';
+    var ok = false; try { ok = localStorage.getItem('lp-consent') === 'ja'; } catch(e){}
+    if (ok && PIXEL_ID !== 'PIXEL_ID') {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PIXEL_ID);
+      fbq('track', 'PageView');
+      fbq('track', 'Lead');
+    }
+    /* [Google-Ads-Conversion hier ergänzen, sobald das Konto verbunden ist — ebenfalls nur bei ok === true.] */
+  </script>
+</body>
+</html>
