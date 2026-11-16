@@ -16,7 +16,7 @@ Stand der Marktzahlen: November 2026. Quellen unten, Einschätzung dazu jeweils 
 | Warum stark | sehr hoher Auftragswert; Leute vergleichen ohnehin, wollen aber einen Betrieb aus der Nähe |
 | Entscheidung | Wochen bis wenige Monate, meist mehrere Angebote im Vergleich |
 | Saison | ganzjährig. Ob der Winter schwächer läuft, zeigen erst eigene Zahlen. |
-| Budget-Richtwert | ca. 1.000 €/Monat, davon ca. 70 % Meta, 30 % Google — **Startwert für ein ländliches Gebiet**, je Kunde nach Suchvolumen anpassen (siehe „Welcher Kanal welchen Job hat") |
+| Budget-Richtwert | ca. 1.000 €/Monat, davon ca. 70 % Meta, 30 % Google |
 | Zielradius | das Einzugsgebiet des Betriebs, im Gespräch fragen („Bis wie weit fahren Sie zur Montage?“). Bei PV oft größer als die 25 km aus dem Handbuch; Start mit seiner Angabe, nach 20–50 Anfragen prüfen |
 | Kosten pro Anfrage | grob 30–90 € (Branchenquellen, kaum deutsche Daten). Nach 20–50 Anfragen mit eigenen Zahlen ersetzen. |
 
@@ -58,58 +58,6 @@ sagen, dass der Gewinn nur mit einer Bestellung eingelöst wird.
 
 Lead-Portale verkaufen dieselbe Anfrage oft an mehrere Betriebe. Unsere Anfragen kommen von
 der eigenen Seite des Betriebs und gehen nur an ihn. Er ruft als Einziger an.
-
-## Welcher Kanal welchen Job hat (Google vs. Meta)
-
-Festgehalten im November 2026, nachdem ein Kollege aus dem PV-Vertrieb gesagt hatte, bei PV
-gehe man „eher über Google", man solle aber „das Endergebnis zeigen" — was in einer Google-Anzeige
-nicht möglich sei.
-
-**Beide Kanäle laufen, aber sie machen nicht dasselbe:**
-
-| | Google Suche | Meta |
-|---|---|---|
-| Ausgangslage | Der Mensch hat selbst getippt, er will schon | Niemand hat gesucht |
-| Job der Anzeige | nur bestätigen: Betrieb aus der Nähe, Festpreis, unverbindlich | unterbrechen **und** überzeugen — deshalb das Solardach-Foto |
-| Anfrage | wärmer, Klick teurer | mehr Menge, mehr Unentschlossene |
-| Verlosung als Einstieg | passt nicht zur Suchabsicht (siehe unten) | funktioniert nur hier |
-
-**Das Endergebnis gehört auf die Landingpage, nicht in die Anzeige.** Beide Kanäle führen auf
-eine Seite, und dort stehen die Dachfotos, die Rechnung und der Festpreis. In Google wird das
-Endergebnis also gezeigt — einen Klick später. Gleicher Trichter, Arbeit nur anders verteilt.
-Der Einwand „in Google kann man das nicht umsetzen" trifft die Textanzeige, nicht den Trichter.
-
-Dass Google keine Bilder kann, stimmt ohnehin nicht: Demand Gen (YouTube, Discover, Gmail) und
-YouTube-Video sind bildbasiert und für Vorher/Nachher auf dem Dach sogar stärker als ein
-Standbild. Aber diese Kanäle sind interessenbasiert wie Meta, nicht suchbasiert.
-**Bei ~1.000 €/Monat nicht verzetteln:** Suche + Meta. Demand Gen erst, wenn einer der beiden
-stabil liefert.
-
-**Der Split (70/30) ist eine Zahl, keine Meinung.** Was den Google-Anteil begrenzt, ist das
-Suchvolumen im Einzugsgebiet: In einem ländlichen Gebiet wird `photovoltaik [ort]` nur wenige
-Male im Monat getippt — die Suche ist dann nach ein paar hundert Euro ausgeschöpft, egal wie viel
-Budget draufliegt. Deshalb trägt Meta die Menge. Bei einem Kunden mit großstädtischem
-Einzugsgebiet darf der Google-Anteil deutlich höher sein. PV ist nicht standortgebunden, also
-unterscheiden sich die Kunden hier stark.
-
-→ **Vor dem Start je Kunde im Google-Keyword-Planer das Suchvolumen seines Gebiets nachsehen
-und den Split daran festlegen.** 70/30 ist nur der Startwert für ein ländliches Gebiet.
-
-### Offener Punkt: Google und die Verlosung passen nicht zusammen
-
-Die Entscheidung „die drei Verlosungen sind der einzige Einstieg" gilt für Meta. Für Google
-Suche ist sie ein Widerspruch: Wer „photovoltaik [ort]" tippt, will ein Angebot, kein Gewinnspiel.
-Eine Suchanzeige mit „Gewinnen Sie ein Solarmodul" bricht die Botschaftsgleichheit und verbrennt
-teure Klicks.
-
-Zwei Wege, noch **nicht entschieden**:
-
-1. **Google bekommt eine eigene, nüchterne Seite** (Betrieb aus der Nähe, Festpreis-Angebot,
-   unverbindlich) — konsequent, aber eine Seite mehr pro Kunde.
-2. **Google läuft erst mit, wenn Meta trägt** — bis dahin das ganze Budget auf Meta. Einfacher
-   und für den ersten Kunden wahrscheinlich richtig.
-
-Vor dem ersten PV-Kunden entscheiden.
 
 ## Anzeigentexte (Meta)
 
