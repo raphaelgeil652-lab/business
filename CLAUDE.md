@@ -83,16 +83,28 @@ muss die Routine mitgeändert werden.
 
 **Photovoltaik:** Grundlage ist das nischenneutrale Betriebshandbuch (Claude-Doc,
 https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) und `modul-photovoltaik.md`.
-**Der Ablauf steht in `nischen/photovoltaik/ANLEITUNG.md`** (8 Schritte, einfache Sprache, auch für
-den Kollegen). Sie ist die eine Ablaufbeschreibung: Checkliste, Kunden-README und Verkaufsskript
-folgen ihren Schritten; bei Änderungen am Ablauf alle zusammen nachziehen.
-**Das Vorlagen-System `nischen/photovoltaik/vorlagen/` ist der Weg für jeden PV-Kunden**
-(Technik: `vorlagen/LIES-MICH.md`): ausfüllbare Tabellen (`00-agentur.xlsx` deine Daten +
-Rechnungen + Rechnung drucken · `01-steckbrief.xlsx` ein Blatt, prüft selbst ob der Kunde passt,
-schlägt das Budget vor · `02-checkliste-bis-livegang.xlsx` · `03-anfragen-und-report.xlsx` mit
-fertiger Monatsmail · `04-akquise-pv-betriebe.xlsx`). **Im Steckbrief steht nur, was irgendwo
-gebraucht wird** (Nutzer-Vorgabe: raus, was nichts bringt; drin, was einfache, sichere Abläufe
-garantiert). Neues Feld nur, wenn eine Vorlage es nutzt.
+**Der Ablauf steht in `nischen/photovoltaik/ANLEITUNG.md`** (Vorbereiten + 8 Schritte in der
+Reihenfolge, wie man an den Kunden rangeht; einfache Sprache, auch für den Kollegen). Sie ist die eine
+Ablaufbeschreibung: Finder-Ordner, Kunden-README, Checkliste der Zentrale, Verkaufsskript und
+`hilfe-einrichten.md` folgen ihren Schritten und Namen; bei Änderungen alle zusammen nachziehen.
+Nutzer-Vorgabe: einfachster Start, alles in Reihenfolge, Überschriften sagen, worauf man klickt;
+drin ist alles, was einfache, sichere Abläufe garantiert, raus, was nichts bringt.
+**Drei Teile:** (1) **Steckbrief** `vorlagen/tabellen/01-steckbrief.xlsx` — Quelle für alles pro Kunde,
+prüft selbst ob der Kunde passt, schlägt das Budget vor; Blatt „Deine Daten“ füllt der Nutzer einmal
+in der Vorlage aus (ohne IBAN/Steuernr.). Neues Feld nur, wenn eine Vorlage es nutzt.
+(2) **`kunde-anlegen.py <steckbrief> [fotos…]`** → `kunden/<kürzel>/`, dann
+`werkzeuge/clickculture-ordner-bauen.py --kunde <kürzel> <ziel>` → ZIP mit sprechenden Namen
+(0 Übersicht … 11 Teilnahmebedingungen) an den Nutzer. Fotos werden zugeordnet, gedreht, auf 1.600 px
+verkleinert (auch HEIC). Seitenadresse = `https://<kürzel>.netlify.app`, Formulare tragen das
+versteckte Feld `kunde`. (3) **Die Zentrale** `zentrale/` — Google-Tabelle + Apps Script (`Code.gs`),
+kostenlos, beim Nutzer in Google: Netlify-Webhook → Anfrage-Mail an den Kunden mit Knöpfen
+(Zurückgerufen …, mit Bestätigungsseite gegen Link-Scanner), Erinnerung nach 60 Geschäftsminuten,
+Montags-Mail mit Stand-Knöpfen, „Erster Auftrag“, 1. des Monats Werbekosten/Rechnungen, 3. des Monats
+Report-Entwürfe in Gmail, Verlosungsziehung, Akquise-Liste, Checkliste-Spalte je Kunde. Spaltennamen in
+`zentrale-bauen.py` und `Code.gs` müssen zusammenpassen; **nach jeder Änderung `node zentrale/test/test.js`**
+(baut Google nach, spielt alle Abläufe durch). Einrichtung: `zentrale/EINRICHTEN.md`.
+**Repo ist öffentlich:** echte Kundenordner (gitignored), Anfragen, IBAN nie ins Repo; nur der fiktive
+Probekunde liegt drin. Netlify kostenlos (300 Credits, 15 je Upload) reicht für ca. 3–4 Kunden.
 **Budgetregel PV (Nutzer, nach Rat eines befreundeten Agenturinhabers): Werbebudget ≈
 Auftragswert ÷ 5, Start mit 3.000 €/Monat, nicht unter 2.500 €**, 70 % Meta / 30 % Google. Das
 braucht ca. 5–6 freie Beratungstermine pro Woche; der Steckbrief prüft die Kapazität mit.
@@ -102,10 +114,9 @@ Bedingte Blöcke `<!--VERLOSUNG-->`, `<!--BEWERTUNGEN-->`, `<!--VORHERNACHHER-->
 Vorher/Nachher erscheinen nur mit echtem Material, „eigene Montageteams“ nur bei Steckbrief = Ja.
 Impressum/Datenschutz der Seiten verlinken auf die Webseite des Kunden.
 `vorlagen/werkzeuge/kunde-anlegen.py <steckbrief.xlsx>` erzeugt `kunden/<betrieb>/` komplett
-(Dokumente, 3 Anzeigen-PNGs, 3 Landingpages, Tabellen-Kopien, README). **Nie erzeugte Dateien von
-Hand ändern** — Steckbrief, Vorlage oder Werkzeug ändern und neu erzeugen; `tabellen/` und `fotos/`
-im Kundenordner bleiben dabei erhalten. Leere Steckbrief-Felder erscheinen als `[Feldname]`, nichts
-wird erfunden. `tabellen-bauen.py` baut die leeren Tabellen neu (`00-agentur.xlsx` bleibt).
+(Dokumente, Anzeigen-PNGs, Landingpages, Zentrale-Zeile, README). **Nie erzeugte Dateien von
+Hand ändern** — Steckbrief, Vorlage oder Werkzeug ändern und neu erzeugen; `fotos/` bleibt erhalten. Leere Steckbrief-Felder erscheinen als `[Feldname]`, nichts
+wird erfunden. `tabellen-bauen.py` baut den leeren Steckbrief neu.
 `kunden/muster-solartechnik/` ist der **fiktive** Probekunde, vom System erzeugt (Ort/Adresse/Telefon
 bewusst leer). Preise dort nur Vorschlag (850 € / 1.500 €/Monat), nicht entschieden; Budget 3.000 € nach Budgetregel.
 **Nicht standortgebunden:** PV-Kunden in ganz Deutschland (Verkauf per Telefon/Video); die Werbung
@@ -183,10 +194,11 @@ Region: Pfullendorf / Landkreis Sigmaringen + Umland. Zielradius je Kampagne **m
 - `README.md` — **Start-/Übersichtsseite** mit klickbaren Links zu den fertigen Seiten. Erste Anlaufstelle.
 - `CLAUDE.md` — diese Übersicht. Bei jeder größeren Entscheidung aktuell halten.
 - `werkzeuge/clickculture-ordner-bauen.py` — baut den **Finder-Ordner „Clickculture“** (Texte als
-  Word, Tabellen, Seiten) samt ZIP für den Nutzer; `--kunde <betrieb>` exportiert einen PV-Kunden
-  einzeln. Reihenfolge folgt dem Ablauf: 01 Anleitung · 02 Photovoltaik (1 Steckbrief, 2 Akquise,
-  3 Kunden, 4 Hintergrund) · 03 Verwaltung · 04 Anleitungen Technik · 05 Grundlagen · 06 Kfz ·
-  07 Küche · 08 Einzelkunden. Nach Änderungen neu bauen und dem Nutzer schicken.
+  Word, Tabellen, Seiten) samt ZIP für den Nutzer; `--kunde <kürzel>` exportiert einen PV-Kunden
+  einzeln. Reihenfolge = Weg zum Kunden: 00 START HIER + 00 Anleitung · 01 Vorbereiten · 02 Kunden
+  finden · 03 Videocall · 04 Kundenordner · 05 Hilfe beim Einrichten · 06 Hintergrund und Wissen ·
+  07 Andere Nischen und Aufträge. Nach Änderungen neu bauen und dem Nutzer schicken.
+- `zentrale/` — die Zentrale (siehe Photovoltaik): `Code.gs`, `zentrale-bauen.py`, `EINRICHTEN.md`, `test/`.
 
 ### `nischen/autowerkstaetten/` — aktiver Fokus
 - `README.md` — Einstieg in die Nische
@@ -335,4 +347,5 @@ Hebel = **jetzt akquirieren**: Kfz-Betriebe vor Ort abklappern, 15–25 Kontakte
 (`nischen/autowerkstaetten/akquise/verkaufsskript.md`). Nächster Schritt:
 `nischen/autowerkstaetten/akquise/fahrplan-erster-umsatz.md`.
 
-Der ganze Automatik-Überbau (GHL/n8n/CAPI) kommt erst ab ~10 Kunden.
+Der große Automatik-Überbau (GHL/n8n/CAPI) kommt erst ab ~10 Kunden. Für PV läuft ab Kunde 1 die
+schlanke Zentrale (Google-Tabelle + Apps Script, kostenlos), auf Wunsch des Nutzers.

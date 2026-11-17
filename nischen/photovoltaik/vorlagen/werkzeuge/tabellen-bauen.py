@@ -3,23 +3,18 @@
 
 Aufruf: python3 nischen/photovoltaik/vorlagen/werkzeuge/tabellen-bauen.py
 
-  00-agentur.xlsx                 deine Daten + alle Rechnungen + Rechnung zum Drucken
-                                  (wird NUR angelegt, wenn sie fehlt: dort stehen deine eigenen Daten)
-  01-steckbrief.xlsx              pro Kunde: alles auf einem Blatt, prüft selbst, ob der Kunde passt,
-                                  und schlägt das Werbebudget vor
-  02-checkliste-bis-livegang.xlsx pro Kunde (wird kopiert): 17 Haken von der Unterschrift bis live
-  03-anfragen-und-report.xlsx     pro Kunde (wird kopiert): jede Anfrage, Monatsreport samt fertiger Mail
-  04-akquise-pv-betriebe.xlsx     eine für alles: Betriebe, die du anrufst
+  01-steckbrief.xlsx              pro Kunde kopieren. Blatt „Steckbrief“ (prüft selbst, ob der Kunde passt,
+                                  schlägt das Budget vor), „Rechnung intern“, „Deine Daten“ (einmal in der
+                                  Vorlage ausfüllen, dann trägt jede Kopie sie mit)
 
+Checkliste, Anfragen, Akquise, Werbekosten und Rechnungen liegen in der Zentrale (zentrale/), nicht hier.
 Die versteckte Spalte A (Schlüssel) lesen die Werkzeuge aus. Nicht ändern.
 """
 import pathlib
 from copy import copy
-from datetime import datetime
 
 from openpyxl import Workbook
-from openpyxl.comments import Comment
-from openpyxl.formatting.rule import CellIsRule, FormulaRule
+from openpyxl.formatting.rule import FormulaRule
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 
@@ -35,8 +30,6 @@ HILFE = Font(name=F, size=9, color="6B665D")
 THIN = Side(style="thin", color="D9D4CA")
 BOX = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 EURO = '#,##0 "€"'
-MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober",
-          "November", "Dezember"]
 
 
 def kopf(ws, zeile, werte, breiten=None):
@@ -75,16 +68,14 @@ def eingabe(c, fmt=None):
 # ---------------------------------------------------------------- Felder
 # (Schlüssel, Frage, Hilfe, Typ)   Typ: text | datum | euro | zahl | janein | anrede
 # "§" = Abschnitt. Schlüssel liest kunde-anlegen.py. Nicht umbenennen.
-AGENTUR = [
-    ("agentur_name", "Name der Agentur", "steht auf Vertrag und Rechnung", "text"),
+AGENTUR = [  # nur was Vertrag und Mails brauchen; IBAN und Steuernummer stehen in der Zentrale
+    ("agentur_name", "Name der Agentur", "steht im Vertrag und in den Mails", "text"),
     ("agentur_inhaber", "Dein Name", "Unterschrift im Vertrag, Absender der Mails", "text"),
-    ("agentur_anschrift", "Deine Anschrift", "Straße, PLZ Ort", "text"),
-    ("agentur_email", "E-Mail", "", "text"),
-    ("agentur_telefon", "Telefon / WhatsApp", "Kunden schicken Fotos hierhin", "text"),
-    ("agentur_steuernr", "Steuernummer", "Pflicht auf jeder Rechnung", "text"),
-    ("agentur_iban", "IBAN", "", "text"),
-    ("agentur_kleinunternehmer", "Kleinunternehmer (§ 19 UStG)?", "Ja = keine Umsatzsteuer auf Rechnungen", "janein"),
-    ("agentur_business_id", "Meta Business-ID", "Business-Einstellungen → Unternehmensinfos", "text"),
+    ("agentur_anschrift", "Deine Anschrift", "Straße, PLZ Ort (für den Vertrag)", "text"),
+    ("agentur_email", "Deine E-Mail", "", "text"),
+    ("agentur_telefon", "Dein Telefon", "", "text"),
+    ("agentur_kleinunternehmer", "Kleinunternehmer (§ 19 UStG)?", "Ja = im Vertrag steht: keine Umsatzsteuer", "janein"),
+    ("agentur_business_id", "Meta Business-ID", "business.facebook.com → Einstellungen → Unternehmensinfos", "text"),
     ("agentur_google_mcc", "Google-Ads-Verwaltungskonto (Kunden-ID)", "oben rechts in Google Ads, z. B. 123-456-7890", "text"),
 ]
 
@@ -115,15 +106,16 @@ STECKBRIEF = [
     ("budget_google", "Werbebudget Google pro Monat", "budget", "euro"),
     ("pruefung_dauer", "Wirtschaftlichkeitsprüfung kommt innerhalb von …", "leer = 2 Werktagen", "text"),
     ("vertragsbeginn", "Datum der Unterschrift", "leer = heute", "datum"),
-    ("drive_link", "Google-Drive-Ordner für seine Fotos (Link)", "vor dem Anlegen erstellen, für den Kunden freigeben: Bearbeiter", "text"),
+    ("drive_link", "Google-Drive-Ordner für seine Fotos (Link)", "in Schritt 3 anlegen, für den Kunden freigeben: Bearbeiter", "text"),
     ("§", "3 · Kommt vom Kunden (nach der Unterschrift)", None, None),
     ("impressum_url", "Link zu seinem Impressum", "von seiner Webseite kopieren", "text"),
     ("datenschutz_url", "Link zu seiner Datenschutzerklärung", "von seiner Webseite kopieren", "text"),
     ("bewertung_1", "Echte Google-Bewertung 1", "Text — Vorname, Ort · leer = kein Bewertungs-Block", "text"),
     ("bewertung_2", "Echte Google-Bewertung 2", "nie erfinden", "text"),
-    ("§", "4 · Nach dem Hochladen", None, None),
-    ("landingpage_url", "Adresse der Seiten", "z. B. https://muster-solar.netlify.app", "text"),
-    ("pixel_id", "Meta-Pixel-ID", "Events Manager des Kunden, 15–16 Ziffern", "text"),
+    ("§", "4 · Zum Einrichten (vor dem Hochladen)", None, None),
+    ("pixel_id", "Meta-Pixel-ID", "im Events Manager des Kunden anlegen, 15–16 Ziffern", "text"),
+    ("google_conversion", "Google-Ads-Conversion (ID/Label)", "z. B. AW-123456789/AbCdEfGh · nur wenn Google-Kampagne", "text"),
+    ("landingpage_url", "Eigene Adresse der Seiten (nur falls nötig)", "leer = https://<kürzel>.netlify.app (das Kürzel steht in der Übersicht des Kunden)", "text"),
     ("§", "5 · Nur bei Verlosung (2–3 × im Jahr)", None, None),
     ("verlosung_aktiv", "Läuft gerade eine Verlosung?", "leer = Nein", "janein"),
     ("aktion_ende", "Teilnahmeschluss", "Datum", "datum"),
@@ -180,120 +172,14 @@ def schluesselblatt(ws, felder, titeltext, unter):
     return zeilen
 
 
-# ---------------------------------------------------------------- 00 Agentur
-def agentur():
-    p = ZIEL / "00-agentur.xlsx"
-    if p.exists():
-        print("· 00-agentur.xlsx existiert, bleibt unverändert (deine Daten)")
-        return
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Deine Daten"
-    z = schluesselblatt(ws, AGENTUR, "Deine Daten",
-                        "Einmal ausfüllen. Landet automatisch in Vertrag, Mails und Rechnungen.")
-    D = "'Deine Daten'!$C$"
-
-    # Rechnungen
-    rg = wb.create_sheet("Rechnungen")
-    titel(rg, "Rechnungen (alle Kunden)",
-          "Pro Rechnung eine Zeile. Gelb ausfüllen, der Rest rechnet sich. Drucken: Blatt „Rechnung drucken“.")
-    rg["A3"] = "Offen gesamt"
-    rg["A3"].font = Font(name=F, bold=True)
-    rg["C3"] = '=SUMIFS(I6:I505,L6:L505,"<>bezahlt",I6:I505,">0")'
-    rg["C3"].number_format = '#,##0.00 "€"'
-    rg["C3"].font = Font(name=F, bold=True, size=12)
-    kopf(rg, 5, ["Nr.", "Datum", "Kunde (Firma)", "Anschrift Kunde", "Posten", "Zeitraum", "Netto",
-                 "USt.", "Brutto", "Fällig am", "Bezahlt am", "Status"],
-         [10, 12, 26, 34, 14, 16, 12, 7, 12, 12, 12, 12])
-    for r in range(6, 506):
-        rg.cell(row=r, column=1, value=f'=IF(B{r}="","",YEAR(B{r})&"-"&TEXT(ROW()-5,"000"))')
-        for col in (2, 3, 4, 5, 6, 7, 11):
-            rg.cell(row=r, column=col).font = Font(name=F, size=10, color="0000FF")
-        rg.cell(row=r, column=2).number_format = "DD.MM.YYYY"
-        rg.cell(row=r, column=11).number_format = "DD.MM.YYYY"
-        rg.cell(row=r, column=7).number_format = '#,##0.00 "€"'
-        rg.cell(row=r, column=8, value=f'=IF(G{r}="","",IF({D}{z["agentur_kleinunternehmer"]}="Ja",0,0.19))').number_format = "0%"
-        rg.cell(row=r, column=9, value=f'=IF(G{r}="","",ROUND(G{r}*(1+H{r}),2))').number_format = '#,##0.00 "€"'
-        rg.cell(row=r, column=10, value=f'=IF(B{r}="","",B{r}+14)').number_format = "DD.MM.YYYY"
-        rg.cell(row=r, column=12, value=f'=IF(B{r}="","",IF(ISNUMBER(K{r}),"bezahlt",IF(TODAY()>J{r},"überfällig","offen")))')
-    for col in (2, 3, 4, 5, 6, 7, 11):
-        rg.cell(row=6, column=col).fill = IN_FILL
-    for col, v in zip((2, 3, 4, 5, 6, 7), (datetime(2027, 1, 4), "BEISPIEL Muster Solartechnik GmbH",
-                                           "Beispielweg 5, 12345 Musterstadt", "Onboarding", "einmalig", 850)):
-        c = rg.cell(row=6, column=col, value=v)
-        c.font = EX_FONT
-    liste(rg, "E6:E505", ["Onboarding", "Monatsgebühr", "Sonstiges"])
-    rg.conditional_formatting.add("L6:L505", CellIsRule(operator="equal", formula=['"überfällig"'], fill=ROT))
-    rg.conditional_formatting.add("L6:L505", CellIsRule(operator="equal", formula=['"bezahlt"'], fill=GRUEN))
-    rg.freeze_panes = "B6"
-    rg["G5"].comment = Comment("Umsatzsteuer kommt automatisch aus „Deine Daten“ (Kleinunternehmer Ja = 0 %).", "Vorlage")
-
-    # Rechnung drucken
-    dr = wb.create_sheet("Rechnung drucken")
-    dr.column_dimensions["A"].width = 3
-    dr.column_dimensions["B"].width = 34
-    dr.column_dimensions["C"].width = 24
-    dr.column_dimensions["D"].width = 18
-    dr.column_dimensions["E"].width = 16
-    dr["B1"] = "Welche Rechnung? Nr. eintragen →"
-    dr["B1"].font = Font(name=F, size=9, color="B4461F", bold=True)
-    dr["C1"] = "2027-001"
-    eingabe(dr["C1"])
-    dr["D1"] = "dann Datei › Drucken › als PDF"
-    dr["D1"].font = HILFE
-    R = "Rechnungen!"
-    zeile = f'MATCH($C$1,{R}$A$6:$A$505,0)'
-    hol = lambda col: f'=IFERROR(INDEX({R}${col}$6:${col}$505,{zeile}),"")'
-    zellen = [
-        ("B3", f"={D}{z['agentur_name']}", Font(name=F, bold=True, size=13)),
-        ("B4", f"={D}{z['agentur_inhaber']}&\" · \"&{D}{z['agentur_anschrift']}", Font(name=F, size=9, color="6B665D")),
-        ("B5", f"={D}{z['agentur_email']}&\" · \"&{D}{z['agentur_telefon']}", Font(name=F, size=9, color="6B665D")),
-        ("B8", hol("C"), Font(name=F, size=11, bold=True)),
-        ("B9", hol("D"), Font(name=F, size=11)),
-        ("B12", "Rechnung", Font(name=F, bold=True, size=18)),
-        ("B14", "Rechnungsnummer", Font(name=F, size=10)), ("C14", "=$C$1", Font(name=F, size=10, bold=True)),
-        ("B15", "Rechnungsdatum", Font(name=F, size=10)), ("C15", hol("B"), Font(name=F, size=10)),
-        ("B16", "Steuernummer", Font(name=F, size=10)), ("C16", f"={D}{z['agentur_steuernr']}", Font(name=F, size=10)),
-        ("B19", "Leistung", Font(name=F, size=10, bold=True)), ("C19", "Zeitraum", Font(name=F, size=10, bold=True)),
-        ("E19", "Betrag", Font(name=F, size=10, bold=True)),
-        ("B20", hol("E"), Font(name=F, size=10)), ("C20", hol("F"), Font(name=F, size=10)),
-        ("E20", hol("G"), Font(name=F, size=10)),
-        ("B22", "Netto", Font(name=F, size=10)), ("E22", "=E20", Font(name=F, size=10)),
-        ("B23", '="Umsatzsteuer "&IFERROR(TEXT(INDEX(Rechnungen!$H$6:$H$505,' + zeile + '),"0%"),"")', Font(name=F, size=10)),
-        ("E23", f'=IFERROR(INDEX({R}$I$6:$I$505,{zeile})-INDEX({R}$G$6:$G$505,{zeile}),"")', Font(name=F, size=10)),
-        ("B24", "Gesamt", Font(name=F, size=11, bold=True)), ("E24", hol("I"), Font(name=F, size=11, bold=True)),
-        ("B27", f'=IF({D}{z["agentur_kleinunternehmer"]}="Ja","Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.","")', Font(name=F, size=9)),
-        ("B28", '="Zahlbar bis "&IFERROR(DAY(INDEX(Rechnungen!$J$6:$J$505,' + zeile + '))&"."&MONTH(INDEX(Rechnungen!$J$6:$J$505,'
-         + zeile + '))&"."&YEAR(INDEX(Rechnungen!$J$6:$J$505,' + zeile + ')),"")&" ohne Abzug auf IBAN "&' + f"{D}{z['agentur_iban']}",
-         Font(name=F, size=9)),
-        ("B30", "Vielen Dank für die Zusammenarbeit.", Font(name=F, size=9)),
-    ]
-    for ref, v, font in zellen:
-        dr[ref] = v
-        dr[ref].font = font
-    for ref in ("C15",):
-        dr[ref].number_format = "DD.MM.YYYY"
-    for ref in ("E20", "E22", "E23", "E24"):
-        dr[ref].number_format = '#,##0.00 "€"'
-        dr[ref].alignment = Alignment(horizontal="right")
-    for col in "BCDE":
-        dr[f"{col}19"].border = Border(bottom=THIN)
-        dr[f"{col}24"].border = Border(top=THIN)
-    dr.print_area = "A3:E31"
-    dr.page_setup.orientation = "portrait"
-    dr.page_setup.fitToWidth = 1
-    wb.save(p)
-    print("✓", p.name)
-
-
 # ---------------------------------------------------------------- 01 Steckbrief
 def steckbrief():
     wb = Workbook()
     ws = wb.active
     ws.title = "Steckbrief"
     z = schluesselblatt(ws, STECKBRIEF, "Steckbrief: neuer Kunde",
-                        "Für jeden Kunden eine Kopie. Teil 1 im Gespräch ausfüllen, Teil 2 bis zur Unterschrift. "
-                        "Dann Claude schicken: „Lege den Kunden aus diesem Steckbrief an.“")
+                        "Für jeden Kunden eine Kopie. Teil 1 im Videocall, Teil 2 bis zur Unterschrift, dann an Claude: "
+                        "„Lege den Kunden aus diesem Steckbrief an.“ Einmalig vorher: Blatt „Deine Daten“ ausfüllen.")
     S = lambda k: f"$C${z[k]}"
     RI = "'Rechnung intern'!"
 
@@ -362,227 +248,13 @@ def steckbrief():
         if annahme:
             eingabe(c, fmt)
         ri.cell(row=i, column=3, value=h).font = HILFE
+    dd = wb.create_sheet("Deine Daten")
+    schluesselblatt(dd, AGENTUR, "Deine Daten (einmal ausfüllen)",
+                    "Einmal in der leeren Vorlage ausfüllen und speichern. Jede Kopie für einen Kunden trägt sie dann mit.")
     wb.save(ZIEL / "01-steckbrief.xlsx")
     print("✓ 01-steckbrief.xlsx")
 
 
-# ---------------------------------------------------------------- 02 Checkliste
-CHECKLISTE = [
-    ("4 · Abschluss", "Vereinbarung unterschrieben zurück", "Du"),
-    ("4 · Abschluss", "Rechnung Onboarding geschickt (00-agentur.xlsx)", "Du"),
-    ("4 · Abschluss", "Willkommens-Mail und Rückruf-Leitfaden geschickt", "Du"),
-    ("5 · Vom Kunden", "Fotos im Drive-Ordner: mind. 3 fertige Anlagen, ideal ein Dach vorher und nachher", "Kunde"),
-    ("5 · Vom Kunden", "Meta: Partnerzugriff auf Seite und Werbekonto", "Kunde"),
-    ("5 · Vom Kunden", "Google Ads: Zugriff für dein Verwaltungskonto", "Kunde"),
-    ("5 · Vom Kunden", "Links zu Impressum und Datenschutz, 2 echte Google-Bewertungen", "Kunde"),
-    ("5 · Vom Kunden", "Name der Person, die die Wirtschaftlichkeitsprüfungen rechnet", "Kunde"),
-    ("6 · Einrichten", "Fotos aus dem Drive und neue Angaben an Claude, Kundenordner neu erzeugt", "Du"),
-    ("6 · Einrichten", "Seiten auf Netlify, Formular-Mails gehen an Kunde und dich", "Du"),
-    ("6 · Einrichten", "Pixel angelegt, Adresse und Pixel-ID im Steckbrief, neu erzeugt, neu hochgeladen", "Du"),
-    ("6 · Einrichten", "Meta-Kampagne mit den 5 Anzeigen angelegt (pausiert)", "Du"),
-    ("6 · Einrichten", "Google-Kampagne angelegt (pausiert)", "Du"),
-    ("7 · Live", "Test-Anfrage über jede Seite, Mail kommt beim Kunden an", "Du"),
-    ("7 · Live", "Am Handy geprüft: Formular, Anrufen-Knopf, Fotos", "Du"),
-    ("7 · Live", "Kampagnen aktiv. Datum hier eintragen = Start der 30 Tage", "Du"),
-    ("7 · Live", "Kunde angerufen: Rückruf in 1 Stunde, fester Wochen-Anruf vereinbart", "Du"),
-]
-
-
-def checkliste():
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Checkliste"
-    titel(ws, "Checkliste bis zum Livegang", "Gleiche Schritte wie in der Anleitung (4 bis 7). Erledigt = „Ja“ wählen.")
-    ws["A3"] = "Fortschritt"
-    ws["A3"].font = Font(name=F, bold=True)
-    end = 5 + len(CHECKLISTE)
-    ws["C3"] = f'=COUNTIF(E6:E{end},"Ja")/{len(CHECKLISTE)}'
-    ws["C3"].number_format = "0%"
-    ws["C3"].font = Font(name=F, bold=True, size=12)
-    kopf(ws, 5, ["Nr", "Schritt", "Aufgabe", "Wer", "Erledigt", "Datum"], [5, 17, 72, 9, 10, 13])
-    for i, (ph, aufg, wer) in enumerate(CHECKLISTE, start=6):
-        for col, v in enumerate((i - 5, ph, aufg, wer), start=1):
-            c = ws.cell(row=i, column=col, value=v)
-            c.font = Font(name=F, size=10)
-            c.alignment = Alignment(vertical="top", wrap_text=True)
-        eingabe(ws.cell(row=i, column=5))
-        eingabe(ws.cell(row=i, column=6), "DD.MM.YYYY")
-    liste(ws, f"E6:E{end}", ["Ja"])
-    ws.conditional_formatting.add(f"A6:F{end}", FormulaRule(formula=['$E6="Ja"'], fill=GRUEN))
-    ws.freeze_panes = "A6"
-    wb.save(ZIEL / "02-checkliste-bis-livegang.xlsx")
-    print("✓ 02-checkliste-bis-livegang.xlsx")
-
-
-# ---------------------------------------------------------------- 03 Anfragen + Report
-ANF_COLS = ["Eingang (Datum, Uhrzeit)", "Name", "Telefon", "PLZ", "Seite", "Rückruf (Datum, Uhrzeit)",
-            "Minuten bis Rückruf", "Stand", "Auftragswert", "Notiz"]
-STAND = ["neu", "nicht erreicht", "erreicht", "Termin", "Angebot", "Auftrag", "kein Interesse"]
-N = 500
-
-
-def anfragen():
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Anfragen"
-    titel(ws, "Anfragen", "Jede Anfrage eine Zeile. „Stand“ = wie weit sie gekommen ist (geht nie zurück). "
-                          "Minuten rechnen sich. Zeile 5 ist ein Beispiel: überschreiben.")
-    kopf(ws, 4, ANF_COLS, [17, 22, 16, 8, 16, 17, 10, 14, 13, 40])
-    ws.row_dimensions[4].height = 34
-    for r in range(5, 5 + N):
-        for col in range(1, 11):
-            ws.cell(row=r, column=col).font = Font(name=F, size=10, color="000000" if col == 7 else "0000FF")
-        ws.cell(row=r, column=1).number_format = "DD.MM.YYYY HH:MM"
-        ws.cell(row=r, column=6).number_format = "DD.MM.YYYY HH:MM"
-        ws.cell(row=r, column=9).number_format = EURO
-        ws.cell(row=r, column=7, value=f'=IF(AND(ISNUMBER(A{r}),ISNUMBER(F{r})),ROUND((F{r}-A{r})*1440,0),"")')
-    bsp = [datetime(2027, 1, 4, 9, 12), "BEISPIEL Anna Muster", "0151 0000000", "12345", "Wirtschaftlichkeit",
-           datetime(2027, 1, 4, 9, 40), None, "Angebot", None, "will Speicher, Dach Süd"]
-    for col, v in enumerate(bsp, start=1):
-        c = ws.cell(row=5, column=col)
-        if col != 7:
-            c.fill = IN_FILL
-        if v is not None:
-            c.value = v
-            c.font = EX_FONT
-    rng = lambda c: f"{c}5:{c}{4 + N}"
-    liste(ws, rng("E"), ["Wirtschaftlichkeit", "Rechner", "Verlosung"])
-    liste(ws, rng("H"), STAND)
-    ws.conditional_formatting.add(rng("G"), CellIsRule(operator="greaterThan", formula=["60"], fill=ROT))
-    ws.conditional_formatting.add(rng("H"), CellIsRule(operator="equal", formula=['"Auftrag"'], fill=GRUEN))
-    ws.freeze_panes = "C5"
-    ws["E4"].comment = Comment("Über welche Seite kam die Anfrage? Steht in der Anfrage-Mail (Formularname).", "Vorlage")
-    ws["G4"].comment = Comment("Rot = über 60 Minuten. Größter Hebel überhaupt.", "Vorlage")
-
-    wk = wb.create_sheet("Werbekosten")
-    titel(wk, "Werbekosten", "Einmal im Monat aus Meta und Google abschreiben. Monat = erster Tag des Monats.")
-    kopf(wk, 4, ["Monat", "Meta", "Google", "Summe"], [14, 14, 14, 14])
-    for r in range(5, 41):
-        eingabe(wk.cell(row=r, column=1), "MM.YYYY")
-        eingabe(wk.cell(row=r, column=2), '#,##0.00 "€"')
-        eingabe(wk.cell(row=r, column=3), '#,##0.00 "€"')
-        d = wk.cell(row=r, column=4, value=f'=IF(A{r}="","",N(B{r})+N(C{r}))')
-        d.number_format = '#,##0.00 "€"'
-        d.font = Font(name=F, size=10)
-
-    rp = wb.create_sheet("Monatsreport")
-    titel(rp, "Monatsreport", "Nur den Monat eintragen. Alles rechnet sich, unten steht die fertige Mail zum Kopieren.")
-    rp.column_dimensions["A"].width = 34
-    rp.column_dimensions["B"].width = 16
-    rp.column_dimensions["C"].width = 60
-    for ref, label, v, fmt in (("4", "Monat (erster Tag)", datetime(2027, 1, 1), "MM.YYYY"),
-                               ("5", "Anrede in der Mail", "Herr Muster", None),
-                               ("6", "Dein Name", "", None)):
-        rp[f"A{ref}"] = label
-        rp[f"A{ref}"].font = Font(name=F, size=10, bold=True)
-        rp[f"B{ref}"] = v
-        eingabe(rp[f"B{ref}"], fmt)
-    rp["C5"] = "füllt das Werkzeug beim Anlegen aus"
-    rp["C5"].font = HILFE
-    A = f"Anfragen!$A$5:$A${4 + N}"
-    col = lambda c: f"Anfragen!${c}$5:${c}${4 + N}"
-    zeit = f'{A},">="&$B$4,{A},"<"&EDATE($B$4,1)'
-    stand = lambda s: f'COUNTIFS({zeit},{col("H")},"{s}")'
-    kz = [
-        ("Werbekosten", "=SUMIFS(Werbekosten!$D$5:$D$40,Werbekosten!$A$5:$A$40,$B$4)", EURO, "aus Blatt Werbekosten"),
-        ("Anfragen", f"=COUNTIFS({zeit})", "0", ""),
-        ("Kosten pro Anfrage", "=IFERROR(B9/B10,0)", EURO, "die wichtigste Zahl"),
-        ("davon Wirtschaftlichkeit", f'=COUNTIFS({zeit},{col("E")},"Wirtschaftlichkeit")', "0", "Dauerkampagne"),
-        ("davon Rechner", f'=COUNTIFS({zeit},{col("E")},"Rechner")', "0", "Dauerkampagne"),
-        ("davon Verlosung", f'=COUNTIFS({zeit},{col("E")},"Verlosung")', "0", "nur wenn eine läuft"),
-        ("Ø Minuten bis Rückruf", f"=IFERROR(AVERAGEIFS({col('G')},{zeit}),0)", "0", "Ziel: unter 60"),
-        ("Termine", f"={stand('Termin')}+{stand('Angebot')}+{stand('Auftrag')}", "0", "Stand Termin oder weiter"),
-        ("Angebote", f"={stand('Angebot')}+{stand('Auftrag')}", "0", ""),
-        ("Aufträge", f"={stand('Auftrag')}", "0", ""),
-        ("Auftragsumsatz", f'=SUMIFS({col("I")},{zeit},{col("H")},"Auftrag")', EURO, "laut Kunde"),
-        ("Kosten pro Auftrag", "=IFERROR(B9/B18,0)", EURO, ""),
-        ("Erster Auftrag überhaupt", f'=IF(COUNTIF({col("H")},"Auftrag")=0,"noch keiner",_xlfn.MINIFS({A},{col("H")},"Auftrag"))',
-         "DD.MM.YYYY", "ab dem Folgemonat Monatsgebühr berechnen"),
-    ]
-    kopf(rp, 8, ["Zahl", "Wert", "Hinweis"])
-    for i, (k, f, fmt, h) in enumerate(kz, start=9):
-        rp.cell(row=i, column=1, value=k).font = Font(name=F, size=10, bold=k in ("Anfragen", "Aufträge", "Kosten pro Anfrage"))
-        c = rp.cell(row=i, column=2, value=f)
-        c.number_format = fmt
-        c.font = Font(name=F, size=10, color="008000")
-        rp.cell(row=i, column=3, value=h).font = HILFE
-    monat = "CHOOSE(MONTH($B$4)," + ",".join(f'"{m}"' for m in MONATE) + ')&" "&YEAR($B$4)'
-    n = lambda ref: f'FIXED({ref},0)'
-    br = "&CHAR(10)&"
-    mail = ('="Betreff: Ihr Monatsreport "&' + monat + br + 'CHAR(10)&"Hallo "&$B$5&","' + br + 'CHAR(10)&'
-            '"hier Ihre Zahlen für "&' + monat + '&":"' + br +
-            '"- Werbeausgaben: "&' + n("B9") + '&" €"' + br +
-            '"- Anfragen: "&B10&" (Kosten pro Anfrage: "&' + n("B11") + '&" €)"' + br +
-            '"- Rückruf im Schnitt nach "&' + n("B15") + '&" Minuten"' + br +
-            '"- Termine: "&B16&" · Angebote: "&B17&" · Aufträge: "&B18' + br +
-            'CHAR(10)&"Was wir geändert haben: [eine Sache]"' + br +
-            '"Was wir als Nächstes tun: [eine Sache]"' + br +
-            '"Was wir von Ihnen brauchen: [z. B. Rückmeldung zu offenen Anfragen]"' + br +
-            'CHAR(10)&"Beste Grüße"' + br + '$B$6')
-    rp["A23"] = "Mail zum Kopieren"
-    rp["A23"].font = Font(name=F, bold=True, size=11)
-    rp["A24"] = "Zelle B24 kopieren, in die Mail einfügen, die drei [eckigen Klammern] ersetzen, danach 10 Minuten telefonieren."
-    rp["A24"].font = HILFE
-    rp["A24"].alignment = Alignment(wrap_text=True, vertical="top")
-    rp.merge_cells("B24:C24")
-    rp["B24"] = mail
-    rp["B24"].alignment = Alignment(wrap_text=True, vertical="top")
-    rp["B24"].font = Font(name=F, size=10)
-    rp["B24"].border = BOX
-    rp.row_dimensions[24].height = 250
-    wb.save(ZIEL / "03-anfragen-und-report.xlsx")
-    print("✓ 03-anfragen-und-report.xlsx")
-
-
-# ---------------------------------------------------------------- 04 Akquise
-AKQ = ["Firma", "Ansprechpartner", "Ort", "Telefon", "Webseite", "Google (Sterne · Anzahl)", "Stand",
-       "Nächster Anruf am", "Notiz"]
-STAND_AKQ = ["neu", "nicht erreicht", "Videocall vereinbart", "Vereinbarung geschickt", "Kunde", "kein Interesse"]
-
-
-def akquise():
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "PV-Betriebe"
-    titel(ws, "Akquise: PV-Betriebe in ganz Deutschland",
-          "Google Maps: „Photovoltaik [Stadt]“. Passt: inhabergeführt, gute Bewertungen, schwache Webseite. "
-          "Sortieren nach „Nächster Anruf am“. Zeile 5 = Beispiel.")
-    kopf(ws, 4, AKQ, [28, 20, 16, 16, 24, 14, 22, 14, 40])
-    bsp = ["BEISPIEL Sonnendach GmbH", "Herr Beispiel", "Musterstadt", "0123 456789", "www.beispiel.de", "4,8 · 37",
-           "neu", datetime(2027, 1, 12), "Inhaber morgens erreichbar"]
-    for r in range(5, 505):
-        for col in range(1, 10):
-            ws.cell(row=r, column=col).font = Font(name=F, size=10, color="0000FF")
-        ws.cell(row=r, column=8).number_format = "DD.MM.YYYY"
-    for col, v in enumerate(bsp, start=1):
-        c = ws.cell(row=5, column=col, value=v)
-        c.font = EX_FONT
-        c.fill = IN_FILL
-    liste(ws, "G5:G504", STAND_AKQ)
-    ws.conditional_formatting.add("G5:G504", CellIsRule(operator="equal", formula=['"Kunde"'], fill=GRUEN))
-    ws.conditional_formatting.add("H5:H504", FormulaRule(formula=['AND(ISNUMBER(H5),H5<=TODAY(),$G5<>"Kunde",$G5<>"kein Interesse")'],
-                                                         fill=PatternFill("solid", start_color="F9EEDA")))
-    ws.auto_filter.ref = "A4:I504"
-    ws.freeze_panes = "B5"
-
-    ue = wb.create_sheet("Übersicht")
-    titel(ue, "Übersicht", "Zählt sich selbst.")
-    kopf(ue, 4, ["Stand", "Anzahl"], [28, 12])
-    for i, s in enumerate(STAND_AKQ, start=5):
-        ue.cell(row=i, column=1, value=s).font = Font(name=F, size=10)
-        ue.cell(row=i, column=2, value=f"=COUNTIF('PV-Betriebe'!$G$5:$G$504,A{i})").font = Font(name=F, size=10, color="008000")
-    r = 5 + len(STAND_AKQ)
-    ue.cell(row=r, column=1, value="Heute oder überfällig anrufen").font = Font(name=F, bold=True)
-    ue.cell(row=r, column=2, value="=COUNTIFS('PV-Betriebe'!$H$5:$H$504,\"<=\"&TODAY(),'PV-Betriebe'!$G$5:$G$504,\"<>Kunde\","
-                                    "'PV-Betriebe'!$G$5:$G$504,\"<>kein Interesse\")").font = Font(name=F, bold=True)
-    wb.save(ZIEL / "04-akquise-pv-betriebe.xlsx")
-    print("✓ 04-akquise-pv-betriebe.xlsx")
-
-
 if __name__ == "__main__":
     ZIEL.mkdir(parents=True, exist_ok=True)
-    agentur()
     steckbrief()
-    checkliste()
-    anfragen()
-    akquise()

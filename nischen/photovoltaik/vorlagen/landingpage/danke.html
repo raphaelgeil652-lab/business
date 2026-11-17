@@ -68,7 +68,15 @@
       fbq('track', 'PageView');
       fbq('track', 'Lead');
     }
-    /* [Google-Ads-Conversion hier ergänzen, sobald das Konto verbunden ist — ebenfalls nur bei ok === true.] */
+    /* Google-Ads-Conversion, ebenfalls nur nach Zustimmung. Wert aus dem Steckbrief, z. B. AW-123456789/AbCdEf */
+    var GADS = '{{google_conversion}}';
+    if (ok && /^AW-\d+\/[\w-]+$/.test(GADS)) {
+      var gid = GADS.split('/')[0], gs = document.createElement('script');
+      gs.async = true; gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + gid; document.head.appendChild(gs);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date()); gtag('config', gid); gtag('event', 'conversion', { send_to: GADS });
+    }
   </script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 # {{betrieb}}
 
-Erzeugt am {{erzeugt_am}} aus dem [Steckbrief](steckbrief.xlsx). **Nichts hier von Hand ändern.**
-Etwas falsch oder neu? Im Steckbrief ändern und Claude sagen: „Erzeuge {{betrieb}} neu.“
-Die Tabellen und Fotos bleiben dabei erhalten.
+**Kürzel:** `{{slug}}` · **Adresse der Seiten:** {{landingpage_url}} · erzeugt am {{erzeugt_am}}
+
+Nichts in diesem Ordner von Hand ändern. Etwas falsch oder neu? Im Steckbrief ändern und Claude
+schicken: „Erzeuge {{betrieb}} neu.“ Die Checkliste und die Fotos bleiben dabei erhalten.
 
 ## Noch offen
 
@@ -15,30 +16,29 @@ Die Tabellen und Fotos bleiben dabei erhalten.
 | Inhaber | {{anrede}} {{inhaber}} · {{telefon}} · {{email}} |
 | Werbegebiet | {{einzugsgebiet_km}} km um {{ort}} |
 | Preise | Onboarding {{onboarding_preis}} · Monatsgebühr {{retainer}} ab dem ersten Auftrag |
-| Werbebudget | {{budget_gesamt}} pro Monat (Meta {{budget_meta}}, Google {{budget_google}}) · Empfehlung war {{budget_empfehlung}} |
+| Werbebudget | {{budget_gesamt}} pro Monat (Meta {{budget_meta}}, Google {{budget_google}}) · Empfehlung: {{budget_empfehlung}} |
 | Prüfung | Ergebnis innerhalb von {{pruefung_dauer}} |
-| Fotos vom Kunden | Drive-Ordner: {{drive_link}} |
+| Fotos vom Kunden | {{drive_link}} |
 <!--VERLOSUNG-->| Verlosung läuft | Teilnahmeschluss {{aktion_ende}}, Ziehung {{ziehung}}, Speicher: {{speicher}} |
 <!--/VERLOSUNG-->
 
-## Was du wann brauchst
+## Welche Datei wann
 
-| Schritt | Datei |
-|---|---|
-| 4 · Abschluss | [Vereinbarung](dokumente/vereinbarung.md) · [Abrechnungs-Mails](dokumente/abrechnung-mails.md) · [Willkommens-Mail](dokumente/willkommens-mail.md) · [Rückruf-Leitfaden](dokumente/rueckruf-leitfaden.md) |
-| 4–7 · Abhaken | [Checkliste bis zum Livegang](tabellen/checkliste.xlsx) |
-| 5 · Fotos ablegen | Ordner [`fotos/`](fotos/): `foto-1.jpg`, `foto-2.jpg`, `foto-3.jpg`, dazu wenn vorhanden `vorher.jpg` und `nachher.jpg` |
-| 6 · Seiten hochladen | Ordner [`landingpage/`](landingpage/) auf app.netlify.com/drop ziehen |
-| 6 · Kampagnen anlegen | [Kampagnen Meta und Google](dokumente/kampagnen.md) · Bilder in [`anzeigen/creatives/`](anzeigen/creatives/) |
-| 8 · Jeden Tag / Monat | [Anfragen und Monatsreport](tabellen/anfragen-und-report.xlsx) · [Report-Mail](dokumente/report-mail.md) |
-<!--VERLOSUNG-->| Verlosung | [Teilnahmebedingungen](dokumente/teilnahmebedingungen.md) (vor dem Start prüfen lassen) |
+| Schritt | Datei in diesem Ordner | Was du tust |
+|---|---|---|
+| 4 · Abschluss | **2 Vertrag** | als PDF schicken, unterschrieben zurück |
+| | **3 Rechnung** | Rechnung in der Zentrale machen, mit Mail 1 schicken |
+| | **4 Willkommens-Mail** + **5 Rückruf-Leitfaden** | Mail schicken, Leitfaden als PDF anhängen |
+| | **6 Zeile für die Zentrale** | öffnen, alles kopieren, in der Zentrale im Blatt „Kunden“ in die erste freie Zeile einfügen. Die Checkliste für diesen Kunden legt sich dann von selbst an. |
+| 6 · Einrichten | **7 Kampagnen** | zuerst „Messung einrichten“, dann Meta und Google anlegen (pausiert) |
+| | **8 Seiten für Netlify** | ganzen Ordner auf app.netlify.com/drop ziehen, Seite in `{{slug}}` umbenennen |
+| | **9 Anzeigen-Bilder** | bei Meta hochladen |
+| Zum Zeigen | **10 Anzeigen ansehen** | `vorschau.html` im Browser öffnen |
+<!--VERLOSUNG-->| Verlosung | **11 Teilnahmebedingungen** | vor dem Start prüfen lassen, steht auf den Verlosungsseiten |
 <!--/VERLOSUNG-->
+Abhaken: in der Zentrale, Blatt „Checkliste“, Spalte `{{slug}}`.
 
-**Im Browser ansehen** (nach dem Pushen):
+**Im Browser ansehen** (nur beim fiktiven Probekunden, echte Kunden liegen nicht im Repo):
 [Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/anzeigen/vorschau.html?v={{v}}) ·
 [Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/wirtschaftlichkeit.html?v={{v}}) ·
 [Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/rechner.html?v={{v}})
-<!--VERLOSUNG-->· Verlosung: [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/modul.html?v={{v}}) ·
-[20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/rabatt.html?v={{v}}) ·
-[Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/speicher.html?v={{v}})
-<!--/VERLOSUNG-->

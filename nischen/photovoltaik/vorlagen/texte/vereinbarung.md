@@ -7,7 +7,7 @@
 
 zwischen
 
-**Auftragnehmer:** {{agentur_name}}, {{agentur_inhaber}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}} · Steuernr.: {{agentur_steuernr}}
+**Auftragnehmer:** {{agentur_name}}, {{agentur_inhaber}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}}
 
 und
 
@@ -29,7 +29,8 @@ Einzugsgebiet: {{einzugsgebiet_km}} km um {{ort}}.
 
 - Erstellung und Betrieb der Landingpages (Wirtschaftlichkeitsprüfung, Rechner; bei Verlosungen je eine Aktionsseite inkl. Teilnahmebedingungen).
 - Einrichtung und laufende Betreuung von Werbung auf Meta (Facebook/Instagram) und Google Ads.
-- Weiterleitung jeder Anfrage per E-Mail an den Auftraggeber, unmittelbar nach Eingang.
+- Weiterleitung jeder Anfrage per E-Mail an den Auftraggeber, unmittelbar nach Eingang, mit
+  Erinnerung, falls nach einer Stunde noch kein Rückruf vermerkt ist.
 - Laufende Optimierung der Kampagnen.
 - Monatsreport mit Werbeausgaben, Anfragen, Kosten pro Anfrage und den vom Auftraggeber
   gemeldeten Terminen und Aufträgen.
@@ -41,7 +42,8 @@ Einzugsgebiet: {{einzugsgebiet_km}} km um {{ort}}.
 - Partnerzugang zum Meta-Werbekonto und zum Google-Ads-Konto. Das Werbebudget läuft über
   seine eigenen Konten und Zahlungsmittel.
 - Rückruf auf Anfragen innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.
-- Rückmeldung zu jeder Anfrage: erreicht, Termin, Angebot, Auftrag, verloren.
+- Rückmeldung zu jeder Anfrage über die Knöpfe in den Anfrage-Mails: zurückgerufen, Termin,
+  Angebot, Auftrag, kein Interesse.
 - Erstellung der Wirtschaftlichkeitsprüfung für jede Eintragung innerhalb von {{pruefung_dauer}}.
 - Bei Verlosungen: Ziehung zum genannten Datum, Benachrichtigung, Einlösung der Gewinne.
 - Ausreichende Kapazität für die zusätzlich vermittelten Anfragen und Montagen.

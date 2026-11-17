@@ -2,28 +2,24 @@
 """Legt aus einem ausgefüllten Steckbrief den kompletten Kundenordner an.
 
 Aufruf (aus dem Repo-Hauptordner):
-    python3 nischen/photovoltaik/vorlagen/werkzeuge/kunde-anlegen.py <steckbrief.xlsx>
+    python3 nischen/photovoltaik/vorlagen/werkzeuge/kunde-anlegen.py <steckbrief.xlsx> [fotos ...]
 
-Liest:     den Steckbrief + vorlagen/tabellen/00-agentur.xlsx (Blatt „Deine Daten“)
-Schreibt:  nischen/photovoltaik/kunden/<betrieb>/
-             README.md               Überblick, Links, nächste Schritte
+Liest:     den Steckbrief (Blatt „Steckbrief“ und Blatt „Deine Daten“)
+           optional Fotos: werden nach Namen zugeordnet (foto-1 … foto-3, vorher, nachher); jpg, png, heic, webp
+Schreibt:  nischen/photovoltaik/kunden/<kürzel>/
+             README.md               Übersicht: was noch fehlt (nach Schritten), Eckdaten, welche Datei wann
+             zentrale-zeile.txt      die Zeile für das Blatt „Kunden“ der Zentrale (kopieren, einfügen)
              steckbrief.xlsx          Kopie des Steckbriefs (die Quelle für alles)
-             fotos/                   HIER die echten Fotos des Kunden ablegen: foto-1.jpg, foto-2.jpg, foto-3.jpg
-                                      (Titelbilder), optional vorher.jpg + nachher.jpg (dasselbe Dach)
-             dokumente/               Vereinbarung, Mails, Kampagnen, Teilnahmebedingungen …
-             tabellen/                Checkliste + Anfragen-und-Report (werden nie überschrieben)
-             anzeigen/                wirtschaftlichkeit.html (immer), verlosungen.html (nur bei aktiver Verlosung),
-                                      vorschau.html, creatives/*.png
-             landingpage/             wirtschaftlichkeit.html, rechner.html, danke.html,
-                                      bei aktiver Verlosung zusätzlich modul.html, rabatt.html, speicher.html
+             fotos/                   die Originalfotos des Kunden (bleiben erhalten)
+             dokumente/               Vereinbarung, Abrechnungs-Mails, Willkommens-Mail, Rückruf-Leitfaden,
+                                      Kampagnen, bei Verlosung Teilnahmebedingungen
+             anzeigen/                Anzeigen-HTML, vorschau.html, creatives/*.png
+             landingpage/             der Ordner für Netlify: wirtschaftlichkeit.html, rechner.html, danke.html,
+                                      bei Verlosung modul.html, rabatt.html, speicher.html; Fotos verkleinert
 
-Zwei Kampagnenarten: Dauerkampagne Wirtschaftlichkeitsprüfung (immer) und Saisonaktion Verlosung
-(2–3 × im Jahr, Steckbrief-Feld „Verlosung gerade aktiv?“). Die Beispielzahlen kommen aus
-vorlagen/rechengrundlage.json.
-
-Mehrfach ausführen ist ausdrücklich erlaubt: Nach jeder Änderung am Steckbrief oder an den
-Fotos einfach neu laufen lassen. Erzeugte Dateien werden ersetzt, die Tabellen in tabellen/
-und die Fotos in fotos/ bleiben unangetastet.
+Mehrfach ausführen ist erlaubt und gewollt: nach jeder Änderung am Steckbrief oder neuen Fotos.
+Echte Kundenordner kommen NICHT ins Repo (es ist öffentlich): .gitignore schließt sie aus, nur der
+fiktive Probekunde liegt drin. Die Quelle bleibt der Steckbrief beim Nutzer.
 """
 import datetime as dt
 import html
@@ -42,8 +38,10 @@ VORLAGEN = HIER.parent
 PV = VORLAGEN.parent
 KUNDEN = PV / "kunden"
 
-TEXTE_PRO_KUNDE = ["vereinbarung.md", "willkommens-mail.md", "rueckruf-leitfaden.md", "kampagnen.md",
-                   "report-mail.md", "abrechnung-mails.md"]
+TEXTE_PRO_KUNDE = ["vereinbarung.md", "abrechnung-mails.md", "willkommens-mail.md", "rueckruf-leitfaden.md",
+                   "kampagnen.md"]
+FOTO_NAMEN = ["foto-1", "foto-2", "foto-3", "vorher", "nachher"]
+FOTO_MAX = 1600  # Pixel an der langen Seite; hält die Seiten schnell und spart Netlify-Datenvolumen
 TEXTE_VERLOSUNG = ["teilnahmebedingungen.md"]
 VERLOSUNGS_SEITEN = ["modul.html", "rabatt.html", "speicher.html"]
 VERLOSUNGS_BILDER = ["1-gewinnspiel.png", "2-rabatt.png", "3-speicher.png"]
@@ -51,11 +49,19 @@ MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August"
           "Oktober", "November", "Dezember"]
 EURO = {"ticket_schnitt", "onboarding_preis", "retainer", "budget_meta", "budget_google"}
 # Muss für Vertrag und Livegang ausgefüllt sein (sonst steht es in der README unter „Noch offen“)
-PFLICHT = ["betrieb", "anrede", "inhaber", "telefon", "email", "ort", "einzugsgebiet_km", "ticket_schnitt",
-           "kapazitaet_termine", "betrieb_lang", "strasse", "plz", "oeffnungszeiten", "eigenes_team",
-           "onboarding_preis", "retainer", "budget_meta", "budget_google", "drive_link", "impressum_url", "datenschutz_url",
-           "landingpage_url", "pixel_id"]
-OPTIONAL = ["bewertung_1", "bewertung_2"]
+# Was fehlt, steht in der README unter „Noch offen“, sortiert nach dem Schritt, in dem es gebraucht wird.
+OFFEN_NACH_SCHRITT = [
+    ("Für die Vereinbarung (Schritt 3–4)", ["betrieb", "anrede", "inhaber", "telefon", "email", "ort", "einzugsgebiet_km",
+                                            "ticket_schnitt", "kapazitaet_termine", "betrieb_lang", "strasse", "plz",
+                                            "oeffnungszeiten", "eigenes_team", "onboarding_preis", "retainer",
+                                            "budget_meta", "budget_google", "drive_link"]),
+    ("Vom Kunden (Schritt 5)", ["impressum_url", "datenschutz_url"]),
+    ("Zum Einrichten (Schritt 6)", ["pixel_id"]),
+]
+OPTIONAL = [("Vom Kunden (Schritt 5)", ["bewertung_1", "bewertung_2"]),
+            ("Zum Einrichten (Schritt 6)", ["google_conversion"])]
+AGENTUR_PFLICHT = ["agentur_name", "agentur_inhaber", "agentur_anschrift", "agentur_email", "agentur_telefon",
+                   "agentur_business_id", "agentur_google_mcc"]
 VERLOSUNG_PFLICHT = ["aktion_ende", "ziehung", "speicher"]
 CHECKS = ["check_entscheider", "check_rueckruf", "check_fotos"]
 
@@ -70,9 +76,12 @@ VORHER_NACHHER_HTML = """<section>
   </section>"""
 
 
-def lese_schluessel(pfad):
-    """Liest Spalte A (Schlüssel) → Spalte B (Frage) und C (Eintrag) aus dem ersten Blatt."""
-    ws = load_workbook(pfad, data_only=True).worksheets[0]
+def lese_schluessel(pfad, blatt=None):
+    """Liest Spalte A (Schlüssel) → Spalte B (Frage) und C (Eintrag) aus dem Blatt (Standard: das erste)."""
+    wb = load_workbook(pfad, data_only=True)
+    if blatt and blatt not in wb.sheetnames:
+        return {}, {}
+    ws = wb[blatt] if blatt else wb.worksheets[0]
     werte, namen = {}, {}
     for row in ws.iter_rows(min_row=1, max_col=3, values_only=True):
         key, feld, wert = row
@@ -129,9 +138,14 @@ def felder(stb, agentur, namen):
     f["adresse"] = (f"{f['strasse']}, {f['plz']} {f['ort']}")
     tel = re.sub(r"\D", "", str(stb.get("telefon") or ""))
     f["telefon_link"] = "+49" + tel.lstrip("0") if tel else "+49XXXXXXXX"
-    url = stb.get("landingpage_url") or ""
-    f["landingpage_domain"] = re.sub(r"^https?://", "", url).rstrip("/") or "[ihre-seite].netlify.app"
-    f["landingpage_url"] = url.rstrip("/") if url else "[Adresse der Landingpages]"
+    f["slug"] = slug(stb["betrieb"])
+    url = (stb.get("landingpage_url") or f"https://{f['slug']}.netlify.app").rstrip("/")
+    if not url.startswith("http"):
+        url = "https://" + url
+    f["landingpage_url"] = url
+    f["landingpage_domain"] = re.sub(r"^https?://", "", url)
+    gc = str(stb.get("google_conversion") or "").strip().replace(" ", "")
+    f["google_conversion"] = gc if re.fullmatch(r"AW-\d+/[\w-]+", gc) else ""
     ku = str(agentur.get("agentur_kleinunternehmer") or "").lower()
     f["ust_hinweis"] = ("Gemäß §19 UStG wird keine Umsatzsteuer berechnet." if ku == "ja"
                         else "Alle Beträge zzgl. 19 % Umsatzsteuer.")
@@ -208,6 +222,51 @@ def rechenwerte(f):
     })
 
 
+def fotos_uebernehmen(dateien, ordner):
+    """Neue Fotos nach Namen in fotos/ legen (Originale). Nicht erkannte Namen der Reihe nach als foto-1 … foto-3."""
+    ordner.mkdir(parents=True, exist_ok=True)
+    frei = [n for n in FOTO_NAMEN[:3]]
+    for d in dateien:
+        d = pathlib.Path(d)
+        stamm = d.stem.lower().replace("_", "-").replace(" ", "-")
+        name = next((n for n in ["vorher", "nachher"] + FOTO_NAMEN[:3] if n in stamm), None)
+        if name is None:
+            name = frei.pop(0) if frei else None
+        elif name in frei:
+            frei.remove(name)
+        if name is None:
+            print(f"! {d.name}: kein Platz mehr (höchstens foto-1 … foto-3, vorher, nachher)")
+            continue
+        for alt in ordner.glob(name + ".*"):
+            alt.unlink()
+        shutil.copy2(d, ordner / (name + d.suffix.lower()))
+        print(f"✓ Foto {d.name} → fotos/{name}{d.suffix.lower()}")
+
+
+def fotos_fuer_web(quelle, ziel):
+    """Fotos aus fotos/ als JPG in Web-Größe nach ziel/ (gedreht wie aufgenommen, lange Seite höchstens FOTO_MAX)."""
+    from PIL import Image, ImageOps
+    ziel.mkdir(parents=True, exist_ok=True)
+    for alt in ziel.glob("*.jpg"):
+        alt.unlink()
+    for name in FOTO_NAMEN:
+        q = next(iter(sorted(quelle.glob(name + ".*"))), None)
+        if q is None:
+            continue
+        z = ziel / (name + ".jpg")
+        try:
+            if q.suffix.lower() in (".heic", ".heif"):
+                subprocess.run(["convert", str(q), "-auto-orient", "-resize", f"{FOTO_MAX}x{FOTO_MAX}>", "-quality", "82",
+                                "-strip", "-interlace", "Plane", str(z)], check=True, capture_output=True)
+                continue
+            im = ImageOps.exif_transpose(Image.open(q)).convert("RGB")
+            im.thumbnail((FOTO_MAX, FOTO_MAX))
+            im.save(z, "JPEG", quality=82, optimize=True, progressive=True)
+        except Exception as e:  # lieber das Original als gar kein Foto
+            print(f"! {q.name} nicht umgewandelt ({e}), nehme das Original")
+            shutil.copy2(q, z)
+
+
 def kopiere_ordner(quelle, ziel, nur_neu=False):
     ziel.mkdir(parents=True, exist_ok=True)
     for q in quelle.iterdir():
@@ -225,16 +284,18 @@ def lade_lp_bauer():
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         sys.exit(__doc__)
     quelle = pathlib.Path(sys.argv[1]).resolve()
-    stb, namen = lese_schluessel(quelle)
-    agentur, anamen = lese_schluessel(VORLAGEN / "tabellen" / "00-agentur.xlsx")
+    stb, namen = lese_schluessel(quelle, "Steckbrief")
+    if not stb:
+        stb, namen = lese_schluessel(quelle)
+    agentur, anamen = lese_schluessel(quelle, "Deine Daten")
     namen.update(anamen)
     if not stb.get("betrieb"):
         sys.exit("Im Steckbrief fehlt „Betrieb (Kurzname)“.")
     f = felder(stb, agentur, namen)
-    ziel = KUNDEN / slug(stb["betrieb"])
+    ziel = KUNDEN / f["slug"]
     print(f"Kunde: {stb['betrieb']}  →  {ziel.relative_to(PV.parent.parent)}")
     ziel.mkdir(parents=True, exist_ok=True)
 
@@ -242,27 +303,16 @@ def main():
     if quelle != (ziel / "steckbrief.xlsx").resolve():
         shutil.copy2(quelle, ziel / "steckbrief.xlsx")
 
-    # Fotos: einmal Platzhalter, danach gehören sie dem Kunden
-    kopiere_ordner(VORLAGEN / "assets" / "fotos", ziel / "fotos", nur_neu=True)
-    f["_vorher_nachher"] = all((ziel / "fotos" / n).exists() for n in ("vorher.jpg", "nachher.jpg"))
+    # Fotos: neue übernehmen; fehlende Titelbilder sind Platzhalter (CC0) bis echte da sind
+    fotos_uebernehmen(sys.argv[2:], ziel / "fotos")
+    for n in FOTO_NAMEN[:3]:
+        if not list((ziel / "fotos").glob(n + ".*")):
+            shutil.copy2(VORLAGEN / "assets" / "fotos" / (n + ".jpg"), ziel / "fotos" / (n + ".jpg"))
+    platzhalter = [n for n in FOTO_NAMEN[:3] if (ziel / "fotos" / (n + ".jpg")).exists() and
+                   (ziel / "fotos" / (n + ".jpg")).read_bytes() == (VORLAGEN / "assets" / "fotos" / (n + ".jpg")).read_bytes()]
+    f["_vorher_nachher"] = all(list((ziel / "fotos").glob(n + ".*")) for n in ("vorher", "nachher"))
 
-    # Tabellen: nur beim ersten Mal
-    (ziel / "tabellen").mkdir(exist_ok=True)
-    (ziel / "tabellen" / "onboarding.xlsx").unlink(missing_ok=True)  # alter Name
-    for q, z in (("02-checkliste-bis-livegang.xlsx", "checkliste.xlsx"),
-                 ("03-anfragen-und-report.xlsx", "anfragen-und-report.xlsx")):
-        if not (ziel / "tabellen" / z).exists():
-            wb = load_workbook(VORLAGEN / "tabellen" / q)
-            wb.worksheets[0]["A1"] = f"{wb.worksheets[0]['A1'].value} · {stb['betrieb']}"
-            if "Anfragen" in wb.sheetnames:  # Beispielzeile raus, damit sie nicht mitzählt
-                for c in wb["Anfragen"][5]:
-                    if c.column != 7:
-                        c.value = None
-            if "Monatsreport" in wb.sheetnames:
-                wb["Monatsreport"]["B5"] = f"{f['anrede']} {f['inhaber_nachname']}"
-                wb["Monatsreport"]["B6"] = f"{f['agentur_inhaber']}\n{f['agentur_name']}"
-            wb.save(ziel / "tabellen" / z)
-    print("✓ tabellen/ (bestehende bleiben unverändert)")
+    shutil.rmtree(ziel / "tabellen", ignore_errors=True)  # Checkliste und Anfragen liegen jetzt in der Zentrale
 
     # Dokumente
     (ziel / "dokumente").mkdir(exist_ok=True)
@@ -274,17 +324,18 @@ def main():
     if not aktiv:
         for name in TEXTE_VERLOSUNG:
             (ziel / "dokumente" / name).unlink(missing_ok=True)
+    (ziel / "dokumente" / "report-mail.md").unlink(missing_ok=True)  # Monatsreport legt jetzt die Zentrale an
     print(f"✓ dokumente/ ({len(texte)} Dateien) · Verlosung {'AKTIV' if aktiv else 'aus'}")
 
     # Landingpages
     lp = ziel / "landingpage"
     lp.mkdir(exist_ok=True)
     kopiere_ordner(VORLAGEN / "assets" / "fonts", lp / "fonts")
-    kopiere_ordner(ziel / "fotos", lp / "fotos")
+    fotos_fuer_web(ziel / "fotos", lp / "fotos")
     for name in ("danke.html", "wirtschaftlichkeit.html", "rechner.html"):
         (lp / name).write_text(fuellen((VORLAGEN / "landingpage" / name).read_text(encoding="utf-8"), f), encoding="utf-8")
     aktion = {k: f[k] for k in ("betrieb", "betrieb_lang", "telefon", "telefon_link", "adresse",
-                                "oeffnungszeiten", "ziehung", "speicher", "pixel_id")}
+                                "oeffnungszeiten", "ziehung", "speicher", "pixel_id", "slug")}
     aktion.update({k: f[k] for k in ("impressum_url", "datenschutz_url", "team_zusatz", "team_li")})
     aktion["bewertungen_html"] = bloecke(BEWERTUNGEN_HTML, {"B": f["_bewertungen"]}).replace("{{bewertungen_html}}", f["bewertungen_html"])
     aktion["vorher_nachher_html"] = VORHER_NACHHER_HTML if f["_vorher_nachher"] else ""
@@ -302,7 +353,7 @@ def main():
     an = ziel / "anzeigen"
     an.mkdir(exist_ok=True)
     kopiere_ordner(VORLAGEN / "assets" / "fonts", an / "fonts")
-    kopiere_ordner(ziel / "fotos", an / "fotos")
+    fotos_fuer_web(ziel / "fotos", an / "fotos")
     (an / "anzeigen.html").unlink(missing_ok=True)  # alter Name
     vorlagen_html = ["wirtschaftlichkeit.html", "vorschau.html"] + (["verlosungen.html"] if aktiv else [])
     for name in vorlagen_html:
@@ -319,21 +370,41 @@ def main():
         except Exception as e:
             print(f"! {name} nicht gerendert (Node/Playwright fehlt?):", e)
 
+    # Zeile für die Zentrale (Blatt „Kunden“, Spalten Kürzel … Ziehung am)
+    roh = lambda k: "" if stb.get(k) is None else (datum(stb[k]) if isinstance(stb[k], (dt.date, dt.datetime)) else
+                                                    str(int(stb[k])) if isinstance(stb[k], float) and stb[k].is_integer() else str(stb[k]))
+    zeile = [f["slug"], roh("betrieb"), f"{roh('anrede')} {f['inhaber_nachname'] if stb.get('inhaber') else ''}".strip(),
+             roh("email"), roh("telefon"), roh("drive_link"), roh("onboarding_preis"), roh("retainer"), "", "Ja",
+             roh("aktion_ende") if aktiv else "", roh("ziehung") if aktiv else ""]
+    (ziel / "zentrale-zeile.txt").write_text("\t".join(zeile) + "\n", encoding="utf-8")
+    print("✓ zentrale-zeile.txt")
+
     # README
-    pflicht = PFLICHT + (VERLOSUNG_PFLICHT if f["_verlosung_aktiv"] else [])
-    offen = [namen.get(k, k) for k in pflicht if stb.get(k) is None]
-    offen += [f"{namen.get(k, k)} (optional)" for k in OPTIONAL if stb.get(k) is None]
+    gruppen = {}
+    for titel, keys in OFFEN_NACH_SCHRITT:
+        gruppen.setdefault(titel, []).extend(namen.get(k, k) for k in keys if stb.get(k) is None)
+    if aktiv:
+        gruppen.setdefault("Für die Verlosung", []).extend(namen.get(k, k) for k in VERLOSUNG_PFLICHT if stb.get(k) is None)
+    for titel, keys in OPTIONAL:
+        gruppen.setdefault(titel, []).extend(f"{namen.get(k, k)} (wenn möglich)" for k in keys if stb.get(k) is None)
+    if platzhalter:
+        gruppen.setdefault("Vom Kunden (Schritt 5)", []).append(
+            f"Echte Fotos (noch Platzhalter: {', '.join(platzhalter)})")
     if not f["_vorher_nachher"]:
-        offen.append("Fotos vorher.jpg und nachher.jpg (optional, sonst fehlt der Vorher/Nachher-Block)")
-    readme = (VORLAGEN / "texte" / "_kunden-readme.md").read_text(encoding="utf-8")
-    f["offen_liste"] = "\n".join(f"- [ ] {n}" for n in offen) or "- nichts, alles ausgefüllt"
-    f["slug"] = ziel.name
+        gruppen.setdefault("Vom Kunden (Schritt 5)", []).append("Foto vorher und nachher vom selben Dach (wenn möglich)")
+    fehlt_agentur = [anamen.get(k, k) for k in AGENTUR_PFLICHT if not agentur.get(k)]
+    if fehlt_agentur:
+        gruppen = {"Deine Daten (im Steckbrief, Blatt „Deine Daten“)": fehlt_agentur, **gruppen}
+    offen = [(t_, l) for t_, l in gruppen.items() if l]
+    f["offen_liste"] = "\n\n".join(f"**{t_}**\n" + "\n".join(f"- [ ] {n}" for n in l) for t_, l in offen) \
+        or "Nichts, alles ausgefüllt."
     f["erzeugt_am"] = dt.date.today().strftime("%d.%m.%Y")
     f["v"] = dt.datetime.now().strftime("%Y%m%d%H%M")  # neue Zahl je Lauf, damit githack nichts Altes zeigt
+    readme = (VORLAGEN / "texte" / "_kunden-readme.md").read_text(encoding="utf-8")
     (ziel / "README.md").write_text(fuellen(readme, f), encoding="utf-8")
     print("✓ README.md")
-    if offen:
-        print(f"\nNoch offen ({len(offen)}): " + ", ".join(offen))
+    for t_, l in offen:
+        print(f"\nNoch offen · {t_}: " + ", ".join(l))
     nicht_ja = [namen.get(k, k) for k in CHECKS if str(stb.get(k) or "").lower() != "ja"]
     if nicht_ja:
         print("\n! ACHTUNG, Kunde passt noch nicht. Nicht „Ja“: " + " · ".join(nicht_ja))

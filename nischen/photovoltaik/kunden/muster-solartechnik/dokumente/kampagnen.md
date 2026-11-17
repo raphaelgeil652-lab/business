@@ -1,7 +1,19 @@
 # Kampagnen — Muster Solartechnik
 
-> Alles fertig zum Eintragen. Anzeigen-Bilder: `../anzeigen/creatives/`.
-> Ziel-Adressen: `[Adresse der Landingpages]/wirtschaftlichkeit.html`, `…/rechner.html`; bei Verlosung `…/modul.html`, `…/rabatt.html`, `…/speicher.html`.
+> Alles fertig zum Eintragen, Texte 1:1 kopieren. Anzeigen-Bilder: Ordner „Anzeigen-Bilder“.
+> Ziel-Adressen: `https://muster-solartechnik.netlify.app/wirtschaftlichkeit.html`, `https://muster-solartechnik.netlify.app/rechner.html`; bei Verlosung `…/modul.html`, `…/rabatt.html`, `…/speicher.html`.
+> Alles erst **pausiert** anlegen. Live geht es in Schritt 7, nach der Test-Anfrage.
+
+## Vorher: Messung einrichten (einmal pro Kunde, vor dem Hochladen der Seiten)
+
+1. **Meta-Pixel:** business.facebook.com → Events Manager (im Konto des Kunden) → „Datenquelle verbinden“ →
+   Web → Name `Muster Solartechnik` → „Manuell einrichten“ abbrechen, nur die **Pixel-ID** kopieren → Steckbrief Teil 4.
+   Das Ereignis „Lead“ meldet die Danke-Seite von selbst (nur nach Zustimmung des Besuchers).
+2. **Google-Ads-Conversion** (nur wenn eine Google-Kampagne läuft): Google Ads des Kunden → Ziele →
+   Conversions → „Neue Conversion-Aktion“ → Website → manuell einrichten → Kategorie „Lead-Formular senden“,
+   Wert „keinen Wert“, Zählung „Eine“ → „Google-Tag selbst einrichten“ → aus dem Ereignis-Snippet
+   `send_to` kopieren (sieht so aus: `AW-123456789/AbCdEf`) → Steckbrief Teil 4.
+3. Steckbrief an Claude: „Erzeuge Muster Solartechnik neu.“ Erst dann die Seiten hochladen.
 
 Budget: Meta 2.100 € pro Monat (≈ 70 € pro Tag) · Google 900 € pro Monat (≈ 30 € pro Tag).
 
@@ -92,7 +104,7 @@ Vor dem Veröffentlichen:
 | Tagesbudget | 30 € |
 | Gebot | Start: Klicks maximieren, Höchst-CPC 3 €. Ab ca. 30 Conversions: Conversions maximieren |
 | Standort | [Ort des Betriebs] + 40 km, „Präsenz: Personen an diesem Ort oder regelmäßig dort“ |
-| Conversion | Aufruf der Danke-Seite |
+| Conversion | die Conversion-Aktion aus „Vorher: Messung einrichten“, Punkt 2 |
 | Ziel | `wirtschaftlichkeit.html`, URL-Parameter `utm_source=google&utm_campaign=pv-suche` |
 
 Keywords (Wortgruppe): `"photovoltaik [ort]"` · `"solaranlage [ort]"` · `"pv anlage [ort]"` · `"photovoltaik mit speicher"` · `"solarteur"` · `"pv anlage kosten"` · `"stromspeicher nachrüsten"`
@@ -110,6 +122,5 @@ Beschreibungen (höchstens 90 Zeichen):
 
 ## Nach dem Start
 
-3–4 Tage nichts ändern · täglich Anfragen und Rückrufzeit prüfen · erst ab 20–50 Anfragen
-bewerten, dann nur eine Sache ändern · Rückmeldungen pro Anfrage jede Woche in
-`tabellen/anfragen-und-report.xlsx` eintragen.
+3–4 Tage nichts ändern · erst ab 20–50 Anfragen bewerten, dann nur eine Sache ändern.
+Anfragen, Rückrufzeit und Stand sammelt die Zentrale von selbst. Du schaust montags in die Übersichtsmail.

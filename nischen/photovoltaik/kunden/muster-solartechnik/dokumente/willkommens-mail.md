@@ -1,6 +1,6 @@
 # Willkommens-Mail — Muster Solartechnik
 
-> Am Tag der Unterschrift verschicken, zusammen mit dem Rückruf-Leitfaden. Text ab „Betreff“ kopieren.
+> Am Tag der Unterschrift verschicken. Den Rückruf-Leitfaden als PDF anhängen. Text ab „Betreff“ kopieren.
 
 ---
 
@@ -41,13 +41,20 @@ Alles läuft über Ihre eigenen Konten. Sie behalten jederzeit die Kontrolle.
   von 2 Werktagen nach der Eintragung.
 - Unsere Verlosung: Teilnahmeschluss 15.01.2027, Ziehung am 20.01.2027, verloster Speicher: 10 kWh. Bitte bestätigen Sie, dass Sie die Gewinne einlösen.
 
-Sobald das da ist, gehen wir live. Die ersten Anfragen kommen meist in den ersten Tagen. Ein
-unterschriebener Auftrag braucht bei Solaranlagen meist einige Wochen.
+**So bekommen Sie Ihre Anfragen**
 
-**Eine Bitte vorab:** Rufen Sie jede Anfrage innerhalb einer Stunde zurück. Viele fragen
-parallel bei anderen an, und wer zuerst anruft, bekommt meist den Termin. Den kurzen Leitfaden
-für Ihr Büro finden Sie im Anhang.
+- Jede Anfrage kommt sofort per Mail an [E-Mail für Anfragen], mit Telefonnummer zum Antippen.
+- Rufen Sie bitte **innerhalb einer Stunde** zurück und tippen Sie danach in der Mail auf
+  **„Zurückgerufen“** (oder „Nicht erreicht“). Ohne Rückruf erinnert Sie das System nach einer Stunde.
+- Montags kommt eine kurze Mail mit Ihren offenen Anfragen. Tippen Sie bei jeder an, wie weit sie
+  ist: Termin, Angebot, Auftrag oder kein Interesse. Das dauert eine Minute und macht Ihren
+  Monatsreport genau.
+
+Sobald die vier Dinge da sind, gehen wir live. Die ersten Anfragen kommen meist in den ersten
+Tagen. Ein unterschriebener Auftrag braucht bei Solaranlagen meist einige Wochen.
+
+Den kurzen Leitfaden für Ihr Büro finden Sie im Anhang.
 
 Beste Grüße
 [Dein Name]
-[Name der Agentur] · [Telefon / WhatsApp]
+[Name der Agentur] · [Dein Telefon]

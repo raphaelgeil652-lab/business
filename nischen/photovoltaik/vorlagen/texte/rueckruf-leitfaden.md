@@ -32,8 +32,12 @@ Wer zuerst anruft, bekommt fast immer den Termin.
   Ihnen ein kurzer Rückruf?“
 - Zweiter Versuch nach 3 Stunden, dritter am nächsten Vormittag. Danach eine E-Mail.
 
-## Rückmeldung an uns
+## Nach dem Anruf: ein Tipp in der Mail
 
-Zu jeder Anfrage kurz melden (Mail oder WhatsApp genügt): **erreicht · Termin · Angebot ·
-Auftrag · verloren**. Daraus sehen wir, welche Anzeigen die guten Anfragen bringen, und Ihr
-Monatsreport zeigt echte Zahlen.
+- Jede Anfrage kommt als Mail. Nach dem Anruf dort auf **„Zurückgerufen“** tippen, bei
+  niemandem erreicht auf **„Nicht erreicht“**, dann bestätigen. Fertig.
+- Ohne Tipp erinnert das System nach einer Stunde. Das ist Absicht: Schnell sein bringt Termine.
+- **Montags** kommt eine Mail mit allen offenen Anfragen. Bei jeder antippen, wie weit sie ist:
+  **Termin · Angebot · Auftrag · kein Interesse**. Bei „Auftrag“ gern den Auftragswert eintragen.
+
+Daraus sehen wir, welche Anzeigen die guten Anfragen bringen, und Ihr Monatsreport zeigt echte Zahlen.

@@ -1,24 +1,40 @@
 # Muster Solartechnik
 
-Erzeugt am 17.11.2026 aus dem [Steckbrief](steckbrief.xlsx). **Nichts hier von Hand ändern.**
-Etwas falsch oder neu? Im Steckbrief ändern und Claude sagen: „Erzeuge Muster Solartechnik neu.“
-Die Tabellen und Fotos bleiben dabei erhalten.
+**Kürzel:** `muster-solartechnik` · **Adresse der Seiten:** https://muster-solartechnik.netlify.app · erzeugt am 17.11.2026
+
+Nichts in diesem Ordner von Hand ändern. Etwas falsch oder neu? Im Steckbrief ändern und Claude
+schicken: „Erzeuge Muster Solartechnik neu.“ Die Checkliste und die Fotos bleiben dabei erhalten.
 
 ## Noch offen
 
+**Deine Daten (im Steckbrief, Blatt „Deine Daten“)**
+- [ ] Name der Agentur
+- [ ] Dein Name
+- [ ] Deine Anschrift
+- [ ] Deine E-Mail
+- [ ] Dein Telefon
+- [ ] Meta Business-ID
+- [ ] Google-Ads-Verwaltungskonto (Kunden-ID)
+
+**Für die Vereinbarung (Schritt 3–4)**
 - [ ] Telefon für Rückrufe
 - [ ] E-Mail für Anfragen
 - [ ] Ort des Betriebs
 - [ ] Straße und Hausnummer
 - [ ] PLZ
 - [ ] Google-Drive-Ordner für seine Fotos (Link)
+
+**Vom Kunden (Schritt 5)**
 - [ ] Link zu seinem Impressum
 - [ ] Link zu seiner Datenschutzerklärung
-- [ ] Adresse der Seiten
+- [ ] Echte Google-Bewertung 1 (wenn möglich)
+- [ ] Echte Google-Bewertung 2 (wenn möglich)
+- [ ] Echte Fotos (noch Platzhalter: foto-1, foto-2, foto-3)
+- [ ] Foto vorher und nachher vom selben Dach (wenn möglich)
+
+**Zum Einrichten (Schritt 6)**
 - [ ] Meta-Pixel-ID
-- [ ] Echte Google-Bewertung 1 (optional)
-- [ ] Echte Google-Bewertung 2 (optional)
-- [ ] Fotos vorher.jpg und nachher.jpg (optional, sonst fehlt der Vorher/Nachher-Block)
+- [ ] Google-Ads-Conversion (ID/Label) (wenn möglich)
 
 ## Eckdaten
 
@@ -27,27 +43,27 @@ Die Tabellen und Fotos bleiben dabei erhalten.
 | Inhaber | Herr Markus Muster · [Telefon für Rückrufe] · [E-Mail für Anfragen] |
 | Werbegebiet | 40 km um [Ort des Betriebs] |
 | Preise | Onboarding 850 € · Monatsgebühr 1.500 € ab dem ersten Auftrag |
-| Werbebudget | 3.000 € pro Monat (Meta 2.100 €, Google 900 €) · Empfehlung war 3.000 € |
+| Werbebudget | 3.000 € pro Monat (Meta 2.100 €, Google 900 €) · Empfehlung: 3.000 € |
 | Prüfung | Ergebnis innerhalb von 2 Werktagen |
-| Fotos vom Kunden | Drive-Ordner: [Google-Drive-Ordner für seine Fotos (Link)] |
+| Fotos vom Kunden | [Google-Drive-Ordner für seine Fotos (Link)] |
 | Verlosung läuft | Teilnahmeschluss 15.01.2027, Ziehung 20.01.2027, Speicher: 10 kWh |
 
-## Was du wann brauchst
+## Welche Datei wann
 
-| Schritt | Datei |
-|---|---|
-| 4 · Abschluss | [Vereinbarung](dokumente/vereinbarung.md) · [Abrechnungs-Mails](dokumente/abrechnung-mails.md) · [Willkommens-Mail](dokumente/willkommens-mail.md) · [Rückruf-Leitfaden](dokumente/rueckruf-leitfaden.md) |
-| 4–7 · Abhaken | [Checkliste bis zum Livegang](tabellen/checkliste.xlsx) |
-| 5 · Fotos ablegen | Ordner [`fotos/`](fotos/): `foto-1.jpg`, `foto-2.jpg`, `foto-3.jpg`, dazu wenn vorhanden `vorher.jpg` und `nachher.jpg` |
-| 6 · Seiten hochladen | Ordner [`landingpage/`](landingpage/) auf app.netlify.com/drop ziehen |
-| 6 · Kampagnen anlegen | [Kampagnen Meta und Google](dokumente/kampagnen.md) · Bilder in [`anzeigen/creatives/`](anzeigen/creatives/) |
-| 8 · Jeden Tag / Monat | [Anfragen und Monatsreport](tabellen/anfragen-und-report.xlsx) · [Report-Mail](dokumente/report-mail.md) |
-| Verlosung | [Teilnahmebedingungen](dokumente/teilnahmebedingungen.md) (vor dem Start prüfen lassen) |
+| Schritt | Datei in diesem Ordner | Was du tust |
+|---|---|---|
+| 4 · Abschluss | **2 Vertrag** | als PDF schicken, unterschrieben zurück |
+| | **3 Rechnung** | Rechnung in der Zentrale machen, mit Mail 1 schicken |
+| | **4 Willkommens-Mail** + **5 Rückruf-Leitfaden** | Mail schicken, Leitfaden als PDF anhängen |
+| | **6 Zeile für die Zentrale** | öffnen, alles kopieren, in der Zentrale im Blatt „Kunden“ in die erste freie Zeile einfügen. Die Checkliste für diesen Kunden legt sich dann von selbst an. |
+| 6 · Einrichten | **7 Kampagnen** | zuerst „Messung einrichten“, dann Meta und Google anlegen (pausiert) |
+| | **8 Seiten für Netlify** | ganzen Ordner auf app.netlify.com/drop ziehen, Seite in `muster-solartechnik` umbenennen |
+| | **9 Anzeigen-Bilder** | bei Meta hochladen |
+| Zum Zeigen | **10 Anzeigen ansehen** | `vorschau.html` im Browser öffnen |
+| Verlosung | **11 Teilnahmebedingungen** | vor dem Start prüfen lassen, steht auf den Verlosungsseiten |
+Abhaken: in der Zentrale, Blatt „Checkliste“, Spalte `muster-solartechnik`.
 
-**Im Browser ansehen** (nach dem Pushen):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=202611171420) ·
-[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=202611171420) ·
-[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=202611171420)
-· Verlosung: [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=202611171420) ·
-[20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=202611171420) ·
-[Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=202611171420)
+**Im Browser ansehen** (nur beim fiktiven Probekunden, echte Kunden liegen nicht im Repo):
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=202611171504) ·
+[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=202611171504) ·
+[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=202611171504)

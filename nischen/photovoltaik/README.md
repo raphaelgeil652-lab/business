@@ -11,31 +11,31 @@ einem Kollegen aus dem PV-Vertrieb. Zwei Kampagnenarten für Hausbesitzer:
 
 | Was | Wo |
 |---|---|
-| **Die Anleitung** ⭐ 8 Schritte vom Anruf bis zur laufenden Kampagne | [`ANLEITUNG.md`](ANLEITUNG.md) |
-| Steckbrief zum Ausfüllen (pro Kunde kopieren) | [`vorlagen/tabellen/01-steckbrief.xlsx`](vorlagen/tabellen/01-steckbrief.xlsx) |
-| Das System dahinter: Vorlagen, Tabellen, Werkzeuge | [`vorlagen/LIES-MICH.md`](vorlagen/LIES-MICH.md) |
+| **Die Anleitung** ⭐ vom ersten Anruf bis zur laufenden Kampagne, in Reihenfolge | [`ANLEITUNG.md`](ANLEITUNG.md) |
+| Steckbrief zum Ausfüllen (pro Kunde kopieren; Blatt „Deine Daten“ einmal ausfüllen) | [`vorlagen/tabellen/01-steckbrief.xlsx`](vorlagen/tabellen/01-steckbrief.xlsx) |
+| **Die Zentrale**: Google-Tabelle mit Automatik (Anfragen, Erinnerungen, Reports, Checkliste, Akquise, Rechnungen) | [`../../zentrale/EINRICHTEN.md`](../../zentrale/EINRICHTEN.md) |
+| Hilfe für Schritt 6: Seiten online, Zentrale verbinden, Kampagnen | [`hilfe-einrichten.md`](hilfe-einrichten.md) |
+| Das System dahinter (Technik) | [`vorlagen/LIES-MICH.md`](vorlagen/LIES-MICH.md) |
 | Probekunde, komplett vom System erzeugt | [`kunden/muster-solartechnik/`](kunden/muster-solartechnik/) |
 | Das Modul: Ticket, Verlosungen, Anzeigen-Standard, Regeln, Quellen | [`modul-photovoltaik.md`](modul-photovoltaik.md) |
 | Betriebshandbuch (nischenneutral, Claude-Doc) | [Öffnen](https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) |
 
 **Ansehen** (Probekunde):
-[▶ Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=6) ·
-[▶ Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=6) ·
-[▶ Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=6) ·
-Verlosung: [▶ Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=6) ·
-[▶ 20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=6) ·
-[▶ Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=6)
+[▶ Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=7) ·
+[▶ Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=7) ·
+[▶ Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=7) ·
+Verlosung: [▶ Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=7) ·
+[▶ 20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=7) ·
+[▶ Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=7)
 
 ---
 
 ## So läuft es
 
-**Die Anleitung ist [`ANLEITUNG.md`](ANLEITUNG.md):** 8 Schritte vom ersten Anruf bis zur laufenden
-Kampagne, mit jeder Datei und wo sie liegt. Einfach genug, um sie dem Kollegen zu schicken.
-
-Kurz: Steckbrief im Videocall ausfüllen → Claude erzeugt den Kundenordner → Abschluss am selben
-Tag → Kunde schickt Fotos, Zugänge, Links → Seiten hochladen, Kampagnen anlegen → testen, live →
-Anfragen eintragen, Monatsreport schreibt sich selbst.
+Alles steht in der [Anleitung](ANLEITUNG.md). Kurz: Betriebe anrufen → Videocall mit Steckbrief →
+Claude erzeugt den Kundenordner → Abschluss am selben Tag, Kunde in die Zentrale → Kunde schickt
+Fotos, Zugänge, Links → Seiten hochladen, mit der Zentrale verbinden, Kampagnen anlegen → testen,
+live. Danach meldet sich die Zentrale, wenn du etwas tun musst.
 
 ## Worauf es bei PV ankommt
 
@@ -48,6 +48,7 @@ Anfragen eintragen, Monatsreport schreibt sich selbst.
 - **Zahlen nur als Beispielrechnung** mit Annahmen und Quelle, nie als Versprechen. Keine Förderzusagen.
 - **Wirtschaftlichkeitsprüfung pünktlich liefern.** Wer zusagt „innerhalb von 2 Werktagen“, muss es halten.
 - **githack zwischenspeichert alte Fassungen.** Nach Änderungen die Zahl hinter `?v=` in den Links hochzählen.
+- **Echte Kunden nie ins Repo.** Es ist öffentlich. Kundenordner liegen beim Nutzer, Anfragen in der Zentrale.
 
 ## Offen mit dem Kollegen
 

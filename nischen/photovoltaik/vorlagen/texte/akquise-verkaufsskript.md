@@ -1,7 +1,7 @@
 # Verkaufsskript: PV-Betriebe gewinnen (Telefon und Videocall)
 
 > Allgemein, nicht pro Kunde. Kunden kommen aus ganz Deutschland, deshalb per Telefon und Video.
-> Liste der Betriebe: Akquise-Liste PV-Betriebe (`vorlagen/tabellen/04-akquise-pv-betriebe.xlsx`).
+> Liste der Betriebe: in der Zentrale, Blatt „Akquise“. Morgens kommt eine Mail, wen du heute anrufst.
 
 ## Ziel jedes Schritts
 
@@ -22,7 +22,11 @@
 > Portal: Die Anfragen gehen nur an Sie, an niemanden sonst. Hätten Sie diese Woche 20 Minuten
 > für einen Videocall? Dann zeige ich Ihnen, wie das mit Ihrem Namen aussieht.“
 
-Nicht erreicht: Namen und beste Zeit notieren, höchstens 3 Versuche zu verschiedenen Zeiten.
+**Danach sofort in der Zentrale, Blatt „Akquise“:**
+- Termin steht → Stand „Videocall vereinbart“, Nachfass-Mail „Termin steht“ schicken.
+- Nicht erreicht → Stand „nicht erreicht“, bei „Nächster Anruf am“ ein Datum in 2 Tagen. Andere Uhrzeit
+  probieren. Nach dem 2. Versuch die Nachfass-Mail „Nicht erreicht“, nach dem 3. aufhören.
+- Kein Interesse → Stand „kein Interesse“. Dann kommt er nie wieder in die Morgen-Mail.
 
 ## 2 · Videocall (Bildschirm teilen)
 
@@ -37,8 +41,13 @@ lassen. Dann sieht er seine eigenen Anzeigen. Sonst zeigst du den Beispielkunden
 
 Dazu: „Bis wie weit fahren Sie zur Montage?“ und „Montieren Sie mit eigenem Team?“
 
-**Zeigen:** die 5 Anzeigen der Wirtschaftlichkeitsprüfung → die Seite dahinter → den Rechner.
-Läuft gerade eine Verlosung, kurz auch diese.
+**Zeigen** (Ordner „03 Videocall“ › Beispiel zum Zeigen): die 5 Anzeigen der Wirtschaftlichkeitsprüfung
+→ die Seite dahinter → den Rechner. Läuft gerade eine Verlosung, kurz auch diese.
+
+**Was er davon hat, ohne Aufwand:**
+> „Jede Anfrage kommt sofort als Mail auf Ihr Handy, mit der Nummer zum Antippen. Haben Sie nach
+> einer Stunde nicht angerufen, erinnert Sie das System. Montags tippen Sie kurz an, wie weit jede
+> Anfrage ist, und am Monatsanfang bekommen Sie Ihren Report. Mehr müssen Sie nicht tun.“
 
 **Risiko-Umkehr:**
 > „Die monatliche Gebühr zahlen Sie erst, wenn Sie über unsere Anfragen den ersten Auftrag

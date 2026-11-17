@@ -1,3 +1,7 @@
 clickculture-build/
 __pycache__/
 *.pyc
+
+# Echte Kundenordner nie ins öffentliche Repo (Kontaktdaten, Preise). Nur der fiktive Probekunde liegt drin.
+nischen/photovoltaik/kunden/*
+!nischen/photovoltaik/kunden/muster-solartechnik/

@@ -9,7 +9,7 @@ Diese Startseite ist deine Übersicht.
 |---|---|---|
 | 🚗 **Kfz-Betriebe** (Werkstätten, Aufbereiter, Folierer) | **aktiver Fokus** | [`nischen/autowerkstaetten/`](nischen/autowerkstaetten/) |
 | 🍳 Küchenstudios | zurückgestellt (vollständig erhalten) | [`nischen/kuechenstudios/`](nischen/kuechenstudios/) |
-| ☀️ Photovoltaik | Vorlagen-System fertig, Probelauf mit erfundenem Kunden | [`nischen/photovoltaik/`](nischen/photovoltaik/) |
+| ☀️ Photovoltaik | System mit Zentrale (Automatik) fertig, Probelauf mit erfundenem Kunden | [`nischen/photovoltaik/`](nischen/photovoltaik/) |
 | ☕ **Tagwerk** (Demo-Webseite, erfundene Kaffeemarke) | Vorzeige-Stück für Webseitenbau | [`nischen/tagwerk/`](nischen/tagwerk/) |
 | 🌿 **Alex Außenanlagen** (Pfullendorf) | Webseiten-Kunde: Garten, Erdarbeiten, Pflaster | [`nischen/alex-aussenanlagen/`](nischen/alex-aussenanlagen/) |
 | 🏄 **Wakepark Pfullendorf** | Webseiten-Entwurf: Wasserskianlage am Seepark Linzgau | [`nischen/wakepark-pfullendorf/`](nischen/wakepark-pfullendorf/) |
@@ -55,17 +55,17 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 
 ### ☀️ Photovoltaik — Probelauf (erfundener Kunde „Muster Solartechnik“)
 
-**Komplettes System mit allen Vorlagen:** Steckbrief ausfüllen → ein Befehl → fertiger Kundenordner.
+**Steckbrief ausfüllen → Claude erzeugt den Kundenordner → die Zentrale erledigt die Routine.**
 
 | Was | Öffnen |
 |---|---|
-| **Anleitung** ⭐ 8 Schritte vom ersten Anruf bis zur laufenden Kampagne | [Öffnen](nischen/photovoltaik/ANLEITUNG.md) |
+| **Anleitung** ⭐ vom ersten Anruf bis zur laufenden Kampagne, in Reihenfolge | [Öffnen](nischen/photovoltaik/ANLEITUNG.md) |
+| **Zentrale einrichten** (Google-Tabelle mit Automatik, einmal 20 Minuten) | [Öffnen](zentrale/EINRICHTEN.md) |
 | Übersicht Photovoltaik | [Öffnen](nischen/photovoltaik/README.md) |
-| Das System dahinter: Tabellen, Texte, Anzeigen, Werkzeuge | [Öffnen](nischen/photovoltaik/vorlagen/LIES-MICH.md) |
 | Steckbrief zum Ausfüllen | [Öffnen](nischen/photovoltaik/vorlagen/tabellen/01-steckbrief.xlsx) |
-| Anzeigen des Probekunden (beide Kampagnenarten) | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=6) |
-| Landingpages Dauerkampagne | [Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=6) · [Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=6) |
-| Landingpages Verlosung (2–3 × im Jahr) | [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=6) · [20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=6) · [Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=6) |
+| Anzeigen des Probekunden (beide Kampagnenarten) | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=7) |
+| Landingpages Dauerkampagne | [Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=7) · [Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=7) |
+| Landingpages Verlosung (2–3 × im Jahr) | [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=7) · [20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=7) · [Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=7) |
 | Betriebshandbuch (nischenneutral) | [Öffnen](https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) |
 
 ### 🏮 China Restaurant Chinatown — Einzelkunde (Pfullendorf)

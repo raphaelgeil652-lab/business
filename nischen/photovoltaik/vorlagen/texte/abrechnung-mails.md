@@ -1,7 +1,10 @@
 # Abrechnungs-Mails — {{betrieb}}
 
-> Rechnung machen: in `00-agentur.xlsx` im Blatt „Rechnungen“ eine Zeile ausfüllen, im Blatt
-> „Rechnung drucken“ die Nummer eintragen, als PDF sichern, an diese Mail hängen.
+> **So machst du eine Rechnung:** Zentrale → Blatt „Rechnungen“ → eine Zeile (Datum, Kunde, Anschrift,
+> Posten, Zeitraum, Netto). Nummer, Umsatzsteuer und Fälligkeit rechnen sich. Dann Blatt
+> „Rechnung drucken“ → Nummer oben eintragen → Datei → Drucken → als PDF speichern → an die Mail hängen.
+>
+> Anschrift für die Rechnung: {{betrieb_lang}}, {{adresse}}
 
 ## 1 · Onboarding (am Tag der Unterschrift)
 
@@ -16,9 +19,9 @@ erstatte ich den Betrag vollständig.
 Beste Grüße
 {{agentur_inhaber}}
 
-## 2 · Erste Monatsgebühr (Monat nach dem ersten Auftrag)
+## 2 · Erste Monatsgebühr
 
-Wann: Im Monatsreport steht bei „Erster Auftrag überhaupt“ ein Datum. Ab dem Monat danach.
+Wann: Die Zentrale schickt dir die Mail „Erster Auftrag bei {{betrieb}}“. Dann diese Mail schicken.
 
 **Betreff:** Glückwunsch zum ersten Auftrag — Start der Monatsgebühr
 
@@ -33,5 +36,5 @@ Beste Grüße
 
 ## 3 · Jeden Monat danach
 
-Zum Monatsanfang eine Zeile „Monatsgebühr“ in den Rechnungen, PDF drucken, kurz schicken:
+Am 1. erinnert dich die Zentrale. Rechnung wie oben machen und kurz schicken:
 „Anbei die Rechnung für [Monat]. Beste Grüße“
