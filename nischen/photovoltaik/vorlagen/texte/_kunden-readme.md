@@ -27,7 +27,7 @@ schicken: „Erzeuge {{betrieb}} neu.“ Die Checkliste und die Fotos bleiben da
 | Schritt | Datei in diesem Ordner | Was du tust |
 |---|---|---|
 | 4 · Abschluss | **2 Vertrag** | als PDF schicken, unterschrieben zurück |
-| | **3 Rechnung** | Rechnung in der Zentrale machen, mit Mail 1 schicken |
+| | **3 Rechnung** | Mailtext. Die Rechnung selbst in der Zentrale machen, als PDF an Mail 1 hängen |
 | | **4 Willkommens-Mail** + **5 Rückruf-Leitfaden** | Mail schicken, Leitfaden als PDF anhängen |
 | | **6 Zeile für die Zentrale** | öffnen, alles kopieren, in der Zentrale im Blatt „Kunden“ in die erste freie Zeile einfügen. Die Checkliste für diesen Kunden legt sich dann von selbst an. |
 | 6 · Einrichten | **7 Kampagnen** | zuerst „Messung einrichten“, dann Meta und Google anlegen (pausiert) |
