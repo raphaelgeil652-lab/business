@@ -46,10 +46,14 @@ Versehen etwas ändern.
      (Die Warnung kommt, weil du die App selbst geschrieben hast. Sie läuft nur in deinem Konto.)
    - Die **Web-App-URL** kopieren (endet auf `/exec`) → in der Tabelle, Blatt „Einstellungen“,
      bei „Web-App-Adresse“ einfügen.
-6. **Einschalten:** die Tabelle im Browser neu laden. Oben erscheint das Menü „Clickculture“ →
-   „1 · Einrichten“ → beim ersten Mal zulassen (wie in Schritt 5) → nochmal „1 · Einrichten“.
-   Die Meldung sagt „Die Automatik läuft“. Im Blatt „Einstellungen“ steht jetzt die
-   **Webhook-Adresse für Netlify**.
+6. **Einschalten:** Zurück zum Browser-Tab mit der **Google-Tabelle „Clickculture Zentrale“** (nicht
+   der Tab mit Apps Script). Diesen Tab neu laden: Mac `Cmd + R`, Windows `F5` oder der runde Pfeil
+   oben links im Browser. Nach ein paar Sekunden erscheint oben in der Menüleiste, rechts neben
+   „Hilfe“, das Menü **„Clickculture“** → „1 · Einrichten“ → beim ersten Mal „Weiter“ und zulassen
+   (wie in Schritt 5) → danach nochmal „1 · Einrichten“. Die Meldung sagt „Die Automatik läuft“.
+   Im Blatt „Einstellungen“ steht jetzt die Webhook-Adresse für Netlify.
+   *Kein Menü „Clickculture“?* Prüfen: Steht oben neben dem Dateinamen „.XLSX“? Dann ist es noch
+   nicht die Google-Version (Schritt 1). Sonst in Apps Script nochmal speichern und den Tab neu laden.
 7. **Testen:** Blatt „Kunden“ → dich selbst eintragen: Kürzel `test`, Betrieb `Test`, deine E-Mail
    bei „E-Mail für Anfragen“, Aktiv `Ja`. Menü „Clickculture“ → „2 · Test-Anfrage durchspielen“.
    Du bekommst die Anfrage-Mail. Auf „Zurückgerufen“ tippen → bestätigen. Im Blatt „Anfragen“

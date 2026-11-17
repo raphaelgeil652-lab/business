@@ -183,7 +183,7 @@ def bauen():
         "5. Oben rechts „Bereitstellen → Neue Bereitstellung“ → Zahnrad → „Web-App“. Ausführen als: Ich. Zugriff: Jeder. "
         "→ Bereitstellen → Zugriff erlauben (Google warnt: „Erweitert → Weiter zu …“ → Zulassen). Die Web-App-URL kopieren "
         "und im Blatt „Einstellungen“ bei „Web-App-Adresse“ einfügen.",
-        "6. Diese Tabelle neu laden. Oben erscheint das Menü „Clickculture“ → „1 · Einrichten“ → zulassen. Fertig: Die Zeitpläne laufen.",
+        "6. Zurück zu diesem Browser-Tab (die Tabelle, nicht Apps Script) und neu laden (Mac Cmd+R, Windows F5). Oben rechts neben „Hilfe“ erscheint das Menü „Clickculture“ → „1 · Einrichten“ → zulassen → nochmal „1 · Einrichten“.",
         "7. Testen: Im Blatt „Kunden“ dich selbst als Kunde eintragen (Kürzel test, deine E-Mail, Aktiv Ja). Menü → „2 · Test-Anfrage“. "
         "In der Mail auf „Zurückgerufen“ tippen. Danach die Test-Zeilen und die Checkliste-Spalte „test“ löschen.",
     ]
