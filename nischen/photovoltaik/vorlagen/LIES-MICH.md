@@ -46,7 +46,7 @@ Nur Felder, die irgendwo gebraucht werden:
 | Teil | Felder | Wofür |
 |---|---|---|
 | 1 · Im Gespräch | Betrieb, Inhaber, Telefon, E-Mail, Ort, Umkreis, Auftragswert, Termine pro Woche, 3 Ja-Fragen | Anzeigen, Seiten, Werbegebiet, Budget, Entscheidung „passt er?“ |
-| 2 · Vereinbarung | Firmenname, Adresse, Geschäftszeiten, eigenes Team?, Preise, Budget, Prüfungsdauer, Datum | Vertrag, Seiten, Anzeigentexte („eigene Montageteams“ nur bei Ja) |
+| 2 · Vereinbarung | Firmenname, Adresse, Geschäftszeiten, eigenes Team?, Preise, Budget, Prüfungsdauer, Datum, Drive-Ordner | Vertrag, Seiten, Anzeigentexte („eigene Montageteams“ nur bei Ja), Willkommens-Mail (wohin die Fotos kommen) |
 | 3 · Vom Kunden | Links zu Impressum und Datenschutz, 2 echte Bewertungen | Fußzeile und Bewertungs-Block der Seiten (ohne Bewertung fällt der Block weg) |
 | 4 · Nach dem Hochladen | Adresse der Seiten, Pixel-ID | Kampagnen-Ziele, Pixel auf den Seiten |
 | 5 · Verlosung | läuft?, Teilnahmeschluss, Ziehung, Speicher | Verlosungs-Anzeigen, -Seiten, Teilnahmebedingungen |

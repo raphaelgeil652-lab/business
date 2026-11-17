@@ -11,6 +11,7 @@ Die Tabellen und Fotos bleiben dabei erhalten.
 - [ ] Ort des Betriebs
 - [ ] Straße und Hausnummer
 - [ ] PLZ
+- [ ] Google-Drive-Ordner für seine Fotos (Link)
 - [ ] Link zu seinem Impressum
 - [ ] Link zu seiner Datenschutzerklärung
 - [ ] Adresse der Seiten
@@ -28,6 +29,7 @@ Die Tabellen und Fotos bleiben dabei erhalten.
 | Preise | Onboarding 850 € · Monatsgebühr 1.500 € ab dem ersten Auftrag |
 | Werbebudget | 3.000 € pro Monat (Meta 2.100 €, Google 900 €) · Empfehlung war 3.000 € |
 | Prüfung | Ergebnis innerhalb von 2 Werktagen |
+| Fotos vom Kunden | Drive-Ordner: [Google-Drive-Ordner für seine Fotos (Link)] |
 | Verlosung läuft | Teilnahmeschluss 15.01.2027, Ziehung 20.01.2027, Speicher: 10 kWh |
 
 ## Was du wann brauchst
@@ -43,9 +45,9 @@ Die Tabellen und Fotos bleiben dabei erhalten.
 | Verlosung | [Teilnahmebedingungen](dokumente/teilnahmebedingungen.md) (vor dem Start prüfen lassen) |
 
 **Im Browser ansehen** (nach dem Pushen):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=202611171409) ·
-[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=202611171409) ·
-[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=202611171409)
-· Verlosung: [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=202611171409) ·
-[20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=202611171409) ·
-[Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=202611171409)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=202611171420) ·
+[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=202611171420) ·
+[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=202611171420)
+· Verlosung: [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=202611171420) ·
+[20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=202611171420) ·
+[Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=202611171420)

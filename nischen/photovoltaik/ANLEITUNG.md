@@ -67,7 +67,10 @@ Einen leeren *Steckbrief* kopieren und während des Gesprächs **Teil 1** ausfü
 
 ## 3 · Kundenordner erzeugen lassen
 
-Den Steckbrief an Claude schicken: **„Lege den Kunden aus diesem Steckbrief an.“**
+1. **Google-Drive-Ordner anlegen** (1 Minute): Name = Betrieb, für den Kunden freigeben als
+   „Bearbeiter“, Link in den Steckbrief (Teil 2). Dort lädt der Kunde seine Fotos hoch, jetzt und
+   später. Nicht über WhatsApp: Das verkleinert Fotos und Videos.
+2. Den Steckbrief an Claude schicken: **„Lege den Kunden aus diesem Steckbrief an.“**
 Du bekommst den fertigen Kundenordner zurück (wie *Muster Solartechnik*). Leg ihn bei den Kunden ab.
 Oben in der Übersicht des Ordners steht, was noch fehlt.
 
@@ -85,7 +88,7 @@ Oben in der Übersicht des Ordners steht, was noch fehlt.
 
 Die Willkommens-Mail fragt genau diese vier Dinge ab:
 
-1. **Fotos:** 3 fertige Anlagen, wenn möglich ein Dach vorher und nachher (per WhatsApp oder Mail).
+1. **Fotos** in den Drive-Ordner: 3 fertige Anlagen, wenn möglich ein Dach vorher und nachher.
 2. **Zugänge:** Meta-Partnerzugriff, Google-Ads-Einladung annehmen.
 3. **Zwei Links und zwei Bewertungen:** Impressum, Datenschutz, zwei echte Google-Bewertungen.
 4. **Ein Name:** wer bei ihm die Wirtschaftlichkeitsprüfungen rechnet.
@@ -96,7 +99,7 @@ Nach 3 Tagen fehlt noch etwas? **Anrufen**, nicht mailen.
 
 | Was du tust | Datei |
 |---|---|
-| Links und Bewertungen in den Steckbrief (Teil 3). Steckbrief und Fotos an Claude: „Erzeuge [Kunde] neu.“ Die Fotos heißen danach `foto-1` bis `foto-3`, dazu `vorher` und `nachher` | Steckbrief |
+| Links und Bewertungen in den Steckbrief (Teil 3). Die besten Fotos aus dem Drive-Ordner und den Steckbrief an Claude: „Erzeuge [Kunde] neu.“ Die Fotos heißen danach `foto-1` bis `foto-3`, dazu `vorher` und `nachher` | Steckbrief |
 | Seiten online: den Ordner *Landingpages* auf app.netlify.com/drop ziehen. Unter „Forms“ die Mail-Benachrichtigung an den Kunden und an dich einstellen | Hilfe: *Landingpage online stellen* |
 | Meta-Pixel im Konto des Kunden anlegen | Hilfe: *Meta-Anzeige einrichten* |
 | Adresse der Seiten und Pixel-ID in den Steckbrief (Teil 4), neu erzeugen lassen, Ordner nochmal hochladen | Steckbrief |
@@ -119,7 +122,7 @@ Alles in einer Datei: Kundenordner › *Anfragen und Monatsreport*.
 |---|---|
 | **Jeden Tag** | Jede Anfrage-Mail eine Zeile. Rückrufzeit eintragen. Rot = über 60 Minuten → Kunden anrufen. |
 | **Jede Woche** | 5-Minuten-Anruf: Wie weit ist jede Anfrage? Spalte „Stand“ nachtragen. |
-| **Jeden Monat** | Werbekosten aus Meta und Google eintragen. Im Blatt „Monatsreport“ den Monat eintragen, die fertige Mail kopieren, 3 Sätze ergänzen, schicken, 10 Minuten telefonieren. |
+| **Jeden Monat** | Neue Fotos im Drive-Ordner? Die besten an Claude für frische Anzeigen. Werbekosten aus Meta und Google eintragen. Im Blatt „Monatsreport“ den Monat eintragen, die fertige Mail kopieren, 3 Sätze ergänzen, schicken, 10 Minuten telefonieren. |
 | **Erster Auftrag** | Im Monatsreport steht „Erster Auftrag“ mit Datum. Ab dem Folgemonat die Monatsgebühr berechnen: *Abrechnungs-Mails*, Mail 2. |
 | **2–3 × im Jahr** | Verlosung: im Steckbrief Teil 5 auf Ja, Daten eintragen, neu erzeugen lassen, zweite Meta-Kampagne. Danach wieder auf Nein. |
 

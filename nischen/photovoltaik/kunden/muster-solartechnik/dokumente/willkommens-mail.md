@@ -11,11 +11,14 @@ Hallo Herr Muster,
 schön, dass wir zusammenarbeiten! Damit wir schnell live gehen, brauche ich bis in 3 Tagen
 vier Dinge von Ihnen.
 
-**1. Fotos** (das Wichtigste, einfach per WhatsApp an [Telefon / WhatsApp] oder als Antwort auf diese Mail)
+**1. Fotos** (das Wichtigste). Bitte hier hochladen: [Google-Drive-Ordner für seine Fotos (Link)]
 
 - 3 Fotos von fertigen Anlagen auf Dächern, gern Drohne, Handy geht auch.
 - Wenn möglich: ein Dach vorher und nachher, vom selben Punkt aus fotografiert.
+- Gern auch kurze Handyvideos von einer Montage (hochkant, 10–30 Sekunden).
 
+Bitte in den Ordner laden, nicht über WhatsApp: Dort werden Fotos und Videos verkleinert. Der
+Ordner bleibt, neue Fotos von späteren Montagen können Sie jederzeit dazulegen.
 Noch keine Fotos da? Bei der nächsten Montage vorher und nachher je ein Foto machen.
 
 **2. Zugänge**

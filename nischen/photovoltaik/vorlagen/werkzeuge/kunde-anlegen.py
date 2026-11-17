@@ -53,7 +53,7 @@ EURO = {"ticket_schnitt", "onboarding_preis", "retainer", "budget_meta", "budget
 # Muss für Vertrag und Livegang ausgefüllt sein (sonst steht es in der README unter „Noch offen“)
 PFLICHT = ["betrieb", "anrede", "inhaber", "telefon", "email", "ort", "einzugsgebiet_km", "ticket_schnitt",
            "kapazitaet_termine", "betrieb_lang", "strasse", "plz", "oeffnungszeiten", "eigenes_team",
-           "onboarding_preis", "retainer", "budget_meta", "budget_google", "impressum_url", "datenschutz_url",
+           "onboarding_preis", "retainer", "budget_meta", "budget_google", "drive_link", "impressum_url", "datenschutz_url",
            "landingpage_url", "pixel_id"]
 OPTIONAL = ["bewertung_1", "bewertung_2"]
 VERLOSUNG_PFLICHT = ["aktion_ende", "ziehung", "speicher"]

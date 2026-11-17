@@ -17,6 +17,7 @@ Die Tabellen und Fotos bleiben dabei erhalten.
 | Preise | Onboarding {{onboarding_preis}} · Monatsgebühr {{retainer}} ab dem ersten Auftrag |
 | Werbebudget | {{budget_gesamt}} pro Monat (Meta {{budget_meta}}, Google {{budget_google}}) · Empfehlung war {{budget_empfehlung}} |
 | Prüfung | Ergebnis innerhalb von {{pruefung_dauer}} |
+| Fotos vom Kunden | Drive-Ordner: {{drive_link}} |
 <!--VERLOSUNG-->| Verlosung läuft | Teilnahmeschluss {{aktion_ende}}, Ziehung {{ziehung}}, Speicher: {{speicher}} |
 <!--/VERLOSUNG-->
 
