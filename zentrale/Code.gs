@@ -69,6 +69,12 @@ function einrichten() {
   var dienst = ScriptApp.getService().getUrl() || '';
   if (!url && /\/exec$/.test(dienst)) { url = dienst; einstSetzen_('webapp_url', url); }
   var hinweise = [];
+  if (url && !/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url)) {
+    hinweise.push('Die Web-App-Adresse sieht falsch aus. Sie muss mit https://script.google.com/macros/s/ beginnen und auf /exec enden.');
+  } else if (url && /\/exec$/.test(dienst) && dienst !== url) {
+    hinweise.push('Die eingetragene Web-App-Adresse passt nicht zur aktuellen Bereitstellung. Richtig wäre: ' + dienst +
+      ' (Bereitstellen → Bereitstellungen verwalten → unter „Web-App“ die URL kopieren).');
+  }
   if (!url) hinweise.push('Die Web-App-Adresse fehlt. Bitte Schritt 5 der Einrichtung machen (Bereitstellen, Adresse in „Einstellungen“ einfügen) und danach hier nochmal „Einrichten“ wählen.');
   if (s.tz !== 'Europe/Berlin') hinweise.push('Zeitzone ist „' + s.tz + '“. Bitte in Apps Script unter Projekteinstellungen (Zahnrad) auf „Berlin“ stellen.');
   if (!s.agentur_email) hinweise.push('Im Blatt „Einstellungen“ fehlt deine E-Mail.');

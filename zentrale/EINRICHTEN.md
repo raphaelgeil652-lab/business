@@ -44,8 +44,13 @@ Versehen etwas ändern.
    - „Bereitstellen“ → „Zugriff autorisieren“ → dein Google-Konto → Google warnt „App nicht
      überprüft“ → „Erweitert“ → „Weiter zu Clickculture Zentrale (unsicher)“ → „Zulassen“.
      (Die Warnung kommt, weil du die App selbst geschrieben hast. Sie läuft nur in deinem Konto.)
-   - Die **Web-App-URL** kopieren (endet auf `/exec`) → in der Tabelle, Blatt „Einstellungen“,
-     bei „Web-App-Adresse“ einfügen.
+   - Im Fenster stehen zwei Dinge mit „Kopieren“-Knopf: oben die „Bereitstellungs-ID“, darunter
+     **„Web-App“ → „URL“**. Den **unteren** Knopf nehmen (die Adresse beginnt mit
+     `https://script.google.com/macros/s/` und endet auf `/exec`) → in der Tabelle, Blatt
+     „Einstellungen“, bei „Web-App-Adresse“ einfügen.
+   - **Prüfen:** Die Adresse in einem privaten Browserfenster öffnen. Es muss „Clickculture Zentrale –
+     Diese Adresse ist in Ordnung“ erscheinen. Kommt „Datei kann derzeit nicht geöffnet werden“,
+     ist es die falsche Adresse. Wiederfinden: „Bereitstellen“ → „Bereitstellungen verwalten“.
 6. **Einschalten:** Zurück zum Browser-Tab mit der **Google-Tabelle „Clickculture Zentrale“** (nicht
    der Tab mit Apps Script). Diesen Tab neu laden: Mac `Cmd + R`, Windows `F5` oder der runde Pfeil
    oben links im Browser. Nach ein paar Sekunden erscheint oben in der Menüleiste, rechts neben
