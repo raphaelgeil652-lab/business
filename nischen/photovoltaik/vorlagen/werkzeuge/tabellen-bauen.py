@@ -150,6 +150,8 @@ def schluesselblatt(ws, felder, titeltext, unter):
         h = ws.cell(row=r, column=4, value=hilfe)
         h.font = HILFE
         h.alignment = Alignment(wrap_text=True, vertical="center")
+        if typ == "text":
+            w.number_format = "@"  # als Text: sonst macht Excel aus 0152… eine Zahl und kürzt lange IDs
         if typ == "datum":
             w.number_format = "DD.MM.YYYY"
         elif typ == "euro":

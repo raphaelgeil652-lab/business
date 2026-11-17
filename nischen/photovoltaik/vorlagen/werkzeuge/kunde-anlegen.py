@@ -94,6 +94,45 @@ def lese_schluessel(pfad, blatt=None):
     return werte, namen
 
 
+RECHTSFORMEN = {"gmbh": "GmbH", "ug": "UG", "ag": "AG", "kg": "KG", "ohg": "OHG", "gbr": "GbR", "e.k.": "e.K.",
+               "mbh": "mbH", "co.": "Co.", "&": "&"}
+
+
+def aufbereiten(d):
+    """Tippfehler und Excel-Eigenheiten glätten, bevor irgendetwas erzeugt wird. Gibt Warnungen zurück."""
+    warnungen = []
+    for k in ("betrieb", "betrieb_lang", "inhaber", "ort", "strasse", "agentur_inhaber", "agentur_anschrift"):
+        v = d.get(k)
+        if isinstance(v, str) and v == v.lower() and any(c.isalpha() for c in v):
+            d[k] = " ".join(RECHTSFORMEN.get(w, w[:1].upper() + w[1:]) for w in v.split(" "))
+    for k in ("betrieb", "betrieb_lang"):  # Rechtsform immer richtig schreiben: gmbh → GmbH
+        v = d.get(k)
+        if isinstance(v, str):
+            d[k] = " ".join(RECHTSFORMEN.get(w.lower(), w) if w.lower() in RECHTSFORMEN else w for w in v.split(" "))
+    for k in ("anrede",):
+        if isinstance(d.get(k), str):
+            d[k] = d[k].strip().capitalize()
+    for k in ("eigenes_team", "verlosung_aktiv", "check_entscheider", "check_rueckruf", "check_fotos", "agentur_kleinunternehmer"):
+        if isinstance(d.get(k), str):
+            d[k] = d[k].strip().capitalize()
+    for k in ("telefon", "agentur_telefon"):  # Excel macht aus 0152… die Zahl 152…
+        v = d.get(k)
+        if isinstance(v, (int, float)):
+            s = str(int(v))
+            d[k] = ("+" + s) if s.startswith("49") and len(s) >= 11 else ("0" + s)
+    if isinstance(d.get("plz"), (int, float)):
+        d["plz"] = str(int(d["plz"])).zfill(5)
+    for k, name in (("pixel_id", "Meta-Pixel-ID"), ("agentur_business_id", "Meta Business-ID")):
+        v = d.get(k)
+        if isinstance(v, (int, float)):
+            s = str(int(v))
+            d[k] = s
+            if len(s) >= 16 and s.endswith("0"):
+                warnungen.append(f"{name} {s} endet auf 0: Excel speichert nur 15 Stellen genau. Bitte bei Meta "
+                                 f"vergleichen und als Text eintragen (ein ' davor tippen).")
+    return warnungen
+
+
 def euro(x):
     return f"{x:,.0f} €".replace(",", ".")
 
@@ -292,6 +331,7 @@ def main():
         stb, namen = lese_schluessel(quelle)
     agentur, anamen = lese_schluessel(quelle, "Deine Daten")
     namen.update(anamen)
+    warnungen = aufbereiten(stb) + aufbereiten(agentur)
     if not stb.get("betrieb"):
         sys.exit("Im Steckbrief fehlt „Betrieb (Kurzname)“.")
     f = felder(stb, agentur, namen)
@@ -392,6 +432,8 @@ def main():
             f"Echte Fotos (noch Platzhalter: {', '.join(platzhalter)})")
     if not f["_vorher_nachher"]:
         gruppen.setdefault("Vom Kunden (Schritt 5)", []).append("Foto vorher und nachher vom selben Dach (wenn möglich)")
+    if warnungen:
+        gruppen = {"Bitte prüfen": warnungen, **gruppen}
     fehlt_agentur = [anamen.get(k, k) for k in AGENTUR_PFLICHT if not agentur.get(k)]
     if fehlt_agentur:
         gruppen = {"Deine Daten (im Steckbrief, Blatt „Deine Daten“)": fehlt_agentur, **gruppen}

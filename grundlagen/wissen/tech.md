@@ -14,6 +14,9 @@ Learnings zu Automationen, CRM, Tracking. Grundregeln stehen in `../../anleitung
   Doppelte Zustellungen werden über die Netlify-ID verworfen.
 - **Netlify kostenlos = 300 Credits/Monat** (seit 2026: 15 je Upload, 20 je GB, Formulare frei).
   Reicht für ca. 3–4 Kunden; Fotos werden deshalb auf 1.600 px verkleinert.
+- **Excel kürzt lange Zahlen und Nullen.** Meta-IDs (16 Stellen) verlieren die letzte Ziffer (wird 0),
+  Telefon 0152… wird 152…, PLZ 01067 wird 1067. Die Steckbrief-Vorlage speichert Textfelder deshalb als
+  Text, und `kunde-anlegen.py` repariert Telefon/PLZ und warnt bei IDs, die auf 0 enden. (Probelauf Nov. 2026)
 - **Apps Script ohne Google testen:** `node zentrale/test/test.js` baut Tabellen, Mails, Zeitpläne und
   Uhr nach. Zeitzone im Test auf Europe/Berlin, sonst rutschen Monatsgrenzen.
 
