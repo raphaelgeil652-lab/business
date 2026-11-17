@@ -368,7 +368,7 @@ def bauen():
     rg.conditional_formatting.add("L2:L500", CellIsRule(operator="equal", formula=['"überfällig"'], fill=ROT))
     rg.conditional_formatting.add("L2:L500", CellIsRule(operator="equal", formula=['"bezahlt"'], fill=GRUEN))
     rg["B1"].comment = Comment("Datum eintragen, Nummer, Umsatzsteuer, Brutto und Fälligkeit rechnen sich. "
-                               "Drucken: Blatt „Rechnung drucken“.", "Zentrale")
+                               "PDF: Blatt „Rechnung drucken“.", "Zentrale")
     rg["K1"].comment = Comment("Wenn das Geld da ist: Datum eintragen. Dann steht „bezahlt“.", "Zentrale")
 
     # ------------------------------------------------ Rechnung drucken
@@ -379,7 +379,7 @@ def bauen():
     dr["C1"].fill = GELB
     dr["C1"].border = BOX
     dr["C1"].font = Font(name=F, color="0000FF", bold=True)
-    text(dr, "D1", "dann Datei → Drucken → als PDF", size=9, color="6B665D")
+    text(dr, "D1", "dann B3:E31 markieren → Datei → Herunterladen → PDF → „Ausgewählte Zellen“", size=9, color="6B665D")
     zeile = "MATCH($C$1,Rechnungen!$A$2:$A$500,0)"
     hol = lambda col: f'=IFERROR(INDEX(Rechnungen!${col}$2:${col}$500,{zeile}),"")'
     zellen = [
