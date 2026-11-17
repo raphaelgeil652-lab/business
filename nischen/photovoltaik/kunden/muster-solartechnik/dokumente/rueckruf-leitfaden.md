@@ -11,7 +11,7 @@ Wer zuerst anruft, bekommt fast immer den Termin.
 
 1. **Begrüßen:** „Guten Tag, hier ist [Name] von Muster Solartechnik. Sie haben sich gerade auf unserer
    Seite eingetragen, danke dafür! Haben Sie zwei Minuten?“
-2. **Worum ging es?** Im Feld „Kampagne“ der Anfrage steht es:
+2. **Worum ging es?** In der Anfrage-Mail steht, über welche Seite sie kam:
    - **Wirtschaftlichkeitsprüfung oder Rechner:** „Sie bekommen Ihre Wirtschaftlichkeitsprüfung
      innerhalb von 2 Werktagen. Dafür brauche ich drei Angaben.“
    - **Verlosung:** „Sie sind dabei, gezogen wird am 20.01.2027. Darf ich Ihnen trotzdem drei

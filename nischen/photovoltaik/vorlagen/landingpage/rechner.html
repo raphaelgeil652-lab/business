@@ -67,8 +67,10 @@
   ul.list li{padding-left:22px;position:relative;}
   ul.list li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--accent);}
   .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .tile{aspect-ratio:4/3;border:1.5px dashed var(--line);display:grid;place-items:center;text-align:center;font-size:.8rem;color:var(--muted);padding:10px;}
-  .review{border:1.5px dashed var(--line);padding:14px;margin-bottom:10px;color:var(--muted);font-size:.95rem;}
+  .tiles figure{margin:0;}
+  .tiles img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;}
+  .tiles figcaption{font-size:.8rem;color:var(--muted);margin-top:6px;}
+  .review{border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 16px;font-size:.98rem;}
   details{border-bottom:1px solid var(--line);padding:14px 0;}
   summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px;}
   summary::after{content:"+";color:var(--accent);font-weight:800;}
@@ -156,7 +158,7 @@
       </div>
       <label>Foto der Stromrechnung <span class="opt">(optional, macht die Prüfung genauer)</span> <input type="file" name="stromrechnung" accept="image/*,application/pdf"></label>
       <label>E-Mail <span class="opt">(optional, für das Ergebnis)</span> <input type="email" name="email" autocomplete="email" placeholder="ihre@email.de"></label>
-      <label class="check"><input type="checkbox" name="einwilligung" required> <span>Ich bin einverstanden, dass meine Angaben für die Wirtschaftlichkeitsprüfung und die Kontaktaufnahme verwendet werden. Details im <a href="datenschutz.html">Datenschutz</a>.</span></label>
+      <label class="check"><input type="checkbox" name="einwilligung" required> <span>Ich bin einverstanden, dass meine Angaben für die Wirtschaftlichkeitsprüfung und die Kontaktaufnahme verwendet werden. Details im <a href="{{datenschutz_url}}">Datenschutz</a>.</span></label>
       <input type="hidden" name="fbclid" id="f_fbclid"><input type="hidden" name="gclid" id="f_gclid">
       <input type="hidden" name="utm_source" id="f_utm_source"><input type="hidden" name="utm_campaign" id="f_utm_campaign">
       <button type="submit">Kostenlos eintragen</button>
@@ -176,17 +178,16 @@
     </ul>
   </section>
 
-  <section>
+<!--VORHERNACHHER-->  <section>
     <h2>Anlagen, die wir montiert haben</h2>
-    <div class="tiles"><div class="tile">Foto vom Kunden:<br>Dach vorher</div><div class="tile">Foto vom Kunden:<br>Dach nachher</div></div>
+    <div class="tiles"><figure><img src="fotos/vorher.jpg" alt="Dach vorher" loading="lazy"><figcaption>Vorher</figcaption></figure><figure><img src="fotos/nachher.jpg" alt="Dach nachher" loading="lazy"><figcaption>Nachher</figcaption></figure></div>
   </section>
-
-  <section>
+<!--/VORHERNACHHER-->
+<!--BEWERTUNGEN-->  <section>
     <h2>Das sagen Kunden</h2>
-    <div class="review">[Echte Google-Bewertung 1] — [Vorname], [Ort]</div>
-    <div class="review">[Echte Google-Bewertung 2] — [Vorname], [Ort]</div>
+    {{bewertungen_html}}
   </section>
-
+<!--/BEWERTUNGEN-->
   <section>
     <h2>Häufige Fragen</h2>
     <details><summary>Wie genau ist der Rechner?</summary><p>Er zeigt eine grobe Spanne nach Durchschnittswerten. Für Ihr Haus rechnen wir nach der Eintragung genau, mit Ihrem Verbrauch, Ihrem Dach und Ihrem Strompreis.</p></details>
@@ -206,14 +207,14 @@
 
 <footer><div class="wrap">
   <b>{{betrieb_lang}}</b><br>{{adresse}} · <a href="tel:{{telefon_link}}">{{telefon}}</a><br>{{oeffnungszeiten}}<br>
-  <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> ·
+  <a href="{{impressum_url}}">Impressum</a> · <a href="{{datenschutz_url}}">Datenschutz</a> ·
   <button class="linkbtn" type="button" id="consent-open">Cookie-Einstellungen</button>
 </div></footer>
 
 <div class="sticky"><a class="btn" href="#rechner">Jetzt ausrechnen</a></div>
 
 <div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
-  <p>Wir möchten messen, ob unsere Werbung auf Facebook und Instagram ankommt. Dafür nutzen wir das Meta-Pixel, das Cookies setzt. Das geht nur mit Ihrer Zustimmung. Mehr dazu im <a href="datenschutz.html">Datenschutz</a>.</p>
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook und Instagram ankommt. Dafür nutzen wir das Meta-Pixel, das Cookies setzt. Das geht nur mit Ihrer Zustimmung. Mehr dazu im <a href="{{datenschutz_url}}">Datenschutz</a>.</p>
   <div class="row"><button class="ghost" type="button" id="consent-no">Nur notwendige</button><button type="button" id="consent-yes">Einverstanden</button></div>
 </div>
 

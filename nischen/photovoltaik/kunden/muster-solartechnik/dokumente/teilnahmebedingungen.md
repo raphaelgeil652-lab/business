@@ -3,7 +3,7 @@
 > ENTWURF — vor dem Livegang rechtlich prüfen lassen. Dieselben Bedingungen stehen auf den
 > Landingpages (Abschnitt „Teilnahmebedingungen“).
 
-**Veranstalter:** Muster Solartechnik GmbH, [Straße und Hausnummer], [PLZ] [Ort].
+**Veranstalter:** Muster Solartechnik GmbH, [Straße und Hausnummer], [PLZ] [Ort des Betriebs].
 
 **Zeitraum:** Teilnahme bis 15.01.2027, 23:59 Uhr. Ziehung am 20.01.2027.
 

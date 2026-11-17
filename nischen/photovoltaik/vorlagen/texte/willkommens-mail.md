@@ -1,47 +1,48 @@
 # Willkommens-Mail — {{betrieb}}
 
-> Am Tag der Unterschrift verschicken. Text ab „Betreff“ kopieren.
+> Am Tag der Unterschrift verschicken, zusammen mit dem Rückruf-Leitfaden. Text ab „Betreff“ kopieren.
 
 ---
 
-**Betreff:** Willkommen an Bord, {{anrede}} {{inhaber_nachname}} — so starten wir
+**Betreff:** Willkommen an Bord, {{anrede}} {{inhaber_nachname}}: diese 4 Dinge brauche ich
 
 Hallo {{anrede}} {{inhaber_nachname}},
 
-schön, dass wir zusammenarbeiten! Damit die ersten Anfragen schnell reinkommen, brauche ich
-drei Dinge von Ihnen.
+schön, dass wir zusammenarbeiten! Damit wir schnell live gehen, brauche ich bis in 3 Tagen
+vier Dinge von Ihnen.
 
-**1. Fotos — das Wichtigste** (hier hochladen: {{drive_link}})
+**1. Fotos** (das Wichtigste, einfach per WhatsApp an {{agentur_telefon}} oder als Antwort auf diese Mail)
 
-- Dach vorher und nachher, dasselbe Haus aus derselben Perspektive. 3–6 Paare reichen.
-  Drohnenfotos sind ideal, Handyfotos gehen auch.
-- Kurze Handyvideos (10–30 Sekunden, hochkant) von einer Montage.
-- 2–3 Fotos von Ihnen und Ihren Montageteams.
+- 3 Fotos von fertigen Anlagen auf Dächern, gern Drohne, Handy geht auch.
+- Wenn möglich: ein Dach vorher und nachher, vom selben Punkt aus fotografiert.
 
-Kein Material da? Bei der nächsten Montage vorher und nachher je ein Foto vom selben Punkt.
+Noch keine Fotos da? Bei der nächsten Montage vorher und nachher je ein Foto machen.
 
 **2. Zugänge**
 
 - Meta: Bitte laden Sie uns als Partner in Ihrem Business Manager ein, mit Zugriff auf
-  Facebook-Seite, Werbekonto und Pixel. Unsere Business-ID: {{agentur_business_id}}
-- Google Ads: Partner-Einladung an {{agentur_email}} (Verwaltungskonto {{agentur_google_mcc}})
+  Facebook-Seite und Werbekonto. Unsere Business-ID: {{agentur_business_id}}
+- Google Ads: Bitte nehmen Sie die Einladung von unserem Verwaltungskonto {{agentur_google_mcc}} an.
+  Ich schicke sie Ihnen heute.
 
 Alles läuft über Ihre eigenen Konten. Sie behalten jederzeit die Kontrolle.
 
-**3. Bestätigung**
+**3. Zwei Links und zwei Bewertungen**
 
-- Logo, Telefonnummer für Rückrufe, Adresse, Geschäftszeiten
+- Den Link zu Ihrem Impressum und zu Ihrer Datenschutzerklärung (von Ihrer Webseite).
+- Zwei echte Google-Bewertungen, die Ihnen gefallen. Ein Screenshot reicht.
+
+**4. Ein Name**
+
 - Wer bei Ihnen die Wirtschaftlichkeitsprüfungen rechnet. Zugesagt ist das Ergebnis innerhalb
   von {{pruefung_dauer}} nach der Eintragung.{{verlosung_absatz}}
-- Impressum und Datenschutzerklärung (oder den Link dazu)
-- Link zu Ihrem Google-Profil für die Bewertungen
 
-Sobald das da ist, gehen wir live. Die ersten Anfragen kommen erfahrungsgemäß in den ersten
-Tagen, ein unterschriebener Auftrag braucht bei Solaranlagen meist einige Wochen.
+Sobald das da ist, gehen wir live. Die ersten Anfragen kommen meist in den ersten Tagen. Ein
+unterschriebener Auftrag braucht bei Solaranlagen meist einige Wochen.
 
 **Eine Bitte vorab:** Rufen Sie jede Anfrage innerhalb einer Stunde zurück. Viele fragen
-parallel bei anderen an, und wer zuerst anruft, bekommt meist den Termin. Einen kurzen
-Leitfaden für Ihr Büro schicke ich Ihnen mit.
+parallel bei anderen an, und wer zuerst anruft, bekommt meist den Termin. Den kurzen Leitfaden
+für Ihr Büro finden Sie im Anhang.
 
 Beste Grüße
 {{agentur_inhaber}}

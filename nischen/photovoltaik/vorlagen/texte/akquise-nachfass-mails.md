@@ -9,7 +9,7 @@
 Hallo Herr/Frau [Name],
 
 danke für das kurze Gespräch. Hier der Link für unseren Videocall am [Tag] um [Uhrzeit]: [Link].
-Ich zeige Ihnen, wie Anzeigen und Aktionsseiten mit Ihrem Firmennamen aussehen, in 20 Minuten.
+Ich zeige Ihnen, wie Anzeigen und Seiten mit Ihrem Firmennamen aussehen, in 20 Minuten.
 
 Beste Grüße
 [Dein Name]
@@ -37,7 +37,7 @@ Beste Grüße
 
 Hallo Herr/Frau [Name],
 
-danke für das Gespräch. Wie besprochen hier Ihre Anzeigen und Aktionsseiten zum Ansehen: [Links].
+danke für das Gespräch. Wie besprochen hier Ihre Anzeigen und Seiten zum Ansehen: [Links].
 Die Vereinbarung hänge ich an. Die Gebühr läuft erst ab dem ersten Auftrag, und kommen in
 30 Tagen keine Anfragen, gibt es das Onboarding zurück.
 

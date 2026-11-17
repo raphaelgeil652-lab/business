@@ -3,16 +3,16 @@
 > Alles fertig zum Eintragen. Anzeigen-Bilder: `../anzeigen/creatives/`.
 > Ziel-Adressen: `[Adresse der Landingpages]/wirtschaftlichkeit.html`, `…/rechner.html`; bei Verlosung `…/modul.html`, `…/rabatt.html`, `…/speicher.html`.
 
-Budget: Meta 700 € pro Monat (≈ 23 € pro Tag) · Google 300 € pro Monat (≈ 10 € pro Tag).
+Budget: Meta 2.100 € pro Monat (≈ 70 € pro Tag) · Google 900 € pro Monat (≈ 30 € pro Tag).
 
 ## Meta (Facebook/Instagram)
 
 | Einstellung | Wert |
 |---|---|
 | Kampagne | `PV – Wirtschaftlichkeit – Muster Solartechnik` (Dauer) und bei Verlosung `PV – Verlosung – Muster Solartechnik`, Ziel **Leads**, Advantage Campaign Budget aus |
-| Anzeigengruppe | `[Ort] 40 km`, Conversion-Ort Website, Pixel-Ereignis „Lead“ |
-| Tagesbudget | 23 € |
-| Ort | [Ort] + 40 km, „Personen, die an diesem Ort leben“ |
+| Anzeigengruppe | `[Ort des Betriebs] 40 km`, Conversion-Ort Website, Pixel-Ereignis „Lead“ |
+| Tagesbudget | 70 € |
+| Ort | [Ort des Betriebs] + 40 km, „Personen, die an diesem Ort leben“ |
 | Alter / Geschlecht | 35–65+ / alle |
 | Detailliertes Targeting | leer |
 | Platzierungen | Advantage+ (automatisch) |
@@ -88,10 +88,10 @@ Vor dem Veröffentlichen:
 
 | Einstellung | Wert |
 |---|---|
-| Kampagne | `Suche – PV [Ort]`, nur Suchnetzwerk |
-| Tagesbudget | 10 € |
+| Kampagne | `Suche – PV [Ort des Betriebs]`, nur Suchnetzwerk |
+| Tagesbudget | 30 € |
 | Gebot | Start: Klicks maximieren, Höchst-CPC 3 €. Ab ca. 30 Conversions: Conversions maximieren |
-| Standort | [Ort] + 40 km, „Präsenz: Personen an diesem Ort oder regelmäßig dort“ |
+| Standort | [Ort des Betriebs] + 40 km, „Präsenz: Personen an diesem Ort oder regelmäßig dort“ |
 | Conversion | Aufruf der Danke-Seite |
 | Ziel | `wirtschaftlichkeit.html`, URL-Parameter `utm_source=google&utm_campaign=pv-suche` |
 
@@ -100,13 +100,13 @@ Keywords (Wortgruppe): `"photovoltaik [ort]"` · `"solaranlage [ort]"` · `"pv a
 Ausschließen: `balkonkraftwerk` · `steckersolar` · `gebraucht` · `selber bauen` · `diy` · `job` · `ausbildung` · `stellenangebot` · `gehalt` · `reinigung` · `mieter`
 
 Überschriften (höchstens 30 Zeichen, mit dem Ortsnamen Länge prüfen):
-1. Solaranlage in [Ort] · 2. Photovoltaik in [Ort] · 3. Rechnet sich Solar für Sie? (an Position 1 anheften) · 4. Festpreis-Angebot vorab · 5. PV-Anlage mit Speicher · 6. Betrieb aus [Ort] · 7. 0 % MwSt bis 30 kWp · 8. Eigene Montageteams · 9. Kein Vermittler, kein Portal · 10. Jetzt Termin anfragen · 11. Muster Solartechnik · 12. Stromspeicher nachrüsten · 13. Prüfung nach Eintragung · 14. Rückruf am selben Tag · 15. Unverbindlich & kostenlos
+1. Solaranlage in [Ort des Betriebs] · 2. Photovoltaik in [Ort des Betriebs] · 3. Rechnet sich Solar für Sie? (an Position 1 anheften) · 4. Festpreis-Angebot vorab · 5. PV-Anlage mit Speicher · 6. Betrieb aus [Ort des Betriebs] · 7. 0 % MwSt bis 30 kWp · 8. Eigene Montageteams · 9. Kein Vermittler, kein Portal · 10. Jetzt Termin anfragen · 11. Muster Solartechnik · 12. Stromspeicher nachrüsten · 13. Prüfung nach Eintragung · 14. Rückruf am selben Tag · 15. Unverbindlich & kostenlos
 
 Beschreibungen (höchstens 90 Zeichen):
-1. Wir prüfen Ihr Dach vor Ort und rechnen Ertrag und Speicher für Ihren Verbrauch.
+1. Wir rechnen Ertrag und Speicher für Ihren Verbrauch, kostenlos nach Ihrer Eintragung.
 2. Festpreis-Angebot, bevor Sie sich entscheiden. Ein Betrieb aus der Region.
 3. Für Anlagen bis 30 kWp auf Wohnhäusern fallen 0 % Mehrwertsteuer an.
-4. Eigene Montageteams aus [Ort]. Jetzt eintragen, Prüfung kostenlos.
+4. Eigene Montageteams aus [Ort des Betriebs]. Jetzt eintragen, Prüfung kostenlos.
 
 ## Nach dem Start
 

@@ -65,7 +65,7 @@ Läuft parallel zur Dauerkampagne. Vorschlag: Budget in dieser Zeit etwa hälfti
 - Beschreibung: Teilnahme bis {{aktion_ende_kurz}}.
 
 **Anzeige 2 — Verlosung 20 % Rabatt** · Bild `2-rabatt.png` · Ziel `rabatt.html` · Button **Registrieren**
-- Primärtext: Verlosung bis {{aktion_ende_kurz}}: Unter allen Anfragen verlosen wir 3 × 20 % Rabatt auf die erste Bestellung Ihrer Solaranlage. {{betrieb}} plant und montiert mit eigenem Team.
+- Primärtext: Verlosung bis {{aktion_ende_kurz}}: Unter allen Anfragen verlosen wir 3 × 20 % Rabatt auf die erste Bestellung Ihrer Solaranlage.{{team_satz}}
   👉 Jetzt teilnehmen.
 - Headline: 20 % Rabatt gewinnen
 - Beschreibung: 3 Gewinner, Verlosung bis {{aktion_ende_kurz}}.
@@ -101,13 +101,13 @@ Keywords (Wortgruppe): `"photovoltaik {{ort_klein}}"` · `"solaranlage {{ort_kle
 Ausschließen: `balkonkraftwerk` · `steckersolar` · `gebraucht` · `selber bauen` · `diy` · `job` · `ausbildung` · `stellenangebot` · `gehalt` · `reinigung` · `mieter`
 
 Überschriften (höchstens 30 Zeichen, mit dem Ortsnamen Länge prüfen):
-1. Solaranlage in {{ort}} · 2. Photovoltaik in {{ort}} · 3. Rechnet sich Solar für Sie? (an Position 1 anheften) · 4. Festpreis-Angebot vorab · 5. PV-Anlage mit Speicher · 6. Betrieb aus {{ort}} · 7. 0 % MwSt bis 30 kWp · 8. Eigene Montageteams · 9. Kein Vermittler, kein Portal · 10. Jetzt Termin anfragen · 11. {{betrieb}} · 12. Stromspeicher nachrüsten · 13. Prüfung nach Eintragung · 14. Rückruf am selben Tag · 15. Unverbindlich & kostenlos
+1. Solaranlage in {{ort}} · 2. Photovoltaik in {{ort}} · 3. Rechnet sich Solar für Sie? (an Position 1 anheften) · 4. Festpreis-Angebot vorab · 5. PV-Anlage mit Speicher · 6. Betrieb aus {{ort}} · 7. 0 % MwSt bis 30 kWp · 8. {{team_headline}} · 9. Kein Vermittler, kein Portal · 10. Jetzt Termin anfragen · 11. {{betrieb}} · 12. Stromspeicher nachrüsten · 13. Prüfung nach Eintragung · 14. Rückruf am selben Tag · 15. Unverbindlich & kostenlos
 
 Beschreibungen (höchstens 90 Zeichen):
-1. Wir prüfen Ihr Dach vor Ort und rechnen Ertrag und Speicher für Ihren Verbrauch.
+1. Wir rechnen Ertrag und Speicher für Ihren Verbrauch, kostenlos nach Ihrer Eintragung.
 2. Festpreis-Angebot, bevor Sie sich entscheiden. Ein Betrieb aus der Region.
 3. Für Anlagen bis 30 kWp auf Wohnhäusern fallen 0 % Mehrwertsteuer an.
-4. Eigene Montageteams aus {{ort}}. Jetzt eintragen, Prüfung kostenlos.
+4. {{team_beschr}}. Jetzt eintragen, Prüfung kostenlos.
 
 ## Nach dem Start
 

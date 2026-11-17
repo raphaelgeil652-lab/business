@@ -36,8 +36,8 @@ Einzugsgebiet: {{einzugsgebiet_km}} km um {{ort}}.
 
 ### §3 Pflichten des Auftraggebers
 
-- Material: Logo, echte Fotos fertiger Anlagen (möglichst Dach vorher/nachher), Bewertungen,
-  Leistungsumfang, Preisspanne, Montagevorlauf, Impressum und Datenschutzerklärung.
+- Material: echte Fotos fertiger Anlagen (möglichst ein Dach vorher/nachher), zwei echte
+  Kundenbewertungen, Links zu Impressum und Datenschutzerklärung.
 - Partnerzugang zum Meta-Werbekonto und zum Google-Ads-Konto. Das Werbebudget läuft über
   seine eigenen Konten und Zahlungsmittel.
 - Rückruf auf Anfragen innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.
@@ -49,7 +49,7 @@ Einzugsgebiet: {{einzugsgebiet_km}} km um {{ort}}.
 ### §4 Vergütung
 
 - **Onboarding: {{onboarding_preis}}** einmalig, fällig bei Vertragsbeginn.
-- **Retainer: {{retainer}} pro Monat.** Die Betreuung läuft ab Vertragsbeginn. Die Gebühr wird
+- **Monatsgebühr: {{retainer}} pro Monat.** Die Betreuung läuft ab Vertragsbeginn. Die Gebühr wird
   erst fällig, sobald der Auftraggeber aus einer vermittelten Anfrage den ersten Auftrag
   **unterschrieben** hat, danach jeweils zum Monatsanfang.
 - **Werbebudget:** zahlt der Auftraggeber separat und direkt an Meta und Google.

@@ -83,17 +83,31 @@ muss die Routine mitgeändert werden.
 
 **Photovoltaik:** Grundlage ist das nischenneutrale Betriebshandbuch (Claude-Doc,
 https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) und `modul-photovoltaik.md`.
+**Der Ablauf steht in `nischen/photovoltaik/ANLEITUNG.md`** (8 Schritte, einfache Sprache, auch für
+den Kollegen). Sie ist die eine Ablaufbeschreibung: Checkliste, Kunden-README und Verkaufsskript
+folgen ihren Schritten; bei Änderungen am Ablauf alle zusammen nachziehen.
 **Das Vorlagen-System `nischen/photovoltaik/vorlagen/` ist der Weg für jeden PV-Kunden**
-(Anleitung: `vorlagen/LIES-MICH.md`): ausfüllbare Tabellen (`tabellen/00–05*.xlsx`: Agentur-
-Stammdaten, Steckbrief mit Pflichtcheck, Onboarding, Anfragen-und-Report, Akquise, Rechnungen),
+(Technik: `vorlagen/LIES-MICH.md`): ausfüllbare Tabellen (`00-agentur.xlsx` deine Daten +
+Rechnungen + Rechnung drucken · `01-steckbrief.xlsx` ein Blatt, prüft selbst ob der Kunde passt,
+schlägt das Budget vor · `02-checkliste-bis-livegang.xlsx` · `03-anfragen-und-report.xlsx` mit
+fertiger Monatsmail · `04-akquise-pv-betriebe.xlsx`). **Im Steckbrief steht nur, was irgendwo
+gebraucht wird** (Nutzer-Vorgabe: raus, was nichts bringt; drin, was einfache, sichere Abläufe
+garantiert). Neues Feld nur, wenn eine Vorlage es nutzt.
+**Budgetregel PV (Nutzer, nach Rat eines befreundeten Agenturinhabers): Werbebudget ≈
+Auftragswert ÷ 5, Start mit 3.000 €/Monat, nicht unter 2.500 €**, 70 % Meta / 30 % Google. Das
+braucht ca. 5–6 freie Beratungstermine pro Woche; der Steckbrief prüft die Kapazität mit.
+Gilt für PV, nicht für Kfz (dort 300–900 €).
 Textvorlagen mit `{{feld}}`-Platzhaltern (`texte/`), Anzeigen- und Danke-Vorlage, Assets.
+Bedingte Blöcke `<!--VERLOSUNG-->`, `<!--BEWERTUNGEN-->`, `<!--VORHERNACHHER-->`: Bewertungen und
+Vorher/Nachher erscheinen nur mit echtem Material, „eigene Montageteams“ nur bei Steckbrief = Ja.
+Impressum/Datenschutz der Seiten verlinken auf die Webseite des Kunden.
 `vorlagen/werkzeuge/kunde-anlegen.py <steckbrief.xlsx>` erzeugt `kunden/<betrieb>/` komplett
 (Dokumente, 3 Anzeigen-PNGs, 3 Landingpages, Tabellen-Kopien, README). **Nie erzeugte Dateien von
 Hand ändern** — Steckbrief, Vorlage oder Werkzeug ändern und neu erzeugen; `tabellen/` und `fotos/`
 im Kundenordner bleiben dabei erhalten. Leere Steckbrief-Felder erscheinen als `[Feldname]`, nichts
-wird erfunden. `tabellen-bauen.py` baut die leeren Tabellen neu (Agentur-Stammdaten bleiben).
+wird erfunden. `tabellen-bauen.py` baut die leeren Tabellen neu (`00-agentur.xlsx` bleibt).
 `kunden/muster-solartechnik/` ist der **fiktive** Probekunde, vom System erzeugt (Ort/Adresse/Telefon
-bewusst leer). Preise dort nur Vorschlag (850 € / 1.500 €/Monat / 1.000 € Budget), nicht entschieden.
+bewusst leer). Preise dort nur Vorschlag (850 € / 1.500 €/Monat), nicht entschieden; Budget 3.000 € nach Budgetregel.
 **Nicht standortgebunden:** PV-Kunden in ganz Deutschland (Verkauf per Telefon/Video); die Werbung
 jedes Kunden läuft in seinem Einzugsgebiet. **Harte Regel des Nutzers: Kein Pfullendorf und kein
 anderer fester Ort im PV-Material**; Anzeigen nennen gar keinen Ort („Fachbetrieb in Ihrer Region“).
@@ -168,6 +182,11 @@ Region: Pfullendorf / Landkreis Sigmaringen + Umland. Zielradius je Kampagne **m
 
 - `README.md` — **Start-/Übersichtsseite** mit klickbaren Links zu den fertigen Seiten. Erste Anlaufstelle.
 - `CLAUDE.md` — diese Übersicht. Bei jeder größeren Entscheidung aktuell halten.
+- `werkzeuge/clickculture-ordner-bauen.py` — baut den **Finder-Ordner „Clickculture“** (Texte als
+  Word, Tabellen, Seiten) samt ZIP für den Nutzer; `--kunde <betrieb>` exportiert einen PV-Kunden
+  einzeln. Reihenfolge folgt dem Ablauf: 01 Anleitung · 02 Photovoltaik (1 Steckbrief, 2 Akquise,
+  3 Kunden, 4 Hintergrund) · 03 Verwaltung · 04 Anleitungen Technik · 05 Grundlagen · 06 Kfz ·
+  07 Küche · 08 Einzelkunden. Nach Änderungen neu bauen und dem Nutzer schicken.
 
 ### `nischen/autowerkstaetten/` — aktiver Fokus
 - `README.md` — Einstieg in die Nische

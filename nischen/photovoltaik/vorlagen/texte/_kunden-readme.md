@@ -1,55 +1,43 @@
 # {{betrieb}}
 
-Erzeugt am {{erzeugt_am}} aus [`steckbrief.xlsx`](steckbrief.xlsx) mit `kunde-anlegen.py`.
-**Ändern immer im Steckbrief, dann neu erzeugen** — Dateien in `dokumente/`, `anzeigen/` und
-`landingpage/` werden dabei ersetzt. `tabellen/` und `fotos/` bleiben unangetastet.
+Erzeugt am {{erzeugt_am}} aus dem [Steckbrief](steckbrief.xlsx). **Nichts hier von Hand ändern.**
+Etwas falsch oder neu? Im Steckbrief ändern und Claude sagen: „Erzeuge {{betrieb}} neu.“
+Die Tabellen und Fotos bleiben dabei erhalten.
 
-```
-python3 nischen/photovoltaik/vorlagen/werkzeuge/kunde-anlegen.py nischen/photovoltaik/kunden/{{slug}}/steckbrief.xlsx
-```
+## Noch offen
+
+{{offen_liste}}
 
 ## Eckdaten
 
 | | |
 |---|---|
 | Inhaber | {{anrede}} {{inhaber}} · {{telefon}} · {{email}} |
-| Adresse | {{adresse}} ({{bundesland}}) |
-| Einzugsgebiet | {{einzugsgebiet_km}} km |
-| Dauerkampagne | Wirtschaftlichkeitsprüfung, Ergebnis innerhalb von {{pruefung_dauer}} |
-<!--VERLOSUNG-->| Verlosung (aktiv) | Teilnahmeschluss {{aktion_ende}}, Ziehung {{ziehung}}, Speicher: {{speicher}} |
+| Werbegebiet | {{einzugsgebiet_km}} km um {{ort}} |
+| Preise | Onboarding {{onboarding_preis}} · Monatsgebühr {{retainer}} ab dem ersten Auftrag |
+| Werbebudget | {{budget_gesamt}} pro Monat (Meta {{budget_meta}}, Google {{budget_google}}) · Empfehlung war {{budget_empfehlung}} |
+| Prüfung | Ergebnis innerhalb von {{pruefung_dauer}} |
+<!--VERLOSUNG-->| Verlosung läuft | Teilnahmeschluss {{aktion_ende}}, Ziehung {{ziehung}}, Speicher: {{speicher}} |
 <!--/VERLOSUNG-->
-| Preise | Onboarding {{onboarding_preis}} · Retainer {{retainer}}/Monat ab erstem Auftrag |
-| Werbebudget | Meta {{budget_meta}} + Google {{budget_google}} = {{budget_gesamt}} pro Monat |
 
-## Noch offen im Steckbrief
+## Was du wann brauchst
 
-{{offen_liste}}
-
-## Alles für diesen Kunden
-
-| Was | Datei | Wofür |
-|---|---|---|
-| Steckbrief | [`steckbrief.xlsx`](steckbrief.xlsx) | Die Quelle für alles, inkl. Pflichtcheck und interner Rechnung |
-| Onboarding | [`tabellen/onboarding.xlsx`](tabellen/onboarding.xlsx) | Abhaken bis zum Livegang |
-| Anfragen und Report | [`tabellen/anfragen-und-report.xlsx`](tabellen/anfragen-und-report.xlsx) | Jede Anfrage eintragen, Monatsreport rechnet sich |
-| Vereinbarung | [`dokumente/vereinbarung.md`](dokumente/vereinbarung.md) | Als PDF schicken, unterschreiben lassen |
-| Willkommens-Mail | [`dokumente/willkommens-mail.md`](dokumente/willkommens-mail.md) | Am Tag der Unterschrift |
-| Rückruf-Leitfaden | [`dokumente/rueckruf-leitfaden.md`](dokumente/rueckruf-leitfaden.md) | Für das Büro des Kunden |
-| Kampagnen | [`dokumente/kampagnen.md`](dokumente/kampagnen.md) | Meta und Google 1:1 eintragen |
-<!--VERLOSUNG-->| Teilnahmebedingungen | [`dokumente/teilnahmebedingungen.md`](dokumente/teilnahmebedingungen.md) | Vor Livegang prüfen lassen |
+| Schritt | Datei |
+|---|---|
+| 4 · Abschluss | [Vereinbarung](dokumente/vereinbarung.md) · [Abrechnungs-Mails](dokumente/abrechnung-mails.md) · [Willkommens-Mail](dokumente/willkommens-mail.md) · [Rückruf-Leitfaden](dokumente/rueckruf-leitfaden.md) |
+| 4–7 · Abhaken | [Checkliste bis zum Livegang](tabellen/checkliste.xlsx) |
+| 5 · Fotos ablegen | Ordner [`fotos/`](fotos/): `foto-1.jpg`, `foto-2.jpg`, `foto-3.jpg`, dazu wenn vorhanden `vorher.jpg` und `nachher.jpg` |
+| 6 · Seiten hochladen | Ordner [`landingpage/`](landingpage/) auf app.netlify.com/drop ziehen |
+| 6 · Kampagnen anlegen | [Kampagnen Meta und Google](dokumente/kampagnen.md) · Bilder in [`anzeigen/creatives/`](anzeigen/creatives/) |
+| 8 · Jeden Tag / Monat | [Anfragen und Monatsreport](tabellen/anfragen-und-report.xlsx) · [Report-Mail](dokumente/report-mail.md) |
+<!--VERLOSUNG-->| Verlosung | [Teilnahmebedingungen](dokumente/teilnahmebedingungen.md) (vor dem Start prüfen lassen) |
 <!--/VERLOSUNG-->
-| Report-Mail | [`dokumente/report-mail.md`](dokumente/report-mail.md) | Monatlich |
-| Abrechnungs-Mails | [`dokumente/abrechnung-mails.md`](dokumente/abrechnung-mails.md) | Onboarding-Rechnung, Retainer-Start |
-| Anzeigen-Bilder | [`anzeigen/creatives/`](anzeigen/creatives/) | Hochladen bei Meta |
-| Anzeigen-Vorschau | [`anzeigen/vorschau.html`](anzeigen/vorschau.html) | Zeigen im Videocall |
-| Landingpages | [`landingpage/`](landingpage/) | Ganzen Ordner auf app.netlify.com/drop ziehen |
-| Fotos | [`fotos/`](fotos/) | Echte Fotos des Kunden als `foto-1.jpg`, `foto-2.jpg`, `foto-3.jpg` ablegen, dann neu erzeugen |
 
-**Öffnen im Browser** (nach dem Pushen; Zahl hinter `?v=` nach Änderungen hochzählen):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/anzeigen/vorschau.html?v=1) ·
-[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/wirtschaftlichkeit.html?v=1) ·
-[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/rechner.html?v=1)
-<!--VERLOSUNG-->· Verlosung: [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/modul.html?v=1) ·
-[20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/rabatt.html?v=1) ·
-[Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/speicher.html?v=1)
+**Im Browser ansehen** (nach dem Pushen):
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/anzeigen/vorschau.html?v={{v}}) ·
+[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/wirtschaftlichkeit.html?v={{v}}) ·
+[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/rechner.html?v={{v}})
+<!--VERLOSUNG-->· Verlosung: [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/modul.html?v={{v}}) ·
+[20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/rabatt.html?v={{v}}) ·
+[Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/{{slug}}/landingpage/speicher.html?v={{v}})
 <!--/VERLOSUNG-->

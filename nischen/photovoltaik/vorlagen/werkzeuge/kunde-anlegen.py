@@ -4,13 +4,14 @@
 Aufruf (aus dem Repo-Hauptordner):
     python3 nischen/photovoltaik/vorlagen/werkzeuge/kunde-anlegen.py <steckbrief.xlsx>
 
-Liest:     den Steckbrief + vorlagen/tabellen/00-agentur-stammdaten.xlsx
+Liest:     den Steckbrief + vorlagen/tabellen/00-agentur.xlsx (Blatt „Deine Daten“)
 Schreibt:  nischen/photovoltaik/kunden/<betrieb>/
              README.md               Überblick, Links, nächste Schritte
              steckbrief.xlsx          Kopie des Steckbriefs (die Quelle für alles)
-             fotos/                   HIER die echten Fotos des Kunden ablegen (foto-1.jpg, foto-2.jpg, foto-3.jpg)
+             fotos/                   HIER die echten Fotos des Kunden ablegen: foto-1.jpg, foto-2.jpg, foto-3.jpg
+                                      (Titelbilder), optional vorher.jpg + nachher.jpg (dasselbe Dach)
              dokumente/               Vereinbarung, Mails, Kampagnen, Teilnahmebedingungen …
-             tabellen/                Onboarding + Anfragen-und-Report (werden nie überschrieben)
+             tabellen/                Checkliste + Anfragen-und-Report (werden nie überschrieben)
              anzeigen/                wirtschaftlichkeit.html (immer), verlosungen.html (nur bei aktiver Verlosung),
                                       vorschau.html, creatives/*.png
              landingpage/             wirtschaftlichkeit.html, rechner.html, danke.html,
@@ -25,6 +26,7 @@ Fotos einfach neu laufen lassen. Erzeugte Dateien werden ersetzt, die Tabellen i
 und die Fotos in fotos/ bleiben unangetastet.
 """
 import datetime as dt
+import html
 import importlib.util
 import json
 import pathlib
@@ -47,16 +49,34 @@ VERLOSUNGS_SEITEN = ["modul.html", "rabatt.html", "speicher.html"]
 VERLOSUNGS_BILDER = ["1-gewinnspiel.png", "2-rabatt.png", "3-speicher.png"]
 MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September",
           "Oktober", "November", "Dezember"]
-EURO = {"ticket_von", "ticket_bis", "ticket_schnitt", "onboarding_preis", "retainer", "budget_meta", "budget_google"}
+EURO = {"ticket_schnitt", "onboarding_preis", "retainer", "budget_meta", "budget_google"}
+# Muss für Vertrag und Livegang ausgefüllt sein (sonst steht es in der README unter „Noch offen“)
+PFLICHT = ["betrieb", "anrede", "inhaber", "telefon", "email", "ort", "einzugsgebiet_km", "ticket_schnitt",
+           "kapazitaet_termine", "betrieb_lang", "strasse", "plz", "oeffnungszeiten", "eigenes_team",
+           "onboarding_preis", "retainer", "budget_meta", "budget_google", "impressum_url", "datenschutz_url",
+           "landingpage_url", "pixel_id"]
+OPTIONAL = ["bewertung_1", "bewertung_2"]
+VERLOSUNG_PFLICHT = ["aktion_ende", "ziehung", "speicher"]
+CHECKS = ["check_entscheider", "check_rueckruf", "check_fotos"]
+
+
+BEWERTUNGEN_HTML = """<!--B--><section>
+    <h2>Das sagen Kunden</h2>
+    {{bewertungen_html}}
+  </section><!--/B-->"""
+VORHER_NACHHER_HTML = """<section>
+    <h2>Anlagen, die wir montiert haben</h2>
+    <div class="tiles"><figure><img src="fotos/vorher.jpg" alt="Dach vorher" loading="lazy"><figcaption>Vorher</figcaption></figure><figure><img src="fotos/nachher.jpg" alt="Dach nachher" loading="lazy"><figcaption>Nachher</figcaption></figure></div>
+  </section>"""
 
 
 def lese_schluessel(pfad):
-    """Liest Spalte A (Schlüssel) → Spalte B (Feld) und C (Wert) aus dem ersten Blatt."""
+    """Liest Spalte A (Schlüssel) → Spalte B (Frage) und C (Eintrag) aus dem ersten Blatt."""
     ws = load_workbook(pfad, data_only=True).worksheets[0]
     werte, namen = {}, {}
-    for row in ws.iter_rows(min_row=6, max_col=3, values_only=True):
+    for row in ws.iter_rows(min_row=1, max_col=3, values_only=True):
         key, feld, wert = row
-        if not key or key == "§":
+        if not isinstance(key, str) or not re.fullmatch(r"[a-z][a-z0-9_]*", key) or key == "ergebnis":
             continue
         namen[key] = feld
         if isinstance(wert, str):
@@ -103,6 +123,7 @@ def felder(stb, agentur, namen):
     f["budget_gesamt"] = euro(meta + google) if (meta or google) else "[Werbebudget]"
     f["budget_meta_tag"] = euro(round(meta / 30)) if meta else "[Tagesbudget Meta]"
     f["budget_google_tag"] = euro(round(google / 30)) if google else "[Tagesbudget Google]"
+    f["budget_empfehlung"] = euro(budget_empfehlung(stb))
     f["inhaber_nachname"] = stb["inhaber"].split()[-1] if stb.get("inhaber") else "[Nachname]"
     f["ort_klein"] = stb["ort"].lower() if stb.get("ort") else "[ort]"
     f["adresse"] = (f"{f['strasse']}, {f['plz']} {f['ort']}")
@@ -118,8 +139,21 @@ def felder(stb, agentur, namen):
         f["pixel_id"] = "PIXEL_ID"
     if not stb.get("pruefung_dauer"):
         f["pruefung_dauer"] = "2 Werktagen"
-    aktiv = str(stb.get("verlosung_aktiv") or "").lower() == "ja" or (
-        stb.get("verlosung_aktiv") is None and stb.get("aktion_ende") is not None)
+    if not stb.get("vertragsbeginn"):
+        f["vertragsbeginn"] = dt.date.today().strftime("%d.%m.%Y")
+    # Eigenes Montageteam: nur behaupten, wenn im Steckbrief „Ja“ steht
+    team = str(stb.get("eigenes_team") or "").lower() == "ja"
+    f["team_fakt"] = "eigene Montageteams" if team else "Fachbetrieb in Ihrer Region"
+    f["team_zusatz"] = " · eigene Montageteams" if team else ""
+    f["team_satz"] = f" {f['betrieb']} plant und montiert mit eigenem Team." if team else ""
+    f["team_headline"] = "Eigene Montageteams" if team else "Fachbetrieb aus der Region"
+    f["team_beschr"] = f"Eigene Montageteams aus {f['ort']}" if team else f"Fachbetrieb aus {f['ort']}"
+    f["team_li"] = "<li>Montage mit eigenem Team, kein Subunternehmer</li>" if team else ""
+    # Echte Bewertungen: ohne Eintrag fällt der Block weg (nichts erfinden, kein Platzhalter online)
+    bew = [stb[k] for k in ("bewertung_1", "bewertung_2") if stb.get(k)]
+    f["_bewertungen"] = bool(bew)
+    f["bewertungen_html"] = "\n    ".join(f'<blockquote class="review">{html.escape(str(b))}</blockquote>' for b in bew)
+    aktiv = str(stb.get("verlosung_aktiv") or "").lower() == "ja"
     f["_verlosung_aktiv"] = aktiv
     if aktiv:
         f["aktionen_text"] = (f"Saisonaktion: Verlosung eines kostenlosen Solarmoduls sowie von 3 × 20 % Rabatt und "
@@ -136,14 +170,23 @@ def felder(stb, agentur, namen):
 
 
 def fuellen(text, f):
-    text = verlosungsbloecke(text, f.get("_verlosung_aktiv", False))
+    text = bloecke(text, {"VERLOSUNG": f.get("_verlosung_aktiv", False), "BEWERTUNGEN": f.get("_bewertungen", False),
+                          "VORHERNACHHER": f.get("_vorher_nachher", False)})
     return re.sub(r"\{\{(\w+)\}\}", lambda m: f.get(m.group(1), f"[{m.group(1)}]"), text)
 
 
-def verlosungsbloecke(text, aktiv):
-    """<!--VERLOSUNG--> … <!--/VERLOSUNG--> bleibt nur bei aktiver Verlosung (ohne die Markierungen)."""
-    muster = re.compile(r"<!--VERLOSUNG-->(.*?)<!--/VERLOSUNG-->\n?", re.S)
-    return muster.sub((lambda m: m.group(1)) if aktiv else "", text)
+def bloecke(text, schalter):
+    """<!--NAME--> … <!--/NAME--> bleibt nur, wenn der Schalter an ist (ohne die Markierungen)."""
+    for name, an in schalter.items():
+        muster = re.compile(rf"<!--{name}-->(.*?)<!--/{name}-->\n?", re.S)
+        text = muster.sub((lambda m: m.group(1)) if an else "", text)
+    return text
+
+
+def budget_empfehlung(stb):
+    """Gleiche Regel wie im Steckbrief: Auftragswert ÷ 5, zum Start höchstens 3.000 € (ohne Auftragswert 3.000 €)."""
+    t = stb.get("ticket_schnitt")
+    return min(3000, round(t / 5 / 100) * 100) if isinstance(t, (int, float)) and t > 0 else 3000
 
 
 def rechenwerte(f):
@@ -186,7 +229,7 @@ def main():
         sys.exit(__doc__)
     quelle = pathlib.Path(sys.argv[1]).resolve()
     stb, namen = lese_schluessel(quelle)
-    agentur, anamen = lese_schluessel(VORLAGEN / "tabellen" / "00-agentur-stammdaten.xlsx")
+    agentur, anamen = lese_schluessel(VORLAGEN / "tabellen" / "00-agentur.xlsx")
     namen.update(anamen)
     if not stb.get("betrieb"):
         sys.exit("Im Steckbrief fehlt „Betrieb (Kurzname)“.")
@@ -201,12 +244,24 @@ def main():
 
     # Fotos: einmal Platzhalter, danach gehören sie dem Kunden
     kopiere_ordner(VORLAGEN / "assets" / "fotos", ziel / "fotos", nur_neu=True)
+    f["_vorher_nachher"] = all((ziel / "fotos" / n).exists() for n in ("vorher.jpg", "nachher.jpg"))
 
     # Tabellen: nur beim ersten Mal
     (ziel / "tabellen").mkdir(exist_ok=True)
-    for q, z in (("02-onboarding.xlsx", "onboarding.xlsx"), ("03-anfragen-und-report.xlsx", "anfragen-und-report.xlsx")):
+    (ziel / "tabellen" / "onboarding.xlsx").unlink(missing_ok=True)  # alter Name
+    for q, z in (("02-checkliste-bis-livegang.xlsx", "checkliste.xlsx"),
+                 ("03-anfragen-und-report.xlsx", "anfragen-und-report.xlsx")):
         if not (ziel / "tabellen" / z).exists():
-            shutil.copy2(VORLAGEN / "tabellen" / q, ziel / "tabellen" / z)
+            wb = load_workbook(VORLAGEN / "tabellen" / q)
+            wb.worksheets[0]["A1"] = f"{wb.worksheets[0]['A1'].value} · {stb['betrieb']}"
+            if "Anfragen" in wb.sheetnames:  # Beispielzeile raus, damit sie nicht mitzählt
+                for c in wb["Anfragen"][5]:
+                    if c.column != 7:
+                        c.value = None
+            if "Monatsreport" in wb.sheetnames:
+                wb["Monatsreport"]["B5"] = f"{f['anrede']} {f['inhaber_nachname']}"
+                wb["Monatsreport"]["B6"] = f"{f['agentur_inhaber']}\n{f['agentur_name']}"
+            wb.save(ziel / "tabellen" / z)
     print("✓ tabellen/ (bestehende bleiben unverändert)")
 
     # Dokumente
@@ -230,6 +285,9 @@ def main():
         (lp / name).write_text(fuellen((VORLAGEN / "landingpage" / name).read_text(encoding="utf-8"), f), encoding="utf-8")
     aktion = {k: f[k] for k in ("betrieb", "betrieb_lang", "telefon", "telefon_link", "adresse",
                                 "oeffnungszeiten", "ziehung", "speicher", "pixel_id")}
+    aktion.update({k: f[k] for k in ("impressum_url", "datenschutz_url", "team_zusatz", "team_li")})
+    aktion["bewertungen_html"] = bloecke(BEWERTUNGEN_HTML, {"B": f["_bewertungen"]}).replace("{{bewertungen_html}}", f["bewertungen_html"])
+    aktion["vorher_nachher_html"] = VORHER_NACHHER_HTML if f["_vorher_nachher"] else ""
     aktion.update({"_hinweis": "ERZEUGT aus steckbrief.xlsx — nicht von Hand ändern.",
                    "datum": f["aktion_ende_kurz"], "datum_voll": f["aktion_ende"]})
     (lp / "aktionen.json").write_text(json.dumps(aktion, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -262,16 +320,23 @@ def main():
             print(f"! {name} nicht gerendert (Node/Playwright fehlt?):", e)
 
     # README
-    frei = {"notizen", "bisher"} | (set() if f["_verlosung_aktiv"] else {"aktion_ende", "ziehung", "speicher"})
-    offen = [namen[k] for k, v in stb.items() if v is None and k not in frei]
+    pflicht = PFLICHT + (VERLOSUNG_PFLICHT if f["_verlosung_aktiv"] else [])
+    offen = [namen.get(k, k) for k in pflicht if stb.get(k) is None]
+    offen += [f"{namen.get(k, k)} (optional)" for k in OPTIONAL if stb.get(k) is None]
+    if not f["_vorher_nachher"]:
+        offen.append("Fotos vorher.jpg und nachher.jpg (optional, sonst fehlt der Vorher/Nachher-Block)")
     readme = (VORLAGEN / "texte" / "_kunden-readme.md").read_text(encoding="utf-8")
     f["offen_liste"] = "\n".join(f"- [ ] {n}" for n in offen) or "- nichts, alles ausgefüllt"
     f["slug"] = ziel.name
     f["erzeugt_am"] = dt.date.today().strftime("%d.%m.%Y")
+    f["v"] = dt.datetime.now().strftime("%Y%m%d%H%M")  # neue Zahl je Lauf, damit githack nichts Altes zeigt
     (ziel / "README.md").write_text(fuellen(readme, f), encoding="utf-8")
     print("✓ README.md")
     if offen:
-        print(f"\nNoch offen im Steckbrief ({len(offen)}): " + ", ".join(offen))
+        print(f"\nNoch offen ({len(offen)}): " + ", ".join(offen))
+    nicht_ja = [namen.get(k, k) for k in CHECKS if str(stb.get(k) or "").lower() != "ja"]
+    if nicht_ja:
+        print("\n! ACHTUNG, Kunde passt noch nicht. Nicht „Ja“: " + " · ".join(nicht_ja))
 
 
 if __name__ == "__main__":

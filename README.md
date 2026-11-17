@@ -59,12 +59,13 @@ Klick auf **Öffnen**, dann geht die fertige Seite im Browser auf. Auf dem iPad 
 
 | Was | Öffnen |
 |---|---|
-| **Das System** ⭐ alle Tabellen, Texte, Anzeigen, Landingpages, Werkzeuge | [Öffnen](nischen/photovoltaik/vorlagen/LIES-MICH.md) |
-| **Fahrplan** 26 Schritte vom ersten Anruf bis zum laufenden Kunden | [Öffnen](nischen/photovoltaik/README.md) |
+| **Anleitung** ⭐ 8 Schritte vom ersten Anruf bis zur laufenden Kampagne | [Öffnen](nischen/photovoltaik/ANLEITUNG.md) |
+| Übersicht Photovoltaik | [Öffnen](nischen/photovoltaik/README.md) |
+| Das System dahinter: Tabellen, Texte, Anzeigen, Werkzeuge | [Öffnen](nischen/photovoltaik/vorlagen/LIES-MICH.md) |
 | Steckbrief zum Ausfüllen | [Öffnen](nischen/photovoltaik/vorlagen/tabellen/01-steckbrief.xlsx) |
-| Anzeigen des Probekunden (beide Kampagnenarten) | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=5) |
-| Landingpages Dauerkampagne | [Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=5) · [Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=5) |
-| Landingpages Verlosung (2–3 × im Jahr) | [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=5) · [20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=5) · [Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=5) |
+| Anzeigen des Probekunden (beide Kampagnenarten) | [Öffnen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=6) |
+| Landingpages Dauerkampagne | [Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=6) · [Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=6) |
+| Landingpages Verlosung (2–3 × im Jahr) | [Modul](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/modul.html?v=6) · [20 %](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rabatt.html?v=6) · [Speicher](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/speicher.html?v=6) |
 | Betriebshandbuch (nischenneutral) | [Öffnen](https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) |
 
 ### 🏮 China Restaurant Chinatown — Einzelkunde (Pfullendorf)

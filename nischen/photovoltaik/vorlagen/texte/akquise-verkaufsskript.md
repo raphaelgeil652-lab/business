@@ -1,7 +1,7 @@
 # Verkaufsskript: PV-Betriebe gewinnen (Telefon und Videocall)
 
 > Allgemein, nicht pro Kunde. Kunden kommen aus ganz Deutschland, deshalb per Telefon und Video.
-> Liste der Betriebe: `vorlagen/tabellen/04-akquise-pv-betriebe.xlsx`.
+> Liste der Betriebe: Akquise-Liste PV-Betriebe (`vorlagen/tabellen/04-akquise-pv-betriebe.xlsx`).
 
 ## Ziel jedes Schritts
 
@@ -26,17 +26,19 @@ Nicht erreicht: Namen und beste Zeit notieren, höchstens 3 Versuche zu verschie
 
 ## 2 · Videocall (Bildschirm teilen)
 
-**Vorher:** Seinen Namen in einen Steckbrief eintragen und den Kundenordner erzeugen lassen. Dann
-zeigst du ihm seine eigenen Anzeigen und Seiten.
+**Vorher:** Einen leeren Steckbrief offen haben. Du füllst Teil 1 während des Gesprächs aus.
+Optional, wenn du Zeit hast: Firmenname vorab eintragen und von Claude den Ordner erzeugen
+lassen. Dann sieht er seine eigenen Anzeigen. Sonst zeigst du den Beispielkunden.
 
 **Die zwei Fragen, die alles entscheiden:**
 1. „Was kostet bei Ihnen eine Anlage mit Speicher im Schnitt?“ → Auftragswert
-2. „Wie viele Montagen pro Monat könnten Sie zusätzlich schaffen?“ → Kapazität und Budget
+2. „Wie viele zusätzliche Beratungstermine schaffen Sie pro Woche?“ → Kapazität. Daraus
+   rechnet der Steckbrief das Werbebudget, das du vorschlägst.
 
-Dazu: „Bis wie weit fahren Sie zur Montage?“ (Einzugsgebiet) und „Wer ruft bei Ihnen Anfragen zurück?“
+Dazu: „Bis wie weit fahren Sie zur Montage?“ und „Montieren Sie mit eigenem Team?“
 
-**Zeigen:** die drei Anzeigen (Verlosung Modul, 20 %, Speicher) → die passende Landingpage →
-die Teilnahmebedingungen.
+**Zeigen:** die 5 Anzeigen der Wirtschaftlichkeitsprüfung → die Seite dahinter → den Rechner.
+Läuft gerade eine Verlosung, kurz auch diese.
 
 **Risiko-Umkehr:**
 > „Die monatliche Gebühr zahlen Sie erst, wenn Sie über unsere Anfragen den ersten Auftrag
@@ -47,24 +49,27 @@ die Teilnahmebedingungen.
 > „Eine Sache brauche ich von Ihnen: Jede Anfrage wird innerhalb einer Stunde zurückgerufen.
 > Schaffen Sie das?“ — Zögert er stark: nicht abschließen.
 
-**Pflichtcheck** im Steckbrief (Blatt „Pflichtcheck“) gemeinsam durchgehen.
+**Die drei Ja-Fragen** im Steckbrief (Teil 1). Steht unten „✓ Kunde passt“, geht es weiter.
+Dann das Budget nennen: „Für [Zahl] Termine pro Woche empfehle ich [Empfehlung aus dem
+Steckbrief] € im Monat. Das zahlen Sie direkt an Meta und Google, nicht an mich.“
 
 ## 3 · Einwände
 
 | Einwand | Antwort |
 |---|---|
 | „Wir kaufen schon Leads.“ | „Wie viele Betriebe bekommen dieselbe Anfrage? Bei uns sind Sie der einzige.“ |
-| „Verlosungen bringen nur Schnäppchenjäger.“ | „Teilnehmen können alle, eingelöst wird nur mit Bestellung. Und Sie rufen jeden innerhalb einer Stunde an, da trennen sich Interessierte von Mitnehmern schnell.“ |
+| „Verlosungen bringen nur Schnäppchenjäger.“ (nur wenn eine läuft) | „Teilnehmen können alle, eingelöst wird nur mit Bestellung. Und Sie rufen jeden innerhalb einer Stunde an, da trennen sich Interessierte von Mitnehmern schnell.“ |
 | „Wir sind ausgelastet.“ | „Dann starten wir klein, mit wenig Budget. Oder wir legen den Start auf Ihre ruhigere Zeit.“ |
+| „Wir haben keine Zeit für so was.“ | „Ihre Arbeit: Fotos schicken, zwei Zugänge freigeben, Anfragen zurückrufen. Den Rest mache ich.“ |
 | „Facebook funktioniert bei unseren Kunden nicht.“ | „Hausbesitzer zwischen 35 und 65 sind genau dort. Und Google fängt die ab, die schon suchen.“ |
 | „Zu teuer.“ | „Was bringt Ihnen eine Anlage im Schnitt?“ → „Dann trägt sich das mit einem Auftrag. Und die Gebühr läuft erst, wenn der erste unterschrieben ist.“ |
 | „Schicken Sie mir Infos.“ | „Mache ich. 20 Minuten Video zeigen aber mehr: Sie sehen Ihre eigenen Anzeigen.“ |
 
 ## 4 · Abschluss aus der Ferne
 
-1. Steckbrief vollständig, Pflichtcheck = „Kunde passt“.
-2. Kundenordner neu erzeugen, `dokumente/vereinbarung.md` als PDF schicken.
-3. Unterschrift digital oder eingescannt zurück.
-4. Onboarding-Rechnung (`05-rechnungen.xlsx`) und Willkommens-Mail am selben Tag.
+1. Steckbrief Teil 1 und 2 ausgefüllt, oben steht „✓ Kunde passt“.
+2. Steckbrief an Claude: „Lege den Kunden aus diesem Steckbrief an.“
+3. Die Vereinbarung aus dem Kundenordner als PDF schicken, unterschrieben zurück.
+4. Am selben Tag: Rechnung, Willkommens-Mail, Rückruf-Leitfaden. Siehe Anleitung, Schritt 4.
 
 Versprochen werden Anfragen, nie eine Zahl von Aufträgen oder ein Umsatz.

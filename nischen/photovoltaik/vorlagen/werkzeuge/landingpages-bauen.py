@@ -126,8 +126,10 @@ SEITE = r"""<!--
   ul.list li{{padding-left:22px;position:relative;}}
   ul.list li::before{{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--accent);}}
   .tiles{{display:grid;grid-template-columns:1fr 1fr;gap:10px;}}
-  .tile{{aspect-ratio:4/3;border:1.5px dashed var(--line);display:grid;place-items:center;text-align:center;font-size:.8rem;color:var(--muted);padding:10px;}}
-  .review{{border:1.5px dashed var(--line);padding:14px;margin-bottom:10px;color:var(--muted);font-size:.95rem;}}
+  .tiles figure{{margin:0;}}
+  .tiles img{{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;}}
+  .tiles figcaption{{font-size:.8rem;color:var(--muted);margin-top:6px;}}
+  .review{{border-left:3px solid var(--accent);padding:4px 0 4px 14px;margin:0 0 16px;font-size:.98rem;}}
   details{{border-bottom:1px solid var(--line);padding:14px 0;}}
   summary{{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px;}}
   summary::after{{content:"+";color:var(--accent);font-weight:800;}}
@@ -164,7 +166,7 @@ SEITE = r"""<!--
     <p class="kicker">{kicker}</p>
     <h1>{h1}</h1>
     <p class="sub">{sub}</p>
-    <p class="facts">{betrieb} · Fachbetrieb in Ihrer Region · eigene Montageteams</p>
+    <p class="facts">{betrieb} · Fachbetrieb in Ihrer Region{team_zusatz}</p>
   </header>
 
   <div class="card" id="teilnehmen">
@@ -207,28 +209,19 @@ SEITE = r"""<!--
     </ol>
   </section>
 
-  <section>
-    <h2>Anlagen, die wir montiert haben</h2>
-    <!-- [Echte Fotos des Kunden: Dach vorher/nachher. Kästen durch <img> ersetzen.] -->
-    <div class="tiles"><div class="tile">Foto vom Kunden:<br>Dach vorher</div><div class="tile">Foto vom Kunden:<br>Dach nachher</div></div>
-  </section>
+  {vorher_nachher_html}
 
   <section>
     <h2>Alles aus einer Hand</h2>
     <ul class="list">
       <li>Planung mit Speicher, passend zu Ihrem Verbrauch</li>
-      <li>Montage mit eigenem Team, kein Subunternehmer</li>
+      {team_li}
       <li>Anmeldung beim Netzbetreiber und Inbetriebnahme</li>
       <li>Festpreis, bevor Sie sich entscheiden</li>
     </ul>
   </section>
 
-  <section>
-    <h2>Das sagen Kunden</h2>
-    <!-- [Echte Google-Bewertungen einsetzen. Nie erfinden. Schnitt höchstens 4,9.] -->
-    <div class="review">[Echte Google-Bewertung 1] — [Vorname], [Ort]</div>
-    <div class="review">[Echte Google-Bewertung 2] — [Vorname], [Ort]</div>
-  </section>
+  {bewertungen_html}
 
   <section>
     <h2>Häufige Fragen</h2>
@@ -248,7 +241,7 @@ SEITE = r"""<!--
     <p><b>Gewinn:</b> {gewinn}. {einloesen}</p>
     <p><b>Ziehung und Benachrichtigung:</b> Die Gewinner werden unter allen gültigen Teilnahmen per Zufall gezogen und per Telefon oder E-Mail benachrichtigt. Meldet sich ein Gewinner nicht innerhalb von 14 Tagen, wird neu gezogen.</p>
     <p><b>Ausschluss:</b> Mitarbeiter des Veranstalters und ihre Angehörigen. Der Rechtsweg ist ausgeschlossen.</p>
-    <p><b>Datenschutz:</b> Ihre Angaben verwenden wir für die Verlosung und für die Kontaktaufnahme zu Ihrer Anfrage. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    <p><b>Datenschutz:</b> Ihre Angaben verwenden wir für die Verlosung und für die Kontaktaufnahme zu Ihrer Anfrage. Details in der <a href="{datenschutz_url}">Datenschutzerklärung</a>.</p>
     <p><b>Hinweis:</b> Diese Aktion steht in keiner Verbindung zu Facebook oder Instagram und wird von Meta weder gesponsert noch unterstützt oder organisiert.</p>
   </section>
 
@@ -261,14 +254,14 @@ SEITE = r"""<!--
 
 <footer><div class="wrap">
   <b>{betrieb_lang}</b><br>{adresse} · <a href="tel:{telefon_link}">{telefon}</a><br>{oeffnungszeiten}<br>
-  <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> ·
+  <a href="{impressum_url}">Impressum</a> · <a href="{datenschutz_url}">Datenschutz</a> ·
   <button class="linkbtn" type="button" id="consent-open">Cookie-Einstellungen</button>
 </div></footer>
 
 <div class="sticky"><a class="btn" href="#teilnehmen">Jetzt teilnehmen</a></div>
 
 <div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
-  <p>Wir möchten messen, ob unsere Werbung auf Facebook und Instagram ankommt. Dafür nutzen wir das Meta-Pixel, das Cookies setzt. Das geht nur mit Ihrer Zustimmung. Mehr dazu im <a href="datenschutz.html">Datenschutz</a>.</p>
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook und Instagram ankommt. Dafür nutzen wir das Meta-Pixel, das Cookies setzt. Das geht nur mit Ihrer Zustimmung. Mehr dazu im <a href="{datenschutz_url}">Datenschutz</a>.</p>
   <div class="row"><button class="ghost" type="button" id="consent-no">Nur notwendige</button><button type="button" id="consent-yes">Einverstanden</button></div>
 </div>
 

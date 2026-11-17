@@ -7,11 +7,11 @@
 
 zwischen
 
-**Auftragnehmer:** [Name der Agentur], [Dein Name] · [Anschrift] · [E-Mail] · [Telefon] · Steuernr.: [Steuernummer]
+**Auftragnehmer:** [Name der Agentur], [Dein Name] · [Deine Anschrift] · [E-Mail] · [Telefon / WhatsApp] · Steuernr.: [Steuernummer]
 
 und
 
-**Auftraggeber:** Muster Solartechnik GmbH · [Straße und Hausnummer], [PLZ] [Ort] · vertreten durch Markus Muster
+**Auftraggeber:** Muster Solartechnik GmbH · [Straße und Hausnummer], [PLZ] [Ort des Betriebs] · vertreten durch Markus Muster
 
 Datum: 16.11.2026
 
@@ -22,8 +22,8 @@ Dauerkampagne: kostenlose Wirtschaftlichkeitsprüfung für Interessenten, erstel
 Eintragung, Ergebnis innerhalb von 2 Werktagen. Die Anzeigen zeigen gekennzeichnete
 Beispielrechnungen.
 Saisonaktion: Verlosung eines kostenlosen Solarmoduls sowie von 3 × 20 % Rabatt und 3 Stromspeichern (10 kWh) zur ersten Bestellung. Teilnahmeschluss: 15.01.2027, Ziehung: 20.01.2027. Kosten und Einlösung der Gewinne trägt der Auftraggeber.
-Werbebudget: **1.000 € pro Monat** (Meta 700 €, Google 300 €).
-Einzugsgebiet: 40 km um [Ort].
+Werbebudget: **3.000 € pro Monat** (Meta 2.100 €, Google 900 €).
+Einzugsgebiet: 40 km um [Ort des Betriebs].
 
 ### §2 Leistungen des Auftragnehmers
 
@@ -36,8 +36,8 @@ Einzugsgebiet: 40 km um [Ort].
 
 ### §3 Pflichten des Auftraggebers
 
-- Material: Logo, echte Fotos fertiger Anlagen (möglichst Dach vorher/nachher), Bewertungen,
-  Leistungsumfang, Preisspanne, Montagevorlauf, Impressum und Datenschutzerklärung.
+- Material: echte Fotos fertiger Anlagen (möglichst ein Dach vorher/nachher), zwei echte
+  Kundenbewertungen, Links zu Impressum und Datenschutzerklärung.
 - Partnerzugang zum Meta-Werbekonto und zum Google-Ads-Konto. Das Werbebudget läuft über
   seine eigenen Konten und Zahlungsmittel.
 - Rückruf auf Anfragen innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.
@@ -49,7 +49,7 @@ Einzugsgebiet: 40 km um [Ort].
 ### §4 Vergütung
 
 - **Onboarding: 850 €** einmalig, fällig bei Vertragsbeginn.
-- **Retainer: 1.500 € pro Monat.** Die Betreuung läuft ab Vertragsbeginn. Die Gebühr wird
+- **Monatsgebühr: 1.500 € pro Monat.** Die Betreuung läuft ab Vertragsbeginn. Die Gebühr wird
   erst fällig, sobald der Auftraggeber aus einer vermittelten Anfrage den ersten Auftrag
   **unterschrieben** hat, danach jeweils zum Monatsanfang.
 - **Werbebudget:** zahlt der Auftraggeber separat und direkt an Meta und Google.
@@ -80,7 +80,7 @@ Voraussetzung: Die Pflichten aus §3 sind erfüllt.
 
 ---
 
-[Ort], 16.11.2026
+[Ort des Betriebs], 16.11.2026
 
 Auftragnehmer: ________________________   Auftraggeber: ________________________
 [Dein Name]                       Markus Muster, Muster Solartechnik GmbH
