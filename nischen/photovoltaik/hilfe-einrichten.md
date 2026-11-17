@@ -31,7 +31,11 @@ Der neue Ordner ersetzt den alten komplett. Es geht nichts verloren: Abgehakt wi
 5. **Mit der Zentrale verbinden:** „Site configuration“ → „Notifications“ → „Form submission
    notifications“ → „Add notification“ → **„Outgoing webhook“**:
    - Event: „New form submission“
-   - URL: die **Webhook-Adresse** aus der Zentrale, Blatt „Einstellungen“
+   - URL: die **„Webhook-Adresse für Netlify“** aus der Zentrale, Blatt „Einstellungen“. Sie endet auf
+     **`?key=…`**. Nicht die „Web-App-Adresse“ darüber nehmen: Ohne Schlüssel lehnt die Zentrale jede
+     Anfrage still ab.
+   - Wichtig: im Abschnitt **„Form submission notifications“** und dort **„Outgoing webhook“** wählen
+     (nicht „Email notification“, nicht „Deploy notifications“)
    - Form: „Any form“ → Save
 6. **Sicherheitskopie an dich:** dort nochmal „Add notification“ → **„Email notification“** → deine
    E-Mail → Save. (Falls je etwas hakt, hast du jede Anfrage trotzdem.)

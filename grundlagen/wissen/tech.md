@@ -17,6 +17,11 @@ Learnings zu Automationen, CRM, Tracking. Grundregeln stehen in `../../anleitung
 - **Excel kürzt lange Zahlen und Nullen.** Meta-IDs (16 Stellen) verlieren die letzte Ziffer (wird 0),
   Telefon 0152… wird 152…, PLZ 01067 wird 1067. Die Steckbrief-Vorlage speichert Textfelder deshalb als
   Text, und `kunde-anlegen.py` repariert Telefon/PLZ und warnt bei IDs, die auf 0 enden. (Probelauf Nov. 2026)
+- **Probelauf Zentrale (Nov. 2026), zwei Stolpersteine:** (1) beim Bereitstellen die Bereitstellungs-ID
+  statt der Web-App-URL kopiert → „Datei kann derzeit nicht geöffnet werden“; (2) in Netlify die
+  Web-App-Adresse ohne `?key=` eingetragen → Zentrale lehnt still ab. Schnelltest von außen:
+  GET auf die /exec-Adresse muss „Diese Adresse ist in Ordnung“ zeigen; POST ohne Schlüssel antwortet
+  „falscher Schlüssel“, mit Schlüssel „ok“. Ob Netlify ankommt: Apps Script → Ausführungen → „doPost“.
 - **Apps Script ohne Google testen:** `node zentrale/test/test.js` baut Tabellen, Mails, Zeitpläne und
   Uhr nach. Zeitzone im Test auf Europe/Berlin, sonst rutschen Monatsgrenzen.
 
