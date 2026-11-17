@@ -374,6 +374,15 @@ def main():
     fotos_fuer_web(ziel / "fotos", lp / "fotos")
     for name in ("danke.html", "wirtschaftlichkeit.html", "rechner.html"):
         (lp / name).write_text(fuellen((VORLAGEN / "landingpage" / name).read_text(encoding="utf-8"), f), encoding="utf-8")
+    # Startseite: die Hauptadresse ohne Zusatz führt zur Wirtschaftlichkeitsprüfung (Werbe-Parameter bleiben dran)
+    (lp / "index.html").write_text(
+        '<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><meta name="robots" content="noindex">'
+        '<meta name="viewport" content="width=device-width, initial-scale=1">'
+        f'<title>{html.escape(f["betrieb"])}</title>'
+        '<meta http-equiv="refresh" content="0; url=wirtschaftlichkeit.html">'
+        '<script>location.replace("wirtschaftlichkeit.html" + location.search);</script></head>'
+        '<body><a href="wirtschaftlichkeit.html">Weiter zur kostenlosen Wirtschaftlichkeitsprüfung</a></body></html>',
+        encoding="utf-8")
     aktion = {k: f[k] for k in ("betrieb", "betrieb_lang", "telefon", "telefon_link", "adresse",
                                 "oeffnungszeiten", "ziehung", "speicher", "pixel_id", "slug")}
     aktion.update({k: f[k] for k in ("impressum_url", "datenschutz_url", "team_zusatz", "team_li")})
