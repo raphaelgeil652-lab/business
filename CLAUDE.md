@@ -103,6 +103,10 @@ Montags-Mail mit Stand-Knöpfen, „Erster Auftrag“, 1. des Monats Werbekosten
 Report-Entwürfe in Gmail, Verlosungsziehung, Akquise-Liste, Checkliste-Spalte je Kunde. Spaltennamen in
 `zentrale-bauen.py` und `Code.gs` müssen zusammenpassen; **nach jeder Änderung `node zentrale/test/test.js`**
 (baut Google nach, spielt alle Abläufe durch). Einrichtung: `zentrale/EINRICHTEN.md`.
+**Probelauf 1 (18.11.2026, fiktiver Kunde „Garten GmbH“) bestanden;** Learnings eingearbeitet: Meta-Klickweg
+in `kampagnen.md` genau in der Reihenfolge der Oberfläche (Nov. 2026), `hilfe-vorbereiten.md` (Seite,
+Portfolio, Business-ID, Konten, deine Daten an zwei Stellen), `hilfe-einrichten.md` (Partnerzugriff
+annehmen, Netlify-Wege, Webhook mit `?key=`, „Events testen“, Seite löschen). Probelauf 2 folgt.
 **Repo ist öffentlich:** echte Kundenordner (gitignored), Anfragen, IBAN nie ins Repo; nur der fiktive
 Probekunde liegt drin. Netlify kostenlos (300 Credits, 15 je Upload) reicht für ca. 3–4 Kunden.
 **Budgetregel PV (Nutzer, nach Rat eines befreundeten Agenturinhabers): Werbebudget ≈

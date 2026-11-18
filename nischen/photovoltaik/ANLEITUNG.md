@@ -34,16 +34,20 @@ Die ganze Arbeit in der richtigen Reihenfolge. Bei jedem Schritt steht, **was du
 
 ## Vorbereiten (einmal, vor dem ersten Kunden) · Ordner „01 Vorbereiten“
 
-1. **Zentrale einrichten** (ca. 20 Minuten): Anleitung „1 Zentrale einrichten“. Danach läuft die
-   Automatik. Teile die Zentrale mit deinem Kollegen (Google „Freigeben“, Bearbeiter).
-2. **Deine Daten:** Ordner „03 Videocall“ → „1 Steckbrief-Vorlage“ öffnen → Blatt „Deine Daten“
-   ausfüllen → speichern. Jede Kopie für einen Kunden trägt sie ab dann mit.
-3. **Konten** (alle kostenlos):
-   - Meta Business-Portfolio, Business-ID in „Deine Daten“. Hilfe: „4 Meta-Konto einrichten“.
-   - Google-Ads-Verwaltungskonto (ads.google.com/home/tools/manager-accounts), Kunden-ID in „Deine Daten“.
-   - Netlify (app.netlify.com), dort kommen die Seiten der Kunden hin.
-4. **Einmal prüfen lassen** (Anwalt oder Steuerberater): die Vereinbarung, die Beispielrechnungen in
-   den Anzeigen, die Teilnahmebedingungen. Danach gilt es für alle Kunden.
+Alles Klick für Klick in **„4 Vorbereiten – Meta, Google, Netlify, deine Daten“**. Kurz:
+
+1. **Facebook-Seite** „Clickculture“ und **Business-Portfolio** bei Meta anlegen. Die **Business-ID**
+   notieren (Einstellungen → Unternehmensinfos).
+2. **Google-Ads-Verwaltungskonto** und **Netlify-Konto** anlegen (beide kostenlos).
+3. **Zentrale einrichten** (ca. 20 Minuten): „1 Zentrale einrichten“. Mit deinem Kollegen teilen
+   (Google „Freigeben“, Bearbeiter).
+4. **Deine Daten** an zwei Stellen eintragen: in der Steckbrief-Vorlage (Blatt „Deine Daten“) und in der
+   Zentrale (Blatt „Einstellungen“). Lange Nummern mit `'` davor. „Kleinunternehmer“ an beiden Stellen gleich.
+5. **Einmal prüfen lassen** (Anwalt oder Steuerberater): Vereinbarung, Beispielrechnungen,
+   Teilnahmebedingungen.
+
+**Tipp:** Vor dem ersten echten Kunden einmal einen **Probelauf** mit einem erfundenen Kunden machen,
+mit deiner eigenen E-Mail als Kunden-E-Mail und deinem eigenen Werbekonto. Kampagne nur als Entwurf.
 
 ---
 
@@ -98,7 +102,9 @@ die Schritte 4 bis 7 ab.
 Die Willkommens-Mail fragt genau diese vier Dinge ab:
 
 1. **Fotos** in den Drive-Ordner: 3 fertige Anlagen, wenn möglich ein Dach vorher und nachher.
-2. **Zugänge:** Meta-Partnerzugriff, Google-Ads-Einladung annehmen.
+2. **Zugänge:** Er lädt dich bei Meta als Partner ein (mit deiner Business-ID) und nimmt die
+   Google-Ads-Einladung an. Danach musst **du** dich bei Meta noch selbst seinem Werbekonto und seiner
+   Seite zuweisen, sonst siehst du sie nicht: Hilfe „Schritt 6“, Punkt 0.
 3. **Zwei Links und zwei Bewertungen:** Impressum, Datenschutz, zwei echte Google-Bewertungen.
 4. **Ein Name:** wer bei ihm die Wirtschaftlichkeitsprüfungen rechnet.
 
@@ -108,25 +114,36 @@ Fehlt nach 3 Tagen noch etwas? **Anrufen**, nicht mailen.
 
 Genau in dieser Reihenfolge. Jeder Punkt ist in der Hilfe Klick für Klick beschrieben.
 
-1. **Messung anlegen:** Meta-Pixel und (bei Google-Kampagne) Google-Conversion. IDs in den Steckbrief, Teil 4.
+0. **Zugriff annehmen:** dich bei Meta seinem Werbekonto und seiner Seite zuweisen.
+1. **Messung anlegen:** Meta-Pixel („Datensatz“, Name = Betrieb, mit seinem Werbekonto verbinden) und
+   bei Google-Kampagne die Google-Conversion. IDs in den Steckbrief, Teil 4, mit `'` davor.
 2. **Neu erzeugen lassen:** Steckbrief (mit Links und Bewertungen in Teil 3) und die besten Fotos aus
    dem Drive-Ordner an Claude: „Erzeuge [Betrieb] neu.“ Neuen Ordner gegen den alten tauschen.
-3. **Seiten online:** Ordner „8 Seiten für Netlify“ auf app.netlify.com/drop ziehen. Seite in das
-   Kürzel umbenennen. Formular-Erkennung an, nochmal hochziehen.
-4. **Mit der Zentrale verbinden:** in Netlify die Webhook-Adresse aus der Zentrale eintragen, dazu
-   eine Mail-Kopie an dich.
-5. **Meta-Kampagne** mit den 5 Anzeigen anlegen, **pausiert**: „7 Kampagnen“, „9 Anzeigen-Bilder“.
+3. **Seiten online:** eingeloggt den Ordner „8 Seiten für Netlify“ auf app.netlify.com/drop ziehen.
+   Seite in das Kürzel umbenennen. Formular-Erkennung an. Dann unter „Deploys“ ins gestrichelte Feld
+   **nochmal** hochziehen (nicht wieder auf /drop).
+4. **Mit der Zentrale verbinden:** in Netlify unter Notifications → „Form submission notifications“ →
+   **„Outgoing webhook“** die Webhook-Adresse aus der Zentrale eintragen (die mit **`?key=`**), dazu eine
+   „Email notification“ an dich als Sicherheitskopie.
+5. **Meta-Kampagne** mit den 5 Anzeigen als **Entwurf** anlegen: „7 Kampagnen“ hat jedes Feld in der
+   Reihenfolge, in der Meta es zeigt. Immer über adsmanager.facebook.com → „+ Erstellen“. Bilder aus
+   „9 Anzeigen-Bilder“.
 6. **Google-Kampagne** anlegen, **pausiert**: „7 Kampagnen“.
 
 ## Schritt 7 · Testen und live gehen
 
-1. Über **jede** Seite am Handy eine Anfrage mit dem Namen „TEST“ schicken. Es muss passieren:
-   Danke-Seite · der Kunde bekommt die Mail mit den Knöpfen · in der Zentrale steht eine Zeile ·
-   du bekommst die Netlify-Kopie. Danach die TEST-Zeilen in der Zentrale löschen.
+1. **Test-Anfrage über den Events Manager:** Pixel des Kunden → „Events testen“ → Seite öffnen →
+   Cookies „Einverstanden“ → Formular mit dem Namen „TEST“ abschicken. Es muss passieren:
+   „PageView“ und „Lead“ im Events Manager · der Kunde bekommt die Mail mit den Knöpfen · in der
+   Zentrale steht eine Zeile · du bekommst die Netlify-Kopie. Dasselbe für den Rechner.
+   Danach die TEST-Zeilen in der Zentrale löschen. (Steht etwas nicht da: Hilfe „Schritt 6“, Punkt D.)
 2. Am Handy ansehen: Formular, Anrufen-Knopf, Fotos.
-3. Kampagnen auf **aktiv**. In der Zentrale, Blatt „Kunden“, bei **„Live seit“** das Datum eintragen.
+3. **Transparenz bei Meta:** In der Anzeigengruppe unter „Transparenz rund um Werbeanzeigen“ als
+   Werbetreibenden und Zahlenden den **Firmennamen des Kunden** eintragen. Verlangt Meta eine
+   Verifizierung, sie jetzt machen (kostenlos, ein paar Minuten).
+4. Kampagnen auf **aktiv** (Veröffentlichen). In der Zentrale, Blatt „Kunden“, bei **„Live seit“** das Datum eintragen.
    Ab da laufen die 30 Tage Garantie, und ab da gibt es Monatsreports.
-4. Kunden anrufen: „Ab jetzt kommen Anfragen per Mail. Bitte innerhalb einer Stunde zurückrufen und
+5. Kunden anrufen: „Ab jetzt kommen Anfragen per Mail. Bitte innerhalb einer Stunde zurückrufen und
    danach auf ‚Zurückgerufen‘ tippen. Montags kommt eine kurze Mail mit Knöpfen.“
 
 ## Schritt 8 · Laufender Betrieb · die Zentrale meldet sich, du reagierst
@@ -151,7 +168,9 @@ Claude: frische Anzeigen ohne Mehraufwand.
 Seiten neu hochladen, zweite Meta-Kampagne. In der Zentrale beim Kunden „Teilnahmeschluss“ und
 „Ziehung am“ eintragen; am Tag der Ziehung kommen die Gewinner von selbst. Danach wieder auf Nein.
 
-**Kunde hört auf:** In der Zentrale bei „Aktiv“ Nein. Kampagnen pausieren, Seite in Netlify löschen.
+**Kunde hört auf:** In der Zentrale bei „Aktiv“ Nein. Kampagnen ausschalten. Seite in Netlify löschen
+(Project configuration → General → „Options“ → „Delete project“). Seine Konten gehören ihm, er nimmt
+sie mit. Den Datensatz (Pixel) mit seinem Portfolio teilen, damit er ihn behält.
 
 ---
 

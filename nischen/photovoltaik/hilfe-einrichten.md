@@ -1,13 +1,25 @@
-# Hilfe für Schritt 6: Seiten online, Zentrale verbinden, Kampagnen anlegen
+# Hilfe für Schritt 6: Messung, Seiten online, Zentrale verbinden, Kampagne
 
-Klick für Klick. Die Reihenfolge ist wichtig: erst messen, dann erzeugen, dann hochladen.
-Kürzel und Adresse des Kunden stehen oben in seiner Übersicht („0 Übersicht“).
+Klick für Klick, so wie Meta und Netlify im November 2026 aussehen. Die Reihenfolge ist wichtig:
+erst messen, dann erzeugen, dann hochladen, dann verbinden, dann Kampagne.
+Kürzel und Adresse des Kunden stehen oben in seiner „0 Übersicht“.
+
+## 0 · Zugriff vom Kunden annehmen (Ende Schritt 5)
+
+Der Kunde lädt dich mit deiner Business-ID als Partner ein (steht so in der Willkommens-Mail). Danach:
+1. business.facebook.com/settings → „Konten“ → **„Werbekonten“**: Das Konto des Kunden steht in der Liste
+   (oft mit dem Hinweis, dass es einem anderen Portfolio gehört).
+2. Anklicken → **„Personen zuweisen“** → dich auswählen → **„Vollständige Kontrolle“** → Zuweisen.
+   Ohne diesen Schritt siehst du das Konto im Werbeanzeigenmanager nicht.
+3. Dasselbe unter „Konten“ → **„Seiten“** für seine Facebook-Seite.
+4. Zahlungsmethode: hinterlegt der **Kunde** in seinem Werbekonto (seine Karte, er zahlt Meta direkt).
 
 ## A · Messung anlegen (vor dem Hochladen)
 
-Steht ausführlich vorne in **„7 Kampagnen“** im Kundenordner, Abschnitt „Vorher: Messung einrichten“:
-Meta-Pixel anlegen und, wenn eine Google-Kampagne läuft, die Google-Conversion. Beide IDs in den
-Steckbrief (Teil 4).
+Steht ausführlich in **„7 Kampagnen“**, Abschnitt „Vorher: Messung einrichten“: Meta-Pixel
+(Meta sagt „Datensatz“) anlegen und mit dem Werbekonto des Kunden verbinden, dazu bei einer
+Google-Kampagne die Google-Conversion. Beide IDs in den Steckbrief, Teil 4, **mit `'` davor**
+(sonst macht Excel aus der letzten Ziffer eine 0).
 
 ## B · Kundenordner neu erzeugen lassen
 
@@ -18,48 +30,79 @@ Der neue Ordner ersetzt den alten komplett. Es geht nichts verloren: Abgehakt wi
 
 ## C · Seiten auf Netlify
 
-1. **app.netlify.com/drop** öffnen (eingeloggt) → den Ordner **„8 Seiten für Netlify“** aus dem
-   Kundenordner ins Fenster ziehen. Nach ca. 30 Sekunden ist die Seite online.
-2. **Namen ändern:** „Site configuration“ (bzw. „Project configuration“) → „Change site name“ (bzw.
-   „Change project name“) → das **Kürzel** des Kunden eintragen → Save. Jetzt heißt die Adresse
-   `https://<kürzel>.netlify.app`, genau die, die in den Kampagnen steht.
+1. Bei **app.netlify.com einloggen** (wichtig: eingeloggt sein, sonst ist die Seite nur vorläufig).
+2. **app.netlify.com/drop** öffnen → den Ordner **„8 Seiten für Netlify“** aus dem Kundenordner ins
+   große Feld ziehen. Den ganzen Ordner, nicht einzelne Dateien. Nach ca. 30 Sekunden ist er online.
+3. **Namen ändern:** links „Project configuration“ → „General“ → im Kasten „Project details“ auf
+   **„Change project name“** (bzw. „Options“ → „Change project name“) → das **Kürzel** eintragen → Save.
+   Jetzt heißt die Adresse `https://<kürzel>.netlify.app`, genau die, die in den Kampagnen steht.
    *Ist der Name vergeben:* anderen nehmen, die volle Adresse im Steckbrief bei „Eigene Adresse der
-   Seiten“ eintragen, neu erzeugen lassen, Ordner nochmal hochziehen (Punkt 4).
-3. **Formulare einschalten:** links „Forms“ → „Enable form detection“.
-4. **Nochmal hochladen**, damit Netlify die Formulare erkennt: „Deploys“ → den Ordner unten in das
-   Feld „Drag and drop your site output folder here“ ziehen.
-5. **Mit der Zentrale verbinden:** „Site configuration“ → „Notifications“ → „Form submission
-   notifications“ → „Add notification“ → **„Outgoing webhook“**:
-   - Event: „New form submission“
-   - URL: die **„Webhook-Adresse für Netlify“** aus der Zentrale, Blatt „Einstellungen“. Sie endet auf
-     **`?key=…`**. Nicht die „Web-App-Adresse“ darüber nehmen: Ohne Schlüssel lehnt die Zentrale jede
-     Anfrage still ab.
-   - Wichtig: im Abschnitt **„Form submission notifications“** und dort **„Outgoing webhook“** wählen
-     (nicht „Email notification“, nicht „Deploy notifications“)
-   - Form: „Any form“ → Save
-6. **Sicherheitskopie an dich:** dort nochmal „Add notification“ → **„Email notification“** → deine
-   E-Mail → Save. (Falls je etwas hakt, hast du jede Anfrage trotzdem.)
+   Seiten“ eintragen, neu erzeugen lassen, ab Punkt 5 nochmal hochziehen.
+4. **Formulare einschalten:** links „Project configuration“ → **„Forms“** → „Enable form detection“.
+5. **Nochmal hochladen** (erst jetzt erkennt Netlify die Formulare): links **„Deploys“** → nach unten
+   scrollen bis zum Feld mit **gestricheltem Rand** („Drag and drop your project output folder here“)
+   → den Ordner „8 Seiten für Netlify“ hineinziehen → es erscheint „Published“.
+   Nicht wieder app.netlify.com/drop nehmen, das macht eine zweite, neue Seite.
+6. **Prüfen:** `https://<kürzel>.netlify.app` öffnen → die Wirtschaftlichkeitsprüfung erscheint.
+   Unter Project configuration → Forms stehen die Formulare „wirtschaftlichkeit“ und „rechner“.
 
 **Kosten:** Netlify kostenlos hat 300 Credits im Monat. Jedes Hochladen kostet 15, Besucher kosten
-Datenvolumen (die Seiten sind klein). Das reicht für etwa 3–4 Kunden. Danach Tarif „Personal“
-(ca. 9 $ im Monat). Deshalb: nur hochladen, wenn sich etwas geändert hat.
+Datenvolumen. Das reicht für etwa 3–4 Kunden, danach Tarif „Personal“ (ca. 9 $ im Monat).
+Deshalb: nur hochladen, wenn sich etwas geändert hat.
 
-## D · Meta-Kampagne
+## D · Mit der Zentrale verbinden
 
-Werbeanzeigenmanager des Kunden → alles genau wie in **„7 Kampagnen“** → Bilder aus
-**„9 Anzeigen-Bilder“** → **pausiert** speichern. Allgemeine Klick-Hilfe: „Meta-Anzeige einrichten“.
+1. In der Zentrale, Blatt „Einstellungen“, die **„Webhook-Adresse für Netlify“** kopieren. Sie endet auf
+   **`?key=…`**. Nicht die „Web-App-Adresse“ darüber nehmen: Ohne Schlüssel lehnt die Zentrale jede
+   Anfrage still ab.
+2. Netlify → Project configuration → **„Notifications“**. Dort gibt es mehrere Bereiche. Den Bereich
+   **„Form submission notifications“** nehmen (nicht „Deploy notifications“).
+3. Dort **„Add notification“ → „Outgoing webhook“** (nicht „Email notification“):
+   Event „New form submission“ · URL to notify: die Webhook-Adresse · Form „Any form“ → Save.
+4. Nochmal **„Add notification“ → „Email notification“**: deine E-Mail · „New form submission“ ·
+   „Any form“ → Save. Das ist deine Sicherheitskopie jeder Anfrage.
+5. In der Liste stehen jetzt **zwei** Einträge: einer mit deiner E-Mail, einer mit `script.google.com`.
 
-## E · Google-Kampagne
+**Klappt es nicht** (Test-Anfrage kommt nicht in der Zentrale an):
+- Zentrale → Erweiterungen → Apps Script → links **„Ausführungen“**: Steht dort kein „doPost“, kommt
+  Netlify nicht an. Prüfen: Endet die Adresse in Netlify auf `?key=`? Ist sie die aus „Einstellungen“?
+- Die Web-App-Adresse (ohne `?key=`) in einem privaten Browserfenster öffnen: Es muss „Clickculture
+  Zentrale – Diese Adresse ist in Ordnung“ erscheinen. Kommt „Datei kann derzeit nicht geöffnet
+  werden“, ist die Web-App-Adresse falsch: in Apps Script „Bereitstellen“ → „Bereitstellungen verwalten“
+  → unter **„Web-App“ die URL** kopieren (nicht die Bereitstellungs-ID darüber).
+
+## E · Meta-Kampagne
+
+Genau nach **„7 Kampagnen“**, Abschnitt „Meta-Kampagne anlegen: Klick für Klick“. Dort steht jedes
+Feld in der Reihenfolge, in der Meta es zeigt, mit dem fertigen Eintrag. Am Ende **nicht
+veröffentlichen**, nur schließen: Die Kampagne bleibt ein Entwurf bis Schritt 7.
+
+Nicht den Knopf „Werbung schalten“ auf der Facebook-Seite benutzen und nicht „Anzeige erstellen“ in
+der Business Suite: Dort fehlen die Felder. Immer **adsmanager.facebook.com** → „+ Erstellen“.
+
+## F · Google-Kampagne
 
 Google Ads des Kunden (über dein Verwaltungskonto) → Einstellungen aus **„7 Kampagnen“** →
 **pausiert** speichern.
 
 ## Danach: Schritt 7 (Testen)
 
-Jede Seite am Handy öffnen, Formular mit dem Namen „TEST“ abschicken. Es muss passieren:
-1. Danke-Seite erscheint.
-2. Der Kunde bekommt die Anfrage-Mail mit den Knöpfen (frag ihn, ob sie da ist; sonst Spam-Ordner).
-3. In der Zentrale steht eine Zeile im Blatt „Anfragen“.
-4. Du bekommst die Sicherheitskopie von Netlify.
+1. Im Events Manager das Pixel des Kunden öffnen → Reiter **„Events testen“** → bei Website die
+   Adresse `https://<kürzel>.netlify.app/wirtschaftlichkeit.html` eintragen → **„Website öffnen“**.
+2. Im neuen Fenster bei den Cookies **„Einverstanden“**, dann das Formular mit dem Namen „TEST“ abschicken.
+3. Es muss passieren:
+   - im Events Manager erscheinen **„PageView“** und **„Lead“** mit „Verarbeitet“,
+   - der Kunde (bzw. du) bekommt die Anfrage-Mail **mit den Knöpfen**,
+   - in der Zentrale steht eine Zeile im Blatt „Anfragen“,
+   - du bekommst die Sicherheitskopie von Netlify.
+4. In der Anfrage-Mail auf „Zurückgerufen“ tippen und bestätigen → in der Zentrale stehen Uhrzeit und
+   Minuten. Danach die TEST-Zeilen in der Zentrale löschen.
 
-Danach die TEST-Zeilen in der Zentrale löschen.
+Gut zu wissen: Die Test-Ereignisse erscheinen nur unter „Events testen“, nicht in der „Übersicht“.
+Echte Besucher tauchen in der Übersicht mit 20–30 Minuten Verzögerung auf (Zeitraum oben rechts auf
+„Heute“ stellen). Ohne „Einverstanden“ bei den Cookies sendet die Seite absichtlich nichts an Meta.
+
+## Seite löschen (Kunde hört auf oder nach einem Probelauf)
+
+Netlify → Projekt → Project configuration → General → im Kasten „Project details“ **„Options“ →
+„Delete project“** → Namen eintippen → bestätigen. Oder in der Projektliste bei „…“ → Delete.

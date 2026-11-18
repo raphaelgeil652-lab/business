@@ -1,6 +1,6 @@
 # Muster Solartechnik
 
-**Kürzel:** `muster-solartechnik` · **Adresse der Seiten:** https://muster-solartechnik.netlify.app · erzeugt am 17.11.2026
+**Kürzel:** `muster-solartechnik` · **Adresse der Seiten:** https://muster-solartechnik.netlify.app · erzeugt am 18.11.2026
 
 Nichts in diesem Ordner von Hand ändern. Etwas falsch oder neu? Im Steckbrief ändern und Claude
 schicken: „Erzeuge Muster Solartechnik neu.“ Die Checkliste und die Fotos bleiben dabei erhalten.
@@ -64,6 +64,6 @@ schicken: „Erzeuge Muster Solartechnik neu.“ Die Checkliste und die Fotos bl
 Abhaken: in der Zentrale, Blatt „Checkliste“, Spalte `muster-solartechnik`.
 
 **Im Browser ansehen** (nur beim fiktiven Probekunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=202611171841) ·
-[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=202611171841) ·
-[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=202611171841)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=202611181321) ·
+[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=202611181321) ·
+[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=202611181321)

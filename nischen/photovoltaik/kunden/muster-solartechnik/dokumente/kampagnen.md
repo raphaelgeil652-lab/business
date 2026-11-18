@@ -1,34 +1,123 @@
 # Kampagnen — Muster Solartechnik
 
-> Alles fertig zum Eintragen, Texte 1:1 kopieren. Anzeigen-Bilder: Ordner „Anzeigen-Bilder“.
-> Ziel-Adressen: `https://muster-solartechnik.netlify.app/wirtschaftlichkeit.html`, `https://muster-solartechnik.netlify.app/rechner.html`; bei Verlosung `…/modul.html`, `…/rabatt.html`, `…/speicher.html`.
-> Alles erst **pausiert** anlegen. Live geht es in Schritt 7, nach der Test-Anfrage.
+> Alles fertig zum Eintragen, Texte 1:1 kopieren. Bilder: Ordner „9 Anzeigen-Bilder“.
+> Die Klickwege unten sind genau so, wie Meta sie im November 2026 zeigt. Heißt ein Feld anders,
+> nimm das, was am nächsten dran ist. Alles erst als **Entwurf** anlegen. Live geht es in Schritt 7.
 
 ## Vorher: Messung einrichten (einmal pro Kunde, vor dem Hochladen der Seiten)
 
-1. **Meta-Pixel:** business.facebook.com → Events Manager (im Konto des Kunden) → „Datenquelle verbinden“ →
-   Web → Name `Muster Solartechnik` → „Manuell einrichten“ abbrechen, nur die **Pixel-ID** kopieren → Steckbrief Teil 4.
-   Das Ereignis „Lead“ meldet die Danke-Seite von selbst (nur nach Zustimmung des Besuchers).
-2. **Google-Ads-Conversion** (nur wenn eine Google-Kampagne läuft): Google Ads des Kunden → Ziele →
-   Conversions → „Neue Conversion-Aktion“ → Website → manuell einrichten → Kategorie „Lead-Formular senden“,
-   Wert „keinen Wert“, Zählung „Eine“ → „Google-Tag selbst einrichten“ → aus dem Ereignis-Snippet
-   `send_to` kopieren (sieht so aus: `AW-123456789/AbCdEf`) → Steckbrief Teil 4.
-3. Steckbrief an Claude: „Erzeuge Muster Solartechnik neu.“ Erst dann die Seiten hochladen.
+**Meta-Pixel (Meta nennt es „Datensatz“)**
+1. business.facebook.com/settings → links **„Datenquellen“ → „Datensätze“** → **„Hinzufügen“**.
+2. Name: `Muster Solartechnik` → **„Erstellen“**.
+3. Frage „Wähle die Werbekonten aus …“: das **Werbekonto des Kunden** ankreuzen → **„Weiter“**.
+   (Steht es nicht in der Liste: Der Kunde hat dich noch nicht als Partner eingeladen, siehe Schritt 5.)
+4. Fragt Meta danach, wie du einrichten willst, oder zeigt „Für mich einrichten“: **schließen**. Der Code
+   steckt schon in den Seiten.
+5. Die lange Zahl (**Datensatz-ID**, 15–16 Ziffern) kopieren → Steckbrief Teil 4, mit `'` davor.
+   Das Ereignis „Lead“ meldet die Danke-Seite von selbst, nur wenn der Besucher den Cookies zustimmt.
 
-Budget: Meta 2.100 € pro Monat (≈ 70 € pro Tag) · Google 900 € pro Monat (≈ 30 € pro Tag).
+**Google-Ads-Conversion** (nur wenn eine Google-Kampagne läuft)
+Google Ads des Kunden → Ziele → Conversions → „Neue Conversion-Aktion“ → Website → manuell
+einrichten → Kategorie „Lead-Formular senden“, Wert „keinen Wert“, Zählung „Eine“ → „Google-Tag selbst
+einrichten“ → aus dem Ereignis-Snippet `send_to` kopieren (sieht so aus: `AW-123456789/AbCdEf`) →
+Steckbrief Teil 4.
 
-## Meta (Facebook/Instagram)
+Dann Steckbrief an Claude: „Erzeuge Muster Solartechnik neu.“ Erst danach die Seiten hochladen.
 
-| Einstellung | Wert |
+## Meta-Kampagne anlegen: Klick für Klick
+
+adsmanager.facebook.com → oben links das **Werbekonto des Kunden** wählen → grüner Knopf **„+ Erstellen“**.
+
+### 1 · Kampagne
+
+| Feld | Eintrag |
 |---|---|
-| Kampagne | `PV – Wirtschaftlichkeit – Muster Solartechnik` (Dauer) und bei Verlosung `PV – Verlosung – Muster Solartechnik`, Ziel **Leads**, Advantage Campaign Budget aus |
-| Anzeigengruppe | `[Ort des Betriebs] 40 km`, Conversion-Ort Website, Pixel-Ereignis „Lead“ |
-| Tagesbudget | 70 € |
-| Ort | [Ort des Betriebs] + 40 km, „Personen, die an diesem Ort leben“ |
-| Alter / Geschlecht | 35–65+ / alle |
-| Detailliertes Targeting | leer |
-| Platzierungen | Advantage+ (automatisch) |
-| Sonderkategorie | keine (keine Finanzierung bewerben) |
+| Buchungsart | **Auktion** |
+| Kampagnenziel | **Leads** → Weiter |
+| Name der Kampagne | `PV – Wirtschaftlichkeit – Muster Solartechnik` |
+| Budgetstrategie | **Kampagnenbudget** |
+| Tagesbudget | **70 €** (= 2.100 € im Monat ÷ 30) |
+| Kampagnengebotsstrategie | **Höchstes Volumen** |
+| A/B-Test | aus |
+| Spezielle Anzeigenkategorien | **nichts** auswählen |
+
+→ Weiter
+
+### 2 · Anzeigengruppe
+
+| Feld | Eintrag |
+|---|---|
+| Name der Anzeigengruppe | `[Ort des Betriebs] 40 km` |
+| Conversion-Ort | **Website** |
+| Performance-Ziel | **Anzahl der Leads maximieren** (nicht „Wert der Conversions“) |
+| Datensatz | **Muster Solartechnik** |
+| Conversion-Event | **Lead** |
+| Attributionsmodell | so lassen |
+| Kostenziel pro Ergebnis | leer lassen |
+| Dynamische Anzeigengestaltung | aus |
+| Live-Video-Ad | aus |
+| Budget und Zeitplan | Start heute, **kein Enddatum** |
+
+**Zielgruppe** („Advantage+ aktiviert“ lässt sich nicht abschalten, das ist in Ordnung). Unter
+„Einschränkungen“ – die hält Meta immer ein:
+
+| Feld | Eintrag |
+|---|---|
+| Standorte | „Deutschland“ mit dem **x** entfernen → `[Ort des Betriebs]` eintippen und den richtigen Ort wählen → Umkreis **40 km** → wenn angeboten: „Personen, die hier leben“ |
+| Mindestalter | so hoch wie möglich, bis **35** |
+| Unbekanntes Alter auf WhatsApp | **ausschließen** |
+| Sprachen | **Deutsch** |
+| Zielgruppe vorschlagen | wenn dort ein Alter steht: **35 bis 65+** |
+| Custom Audiences | nichts |
+
+| Weiter unten | Eintrag |
+|---|---|
+| Platzierungen | **Advantage+** so lassen |
+| Wert-Regeln, Einschränkungen auf Kontoebene, Brand Safety | nichts ändern |
+| Transparenz (Werbetreibender und Zahlender) | erst in Schritt 7, vor dem Livegang |
+
+→ Weiter
+
+### 3 · Anzeige (für jede der 5 Anzeigen)
+
+| Feld | Eintrag |
+|---|---|
+| Name der Anzeige | `W1 Vorher-Nachher` (bzw. W2 … W5) |
+| Partnership Ad | aus |
+| Facebook-Seite | die Seite des Kunden |
+| Instagram-Profil | „Facebook-Seite verwenden“ (oder sein Instagram, wenn verknüpft) |
+| Threads, WhatsApp, Branding | nichts |
+| Anzeigenkonfiguration | „Werbeanzeige erstellen“; Kasten „Shopping-Erlebnis“ → **„Später erinnern“** |
+| Anzeigengestaltung | **„Anzeigengestaltung konfigurieren“ → „Image Ad“** → es öffnet sich ein Assistent: |
+
+Der Assistent hat oben eine Leiste mit Stufen:
+
+| Stufe | Eintrag |
+|---|---|
+| Medien | Bild aus „9 Anzeigen-Bilder“ hochladen (W1: `w1-vorher-nachher.png`) |
+| Konfiguration | **Quell-URL** = Zieladresse der Anzeige (siehe unten). Branding aus, Sitelinks aus |
+| Zuschneiden | so lassen |
+| Text | Primärtext, Überschrift, Beschreibung von unten kopieren. Button / Call to Action: **Registrieren** |
+| Bildgenerierung | **nichts generieren** |
+| Optimierungen | **alle Schalter aus** (sonst verändert Meta Bild und Text) |
+| Übersetzung | nichts |
+
+| Danach | Eintrag |
+|---|---|
+| Tracking | Website-Events: **Muster Solartechnik** angehakt. Gibt es das Feld „URL-Parameter“: Parameter von unten eintragen |
+
+**Weitere Anzeigen:** in der linken Spalte bei der Anzeige „…“ → **Duplizieren** → Name, Bild, Texte,
+Quell-URL und Parameter austauschen.
+
+**Ende: NICHT „Veröffentlichen“.** Oben links schließen. In der Liste steht „Entwurf“.
+
+Zieladressen und Parameter:
+
+| Anzeige | Quell-URL | URL-Parameter |
+|---|---|---|
+| W1, W2, W3, W5 | `https://muster-solartechnik.netlify.app/wirtschaftlichkeit.html` | `utm_source=meta&utm_campaign=pv-w1` (w2, w3, w5) |
+| W4 | `https://muster-solartechnik.netlify.app/rechner.html` | `utm_source=meta&utm_campaign=pv-w4` |
+| Modul, Rabatt, Speicher | `https://muster-solartechnik.netlify.app/modul.html`, `/rabatt.html`, `/speicher.html` | `utm_source=meta&utm_campaign=pv-modul` (rabatt, speicher) |
 
 ### Dauerkampagne: Wirtschaftlichkeitsprüfung (das ganze Jahr)
 
@@ -88,13 +177,11 @@ Läuft parallel zur Dauerkampagne. Vorschlag: Budget in dieser Zeit etwa hälfti
 - Headline: 3 Stromspeicher zu gewinnen
 - Beschreibung: Gratis zur ersten Bestellung.
 
-URL-Parameter: `utm_source=meta&utm_campaign=pv-modul` (bzw. `pv-rabatt`, `pv-speicher`)
+Eigene Kampagne `PV – Verlosung – Muster Solartechnik`, gleiche Einstellungen wie oben, Zieladressen siehe Tabelle.
 
-URL-Parameter Dauerkampagne: `utm_source=meta&utm_campaign=pv-w1` … `pv-w5`
-
-Vor dem Veröffentlichen:
-- [ ] Advantage+ Creative-Verbesserungen aus · Multi-Advertiser aus
-- [ ] Vorschau am Handy geprüft · Test-Anfrage über jede Anzeige
+Vor dem Livegang (Schritt 7):
+- [ ] In der Vorschau rechts: Sieht jede Anzeige aus wie das Original-Bild? (sonst „Optimierungen“ prüfen)
+- [ ] Test-Anfrage über jede Seite, im Events Manager unter „Events testen“ erscheinen „PageView“ und „Lead“
 
 ## Google Ads (Suche)
 

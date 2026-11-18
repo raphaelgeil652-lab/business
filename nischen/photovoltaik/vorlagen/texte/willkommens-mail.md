@@ -25,6 +25,8 @@ Noch keine Fotos da? Bei der nächsten Montage vorher und nachher je ein Foto ma
 
 - Meta: Bitte laden Sie uns als Partner in Ihrem Business Manager ein, mit Zugriff auf
   Facebook-Seite und Werbekonto. Unsere Business-ID: {{agentur_business_id}}
+- Im Werbekonto bitte Ihre Zahlungsmethode hinterlegen. Das Werbebudget zahlen Sie direkt an Meta,
+  es läuft nicht über uns.
 - Google Ads: Bitte nehmen Sie die Einladung von unserem Verwaltungskonto {{agentur_google_mcc}} an.
   Ich schicke sie Ihnen heute.
 
