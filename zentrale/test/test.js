@@ -15,6 +15,7 @@ const KOPF = JSON.parse(execFileSync('python3', [path.join(HIER, 'zentrale-bauen
 const TZ = 'Europe/Berlin';
 
 let ok = 0, fehler = 0;
+let DEUTSCH = false; // Tabelle in deutscher Spracheinstellung: Formeln mit „,“ ergeben #ERROR!
 function pruefe(bed, was) { if (bed) { ok++; } else { fehler++; console.log('  ✗ ' + was); } }
 
 // ---------------------------------------------------------------- Uhr
@@ -42,6 +43,7 @@ class Blatt {
     return {
       setValue: v => { while (this.z.length < r) this.z.push([]); const row = this.z[r - 1]; while (row.length < c) row.push(''); row[c - 1] = v; },
       setFormula: f => { while (this.z.length < r) this.z.push([]); const row = this.z[r - 1]; while (row.length < c) row.push(''); row[c - 1] = f; },
+      getDisplayValue: () => { const f = String((this.z[r - 1] || [])[c - 1] || ''); return DEUTSCH && /^=.*,/.test(f) ? '#ERROR!' : f; },
       setNumberFormat: () => {},
       getSheet: () => this,
       getValue: () => (this.z[r - 1] || [])[c - 1]
@@ -64,6 +66,7 @@ function formatDate(d, tz, muster) {
 const ctx = {
   Date: FDate, Math, JSON, String, Number, Object, Array, RegExp, Error, isNaN, encodeURIComponent, console,
   SpreadsheetApp: {
+    flush: () => {},
     getActive: () => ({ getSheetByName: n => blaetter[n] || null, getUrl: () => 'https://docs.google.com/spreadsheets/d/ZENTRALE' }),
     getUi: () => ({
       alert: (...a) => alerts.push(a.join(' | ')), ButtonSet: { OK: 'OK' },
@@ -163,6 +166,13 @@ G.onEdit({ range: blaetter.Kunden.getRange(4, 2) });
 pruefe(ckKopf().length === 6, 'keine doppelte Spalte');
 G.onEdit({ range: blaetter.Anfragen.getRange(2, 1) });
 pruefe(ckKopf().length === 6, 'Änderung in anderen Blättern: nichts');
+blaetter.Kunden.z.splice(3, 1);
+DEUTSCH = true;
+blaetter.Kunden.appendRow(KOPF.Kunden.map(h => (h === 'Kürzel' ? 'de-kunde' : h === 'E-Mail für Anfragen' ? 'd@x.de' : '')));
+G.onEdit({ range: blaetter.Kunden.getRange(4, 1) });
+const deSpalte = blaetter.Checkliste.z[0].indexOf('de-kunde');
+pruefe(/^=IFERROR\(COUNTIF\([A-Z]+3:[A-Z]+\d+;"Ja"\)\/\d+;0\)$/.test(blaetter.Checkliste.z[1][deSpalte]), 'deutsche Tabelle: Fortschritt-Formel mit „;“');
+DEUTSCH = false;
 blaetter.Kunden.z.splice(3, 1);
 
 // ================================================================ 2 Neue Anfragen

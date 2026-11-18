@@ -119,10 +119,17 @@ function checklisteSpalten_() {
     spalte++;
     var b = spaltenBuchstabe_(spalte);
     ck.getRange(1, spalte).setValue(k.kuerzel);
-    ck.getRange(2, spalte).setFormula('=IFERROR(COUNTIF(' + b + '3:' + b + letzteAufgabe + ',"Ja")/' + (letzteAufgabe - 2) + ',0)');
+    formelSetzen_(ck.getRange(2, spalte), '=IFERROR(COUNTIF(' + b + '3:' + b + letzteAufgabe + ',"Ja")/' + (letzteAufgabe - 2) + ',0)');
     ck.getRange(2, spalte).setNumberFormat('0%');
     kopf[spalte - 1] = k.kuerzel;
   });
+}
+
+/** Formel setzen, die in jeder Spracheinstellung funktioniert: Deutsch u. a. erwarten „;“ statt „,“. */
+function formelSetzen_(zelle, formel) {
+  zelle.setFormula(formel);
+  SpreadsheetApp.flush();
+  if (/^#(ERROR|FEHLER)/i.test(String(zelle.getDisplayValue()))) zelle.setFormula(formel.replace(/,/g, ';'));
 }
 
 function spaltenBuchstabe_(n) {
