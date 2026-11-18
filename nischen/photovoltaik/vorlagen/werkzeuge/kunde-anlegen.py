@@ -38,7 +38,7 @@ VORLAGEN = HIER.parent
 PV = VORLAGEN.parent
 KUNDEN = PV / "kunden"
 
-TEXTE_PRO_KUNDE = ["vereinbarung.md", "abrechnung-mails.md", "willkommens-mail.md", "rueckruf-leitfaden.md",
+TEXTE_PRO_KUNDE = ["vereinbarung.md", "vertrag-mail.md", "abrechnung-mails.md", "willkommens-mail.md", "rueckruf-leitfaden.md",
                    "kampagnen.md"]
 FOTO_NAMEN = ["foto-1", "foto-2", "foto-3", "vorher", "nachher"]
 FOTO_MAX = 1600  # Pixel an der langen Seite; hält die Seiten schnell und spart Netlify-Datenvolumen

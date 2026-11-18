@@ -1,9 +1,4 @@
-# Vereinbarung — {{betrieb_lang}}
-
-> Muster, keine Rechtsberatung. Vor dem ersten echten Einsatz einmal von Anwalt oder
-> Steuerberater prüfen lassen. Als PDF exportieren und unterschreiben lassen.
-
-**VEREINBARUNG**
+# Vereinbarung
 
 zwischen
 

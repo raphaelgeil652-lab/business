@@ -50,7 +50,8 @@ Woche das Budget bringt; schafft der Betrieb weniger, zeigt das Ergebnis „⚠ 
 |---|---|---|
 | `README.md` | 0 Übersicht – was noch fehlt | immer zuerst |
 | `steckbrief.xlsx` | 1 Steckbrief | |
-| `dokumente/vereinbarung.md` | 2 Vertrag – als PDF schicken | Schritt 4 |
+| `dokumente/vertrag-mail.md` | 2a Vertrag – so verschickst du ihn (Mailtext) | Schritt 4 |
+| `dokumente/vereinbarung.md` | 2b Vertrag – als PDF schicken | Schritt 4 |
 | `dokumente/abrechnung-mails.md` | 3 Rechnung – Mailtext (die Rechnung selbst machst du in der Zentrale) | Schritt 4, 8 |
 | `dokumente/willkommens-mail.md` | 4 Willkommens-Mail | Schritt 4 |
 | `dokumente/rueckruf-leitfaden.md` | 5 Rückruf-Leitfaden – als PDF anhängen | Schritt 4 |

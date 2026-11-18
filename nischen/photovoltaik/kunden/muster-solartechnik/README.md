@@ -52,7 +52,7 @@ schicken: „Erzeuge Muster Solartechnik neu.“ Die Checkliste und die Fotos bl
 
 | Schritt | Datei in diesem Ordner | Was du tust |
 |---|---|---|
-| 4 · Abschluss | **2 Vertrag** | als PDF schicken, unterschrieben zurück |
+| 4 · Abschluss | **2a + 2b Vertrag** | 2a sagt wie und hat den Mailtext; 2b ist der Vertrag: als PDF, selbst unterschreiben, schicken, unterschrieben zurück |
 | | **3 Rechnung** | Mailtext. Die Rechnung selbst in der Zentrale machen, als PDF an Mail 1 hängen |
 | | **4 Willkommens-Mail** + **5 Rückruf-Leitfaden** | Mail schicken, Leitfaden als PDF anhängen |
 | | **6 Zeile für die Zentrale** | öffnen, alles kopieren, in der Zentrale im Blatt „Kunden“ in die erste freie Zeile einfügen. Die Checkliste für diesen Kunden legt sich dann von selbst an. |
@@ -64,6 +64,6 @@ schicken: „Erzeuge Muster Solartechnik neu.“ Die Checkliste und die Fotos bl
 Abhaken: in der Zentrale, Blatt „Checkliste“, Spalte `muster-solartechnik`.
 
 **Im Browser ansehen** (nur beim fiktiven Probekunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=202611181321) ·
-[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=202611181321) ·
-[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=202611181321)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/anzeigen/vorschau.html?v=202611181459) ·
+[Wirtschaftlichkeitsprüfung](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/wirtschaftlichkeit.html?v=202611181459) ·
+[Rechner](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/photovoltaik/kunden/muster-solartechnik/landingpage/rechner.html?v=202611181459)

@@ -91,7 +91,8 @@ PLAN = [
 KUNDE = [
     ("README.md", "0 Übersicht – was noch fehlt.docx"),
     ("steckbrief.xlsx", "1 Steckbrief.xlsx"),
-    ("dokumente/vereinbarung.md", "2 Vertrag – als PDF schicken.docx"),
+    ("dokumente/vertrag-mail.md", "2a Vertrag – so verschickst du ihn (Mailtext).docx"),
+    ("dokumente/vereinbarung.md", "2b Vertrag – als PDF schicken.docx"),
     ("dokumente/abrechnung-mails.md", "3 Rechnung – Mailtext (die Rechnung selbst machst du in der Zentrale).docx"),
     ("dokumente/willkommens-mail.md", "4 Willkommens-Mail – am Tag der Unterschrift.docx"),
     ("dokumente/rueckruf-leitfaden.md", "5 Rückruf-Leitfaden – als PDF an die Willkommens-Mail.docx"),
@@ -195,7 +196,7 @@ def startseite(ziel):
         ("3 · Kundenordner erzeugen lassen", "Drive-Ordner anlegen, Link in den Steckbrief, Steckbrief an Claude. ZIP in „04 Kundenordner“.",
          [(f"{m}/0 Übersicht – was noch fehlt.docx", "So sieht ein Kundenordner aus")]),
         ("4 · Abschluss (am selben Tag)", "Vertrag, Rechnung, Willkommens-Mail, Kunde in die Zentrale.",
-         [(f"{m}/2 Vertrag – als PDF schicken.docx", "2 Vertrag"), (f"{m}/3 Rechnung – Mailtext (die Rechnung selbst machst du in der Zentrale).docx", "3 Rechnung"),
+         [(f"{m}/2a Vertrag – so verschickst du ihn (Mailtext).docx", "2 Vertrag"), (f"{m}/3 Rechnung – Mailtext (die Rechnung selbst machst du in der Zentrale).docx", "3 Rechnung"),
           (f"{m}/4 Willkommens-Mail – am Tag der Unterschrift.docx", "4 Willkommens-Mail"),
           (f"{m}/6 Zeile für die Zentrale – kopieren, im Blatt Kunden einfügen.txt", "6 Zeile für die Zentrale")]),
         ("5 · Vom Kunden einsammeln (bis Tag 3)", "Fotos im Drive-Ordner, Zugänge, Links, Bewertungen, ein Name. Fehlt etwas: anrufen.", []),

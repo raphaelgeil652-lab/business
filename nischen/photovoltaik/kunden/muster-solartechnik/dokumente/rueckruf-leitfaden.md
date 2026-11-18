@@ -1,6 +1,6 @@
 # Rückruf-Leitfaden für das Büro von Muster Solartechnik
 
-> Für den Kunden. Ausdrucken und neben das Telefon legen, oder als PDF schicken.
+Am besten ausdrucken und neben das Telefon legen.
 
 ## Die eine Regel
 

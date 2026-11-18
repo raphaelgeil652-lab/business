@@ -89,7 +89,7 @@ Jeden Morgen schickt dir die Zentrale die Liste: „Heute anrufen“.
 
 | Was du tust | Datei |
 |---|---|
-| Vertrag in Word oder Pages öffnen → als PDF sichern → schicken → unterschrieben zurück | „2 Vertrag“ |
+| Vertrag als PDF sichern, selbst unterschreiben (App Vorschau), mit dem fertigen Mailtext schicken → unterschrieben zurück | „2a Vertrag – so verschickst du ihn“ + „2b Vertrag – als PDF schicken“ |
 | Rechnung in der **Zentrale** machen (Blatt „Rechnungen“, dann „Rechnung drucken“ → als PDF herunterladen). Den Mailtext 1 aus „3 Rechnung“ kopieren, PDF anhängen, schicken | Zentrale + „3 Rechnung“ |
 | Willkommens-Mail schicken, Rückruf-Leitfaden als PDF anhängen | „4 Willkommens-Mail“, „5 Rückruf-Leitfaden“ |
 | **Kunde in die Zentrale:** Datei öffnen, alles kopieren, in der Zentrale im Blatt „Kunden“ in die erste freie Zeile (Spalte A) einfügen | „6 Zeile für die Zentrale“ |
