@@ -108,7 +108,8 @@ in `kampagnen.md` genau in der Reihenfolge der Oberfläche (Nov. 2026), `hilfe-v
 Portfolio, Business-ID, Konten, deine Daten an zwei Stellen), `hilfe-einrichten.md` (Partnerzugriff
 annehmen, Netlify-Wege, Webhook mit `?key=`, „Events testen“, Seite löschen). Probelauf 2 folgt.
 **Repo ist öffentlich:** echte Kundenordner (gitignored), Anfragen, IBAN nie ins Repo; nur der fiktive
-Probekunde liegt drin. Netlify kostenlos (300 Credits, 15 je Upload) reicht für ca. 3–4 Kunden.
+Probekunde liegt drin. Netlify kostenlos (300 Credits) war schon nach zwei Testkunden leer → ab dem
+ersten echten Kunden Tarif „Personal“ (ca. 9 $/Monat).
 **Budgetregel PV (Nutzer, nach Rat eines befreundeten Agenturinhabers): Werbebudget ≈
 Auftragswert ÷ 5, Start mit 3.000 €/Monat, nicht unter 2.500 €**, 70 % Meta / 30 % Google. Das
 braucht ca. 5–6 freie Beratungstermine pro Woche; der Steckbrief prüft die Kapazität mit.

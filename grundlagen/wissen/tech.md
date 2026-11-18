@@ -22,6 +22,9 @@ Learnings zu Automationen, CRM, Tracking. Grundregeln stehen in `../../anleitung
   Web-App-Adresse ohne `?key=` eingetragen → Zentrale lehnt still ab. Schnelltest von außen:
   GET auf die /exec-Adresse muss „Diese Adresse ist in Ordnung“ zeigen; POST ohne Schlüssel antwortet
   „falscher Schlüssel“, mit Schlüssel „ok“. Ob Netlify ankommt: Apps Script → Ausführungen → „doPost“.
+- **Netlify kostenlos war nach zwei Testkunden leer** (Probelauf 2, 18.11.2026): „running on operational
+  credits“, neue Uploads gesperrt, bestehende Seiten bleiben online. Ab dem ersten echten Kunden Tarif
+  „Personal“ (ca. 9 $/Monat) einplanen.
 - **Apps Script ohne Google testen:** `node zentrale/test/test.js` baut Tabellen, Mails, Zeitpläne und
   Uhr nach. Zeitzone im Test auf Europe/Berlin, sonst rutschen Monatsgrenzen.
 

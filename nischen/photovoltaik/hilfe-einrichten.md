@@ -46,9 +46,11 @@ Der neue Ordner ersetzt den alten komplett. Es geht nichts verloren: Abgehakt wi
 6. **Prüfen:** `https://<kürzel>.netlify.app` öffnen → die Wirtschaftlichkeitsprüfung erscheint.
    Unter Project configuration → Forms stehen die Formulare „wirtschaftlichkeit“ und „rechner“.
 
-**Kosten:** Netlify kostenlos hat 300 Credits im Monat. Jedes Hochladen kostet 15, Besucher kosten
-Datenvolumen. Das reicht für etwa 3–4 Kunden, danach Tarif „Personal“ (ca. 9 $ im Monat).
-Deshalb: nur hochladen, wenn sich etwas geändert hat.
+**Kosten:** Netlify kostenlos hat 300 Credits im Monat. Im Probelauf waren sie nach zwei Testkunden
+aufgebraucht; dann erscheint oben rot „running on operational credits“ und neue Uploads gehen nicht
+mehr (bestehende Seiten bleiben online). **Ab dem ersten echten Kunden deshalb Tarif „Personal“**
+(ca. 9 $ im Monat, 1.000 Credits; das Onboarding deckt das locker). Trotzdem nur hochladen, wenn sich
+etwas geändert hat.
 
 ## D · Mit der Zentrale verbinden
 

@@ -44,7 +44,9 @@ Land Deutschland, Zeitzone Berlin, EUR. Die **Kunden-ID** steht oben rechts (z. 
 
 ## 5 · Netlify
 
-app.netlify.com → kostenlos registrieren („mit E-Mail“). Später immer eingeloggt arbeiten.
+app.netlify.com → registrieren („mit E-Mail“). Später immer eingeloggt arbeiten. Der kostenlose Tarif
+reicht nur zum Ausprobieren (im Probelauf nach zwei Testkunden leer). **Vor dem ersten echten Kunden auf
+„Personal“ wechseln** (ca. 9 $ im Monat): Team settings → Billing → Upgrade.
 
 ## 6 · Die Zentrale
 
