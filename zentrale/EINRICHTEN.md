@@ -75,6 +75,10 @@ Fertig. Ab jetzt läuft alles von selbst.
   „Bereitstellen“ → „Bereitstellungen verwalten“ → Stift → Version „Neue Version“ → „Bereitstellen“.
   Die Web-App-Adresse bleibt gleich. Danach im Tab mit der Tabelle neu laden → Menü „Clickculture“ →
   „1 · Einrichten“. Ohne „Neue Version“ läuft für Netlify weiter der alte Code.
+- **„Die eingetragene Web-App-Adresse passt nicht zur aktuellen Bereitstellung“:** Es ist eine zweite
+  Bereitstellung entstanden („Neue Bereitstellung“ statt Stift). In „Bereitstellungen verwalten“ jede
+  Bereitstellung per Stift auf „Neue Version“ stellen, die Adresse aus der Meldung in „Einstellungen“ bei
+  „Web-App-Adresse“ eintragen, nochmal „1 · Einrichten“. Neue Kunden bekommen die neue Webhook-Adresse.
 - **Grenzen von Google** (kostenloses Konto): etwa 100 Mails am Tag. Das reicht für ca. 10 Kunden.
   Darüber Google Workspace (dann 1.500 am Tag).
 - **Datenschutz:** In „Anfragen“ stehen Namen und Telefonnummern von Privatleuten. Die Tabelle
