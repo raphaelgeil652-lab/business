@@ -46,9 +46,11 @@ Alles Klick für Klick in **„4 Vorbereiten – Meta, Google, Netlify, deine Da
 5. **Einmal prüfen lassen** (Anwalt oder Steuerberater): Vereinbarung, Beispielrechnungen,
    Teilnahmebedingungen.
 
-**Tipp:** Vor dem ersten echten Kunden einmal einen **Probelauf** mit einem erfundenen Kunden machen,
-mit deiner eigenen E-Mail als Kunden-E-Mail und deinem eigenen Werbekonto. Kampagnen nur als Entwurf, bei
-Google nur bis zum Bildschirm mit den Zahlungsdaten. Danach aufräumen: Hilfe „Schritt 6“, „Nach einem Probelauf aufräumen“.
+**Tipp:** Vor dem ersten echten Kunden einmal einen **Probelauf wie mit einem echten Kunden** machen: Ein
+Kollege spielt den Kunden, mit **seiner** E-Mail, seinem Facebook, seinem Google-Konto und seiner Karte. Er
+bekommt alle Mails und geht die Zugänge-Anleitung selbst durch. Alles läuft wie echt, mit einem einzigen
+Unterschied: **Nichts wird veröffentlicht bzw. aktiviert** (Schritt 7, Punkt 4 entfällt). Ohne laufende
+Anzeigen kostet die hinterlegte Karte nichts. Danach aufräumen: Hilfe „Schritt 6“, „Nach einem Probelauf aufräumen“.
 
 ---
 

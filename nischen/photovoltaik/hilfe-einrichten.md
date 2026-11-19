@@ -28,11 +28,10 @@ senden. Er nimmt an: in seinem Konto „Verwaltung“ → „Zugriff und Sicherh
 
 *Im Probelauf geprüft: Konto anlegen und Conversion. Einladung, Zahlungsart und Verknüpfen noch nicht.*
 
-**Beim Probelauf** (Kunden-E-Mail = deine eigene): Die Einladung entfällt, du hast über dein Verwaltungskonto
-schon Zugriff. Eine Zahlungsart willst du für einen erfundenen Kunden nicht hinterlegen. Deshalb die
-Google-Kampagne nur **bis zum Bildschirm, der nach Zahlungsdaten fragt**, durchklicken, dort abbrechen.
-Alles davor ist damit geprüft. Wer den Kundenteil echt testen will: eine zweite E-Mail-Adresse (z. B. die des
-Kollegen) als Kunden-E-Mail in den Steckbrief.
+**Beim Probelauf:** Am besten spielt ein Kollege den Kunden, mit seiner E-Mail, seinem Google-Konto und seiner
+Karte. Dann läuft alles wie echt. Nur am Ende der Google-Kampagne **nicht „Kampagne veröffentlichen“** klicken,
+sondern schließen (sie bleibt unter Kampagnen → „Entwürfe“). Machst du den Probelauf allein mit deiner eigenen
+E-Mail: Die Einladung entfällt, und die Google-Kampagne nur bis zum Bildschirm mit den Zahlungsdaten durchklicken.
 
 ### Meta: Zugriff annehmen (Ende Schritt 5, wenn der Kunde dich eingeladen hat)
 
@@ -152,7 +151,10 @@ Echte Besucher tauchen in der Übersicht mit 20–30 Minuten Verzögerung auf (Z
 1. **Zentrale**, Blatt „Kunden“: beim Testkunden bei **„Aktiv“ Nein** eintragen. Sonst bekommst du weiter
    Montags-Mails und Erinnerungen für ihn. Im Blatt „Anfragen“ die TEST-Zeilen löschen.
 2. **Meta:** Die Kampagne im Entwurf löschen (Werbeanzeigenmanager → Haken davor → Papierkorb).
-3. **Google:** Den Kampagnen-Entwurf löschen. Das Testkonto darf bleiben, ohne Zahlungsart kostet es nichts.
+3. **Google:** Den Kampagnen-Entwurf löschen. Der Test-Kunde entfernt unter „Abrechnung“ seine Zahlungsart.
+   Das Konto darf bleiben, ohne Kampagne kostet es nichts.
+3b. **Meta beim Test-Kunden:** Er entfernt seine Zahlungsmethode im Werbekonto und unter Einstellungen →
+   „Partner“ deinen Zugriff. Facebook-Seite und Portfolio kann er löschen oder behalten.
 4. **Netlify:** die Seite löschen (siehe unten). Spart Credits.
 
 ## Seite löschen (Kunde hört auf oder nach einem Probelauf)
