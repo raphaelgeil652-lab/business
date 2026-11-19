@@ -67,14 +67,11 @@ function einrichten() {
   ScriptApp.newTrigger('monatsReportEntwuerfe').timeBased().onMonthDay(3).atHour(7).create();
   ScriptApp.newTrigger('taeglich').timeBased().everyDays(1).atHour(7).create();
   var url = String(s.webapp_url || '').trim();
-  var dienst = ScriptApp.getService().getUrl() || '';
-  if (!url && /\/exec$/.test(dienst)) { url = dienst; einstSetzen_('webapp_url', url); }
+  /* Die Adresse nicht bei Google erfragen (ScriptApp.getService().getUrl() liefert bei mehreren
+     Bereitstellungen eine falsche). Maßgeblich ist, was unter „Bereitstellungen verwalten“ steht. */
   var hinweise = [];
   if (url && !/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url)) {
     hinweise.push('Die Web-App-Adresse sieht falsch aus. Sie muss mit https://script.google.com/macros/s/ beginnen und auf /exec enden.');
-  } else if (url && /\/exec$/.test(dienst) && dienst !== url) {
-    hinweise.push('Die eingetragene Web-App-Adresse passt nicht zur aktuellen Bereitstellung. Richtig wäre: ' + dienst +
-      ' (Bereitstellen → Bereitstellungen verwalten → unter „Web-App“ die URL kopieren).');
   }
   if (!url) hinweise.push('Die Web-App-Adresse fehlt. Bitte Schritt 5 der Einrichtung machen (Bereitstellen, Adresse in „Einstellungen“ einfügen) und danach hier nochmal „Einrichten“ wählen.');
   if (s.tz !== 'Europe/Berlin') hinweise.push('Zeitzone ist „' + s.tz + '“. Bitte in Apps Script unter Projekteinstellungen (Zahnrad) auf „Berlin“ stellen.');
@@ -84,7 +81,7 @@ function einrichten() {
   ui.alert('Clickculture Zentrale',
     'Die Automatik läuft. 5 Zeitpläne sind aktiv.\n\n' +
     (url ? 'Die Webhook-Adresse für Netlify steht jetzt im Blatt „Einstellungen“.\n\n' : '') +
-    (hinweise.length ? 'Noch zu tun:\n- ' + hinweise.join('\n- ') : 'Alles bereit. Als Nächstes: „2 · Test-Anfrage durchspielen“.'),
+    (hinweise.length ? 'Noch zu tun:\n- ' + hinweise.join('\n- ') : 'Alles bereit. Zur Sicherheit die Web-App-Adresse einmal in einem privaten Browserfenster öffnen: Es muss „Diese Adresse ist in Ordnung“ erscheinen. Danach: „2 · Test-Anfrage durchspielen“.'),
     ui.ButtonSet.OK);
 }
 
@@ -673,8 +670,7 @@ function rahmen_(inhalt) {
 }
 
 function basis_(s) {
-  var url = String(s.webapp_url || '').trim(), dienst = ScriptApp.getService().getUrl() || '';
-  return url || (/\/exec$/.test(dienst) ? dienst : '');
+  return String(s.webapp_url || '').trim();
 }
 
 function knopf_(s, id, schl, aktion, klein) {
