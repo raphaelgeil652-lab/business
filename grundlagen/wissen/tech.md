@@ -46,3 +46,7 @@ Learnings zu Automationen, CRM, Tracking. Grundregeln stehen in `../../anleitung
   `zentrale/test/test.js` bildet das nach. (19.11.2026)
 - **Google-Ads-Conversion braucht den Tag schon auf der Einstiegsseite** (nach Zustimmung), sonst geht
   die `gclid` verloren und nichts wird einer Anzeige zugeordnet. Nur auf der Danke-Seite reicht nicht. (19.11.2026)
+- **Apps Script speichert Tabellen-Änderungen erst am Ende des Skripts.** Eine Mail mit Knopf kann schneller
+  sein: Der Klick fand die Zeile nicht („Nicht gefunden“). Fix: `SpreadsheetApp.flush()` direkt nach dem
+  Schreiben und vor `releaseLock()`. Außerdem: `ScriptApp.getService().getUrl()` liefert bei mehreren
+  Bereitstellungen eine falsche Adresse, nie darauf verlassen. (20.11.2026)

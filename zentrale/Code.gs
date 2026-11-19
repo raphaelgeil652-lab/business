@@ -155,6 +155,7 @@ function doPost(e) {
     fehler_('Neue Anfrage', err);
     return text_('fehler');
   } finally {
+    SpreadsheetApp.flush();
     lock.releaseLock();
   }
 }
@@ -248,6 +249,7 @@ function doGet(e) {
     fehler_('Knopf in einer Mail', err);
     return seite_('Das hat nicht geklappt', 'Bitte später nochmal versuchen.');
   } finally {
+    SpreadsheetApp.flush();
     lock.releaseLock();
   }
 }
@@ -582,6 +584,7 @@ function zeileAnhaengen_(tab, werte) {
   var z = zeileNachKopf_(tab, werte), r = tab.sh.getLastRow() + 1;
   TEXT_SPALTEN.forEach(function (h) { if (tab.kopf[h] !== undefined) tab.sh.getRange(r, tab.kopf[h] + 1).setNumberFormat('@'); });
   tab.sh.getRange(r, 1, 1, z.length).setValues([z]);
+  SpreadsheetApp.flush();  /* sofort speichern: der Knopf in der Mail kann schneller sein als das Ende des Skripts */
 }
 
 function textSpalten_(name) {
