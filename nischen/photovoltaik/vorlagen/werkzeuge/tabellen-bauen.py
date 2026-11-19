@@ -191,7 +191,8 @@ def steckbrief():
     noetig = f"{RI}$B$19"
     e.value = (f'=IF(OR({ent}="Nein",{rr}="Nein",{fo}="Nein"),"✗ So nicht abschließen",'
                f'IF(AND({ent}="Ja",{rr}="Ja",{fo}="Ja",{kap}<>""),'
-               f'IF(N({kap})>=ROUNDDOWN({noetig},0),"✓ Kunde passt","⚠ Kapazität zu klein für das Budget: Budget senken oder mehr Termine klären"),'
+               f'IF(AND(N({S("ticket_schnitt")})>0,{RI}$B$5<2500),"⚠ Auftragswert unter 12.500 €: Budget läge unter 2.500 €, eher nicht abschließen",'
+               f'IF(N({kap})>=ROUNDDOWN({noetig},0),"✓ Kunde passt","⚠ Kapazität zu klein für das Budget: Budget senken oder mehr Termine klären")),'
                f'"noch offen"))')
     e.font = Font(name=F, size=11, bold=True)
     e.border = BOX

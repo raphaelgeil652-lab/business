@@ -34,8 +34,11 @@ Einzugsgebiet: {{einzugsgebiet_km}} km um {{ort}}.
 
 - Material: echte Fotos fertiger Anlagen (möglichst ein Dach vorher/nachher), zwei echte
   Kundenbewertungen, Links zu Impressum und Datenschutzerklärung.
-- Partnerzugang zum Meta-Werbekonto und zum Google-Ads-Konto. Das Werbebudget läuft über
-  seine eigenen Konten und Zahlungsmittel.
+- Zugang für den Auftragnehmer: bei Meta als Partner (Facebook-Seite und Werbekonto), bei Google Ads
+  über das Verwaltungskonto des Auftragnehmers. In beiden Werbekonten hinterlegt der Auftraggeber
+  seine eigene Zahlungsart; das Werbebudget läuft über seine Konten.
+- Seine Datenschutzerklärung nennt die Anfrageseiten (Hosting und Formulare über Netlify), das
+  Meta-Pixel und die Conversion-Messung von Google Ads.
 - Rückruf auf Anfragen innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.
 - Rückmeldung zu jeder Anfrage über die Knöpfe in den Anfrage-Mails: zurückgerufen, Termin,
   Angebot, Auftrag, kein Interesse.
@@ -55,6 +58,8 @@ Einzugsgebiet: {{einzugsgebiet_km}} km um {{ort}}.
 ### §5 Laufzeit
 
 Beginn: {{vertragsbeginn}}. Keine Mindestlaufzeit, jederzeit zum Monatsende in Textform kündbar.
+Facebook-Seite, Werbekonten und deren Daten gehören dem Auftraggeber und bleiben bei ihm. Bei
+Vertragsende beendet der Auftragnehmer seinen Zugang und schaltet die Anfrageseiten ab.
 
 ### §6 Datenschutz
 

@@ -137,6 +137,10 @@ Dokument). Dann bitte der Mail von Google folgen. Bei Fragen rufen Sie mich an.
 1. **Impressum:** Ihre Webseite öffnen → ganz unten auf „Impressum“ klicken → die Adresse oben in der
    Adresszeile kopieren.
 2. **Datenschutz:** genauso mit „Datenschutz“ bzw. „Datenschutzerklärung“.
+   **Wichtig:** Ihre Datenschutzerklärung muss diese drei Dinge nennen, weil Ihre Anfrageseiten sie nutzen:
+   **Netlify** (Hosting der Seiten und Formulare), **Meta-Pixel** (Facebook/Instagram) und **Google Ads
+   Conversion-Tracking**. Fehlt etwas, bitte ergänzen lassen (bei dem, der Ihre Webseite oder Ihren
+   Datenschutztext betreut, oder mit Ihrem Datenschutz-Generator).
 3. **Zwei Bewertungen:** Ihren Betrieb in Google Maps suchen → „Rezensionen“ → zwei echte Bewertungen, die
    Ihnen gefallen → je ein Screenshot (iPhone: Seitentaste und Lauter-Taste gleichzeitig; Windows: Windows-Taste
    + Umschalt + S; Mac: Befehl + Umschalt + 4).

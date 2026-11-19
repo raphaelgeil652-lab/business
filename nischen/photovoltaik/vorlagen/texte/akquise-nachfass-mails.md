@@ -33,12 +33,15 @@ Beste Grüße
 
 ## Nach dem Videocall (noch kein Ja)
 
+> Anhängen: die 5 Bilder aus seinem Ordner „9 Anzeigen-Bilder“ und „2b Vertrag“ als PDF. Dafür vorher
+> Steckbrief Teil 1 und 2 (mit Preisen) an Claude: „Erzeuge [Betrieb] neu.“
+
 **Betreff:** Ihre Anzeigen und Seiten zum Ansehen
 
 Hallo Herr/Frau [Name],
 
-danke für das Gespräch. Wie besprochen hier Ihre Anzeigen und Seiten zum Ansehen: [Links].
-Die Vereinbarung hänge ich an. Die Gebühr läuft erst ab dem ersten Auftrag, und kommen in
+danke für das Gespräch. Wie besprochen hänge ich Ihnen Ihre fünf Anzeigen als Bilder an und
+die Vereinbarung als PDF. Die Gebühr läuft erst ab dem ersten Auftrag, und kommen in
 30 Tagen keine Anfragen, gibt es das Onboarding zurück.
 
 Ich melde mich am [Tag] noch einmal kurz.

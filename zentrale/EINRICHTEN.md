@@ -22,18 +22,18 @@ Versehen etwas ändern.
 
 ## Die Dateien
 
-- **Clickculture Zentrale.xlsx**: die Tabelle zum Hochladen
-- **Zentrale-Code.txt**: der Code, den du in Apps Script einfügst (gleich wie `Code.gs`)
+- **„2 Clickculture Zentrale – in Google Drive hochladen.xlsx“**: die Tabelle zum Hochladen
+- **„3 Zentrale-Code – in Apps Script einfügen.txt“**: der Code, den du in Apps Script einfügst (gleich wie `Code.gs`)
 
 ## So richtest du sie ein
 
-1. **Hochladen:** drive.google.com → „Neu“ → „Datei hochladen“ → „Clickculture Zentrale.xlsx“.
+1. **Hochladen:** drive.google.com → „Neu“ → „Datei hochladen“ → „2 Clickculture Zentrale – in Google Drive hochladen.xlsx“.
    Die Datei öffnen → oben „Datei“ → „Als Google Tabellen speichern“. Ab jetzt nur noch diese
    Google-Version benutzen (die .xlsx kannst du löschen).
 2. **Deine Daten:** Blatt „Einstellungen“ → alle gelben Felder ausfüllen. Bei „Hinweise gehen an“
    deine E-Mail, gern mit Komma auch die deines Kollegen.
 3. **Code einfügen:** Menü „Erweiterungen“ → „Apps Script“. Im Editor alles löschen. Die Datei
-   „Zentrale-Code.txt“ öffnen, alles kopieren, einfügen. Oben auf das Disketten-Symbol (Speichern).
+   „3 Zentrale-Code – in Apps Script einfügen.txt“ öffnen, alles kopieren, einfügen. Oben auf das Disketten-Symbol (Speichern).
    Oben links „Unbenanntes Projekt“ anklicken → „Clickculture Zentrale“.
 4. **Zeitzone:** links das Zahnrad (Projekteinstellungen) → Zeitzone „(GMT+01:00) Berlin“.
 5. **Bereitstellen:** oben rechts „Bereitstellen“ → „Neue Bereitstellung“ → beim Zahnrad neben
@@ -73,7 +73,8 @@ Fertig. Ab jetzt läuft alles von selbst.
   Überschriften. Wird doch etwas umbenannt, kommt eine Fehler-Mail mit dem Namen.
 - **Code geändert?** (z. B. weil Claude eine neue Fassung liefert): Code ersetzen, speichern, dann
   „Bereitstellen“ → „Bereitstellungen verwalten“ → Stift → Version „Neue Version“ → „Bereitstellen“.
-  Die Web-App-Adresse bleibt gleich.
+  Die Web-App-Adresse bleibt gleich. Danach im Tab mit der Tabelle neu laden → Menü „Clickculture“ →
+  „1 · Einrichten“. Ohne „Neue Version“ läuft für Netlify weiter der alte Code.
 - **Grenzen von Google** (kostenloses Konto): etwa 100 Mails am Tag. Das reicht für ca. 10 Kunden.
   Darüber Google Workspace (dann 1.500 am Tag).
 - **Datenschutz:** In „Anfragen“ stehen Namen und Telefonnummern von Privatleuten. Die Tabelle
@@ -81,6 +82,6 @@ Fertig. Ab jetzt läuft alles von selbst.
 
 ## Für Claude (Technik)
 
-`Code.gs` ist die Quelle, `Zentrale-Code.txt` im Finder-Ordner ist dieselbe Datei. Spaltennamen in
+`Code.gs` ist die Quelle, „3 Zentrale-Code …txt“ im Finder-Ordner ist dieselbe Datei. Spaltennamen in
 `zentrale-bauen.py` und `Code.gs` müssen zusammenpassen. Prüfen mit `node zentrale/test/test.js`
 (baut Google nach und spielt alle Abläufe durch).

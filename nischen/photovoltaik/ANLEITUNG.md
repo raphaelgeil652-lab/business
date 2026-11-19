@@ -62,6 +62,7 @@ Anzeigen kostet die hinterlegte Karte nichts. Danach aufräumen: Hilfe „Schrit
 | Anrufen, Ziel: 20-Minuten-Videocall. Nicht am Telefon verkaufen | „1 Verkaufsskript“ |
 | Nach jedem Anruf: Stand und „Nächster Anruf am“ eintragen | Zentrale, Blatt „Akquise“ |
 | Nicht erreicht oder Termin bestätigen: passende Mail | „2 Nachfass-Mails“ |
+| Termin steht: am Tag davor seine Vorschau vorbereiten (20 Minuten) | „1 Verkaufsskript“, Teil 2 |
 
 Jeden Morgen schickt dir die Zentrale die Liste: „Heute anrufen“.
 
@@ -78,7 +79,9 @@ Jeden Morgen schickt dir die Zentrale die Liste: „Heute anrufen“.
    - **✓ Kunde passt** → weiter.
    - **⚠ Kapazität zu klein** → weniger Budget oder mehr Termine klären.
    - **✗ So nicht abschließen** → nicht unterschreiben lassen.
-5. Bildschirm teilen und zeigen: „2 Beispiel – Anzeigen“, dann „3 Beispiel – Seiten“.
+5. Bildschirm teilen und **seine eigenen** Anzeigen und seine Seite zeigen. Die lässt du am Tag davor von
+   Claude erzeugen („Erzeuge eine Vorschau für [Betrieb]“, siehe Verkaufsskript). Nur wenn die fehlt:
+   „2 Beispiel – Anzeigen“ und „3 Beispiel – Seiten“.
 6. Budget nennen. Die Empfehlung steht im Steckbrief neben den Budgetfeldern.
 7. Ja? Dann **Teil 2** ausfüllen: Firmenname, Adresse, eigenes Team?, Preise, Budget.
 
@@ -142,6 +145,9 @@ Genau in dieser Reihenfolge. Jeder Punkt ist in der Hilfe Klick für Klick besch
    Zahlungsart drin sein. Chrome, kein VPN.
 
 ## Schritt 7 · Testen und live gehen
+
+**Vorher prüfen:** In seiner „0 Übersicht“ steht unter „Noch offen“ nichts mehr außer Punkten mit
+„(wenn möglich)“. **Ohne Link zu Impressum und Datenschutz geht nichts live**, das ist Pflicht.
 
 1. **Dem Kunden vorher Bescheid sagen:** „Gleich kommt eine Test-Anfrage mit dem Namen TEST. Bitte nicht
    anrufen, einfach auf ‚Zurückgerufen‘ tippen.“ Die Test-Mail geht an ihn, weil er in der Zentrale schon aktiv ist.

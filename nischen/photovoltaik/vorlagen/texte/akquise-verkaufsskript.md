@@ -30,9 +30,18 @@
 
 ## 2 · Videocall (Bildschirm teilen)
 
-**Vorher:** Einen leeren Steckbrief offen haben. Du füllst Teil 1 während des Gesprächs aus.
-Optional, wenn du Zeit hast: Firmenname vorab eintragen und von Claude den Ordner erzeugen
-lassen. Dann sieht er seine eigenen Anzeigen. Sonst zeigst du den Beispielkunden.
+**Am Tag davor (20 Minuten):** Am Telefon hast du versprochen, ihm Anzeigen mit seinem Namen zu zeigen.
+1. Seine Webseite, sein Impressum und Google Maps ansehen: Firmenname mit Rechtsform, Inhaber, Adresse,
+   Telefon, E-Mail, Sterne und Bewertungen. In der Facebook-Werbebibliothek (facebook.com/ads/library)
+   nachsehen, ob er schon Werbung macht.
+2. Eine Steckbrief-Kopie anlegen und diese öffentlichen Angaben eintragen (Betrieb, Anrede, Inhaber,
+   Telefon, E-Mail, Ort, Umkreis erst mal 35 km; Firmenname mit Rechtsform, Straße, PLZ).
+3. Steckbrief an Claude: **„Erzeuge eine Vorschau für [Betrieb].“** Du bekommst seinen Ordner mit seinen
+   Anzeigen und seiner Seite. Die Fotos sind Platzhalter: keine Bilder von seiner Webseite nehmen.
+
+**10 Minuten vorher:** Bildschirm teilen testen. Offen haben: den Steckbrief, seine Anzeigen
+(„10 Anzeigen ansehen“ → `vorschau.html`), seine Seite („8 Seiten für Netlify“ → `wirtschaftlichkeit.html`).
+Benachrichtigungen aus. Teil 1 des Steckbriefs füllst du im Gespräch aus.
 
 **Die zwei Fragen, die alles entscheiden:**
 1. „Was kostet bei Ihnen eine Anlage mit Speicher im Schnitt?“ → Auftragswert
@@ -44,8 +53,8 @@ Und: „Haben Sie schon ein Google-Ads-Konto oder ein Werbekonto bei Facebook?�
 Kunden-ID (10 Ziffern, oben rechts im Konto) in die Notizen des Steckbriefs. Keins? Kein Problem, er
 bekommt eine Anleitung, Schritt für Schritt.
 
-**Zeigen** (Ordner „03 Videocall“ › Beispiel zum Zeigen): die 5 Anzeigen der Wirtschaftlichkeitsprüfung
-→ die Seite dahinter → den Rechner. Läuft gerade eine Verlosung, kurz auch diese.
+**Zeigen** (seine Vorschau; nur wenn die fehlt, den Beispielkunden aus „03 Videocall“): die 5 Anzeigen
+der Wirtschaftlichkeitsprüfung → die Seite dahinter → den Rechner. Läuft gerade eine Verlosung, kurz auch diese.
 
 **Was er davon hat, ohne Aufwand:**
 > „Jede Anfrage kommt sofort als Mail auf Ihr Handy, mit der Nummer zum Antippen. Haben Sie nach

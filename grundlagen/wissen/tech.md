@@ -41,3 +41,8 @@ Learnings zu Automationen, CRM, Tracking. Grundregeln stehen in `../../anleitung
   Neue Konten zwingen in „Erste Kampagne erstellen“ → mit × raus. Conversion-ID/Label stehen nicht mehr im
   Ereignis-Snippet, sondern im Tag Manager (Conversion → Datenquellen → Verwalten → Einrichten → Tag öffnen).
   „Conversion-Typ-ID“ ist die falsche Zahl. Zahlungsart des Kunden vor der ersten Kampagne. (19.11.2026)
+- **Google Sheets streicht führende Nullen** (Telefon „0151…“, PLZ „01067“), wenn Apps Script Ziffern
+  schreibt. Fix: Spalten als Text („@“) formatieren, vor dem Schreiben setzen. Der Test in
+  `zentrale/test/test.js` bildet das nach. (19.11.2026)
+- **Google-Ads-Conversion braucht den Tag schon auf der Einstiegsseite** (nach Zustimmung), sonst geht
+  die `gclid` verloren und nichts wird einer Anzeige zugeordnet. Nur auf der Danke-Seite reicht nicht. (19.11.2026)

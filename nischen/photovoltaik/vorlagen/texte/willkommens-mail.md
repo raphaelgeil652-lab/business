@@ -42,6 +42,8 @@ Alles läuft über Ihre eigenen Konten. Sie behalten jederzeit die Kontrolle.
 **3. Zwei Links und zwei Bewertungen**
 
 - Den Link zu Ihrem Impressum und zu Ihrer Datenschutzerklärung (von Ihrer Webseite).
+  Bitte kurz prüfen: Ihre Datenschutzerklärung muss Netlify, das Meta-Pixel und Google Ads nennen
+  (Anleitung, Teil D).
 - Zwei echte Google-Bewertungen, die Ihnen gefallen. Ein Screenshot reicht.
 
 **4. Ein Name**

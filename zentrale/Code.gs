@@ -79,6 +79,8 @@ function einrichten() {
   if (!url) hinweise.push('Die Web-App-Adresse fehlt. Bitte Schritt 5 der Einrichtung machen (Bereitstellen, Adresse in „Einstellungen“ einfügen) und danach hier nochmal „Einrichten“ wählen.');
   if (s.tz !== 'Europe/Berlin') hinweise.push('Zeitzone ist „' + s.tz + '“. Bitte in Apps Script unter Projekteinstellungen (Zahnrad) auf „Berlin“ stellen.');
   if (!s.agentur_email) hinweise.push('Im Blatt „Einstellungen“ fehlt deine E-Mail.');
+  if (!/^(ja|nein)$/i.test(String(s.agentur_kleinunternehmer || '').trim())) hinweise.push('Im Blatt „Einstellungen“ bei „Kleinunternehmer“ Ja oder Nein wählen, genauso wie im Steckbrief.');
+  if (!s.agentur_steuernr) hinweise.push('Im Blatt „Einstellungen“ fehlt die Steuernummer (Pflicht auf jeder Rechnung).');
   ui.alert('Clickculture Zentrale',
     'Die Automatik läuft. 5 Zeitpläne sind aktiv.\n\n' +
     (url ? 'Die Webhook-Adresse für Netlify steht jetzt im Blatt „Einstellungen“.\n\n' : '') +

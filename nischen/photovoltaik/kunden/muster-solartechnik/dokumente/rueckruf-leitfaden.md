@@ -20,6 +20,7 @@ Wer zuerst anruft, bekommt fast immer den Termin.
    - „Wie hoch ist Ihr Stromverbrauch im Jahr, oder Ihr monatlicher Abschlag?“
    - „Wie ist Ihr Dach ausgerichtet, und wie alt ist es?“
    - „Interessiert Sie ein Speicher?“
+   Steht der Verbrauch oder ein Foto der Stromrechnung schon in der Anfrage-Mail: nicht nochmal fragen.
 4. **Termin vereinbaren:** „Am besten schaue ich mir das Dach an. Dann wird die Rechnung genau und
    Sie bekommen gleich ein Festpreis-Angebot. Passt Ihnen eher [Tag] vormittags oder nachmittags?“
 5. **Abschluss:** Termin bestätigen, Adresse aufschreiben. **Die zugesagte Prüfung immer

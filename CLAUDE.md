@@ -112,7 +112,9 @@ annehmen, Netlify-Wege, Webhook mit `?key=`, „Events testen“, Seite löschen
 holt man im Tag Manager, der sich über „Verwalten → Einrichten“ öffnet (nichts senden). Klickweg in
 `kampagnen.md`; die Kampagnen-Bildschirme ab „Gebote“ sind noch ungeprüft (Google hing mit VPN). Der Kunde
 bekommt mit der Willkommens-Mail die **Zugänge-Anleitung** (`texte/zugaenge-anleitung.md`, Finder „4b“): Meta
-und Google Klick für Klick auch ohne bestehende Konten.
+und Google Klick für Klick auch ohne bestehende Konten. Probelauf „wie echt“: ein Kollege spielt den Kunden
+(eigene E-Mail, Konten, Karte), nur Veröffentlichen/Aktivieren entfällt. Livegang nur mit Impressum- und
+Datenschutz-Link des Kunden; seine Datenschutzerklärung muss Netlify, Meta-Pixel und Google Ads nennen.
 **Repo ist öffentlich:** echte Kundenordner (gitignored), Anfragen, IBAN nie ins Repo; nur der fiktive
 Probekunde liegt drin. Netlify kostenlos (300 Credits) war schon nach zwei Testkunden leer → ab dem
 ersten echten Kunden Tarif „Personal“ (ca. 9 $/Monat).

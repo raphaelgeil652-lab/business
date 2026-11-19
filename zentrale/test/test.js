@@ -127,7 +127,7 @@ function neu() {
   for (const k of Object.keys(blaetter)) delete blaetter[k];
   mails.length = 0; entwuerfe.length = 0; dateien.length = 0; alerts.length = 0; trigger = []; props = {};
   const werte = {
-    agentur_name: 'Clickculture', agentur_inhaber: 'Max Beispiel', agentur_email: 'ich@agentur.de',
+    agentur_name: 'Clickculture', agentur_inhaber: 'Max Beispiel', agentur_email: 'ich@agentur.de', agentur_steuernr: '12/345/67890', agentur_kleinunternehmer: 'Nein',
     benachrichtigung_an: 'ich@agentur.de', geschaeftszeiten: '8-18', arbeitstage: 'Mo-Fr', rueckruf_minuten: 60,
     kopie_jeder_anfrage: 'Nein', akquise_erinnerung: 'Ja', webapp_url: 'https://script.google.com/macros/s/ABC/exec', schluessel: ''
   };
