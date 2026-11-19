@@ -36,3 +36,8 @@ Learnings zu Automationen, CRM, Tracking. Grundregeln stehen in `../../anleitung
 
 - GHL HTTP Request Header: `Version: 2021-07-28`, PIT.
 - Pixel + CAPI Dedup über gemeinsame `event_id`; FBCLID als Hidden Field.
+
+- **Google Ads (Nov. 2026):** in Chrome ohne VPN/Werbeblocker arbeiten, sonst „Ein Fehler ist aufgetreten“.
+  Neue Konten zwingen in „Erste Kampagne erstellen“ → mit × raus. Conversion-ID/Label stehen nicht mehr im
+  Ereignis-Snippet, sondern im Tag Manager (Conversion → Datenquellen → Verwalten → Einrichten → Tag öffnen).
+  „Conversion-Typ-ID“ ist die falsche Zahl. Zahlungsart des Kunden vor der ersten Kampagne. (19.11.2026)

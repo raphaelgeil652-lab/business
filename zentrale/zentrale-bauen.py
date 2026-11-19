@@ -63,11 +63,11 @@ RECHNUNGEN = [("Nr.", 10, None), ("Datum", 11, DATUM), ("Kunde (Firma)", 26, Non
 CHECKLISTE = [  # gleiche Schritte wie nischen/photovoltaik/ANLEITUNG.md (4 bis 7)
     ("4 · Abschluss", "Vereinbarung als PDF geschickt, unterschrieben zurück", "Du"),
     ("4 · Abschluss", "Rechnung Onboarding (Blatt Rechnungen) als PDF mit Mail 1 geschickt", "Du"),
-    ("4 · Abschluss", "Willkommens-Mail geschickt, Rückruf-Leitfaden als PDF angehängt", "Du"),
+    ("4 · Abschluss", "Willkommens-Mail geschickt, Zugänge-Anleitung und Rückruf-Leitfaden als PDF angehängt", "Du"),
     ("5 · Vom Kunden", "Fotos im Drive-Ordner: mind. 3 fertige Anlagen, ideal ein Dach vorher und nachher", "Kunde"),
     ("5 · Vom Kunden", "Meta: Partnerzugriff auf Seite und Werbekonto, Zahlungsmethode im Werbekonto", "Kunde"),
     ("5 · Vom Kunden", "Bei Meta dich seinem Werbekonto und seiner Seite zugewiesen (Hilfe Schritt 6, Punkt 0)", "Du"),
-    ("5 · Vom Kunden", "Google Ads: Einladung deines Verwaltungskontos angenommen", "Kunde"),
+    ("5 · Vom Kunden", "Google Ads: Konto unter deinem Verwaltungskonto, Kunde Administrator, Zahlungsart drin", "Kunde"),
     ("5 · Vom Kunden", "Links zu Impressum und Datenschutz, 2 echte Google-Bewertungen", "Kunde"),
     ("5 · Vom Kunden", "Name der Person, die die Wirtschaftlichkeitsprüfungen rechnet", "Kunde"),
     ("6 · Einrichten", "Meta-Pixel und Google-Conversion angelegt, IDs im Steckbrief (Teil 4)", "Du"),

@@ -1,6 +1,8 @@
 # Willkommens-Mail — Muster Solartechnik
 
-> Am Tag der Unterschrift verschicken. Den Rückruf-Leitfaden als PDF anhängen. Text ab „Betreff“ kopieren.
+> Am Tag der Unterschrift verschicken. **Zwei PDFs anhängen:** „4b Zugänge-Anleitung“ und „5 Rückruf-Leitfaden“
+> (öffnen → Ablage → Exportieren → PDF). Text ab „Betreff“ kopieren. Bei Google: sein Konto vorher anlegen und
+> ihn als Administrator einladen (Hilfe „Schritt 6“, Punkt 0), dann wartet die Einladung schon auf ihn.
 
 ---
 
@@ -10,6 +12,10 @@ Hallo Herr Muster,
 
 schön, dass wir zusammenarbeiten! Damit wir schnell live gehen, brauche ich bis in 3 Tagen
 vier Dinge von Ihnen.
+
+**Im Anhang finden Sie eine Anleitung, Schritt für Schritt: „Zugänge einrichten“.** Sie führt Sie
+durch alles, auch wenn Sie noch gar keine Konten bei Facebook oder Google haben. Rechnen Sie mit
+30 bis 45 Minuten. Hängen Sie irgendwo, rufen Sie mich einfach an: [Dein Telefon].
 
 **1. Fotos** (das Wichtigste). Bitte hier hochladen: [Google-Drive-Ordner für seine Fotos (Link)]
 
@@ -21,14 +27,15 @@ Bitte in den Ordner laden, nicht über WhatsApp: Dort werden Fotos und Videos ve
 Ordner bleibt, neue Fotos von späteren Montagen können Sie jederzeit dazulegen.
 Noch keine Fotos da? Bei der nächsten Montage vorher und nachher je ein Foto machen.
 
-**2. Zugänge**
+**2. Zugänge** (Anleitung im Anhang, Teil B und C)
 
-- Meta: Bitte laden Sie uns als Partner in Ihrem Business Manager ein, mit Zugriff auf
-  Facebook-Seite und Werbekonto. Unsere Business-ID: [Meta Business-ID]
-- Im Werbekonto bitte Ihre Zahlungsmethode hinterlegen. Das Werbebudget zahlen Sie direkt an Meta,
-  es läuft nicht über uns.
-- Google Ads: Bitte nehmen Sie die Einladung von unserem Verwaltungskonto [Google-Ads-Verwaltungskonto (Kunden-ID)] an.
-  Ich schicke sie Ihnen heute.
+- Meta (Facebook und Instagram): ein Werbekonto mit Ihrer Zahlungsmethode, und uns als Partner
+  einladen. Unsere Business-ID: [Meta Business-ID]
+- Google Ads: Ich habe Ihr Konto über unser Verwaltungskonto ([Google-Ads-Verwaltungskonto (Kunden-ID)]) angelegt und
+  Sie als Administrator eingeladen. Bitte die Einladung von Google annehmen und Ihre Zahlungsart
+  hinterlegen. Haben Sie schon ein Google-Ads-Konto? Dann schicken Sie mir einfach die Kunden-ID
+  (10 Ziffern, oben rechts im Konto).
+- Das Werbebudget zahlen Sie direkt an Meta und Google. Es läuft nicht über uns.
 
 Alles läuft über Ihre eigenen Konten. Sie behalten jederzeit die Kontrolle.
 
@@ -55,7 +62,8 @@ Alles läuft über Ihre eigenen Konten. Sie behalten jederzeit die Kontrolle.
 Sobald die vier Dinge da sind, gehen wir live. Die ersten Anfragen kommen meist in den ersten
 Tagen. Ein unterschriebener Auftrag braucht bei Solaranlagen meist einige Wochen.
 
-Den kurzen Leitfaden für Ihr Büro finden Sie im Anhang.
+Im Anhang: die Anleitung „Zugänge einrichten“ und ein kurzer Leitfaden für Ihr Büro, wie Sie
+Anfragen am besten zurückrufen.
 
 Beste Grüße
 [Dein Name]

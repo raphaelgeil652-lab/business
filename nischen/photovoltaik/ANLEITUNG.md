@@ -38,7 +38,7 @@ Alles Klick für Klick in **„4 Vorbereiten – Meta, Google, Netlify, deine Da
 
 1. **Facebook-Seite** „Clickculture“ und **Business-Portfolio** bei Meta anlegen. Die **Business-ID**
    notieren (Einstellungen → Unternehmensinfos).
-2. **Google-Ads-Verwaltungskonto** und **Netlify-Konto** anlegen (beide kostenlos).
+2. **Google-Ads-Verwaltungskonto** anlegen (kostenlos, Kunden-ID notieren) und **Netlify-Konto**.
 3. **Zentrale einrichten** (ca. 20 Minuten): „1 Zentrale einrichten“. Mit deinem Kollegen teilen
    (Google „Freigeben“, Bearbeiter).
 4. **Deine Daten** an zwei Stellen eintragen: in der Steckbrief-Vorlage (Blatt „Deine Daten“) und in der
@@ -91,7 +91,8 @@ Jeden Morgen schickt dir die Zentrale die Liste: „Heute anrufen“.
 |---|---|
 | Vertrag als PDF sichern, selbst unterschreiben (App Vorschau), mit dem fertigen Mailtext schicken → unterschrieben zurück | „2a Vertrag – so verschickst du ihn“ + „2b Vertrag – als PDF schicken“ |
 | Rechnung in der **Zentrale** machen (Blatt „Rechnungen“, dann „Rechnung drucken“ → als PDF herunterladen). Den Mailtext 1 aus „3 Rechnung“ kopieren, PDF anhängen, schicken | Zentrale + „3 Rechnung“ |
-| Willkommens-Mail schicken, Rückruf-Leitfaden als PDF anhängen | „4 Willkommens-Mail“, „5 Rückruf-Leitfaden“ |
+| **Google-Konto für ihn anlegen** und ihn als Administrator einladen (5 Minuten, Hilfe „Schritt 6“, Punkt 0). Hat er schon ein Google-Ads-Konto, überspringen | dein Google-Verwaltungskonto |
+| Willkommens-Mail schicken, **zwei PDFs anhängen:** Zugänge-Anleitung (führt ihn Klick für Klick durch Meta und Google, auch ohne Konten) und Rückruf-Leitfaden | „4 Willkommens-Mail“, „4b Zugänge-Anleitung“, „5 Rückruf-Leitfaden“ |
 | **Kunde in die Zentrale:** Datei öffnen, alles kopieren, in der Zentrale im Blatt „Kunden“ in die erste freie Zeile (Spalte A) einfügen | „6 Zeile für die Zentrale“ |
 
 Ab jetzt hat der Kunde im Blatt **„Checkliste“** der Zentrale eine eigene Spalte. Dort hakst du
@@ -99,12 +100,14 @@ die Schritte 4 bis 7 ab.
 
 ## Schritt 5 · Vom Kunden einsammeln · bis Tag 3
 
-Die Willkommens-Mail fragt genau diese vier Dinge ab:
+Die Willkommens-Mail fragt genau diese vier Dinge ab. Wie er das macht, steht Klick für Klick in der
+Zugänge-Anleitung im Anhang. Ruft er an, weil er hängt: dieselbe Anleitung aufschlagen, Teil B (Meta) oder C (Google).
 
 1. **Fotos** in den Drive-Ordner: 3 fertige Anlagen, wenn möglich ein Dach vorher und nachher.
-2. **Zugänge:** Er lädt dich bei Meta als Partner ein (mit deiner Business-ID) und nimmt die
-   Google-Ads-Einladung an. Danach musst **du** dich bei Meta noch selbst seinem Werbekonto und seiner
-   Seite zuweisen, sonst siehst du sie nicht: Hilfe „Schritt 6“, Punkt 0.
+2. **Zugänge:** Er lädt dich bei Meta als Partner ein (mit deiner Business-ID). Danach musst **du** dich
+   bei Meta noch selbst seinem Werbekonto und seiner Seite zuweisen, sonst siehst du sie nicht.
+   Bei Google legst **du** sein Konto unter deinem Verwaltungskonto an und lädst ihn als Administrator ein.
+   Er nimmt an und hinterlegt bei Meta und Google seine Zahlungsart. Alles in Hilfe „Schritt 6“, Punkt 0.
 3. **Zwei Links und zwei Bewertungen:** Impressum, Datenschutz, zwei echte Google-Bewertungen.
 4. **Ein Name:** wer bei ihm die Wirtschaftlichkeitsprüfungen rechnet.
 
@@ -114,9 +117,11 @@ Fehlt nach 3 Tagen noch etwas? **Anrufen**, nicht mailen.
 
 Genau in dieser Reihenfolge. Jeder Punkt ist in der Hilfe Klick für Klick beschrieben.
 
-0. **Zugriff annehmen:** dich bei Meta seinem Werbekonto und seiner Seite zuweisen.
+0. **Zugriff:** dich bei Meta seinem Werbekonto und seiner Seite zuweisen. Google-Konto für ihn anlegen
+   (falls noch nicht in Schritt 5 passiert).
 1. **Messung anlegen:** Meta-Pixel („Datensatz“, Name = Betrieb, mit seinem Werbekonto verbinden) und
-   bei Google-Kampagne die Google-Conversion. IDs in den Steckbrief, Teil 4, mit `'` davor.
+   die Google-Conversion (Wert `AW-…/…`, steht im Tag Manager, der sich dabei öffnet). Beide in den
+   Steckbrief, Teil 4, mit `'` davor.
 2. **Neu erzeugen lassen:** Steckbrief (mit Links und Bewertungen in Teil 3) und die besten Fotos aus
    dem Drive-Ordner an Claude: „Erzeuge [Betrieb] neu.“ Neuen Ordner gegen den alten tauschen.
 3. **Seiten online:** eingeloggt den Ordner „8 Seiten für Netlify“ auf app.netlify.com/drop ziehen.
@@ -128,7 +133,8 @@ Genau in dieser Reihenfolge. Jeder Punkt ist in der Hilfe Klick für Klick besch
 5. **Meta-Kampagne** mit den 5 Anzeigen als **Entwurf** anlegen: „7 Kampagnen“ hat jedes Feld in der
    Reihenfolge, in der Meta es zeigt. Immer über adsmanager.facebook.com → „+ Erstellen“. Bilder aus
    „9 Anzeigen-Bilder“.
-6. **Google-Kampagne** anlegen, **pausiert**: „7 Kampagnen“.
+6. **Google-Kampagne** anlegen, **pausiert**: „7 Kampagnen“, auch Klick für Klick. Vorher muss seine
+   Zahlungsart drin sein. Chrome, kein VPN.
 
 ## Schritt 7 · Testen und live gehen
 
@@ -141,7 +147,7 @@ Genau in dieser Reihenfolge. Jeder Punkt ist in der Hilfe Klick für Klick besch
 3. **Transparenz bei Meta:** In der Anzeigengruppe unter „Transparenz rund um Werbeanzeigen“ als
    Werbetreibenden und Zahlenden den **Firmennamen des Kunden** eintragen. Verlangt Meta eine
    Verifizierung, sie jetzt machen (kostenlos, ein paar Minuten).
-4. Kampagnen auf **aktiv** (Veröffentlichen). In der Zentrale, Blatt „Kunden“, bei **„Live seit“** das Datum eintragen.
+4. Kampagnen auf **aktiv**: Meta „Veröffentlichen“, Google Status „Aktiviert“. In der Zentrale, Blatt „Kunden“, bei **„Live seit“** das Datum eintragen.
    Ab da laufen die 30 Tage Garantie, und ab da gibt es Monatsreports.
 5. Kunden anrufen: „Ab jetzt kommen Anfragen per Mail. Bitte innerhalb einer Stunde zurückrufen und
    danach auf ‚Zurückgerufen‘ tippen. Montags kommt eine kurze Mail mit Knöpfen.“

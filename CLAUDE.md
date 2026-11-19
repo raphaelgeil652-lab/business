@@ -107,6 +107,12 @@ Report-Entwürfe in Gmail, Verlosungsziehung, Akquise-Liste, Checkliste-Spalte j
 in `kampagnen.md` genau in der Reihenfolge der Oberfläche (Nov. 2026), `hilfe-vorbereiten.md` (Seite,
 Portfolio, Business-ID, Konten, deine Daten an zwei Stellen), `hilfe-einrichten.md` (Partnerzugriff
 annehmen, Netlify-Wege, Webhook mit `?key=`, „Events testen“, Seite löschen). Probelauf 2 folgt.
+**Google Ads (19.11.2026, live durchgeklickt bis zur Conversion):** Verwaltungskonto → Kundenkonto darunter
+→ Conversion „Lead-Formular senden“ (Wert 1 €, „keinen Wert“ gibt es nicht mehr) → den Wert `AW-ID/Label`
+holt man im Tag Manager, der sich über „Verwalten → Einrichten“ öffnet (nichts senden). Klickweg in
+`kampagnen.md`; die Kampagnen-Bildschirme ab „Gebote“ sind noch ungeprüft (Google hing mit VPN). Der Kunde
+bekommt mit der Willkommens-Mail die **Zugänge-Anleitung** (`texte/zugaenge-anleitung.md`, Finder „4b“): Meta
+und Google Klick für Klick auch ohne bestehende Konten.
 **Repo ist öffentlich:** echte Kundenordner (gitignored), Anfragen, IBAN nie ins Repo; nur der fiktive
 Probekunde liegt drin. Netlify kostenlos (300 Credits) war schon nach zwei Testkunden leer → ab dem
 ersten echten Kunden Tarif „Personal“ (ca. 9 $/Monat).

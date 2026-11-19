@@ -95,6 +95,7 @@ KUNDE = [
     ("dokumente/vereinbarung.md", "2b Vertrag – als PDF schicken.docx"),
     ("dokumente/abrechnung-mails.md", "3 Rechnung – Mailtext (die Rechnung selbst machst du in der Zentrale).docx"),
     ("dokumente/willkommens-mail.md", "4 Willkommens-Mail – am Tag der Unterschrift.docx"),
+    ("dokumente/zugaenge-anleitung.md", "4b Zugänge-Anleitung für den Kunden – als PDF an die Willkommens-Mail.docx"),
     ("dokumente/rueckruf-leitfaden.md", "5 Rückruf-Leitfaden – als PDF an die Willkommens-Mail.docx"),
     ("zentrale-zeile.txt", "6 Zeile für die Zentrale – kopieren, im Blatt Kunden einfügen.txt"),
     ("dokumente/kampagnen.md", "7 Kampagnen – Messung, Meta und Google.docx"),

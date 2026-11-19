@@ -1,6 +1,6 @@
 # Hilfe für Schritt 6: Messung, Seiten online, Zentrale verbinden, Kampagne
 
-Klick für Klick, so wie Meta und Netlify im November 2026 aussehen. Die Reihenfolge ist wichtig:
+Klick für Klick, so wie Meta, Google und Netlify im November 2026 aussehen. Die Reihenfolge ist wichtig:
 erst messen, dann erzeugen, dann hochladen, dann verbinden, dann Kampagne.
 Kürzel und Adresse des Kunden stehen oben in seiner „0 Übersicht“.
 
@@ -14,11 +14,27 @@ Der Kunde lädt dich mit deiner Business-ID als Partner ein (steht so in der Wil
 3. Dasselbe unter „Konten“ → **„Seiten“** für seine Facebook-Seite.
 4. Zahlungsmethode: hinterlegt der **Kunde** in seinem Werbekonto (seine Karte, er zahlt Meta direkt).
 
+**Google Ads** (Chrome, kein VPN, kein Werbeblocker). Normalfall: Der Kunde hat noch kein Konto, du legst es an.
+1. Dein Verwaltungskonto öffnen → links **„Konten“** → **„+“** → **„Neues Konto erstellen“** → Name = Betrieb,
+   Deutschland, Zeitzone Berlin, EUR → Erstellen. Die **Kunden-ID** des neuen Kontos (10 Ziffern) notieren.
+2. Startet Google den Assistenten **„Erste Kampagne erstellen“**: oben links **×**. Die Kampagne kommt später.
+3. Das neue Konto öffnen → links **„Verwaltung“** (Zahnrad) → **„Zugriff und Sicherheit“** → **„+“** →
+   E-Mail des Kunden → Zugriffsebene **„Administrator“** → Einladung senden.
+4. Der Kunde nimmt die Einladung an und hinterlegt unter **„Abrechnung“** → „Einrichtung“ seine
+   **Zahlungsart** (seine Firma, seine Karte, er zahlt Google direkt). Erst danach die Kampagne anlegen.
+
+Hat der Kunde **schon ein Google-Ads-Konto**: Er schickt dir seine Kunden-ID. Verwaltungskonto → „Konten“ →
+„+“ → **„Vorhandenes Konto verknüpfen“** → ID → Anfrage senden. Er nimmt an: in seinem Konto „Verwaltung“ →
+„Zugriff und Sicherheit“ → Reiter **„Verwaltungskonten“** → Annehmen.
+
+*Im Probelauf geprüft: Konto anlegen und Conversion. Einladung, Zahlungsart und Verknüpfen noch nicht.*
+
 ## A · Messung anlegen (vor dem Hochladen)
 
 Steht ausführlich in **„7 Kampagnen“**, Abschnitt „Vorher: Messung einrichten“: Meta-Pixel
-(Meta sagt „Datensatz“) anlegen und mit dem Werbekonto des Kunden verbinden, dazu bei einer
-Google-Kampagne die Google-Conversion. Beide IDs in den Steckbrief, Teil 4, **mit `'` davor**
+(Meta sagt „Datensatz“) anlegen und mit dem Werbekonto des Kunden verbinden, dazu die
+Google-Conversion. Bei Google wichtig: Den Wert holst du dir im Tag Manager, der sich dabei öffnet.
+Dort nichts senden und nichts einbauen. Beide IDs in den Steckbrief, Teil 4, **mit `'` davor**
 (sonst macht Excel aus der letzten Ziffer eine 0).
 
 ## B · Kundenordner neu erzeugen lassen
@@ -84,8 +100,14 @@ der Business Suite: Dort fehlen die Felder. Immer **adsmanager.facebook.com** �
 
 ## F · Google-Kampagne
 
-Google Ads des Kunden (über dein Verwaltungskonto) → Einstellungen aus **„7 Kampagnen“** →
-**pausiert** speichern.
+Genau nach **„7 Kampagnen“**, Abschnitt „Google-Kampagne anlegen: Klick für Klick“. Vorher muss der Kunde
+seine Zahlungsart hinterlegt haben (Punkt 0). Am Ende veröffentlichen und **sofort auf „Pausiert“** stellen,
+dann die ausschließenden Keywords eintragen.
+
+**Google hängt** („Ein Fehler ist aufgetreten – Google Ads aktualisieren“, weiße Seite):
+1. „Reload“. 2. VPN aus, Werbeblocker aus, Tab schließen, neu öffnen. 3. Privates Fenster in Chrome.
+4. Über dein Verwaltungskonto: links „Kampagnen“ → „+“ → Konto des Kunden wählen.
+Angefangene Kampagnen liegen unter Kampagnen → „Entwürfe“.
 
 ## Danach: Schritt 7 (Testen)
 
@@ -99,6 +121,11 @@ Google Ads des Kunden (über dein Verwaltungskonto) → Einstellungen aus **„7
    - du bekommst die Sicherheitskopie von Netlify.
 4. In der Anfrage-Mail auf „Zurückgerufen“ tippen und bestätigen → in der Zentrale stehen Uhrzeit und
    Minuten. Danach die TEST-Zeilen in der Zentrale löschen.
+
+**Google:** Die Test-Anfrage zählt Google nicht, weil sie nicht über eine Anzeige kam. Bei der Conversion
+steht deshalb weiter „Warten auf Conversions“. Das ist richtig. Nach den ersten echten Anzeigenklicks
+(1–2 Tage nach dem Start) prüfen: Zielvorhaben → Conversions → der Status wechselt auf „Aktiv“ bzw. es stehen
+Conversions in der Spalte.
 
 Gut zu wissen: Die Test-Ereignisse erscheinen nur unter „Events testen“, nicht in der „Übersicht“.
 Echte Besucher tauchen in der Übersicht mit 20–30 Minuten Verzögerung auf (Zeitraum oben rechts auf

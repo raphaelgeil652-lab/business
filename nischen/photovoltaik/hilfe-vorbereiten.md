@@ -37,10 +37,22 @@ erstellen“ → Name `Clickculture`, **Zeitzone Berlin, Währung EUR** (beides 
 für dein Portfolio → dich mit „Vollständige Kontrolle“ zuweisen. Zahlungsmethode erst, wenn du
 wirklich Werbung schaltest.
 
-## 4 · Google-Ads-Verwaltungskonto
+## 4 · Google-Ads-Verwaltungskonto (dein Büro bei Google)
 
-ads.google.com/home/tools/manager-accounts → „Verwaltungskonto erstellen“ → Name `Clickculture`,
-Land Deutschland, Zeitzone Berlin, EUR. Die **Kunden-ID** steht oben rechts (z. B. 123-456-7890).
+Darüber laufen alle Google-Konten deiner Kunden. Kostenlos, braucht keine Zahlungsart und keine Kampagne.
+Google Ads am besten in **Chrome, ohne VPN und ohne Werbeblocker** öffnen, sonst hängt es gern.
+
+1. ads.google.com/home/tools/manager-accounts → **„Verwaltungskonto erstellen“** → Name `Clickculture`,
+   Land Deutschland, Zeitzone Berlin, EUR.
+2. Will Google danach, dass du eine **„Erste Kampagne erstellen“**: oben links auf **×**. Ein Verwaltungskonto
+   hat keine eigenen Kampagnen.
+3. Die **Kunden-ID** (10 Ziffern, z. B. 774-518-7262) steht oben rechts neben dem Namen. Sie kommt in deine
+   Daten (Punkt 7).
+4. Zwischen deinen Konten wechseln: oben links auf den Kontonamen. Das Verwaltungskonto erkennst du an der
+   Übersicht mit der Liste „Konten“.
+
+Aus Versehen ein leeres Konto zu viel angelegt? Harmlos. Ohne Kampagne und Zahlungsart kostet es nichts.
+Einfach ignorieren oder in den Einstellungen des Kontos schließen.
 
 ## 5 · Netlify
 
