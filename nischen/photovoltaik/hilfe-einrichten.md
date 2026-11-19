@@ -17,9 +17,12 @@ Der Kunde lädt dich mit deiner Business-ID als Partner ein (steht so in der Wil
 **Google Ads** (Chrome, kein VPN, kein Werbeblocker). Normalfall: Der Kunde hat noch kein Konto, du legst es an.
 1. Dein Verwaltungskonto öffnen → links **„Konten“** → **„+“** → **„Neues Konto erstellen“** → Name = Betrieb,
    Deutschland, Zeitzone Berlin, EUR → Erstellen. Die **Kunden-ID** des neuen Kontos (10 Ziffern) notieren.
+   Fragt Google dabei nach **Zahlungsdaten: nichts eintragen**, überspringen bzw. zurück. Die Zahlungsart
+   trägt der Kunde selbst ein.
 2. Startet Google den Assistenten **„Erste Kampagne erstellen“**: oben links **×**. Die Kampagne kommt später.
 3. Das neue Konto öffnen → links **„Verwaltung“** (Zahnrad) → **„Zugriff und Sicherheit“** → **„+“** →
-   E-Mail des Kunden → Zugriffsebene **„Administrator“** → Einladung senden.
+   E-Mail des Kunden → Zugriffsebene **„Administrator“** → Einladung senden. Es muss „Administrator“ sein:
+   Nur ein Administrator darf eine Zahlungsart hinterlegen und die Bestätigung als Werbetreibender machen.
 4. Der Kunde nimmt die Einladung an und hinterlegt unter **„Abrechnung“** → „Einrichtung“ seine
    **Zahlungsart** (seine Firma, seine Karte, er zahlt Google direkt). Erst danach die Kampagne anlegen.
 
@@ -28,6 +31,12 @@ Hat der Kunde **schon ein Google-Ads-Konto**: Er schickt dir seine Kunden-ID. Ve
 „Zugriff und Sicherheit“ → Reiter **„Verwaltungskonten“** → Annehmen.
 
 *Im Probelauf geprüft: Konto anlegen und Conversion. Einladung, Zahlungsart und Verknüpfen noch nicht.*
+
+**Beim Probelauf** (Kunden-E-Mail = deine eigene): Die Einladung entfällt, du hast über dein Verwaltungskonto
+schon Zugriff. Eine Zahlungsart willst du für einen erfundenen Kunden nicht hinterlegen. Deshalb die
+Google-Kampagne nur **bis zum Bildschirm, der nach Zahlungsdaten fragt**, durchklicken, dort abbrechen.
+Alles davor ist damit geprüft. Wer den Kundenteil echt testen will: eine zweite E-Mail-Adresse (z. B. die des
+Kollegen) als Kunden-E-Mail in den Steckbrief.
 
 ## A · Messung anlegen (vor dem Hochladen)
 

@@ -43,6 +43,9 @@ aufgetreten“ hängen.
 8. Daraus wird: `AW-` + Conversion-ID + `/` + Conversion-Label, z. B. `AW-123456789/AbCdEfGhIj`
    → Steckbrief Teil 4 „Google-Ads-Conversion“, mit `'` davor.
 
+Einmal prüfen: links „Verwaltung“ (Zahnrad) → „Kontoeinstellungen“ → **„Automatische Tagkennzeichnung“
+muss an sein** (ist es normalerweise). Ohne sie kann Google die Anfragen keiner Anzeige zuordnen.
+
 Status „Warten auf Conversions“ ist normal. Er bleibt, bis die erste Anfrage über eine Google-Anzeige kommt.
 
 Dann Steckbrief an Claude: „Erzeuge {{betrieb}} neu.“ Erst danach die Seiten hochladen.
@@ -211,8 +214,8 @@ Vor dem Livegang (Schritt 7):
 ## Google-Kampagne anlegen: Klick für Klick
 
 Voraussetzung: Der Kunde hat in seinem Google-Ads-Konto seine **Zahlungsart** hinterlegt (Schritt 5). Ohne
-Zahlungsart zwingt Google dich in den Assistenten „Erste Kampagne erstellen“ und will am Ende selbst
-Zahlungsdaten. Chrome, kein VPN, kein Werbeblocker.
+Zahlungsart fragt Google am Ende nach Zahlungsdaten: **dort nie deine eigenen eintragen**, sonst zahlst du
+seine Werbung. Chrome, kein VPN, kein Werbeblocker.
 
 > Im Probelauf geprüft bis einschließlich Punkt 5 („Websitebesuche“). Danach blieb Google mit „Ein Fehler ist
 > aufgetreten“ hängen (VPN war an). Die Punkte ab 6 folgen dem üblichen Aufbau. Heißt ein Feld anders, nimm das

@@ -73,6 +73,7 @@ Haben Sie schon eine Seite? Dann weiter mit B3.
 
 1. **business.facebook.com/settings** → links **„Abrechnung und Zahlungen“** (oder „Zahlungen“).
 2. Ihr Werbekonto auswählen → **„Zahlungsmethode hinzufügen“** → Kreditkarte, Debitkarte oder PayPal.
+   Finden Sie das nicht: **adsmanager.facebook.com** → links unten **„Abrechnung“** → „Zahlungsmethode hinzufügen“.
 3. Meta bucht erst, wenn die Werbung läuft, und nur so viel, wie wir gemeinsam als Budget festgelegt haben.
 
 ### B6 · Uns als Partner einladen
@@ -102,10 +103,13 @@ Für die Einladung brauchen Sie ein Google-Konto mit der E-Mail, an die ich die 
 
 1. Sie bekommen eine Mail von Google Ads („Einladung zu Google Ads“ oder ähnlich).
 2. Auf den Link in der Mail klicken → mit dem Google-Konto aus C1 anmelden → **„Annehmen“**.
+3. Zeigt Google danach **„Erste Kampagne erstellen“** oder fragt nach Ihrem Unternehmen und Zielen: Das
+   übernehmen wir. Oben links auf **×** bzw. „Abbrechen“ und weiter mit C3.
 
 ### C3 · Zahlungsart hinterlegen
 
 1. In Google Ads links auf **„Abrechnung“** (Karten-Symbol) → **„Einrichtung“** bzw. „Zahlungsprofil“.
+   (Sehen Sie oben mehrere Konten, das Konto **Muster Solartechnik** wählen.)
 2. Kontotyp **„Organisation“**, Ihr Firmenname und Ihre Adresse.
 3. Zahlungsart: Kreditkarte oder Lastschrift → **„Senden“** bzw. „Speichern“.
 
