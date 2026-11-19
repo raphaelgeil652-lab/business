@@ -54,6 +54,7 @@ Woche das Budget bringt; schafft der Betrieb weniger, zeigt das Ergebnis „⚠ 
 | `dokumente/vereinbarung.md` | 2b Vertrag – als PDF schicken | Schritt 4 |
 | `dokumente/abrechnung-mails.md` | 3 Rechnung – Mailtext (die Rechnung selbst machst du in der Zentrale) | Schritt 4, 8 |
 | `dokumente/willkommens-mail.md` | 4 Willkommens-Mail | Schritt 4 |
+| `dokumente/zugaenge-anleitung.md` | 4b Zugänge-Anleitung für den Kunden – als PDF an die Willkommens-Mail | Schritt 4 |
 | `dokumente/rueckruf-leitfaden.md` | 5 Rückruf-Leitfaden – als PDF anhängen | Schritt 4 |
 | `zentrale-zeile.txt` | 6 Zeile für die Zentrale | Schritt 4 |
 | `dokumente/kampagnen.md` | 7 Kampagnen – Messung, Meta und Google | Schritt 6 |
@@ -76,7 +77,7 @@ Die Beispielzahlen stehen an **einer** Stelle: [`rechengrundlage.json`](rechengr
 
 ## Vorlagen
 
-- `texte/`: Vertrag, Abrechnungs-Mails, Willkommens-Mail, Rückruf-Leitfaden, Kampagnen,
+- `texte/`: Vertrag, Abrechnungs-Mails, Willkommens-Mail, Zugänge-Anleitung, Rückruf-Leitfaden, Kampagnen,
   Teilnahmebedingungen, Übersicht (`_kunden-readme.md`); allgemein: Verkaufsskript, Nachfass-Mails.
   Platzhalter `{{feld}}`; bedingte Blöcke `<!--VERLOSUNG-->`, `<!--BEWERTUNGEN-->`, `<!--VORHERNACHHER-->`.
 - `anzeigen/`: `wirtschaftlichkeit.html` (5), `verlosungen.html` (3), `vorschau.html`, `recherche.md`.
@@ -95,3 +96,5 @@ Die Beispielzahlen stehen an **einer** Stelle: [`rechengrundlage.json`](rechengr
 - **Nichts erfinden.** Leere Pflichtfelder erscheinen als `[Feldname]` und stehen unter „Noch offen“.
   Bewertungen und Vorher/Nachher fallen ohne echtes Material ganz weg. „Eigene Montageteams“ nur bei Ja.
 - Meta-Pixel und Google-Conversion erst nach Zustimmung, Schrift selbst gehostet, keine Google Fonts.
+  Der Google-Tag lädt nach Zustimmung schon auf der Einstiegsseite (merkt sich den Klick, `gclid`), die
+  Danke-Seite meldet dann die Conversion. Nur auf der Danke-Seite würde Google nichts zuordnen.

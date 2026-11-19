@@ -31,20 +31,30 @@ function uhr(s) { JETZT = berlin(s).getTime(); }
 
 // ---------------------------------------------------------------- Google nachgebaut
 class Blatt {
-  constructor(name, zeilen) { this.name = name; this.z = zeilen; }
+  constructor(name, zeilen) { this.name = name; this.z = zeilen; this.text = new Set(); }
+  // wie Google: reine Ziffern werden zur Zahl (0 vorne weg), außer die Zelle ist als Text formatiert
+  wert(r, c, v) { return typeof v === 'string' && /^\d+$/.test(v) && !this.text.has(r + ',' + c) ? Number(v) : v; }
+  getLastRow() { return this.letzte(); }
+  getLastColumn() { return Math.max(0, ...this.z.map(r => r.length)); }
+  getMaxRows() { return Math.max(1000, this.z.length); }
   letzte() { for (let i = this.z.length - 1; i >= 0; i--) if (this.z[i].some(v => v !== '' && v != null)) return i + 1; return 0; }
   getDataRange() {
     const n = this.letzte(), b = Math.max(0, ...this.z.slice(0, n).map(r => r.length));
     return { getValues: () => this.z.slice(0, n).map(r => { const c = r.slice(); while (c.length < b) c.push(''); return c; }) };
   }
   getName() { return this.name; }
-  appendRow(a) { this.z.splice(this.letzte(), 0, a.slice()); }
-  getRange(r, c) {
+  appendRow(a) { const r = this.letzte() + 1; this.z.splice(r - 1, 0, a.map((v, i) => this.wert(r, i + 1, v))); }
+  getRange(r, c, nr = 1, nc = 1) {
     return {
+      setValues: w => w.forEach((zeile, i) => zeile.forEach((v, j) => {
+        const rr = r + i, cc = c + j; while (this.z.length < rr) this.z.push([]);
+        const row = this.z[rr - 1]; while (row.length < cc) row.push(''); row[cc - 1] = this.wert(rr, cc, v);
+      })),
+      getValues: () => { const out = []; for (let i = 0; i < nr; i++) { const row = this.z[r - 1 + i] || []; out.push(Array.from({ length: nc }, (_, j) => row[c - 1 + j] ?? '')); } return out; },
       setValue: v => { while (this.z.length < r) this.z.push([]); const row = this.z[r - 1]; while (row.length < c) row.push(''); row[c - 1] = v; },
       setFormula: f => { while (this.z.length < r) this.z.push([]); const row = this.z[r - 1]; while (row.length < c) row.push(''); row[c - 1] = f; },
       getDisplayValue: () => { const f = String((this.z[r - 1] || [])[c - 1] || ''); return DEUTSCH && /^=.*,/.test(f) ? '#ERROR!' : f; },
-      setNumberFormat: () => {},
+      setNumberFormat: f => { for (let i = 0; i < nr; i++) for (let j = 0; j < nc; j++) { const k = (r + i) + ',' + (c + j); if (f === '@') this.text.add(k); else this.text.delete(k); } },
       getSheet: () => this,
       getValue: () => (this.z[r - 1] || [])[c - 1]
     };
@@ -197,8 +207,9 @@ pruefe(m.name === 'Muster Solartechnik · Anfragen' && m.replyTo === 'ich@agentu
 ohneUndefined(m.htmlBody + m.body + m.subject, 'Anfrage-Mail');
 pruefe(post(netlify('n1', { kunde: 'muster-solartechnik', name: 'Anna Beispiel' })).text === 'doppelt', 'gleiche Anfrage zweimal → nur einmal');
 // flaches Format ohne „data“, Kunde nur aus der Adresse, Google-Klick
-r = post({ id: 'n2', form_name: 'rechner', site_url: 'https://muster-solartechnik.netlify.app', name: 'Bernd Flach', telefon: '0170 1', plz: '54321', gclid: 'abc' });
+r = post({ id: 'n2', form_name: 'rechner', site_url: 'https://muster-solartechnik.netlify.app', name: 'Bernd Flach', telefon: '017012345678', plz: '04109', gclid: 'abc' });
 a = anfragen().find(x => x.ID === 'n2');
+pruefe(a.Telefon === '017012345678' && a.PLZ === '04109', 'Telefon und PLZ ohne Leerzeichen behalten die 0 vorne');
 pruefe(a && a.Kunde === 'muster-solartechnik' && a.Quelle === 'Google' && a.Seite === 'Rechner', 'flaches Format + Kunde aus Netlify-Adresse + Quelle Google');
 // unbekannter und inaktiver Kunde → an dich
 post(netlify('n3', { kunde: 'gibts-nicht', name: 'Carla', telefon: '1' }));

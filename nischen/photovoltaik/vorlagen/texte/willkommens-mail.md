@@ -1,8 +1,9 @@
 # Willkommens-Mail — {{betrieb}}
 
 > Am Tag der Unterschrift verschicken. **Zwei PDFs anhängen:** „4b Zugänge-Anleitung“ und „5 Rückruf-Leitfaden“
-> (öffnen → Ablage → Exportieren → PDF). Text ab „Betreff“ kopieren. Bei Google: sein Konto vorher anlegen und
-> ihn als Administrator einladen (Hilfe „Schritt 6“, Punkt 0), dann wartet die Einladung schon auf ihn.
+> (öffnen → Ablage → Exportieren → PDF). Text ab „Betreff“ kopieren. **Vorher bei Google:** hat er noch kein
+> Google-Ads-Konto, eins für ihn anlegen und ihn als Administrator einladen; hat er schon eins, mit seiner
+> Kunden-ID eine Verknüpfung schicken (beides Hilfe „Schritt 6“, Punkt 0). Dann wartet die Mail schon auf ihn.
 
 ---
 
@@ -31,10 +32,9 @@ Noch keine Fotos da? Bei der nächsten Montage vorher und nachher je ein Foto ma
 
 - Meta (Facebook und Instagram): ein Werbekonto mit Ihrer Zahlungsmethode, und uns als Partner
   einladen. Unsere Business-ID: {{agentur_business_id}}
-- Google Ads: Ich habe Ihr Konto über unser Verwaltungskonto ({{agentur_google_mcc}}) angelegt und
-  Sie als Administrator eingeladen. Bitte die Einladung von Google annehmen und Ihre Zahlungsart
-  hinterlegen. Haben Sie schon ein Google-Ads-Konto? Dann schicken Sie mir einfach die Kunden-ID
-  (10 Ziffern, oben rechts im Konto).
+- Google Ads: Sie bekommen von Google eine Mail von unserem Verwaltungskonto ({{agentur_google_mcc}}):
+  eine Einladung (wenn ich Ihr Konto neu angelegt habe) oder eine Verknüpfungsanfrage (wenn Sie schon
+  ein Konto haben). Bitte annehmen und Ihre Zahlungsart hinterlegen.
 - Das Werbebudget zahlen Sie direkt an Meta und Google. Es läuft nicht über uns.
 
 Alles läuft über Ihre eigenen Konten. Sie behalten jederzeit die Kontrolle.

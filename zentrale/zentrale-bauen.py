@@ -40,20 +40,20 @@ STAND_AKQ = ["neu", "nicht erreicht", "Videocall vereinbart", "Vereinbarung gesc
 # ---------------------------------------------------------------- Spalten (Zeile 1), die Code.gs liest
 KUNDEN = [  # (Name, Breite, Format, Eingabe?)
     ("Kürzel", 22, None, True), ("Betrieb", 26, None, True), ("Anrede für Mails", 18, None, True),
-    ("E-Mail für Anfragen", 28, None, True), ("Telefon", 16, None, True), ("Drive-Ordner", 30, None, True),
+    ("E-Mail für Anfragen", 28, None, True), ("Telefon", 16, "@", True), ("Drive-Ordner", 30, None, True),
     ("Onboarding €", 12, EURO, True), ("Monatsgebühr €", 13, EURO, True), ("Live seit", 12, DATUM, True),
     ("Aktiv", 8, None, True), ("Teilnahmeschluss", 14, DATUM, True), ("Ziehung am", 12, DATUM, True),
     ("Erster Auftrag", 14, DATUM, False), ("Monatsgebühr ab", 14, "MM.YYYY", False), ("Anfragen gesamt", 10, "0", False),
     ("Notiz", 34, None, True),
 ]
 ANFRAGEN = [
-    ("ID", 14, None), ("Eingang", 16, ZEIT), ("Kunde", 18, None), ("Name", 22, None), ("Telefon", 16, None),
-    ("E-Mail", 22, None), ("PLZ", 7, None), ("Seite", 16, None), ("Quelle", 9, None), ("Zurückgerufen", 16, ZEIT),
+    ("ID", 14, None), ("Eingang", 16, ZEIT), ("Kunde", 18, None), ("Name", 22, None), ("Telefon", 16, "@"),
+    ("E-Mail", 22, None), ("PLZ", 7, "@"), ("Seite", 16, None), ("Quelle", 9, None), ("Zurückgerufen", 16, ZEIT),
     ("Stand", 14, None), ("Auftragswert €", 13, EURO), ("Auftrag am", 16, ZEIT), ("Minuten bis Rückruf", 10, "0"),
     ("Erinnert", 16, ZEIT), ("Details", 50, None), ("Schlüssel", 6, None),
 ]
 WERBEKOSTEN = [("Monat", 12, "MM.YYYY"), ("Kunde", 22, None), ("Meta €", 12, EURO2), ("Google €", 12, EURO2), ("Summe €", 12, EURO2)]
-AKQUISE = [("Firma", 28, None), ("Ansprechpartner", 20, None), ("Ort", 16, None), ("Telefon", 16, None), ("Webseite", 24, None),
+AKQUISE = [("Firma", 28, None), ("Ansprechpartner", 20, None), ("Ort", 16, None), ("Telefon", 16, "@"), ("Webseite", 24, None),
            ("Google (Sterne · Anzahl)", 12, None), ("Stand", 20, None), ("Nächster Anruf am", 13, DATUM), ("Wer", 10, None),
            ("Notiz", 40, None)]
 RECHNUNGEN = [("Nr.", 10, None), ("Datum", 11, DATUM), ("Kunde (Firma)", 26, None), ("Anschrift Kunde", 32, None),
@@ -63,11 +63,12 @@ RECHNUNGEN = [("Nr.", 10, None), ("Datum", 11, DATUM), ("Kunde (Firma)", 26, Non
 CHECKLISTE = [  # gleiche Schritte wie nischen/photovoltaik/ANLEITUNG.md (4 bis 7)
     ("4 · Abschluss", "Vereinbarung als PDF geschickt, unterschrieben zurück", "Du"),
     ("4 · Abschluss", "Rechnung Onboarding (Blatt Rechnungen) als PDF mit Mail 1 geschickt", "Du"),
+    ("4 · Abschluss", "Google-Konto für ihn unter deinem Verwaltungskonto angelegt, ihn als Administrator eingeladen", "Du"),
     ("4 · Abschluss", "Willkommens-Mail geschickt, Zugänge-Anleitung und Rückruf-Leitfaden als PDF angehängt", "Du"),
     ("5 · Vom Kunden", "Fotos im Drive-Ordner: mind. 3 fertige Anlagen, ideal ein Dach vorher und nachher", "Kunde"),
     ("5 · Vom Kunden", "Meta: Partnerzugriff auf Seite und Werbekonto, Zahlungsmethode im Werbekonto", "Kunde"),
     ("5 · Vom Kunden", "Bei Meta dich seinem Werbekonto und seiner Seite zugewiesen (Hilfe Schritt 6, Punkt 0)", "Du"),
-    ("5 · Vom Kunden", "Google Ads: Konto unter deinem Verwaltungskonto, Kunde Administrator, Zahlungsart drin", "Kunde"),
+    ("5 · Vom Kunden", "Google Ads: Einladung angenommen, Zahlungsart hinterlegt", "Kunde"),
     ("5 · Vom Kunden", "Links zu Impressum und Datenschutz, 2 echte Google-Bewertungen", "Kunde"),
     ("5 · Vom Kunden", "Name der Person, die die Wirtschaftlichkeitsprüfungen rechnet", "Kunde"),
     ("6 · Einrichten", "Meta-Pixel und Google-Conversion angelegt, IDs im Steckbrief (Teil 4)", "Du"),

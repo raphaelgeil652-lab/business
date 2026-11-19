@@ -47,7 +47,8 @@ Alles Klick für Klick in **„4 Vorbereiten – Meta, Google, Netlify, deine Da
    Teilnahmebedingungen.
 
 **Tipp:** Vor dem ersten echten Kunden einmal einen **Probelauf** mit einem erfundenen Kunden machen,
-mit deiner eigenen E-Mail als Kunden-E-Mail und deinem eigenen Werbekonto. Kampagne nur als Entwurf.
+mit deiner eigenen E-Mail als Kunden-E-Mail und deinem eigenen Werbekonto. Kampagnen nur als Entwurf, bei
+Google nur bis zum Bildschirm mit den Zahlungsdaten. Danach aufräumen: Hilfe „Schritt 6“, „Nach einem Probelauf aufräumen“.
 
 ---
 
@@ -69,6 +70,8 @@ Jeden Morgen schickt dir die Zentrale die Liste: „Heute anrufen“.
 2. Die zwei wichtigsten Fragen: **„Was kostet eine Anlage mit Speicher bei Ihnen im Schnitt?“** und
    **„Wie viele zusätzliche Beratungstermine schaffen Sie pro Woche?“**
 3. Die drei Ja-Fragen: Entscheider dabei? Rückruf in 1 Stunde? Fotos vorhanden?
+   Dazu kurz: **„Haben Sie schon ein Google-Ads-Konto oder ein Werbekonto bei Facebook?“** Wenn ja, bei
+   Google die Kunden-ID (10 Ziffern, oben rechts im Konto) in die Notizen des Steckbriefs.
 4. Unter „Ergebnis“ steht dann:
    - **✓ Kunde passt** → weiter.
    - **⚠ Kapazität zu klein** → weniger Budget oder mehr Termine klären.
@@ -91,7 +94,7 @@ Jeden Morgen schickt dir die Zentrale die Liste: „Heute anrufen“.
 |---|---|
 | Vertrag als PDF sichern, selbst unterschreiben (App Vorschau), mit dem fertigen Mailtext schicken → unterschrieben zurück | „2a Vertrag – so verschickst du ihn“ + „2b Vertrag – als PDF schicken“ |
 | Rechnung in der **Zentrale** machen (Blatt „Rechnungen“, dann „Rechnung drucken“ → als PDF herunterladen). Den Mailtext 1 aus „3 Rechnung“ kopieren, PDF anhängen, schicken | Zentrale + „3 Rechnung“ |
-| **Google-Konto für ihn anlegen** und ihn als Administrator einladen (5 Minuten, Hilfe „Schritt 6“, Punkt 0). Hat er schon ein Google-Ads-Konto, überspringen | dein Google-Verwaltungskonto |
+| **Google:** Hat er noch kein Google-Ads-Konto, eins für ihn anlegen und ihn als Administrator einladen. Hat er schon eins (Kunden-ID in den Notizen), eine Verknüpfung schicken. 5 Minuten, Hilfe „Schritt 6“, Punkt 0 | dein Google-Verwaltungskonto |
 | Willkommens-Mail schicken, **zwei PDFs anhängen:** Zugänge-Anleitung (führt ihn Klick für Klick durch Meta und Google, auch ohne Konten) und Rückruf-Leitfaden | „4 Willkommens-Mail“, „4b Zugänge-Anleitung“, „5 Rückruf-Leitfaden“ |
 | **Kunde in die Zentrale:** Datei öffnen, alles kopieren, in der Zentrale im Blatt „Kunden“ in die erste freie Zeile (Spalte A) einfügen | „6 Zeile für die Zentrale“ |
 
@@ -106,8 +109,8 @@ Zugänge-Anleitung im Anhang. Ruft er an, weil er hängt: dieselbe Anleitung auf
 1. **Fotos** in den Drive-Ordner: 3 fertige Anlagen, wenn möglich ein Dach vorher und nachher.
 2. **Zugänge:** Er lädt dich bei Meta als Partner ein (mit deiner Business-ID). Danach musst **du** dich
    bei Meta noch selbst seinem Werbekonto und seiner Seite zuweisen, sonst siehst du sie nicht.
-   Bei Google legst **du** sein Konto unter deinem Verwaltungskonto an und lädst ihn als Administrator ein.
-   Er nimmt an und hinterlegt bei Meta und Google seine Zahlungsart. Alles in Hilfe „Schritt 6“, Punkt 0.
+   Bei Google hast **du** in Schritt 4 sein Konto angelegt (oder die Verknüpfung geschickt). Er nimmt an und
+   hinterlegt bei Meta und Google seine Zahlungsart. Alles in Hilfe „Schritt 6“, Punkt 0.
 3. **Zwei Links und zwei Bewertungen:** Impressum, Datenschutz, zwei echte Google-Bewertungen.
 4. **Ein Name:** wer bei ihm die Wirtschaftlichkeitsprüfungen rechnet.
 
@@ -118,7 +121,7 @@ Fehlt nach 3 Tagen noch etwas? **Anrufen**, nicht mailen.
 Genau in dieser Reihenfolge. Jeder Punkt ist in der Hilfe Klick für Klick beschrieben.
 
 0. **Zugriff:** dich bei Meta seinem Werbekonto und seiner Seite zuweisen. Google-Konto für ihn anlegen
-   (falls noch nicht in Schritt 5 passiert).
+   (falls noch nicht in Schritt 4 passiert).
 1. **Messung anlegen:** Meta-Pixel („Datensatz“, Name = Betrieb, mit seinem Werbekonto verbinden) und
    die Google-Conversion (Wert `AW-…/…`, steht im Tag Manager, der sich dabei öffnet). Beide in den
    Steckbrief, Teil 4, mit `'` davor.
@@ -138,7 +141,9 @@ Genau in dieser Reihenfolge. Jeder Punkt ist in der Hilfe Klick für Klick besch
 
 ## Schritt 7 · Testen und live gehen
 
-1. **Test-Anfrage über den Events Manager:** Pixel des Kunden → „Events testen“ → Seite öffnen →
+1. **Dem Kunden vorher Bescheid sagen:** „Gleich kommt eine Test-Anfrage mit dem Namen TEST. Bitte nicht
+   anrufen, einfach auf ‚Zurückgerufen‘ tippen.“ Die Test-Mail geht an ihn, weil er in der Zentrale schon aktiv ist.
+   **Test-Anfrage über den Events Manager:** Pixel des Kunden → „Events testen“ → Seite öffnen →
    Cookies „Einverstanden“ → Formular mit dem Namen „TEST“ abschicken. Es muss passieren:
    „PageView“ und „Lead“ im Events Manager · der Kunde bekommt die Mail mit den Knöpfen · in der
    Zentrale steht eine Zeile · du bekommst die Netlify-Kopie. Dasselbe für den Rechner.

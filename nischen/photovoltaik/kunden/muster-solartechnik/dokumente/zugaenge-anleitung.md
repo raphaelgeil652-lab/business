@@ -25,6 +25,8 @@ Am Ende antworten Sie einfach auf meine Willkommens-Mail (Vorlage ganz unten).
 ## A · Fotos hochladen
 
 1. Diesen Link öffnen: [Google-Drive-Ordner für seine Fotos (Link)]
+   Fragt Google nach einer Anmeldung: mit Ihrem Google-Konto anmelden (gleiche E-Mail wie in C1). Noch keins?
+   Dann zuerst C1 machen oder die Fotos über WeTransfer schicken (siehe unten).
 2. Am Computer: die Fotos einfach in das Fenster ziehen. Am Handy: unten rechts auf **„+“** →
    **„Hochladen“** → Fotos auswählen.
 3. Was wir brauchen: 3 Fotos von fertigen Anlagen auf Dächern. Wenn möglich ein Dach **vorher und
@@ -87,8 +89,13 @@ Haben Sie schon eine Seite? Dann weiter mit B3.
 
 ## C · Google Ads
 
-Ich lege Ihr Google-Ads-Konto über unser Verwaltungskonto an und lade Sie als **Administrator** ein. Das
-Konto gehört Ihnen.
+Sie bekommen von Google **eine von zwei Mails**:
+- **Sie hatten noch kein Google-Ads-Konto:** Ich habe es für Sie über unser Verwaltungskonto
+  ([Google-Ads-Verwaltungskonto (Kunden-ID)]) angelegt. Sie bekommen eine **Einladung** als Administrator. Weiter mit C1.
+- **Sie haben schon ein Google-Ads-Konto:** Sie bekommen eine **Verknüpfungsanfrage** von unserem
+  Verwaltungskonto ([Google-Ads-Verwaltungskonto (Kunden-ID)]). Weiter mit C4.
+
+Das Konto gehört in beiden Fällen Ihnen.
 
 ### C1 · Google-Konto (falls noch keins)
 
@@ -108,17 +115,22 @@ Für die Einladung brauchen Sie ein Google-Konto mit der E-Mail, an die ich die 
 
 ### C3 · Zahlungsart hinterlegen
 
-1. In Google Ads links auf **„Abrechnung“** (Karten-Symbol) → **„Einrichtung“** bzw. „Zahlungsprofil“.
+1. In Google Ads links auf **„Abrechnung“** (Karten-Symbol) → **„Einstellungen“** (bei einem ganz neuen Konto
+   heißt es manchmal „Einrichtung“).
    (Sehen Sie oben mehrere Konten, das Konto **Muster Solartechnik** wählen.)
-2. Kontotyp **„Organisation“**, Ihr Firmenname und Ihre Adresse.
-3. Zahlungsart: Kreditkarte oder Lastschrift → **„Senden“** bzw. „Speichern“.
+2. Fragt Google nach einem Zahlungsprofil: Kontotyp **„Organisation“**, Ihr Firmenname und Ihre Adresse.
+3. Bei „Zahlungsmethoden“ auf **„Zahlungsmethode hinzufügen“** → Kreditkarte oder Lastschrift → den
+   Bedingungen zustimmen → **„Speichern“** bzw. „Senden“.
 
 Google kann später um eine kurze **Bestätigung als Werbetreibender** bitten (Firmendaten, manchmal ein
 Dokument). Dann bitte der Mail von Google folgen. Bei Fragen rufen Sie mich an.
 
-**Sie haben schon ein Google-Ads-Konto?** Dann schicken Sie mir die **Kunden-ID** (10 Ziffern, oben rechts im
-Konto, z. B. 123-456-7890). Ich schicke eine Verknüpfungsanfrage. Annehmen: in Google Ads links
-**„Verwaltung“** → **„Zugriff und Sicherheit“** → Reiter **„Verwaltungskonten“** → **„Annehmen“**.
+### C4 · Nur wenn Sie schon ein Google-Ads-Konto haben: Verknüpfung annehmen
+
+1. In Ihrem Google-Ads-Konto links **„Verwaltung“** (Zahnrad) → **„Zugriff und Sicherheit“** → Reiter
+   **„Verwaltungskonten“**.
+2. Bei der Anfrage von **[Name der Agentur] ([Google-Ads-Verwaltungskonto (Kunden-ID)])** auf **„Annehmen“**.
+3. Ist in Ihrem Konto noch keine Zahlungsart hinterlegt: wie in C3.
 
 ## D · Zwei Links und zwei Bewertungen
 

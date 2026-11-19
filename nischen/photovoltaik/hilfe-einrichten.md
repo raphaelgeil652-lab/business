@@ -1,21 +1,16 @@
-# Hilfe für Schritt 6: Messung, Seiten online, Zentrale verbinden, Kampagne
+# Hilfe für Schritt 6: Zugänge, Messung, Seiten online, Zentrale verbinden, Kampagne
 
 Klick für Klick, so wie Meta, Google und Netlify im November 2026 aussehen. Die Reihenfolge ist wichtig:
 erst messen, dann erzeugen, dann hochladen, dann verbinden, dann Kampagne.
 Kürzel und Adresse des Kunden stehen oben in seiner „0 Übersicht“.
 
-## 0 · Zugriff vom Kunden annehmen (Ende Schritt 5)
+## 0 · Zugänge: Google (Schritt 4) und Meta (Schritt 5)
 
-Der Kunde lädt dich mit deiner Business-ID als Partner ein (steht so in der Willkommens-Mail). Danach:
-1. business.facebook.com/settings → „Konten“ → **„Werbekonten“**: Das Konto des Kunden steht in der Liste
-   (oft mit dem Hinweis, dass es einem anderen Portfolio gehört).
-2. Anklicken → **„Personen zuweisen“** → dich auswählen → **„Vollständige Kontrolle“** → Zuweisen.
-   Ohne diesen Schritt siehst du das Konto im Werbeanzeigenmanager nicht.
-3. Dasselbe unter „Konten“ → **„Seiten“** für seine Facebook-Seite.
-4. Zahlungsmethode: hinterlegt der **Kunde** in seinem Werbekonto (seine Karte, er zahlt Meta direkt).
+### Google: Konto anlegen oder verknüpfen (Schritt 4, vor der Willkommens-Mail)
 
-**Google Ads** (Chrome, kein VPN, kein Werbeblocker). Normalfall: Der Kunde hat noch kein Konto, du legst es an.
-1. Dein Verwaltungskonto öffnen → links **„Konten“** → **„+“** → **„Neues Konto erstellen“** → Name = Betrieb,
+Chrome, kein VPN, kein Werbeblocker. Normalfall: Der Kunde hat noch kein Konto, du legst es an.
+1. Dein Verwaltungskonto öffnen → links das Symbol **„Konten“** → oben **„Unterkonto-Einstellungen“** (falls es da
+   ist) → blauer **„+“** → **„Neues Konto erstellen“** → Name = Betrieb,
    Deutschland, Zeitzone Berlin, EUR → Erstellen. Die **Kunden-ID** des neuen Kontos (10 Ziffern) notieren.
    Fragt Google dabei nach **Zahlungsdaten: nichts eintragen**, überspringen bzw. zurück. Die Zahlungsart
    trägt der Kunde selbst ein.
@@ -23,12 +18,13 @@ Der Kunde lädt dich mit deiner Business-ID als Partner ein (steht so in der Wil
 3. Das neue Konto öffnen → links **„Verwaltung“** (Zahnrad) → **„Zugriff und Sicherheit“** → **„+“** →
    E-Mail des Kunden → Zugriffsebene **„Administrator“** → Einladung senden. Es muss „Administrator“ sein:
    Nur ein Administrator darf eine Zahlungsart hinterlegen und die Bestätigung als Werbetreibender machen.
-4. Der Kunde nimmt die Einladung an und hinterlegt unter **„Abrechnung“** → „Einrichtung“ seine
+4. Der Kunde nimmt die Einladung an und hinterlegt unter **„Abrechnung“** → „Einstellungen“ seine
    **Zahlungsart** (seine Firma, seine Karte, er zahlt Google direkt). Erst danach die Kampagne anlegen.
 
-Hat der Kunde **schon ein Google-Ads-Konto**: Er schickt dir seine Kunden-ID. Verwaltungskonto → „Konten“ →
-„+“ → **„Vorhandenes Konto verknüpfen“** → ID → Anfrage senden. Er nimmt an: in seinem Konto „Verwaltung“ →
-„Zugriff und Sicherheit“ → Reiter **„Verwaltungskonten“** → Annehmen.
+Hat der Kunde **schon ein Google-Ads-Konto** (Kunden-ID steht in den Notizen des Steckbriefs): kein neues
+Konto anlegen. Verwaltungskonto → „Konten“ (→ „Unterkonto-Einstellungen“) → „+“ → **„Vorhandenes Konto verknüpfen“** → seine ID → Anfrage
+senden. Er nimmt an: in seinem Konto „Verwaltung“ → „Zugriff und Sicherheit“ → Reiter **„Verwaltungskonten“**
+→ Annehmen (steht so in seiner Zugänge-Anleitung, Teil C4).
 
 *Im Probelauf geprüft: Konto anlegen und Conversion. Einladung, Zahlungsart und Verknüpfen noch nicht.*
 
@@ -37,6 +33,16 @@ schon Zugriff. Eine Zahlungsart willst du für einen erfundenen Kunden nicht hin
 Google-Kampagne nur **bis zum Bildschirm, der nach Zahlungsdaten fragt**, durchklicken, dort abbrechen.
 Alles davor ist damit geprüft. Wer den Kundenteil echt testen will: eine zweite E-Mail-Adresse (z. B. die des
 Kollegen) als Kunden-E-Mail in den Steckbrief.
+
+### Meta: Zugriff annehmen (Ende Schritt 5, wenn der Kunde dich eingeladen hat)
+
+Der Kunde lädt dich mit deiner Business-ID als Partner ein (steht so in der Willkommens-Mail). Danach:
+1. business.facebook.com/settings → „Konten“ → **„Werbekonten“**: Das Konto des Kunden steht in der Liste
+   (oft mit dem Hinweis, dass es einem anderen Portfolio gehört).
+2. Anklicken → **„Personen zuweisen“** → dich auswählen → **„Vollständige Kontrolle“** → Zuweisen.
+   Ohne diesen Schritt siehst du das Konto im Werbeanzeigenmanager nicht.
+3. Dasselbe unter „Konten“ → **„Seiten“** für seine Facebook-Seite.
+4. Zahlungsmethode: hinterlegt der **Kunde** in seinem Werbekonto (seine Karte, er zahlt Meta direkt).
 
 ## A · Messung anlegen (vor dem Hochladen)
 
@@ -111,7 +117,8 @@ der Business Suite: Dort fehlen die Felder. Immer **adsmanager.facebook.com** �
 
 Genau nach **„7 Kampagnen“**, Abschnitt „Google-Kampagne anlegen: Klick für Klick“. Vorher muss der Kunde
 seine Zahlungsart hinterlegt haben (Punkt 0). Am Ende veröffentlichen und **sofort auf „Pausiert“** stellen,
-dann die ausschließenden Keywords eintragen.
+dann die ausschließenden Keywords eintragen. Google prüft die Anzeigen auch im pausierten Zustand. Vor
+Schritt 7 in der Kampagne nachsehen: Bei den Anzeigen steht „Zulässig“ (nicht „Abgelehnt“).
 
 **Google hängt** („Ein Fehler ist aufgetreten – Google Ads aktualisieren“, weiße Seite):
 1. „Reload“. 2. VPN aus, Werbeblocker aus, Tab schließen, neu öffnen. 3. Privates Fenster in Chrome.
@@ -139,6 +146,14 @@ Conversions in der Spalte.
 Gut zu wissen: Die Test-Ereignisse erscheinen nur unter „Events testen“, nicht in der „Übersicht“.
 Echte Besucher tauchen in der Übersicht mit 20–30 Minuten Verzögerung auf (Zeitraum oben rechts auf
 „Heute“ stellen). Ohne „Einverstanden“ bei den Cookies sendet die Seite absichtlich nichts an Meta.
+
+## Nach einem Probelauf aufräumen
+
+1. **Zentrale**, Blatt „Kunden“: beim Testkunden bei **„Aktiv“ Nein** eintragen. Sonst bekommst du weiter
+   Montags-Mails und Erinnerungen für ihn. Im Blatt „Anfragen“ die TEST-Zeilen löschen.
+2. **Meta:** Die Kampagne im Entwurf löschen (Werbeanzeigenmanager → Haken davor → Papierkorb).
+3. **Google:** Den Kampagnen-Entwurf löschen. Das Testkonto darf bleiben, ohne Zahlungsart kostet es nichts.
+4. **Netlify:** die Seite löschen (siehe unten). Spart Credits.
 
 ## Seite löschen (Kunde hört auf oder nach einem Probelauf)
 

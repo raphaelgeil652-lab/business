@@ -40,6 +40,9 @@ lassen. Dann sieht er seine eigenen Anzeigen. Sonst zeigst du den Beispielkunden
    rechnet der Steckbrief das Werbebudget, das du vorschlägst.
 
 Dazu: „Bis wie weit fahren Sie zur Montage?“ und „Montieren Sie mit eigenem Team?“
+Und: „Haben Sie schon ein Google-Ads-Konto oder ein Werbekonto bei Facebook?“ Bei Google die
+Kunden-ID (10 Ziffern, oben rechts im Konto) in die Notizen des Steckbriefs. Keins? Kein Problem, er
+bekommt eine Anleitung, Schritt für Schritt.
 
 **Zeigen** (Ordner „03 Videocall“ › Beispiel zum Zeigen): die 5 Anzeigen der Wirtschaftlichkeitsprüfung
 → die Seite dahinter → den Rechner. Läuft gerade eine Verlosung, kurz auch diese.
@@ -79,6 +82,7 @@ Steckbrief] € im Monat. Das zahlen Sie direkt an Meta und Google, nicht an mic
 1. Steckbrief Teil 1 und 2 ausgefüllt, oben steht „✓ Kunde passt“.
 2. Steckbrief an Claude: „Lege den Kunden aus diesem Steckbrief an.“
 3. Die Vereinbarung aus dem Kundenordner als PDF schicken, unterschrieben zurück.
-4. Am selben Tag: Rechnung, Willkommens-Mail, Rückruf-Leitfaden. Siehe Anleitung, Schritt 4.
+4. Am selben Tag: Rechnung, Google-Konto für ihn, Willkommens-Mail mit Zugänge-Anleitung und
+   Rückruf-Leitfaden. Siehe Anleitung, Schritt 4.
 
 Versprochen werden Anfragen, nie eine Zahl von Aufträgen oder ein Umsatz.

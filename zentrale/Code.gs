@@ -54,6 +54,7 @@ function onOpen() {
 function einrichten() {
   var ui = SpreadsheetApp.getUi(), s = einst_();
   ['Einstellungen', 'Kunden', 'Anfragen', 'Werbekosten', 'Akquise'].forEach(blatt_);
+  ['Kunden', 'Anfragen', 'Akquise'].forEach(textSpalten_);
   checklisteSpalten_();
   if (!s.schluessel) {
     s.schluessel = Utilities.getUuid().replace(/-/g, '').slice(0, 24);
@@ -196,10 +197,10 @@ function neueAnfrage_(a, s) {
   if (a.dateiUrl && k && k.drive) link = dateiSichern_(a, k);
   var details = a.details;
   if (a.dateiUrl) details += (details ? ' · ' : '') + 'Stromrechnung: ' + (link || a.dateiUrl);
-  an.sh.appendRow(zeileNachKopf_(an, {
+  zeileAnhaengen_(an, {
     'ID': a.id, 'Eingang': a.eingang, 'Kunde': a.kunde, 'Name': a.name, 'Telefon': a.telefon, 'E-Mail': a.email,
     'PLZ': a.plz, 'Seite': a.seite, 'Quelle': a.quelle, 'Stand': 'neu', 'Details': details, 'Schlüssel': schl
-  }));
+  });
   var aktiv = k && k.aktiv;
   var html = anfrageHtml_(a, details, s, schl, k);
   mail_(s, {
@@ -573,6 +574,22 @@ function tabelle_(name) {
     get: function (z, sp) { var v = z.w[spalte(sp)]; return v == null ? '' : v; },
     set: function (z, sp, v) { var i = spalte(sp); sh.getRange(z.nr, i + 1).setValue(v); z.w[i] = v; }
   };
+}
+
+/* Telefon und PLZ als Text speichern, sonst macht Google aus „0151…“ eine Zahl und streicht die 0. */
+var TEXT_SPALTEN = ['Telefon', 'PLZ'];
+
+function zeileAnhaengen_(tab, werte) {
+  var z = zeileNachKopf_(tab, werte), r = tab.sh.getLastRow() + 1;
+  TEXT_SPALTEN.forEach(function (h) { if (tab.kopf[h] !== undefined) tab.sh.getRange(r, tab.kopf[h] + 1).setNumberFormat('@'); });
+  tab.sh.getRange(r, 1, 1, z.length).setValues([z]);
+}
+
+function textSpalten_(name) {
+  var sh = blatt_(name), kopf = sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0];
+  kopf.forEach(function (h, i) {
+    if (TEXT_SPALTEN.indexOf(String(h).trim()) >= 0) sh.getRange(2, i + 1, Math.max(sh.getMaxRows() - 1, 1), 1).setNumberFormat('@');
+  });
 }
 
 function zeileNachKopf_(tab, werte) {
