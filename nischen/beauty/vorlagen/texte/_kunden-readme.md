@@ -17,7 +17,7 @@ schicken: „Erzeuge {{betrieb}} neu.“ Die Checkliste (in der Beauty-Zentrale)
 | Betreut von | **{{betreuer_name}}** (Ansprechpartner des Studios) · Technik: {{technik_name}} |
 | Behandlung | {{modul_name}} · behandelt: {{behandler}} · {{behandler_name}} |
 | Werbegebiet | {{umkreis_km}} km um {{ort}} |
-| Online-Buchung | Modus {{buchung_modus}} · {{buchbare_zeiten}} · Beratung {{beratung_minuten}} Min. · {{direkt_kurz}} |
+| Online-Buchung | Modus {{buchung_modus}} · {{buchbare_zeiten}} · Beginn {{raster_text}} · Beratung {{beratung_minuten}} Min. · {{direkt_kurz}} |
 | Absage | bis {{absagefrist_text}} · {{ausfall_kurz}} |
 | Preise | Onboarding {{onboarding_preis}} · Monatsgebühr {{retainer}} ab dem ersten Kauf |
 | Werbebudget | {{budget_gesamt}} pro Monat (Meta {{budget_meta}}, Google {{budget_google}}) |

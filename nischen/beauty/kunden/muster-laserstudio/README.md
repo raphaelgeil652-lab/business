@@ -29,7 +29,7 @@ schicken: „Erzeuge Muster Laserstudio neu.“ Die Checkliste (in der Beauty-Ze
 | Betreut von | **Max Beispiel** (Ansprechpartner des Studios) · Technik: Tom Beispiel |
 | Behandlung | Laser-Haarentfernung · behandelt: Kosmetik mit NiSV-Fachkunde · Sabine Muster, Fachkunde nach NiSV |
 | Werbegebiet | 15 km um Musterstadt |
-| Online-Buchung | Modus Kalender · Di-Fr 9-18; Sa 10-14 · Beratung 20 Min. · direkt buchbar: Achseln, Bikinizone, Beine komplett |
+| Online-Buchung | Modus Kalender · Di-Fr 9-18; Sa 10-14 · Beginn alle 30 Minuten · Beratung 20 Min. · direkt buchbar: Achseln, Bikinizone, Beine komplett |
 | Absage | bis 24 Stunden vor dem Termin · Ausfallgebühr 30 € |
 | Preise | Onboarding 700 € · Monatsgebühr 899 € ab dem ersten Kauf |
 | Werbebudget | 600 € pro Monat (Meta 450 €, Google 150 €) |
@@ -73,5 +73,5 @@ schicken: „Erzeuge Muster Laserstudio neu.“ Die Checkliste (in der Beauty-Ze
 Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `muster-laserstudio`.
 
 **Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-laserstudio/anzeigen/vorschau.html?v=202611201408) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-laserstudio/landingpage/termin.html?demo=1&v=202611201408)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-laserstudio/anzeigen/vorschau.html?v=202611201430) ·
+[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-laserstudio/landingpage/termin.html?demo=1&v=202611201430)

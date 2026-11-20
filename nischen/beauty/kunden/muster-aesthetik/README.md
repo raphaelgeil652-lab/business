@@ -29,7 +29,7 @@ schicken: „Erzeuge Muster Ästhetik neu.“ Die Checkliste (in der Beauty-Zent
 | Betreut von | **Max Beispiel** (Ansprechpartner des Studios) · Technik: Tom Beispiel |
 | Behandlung | Faltenbehandlung und Hyaluron · behandelt: Arzt/Ärztin · Dr. med. Lena Muster, Fachärztin für Dermatologie |
 | Werbegebiet | 15 km um Musterstadt |
-| Online-Buchung | Modus Kalender · Mo-Fr 9-12 14-17 · Beratung 20 Min. · nur Beratung online |
+| Online-Buchung | Modus Kalender · Mo-Fr 9-12 14-17 · Beginn alle 30 Minuten · Beratung 20 Min. · nur Beratung online |
 | Absage | bis 24 Stunden vor dem Termin · keine Ausfallgebühr |
 | Preise | Onboarding 700 € · Monatsgebühr 899 € ab dem ersten Kauf |
 | Werbebudget | 850 € pro Monat (Meta 550 €, Google 300 €) |
@@ -71,5 +71,5 @@ schicken: „Erzeuge Muster Ästhetik neu.“ Die Checkliste (in der Beauty-Zent
 Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `muster-aesthetik`.
 
 **Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-aesthetik/anzeigen/vorschau.html?v=202611201409) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-aesthetik/landingpage/termin.html?demo=1&v=202611201409)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-aesthetik/anzeigen/vorschau.html?v=202611201430) ·
+[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-aesthetik/landingpage/termin.html?demo=1&v=202611201430)

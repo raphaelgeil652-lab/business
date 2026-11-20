@@ -90,6 +90,7 @@ STECKBRIEF = [
     ("puffer_minuten", "Puffer zwischen Terminen (Minuten)", "z. B. 10 zum Aufräumen · leer = 0", "zahl"),
     ("vorlauf_stunden", "Frühestens … Stunden nach der Buchung", "leer = 12", "zahl"),
     ("tage_voraus", "Wie viele Tage im Voraus buchbar?", "leer = 21", "zahl"),
+    ("raster_minuten", "Termine beginnen alle … Minuten", "z. B. 15, 30 oder 60 · leer = 30 (9:00, 9:30, 10:00 …)", "zahl"),
     ("absagefrist_stunden", "Absage bitte spätestens … Stunden vorher", "z. B. 24 · steht in Bestätigung und Erinnerung", "zahl"),
     ("ausfallgebuehr", "Ausfallgebühr bei später Absage oder Nichterscheinen (€)", "leer = keine. Nur wenn das Studio das wirklich verlangt", "euro"),
     ("vorbereitung", "Eigene Vorbereitungs-Hinweise (Punkte mit • trennen)", "leer = Vorschlag des Moduls (steht in der „0 Übersicht“)", "text"),

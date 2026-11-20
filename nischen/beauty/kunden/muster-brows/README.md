@@ -29,7 +29,7 @@ schicken: „Erzeuge Muster Brows neu.“ Die Checkliste (in der Beauty-Zentrale
 | Betreut von | **Tom Beispiel** (Ansprechpartner des Studios) · Technik: Tom Beispiel |
 | Behandlung | Permanent Make-up · behandelt: Kosmetik/PMU-Studio · Mia Muster, PMU-Artist |
 | Werbegebiet | 15 km um Musterstadt |
-| Online-Buchung | Modus Wunschtermin · Di, Do 10-16; Sa 10-14 · Beratung 30 Min. · direkt buchbar: Powder Brows, Lippen Aquarell |
+| Online-Buchung | Modus Wunschtermin · Di, Do 10-16; Sa 10-14 · Beginn alle 30 Minuten · Beratung 30 Min. · direkt buchbar: Powder Brows, Lippen Aquarell |
 | Absage | bis 48 Stunden vor dem Termin · keine Ausfallgebühr |
 | Preise | Onboarding 450 € · Monatsgebühr 499 € ab dem ersten Kauf |
 | Werbebudget | 400 € pro Monat (Meta 300 €, Google 100 €) |
@@ -71,5 +71,5 @@ schicken: „Erzeuge Muster Brows neu.“ Die Checkliste (in der Beauty-Zentrale
 Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `muster-brows`.
 
 **Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/anzeigen/vorschau.html?v=202611201408) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/landingpage/termin.html?demo=1&v=202611201408)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/anzeigen/vorschau.html?v=202611201430) ·
+[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/landingpage/termin.html?demo=1&v=202611201430)

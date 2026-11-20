@@ -238,7 +238,7 @@ function freieSlots_(k, art, leistung, s) {
   var ab = new Date(jetzt.getTime() + k.vorlauf * 60 * MIN);
   var heute = new Date(jetzt.getFullYear(), jetzt.getMonth(), jetzt.getDate());
   var bis = new Date(heute.getFullYear(), heute.getMonth(), heute.getDate() + k.tage + 1);
-  var belegt = belegt_(k, heute, bis, s), raster = Number(s.raster_minuten) || 30, puffer = k.puffer * MIN, tage = [];
+  var belegt = belegt_(k, heute, bis, s), raster = k.raster || Number(s.raster_minuten) || 30, puffer = k.puffer * MIN, tage = [];
   for (var d = new Date(heute); d < bis; d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1)) {
     var wt = d.getDay() === 0 ? 7 : d.getDay(), zeiten = [];
     (fenster[wt] || []).forEach(function (f) {
@@ -1245,7 +1245,7 @@ function kunden_() {
       behandlung: String(g('Behandlung')), modus: modus, kalender: String(g('Kalender-ID')).trim(),
       zeiten: String(g('Buchbare Zeiten')), beratung: Number(g('Beratung Minuten')) || 0, leistungen: leistungenLesen_(g('Leistungen')),
       puffer: Number(g('Puffer Minuten')) || 0, vorlauf: g('Vorlauf Stunden') === '' ? 12 : Number(g('Vorlauf Stunden')) || 0,
-      tage: Number(g('Tage im Voraus')) || 21, absagefrist: Number(g('Absagefrist Stunden')) || 0, ausfall: String(g('Ausfallregel')),
+      tage: Number(g('Tage im Voraus')) || 21, raster: Number(g('Raster Minuten')) || 0, absagefrist: Number(g('Absagefrist Stunden')) || 0, ausfall: String(g('Ausfallregel')),
       vorbereitung: String(g('Vorbereitung')),
       schluss: datum_(g('Teilnahmeschluss')), ziehung: datum_(g('Ziehung am')), betreuer: String(g('Betreuer')).trim()
     };

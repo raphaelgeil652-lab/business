@@ -262,6 +262,7 @@ def felder(stb, agentur, namen):
     puffer, absage = zahl(stb.get("puffer_minuten"), 0), zahl(stb.get("absagefrist_stunden"), 24)
     f["vorlauf_text"] = f"{vorlauf} Stunden"
     f["tage_text"] = f"{tage} Tage"
+    f["raster_text"] = f"alle {zahl(stb.get('raster_minuten'), 30)} Minuten"
     f["puffer_text"] = f", danach {puffer} Minuten Puffer" if puffer else ""
     f["absagefrist_text"] = f"{absage} Stunden vor dem Termin" if absage else "kurz vor dem Termin"
     gebuehr = stb.get("ausfallgebuehr")
@@ -626,7 +627,7 @@ def main():
     zeile = [f["slug"], roh("betrieb"), f"{roh('anrede')} {f['inhaber_nachname'] if stb.get('inhaber') else ''}".strip(),
              roh("email"), roh("telefon"), f["adresse"], f["landingpage_url"], roh("drive_link"), roh("onboarding_preis"), roh("retainer"),
              "", "Ja", stb.get("behandlung") or "", f["buchung_modus"], roh("kalender_id"), roh("buchbare_zeiten"), f["beratung_minuten"],
-             leist, str(zahl(stb.get("puffer_minuten"), 0)), str(zahl(stb.get("vorlauf_stunden"), 12)), str(zahl(stb.get("tage_voraus"), 21)),
+             leist, str(zahl(stb.get("puffer_minuten"), 0)), str(zahl(stb.get("vorlauf_stunden"), 12)), str(zahl(stb.get("tage_voraus"), 21)), str(zahl(stb.get("raster_minuten"), 30)),
              str(zahl(stb.get("absagefrist_stunden"), 24)), f["ausfall_regel"], " • ".join(f["_vorbereitung"]),
              roh("aktion_ende") if f["_verlosung"] else "", roh("ziehung") if f["_verlosung"] else "", f["betreuer_name"]]
     (ziel / "zentrale-zeile.txt").write_text("\t".join(x.replace("\t", " ").replace("\n", " ") for x in zeile) + "\n", encoding="utf-8")

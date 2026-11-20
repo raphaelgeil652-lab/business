@@ -51,7 +51,7 @@ Bitte reagieren Sie in den Geschäftszeiten innerhalb einer Stunde. Wer schnell 
 ## Wann darf online gebucht werden?
 
 Abgesprochen ist: **Di, Do 10-16; Sa 10-14**, frühestens 12 Stunden nach der Buchung und bis zu
-21 Tage im Voraus. Eine Beratung dauert 30 Minuten. Soll sich etwas ändern,
+21 Tage im Voraus. Termine beginnen alle 30 Minuten. Eine Beratung dauert 30 Minuten. Soll sich etwas ändern,
 sagen Sie uns Bescheid. Das ist in fünf Minuten umgestellt.
 
 Fragen? Tom Beispiel · Clickculture · 0151 00000002 · tom@clickculture.example

@@ -29,7 +29,7 @@ schicken: „Erzeuge Muster Zahnarztpraxis neu.“ Die Checkliste (in der Beauty
 | Betreut von | **Tom Beispiel** (Ansprechpartner des Studios) · Technik: Tom Beispiel |
 | Behandlung | Zahnaufhellung (Bleaching) · behandelt: Zahnarztpraxis · Dr. med. dent. Paul Muster, Zahnarzt |
 | Werbegebiet | 15 km um Musterstadt |
-| Online-Buchung | Modus Kalender · Mo-Do 8-17; Fr 8-12 · Beratung 20 Min. · direkt buchbar: Bleaching in der Praxis |
+| Online-Buchung | Modus Kalender · Mo-Do 8-17; Fr 8-12 · Beginn alle 30 Minuten · Beratung 20 Min. · direkt buchbar: Bleaching in der Praxis |
 | Absage | bis 24 Stunden vor dem Termin · keine Ausfallgebühr |
 | Preise | Onboarding 650 € · Monatsgebühr 699 € ab dem ersten Kauf |
 | Werbebudget | 600 € pro Monat (Meta 350 €, Google 250 €) |
@@ -70,5 +70,5 @@ schicken: „Erzeuge Muster Zahnarztpraxis neu.“ Die Checkliste (in der Beauty
 Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `muster-zahnarztpraxis`.
 
 **Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/anzeigen/vorschau.html?v=202611201409) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/landingpage/termin.html?demo=1&v=202611201409)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/anzeigen/vorschau.html?v=202611201430) ·
+[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/landingpage/termin.html?demo=1&v=202611201430)

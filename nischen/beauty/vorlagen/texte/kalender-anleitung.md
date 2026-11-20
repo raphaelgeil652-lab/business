@@ -51,7 +51,7 @@ Bitte reagieren Sie in den Geschäftszeiten innerhalb einer Stunde. Wer schnell 
 ## Wann darf online gebucht werden?
 
 Abgesprochen ist: **{{buchbare_zeiten}}**, frühestens {{vorlauf_text}} nach der Buchung und bis zu
-{{tage_text}} im Voraus. Eine Beratung dauert {{beratung_minuten}} Minuten{{puffer_text}}. Soll sich etwas ändern,
+{{tage_text}} im Voraus. Termine beginnen {{raster_text}}. Eine Beratung dauert {{beratung_minuten}} Minuten{{puffer_text}}. Soll sich etwas ändern,
 sagen Sie uns Bescheid. Das ist in fünf Minuten umgestellt.
 
 Fragen? {{betreuer_name}} · {{agentur_name}} · {{betreuer_telefon}} · {{betreuer_email}}

@@ -46,7 +46,7 @@ KUNDEN = [  # (Name, Breite, Format, Eingabe?) · die ersten Spalten bis „Betr
     ("Onboarding €", 12, EURO, True), ("Monatsgebühr €", 13, EURO, True), ("Live seit", 12, DATUM, True), ("Aktiv", 8, None, True),
     ("Behandlung", 18, None, True), ("Buchung", 13, None, True), ("Kalender-ID", 28, None, True),
     ("Buchbare Zeiten", 26, None, True), ("Beratung Minuten", 10, "0", True), ("Leistungen", 40, None, True),
-    ("Puffer Minuten", 9, "0", True), ("Vorlauf Stunden", 9, "0", True), ("Tage im Voraus", 9, "0", True),
+    ("Puffer Minuten", 9, "0", True), ("Vorlauf Stunden", 9, "0", True), ("Tage im Voraus", 9, "0", True), ("Raster Minuten", 9, "0", True),
     ("Absagefrist Stunden", 10, "0", True), ("Ausfallregel", 30, None, True), ("Vorbereitung", 40, None, True),
     ("Teilnahmeschluss", 14, DATUM, True), ("Ziehung am", 12, DATUM, True), ("Betreuer", 14, None, True),
     ("Erster Auftrag", 14, DATUM, False), ("Monatsgebühr ab", 14, "MM.YYYY", False), ("Termine gesamt", 10, "0", False),
@@ -111,7 +111,7 @@ EINSTELLUNGEN = [  # (Schlüssel, Einstellung, Vorgabe, Hilfe)
     ("§", "Online-Buchung", None, None),
     ("bestaetigung_minuten", "Termin freihalten bis zur Bestätigung (Minuten)", 45, "So lange ist ein Platz reserviert. Nicht bestätigt → wieder frei"),
     ("erinnerung_stunden", "Erinnerung an die Kundin … Stunden vorher", 24, ""),
-    ("raster_minuten", "Termine beginnen alle … Minuten", 30, "30 = 9:00, 9:30, 10:00 …"),
+    ("raster_minuten", "Termine beginnen alle … Minuten (Vorgabe)", 30, "gilt nur, wenn beim Studio im Blatt „Kunden“ bei „Raster Minuten“ nichts steht"),
     ("max_unbestaetigt", "Höchstens … unbestätigte Buchungen in 30 Minuten pro Studio", 6, "Schutz gegen Bots und Termin-Blockierer. Darüber: kurz gesperrt, Mail an dich"),
     ("mail_warnung_ab", "Warnen, wenn morgens weniger als … Mails übrig sind", 25, "Google-Grenze: ca. 100 Mails am Tag (kostenlos), 1.500 (Workspace)"),
     ("§", "Rückruf-Wünsche (Formular auf der Seite)", None, None),
@@ -307,6 +307,7 @@ def bauen():
                                              "Wunschtermin = nur buchbare Zeiten, das Studio bestätigt jeden Termin per Knopf.", "Zentrale")
     ku[f"{K('Betreuer')}1"].comment = Comment("Wer von euch betreut das Studio? Name wie in „Einstellungen → Wer ist im Team?“. Bekommt den Report-Entwurf, steht in Hinweisen.", "Zentrale")
     ku[f"{K('Buchbare Zeiten')}1"].comment = Comment("Wann online gebucht werden darf, z. B. „Mo-Fr 9-18; Sa 10-14“ oder „Di, Do 9:30-13 14-18“.", "Zentrale")
+    ku[f"{K('Raster Minuten')}1"].comment = Comment("Alle wie viele Minuten ein Termin beginnen kann, z. B. 15, 30 oder 60. Leer = Vorgabe aus „Einstellungen“.", "Zentrale")
     ku[f"{K('Leistungen')}1"].comment = Comment("Direkt buchbare Behandlungen: Name | Minuten | Preis; Name | Minuten | Preis", "Zentrale")
     ku[f"{K('Vorbereitung')}1"].comment = Comment("Punkte mit • getrennt. Steht in der Bestätigung und der Erinnerung an die Kundin.", "Zentrale")
 
