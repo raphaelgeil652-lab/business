@@ -113,6 +113,7 @@ KUNDE_BEAUTY = [
     ("kampagnen.md", "2b Kampagnen als Text.docx"),
     ("anzeigen/creatives", "3 Anzeigen-Bilder – bei Meta hochladen"),
     ("anzeigen", "4 Anzeigen ansehen – vorschau.html öffnen"),
+    ("kampagnen", "5 Weitere Kampagnen – je Ordner kampagne.html öffnen"),
     ("fotos", "Fotos – Originale"),
 ]
 KUNDE = [

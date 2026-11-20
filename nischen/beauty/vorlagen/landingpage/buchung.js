@@ -42,7 +42,7 @@
   // 2 · Freie Zeiten
   function ladeZeiten(hinweis) {
     wahl.tag = null; wahl.zeit = null; zeigeWahl();
-    $('tage').innerHTML = ''; $('zeiten').innerHTML = '';
+    $('tage').innerHTML = '';
     $('lade').textContent = hinweis || 'Freie Termine werden geladen …';
     $('lade').style.display = 'block';
     if (DEMO) { setTimeout(function () { zeigeTage(demoTage()); }, 250); return; }
@@ -55,42 +55,71 @@
         rueckruf(true);
       });
   }
+  // Großer Wochenkalender: alle freien Zeiten aus dem Google-Kalender des Studios, am Handy 3 Tage, am Computer 7 Tage
+  var start0 = 0, proSeite = 7, alleTage = [];
+  function tageListe(liste) {
+    var map = {}, out = [], wt = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], p = function (n) { return (n < 10 ? '0' : '') + n; };
+    liste.forEach(function (t) { map[t.datum] = t; });
+    var heute = new Date(), letzter = liste.length ? liste[liste.length - 1].datum : '';
+    for (var i = 0; i < 35; i++) {
+      var d = new Date(heute.getFullYear(), heute.getMonth(), heute.getDate() + i);
+      var key = d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+      out.push(map[key] || { datum: key, label: wt[d.getDay()] + ', ' + p(d.getDate()) + '.' + p(d.getMonth() + 1) + '.', zeiten: [] });
+      if (key >= letzter && i >= 6) break;
+    }
+    return out;
+  }
   function zeigeTage(liste) {
     tage = liste || [];
-    if (!tage.length) {
+    if (!tage.some(function (t) { return t.zeiten.length; })) {
       $('lade').innerHTML = 'Gerade ist online kein Termin frei. Lassen Sie sich zurückrufen, wir finden einen.';
       rueckruf(true);
       return;
     }
     $('lade').style.display = 'none';
-    tage.forEach(function (t, i) {
-      var teile = t.label.split(', ');
-      var b = el('button', 'tag', teile[0] + '<small>' + teile[1] + '</small>');
-      b.type = 'button';
-      b.onclick = function () {
-        [].forEach.call($('tage').children, function (x) { x.setAttribute('aria-pressed', 'false'); });
-        b.setAttribute('aria-pressed', 'true');
-        zeigeZeiten(t);
-      };
-      $('tage').appendChild(b);
-      if (i === 0) b.onclick();
-    });
+    alleTage = tageListe(tage);
+    proSeite = window.innerWidth >= 700 ? 7 : 3;
+    start0 = 0;
+    while (start0 + proSeite < alleTage.length && !alleTage.slice(start0, start0 + proSeite).some(function (t) { return t.zeiten.length; })) start0 += proSeite;
+    malen();
   }
-  function zeigeZeiten(t) {
-    wahl.tag = t; wahl.zeit = null; zeigeWahl();
-    $('zeiten').innerHTML = '';
-    t.zeiten.forEach(function (z) {
-      var b = el('button', 'zeit', z);
-      b.type = 'button';
-      b.onclick = function () {
-        [].forEach.call($('zeiten').children, function (x) { x.setAttribute('aria-pressed', 'false'); });
-        b.setAttribute('aria-pressed', 'true');
-        wahl.zeit = z; zeigeWahl();
-        $('schritt-daten').style.display = 'block';
-        setTimeout(function () { $('wahl').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
-      };
-      $('zeiten').appendChild(b);
+  function malen() {
+    var sicht = alleTage.slice(start0, start0 + proSeite), k = $('tage');
+    k.innerHTML = '';
+    var kopf = el('div', 'kal-kopf');
+    var zur = el('button', 'kal-pfeil', '‹'), vor = el('button', 'kal-pfeil', '›');
+    zur.type = vor.type = 'button';
+    zur.setAttribute('aria-label', 'frühere Tage'); vor.setAttribute('aria-label', 'spätere Tage');
+    zur.disabled = start0 === 0; vor.disabled = start0 + proSeite >= alleTage.length;
+    zur.onclick = function () { start0 = Math.max(0, start0 - proSeite); malen(); };
+    vor.onclick = function () { start0 = Math.min(alleTage.length - 1, start0 + proSeite); malen(); };
+    kopf.appendChild(zur);
+    kopf.appendChild(el('span', 'kal-titel', esc(sicht[0].label.split(', ')[1]) + ' – ' + esc(sicht[sicht.length - 1].label.split(', ')[1])));
+    kopf.appendChild(vor);
+    k.appendChild(kopf);
+    var gitter = el('div', 'kal-gitter');
+    gitter.style.gridTemplateColumns = 'repeat(' + sicht.length + ', minmax(0, 1fr))';
+    sicht.forEach(function (t) {
+      var sp = el('div', 'kal-tag'), teile = t.label.split(', ');
+      sp.appendChild(el('div', 'kal-tagkopf', '<b>' + esc(teile[0]) + '</b><small>' + esc(teile[1]) + '</small>'));
+      if (!t.zeiten.length) sp.appendChild(el('div', 'kal-leer', '–'));
+      t.zeiten.forEach(function (z) {
+        var b = el('button', 'zeit', z);
+        b.type = 'button';
+        b.setAttribute('data-tag', t.datum);
+        if (wahl.tag && wahl.tag.datum === t.datum && wahl.zeit === z) b.setAttribute('aria-pressed', 'true');
+        b.onclick = function () {
+          [].forEach.call(k.querySelectorAll('.zeit'), function (x) { x.setAttribute('aria-pressed', 'false'); });
+          b.setAttribute('aria-pressed', 'true');
+          wahl.tag = t; wahl.zeit = z; zeigeWahl();
+          $('schritt-daten').style.display = 'block';
+          setTimeout(function () { $('wahl').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+        };
+        sp.appendChild(b);
+      });
+      gitter.appendChild(sp);
     });
+    k.appendChild(gitter);
   }
   function zeigeWahl() {
     var w = $('wahl');
@@ -105,7 +134,7 @@
   }
   function demoTage() {
     var out = [], d = new Date(), wt = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
-    for (var i = 1; out.length < 8 && i < 20; i++) {
+    for (var i = 1; out.length < 21 && i < 30; i++) {
       var x = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i);
       if (x.getDay() === 0) continue;
       var z = ['09:00', '09:30', '10:30', '11:00', '13:30', '14:00', '15:30', '16:00', '17:00'].filter(function (_, k) { return (k + i) % 3; });

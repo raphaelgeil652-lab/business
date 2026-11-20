@@ -42,7 +42,18 @@ a{color:inherit;}
 .art .preis{font-weight:700;white-space:nowrap;color:var(--accent);}
 .art[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--hell);}
 .unter{margin:10px 0 0 6px;display:grid;gap:8px;}
-.tage{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
+.tage{display:block;}
+.kal-kopf{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px;}
+.kal-titel{font-weight:700;font-size:1rem;}
+.kal-pfeil{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font:inherit;font-size:1.4rem;line-height:1;cursor:pointer;color:var(--ink);}
+.kal-pfeil:disabled{opacity:.3;cursor:default;}
+.kal-gitter{display:grid;gap:8px;}
+.kal-tag{display:flex;flex-direction:column;gap:6px;min-width:0;}
+.kal-tagkopf{text-align:center;padding:6px 0;border-bottom:2px solid var(--line);margin-bottom:2px;}
+.kal-tagkopf b{display:block;font-size:.95rem;}.kal-tagkopf small{color:var(--muted);font-size:.76rem;}
+.kal-leer{text-align:center;color:var(--muted);padding:10px 0;}
+.kal-tag .zeit{width:100%;padding:10px 0;}
+h1{overflow-wrap:break-word;hyphens:auto;-webkit-hyphens:auto;}
 .tag{flex:0 0 auto;scroll-snap-align:start;border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:10px 12px;font:inherit;
      font-weight:700;font-size:.9rem;color:var(--ink);cursor:pointer;min-width:84px;text-align:center;}
 .tag small{display:block;font-weight:500;color:var(--muted);font-size:.76rem;}
@@ -126,3 +137,4 @@ footer{border-top:1px solid var(--line);padding:22px 0 110px;text-align:center;f
 .vorb ul{padding-left:18px;margin:0 0 10px;font-size:.95rem;}
 .vorb li{margin-bottom:6px;}
 .klein{font-size:.85rem;color:var(--muted);margin-top:14px;}
+@media(min-width:900px){#buchen{position:relative;width:860px;left:50%;transform:translateX(-50%);}}

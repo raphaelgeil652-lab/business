@@ -2,12 +2,12 @@
 
 > Alles fertig zum Eintragen, Texte 1:1 kopieren. Bilder: Ordner `anzeigen/creatives`.
 > Die Klickwege sind so, wie Meta und Google sie im November 2026 zeigen. Heißt ein Feld anders, nimm das Nächstliegende.
-> Pixel-ID und Google-Conversion trägst du auf der **Team-Seite** des Studios ein (Link in jeder Mail der Zentrale).
+> Die Pixel-ID trägst du auf der **Team-Seite** des Studios ein (Link in jeder Mail der Zentrale).
 > Sie wirken sofort, die Seite muss dafür **nicht** neu hochgeladen werden.
 
-**Was gezählt wird:** Meta bekommt „Lead“ und Google eine Conversion erst, wenn die Kundin ihren Termin **in der Mail
+**Was gezählt wird:** Meta bekommt „Lead“ erst, wenn die Kundin ihren Termin **in der Mail
 bestätigt** hat (Seite `bestaetigen.html`). Reservierungen, die nie bestätigt werden, und Fake-Buchungen zählen nicht.
-So lernen Meta und Google, Menschen zu finden, die wirklich kommen.
+So lernt Meta, Menschen zu finden, die wirklich kommen.
 
 **Regeln für diese Behandlung** (stecken schon in den Texten, nichts dazu erfinden):
 - ✗ nicht erlaubt: Verlosung
@@ -31,39 +31,6 @@ So lernen Meta und Google, Menschen zu finden, die wirklich kommen.
    Datennutzung“). Steht im Events Manager ein solcher Hinweis, ist das kein Fehler von euch. Die Seite sendet
    ohnehin keine Behandlungsnamen. Siehe unten „Wenn Meta ‚Lead‘ nicht anbietet“.
 
-**Google-Ads-Conversion** (so geklickt im Probelauf, November 2026)
-
-Voraussetzung: Das Studio hat die Verknüpfung mit eurem Verwaltungskonto angenommen (steht auf der Team-Seite als ✓ bei „Google Ads verbinden“).
-Google Ads am besten in **Chrome, ohne VPN und ohne Werbeblocker**. Sonst bleibt es gern mit „Ein Fehler ist
-aufgetreten“ hängen.
-
-1. ads.google.com → oben auf den Kontonamen → das **Konto des Kunden** wählen (nicht euer Verwaltungskonto).
-2. Links **„Zielvorhaben“** (der Pokal) → **„Conversions“** → **„Zusammenfassung“** → **„Conversions erstellen“**
-   bzw. „+ Conversion-Aktion“.
-3. Bei **„Conversions auf einer Website“** den Haken setzen → rechts **„URL hinzufügen“** →
-   `https://muster-aesthetik.netlify.app`. Die anderen drei Haken (App, Anrufe, Offline) leer lassen →
-   **„Speichern und fortfahren“**. Ist die Seite noch nicht online, findet Google nichts. Das ist egal.
-4. **„+ Conversion erstellen“** bzw. „manuell“ → Kategorie **„Lead-Formular senden“** → Name
-   `Termin bestätigt` → Wert: **„Für jede Conversion denselben Wert verwenden“, 1 €**
-   („keinen Wert“ gibt es nicht mehr; der Wert ist uns egal) → Zählung **„Eine“** → **„Speichern und fortfahren“**.
-   Steht daneben „Primäre Zahlungsmethode“: falsche Übersetzung von „primäre Aktion“, passt so.
-5. Es kommt ein Fenster **„Google-Tag einrichten“** mit Code `GTM-…` und dem Knopf „Einfügung testen“:
-   **„Abbrechen“** bzw. **×**. Nichts einbauen, das machen unsere Seiten selbst.
-6. **Den Wert holen:** „Zielvorhaben“ → „Conversions“ → **„Alle Conversions“** → auf
-   **„Termin bestätigt“** klicken → ganz nach unten scrollen → im Kasten „Datenquellen“
-   rechts **„Verwalten“** → **„Einrichten“**. Es öffnet sich der **Tag Manager** → unten bei „Ausstehende
-   Änderungen“ den blauen Link **„Termin bestätigt“** anklicken.
-7. Dort stehen **„Conversion-ID“** (nur Ziffern) und **„Conversion-Label“** (Buchstaben und Zahlen).
-   Die „Conversion-Typ-ID“ braucht ihr nicht. Tag Manager mit × schließen, **nicht auf „Senden“ klicken**.
-8. Daraus wird: `AW-` + Conversion-ID + `/` + Conversion-Label, z. B. `AW-123456789/AbCdEfGhIj`
-   → Team-Seite des Studios → „Google-Conversion“ → Speichern.
-
-Einmal prüfen: links „Verwaltung“ (Zahnrad) → „Kontoeinstellungen“ → **„Automatische Tagkennzeichnung“
-muss an sein** (ist es normalerweise). Ohne sie kann Google die Anfragen keiner Anzeige zuordnen.
-
-Status „Warten auf Conversions“ ist normal. Er bleibt, bis die erste Kundin nach einem Klick auf eine Google-Anzeige ihren Termin bestätigt.
-
-
 ## Meta-Kampagne anlegen: Klick für Klick
 
 adsmanager.facebook.com → oben links das **Werbekonto des Studios** wählen → grüner Knopf **„+ Erstellen“**.
@@ -76,7 +43,7 @@ adsmanager.facebook.com → oben links das **Werbekonto des Studios** wählen �
 | Kampagnenziel | **Leads** → Weiter |
 | Name der Kampagne | `Beauty – Faltenbehandlung und Hyaluron – Muster Ästhetik` |
 | Budgetstrategie | **Kampagnenbudget** |
-| Tagesbudget | **18 €** (= 550 € im Monat ÷ 30) |
+| Tagesbudget | **28 €** (= 850 € im Monat ÷ 30) |
 | Kampagnengebotsstrategie | **Höchstes Volumen** |
 | Spezielle Anzeigenkategorien | **nichts** auswählen |
 
@@ -143,72 +110,6 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
   👉 Freie Termine ansehen.
 - Überschrift: Beratungstermin online buchen
 - Beschreibung: Freie Zeiten ansehen.
-
-
-## Google-Kampagne anlegen: Klick für Klick
-
-Voraussetzung: Das Studio hat in seinem Google-Ads-Konto seine **Zahlungsart** hinterlegt. Ohne Zahlungsart fragt
-Google am Ende nach Zahlungsdaten: **dort nie eure eigenen eintragen.** Chrome, kein VPN, kein Werbeblocker.
-
-ads.google.com → **Konto des Studios** wählen → links **„Kampagnen“** → blauer **„+“** → **„Neue Kampagne“**.
-
-1. Zielvorhaben **„Leads“** → Conversion-Ziel **„Lead-Formular senden“** (die Conversion „Termin bestätigt“). Andere Ziele entfernen.
-2. Kampagnentyp **„Suche“** → nur **„Websitebesuche“**: `https://muster-aesthetik.netlify.app/termin.html`. Nicht „Eingereichte Lead-Formulare“.
-3. Name: `Suche – Faltenbehandlung und Hyaluron Musterstadt` → **„Weiter“**.
-4. Gebote: **„Klicks“** → Haken bei „Maximales CPC-Gebotslimit“ → `4,00 €`. (Ab ca. 30 bestätigten Terminen über Google auf „Conversions“ umstellen.)
-5. Netzwerke: **beide Haken raus**. Standort: **„Umkreis“** `Musterstadt`, `15` km. Standortoption: **„Präsenz“**. Sprache: **Deutsch**.
-6. „Politische Werbung in der EU“: **„Nein“**. Weitere Einstellungen → „Suffix der finalen URL“: `utm_source=google&utm_campaign=falten-suche`. Automatisch erstellte Assets: **aus**. „AI Max“ / weitgehend passende Keywords: **aus**.
-7. Anzeigengruppe `Faltenbehandlung und Hyaluron Musterstadt`, Keywords **mit Anführungszeichen**, eins pro Zeile:
-```
-"faltenbehandlung musterstadt"
-"faltenunterspritzung musterstadt"
-"hyaluron musterstadt"
-"lippen aufspritzen musterstadt"
-"ästhetische medizin musterstadt"
-"faltenbehandlung kosten"
-"hyaluron lippen"
-```
-8. Finale URL: `https://muster-aesthetik.netlify.app/termin.html` · Pfad: `Beratung / Termin`.
-9. Überschriften (15, je höchstens 30 Zeichen; zeigt Google rot, kürzen):
-    1. Faltenbehandlung
-    2. Beratung zu Hyaluron
-    3. Erst beraten, dann entscheiden
-    4. Termin online buchen
-    5. Ärztliche Beratung
-    6. Muster Ästhetik
-    7. Freie Termine ansehen
-    8. Persönlich und ohne Druck
-    9. Aufklärung vor Behandlung
-    10. Beratung in Musterstadt
-    11. Ohne Warteschleife buchen
-    12. Ihr Termin in 30 Sekunden
-    13. Ehrliche Einschätzung
-    14. Ästhetik in Musterstadt
-    15. Lippen und Konturen
-   Überschrift 1 an **Position 1 anheften**.
-10. Beschreibungen (4, je höchstens 90 Zeichen):
-    1. Persönliches Gespräch zu Faltenbehandlung und Hyaluron. Danach entscheiden Sie in Ruhe.
-    2. Ausführliche Aufklärung über Ablauf, Wirkung und Risiken. Termin online wählen.
-    3. Freie Beratungstermine sehen und in 30 Sekunden buchen. Bestätigung per E-Mail.
-    4. Muster Ästhetik in Musterstadt. Behandlung nur nach Aufklärung.
-11. Budget: **10 €** pro Tag → **„Kampagne veröffentlichen“** → sofort auf **„Pausiert“**.
-12. **Ausschließende Keywords** (Kampagne → „Keywords“ → „Ausschließende Keywords“ → „+“):
-```
-creme
-serum
-kaufen
-selber
-kurs
-ausbildung
-schulung
-job
-stellenangebot
-türkei
-pen
-ohne nadel
-```
-
-**Wichtig bei Faltenbehandlung:** Das Wort „Botox“ (und andere Markennamen) nie in Anzeigen oder Keywords: Google sperrt verschreibungspflichtige Mittel. Kundenlisten, Remarketing und ähnliche Zielgruppen sind bei Schönheitsbehandlungen nicht erlaubt. Lehnt Google eine Anzeige ab, die betroffene Überschrift weglassen, nicht umformulieren und neu einreichen.
 
 
 ## Nach dem Start

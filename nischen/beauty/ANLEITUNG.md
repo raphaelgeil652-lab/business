@@ -56,15 +56,17 @@ von selbst die Mail „Heute dran“. Texte: „1 Verkaufsskript“ und „2 Nac
 1. Das Beispiel der passenden Behandlung zeigen (Ordner „03 Beispiele zum Zeigen“): Anzeigen und Terminseite.
 2. Lesezeichen **„Neuer Kunde“** öffnen und **mit dem Studio zusammen** ausfüllen:
    - Studio, Inhaberin, Telefon, E-Mail, Adresse.
-   - Behandlung und wer behandelt. Passt das nicht zusammen (z. B. Faltenbehandlung ohne Arzt), sagt das Formular
-     sofort „So nicht abschließen“.
-   - **Seine Leistungen**, so wie das Studio sie nennt: Name, Minuten, Preis. Nichts ist vorgegeben. Jede Zeile ist
-     online buchbar. Bei Faltenbehandlung zuerst eine Beratung eintragen.
-   - **Wann gebucht werden darf:** pro Tag `9-18`. Mit Mittagspause: `9-12` ins erste Feld, `14-18` ins zweite.
-   - Takt (alle 15, 30 oder 60 Minuten), Google-Kalender ja oder nein, Absagefrist, Ausfallgebühr nur, wenn das
-     Studio sie wirklich verlangt.
-   - Wie viele neue Kundinnen pro Woche möglich sind. Das Formular schlägt daraus das **Werbebudget** vor.
-   - Onboarding und Monatsgebühr.
+   - Adresse in getrennten Feldern (Straße, Hausnummer, PLZ, Ort). Groß- und Kleinschreibung macht das Formular selbst.
+   - **Das Angebot in eigenen Worten** (z. B. „Wimpernverlängerung“) und wer behandelt. Daraus kommen die Werberegeln
+     (bei Ärzten und Heilpraktikern z. B. das Heilmittelwerbegesetz). Nichts ist vorgegeben.
+   - **Seine Leistungen**, so wie das Studio sie nennt: Name, Minuten, Preis. Jede Zeile ist online buchbar.
+   - **Kalender:** Adresse seines Google-Kalenders. Dann im Wochenraster antippen, wann online gebucht werden darf
+     (Knöpfe „Mo–Fr 9–18“ helfen). Alles, was in seinem Google-Kalender steht, ist automatisch belegt, auch Kundinnen,
+     die anders gebucht haben. Takt und Pausen müsst ihr nicht festlegen.
+   - Absagefrist, Ausfallgebühr nur, wenn das Studio sie wirklich verlangt.
+   - **Provision** (Vorschlag 15 %) und wie viele neue Kundinnen pro Woche möglich sind. Das Formular schlägt daraus das
+     **Werbebudget** vor (geht komplett an Meta). Alles mit * ist Pflicht.
+   - Etwas falsch? Team-Seite → **„Kundendaten ändern“**.
 3. **„Kunde anlegen“** tippen. Ab jetzt läuft es von selbst:
    - Das Studio bekommt die **Willkommens-Mail** mit dem Knopf zu seiner Schritte-Seite. Der Betreuer bekommt eine Kopie.
    - Die Vereinbarung ist ausgefüllt und wartet dort auf den Klick „Annehmen“.
@@ -76,22 +78,23 @@ Am besten öffnet das Studio die Schritte-Seite noch im Gespräch und nimmt die 
 
 Auf seiner Schritte-Seite steht bei jedem Schritt eine Anleitung und ein Knopf:
 
-1. Vereinbarung annehmen. Das Studio bekommt eine Kopie per Mail, die **Onboarding-Rechnung geht von selbst raus**.
+1. Vereinbarung annehmen. Das Studio und ihr bekommen sie **als PDF mit Annahme-Nachweis** (Name, Zeit, Browser,
+   Prüfsumme). Gespeichert ist sie zusätzlich im Blatt „Verträge“.
 2. Links zu Impressum und Datenschutz.
 3. Wer behandelt (Name, Qualifikation).
 4. Hinweise vor dem Termin prüfen und freigeben (ein Vorschlag steht schon drin).
 5. Fotos hochladen, direkt vom Handy.
 6. Google-Kalender freigeben. Der Knopf „Freigabe prüfen“ zeigt sofort ✓. Nur wenn das Studio einen Google-Kalender hat.
 7. Meta (Facebook und Instagram) verbinden.
-8. Google Ads verbinden.
+
+Alle Felder sind Pflicht. Jeder erledigte Schritt lässt sich über „Ändern“ korrigieren (außer der angenommenen Vereinbarung).
 
 **Euer Teil, nur wenn eine Mail kommt:**
 
 - **„Meta-Partnerzugriff ist freigegeben“**: Die Mail sagt Klick für Klick, was ihr tut (Personen zuweisen, Pixel anlegen).
-- **„Google-Ads-Konto … verknüpfen“**: im Verwaltungskonto „Vorhandenes Konto verknüpfen“. Die Kunden-ID steht in der Mail.
 - **„kommt nicht weiter: bitte anrufen“**: kommt nach drei Erinnerungen ohne Fortschritt. Anrufen und die Schritte zusammen machen.
 
-**Meta und Google macht ihr am besten zusammen mit dem Studio**, am Telefon mit Bildschirm-Teilen (ca. 30 Minuten).
+**Meta macht ihr am besten zusammen mit dem Studio**, am Telefon mit Bildschirm-Teilen (ca. 30 Minuten).
 Klick für Klick steht in „Hilfe – Meta und Google mit dem Studio einrichten“. Die zwei wichtigsten Regeln:
 
 - Das Studio legt **sein eigenes** Werbekonto und **sein eigenes** Google-Ads-Konto an, mit **seiner** Karte. Nie in eurem
@@ -130,6 +133,13 @@ Die Mail kommt von selbst, sobald alle Schritte erledigt sind. Dann:
 2. Kampagnen aktivieren.
 3. Team-Seite → **„Jetzt live schalten“** (erst nach der Freigabe durch das Studio). Das Studio bekommt von selbst die Mail „Ihre Werbung läuft“.
 
+## Neue Kampagnen, jederzeit
+
+Kampagnen sind nicht festgelegt. Wenn ihr für ein Studio etwas Neues bewerben wollt (Saison, neues Angebot, andere
+Zielgruppe), schreibt Claude in einem Satz: **„Neue Kampagne für *kürzel*: Thema, was beworben wird, Budget pro Monat.“**
+Claude schreibt die Anzeigen, prüft sie gegen die Werberegeln des Studios und schickt einen Ordner mit Bildern und eigenem
+Kampagnen-Assistenten. Die Terminseite bleibt dieselbe. Vor dem Start einmal vom Studio absegnen lassen.
+
 ## Schritt 7 · Laufend: was von selbst passiert und was ihr tut
 
 | Was | Wer | Ihr tut |
@@ -138,7 +148,8 @@ Die Mail kommt von selbst, sobald alle Schritte erledigt sind. Dann:
 | Abends 19 Uhr meldet das Studio per Knopf: erschienen · nicht erschienen · gekauft | Studio | nichts |
 | Montags: Wochenbericht ans Studio (neue Termine, erschienen, gekauft, was diese Woche ansteht) plus offene Termine zum Antippen | Zentrale | nichts |
 | Erster Kauf → Monatsgebühr ab dem nächsten Monat | Zentrale | nichts |
-| 1. des Monats: Rechnungen Monatsgebühr als PDF ans Studio | Zentrale | Geld da → Team-Seite „Bezahlt“ |
+| Studio tippt „Behandlung gekauft“ und gibt den Betrag ein | Studio | nichts |
+| 1. des Monats: Provisions-Rechnung für den Vormonat als PDF ans Studio | Zentrale | Geld da → Team-Seite „Bezahlt“ |
 | 1. des Monats: Mail „Monatsreports: je Studio ein Klick“ | Zentrale | Link → Werbekosten aus Meta und Google eintragen, zwei Sätze → „Report senden“ → kurz anrufen |
 | Fehler oder Warnung (z. B. Mail-Kontingent knapp) | Zentrale | steht in der Mail |
 | Studio hört auf | ihr | Team-Seite „Pausieren“, Kampagnen in Meta und Google pausieren |

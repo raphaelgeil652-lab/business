@@ -64,7 +64,10 @@ var TAG = 24 * 60 * 60 * 1000, MIN = 60000;
 /* ======== BAUSTEIN-ANFANG: erzeugt von zentrale-bauen.py aus vorlagen/module.py und vorlagen/texte/vereinbarung.md. Nicht von Hand ändern. */
 var MODULE = {"Laser": {"kurz": "laser", "name": "Laser-Haarentfernung", "behandler": ["Kosmetik mit NiSV-Fachkunde", "Arzt/Ärztin"], "qualifikation": "NiSV-Fachkunde (Zertifikat) für jede Person, die lasert. Ohne Nachweis kein Kunde.", "regeln": {"verlosung": true, "vorher_nachher": true, "rabatt": true, "kostenlos": true, "preise": true, "direkt": true}, "vorbereitung": ["Die Stelle 24 Stunden vorher rasieren, nicht epilieren und nicht wachsen", "4 Wochen vorher nicht mehr epilieren, wachsen oder zupfen", "2 Wochen vorher keine Sonne, kein Solarium, kein Selbstbräuner", "Am Tag selbst keine Creme, kein Deo und kein Make-up auf der Stelle", "Nehmen Sie Medikamente ein (z. B. Antibiotika), sagen Sie es uns bitte vorher"], "recht": "Wettbewerbsrecht und Preisangaben; „dauerhaft“ nur mit Hinweis auf mehrere Sitzungen und ohne Garantie", "kosten_pro_termin": 35, "meta_anteil": 0.7, "preis": "Onboarding ca. 700 €, Monatsgebühr ca. 799–999 €, Werbebudget ca. 500–800 €"}, "Permanent Make-up": {"kurz": "pmu", "name": "Permanent Make-up", "behandler": ["Kosmetik/PMU-Studio", "Kosmetik mit NiSV-Fachkunde", "Arzt/Ärztin"], "qualifikation": "Hygieneschulung und Nachweis der PMU-Ausbildung; Arbeitsproben (echte Ergebnisfotos).", "regeln": {"verlosung": true, "vorher_nachher": false, "rabatt": true, "kostenlos": true, "preise": true, "direkt": true}, "vorbereitung": ["Kommen Sie bei Augenbrauen am besten ungeschminkt, bei Lippen ohne Lippenstift", "24 Stunden vorher bitte keinen Alkohol", "Blutverdünnende Mittel nur nach Rücksprache mit Ihrem Arzt weglassen, nie auf eigene Faust", "Hatten Sie schon einmal Lippenherpes? Bei Lippen-Pigmentierung sagen Sie es uns bitte vorher", "Planen Sie den Nachstechtermin ein, meist einige Wochen später"], "recht": "Wettbewerbsrecht und Preisangaben; Ergebnisfotos nur echte, Vorher/Nachher-Collagen nicht in Anzeigen", "kosten_pro_termin": 45, "meta_anteil": 0.75, "preis": "Onboarding ca. 400–500 €, Monatsgebühr ca. 399–599 €, Werbebudget ca. 300–600 €"}, "Faltenbehandlung": {"kurz": "falten", "name": "Faltenbehandlung und Hyaluron", "behandler": ["Arzt/Ärztin", "Heilpraktiker/in"], "qualifikation": "Arzt/Ärztin (Muskelrelaxans und Hyaluron) oder Heilpraktiker/in (nur Hyaluron). Kosmetikstudios: nein.", "regeln": {"verlosung": false, "vorher_nachher": false, "rabatt": false, "kostenlos": false, "preise": false, "direkt": false}, "vorbereitung": ["Kommen Sie wenn möglich ungeschminkt", "Bringen Sie eine Liste Ihrer Medikamente mit", "Planen Sie nach einer Behandlung am selben Tag keinen Sport, keine Sauna und kein Solarium ein", "Für eine Behandlung müssen Sie mindestens 18 Jahre alt sein"], "recht": "Heilmittelwerbegesetz: kein „Botox“, kein Vorher/Nachher, keine Verlosung, keine Rabatte, kein „kostenlos“", "kosten_pro_termin": 60, "meta_anteil": 0.65, "preis": "Onboarding ca. 700 €, Monatsgebühr ca. 799–999 €, Werbebudget ca. 600–1.000 €"}, "Bleaching": {"kurz": "bleaching", "name": "Zahnaufhellung (Bleaching)", "behandler": ["Zahnarztpraxis"], "qualifikation": "Nur Zahnarztpraxen. Bleaching-Studios ohne Zahnarzt sind rechtlich unsicher und kein Kunde.", "regeln": {"verlosung": false, "vorher_nachher": false, "rabatt": false, "kostenlos": false, "preise": true, "direkt": true}, "vorbereitung": ["Bringen Sie wenn vorhanden Ihr Bonusheft mit", "Bringen Sie eine Liste Ihrer Medikamente mit", "Vor einer Aufhellung prüfen wir Zähne und Zahnfleisch. Oft gehört eine Zahnreinigung dazu", "Füllungen und Kronen hellen nicht mit auf. Das besprechen wir vorher"], "recht": "Berufsordnung der Zahnärzte und Heilmittelwerbegesetz: sachlich, keine Rabatte, keine Verlosung, kein „kostenlos“", "kosten_pro_termin": 50, "meta_anteil": 0.6, "preis": "Onboarding ca. 600–700 €, Monatsgebühr ca. 599–799 €, Werbebudget ca. 400–700 €"}};
 var BEHANDLER = ["Arzt/Ärztin", "Heilpraktiker/in", "Kosmetik mit NiSV-Fachkunde", "Kosmetik/PMU-Studio", "Zahnarztpraxis"];
-var VEREINBARUNG = "<h2>Vereinbarung</h2><p>zwischen</p><p><b>Auftragnehmer:</b> {{agentur_name}}, {{agentur_inhaber}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}}<br>Ansprechpartner für den Auftraggeber: {{betreuer_name}} · {{betreuer_telefon}} · {{betreuer_email}}</p><p>und</p><p><b>Auftraggeber:</b> {{firma}} · {{adresse}} · vertreten durch {{inhaber}}</p><h3>§1 Gegenstand</h3><p>Beworben wird: <b>{{modul_name}}</b> bei {{betrieb}}.<br>Interessentinnen und Interessenten buchen über eine Terminseite online einen Termin für eine dieser Leistungen:<br>{{leistungen_text}}. Ein Termin gilt erst als gebucht, wenn die Person ihn per E-Mail bestätigt hat.<br>Wer keinen passenden Termin findet, kann einen Rückruf anfordern.<br>Werbebudget: <b>{{budget}} pro Monat</b>, aufgeteilt auf Meta und Google. Werbegebiet: {{umkreis_km}} km um {{ort}}.</p><h3>§2 Leistungen des Auftragnehmers</h3><ul><li>Erstellung und Betrieb der Terminseite mit Online-Buchung, Bestätigung per E-Mail, Erinnerung vor dem Termin und Absage-Möglichkeit für die Kundschaft.</li><li>Schutz gegen Fake-Buchungen: Bestätigung per E-Mail, Prüfung der Angaben, Sperrliste.</li><li>Einrichtung und laufende Betreuung von Werbung auf Meta (Facebook/Instagram) und Google Ads.</li><li>Benachrichtigung des Auftraggebers über jeden bestätigten Termin, jede Absage und jeden Rückruf-Wunsch.</li><li>Laufende Optimierung der Kampagnen.</li><li>Monatsreport mit Werbeausgaben, bestätigten Terminen, Kosten pro Termin und den vom Auftraggeber gemeldeten Ergebnissen (erschienen, Behandlung gekauft).</li></ul><h3>§3 Pflichten des Auftraggebers</h3><ul><li>Material: echte Fotos aus dem Studio bzw. der Praxis, Links zu Impressum und Datenschutzerklärung.</li><li>Zugang für den Auftragnehmer: bei Meta als Partner (Facebook-Seite und Werbekonto), bei Google Ads über das Verwaltungskonto des Auftragnehmers. In beiden Werbekonten hinterlegt der Auftraggeber seine eigene Zahlungsart; das Werbebudget läuft über seine Konten.</li><li>{{kalender_pflicht}}</li><li>Prüfung und Freigabe der Vorbereitungs-Hinweise und der Absageregel, die die Kundschaft erhält. Für deren fachliche Richtigkeit ist der Auftraggeber verantwortlich.</li><li>Der Auftraggeber versichert, dass er und alle Behandelnden die nötige Qualifikation besitzen ({{qualifikation}}), und informiert den Auftragnehmer unverzüglich, wenn sich daran etwas ändert.</li><li>Seine Datenschutzerklärung nennt die Terminseite (Hosting über Netlify), die Online-Terminbuchung, das Meta-Pixel und die Conversion-Messung von Google Ads.</li><li>Rückruf auf Rückruf-Wünsche innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.</li><li>Rückmeldung zu jedem Termin über die Knöpfe in den Mails: erschienen, nicht erschienen, Behandlung gekauft.</li><li>Ausreichende freie Termine für die vermittelten Buchungen.</li></ul><h3>§4 Vergütung</h3><ul><li><b>Onboarding: {{onboarding}}</b> einmalig, fällig mit Annahme dieser Vereinbarung.</li><li><b>Monatsgebühr: {{monatsgebuehr}} pro Monat.</b> Die Betreuung läuft ab Vertragsbeginn. Die Gebühr wird erst fällig, sobald eine über die Terminseite gebuchte Person beim Auftraggeber eine Behandlung <b>gekauft</b> hat, danach jeweils zum Monatsanfang.</li><li><b>Werbebudget:</b> zahlt der Auftraggeber separat und direkt an Meta und Google.</li><li>Zahlungsziel 14 Tage ab Rechnungsdatum. {{ust_hinweis}}</li></ul><h3>§5 Laufzeit</h3><p>Beginn: mit Annahme dieser Vereinbarung. Keine Mindestlaufzeit, jederzeit zum Monatsende in Textform (z. B. per<br>E-Mail) kündbar. Facebook-Seite, Werbekonten und deren Daten gehören dem Auftraggeber und bleiben bei ihm. Bei<br>Vertragsende beendet der Auftragnehmer seinen Zugang, schaltet die Terminseite ab und löscht die Termindaten der<br>Kundschaft, soweit keine Aufbewahrungspflicht besteht.</p><h3>§6 Datenschutz</h3><p>Über die Terminseite werden personenbezogene Daten von Interessentinnen und Interessenten verarbeitet (Name,<br>Telefon, E-Mail, gewünschter Termin). Der Auftragnehmer verarbeitet sie im Auftrag des Auftraggebers. Die<br>Parteien schließen dazu einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO. Gesundheitsangaben werden<br>über die Terminseite nicht abgefragt.</p><h3>§7 Werbung und Recht</h3><p>Ergebnisse hängen auch von Erreichbarkeit, Beratung und Kapazität des Auftraggebers ab. Eine bestimmte Zahl<br>von Terminen, Käufen oder ein bestimmter Umsatz wird nicht garantiert. Der Auftragnehmer erstellt die Werbung<br>nach bestem Wissen so, dass sie die für diese Behandlung geltenden Werberegeln einhält ({{recht_kurz}}).<br>Der Auftraggeber kann Anzeigen und Terminseite vor dem Start ansehen und Änderungen verlangen. Der Auftragnehmer<br>darf das Projekt mit Zustimmung als Referenz nennen.</p><h3>§8 Garantie</h3><p>Kommen in den ersten 30 Tagen ab Kampagnenstart keine echten, per E-Mail bestätigten Termine zustande, wird<br>die Onboarding-Gebühr vollständig erstattet. Voraussetzung: Die Pflichten aus §3 sind erfüllt.</p><h3>§9 Zustandekommen</h3><p>Diese Vereinbarung kommt zustande, wenn der Auftraggeber sie auf seiner Schritte-Seite online annimmt. Name,<br>Datum und Uhrzeit der Annahme werden gespeichert; der Auftraggeber erhält den Text danach per E-Mail.</p>";
+var VEREINBARUNG = "<h2>Vereinbarung</h2><p>zwischen</p><p><b>Auftragnehmer:</b> {{agentur_name}}, {{agentur_inhaber}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}}<br>Ansprechpartner für den Auftraggeber: {{betreuer_name}} · {{betreuer_telefon}} · {{betreuer_email}}</p><p>und</p><p><b>Auftraggeber:</b> {{firma}} · {{adresse}} · vertreten durch {{inhaber}}</p><h3>§1 Gegenstand</h3><p>Beworben wird: <b>{{modul_name}}</b> bei {{betrieb}}.<br>Interessentinnen und Interessenten buchen über eine Terminseite online einen Termin für eine dieser Leistungen:<br>{{leistungen_text}}. Ein Termin gilt erst als gebucht, wenn die Person ihn per E-Mail bestätigt hat.<br>Wer keinen passenden Termin findet, kann einen Rückruf anfordern.<br>Werbebudget: <b>{{budget}} pro Monat</b> für Werbung auf Meta (Facebook und Instagram). Werbegebiet: {{umkreis_km}} km um {{ort}}.</p><h3>§2 Leistungen des Auftragnehmers</h3><ul><li>Erstellung und Betrieb der Terminseite mit Online-Buchung, Bestätigung per E-Mail, Erinnerung vor dem Termin und Absage-Möglichkeit für die Kundschaft.</li><li>Schutz gegen Fake-Buchungen: Bestätigung per E-Mail, Prüfung der Angaben, Sperrliste.</li><li>Einrichtung und laufende Betreuung der Werbung auf Meta (Facebook und Instagram).</li><li>Benachrichtigung des Auftraggebers über jeden bestätigten Termin, jede Absage und jeden Rückruf-Wunsch.</li><li>Laufende Optimierung der Kampagnen.</li><li>Monatsreport mit Werbeausgaben, bestätigten Terminen, Kosten pro Termin und den vom Auftraggeber gemeldeten Ergebnissen (erschienen, Behandlung gekauft).</li></ul><h3>§3 Pflichten des Auftraggebers</h3><ul><li>Material: echte Fotos aus dem Studio bzw. der Praxis, Links zu Impressum und Datenschutzerklärung.</li><li>Zugang für den Auftragnehmer bei Meta als Partner (Facebook-Seite und Werbekonto). Im Werbekonto hinterlegt der Auftraggeber seine eigene Zahlungsart; das Werbebudget läuft über sein Konto.</li><li>{{kalender_pflicht}}</li><li>Prüfung und Freigabe der Vorbereitungs-Hinweise und der Absageregel, die die Kundschaft erhält. Für deren fachliche Richtigkeit ist der Auftraggeber verantwortlich.</li><li>Der Auftraggeber versichert, dass er und alle Behandelnden die nötige Qualifikation besitzen ({{qualifikation}}), und informiert den Auftragnehmer unverzüglich, wenn sich daran etwas ändert.</li><li>Seine Datenschutzerklärung nennt die Terminseite (Hosting über Netlify), die Online-Terminbuchung, das Meta-Pixel.</li><li>Rückruf auf Rückruf-Wünsche innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.</li><li>Rückmeldung zu jedem Termin über die Knöpfe in den Mails: erschienen, nicht erschienen, Behandlung gekauft. Beim Kauf gibt der Auftraggeber den Betrag an, den die Kundin bezahlt hat. Er ist die Grundlage der Provision.</li><li>Ausreichende freie Termine für die vermittelten Buchungen.</li></ul><h3>§4 Vergütung</h3><ul><li><b>Keine Grundgebühr, kein Onboarding.</b></li><li><b>Provision: {{provision}} %</b> vom Umsatz, den eine Neukundin, die über die Terminseite gebucht und ihren Termin per E-Mail bestätigt hat, bei ihrem ersten Besuch beim Auftraggeber macht (Behandlung oder bei diesem Besuch gekauftes Paket). Spätere Besuche derselben Kundin sind provisionsfrei.</li><li>Abrechnung monatlich zum Monatsanfang für den Vormonat, auf Grundlage der Beträge, die der Auftraggeber über die Knöpfe „Behandlung gekauft“ meldet.</li><li><b>Werbebudget:</b> zahlt der Auftraggeber separat und direkt an Meta.</li><li>Zahlungsziel 14 Tage ab Rechnungsdatum. {{ust_hinweis}}</li></ul><h3>§5 Laufzeit</h3><p>Beginn: mit Annahme dieser Vereinbarung. Keine Mindestlaufzeit, jederzeit zum Monatsende in Textform (z. B. per<br>E-Mail) kündbar. Facebook-Seite, Werbekonten und deren Daten gehören dem Auftraggeber und bleiben bei ihm. Bei<br>Vertragsende beendet der Auftragnehmer seinen Zugang, schaltet die Terminseite ab und löscht die Termindaten der<br>Kundschaft, soweit keine Aufbewahrungspflicht besteht.</p><h3>§6 Datenschutz</h3><p>Über die Terminseite werden personenbezogene Daten von Interessentinnen und Interessenten verarbeitet (Name,<br>Telefon, E-Mail, gewünschter Termin). Der Auftragnehmer verarbeitet sie im Auftrag des Auftraggebers. Die<br>Parteien schließen dazu einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO. Gesundheitsangaben werden<br>über die Terminseite nicht abgefragt.</p><h3>§7 Werbung und Recht</h3><p>Ergebnisse hängen auch von Erreichbarkeit, Beratung und Kapazität des Auftraggebers ab. Eine bestimmte Zahl<br>von Terminen, Käufen oder ein bestimmter Umsatz wird nicht garantiert. Der Auftragnehmer erstellt die Werbung<br>nach bestem Wissen so, dass sie die für diese Behandlung geltenden Werberegeln einhält ({{recht_kurz}}).<br>Der Auftraggeber kann Anzeigen und Terminseite vor dem Start ansehen und Änderungen verlangen. Der Auftragnehmer<br>darf das Projekt mit Zustimmung als Referenz nennen.</p><h3>§8 Garantie</h3><p>Der Auftraggeber zahlt nur, wenn Neukundinnen aus der Werbung tatsächlich kaufen. Kommen in den ersten 30 Tagen ab<br>Kampagnenstart keine echten, per E-Mail bestätigten Termine zustande, kann der Auftraggeber sofort kündigen.</p><h3>§9 Zustandekommen</h3><p>Diese Vereinbarung kommt zustande, wenn der Auftraggeber sie auf seiner persönlichen Schritte-Seite verbindlich<br>annimmt. Der Link zu dieser Seite wurde nur an seine E-Mail-Adresse geschickt. Name, Datum, Uhrzeit, verwendeter<br>Browser und eine Prüfsumme des Vertragstextes werden gespeichert. Beide Seiten erhalten die Vereinbarung mit diesem<br>Annahme-Nachweis als PDF per E-Mail (Textform). Eine Unterschrift ist zwischen Unternehmen nicht nötig.</p>";
+var REGELN_VON_BEHANDLER = {"Kosmetik/PMU-Studio": "Permanent Make-up", "Kosmetik mit NiSV-Fachkunde": "Laser", "Arzt/Ärztin": "Faltenbehandlung", "Heilpraktiker/in": "Faltenbehandlung", "Zahnarztpraxis": "Bleaching"};
+var PROVISION_STANDARD = 15;
+var VORBEREITUNG_ALLGEMEIN = ["Bitte kommen Sie 5 Minuten vor Ihrem Termin", "Hat sich gesundheitlich etwas geändert oder nehmen Sie neue Medikamente? Sagen Sie es uns bitte vor der Behandlung", "Können Sie nicht kommen, sagen Sie bitte rechtzeitig über den Link in Ihrer Bestätigung ab"];
 /* ======== BAUSTEIN-ENDE */
 
 
@@ -758,8 +761,8 @@ function knopfSeite_(p) {
 
 function nachfragen_(s, p, name, knopf) {
   var wert = p.s === 'auftrag'
-    ? '<label style="display:block;margin:0 0 16px;font-size:16px;">Wert in € (z. B. Paket oder Behandlung, wenn bekannt)<br>' +
-      '<input name="w" inputmode="numeric" style="font-size:20px;padding:10px;width:100%;box-sizing:border-box;margin-top:6px;"></label>' : '';
+    ? '<label style="display:block;margin:0 0 16px;font-size:16px;">Was hat die Kundin bezahlt bzw. gebucht? Betrag in € (z. B. Behandlung oder Paket)<br>' +
+      '<input name="w" required inputmode="decimal" style="font-size:20px;padding:10px;width:100%;box-sizing:border-box;margin-top:6px;"></label>' : '';
   return seite_('Noch nicht gespeichert',
     '<p style="margin:0 0 6px;"><b>' + esc_(name) + '</b></p>' +
     '<p style="margin:0 0 20px;">Bitte unten auf den Knopf tippen. <b>Erst dann ist es eingetragen.</b></p>' +
@@ -1049,15 +1052,27 @@ function monatsAnfang() { sicher_('Monatsanfang', function () {
   var s = einst_(), jetzt = new Date(), vm = vormonat_(jetzt), t = tabelle_('Termine');
   var monatAnfang = new Date(jetzt.getFullYear(), jetzt.getMonth(), 1), auto = rechnungAutomatisch_(s);
   // 1 · Rechnungen Monatsgebühr: von selbst angelegt und (wenn eingestellt) als PDF verschickt
-  var faellig = kunden_().filter(function (k) { var ab = gebuehrAb_(k.kuerzel, t); return k.aktiv && ab && ab <= monatAnfang; }), nummern = {};
+  var faellig = kunden_().filter(function (k) { var ab = gebuehrAb_(k.kuerzel, t); return k.aktiv && k.gebuehr > 0 && ab && ab <= monatAnfang; }), nummern = {};
   faellig.forEach(function (k) { nummern[k.kuerzel] = rechnungAnlegen_(k, s, 'Monatsgebühr', monatName_(jetzt), k.gebuehr); });
+  // Provision: Prozent vom Umsatz, den das Studio im Vormonat für Neukundinnen aus Online-Terminen gemeldet hat
+  kunden_().filter(function (k) { return k.provision > 0; }).forEach(function (k) {
+    var umsatz = 0;
+    t.zeilen.forEach(function (z) {
+      var am = datum_(t.get(z, 'Auftrag am'));
+      if (t.get(z, 'Kunde') === k.kuerzel && String(t.get(z, 'Stand')) === 'Auftrag' && am && am >= vm.start && am < vm.ende) umsatz += zahl_(t.get(z, 'Auftragswert €'));
+    });
+    if (umsatz > 0) {
+      var nr = rechnungAnlegen_(k, s, 'Provision', monatName_(vm.start), Math.round(umsatz * k.provision) / 100);
+      if (nr) { nummern[k.kuerzel + '_p'] = nr; faellig.push({ kuerzel: k.kuerzel + '_p', betrieb: k.betrieb, gebuehr: Math.round(umsatz * k.provision) / 100, provision: true }); }
+    }
+  });
   // 2 · Monatsreports: jede Person bekommt ihre Studios mit einem Link (Werbekosten trägt man dort gleich mit ein)
   reportListe_(s, vm, 'Monatsreports ' + monatName_(vm.start) + ': je Studio ein Klick');
   var neu = faellig.filter(function (k) { return nummern[k.kuerzel]; });
   if (neu.length) {
     mail_(s, { to: s.an, subject: 'Monatsanfang ' + monatName_(jetzt) + ': ' + neu.length + ' Rechnung' + (neu.length > 1 ? 'en' : '') + (auto ? ' verschickt' : ' angelegt'),
-      html: rahmen_('<h2 style="font-size:18px;">Rechnungen Monatsgebühr ' + monatName_(jetzt) + '</h2><ul>' +
-        neu.map(function (k) { return '<li>' + esc_(k.betrieb) + ': Monatsgebühr ' + euro_(k.gebuehr) + ' · Nr. ' + esc_(nummern[k.kuerzel]) + '</li>'; }).join('') +
+      html: rahmen_('<h2 style="font-size:18px;">Rechnungen ' + monatName_(jetzt) + '</h2><ul>' +
+        neu.map(function (k) { return '<li>' + esc_(k.betrieb) + ': ' + (k.provision ? 'Provision ' + monatName_(vm.start) : 'Monatsgebühr') + ' ' + euro_(k.gebuehr) + ' · Nr. ' + esc_(nummern[k.kuerzel]) + '</li>'; }).join('') +
         '</ul><p>' + (auto ? 'Sie gingen als PDF an die Studios. Wenn das Geld da ist: auf der Team-Seite des Studios „Bezahlt“ tippen.' :
           'Die Zeilen stehen im Blatt „Rechnungen“: „Rechnung drucken“ → als PDF → mit kurzer Mail schicken.') + '</p>' +
         '<p><a href="' + esc_(teamLink_(s, '')) + '">Übersicht öffnen</a></p>') });
@@ -1270,11 +1285,11 @@ function datum_(v) {
 var KUNDEN_SPALTEN = ['Kürzel', 'Status', 'Betreuer', 'Betreuer Telefon', 'Betreuer E-Mail', 'Betrieb', 'Firma', 'Anrede für Mails', 'Inhaber',
   'E-Mail für Termine', 'Telefon', 'Adresse', 'Seiten-Adresse', 'Behandlung', 'Behandler-Art', 'Buchung', 'Kalender-ID', 'Buchbare Zeiten', 'Leistungen',
   'Takt Minuten', 'Puffer Minuten', 'Vorlauf Stunden', 'Tage im Voraus', 'Absagefrist Stunden', 'Ausfallregel', 'Vorbereitung',
-  'Onboarding €', 'Monatsgebühr €', 'Werbebudget €', 'Umkreis km', 'Angelegt am', 'Live seit', 'Pixel-ID', 'Google-Conversion',
+  'Onboarding €', 'Monatsgebühr €', 'Provision %', 'Werbebudget €', 'Umkreis km', 'Angelegt am', 'Live seit', 'Pixel-ID', 'Google-Conversion',
   'Vertrag angenommen', 'Impressum', 'Datenschutz', 'Behandler', 'Vorbereitung ok', 'Fotos', 'Kalender ok', 'Meta erledigt',
   'Google-Ads-ID', 'Google verknüpft', 'Vorschau gesendet', 'Freigabe', 'Änderungswunsch', 'Drive-Ordner', 'Erinnert am', 'Erinnerungen', 'Alles da', 'Live-Mail', 'Token',
   'Teilnahmeschluss', 'Ziehung am', 'Erster Auftrag', 'Monatsgebühr ab', 'Termine gesamt', 'Notiz'];
-var VERTRAEGE_SPALTEN = ['Kürzel', 'Vereinbarung', 'Angenommen am', 'Angenommen von', 'Gesendet an'];
+var VERTRAEGE_SPALTEN = ['Kürzel', 'Vereinbarung', 'Angenommen am', 'Angenommen von', 'Gesendet an', 'Prüfsumme SHA-256', 'Browser', 'Annahme-Link'];
 var NEUE_EINSTELLUNGEN = [
   ['agentur_business_id', 'Meta Business-ID der Agentur', '', 'Meta Business Suite → Einstellungen → Unternehmensinfos (16 Ziffern). Steht auf der Schritte-Seite der Studios'],
   ['agentur_google_mcc', 'Google-Ads-Verwaltungskonto (Kunden-ID)', '', 'oben rechts in Google Ads, z. B. 774-518-7262'],
@@ -1313,93 +1328,139 @@ function einstellungenErgaenzen_() {
 /** Menü „2 · Neuer Kunde“: das Formular als Fenster über der Tabelle. Dasselbe Formular gibt es als Seite (Lesezeichen). */
 function neuerKundeFenster() {
   var s = einst_();
-  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(formularHtml_(s)).setWidth(760).setHeight(640), 'Neuer Kunde');
+  SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(formularHtml_(s, null)).setWidth(780).setHeight(660), 'Neuer Kunde');
 }
 
-function formularLink_(s) { return portal_(s) + 'a=neu&t=' + encodeURIComponent(s.schluessel || ''); }
+function formularLink_(s, kz) { return portal_(s) + 'a=neu&t=' + encodeURIComponent(s.schluessel || '') + (kz ? '&k=' + encodeURIComponent(kz) : ''); }
 
 function formularSeite_(p) {
   var s = einst_();
   if (!s.schluessel || String(p.t) !== String(s.schluessel)) return seite_('Nicht gefunden', 'Dieser Link ist nicht gültig.');
-  return HtmlService.createHtmlOutput(formularHtml_(s)).setTitle('Neuer Kunde · Clickculture').addMetaTag('viewport', 'width=device-width, initial-scale=1');
+  var k = p.k ? kunde_(p.k) : null;
+  return HtmlService.createHtmlOutput(formularHtml_(s, k)).setTitle((k ? 'Ändern: ' + k.betrieb : 'Neuer Kunde') + ' · Clickculture')
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1');
 }
 
-function formularHtml_(s) {
+/** Gespeicherte Daten eines Studios in die Felder des Formulars (zum Ändern). */
+function formularWerte_(k) {
+  if (!k) return { provision: PROVISION_STANDARD, umkreis: 15, absage: 24, kalender: 'Kalender' };
+  var a = String(k.adresse).match(/^(.*?)\s+(\S+),\s*(\d{5})\s+(.*)$/) || [];
+  var teile = String(k.inhaber).split(' '), anr = String(k.anrede).split(' ')[0];
+  var t = tabelle_('Kunden'), g = function (h) { return t.kopf[h] === undefined ? '' : t.get(k.zeile, h); };
+  return { kuerzel: k.kuerzel, betreuer: k.betreuer, betreuer_telefon: k.betreuerTelefon, betrieb: k.betrieb, firma: k.firma,
+    anrede: /herr/i.test(anr) ? 'Herr' : 'Frau', vorname: teile.slice(0, -1).join(' '), nachname: teile.slice(-1)[0] || '',
+    telefon: k.telefon, email: k.email, strasse: a[1] || k.adresse, hausnummer: a[2] || '', plz: a[3] || '', ort: a[4] || '',
+    angebot: k.behandlung, behandler: String(g('Behandler-Art')), quali: true, leistungen: k.leistungen, zeiten: k.zeiten,
+    kalender: k.modus, kalender_id: k.kalender, absage: k.absagefrist || 24,
+    ausfall: (String(k.ausfall).match(/berechnen wir ([\d.,]+)/) || [])[1] || '', termine: (String(g('Notiz')).match(/^(\d+)/) || [])[1] || '',
+    umkreis: Number(g('Umkreis km')) || 15, provision: Number(g('Provision %')) || PROVISION_STANDARD, budget: zahl_(g('Werbebudget €')) || '' };
+}
+
+function formularHtml_(s, k) {
   var team = Object.keys(s.team).map(function (n) { return n.split(' ')[0].replace(/^./, function (c) { return c.toUpperCase(); }); });
-  var opt = function (liste, leer) { return (leer ? '<option value="">' + leer + '</option>' : '') + liste.map(function (x) { return '<option>' + esc_(x) + '</option>'; }).join(''); };
-  var feld = function (name, label, extra) { return '<label>' + label + '<input name="' + name + '" ' + (extra || '') + '></label>'; };
-  var tage = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
-  var zeitZeilen = tage.map(function (t) {
-    return '<tr><td><b>' + t + '</b></td><td><input name="z_' + t + '_1" placeholder="9-18" class="zeit"></td><td><input name="z_' + t + '_2" placeholder="optional, z. B. 14-18" class="zeit"></td></tr>';
-  }).join('');
-  var daten = { module: MODULE, team: team };
+  var w = formularWerte_(k);
+  var wert = function (n) { return w[n] == null ? '' : ' value="' + esc_(w[n]) + '"'; };
+  var opt = function (liste, aktiv, leer) {
+    return (leer ? '<option value="">' + leer + '</option>' : '') + liste.map(function (x) { return '<option' + (x === aktiv ? ' selected' : '') + '>' + esc_(x) + '</option>'; }).join('');
+  };
+  var feld = function (name, label, extra) { return '<label>' + label + '<input name="' + name + '" ' + (extra || '') + wert(name) + '></label>'; };
+  var daten = { regeln: REGELN_VON_BEHANDLER, module: MODULE, leistungen: w.leistungen || [], zeiten: buchbareZeiten_(w.zeiten || '') };
   return '<style>body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A1917;margin:0;background:#F7F4EE;font-size:15px;}' +
-    '.w{max-width:720px;margin:0 auto;padding:16px;}h1{font-size:22px;margin:4px 0 2px;}h2{font-size:17px;margin:0 0 8px;}' +
+    '.w{max-width:760px;margin:0 auto;padding:16px;}h1{font-size:22px;margin:4px 0 2px;}h2{font-size:17px;margin:0 0 8px;}' +
     '.box{background:#fff;border:1px solid #E4DED3;border-radius:10px;padding:14px;margin:12px 0;}label{display:block;margin:7px 0;font-weight:600;font-size:14px;}' +
     'input,select{width:100%;box-sizing:border-box;font-size:16px;padding:8px;border:1px solid #CFC8BB;border-radius:6px;margin-top:3px;font-weight:400;}' +
-    '.zwei{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;}.drei{display:grid;grid-template-columns:2fr 1fr 1fr;gap:0 8px;}' +
-    'table{width:100%;border-collapse:collapse;}td{padding:3px 4px;vertical-align:middle;}td input{margin:0;}' +
+    '.zwei{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;}.drei{display:grid;grid-template-columns:3fr 1fr 1fr;gap:0 8px;}.vier{display:grid;grid-template-columns:3fr 1fr;gap:0 8px;}' +
     '.k{color:#6B665D;font-size:13px;font-weight:400;}.check{display:flex;gap:8px;align-items:flex-start;font-weight:400;}.check input{width:auto;margin-top:3px;}' +
     'button{font-size:17px;padding:13px 18px;border:0;border-radius:7px;background:#1F7A3F;color:#fff;font-weight:700;width:100%;}' +
-    '.klein{background:#EFEAE0;color:#1A1917;font-size:14px;padding:8px 12px;width:auto;font-weight:600;}' +
+    '.klein{background:#EFEAE0;color:#1A1917;font-size:14px;padding:8px 12px;width:auto;font-weight:600;margin:4px 4px 0 0;}' +
     '#hinweis{padding:10px;border-radius:8px;background:#F9EEDA;display:none;margin:8px 0;}#m{white-space:pre-wrap;padding:12px;border-radius:8px;display:none;margin-top:10px;}' +
-    '.empf{color:#1F7A3F;font-weight:700;}.drei input{margin:3px 0;}@media(max-width:560px){.zwei{grid-template-columns:1fr;}.drei{grid-template-columns:3fr 1fr 1fr;gap:0 6px;}}</style>' +
-    '<div class="w"><h1>Neuer Kunde</h1><p class="k">Im Gespräch ausfüllen. Pflicht ist, was du für den Start brauchst. Am Ende ein Klick: Der Kunde ist angelegt, ' +
-    'die Vereinbarung und die Willkommens-Mail mit seinen Schritten gehen von selbst raus.</p><form id="f">' +
+    '.empf{color:#1F7A3F;font-weight:700;}.drei input{margin:3px 0;}' +
+    '.kal{overflow-x:auto;margin-top:8px;user-select:none;-webkit-user-select:none;touch-action:none;}.kal table{border-collapse:collapse;width:100%;min-width:420px;}' +
+    '.kal th{font-size:13px;padding:4px;position:sticky;top:0;background:#fff;}.kal td{border:1px solid #EFEAE0;height:16px;padding:0;cursor:pointer;}' +
+    '.kal td.z{border:0;font-size:11px;color:#6B665D;text-align:right;padding-right:6px;cursor:default;white-space:nowrap;width:38px;}.kal td.an{background:#1F7A3F;}' +
+    '@media(max-width:560px){.zwei{grid-template-columns:1fr;}}</style>' +
+    '<div class="w"><h1>' + (k ? 'Kundendaten ändern: ' + esc_(k.betrieb) : 'Neuer Kunde') + '</h1><p class="k">' +
+    (k ? 'Änderungen speichern. Es geht keine neue Willkommens-Mail raus.' : 'Im Gespräch ausfüllen. Alles mit * ist Pflicht. Am Ende ein Klick: Der Kunde ist angelegt, die Vereinbarung und die Willkommens-Mail mit seinen Schritten gehen von selbst raus.') +
+    '</p><form id="f" novalidate><input type="hidden" name="kuerzel"' + wert('kuerzel') + '>' +
     '<div class="box"><h2>1 · Das Studio</h2><div class="zwei">' +
-    (team.length ? '<label>Wer betreut das Studio?<select name="betreuer">' + opt(team) + '</select></label>' : feld('betreuer', 'Wer betreut das Studio? (dein Vorname)')) +
-    feld('betreuer_telefon', 'Telefon des Betreuers', 'inputmode="tel"') +
-    feld('betrieb', 'Name des Studios (wie in der Werbung)', 'required') + feld('firma', 'Firma wie im Impressum <span class="k">(z. B. „Kate Cosmetics, Inh. Kate Muster“)</span>') +
-    '<label>Anrede<select name="anrede"><option>Frau</option><option>Herr</option></select></label>' + feld('inhaber', 'Inhaber/in, Vor- und Nachname', 'required') +
-    feld('telefon', 'Telefon des Studios', 'required inputmode="tel"') + feld('email', 'E-Mail für Termine', 'required type="email"') +
-    feld('strasse', 'Straße und Hausnummer', 'required') + '<div class="zwei" style="gap:0 8px;">' + feld('plz', 'PLZ', 'required inputmode="numeric"') + feld('ort', 'Ort', 'required') + '</div>' +
-    '</div></div>' +
+    (team.length ? '<label>Wer betreut das Studio? *<select name="betreuer" required>' + opt(team, w.betreuer) + '</select></label>' : feld('betreuer', 'Wer betreut das Studio? * (dein Vorname)', 'required class="gross"')) +
+    feld('betreuer_telefon', 'Telefon des Betreuers *', 'required inputmode="tel"') +
+    feld('betrieb', 'Name des Studios (wie in der Werbung) *', 'required class="gross"') + feld('firma', 'Firma wie im Impressum *', 'required class="gross"') +
+    '<label>Anrede *<select name="anrede" required>' + opt(['Frau', 'Herr'], w.anrede) + '</select></label><span></span>' +
+    feld('vorname', 'Vorname Inhaber/in *', 'required class="gross" autocomplete="off"') + feld('nachname', 'Nachname Inhaber/in *', 'required class="gross" autocomplete="off"') +
+    feld('telefon', 'Telefon des Studios *', 'required inputmode="tel"') + feld('email', 'E-Mail für Termine *', 'required type="email" class="klein-mail"') +
+    '</div><div class="vier">' + feld('strasse', 'Straße *', 'required class="gross"') + feld('hausnummer', 'Hausnummer *', 'required') + '</div>' +
+    '<div class="vier" style="grid-template-columns:1fr 3fr;">' + feld('plz', 'PLZ *', 'required inputmode="numeric" pattern="\\d{5}"') + feld('ort', 'Ort *', 'required class="gross"') + '</div></div>' +
     '<div class="box"><h2>2 · Was wird beworben?</h2><div class="zwei">' +
-    '<label>Behandlung<select name="behandlung" required>' + opt(Object.keys(MODULE), 'bitte wählen') + '</select></label>' +
-    '<label>Wer behandelt?<select name="behandler" required>' + opt(BEHANDLER, 'bitte wählen') + '</select></label></div>' +
+    feld('angebot', 'Angebot in eigenen Worten * <span class="k">(z. B. Wimpernverlängerung)</span>', 'required class="gross"') +
+    '<label>Wer behandelt? *<select name="behandler" required>' + opt(BEHANDLER, w.behandler, 'bitte wählen') + '</select></label></div>' +
     '<div id="hinweis"></div>' +
-    '<label class="check"><input type="checkbox" name="quali"> <span>Die nötige Qualifikation ist da <span class="k" id="quali"></span></span></label>' +
-    '</div>' +
+    '<label class="check"><input type="checkbox" name="quali" required' + (w.quali ? ' checked' : '') + '> <span>Die nötige Qualifikation für dieses Angebot ist da * <span class="k" id="quali"></span></span></label></div>' +
     '<div class="box"><h2>3 · Seine Leistungen <span class="k">(alle sind online buchbar)</span></h2>' +
-    '<p class="k" id="lhinweis">Was die Kundin buchen kann, mit Dauer in Minuten. Preis darf leer bleiben.</p>' +
+    '<p class="k">So, wie das Studio sie nennt, mit Dauer in Minuten. Mindestens eine. Preis darf leer bleiben.</p>' +
     '<div class="drei k"><span>Leistung</span><span>Minuten</span><span>Preis €</span></div><div id="leistungen"></div>' +
     '<button type="button" class="klein" id="mehr">+ Zeile</button></div>' +
-    '<div class="box"><h2>4 · Wann darf gebucht werden?</h2><p class="k">Pro Tag eine Zeitspanne wie „9-18“ oder „9:30-12“. Leer = an dem Tag keine Online-Termine.</p>' +
-    '<table>' + zeitZeilen + '</table><div class="zwei">' +
-    '<label>Termine beginnen alle<select name="takt"><option value="15">15 Minuten</option><option value="30" selected>30 Minuten</option><option value="60">60 Minuten</option></select></label>' +
-    '<label>Kalender<select name="kalender"><option value="Kalender">Hat Google-Kalender: Termine direkt rein</option><option value="Wunschtermin">Kein Google-Kalender: Studio bestätigt per Knopf</option></select></label>' +
-    '<label>Absagen bis spätestens<select name="absage"><option value="12">12 Stunden vorher</option><option value="24" selected>24 Stunden vorher</option><option value="48">48 Stunden vorher</option></select></label>' +
-    feld('ausfall', 'Ausfallgebühr € <span class="k">(nur wenn das Studio sie wirklich verlangt)</span>', 'inputmode="numeric"') + '</div></div>' +
-    '<div class="box"><h2>5 · Zahlen</h2><div class="zwei">' +
-    feld('termine', 'Wie viele neue Kundinnen pro Woche schafft das Studio zusätzlich?', 'required inputmode="numeric"') +
-    feld('umkreis', 'Werbegebiet: Umkreis in km', 'value="15" inputmode="numeric"') +
-    feld('onboarding', 'Onboarding € (einmalig)', 'required inputmode="numeric"') + feld('gebuehr', 'Monatsgebühr € (ab dem ersten Kauf)', 'required inputmode="numeric"') +
-    '<label>Werbebudget € pro Monat <span class="empf" id="empf"></span><input name="budget" required inputmode="numeric"></label>' +
-    '<p class="k" id="preis"></p></div>' +
-    '<label class="check"><input type="checkbox" name="mail" checked> <span>Willkommens-Mail mit Vereinbarung und Schritten gleich an das Studio schicken</span></label></div>' +
-    '<button id="los">Kunde anlegen</button><div id="m"></div></form></div>' +
+    '<div class="box"><h2>4 · Kalender</h2><div class="zwei">' +
+    '<label>Google-Kalender? *<select name="kalender" required>' + opt(['Kalender', 'Wunschtermin'], w.kalender) + '</select>' +
+    '<span class="k">Kalender = freie Zeiten kommen aus seinem Google-Kalender, Termine landen direkt dort. Wunschtermin = kein Google-Kalender, das Studio bestätigt jeden Termin per Knopf.</span></label>' +
+    feld('kalender_id', 'Adresse seines Google-Kalenders <span class="k">(meist seine Gmail)</span>', 'type="email" class="klein-mail"') + '</div>' +
+    '<p style="margin:10px 0 2px;font-weight:600;">Wann darf online gebucht werden? * <span class="k">Felder antippen oder mit dem Finger darüberziehen. Grün = buchbar.</span></p>' +
+    '<p class="k">Alles, was in seinem Google-Kalender steht (auch Kundinnen, die anders gebucht haben, Pausen, Urlaub), ist automatisch belegt.</p>' +
+    '<button type="button" class="klein" data-vorlage="mofr">Mo–Fr 9–18</button><button type="button" class="klein" data-vorlage="disa">Di–Sa 9–18</button><button type="button" class="klein" data-vorlage="leer">Alles leeren</button>' +
+    '<div class="kal" id="kal"></div><div class="zwei">' +
+    '<label>Absagen bis spätestens *<select name="absage" required>' + ['12', '24', '48'].map(function (x) { return '<option value="' + x + '"' + (String(w.absage) === x ? ' selected' : '') + '>' + x + ' Stunden vorher</option>'; }).join('') + '</select></label>' +
+    feld('ausfall', 'Ausfallgebühr € <span class="k">(nur wenn das Studio sie verlangt, sonst leer)</span>', 'inputmode="numeric"') + '</div></div>' +
+    '<div class="box"><h2>5 · Abrechnung und Werbung (nur Meta)</h2><div class="zwei">' +
+    feld('provision', 'Provision in % * <span class="k">vom Umsatz jeder Neukundin beim ersten Besuch</span>', 'required inputmode="decimal"') +
+    feld('termine', 'Wie viele neue Kundinnen pro Woche schafft das Studio zusätzlich? *', 'required inputmode="numeric"') +
+    '<label>Werbebudget € pro Monat (an Meta) * <span class="empf" id="empf"></span><input name="budget" required inputmode="numeric"' + wert('budget') + '></label>' +
+    feld('umkreis', 'Werbegebiet: Umkreis in km *', 'required inputmode="numeric"') + '</div>' +
+    (k ? '' : '<label class="check"><input type="checkbox" name="mail" checked> <span>Willkommens-Mail mit Vereinbarung und Schritten gleich an das Studio schicken</span></label>') + '</div>' +
+    '<button id="los">' + (k ? 'Änderungen speichern' : 'Kunde anlegen') + '</button><div id="m"></div></form></div>' +
     '<script>var D=' + JSON.stringify(daten) + ';' + FORMULAR_JS + '</script>';
 }
 
 var FORMULAR_JS = [
-  'var f=document.getElementById("f"),L=document.getElementById("leistungen");',
-  'function zeile(){var n=L.children.length,d=document.createElement("div");d.className="drei";d.innerHTML=\'<input name="l_name" placeholder="\'+(n?"Leistung "+(n+1):"z. B. Powder Brows")+\'"><input name="l_min" inputmode="numeric" placeholder="Min."><input name="l_preis" inputmode="decimal" placeholder="€">\';L.appendChild(d);}',
-  'for(var i=0;i<4;i++)zeile();document.getElementById("mehr").onclick=zeile;',
-  'function pruef(){var b=f.behandlung.value,m=D.module[b],h=document.getElementById("hinweis"),t=[];',
+  'var f=document.getElementById("f"),L=document.getElementById("leistungen"),KAL=document.getElementById("kal");',
+  // Groß- und Kleinschreibung von selbst
+  'var KLEIN=["von","van","der","den","de","und","zu","im","am","an","in","bei","für"];',
+  'function gross(t){return String(t).trim().replace(/\\s+/g," ").split(" ").map(function(w,i){if(!w)return w;if(i>0&&KLEIN.indexOf(w.toLowerCase())>=0)return w.toLowerCase();return w.charAt(0).toUpperCase()+w.slice(1);}).join(" ");}',
+  'document.addEventListener("blur",function(e){var x=e.target;if(!x||x.tagName!=="INPUT")return;if(x.classList.contains("gross"))x.value=gross(x.value);if(x.type==="email"||x.classList.contains("klein-mail"))x.value=x.value.trim().toLowerCase();if(x.name==="l_name"&&x.value)x.value=x.value.trim().charAt(0).toUpperCase()+x.value.trim().slice(1);},true);',
+  // Leistungen
+  'function zeile(l){l=l||{};var n=L.children.length,d=document.createElement("div");d.className="drei";d.innerHTML=\'<input name="l_name" placeholder="\'+(n?"Leistung "+(n+1):"z. B. Powder Brows")+\'"\'+(n?"":" required")+\'><input name="l_min" inputmode="numeric" placeholder="Min."\'+(n?"":" required")+\'><input name="l_preis" inputmode="decimal" placeholder="€">\';var i=d.querySelectorAll("input");i[0].value=l.name||"";i[1].value=l.minuten||"";i[2].value=(l.preis||"").replace(/\\s*€/,"");L.appendChild(d);}',
+  'D.leistungen.forEach(zeile);while(L.children.length<4)zeile();document.getElementById("mehr").onclick=function(){zeile();};',
+  // Wochen-Kalender zum Antippen (30-Minuten-Felder, 6 bis 22 Uhr)
+  'var TAGE=["Mo","Di","Mi","Do","Fr","Sa","So"],VON=6*60,BIS=22*60,SCHR=30,Z=[];',
+  'for(var t=0;t<7;t++){Z[t]=[];for(var m=VON;m<BIS;m+=SCHR){var a=(D.zeiten[t+1]||[]).some(function(r){return m>=r[0]&&m+SCHR<=r[1];});Z[t].push(a);}}',
+  'function zz(m){return Math.floor(m/60)+":"+("0"+m%60).slice(-2);}',
+  'function malen(){var h="<table><tr><th></th>"+TAGE.map(function(x){return "<th>"+x+"</th>";}).join("")+"</tr>";for(var r=0;r<(BIS-VON)/SCHR;r++){var m=VON+r*SCHR;h+="<tr><td class=z>"+(m%60?"":zz(m))+"</td>";for(var t=0;t<7;t++)h+="<td data-t="+t+" data-r="+r+(Z[t][r]?" class=an":"")+"></td>";h+="</tr>";}KAL.innerHTML=h;}',
+  'var zieh=null;function setze(el){if(!el||el.dataset.t==null)return;var t=+el.dataset.t,r=+el.dataset.r;if(zieh===null)zieh=!Z[t][r];Z[t][r]=zieh;el.classList.toggle("an",zieh);}',
+  'KAL.addEventListener("mousedown",function(e){zieh=null;setze(e.target);});KAL.addEventListener("mouseover",function(e){if(e.buttons===1)setze(e.target);});',
+  'KAL.addEventListener("touchstart",function(e){zieh=null;setze(e.target);e.preventDefault();},{passive:false});',
+  'KAL.addEventListener("touchmove",function(e){var p=e.touches[0];setze(document.elementFromPoint(p.clientX,p.clientY));e.preventDefault();},{passive:false});',
+  'document.querySelectorAll("[data-vorlage]").forEach(function(b){b.onclick=function(){var v=b.dataset.vorlage;for(var t=0;t<7;t++)for(var r=0;r<Z[t].length;r++){var m=VON+r*SCHR;Z[t][r]=v!=="leer"&&m>=540&&m<1080&&(v==="mofr"?t<5:(t>0&&t<6));}malen();};});',
+  'function zeitenText(){var out=[];for(var t=0;t<7;t++){var sp=[],a=null;for(var r=0;r<=Z[t].length;r++){var an=r<Z[t].length&&Z[t][r];if(an&&a===null)a=r;if(!an&&a!==null){sp.push(zz(VON+a*SCHR)+"-"+zz(VON+r*SCHR));a=null;}}if(sp.length)out.push(TAGE[t]+" "+sp.join(" "));}return out.join("; ");}',
+  'malen();',
+  // Regeln und Budget
+  'function pruef(){var m=D.module[D.regeln[f.behandler.value]],h=document.getElementById("hinweis"),t=[];',
   ' document.getElementById("quali").textContent=m?"("+m.qualifikation+")":"";',
-  ' if(m&&f.behandler.value&&m.behandler.indexOf(f.behandler.value)<0)t.push("✗ "+f.behandler.value+" darf "+m.name+" nicht anbieten bzw. bewerben. Erlaubt: "+m.behandler.join(", ")+". So nicht abschließen.");',
-  ' if(m&&!m.regeln.kostenlos)t.push("Hinweis: Hier gilt das Heilmittelwerbegesetz bzw. die Berufsordnung. Nichts „kostenlos“, keine Rabatte, kein Vorher/Nachher. Bei Faltenbehandlung zuerst eine Beratung als Leistung eintragen. Nie das Wort „Botox“.");',
+  ' if(m&&!m.regeln.kostenlos)t.push("Hier gilt das Heilmittelwerbegesetz bzw. die Berufsordnung: nichts „kostenlos“, keine Rabatte, kein Vorher/Nachher, nie das Wort „Botox“. Zuerst eine Beratung als Leistung eintragen.");',
+  ' if(f.behandler.value==="Kosmetik mit NiSV-Fachkunde")t.push("Laser/IPL: Jede Person, die behandelt, braucht die NiSV-Fachkunde. „Dauerhaft“ nur mit Hinweis auf mehrere Sitzungen.");',
   ' h.innerHTML=t.join("<br>");h.style.display=t.length?"block":"none";',
-  ' document.getElementById("preis").textContent=m?"Preis-Empfehlung: "+m.preis:"";',
   ' var n=Number(f.termine.value)||0,e=document.getElementById("empf");',
   ' if(m&&n){var v=Math.max(300,Math.min(2000,Math.round(n*4.33*m.kosten_pro_termin/50)*50));e.textContent="Empfehlung: "+v+" €";if(!f.budget.value||f.budget.dataset.auto){f.budget.value=v;f.budget.dataset.auto="1";}}else e.textContent="";}',
-  'f.addEventListener("change",pruef);f.addEventListener("input",function(e){if(e.target.name==="budget")delete f.budget.dataset.auto;if(e.target.name==="termine")pruef();});',
-  'f.addEventListener("submit",function(e){e.preventDefault();var d={},b=document.getElementById("los"),m=document.getElementById("m");',
-  ' Array.prototype.forEach.call(f.elements,function(x){if(!x.name||/^l_/.test(x.name))return;d[x.name]=x.type==="checkbox"?x.checked:x.value;});',
-  ' d.leistungen=Array.prototype.map.call(L.children,function(r){var i=r.querySelectorAll("input");return{name:i[0].value,minuten:i[1].value,preis:i[2].value};});',
-  ' b.disabled=true;b.textContent="Moment …";m.style.display="none";',
-  ' google.script.run.withSuccessHandler(function(r){m.textContent=r.text;m.style.display="block";m.style.background=r.ok?"#E5F4E4":"#FBEBEB";b.disabled=r.ok;b.textContent=r.ok?"Angelegt ✓":"Kunde anlegen";m.scrollIntoView({block:"center"});})',
-  ' .withFailureHandler(function(x){m.textContent="Fehler: "+x.message;m.style.display="block";m.style.background="#FBEBEB";b.disabled=false;b.textContent="Kunde anlegen";}).neuerKunde(d);});'
+  'f.addEventListener("change",pruef);f.addEventListener("input",function(e){if(e.target.name==="budget")delete f.budget.dataset.auto;if(e.target.name==="termine")pruef();});pruef();',
+  // Absenden: erst wenn alle Pflichtfelder da sind
+  'f.addEventListener("submit",function(e){e.preventDefault();var b=document.getElementById("los"),m=document.getElementById("m");',
+  ' Array.prototype.forEach.call(f.querySelectorAll("input.gross"),function(x){x.value=gross(x.value);});',
+  ' if(f.kalender.value==="Kalender")f.kalender_id.setAttribute("required","");else f.kalender_id.removeAttribute("required");',
+  ' if(!f.checkValidity()){f.reportValidity();return;}',
+  ' var zt=zeitenText();if(!zt){m.textContent="Bitte im Kalender antippen, wann online gebucht werden darf.";m.style.display="block";m.style.background="#FBEBEB";return;}',
+  ' var d={};Array.prototype.forEach.call(f.elements,function(x){if(!x.name||/^l_/.test(x.name))return;d[x.name]=x.type==="checkbox"?x.checked:x.value;});',
+  ' d.zeiten=zt;d.leistungen=Array.prototype.map.call(L.children,function(r){var i=r.querySelectorAll("input");return{name:i[0].value,minuten:i[1].value,preis:i[2].value};});',
+  ' b.disabled=true;var alt=b.textContent;b.textContent="Moment …";m.style.display="none";',
+  ' google.script.run.withSuccessHandler(function(r){m.textContent=r.text;m.style.display="block";m.style.background=r.ok?"#E5F4E4":"#FBEBEB";b.disabled=r.ok&&!d.kuerzel;b.textContent=r.ok?(d.kuerzel?alt:"Angelegt ✓"):alt;m.scrollIntoView({block:"center"});})',
+  ' .withFailureHandler(function(x){m.textContent="Fehler: "+x.message;m.style.display="block";m.style.background="#FBEBEB";b.disabled=false;b.textContent=alt;}).neuerKunde(d);});'
 ].join('\n');
 
 /** google.script.run aus dem Formular. Gibt {ok, text} zurück. */
@@ -1412,68 +1473,82 @@ function neuerKunde(d) {
   } finally { SpreadsheetApp.flush(); lock.releaseLock(); }
 }
 
+/** Groß- und Kleinschreibung: „kate cosmetics“ → „Kate Cosmetics“, „am bahnhof“ → „Am Bahnhof“ (kleine Wörter wie „von“ bleiben klein). */
+function gross_(t) {
+  var klein = ['von', 'van', 'der', 'den', 'de', 'und', 'zu', 'im', 'am', 'an', 'in', 'bei', 'für'];
+  return String(t == null ? '' : t).trim().replace(/\s+/g, ' ').split(' ').map(function (w, i) {
+    if (!w) return w;
+    if (i > 0 && klein.indexOf(w.toLowerCase()) >= 0) return w.toLowerCase();
+    return w.charAt(0).toUpperCase() + w.slice(1);
+  }).join(' ');
+}
+
 function neuerKunde_(d, s) {
   var txt = function (v) { return String(v == null ? '' : v).trim(); }, fehlt = [];
-  var m = MODULE[txt(d.behandlung)];
-  [['betrieb', 'Name des Studios'], ['inhaber', 'Inhaber/in'], ['telefon', 'Telefon'], ['email', 'E-Mail'], ['strasse', 'Straße'], ['plz', 'PLZ'],
-    ['ort', 'Ort'], ['behandler', 'Wer behandelt'], ['termine', 'Kundinnen pro Woche'], ['onboarding', 'Onboarding'], ['gebuehr', 'Monatsgebühr'], ['budget', 'Werbebudget']]
+  var m = MODULE[REGELN_VON_BEHANDLER[txt(d.behandler)]];
+  [['betreuer', 'Betreuer'], ['betreuer_telefon', 'Telefon des Betreuers'], ['betrieb', 'Name des Studios'], ['firma', 'Firma'],
+    ['vorname', 'Vorname'], ['nachname', 'Nachname'], ['telefon', 'Telefon'], ['email', 'E-Mail'], ['strasse', 'Straße'],
+    ['hausnummer', 'Hausnummer'], ['plz', 'PLZ'], ['ort', 'Ort'], ['angebot', 'Angebot'], ['termine', 'Kundinnen pro Woche'],
+    ['provision', 'Provision'], ['budget', 'Werbebudget'], ['umkreis', 'Umkreis']]
     .forEach(function (x) { if (!txt(d[x[0]])) fehlt.push(x[1]); });
-  if (!m) fehlt.unshift('Behandlung');
+  if (!m) fehlt.push('Wer behandelt');
   if (fehlt.length) return { ok: false, text: 'Bitte noch ausfüllen: ' + fehlt.join(', ') };
-  if (m.behandler.indexOf(txt(d.behandler)) < 0) return { ok: false, text: txt(d.behandler) + ' darf ' + m.name + ' nicht anbieten bzw. bewerben. So nicht abschließen.' };
   if (d.quali !== true) return { ok: false, text: 'Ohne die nötige Qualifikation (' + m.qualifikation + ') kein Abschluss. Häkchen setzen, wenn sie da ist.' };
-  if (!/^\S+@\S+\.\S+$/.test(txt(d.email))) return { ok: false, text: 'Die E-Mail sieht falsch aus.' };
-  var tel = telefon_(d.telefon);
-  if (!tel) return { ok: false, text: 'Die Telefonnummer sieht falsch aus.' };
+  var email = txt(d.email).toLowerCase();
+  if (!/^\S+@\S+\.\S+$/.test(email)) return { ok: false, text: 'Die E-Mail sieht falsch aus.' };
+  if (!telefon_(d.telefon)) return { ok: false, text: 'Die Telefonnummer des Studios sieht falsch aus.' };
+  if (!/^\d{5}$/.test(txt(d.plz))) return { ok: false, text: 'Die PLZ hat 5 Ziffern.' };
+  var modus = d.kalender === 'Wunschtermin' ? 'Wunschtermin' : 'Kalender', kalId = txt(d.kalender_id).toLowerCase() || email;
+  if (modus === 'Kalender' && !/^\S+@\S+\.\S+$/.test(kalId)) return { ok: false, text: 'Bitte die Adresse seines Google-Kalenders eintragen (meist seine Gmail).' };
+  var provision = zahl_(d.provision);
+  if (!(provision > 0 && provision <= 50)) return { ok: false, text: 'Die Provision bitte in Prozent, z. B. 15.' };
   var leistungen = (d.leistungen || []).map(function (l) {
-    return { name: txt(l.name).replace(/[|;]/g, '/'), minuten: Math.round(zahl_(l.minuten)), preis: txt(l.preis) };
+    var n = txt(l.name).replace(/[|;]/g, '/');
+    return { name: n.charAt(0).toUpperCase() + n.slice(1), minuten: Math.round(zahl_(l.minuten)), preis: txt(l.preis) };
   }).filter(function (l) { return l.name; });
   if (!leistungen.length) return { ok: false, text: 'Bitte mindestens eine Leistung eintragen.' };
   var ohneMin = leistungen.filter(function (l) { return !(l.minuten >= 5 && l.minuten <= 600); });
   if (ohneMin.length) return { ok: false, text: 'Bitte bei „' + ohneMin[0].name + '“ die Dauer in Minuten eintragen (z. B. 30).' };
-  if (leistungen.some(function (l) { return /botox|botulinum/i.test(l.name); })) return { ok: false, text: 'Das Wort „Botox“ ist in der Werbung verboten. Bitte z. B. „Faltenbehandlung Stirn“ schreiben.' };
-  var zeiten = [];
-  ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].forEach(function (t) {
-    var sp = [txt(d['z_' + t + '_1']), txt(d['z_' + t + '_2'])].filter(String).map(function (x) { return x.replace(/\s/g, '').replace(/uhr/ig, '').replace(/–/g, '-'); });
-    if (sp.length) zeiten.push(t + ' ' + sp.join(' '));
-  });
-  var zt = zeiten.join('; '), test = buchbareZeiten_(zt);
-  if (!zeiten.length || !Object.keys(test).length) return { ok: false, text: 'Bitte bei „Wann darf gebucht werden?“ mindestens einen Tag eintragen, z. B. 9-18.' };
-  var falsch = zeiten.filter(function (z) { var w = buchbareZeiten_(z); return !Object.keys(w).some(function (k) { return w[k].length && w[k].every(function (x) { return x[1] > x[0]; }); }); });
-  if (falsch.length) return { ok: false, text: 'Diese Zeit verstehe ich nicht: „' + falsch[0] + '“. Bitte so: 9-18 oder 9:30-12.' };
-  var betrieb = txt(d.betrieb), kz = kuerzelFrei_(slug_(betrieb));
+  if (leistungen.concat([{ name: txt(d.angebot) }]).some(function (l) { return /botox|botulinum/i.test(l.name); })) {
+    return { ok: false, text: 'Das Wort „Botox“ ist in der Werbung verboten. Bitte z. B. „Faltenbehandlung Stirn“ schreiben.' };
+  }
+  var zt = txt(d.zeiten), test = buchbareZeiten_(zt);
+  if (!zt || !Object.keys(test).length) return { ok: false, text: 'Bitte im Kalender antippen, wann online gebucht werden darf.' };
+  var betrieb = gross_(d.betrieb), alt = d.kuerzel ? kunde_(d.kuerzel) : null;
+  var kz = alt ? alt.kuerzel : kuerzelFrei_(slug_(betrieb));
   var ausfall = zahl_(d.ausfall), absage = Number(d.absage) || 24;
-  var adresse = txt(d.strasse) + ', ' + txt(d.plz) + ' ' + txt(d.ort);
-  var betreuer = txt(d.betreuer), bMail = teamMail_(s, betreuer) || s.agentur_email || '';
+  var adresse = gross_(d.strasse) + ' ' + txt(d.hausnummer) + ', ' + txt(d.plz) + ' ' + gross_(d.ort);
+  var betreuer = gross_(d.betreuer), inhaber = gross_(d.vorname) + ' ' + gross_(d.nachname);
   var kunde = {
-    'Kürzel': kz, 'Betreuer': betreuer, 'Betreuer Telefon': txt(d.betreuer_telefon) || txt(s.agentur_telefon), 'Betreuer E-Mail': bMail,
-    'Betrieb': betrieb, 'Firma': txt(d.firma) || betrieb, 'Anrede für Mails': (txt(d.anrede) || 'Frau') + ' ' + txt(d.inhaber).split(' ').slice(-1)[0],
-    'Inhaber': txt(d.inhaber), 'E-Mail für Termine': txt(d.email).toLowerCase(), 'Telefon': txt(d.telefon), 'Adresse': adresse,
-    'Seiten-Adresse': 'https://' + kz + '.netlify.app', 'Behandlung': txt(d.behandlung), 'Behandler-Art': txt(d.behandler), 'Umkreis km': zahl_(d.umkreis) || 15, 'Buchung': d.kalender === 'Wunschtermin' ? 'Wunschtermin' : 'Kalender',
-    'Kalender-ID': d.kalender === 'Wunschtermin' ? '' : txt(d.email).toLowerCase(), 'Buchbare Zeiten': zt,
+    'Kürzel': kz, 'Betreuer': betreuer, 'Betreuer Telefon': txt(d.betreuer_telefon), 'Betreuer E-Mail': teamMail_(s, betreuer) || s.agentur_email || '',
+    'Betrieb': betrieb, 'Firma': gross_(d.firma), 'Anrede für Mails': (d.anrede === 'Herr' ? 'Herr ' : 'Frau ') + gross_(d.nachname),
+    'Inhaber': inhaber, 'E-Mail für Termine': email, 'Telefon': txt(d.telefon), 'Adresse': adresse,
+    'Behandlung': gross_(d.angebot), 'Behandler-Art': txt(d.behandler), 'Umkreis km': zahl_(d.umkreis) || 15, 'Buchung': modus,
+    'Kalender-ID': modus === 'Kalender' ? kalId : '', 'Buchbare Zeiten': zt,
     'Leistungen': leistungen.map(function (l) { return l.name + ' | ' + l.minuten + ' | ' + l.preis; }).join('; '),
-    'Takt Minuten': Number(d.takt) || 30, 'Puffer Minuten': 0, 'Vorlauf Stunden': 12, 'Tage im Voraus': 21, 'Absagefrist Stunden': absage,
+    'Takt Minuten': 15, 'Puffer Minuten': 0, 'Vorlauf Stunden': 12, 'Tage im Voraus': 28, 'Absagefrist Stunden': absage,
     'Ausfallregel': ausfall > 0 ? 'Bei einer Absage später als ' + absage + ' Stunden vorher oder wenn Sie nicht kommen, berechnen wir ' + euro_(ausfall) +
       '. Das gilt nicht, wenn Sie nachweisen, dass Sie das Versäumnis nicht zu vertreten haben oder uns kein oder ein geringerer Schaden entstanden ist.' : '',
-    'Vorbereitung': m.vorbereitung.join(' • '), 'Onboarding €': zahl_(d.onboarding), 'Monatsgebühr €': zahl_(d.gebuehr), 'Werbebudget €': zahl_(d.budget),
+    'Provision %': provision, 'Onboarding €': 0, 'Monatsgebühr €': 0, 'Werbebudget €': zahl_(d.budget),
     'Notiz': zahl_(d.termine) + ' Neukundinnen pro Woche möglich'
   };
-  var vertrag = vertragFuellen_(kunde, leistungen, m, s, txt(d.ort), zahl_(d.umkreis) || 15);
-  var text = kundeAnlegen_(kunde, vertrag, s, d.mail !== false);
+  if (!alt) { kunde['Seiten-Adresse'] = 'https://' + kz + '.netlify.app'; kunde['Vorbereitung'] = VORBEREITUNG_ALLGEMEIN.join(' • '); }
+  var vertrag = alt && alt.vertrag ? '' : vertragFuellen_(kunde, leistungen, m, s, gross_(d.ort), zahl_(d.umkreis) || 15);
+  var text = kundeAnlegen_(kunde, vertrag, s, !alt && d.mail !== false);
+  if (alt) text = '✓ Gespeichert.' + (alt.vertrag ? ' Die Vereinbarung ist schon angenommen und bleibt, wie sie ist.' : ' Die Vereinbarung ist angepasst.');
   return { ok: true, text: text };
 }
 
 function vertragFuellen_(k, leistungen, m, s, ort, umkreis) {
-  var team = String(s.agentur_inhaber || '');
   var f = {
-    agentur_name: s.agentur_name, agentur_inhaber: team, agentur_anschrift: s.agentur_anschrift, agentur_email: s.agentur_email, agentur_telefon: s.agentur_telefon,
-    betreuer_name: k['Betreuer'], betreuer_telefon: k['Betreuer Telefon'], betreuer_email: k['Betreuer E-Mail'],
-    firma: k['Firma'], adresse: k['Adresse'], inhaber: k['Inhaber'], modul_name: m.name, betrieb: k['Betrieb'],
+    agentur_name: s.agentur_name, agentur_inhaber: String(s.agentur_inhaber || ''), agentur_anschrift: s.agentur_anschrift, agentur_email: s.agentur_email,
+    agentur_telefon: telLesen_(s.agentur_telefon), betreuer_name: k['Betreuer'], betreuer_telefon: k['Betreuer Telefon'], betreuer_email: k['Betreuer E-Mail'],
+    firma: k['Firma'], adresse: k['Adresse'], inhaber: k['Inhaber'], modul_name: k['Behandlung'], betrieb: k['Betrieb'],
     leistungen_text: leistungen.map(function (l) { return l.name + ' (' + l.minuten + ' Min.' + (l.preis && m.regeln.preise ? ', ' + l.preis + (/€/.test(l.preis) ? '' : ' €') : '') + ')'; }).join(', '),
     budget: euro_(k['Werbebudget €']), umkreis_km: umkreis, ort: ort, qualifikation: m.qualifikation, recht_kurz: m.recht,
     kalender_pflicht: k['Buchung'] === 'Wunschtermin' ? 'Bestätigung jedes Terminwunsches über die Knöpfe in der Mail, in den Geschäftszeiten innerhalb einer Stunde.'
-      : 'Freigabe seines Google-Kalenders für den Auftragnehmer („Änderungen an Terminen vornehmen“); belegte Zeiten trägt der Auftraggeber dort ein.',
-    onboarding: euro_(k['Onboarding €']), monatsgebuehr: euro_(k['Monatsgebühr €']),
+      : 'Freigabe seines Google-Kalenders für den Auftragnehmer („Änderungen an Terminen vornehmen“); alle belegten Zeiten, auch Termine aus anderen Quellen, trägt der Auftraggeber dort ein.',
+    provision: String(k['Provision %']).replace('.', ','),
     ust_hinweis: /^ja/i.test(String(s.agentur_kleinunternehmer)) ? 'Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.' : 'Alle Beträge zzgl. 19 % Umsatzsteuer.'
   };
   return VEREINBARUNG.replace(/\{\{(\w+)\}\}/g, function (_, x) { return f[x] != null && f[x] !== '' ? esc_(f[x]) : '[' + x + ']'; });
@@ -1490,6 +1565,12 @@ function kuerzelFrei_(basis) {
   return k;
 }
 
+/** Telefonnummern: Google macht aus „0151…“ eine Zahl und schneidet die 0 ab. Hier kommt sie zurück. */
+function telLesen_(v) {
+  if (typeof v === 'number') return '0' + String(Math.round(v));
+  var t = String(v == null ? '' : v).trim();
+  return /^[1-9]\d{6,}$/.test(t) ? '0' + t : t;
+}
 
 /** Legt den Kunden an (oder aktualisiert ihn), speichert die Vereinbarung, legt den Fotos-Ordner an, schickt die Willkommens-Mail. */
 function kundeAnlegen_(kunde, vertrag, s, mailSenden) {
@@ -1560,8 +1641,10 @@ function willkommensMail_(k, s) {
 
 // ---------------------------------------------------------------- Die Schritte-Seite für das Studio
 
+function regelModul_(k) { return MODULE[REGELN_VON_BEHANDLER[k.behandlerArt]] || MODULE[k.behandlung] || MODULE['Permanent Make-up']; }
+
 function studioAufgaben_(k, s) {
-  var arzt = /falten/i.test(k.behandlung), zahn = /bleach/i.test(k.behandlung), laser = /laser/i.test(k.behandlung);
+  var arzt = /arzt|heilprakt/i.test(k.behandlerArt) && !/zahn/i.test(k.behandlerArt), zahn = /zahn/i.test(k.behandlerArt), laser = /nisv/i.test(k.behandlerArt);
   var a = [
     { id: 'vertrag', titel: 'Vereinbarung lesen und annehmen', fertig: !!k.vertrag },
     { id: 'links', titel: 'Links zu Impressum und Datenschutz', fertig: !!(k.impressum && k.datenschutz) },
@@ -1574,7 +1657,6 @@ function studioAufgaben_(k, s) {
   ];
   if (k.modus === 'Kalender') a.push({ id: 'kalender', titel: 'Google-Kalender freigeben', fertig: !!k.kalenderOk });
   a.push({ id: 'meta', titel: 'Facebook und Instagram (Meta) verbinden', fertig: !!k.metaOk });
-  a.push({ id: 'google', titel: 'Google Ads verbinden', fertig: !!(k.googleId && k.googleOk) });
   if (k.vorschau) a.push({ id: 'freigabe', titel: 'Ihre Seite und Ihre Anzeigen ansehen und freigeben', fertig: !!k.freigabe });
   return a;
 }
@@ -1585,8 +1667,10 @@ function studioSeite_(p) {
   var js = 'var K=' + JSON.stringify(k.kuerzel) + ',T=' + JSON.stringify(k.token) + ';' +
     'function zeig(r){document.getElementById("inhalt").innerHTML=r.html;var m=document.getElementById("meldung");m.textContent=r.meldung||"";m.style.display=r.meldung?"block":"none";m.style.background=r.ok?"#E5F4E4":"#FBEBEB";if(r.meldung)m.scrollIntoView({block:"center"});}' +
     'function fehl(e){zeig({html:document.getElementById("inhalt").innerHTML,meldung:"Das hat nicht geklappt: "+e.message,ok:false});}' +
-    'document.addEventListener("submit",function(e){e.preventDefault();var f=e.target,b=f.querySelector("button");b.disabled=true;b.textContent="Moment …";' +
-    'var d={};Array.prototype.forEach.call(f.elements,function(x){if(x.name&&x.type!=="file")d[x.name]=x.type==="checkbox"?x.checked:x.value;});' +
+    'function gross(t){return String(t).trim().replace(/\\s+/g," ").split(" ").map(function(w){return w.charAt(0).toUpperCase()+w.slice(1);}).join(" ");}' +
+    'document.addEventListener("blur",function(e){var x=e.target;if(x&&x.classList&&x.classList.contains("gross"))x.value=gross(x.value);if(x&&x.type==="email")x.value=x.value.trim().toLowerCase();},true);' +
+    'document.addEventListener("submit",function(e){e.preventDefault();var f=e.target,b=f.querySelector("button");if(!f.checkValidity()){f.reportValidity();return;}b.disabled=true;b.textContent="Moment …";' +
+    'var d={ua:navigator.userAgent};Array.prototype.forEach.call(f.elements,function(x){if(x.name&&x.type!=="file")d[x.name]=x.type==="checkbox"?x.checked:x.value;});' +
     'var datei=f.querySelector("input[type=file]");' +
     'if(datei){var liste=Array.prototype.slice.call(datei.files),n=0;if(!liste.length){b.disabled=false;b.textContent="Hochladen";return;}' +
     '(function weiter(){if(!liste.length){google.script.run.withSuccessHandler(zeig).withFailureHandler(fehl).studioAktion(K,T,"seite",{});return;}' +
@@ -1611,7 +1695,8 @@ function studioInhalt_(k, s) {
     (fertig === auf.length ? '<div class="box ok"><b>Alles erledigt, vielen Dank!</b> Wir richten jetzt Ihre Seite und die Werbung ein und melden uns, sobald alles läuft.</div>' : '') +
     '<p class="k">Fragen? ' + betreuerZeile_(k, s) + '</p>';
   return kopf + auf.map(function (a, i) {
-    var inhalt = a.fertig ? erledigtText_(a.id, k) : aufgabeHtml_(a, k, s);
+    var inhalt = !a.fertig ? aufgabeHtml_(a, k, s) : erledigtText_(a.id, k) +
+      (a.id === 'vertrag' || a.id === 'fotos' ? '' : '<details><summary>Ändern</summary>' + aufgabeHtml_(a, k, s) + '</details>');
     return '<div class="box' + (a.fertig ? ' ok' : '') + '"><h2><span class="haken">' + (a.fertig ? '✓' : (i + 1) + '.') + '</span>' + esc_(a.titel) + '</h2>' + inhalt + '</div>';
   }).join('');
 }
@@ -1636,34 +1721,35 @@ function aufgabeHtml_(a, k, s) {
   var form = function (aktion, inhalt, knopf) { return '<form data-aktion="' + aktion + '">' + inhalt + '<button>' + esc_(knopf) + '</button></form>'; };
   if (a.id === 'vertrag') {
     var v = vertrag_(k.kuerzel);
-    return '<p>Das Wichtigste: Onboarding einmalig <b>' + euro_(k.onboarding) + '</b>. Die Monatsgebühr von <b>' + euro_(k.gebuehr) +
-      '</b> zahlen Sie erst ab dem Monat nach dem ersten Kauf aus einem Online-Termin. Das Werbebudget zahlen Sie direkt an Meta und Google. Jederzeit kündbar.</p>' +
+    return '<p>Das Wichtigste: <b>keine Grundgebühr, kein Onboarding.</b> Wir bekommen <b>' + String(k.provision || PROVISION_STANDARD).replace('.', ',') +
+      ' %</b> vom Umsatz, den eine neue Kundin aus einem Online-Termin bei ihrem ersten Besuch bei Ihnen macht. Das Werbebudget zahlen Sie direkt an Meta. Jederzeit kündbar.</p>' +
       (v ? '<details><summary>Ganze Vereinbarung lesen</summary><div style="font-size:14px;border-left:3px solid #E4DED3;padding-left:12px;">' + v + '</div></details>' : '') +
-      form('vertrag', '<label>Ihr Vor- und Nachname<input type="text" name="name" autocomplete="name"></label>' +
-        '<p><label><input type="checkbox" name="ok"> Ich habe die Vereinbarung gelesen und nehme sie für ' + esc_(k.firma || k.betrieb) + ' an.</label></p>', 'Verbindlich annehmen');
+      form('vertrag', '<label>Ihr Vor- und Nachname<input type="text" name="name" autocomplete="name" required class="gross"></label>' +
+        '<p><label><input type="checkbox" name="ok" required> Ich habe die Vereinbarung gelesen und nehme sie für ' + esc_(k.firma || k.betrieb) + ' verbindlich an.</label></p>' +
+        '<p class="k">Sie bekommen die Vereinbarung danach als PDF mit Annahme-Nachweis per Mail.</p>', 'Verbindlich annehmen');
   }
   if (a.id === 'links') {
     return '<p>Von Ihrer Webseite kopieren (meist ganz unten). Ihre Terminseite verlinkt darauf.</p>' +
       '<details><summary>Was muss in der Datenschutzerklärung stehen?</summary><p class="k">Bitte von Ihrem Webseiten-Betreuer ergänzen lassen: ' +
       'Online-Terminbuchung über Clickculture (Daten werden in Google-Diensten verarbeitet), Hosting der Terminseite bei Netlify, ' +
       'Meta-Pixel und Google Ads (nur nach Zustimmung im Cookie-Hinweis), Terminerinnerungen per E-Mail.</p></details>' +
-      form('links', '<label>Link zum Impressum<input type="url" name="impressum" placeholder="https://…" value="' + esc_(k.impressum) + '"></label>' +
-        '<label>Link zur Datenschutzerklärung<input type="url" name="datenschutz" placeholder="https://…" value="' + esc_(k.datenschutz) + '"></label>', 'Speichern');
+      form('links', '<label>Link zum Impressum<input type="url" name="impressum" required placeholder="https://…" value="' + esc_(k.impressum) + '"></label>' +
+        '<label>Link zur Datenschutzerklärung<input type="url" name="datenschutz" required placeholder="https://…" value="' + esc_(k.datenschutz) + '"></label>', 'Speichern');
   }
   if (a.id === 'behandler') {
     return '<p>Steht auf Ihrer Terminseite. ' + esc_(a.hilfe) + '.</p>' +
-      form('behandler', '<input type="text" name="behandler" value="' + esc_(k.behandlerName) + '">', 'Speichern');
+      form('behandler', '<input type="text" name="behandler" required class="gross" value="' + esc_(k.behandlerName) + '">', 'Speichern');
   }
   if (a.id === 'vorbereitung') {
     var punkte = String(k.vorbereitung || '').split('•').map(function (x) { return x.trim(); }).filter(String).join('\n');
     return '<p>Diese Hinweise bekommen Ihre Kundinnen mit der Terminbestätigung und der Erinnerung. Es ist ein Vorschlag von uns: bitte ändern, was bei Ihnen anders ist. Ein Hinweis pro Zeile.</p>' +
-      form('vorbereitung', '<textarea name="text" rows="7">' + esc_(punkte) + '</textarea>', 'So freigeben');
+      form('vorbereitung', '<textarea name="text" rows="7" required>' + esc_(punkte) + '</textarea>', 'So freigeben');
   }
   if (a.id === 'fotos') {
-    var falten = /falten|bleach/i.test(k.behandlung);
+    var falten = !regelModul_(k).regeln.vorher_nachher;
     return '<p>Mindestens 3 Fotos, gern direkt vom Handy: <b>Sie bzw. Ihr Team</b>, <b>Ihr Studio innen</b>, <b>eine Behandlung</b> (gern mit Kundin, wenn sie einverstanden ist).' +
       (falten ? ' Bitte keine Vorher-Nachher-Fotos, die sind bei dieser Behandlung in der Werbung verboten.' : '') + '</p>' +
-      form('fotos', '<input type="file" name="fotos" accept="image/*" multiple style="font-size:16px;margin:8px 0;">', 'Hochladen');
+      form('fotos', '<input type="file" name="fotos" accept="image/*" multiple required style="font-size:16px;margin:8px 0;">', 'Hochladen');
   }
   if (a.id === 'kalender') {
     var zentrale = Session.getEffectiveUser().getEmail();
@@ -1671,7 +1757,7 @@ function aufgabeHtml_(a, k, s) {
       '<li><b>calendar.google.com</b> öffnen.</li><li>Links bei „Meine Kalender“ auf Ihren Kalender zeigen → die drei Punkte <b>⋮</b> → <b>Einstellungen und Freigabe</b>.</li>' +
       '<li>Bei <b>„Für bestimmte Personen oder Gruppen freigeben“</b> auf <b>Personen und Gruppen hinzufügen</b>.</li>' +
       '<li>Diese Adresse eintragen: <code>' + esc_(zentrale) + '</code></li><li>Berechtigung: <b>Änderungen an Terminen vornehmen</b> → <b>Senden</b>.</li></ol>' +
-      form('kalender', '<label>Die Adresse Ihres Kalenders (meist Ihre Gmail-Adresse)<input type="text" name="kalender" value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen');
+      form('kalender', '<label>Die Adresse Ihres Kalenders (meist Ihre Gmail-Adresse)<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen');
   }
   if (a.id === 'meta') {
     return '<p>Ihre Werbung läuft über Ihr eigenes Werbekonto, mit Ihrer Karte. Wir bekommen nur Zugriff als Partner. ' +
@@ -1743,13 +1829,22 @@ function studioAktion_(k, s, aktion, d) {
     if (k.vertrag) return { ok: true, meldung: 'Schon angenommen.' };
     if (txt(d.name).split(' ').length < 2) return { ok: false, meldung: 'Bitte Vor- und Nachnamen eintragen.' };
     if (d.ok !== true) return { ok: false, meldung: 'Bitte das Häkchen setzen.' };
+    blattSicher_('Verträge', VERTRAEGE_SPALTEN);
     var vt = tabelle_('Verträge'), vz = vt.zeilen.filter(function (x) { return String(vt.get(x, 'Kürzel')).toLowerCase() === kz; })[0];
-    if (vz) { vt.set(vz, 'Angenommen am', jetzt); vt.set(vz, 'Angenommen von', txt(d.name)); vt.set(vz, 'Gesendet an', k.email); }
+    var text = vertrag_(kz) || '', pruef = sha256_(text), ua = txt(d.ua).slice(0, 300);
+    if (vz) {
+      vt.set(vz, 'Angenommen am', jetzt); vt.set(vz, 'Angenommen von', txt(d.name)); vt.set(vz, 'Gesendet an', k.email);
+      vt.set(vz, 'Prüfsumme SHA-256', pruef); vt.set(vz, 'Browser', ua); vt.set(vz, 'Annahme-Link', 'Schritte-Seite, Schlüssel …' + k.token.slice(-6));
+    }
     kundeSetzen_(kz, { 'Vertrag angenommen': jetzt });
-    mail_(s, { to: k.email, cc: betreuerMail_(k, s), antwortAn: betreuerMail_(k, s), absender: s.agentur_name || 'Clickculture',
+    var nachweis = annahmeNachweis_(k, s, txt(d.name), jetzt, pruef, ua);
+    var anhang = [];
+    try { anhang.push(vertragPdf_(text + nachweis, k, jetzt)); } catch (e) { fehler_('Vereinbarung als PDF', e); }
+    mail_(s, { to: k.email, cc: betreuerMail_(k, s), bcc: s.agentur_email, antwortAn: betreuerMail_(k, s), absender: s.agentur_name || 'Clickculture',
       subject: 'Ihre Vereinbarung mit ' + (s.agentur_name || 'Clickculture') + ' (angenommen am ' + datumKurz_(jetzt) + ')',
       html: rahmen_('<p>Hallo ' + esc_(k.anrede) + ',</p><p>danke! Sie haben die Vereinbarung am ' + esc_(datumText_(jetzt, s)) + ' Uhr angenommen (' + esc_(txt(d.name)) + '). ' +
-        'Hier ist Ihre Kopie zum Aufheben:</p><div style="border-left:3px solid #E4DED3;padding-left:12px;font-size:14px;">' + (vertrag_(kz) || '') + '</div>') });
+        'Im Anhang finden Sie sie als PDF mit dem Annahme-Nachweis. Bitte heben Sie diese Mail auf.</p>' +
+        '<div style="border-left:3px solid #E4DED3;padding-left:12px;font-size:14px;">' + text + nachweis + '</div>'), anhang: anhang });
     rechnungAnlegen_(kunde_(kz), s, 'Onboarding', 'einmalig', kunde_(kz).onboarding);
     return { ok: true, meldung: 'Danke! Die Vereinbarung ist angenommen. Eine Kopie kommt per Mail.' };
   }
@@ -1781,6 +1876,7 @@ function studioAktion_(k, s, aktion, d) {
     return { ok: true, meldung: 'Verbunden! Ihr Kalender ist freigegeben.' };
   }
   if (aktion === 'meta') {
+    if (k.metaOk) return { ok: true, meldung: 'Ist schon gemeldet. Danke!' };
     kundeSetzen_(kz, { 'Meta erledigt': jetzt });
     betreuerHinweis_(k, s, k.betrieb + ': Meta-Partnerzugriff ist freigegeben',
       '<p>' + esc_(k.betrieb) + ' meldet: Partnerzugriff bei Meta ist freigegeben.</p><ol><li>business.facebook.com → euer Portfolio → <b>Einstellungen → Konten → Werbekonten</b>: das Konto des Studios öffnen → <b>Personen zuweisen</b> (euch beide, volle Kontrolle). Dasselbe bei <b>Seiten</b>.</li>' +
@@ -1833,6 +1929,28 @@ function studioFoto(kuerzel, token, name, mime, b64) {
     html: rahmen_('<p>' + esc_(k.betrieb) + ' hat ein Foto hochgeladen. Wenn „alles da“ kommt: alle Fotos dieses Studios an Claude schicken.</p>'), anhang: [datei] });
   kundeSetzen_(kuerzel, { 'Fotos': n });
   return n;
+}
+
+/** Annahme-Nachweis: wer, wann, über welchen Weg, welcher Text (Prüfsumme). Steht im PDF, in der Mail und im Blatt „Verträge“. */
+function annahmeNachweis_(k, s, name, wann, pruef, ua) {
+  var z = function (a, b) { return '<tr><td style="padding:3px 10px 3px 0;color:#6B665D;vertical-align:top;">' + a + '</td><td style="padding:3px 0;">' + esc_(b) + '</td></tr>'; };
+  return '<h3>Annahme-Nachweis</h3><table style="font-size:13px;border-collapse:collapse;">' +
+    z('Angenommen von', name + ' für ' + (k.firma || k.betrieb)) + z('Zeitpunkt', datumText_(wann, s) + ' Uhr (' + s.tz + ')') +
+    z('Weg', 'Klick auf „Verbindlich annehmen“ auf der persönlichen Schritte-Seite. Der Link dorthin wurde nur an ' + k.email + ' geschickt.') +
+    z('Gerät/Browser', ua || 'nicht übermittelt') + z('Prüfsumme des Vertragstextes (SHA-256)', pruef) +
+    z('Kopie', 'als PDF per E-Mail an ' + k.email + ' und ' + (s.agentur_name || 'Clickculture')) + '</table>' +
+    '<p style="font-size:12px;color:#6B665D;">Die Vereinbarung zwischen Unternehmen braucht keine Unterschrift (§§ 145 ff. BGB). Sie kam durch die Annahme auf der Schritte-Seite zustande (§ 9).</p>';
+}
+
+function sha256_(text) {
+  return Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, String(text), Utilities.Charset.UTF_8)
+    .map(function (b) { return ('0' + (b & 0xff).toString(16)).slice(-2); }).join('');
+}
+
+function vertragPdf_(html, k, wann) {
+  var seite = '<html><head><meta charset="utf-8"><style>body{font-family:Arial,sans-serif;font-size:11pt;line-height:1.4;color:#111;}h2{font-size:16pt;}h3{font-size:12pt;margin-top:16px;}</style></head><body>' + html + '</body></html>';
+  return Utilities.newBlob(seite, 'text/html', 'Vereinbarung.html').getAs('application/pdf')
+    .setName('Vereinbarung ' + (k.firma || k.betrieb) + ' ' + Utilities.formatDate(wann, Session.getScriptTimeZone(), 'yyyy-MM-dd') + '.pdf');
 }
 
 function vertrag_(kuerzel) {
@@ -1888,7 +2006,6 @@ function allesDaMail_(k, s) {
     '<li><b>An Claude:</b> die Fotos und den Text unten schicken mit „Baue die Seite für ' + esc_(k.kuerzel) + '“. Claude stellt sie online.</li>' +
     '<li><b>Netlify:</b> app.netlify.com → <b>Add new project → Deploy manually</b> → den Ordner „seite“ hineinziehen → Projekt-Einstellungen → Name: <b>' + esc_(k.kuerzel) + '</b>.</li>' +
     '<li><b>Meta:</b> Datensatz (Pixel) anlegen, die ID auf der <a href="' + esc_(teamLink_(s, k.kuerzel)) + '">Team-Seite</a> eintragen. Kampagne nach der Kampagnen-Anleitung von Claude.</li>' +
-    '<li><b>Google:</b> Conversion anlegen, „AW-…/…“ auf der Team-Seite eintragen. Kampagne.</li>' +
     '<li><b>Test:</b> auf der Seite einen Termin mit deiner E-Mail buchen, bestätigen, wieder absagen.</li>' +
     '<li>Auf der Team-Seite <b>„Jetzt live schalten“</b>. Die Mail „Ihre Werbung läuft“ geht von selbst raus.</li></ol>' +
     '<p><b>Text für Claude</b> (alles markieren und kopieren):</p><pre style="white-space:pre-wrap;background:#F1ECE2;padding:10px;font-size:12px;">' +
@@ -1986,7 +2103,8 @@ function teamStudio_(kz, s) {
     return '<form data-aktion="' + aktion + '"' + (frage ? ' data-frage="' + esc_(frage) + '"' : '') + '>' + inhalt + '<button' + (grau ? ' class="grau"' : '') + '>' + esc_(knopf) + '</button></form>';
   };
   var html = '<p class="k"><a href="' + esc_(teamLink_(s, '')) + '" target="_top">← alle Studios</a></p><h1>' + esc_(k.betrieb) + '</h1>' +
-    '<p class="k">' + esc_(k.status) + ' · ' + esc_(k.behandlung) + ' · ' + esc_(k.telefon) + ' · ' + esc_(k.email) + '</p>';
+    '<p class="k">' + esc_(k.status) + ' · ' + esc_(k.behandlung) + ' · Provision ' + String(k.provision || PROVISION_STANDARD).replace('.', ',') + ' % · ' + esc_(k.telefon) + ' · ' + esc_(k.email) +
+    ' · <a href="' + esc_(formularLink_(s, k.kuerzel)) + '" target="_top">Kundendaten ändern</a></p>';
   // 1 · Schritte des Studios
   html += '<div class="box"><h2>Schritte des Studios</h2><table>' + auf.map(function (a) {
     return '<tr><td>' + (a.fertig ? '✓' : '○') + ' ' + esc_(a.titel) + '</td></tr>';
@@ -1998,7 +2116,7 @@ function teamStudio_(kz, s) {
     '<textarea rows="5" readonly onclick="this.select()" style="font-size:11px;font-family:monospace;">' + esc_(JSON.stringify(studioDaten_(k, s))) + '</textarea></details>';
   html += '<div class="box"><h2>Einrichten</h2><p class="k">Wirkt sofort, die Seite muss dafür nicht neu hochgeladen werden.</p>' +
     form('einrichten', '<div class="zwei"><label>Meta-Pixel (Datensatz-ID)<input name="pixel" value="' + esc_(k.pixel) + '" inputmode="numeric"></label>' +
-      '<label>Google-Conversion (AW-…/…)<input name="conversion" value="' + esc_(k.conversion) + '"></label></div>' +
+      '<input type="hidden" name="conversion" value="' + esc_(k.conversion) + '"><span></span></div>' +
       '<label>Adresse der Seite<input name="seite" value="' + esc_(k.seite) + '"></label>', 'Speichern') +
     (k.seite ? '<p class="k"><a href="' + esc_(k.seite) + '" target="_blank">Seite öffnen und Test-Termin buchen</a></p>' : '') + '</div>';
   // 3 · Freigabe durch das Studio
@@ -2207,11 +2325,15 @@ function tabelle_(name) {
   return {
     sh: sh, kopf: kopf, zeilen: zeilen,
     get: function (z, sp) { var v = z.w[spalte(sp)]; return v == null ? '' : v; },
-    set: function (z, sp, v) { var i = spalte(sp); sh.getRange(z.nr, i + 1).setValue(v); z.w[i] = v; }
+    set: function (z, sp, v) {
+      var i = spalte(sp), zelle = sh.getRange(z.nr, i + 1);
+      if (TEXT_SPALTEN.indexOf(sp) >= 0) zelle.setNumberFormat('@');
+      zelle.setValue(v); z.w[i] = v;
+    }
   };
 }
 
-var TEXT_SPALTEN = ['Telefon', 'PLZ', 'Telefon oder E-Mail', 'Kalender-Eintrag'];
+var TEXT_SPALTEN = ['Telefon', 'PLZ', 'Telefon oder E-Mail', 'Kalender-Eintrag', 'Betreuer Telefon', 'Pixel-ID', 'Google-Ads-ID'];
 
 function zeileAnhaengen_(tab, werte) {
   var z = zeileNachKopf_(tab, werte), r = tab.sh.getLastRow() + 1;
@@ -2250,7 +2372,7 @@ function kunden_() {
       status: status, zeile: z, token: String(g('Token')).trim(), inhaber: String(g('Inhaber')).trim(),
       kuerzel: String(g('Kürzel')).trim().toLowerCase(), betrieb: String(g('Betrieb')) || String(g('Kürzel')),
       anrede: String(g('Anrede für Mails')) || 'zusammen', email: String(g('E-Mail für Termine')).trim(),
-      telefon: String(g('Telefon')), adresse: String(g('Adresse')), seite: String(g('Seiten-Adresse')).trim().replace(/\/+$/, ''),
+      telefon: telLesen_(g('Telefon')), adresse: String(g('Adresse')), seite: String(g('Seiten-Adresse')).trim().replace(/\/+$/, ''),
       drive: String(g('Drive-Ordner')).trim(), gebuehr: zahl_(g('Monatsgebühr €')), live: datum_(g('Live seit')),
       aktiv: !/pausiert|beendet/i.test(status) && !!String(g('E-Mail für Termine')).trim(),
       behandlung: String(g('Behandlung')), modus: modus, kalender: String(g('Kalender-ID')).trim(),
@@ -2259,7 +2381,7 @@ function kunden_() {
       tage: Number(g('Tage im Voraus')) || 21, raster: Number(g('Takt Minuten')) || 0, absagefrist: Number(g('Absagefrist Stunden')) || 0, ausfall: String(g('Ausfallregel')),
       vorbereitung: String(g('Vorbereitung')),
       schluss: datum_(g('Teilnahmeschluss')), ziehung: datum_(g('Ziehung am')), betreuer: String(g('Betreuer')).trim(),
-      betreuerTelefon: String(g('Betreuer Telefon')).trim(), betreuerMail: String(g('Betreuer E-Mail')).trim(),
+      betreuerTelefon: telLesen_(g('Betreuer Telefon')), behandlerArt: String(g('Behandler-Art')).trim(), provision: zahl_(g('Provision %')), betreuerMail: String(g('Betreuer E-Mail')).trim(),
       firma: String(g('Firma')).trim(), onboarding: zahl_(g('Onboarding €')), angelegt: datum_(g('Angelegt am')),
       vertrag: datum_(g('Vertrag angenommen')), impressum: String(g('Impressum')).trim(), datenschutz: String(g('Datenschutz')).trim(),
       behandlerName: String(g('Behandler')).trim(), vorbereitungOk: datum_(g('Vorbereitung ok')), fotos: Number(g('Fotos')) || 0,
@@ -2281,6 +2403,7 @@ function einst_() {
   var s = {};
   blatt_('Einstellungen').getDataRange().getValues().forEach(function (z) { if (z[0]) s[String(z[0]).trim()] = z[2]; });
   s.rueckruf_minuten = Number(s.rueckruf_minuten) || 60;
+  s.agentur_telefon = telLesen_(s.agentur_telefon);
   var m = String(s.geschaeftszeiten || '9-18').match(/(\d+)\D+(\d+)/);
   s.zeiten = { von: m ? Number(m[1]) : 9, bis: m ? Number(m[2]) : 18, tage: /sa/i.test(String(s.arbeitstage)) ? 6 : 5 };
   s.tz = Session.getScriptTimeZone();
@@ -2323,6 +2446,7 @@ function mail_(s, o) {
     name: o.absender || s.agentur_name || 'Clickculture', replyTo: o.antwortAn || s.agentur_email || undefined };
   if (o.anhang) opt.attachments = o.anhang;
   if (o.cc && o.cc !== o.to) opt.cc = o.cc;
+  if (o.bcc && o.bcc !== o.to && o.bcc !== o.cc) opt.bcc = o.bcc;
   MailApp.sendEmail(opt);
 }
 

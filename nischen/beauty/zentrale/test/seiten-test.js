@@ -64,7 +64,7 @@ function pruefe(bed, was) { if (bed) ok++; else { fehler++; console.log('  ✗ '
   pruefe(await page.evaluate(() => window.fbq ? 'ja' : 'nein') === 'ja', 'Pixel-ID kommt aus der Zentrale, Pixel lädt nach Zustimmung');
   await (await page.$$('.art'))[1].click();
   await page.waitForSelector('.zeit');
-  const tag = await page.$eval('.tag[aria-pressed="true"]', e => e.textContent);
+  const tag = await page.$eval('.zeit', e => e.dataset.tag);
   const zeit = await page.$eval('.zeit', e => e.textContent);
   await page.click('.zeit');
   pruefe(/Achseln \(20 Min\.\)/.test(await page.textContent('#wahl')), 'Auswahl zeigt Leistung und Dauer');
@@ -116,7 +116,7 @@ function pruefe(bed, was) { if (bed) ok++; else { fehler++; console.log('  ✗ '
   await page.goto(datei('termin.html'));
   await (await page.$$('.art'))[1].click();
   await page.waitForSelector('.zeit');
-  pruefe(await page.$eval('.tag[aria-pressed="true"]', e => e.textContent) === tag && await page.$eval('.zeit', e => e.textContent) === zeit, 'derselbe Platz ist wieder buchbar');
+  pruefe(await page.$eval('.zeit', e => e.dataset.tag) === tag && await page.$eval('.zeit', e => e.textContent) === zeit, 'derselbe Platz ist wieder buchbar');
 
   console.log('6 Rückruf-Ausweg');
   await page.click('#rueckruf-link');

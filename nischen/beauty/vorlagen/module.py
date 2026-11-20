@@ -424,3 +424,86 @@ MODULE = {
 }
 
 BEHANDLUNGEN = list(MODULE)  # Reihenfolge im Formular „Neuer Kunde“: Laser, Permanent Make-up, Faltenbehandlung, Bleaching
+
+
+# ------------------------------------------------------------------------------------------------ Eigenes Angebot (Version 3)
+# Nutzer-Vorgabe 21.11.2026: Das Angebot trägt ihr pro Studio selbst ein (z. B. „Wimpernverlängerung“, „Lippen-Hyaluron“).
+# Die Werberegeln richten sich danach, WER behandelt (Schalter aus dem passenden Modul oben). Die Texte sind allgemein
+# und setzen {{angebot}} ein. Die vier Module oben bleiben für die Regeln und als Beispiele erhalten.
+REGELN_VON_BEHANDLER = {
+    "Kosmetik/PMU-Studio": "Permanent Make-up",       # normales Wettbewerbsrecht
+    "Kosmetik mit NiSV-Fachkunde": "Laser",           # Laser/IPL: NiSV, „dauerhaft“ nur mit Hinweis
+    "Arzt/Ärztin": "Faltenbehandlung",                # Heilmittelwerbegesetz
+    "Heilpraktiker/in": "Faltenbehandlung",           # Heilmittelwerbegesetz
+    "Zahnarztpraxis": "Bleaching",                    # Berufsordnung Zahnärzte
+}
+PROVISION_STANDARD = 15  # % vom Umsatz, den eine Neukundin aus einem Online-Termin beim ersten Besuch macht
+
+ALLGEMEIN = {
+    "kuerzel": "allgemein",
+    "vorbereitung": [
+        "Bitte kommen Sie 5 Minuten vor Ihrem Termin",
+        "Hat sich gesundheitlich etwas geändert oder nehmen Sie neue Medikamente? Sagen Sie es uns bitte vor der Behandlung",
+        "Können Sie nicht kommen, sagen Sie bitte rechtzeitig über den Link in Ihrer Bestätigung ab",
+    ],
+    "farben": {"bg": "#F4ECE7", "ink": "#2A1E1A", "accent": "#8A5240", "soft": "#E6D6CD", "dunkel": "#2B1F1B", "hell": "#FAF5F2"},
+    "lp": {
+        "titel": "{{angebot}} in {{ort}} · {{betrieb}}",
+        "kicker": "{{angebot}} in {{ort}}",
+        "h1": "{{angebot}}. <em>Termin direkt online.</em>",
+        "sub": "Starten Sie mit einer {{beratung_wort}}en Beratung bei {{betrieb}}. Freie Zeiten sehen und direkt hier buchen.",
+        "hinweis": "Ergebnisse sind individuell. Was bei Ihnen möglich ist, besprechen wir persönlich vor der Behandlung.",
+        "schritte": ["Freien Termin wählen", "Per E-Mail bestätigen", "Persönlich beraten und behandelt werden"],
+        "vorteile": [
+            "Persönliche Beratung, bevor etwas gemacht wird",
+            "Alle freien Termine auf einen Blick, auch abends und am Wochenende, wenn das Studio dann offen hat",
+            "Online buchen und absagen, ohne Warteschleife",
+            "Erinnerung 24 Stunden vor Ihrem Termin",
+        ],
+        "faq": [
+            ("Wie buche ich?", "Leistung wählen, freien Termin antippen, Namen und Kontakt eintragen. Danach kommt eine E-Mail: Erst mit Ihrem Klick dort ist der Termin fest."),
+            ("Was passiert beim ersten Termin?", "Wir sprechen über Ihre Wünsche und klären, was bei Ihnen sinnvoll ist. Erst dann wird behandelt."),
+            ("Was kostet es?", "Die Preise stehen in der Übersicht oben, soweit sie feststehen. Alles Weitere besprechen wir vorab, Sie entscheiden in Ruhe."),
+            ("Kann ich absagen oder verschieben?", "Ja, über den Link in Ihrer Bestätigung. Bitte rechtzeitig, dann bekommt jemand anderes den Platz."),
+            ("Ich finde keinen passenden Termin.", "Fordern Sie unten einen Rückruf an oder rufen Sie uns an. Wir finden eine Lösung."),
+        ],
+    },
+    "anzeigen": [
+        {"id": "a1-beratung", "stil": "a", "foto": "foto-1", "kicker": "{{angebot}} in {{ort}}",
+         "h1": "Erst beraten, <em>dann entscheiden.</em>",
+         "sub": "{{beratung_name}} bei {{betrieb}}: {{beratung_wort}}, persönlich, ohne Druck.",
+         "fine": "{{angebot}} bei {{betrieb}}, {{ort}}. Ergebnisse sind individuell.",
+         "cta": "Termin online wählen",
+         "primaer": "Sie überlegen, {{angebot}} machen zu lassen? Bei {{betrieb}} starten Sie mit einer {{beratung_wort}}en Beratung. Wir klären alles in Ruhe, Sie entscheiden danach.\n👉 Termin direkt online wählen.",
+         "headline": "{{beratung_name}}: {{beratung_wort}}", "beschreibung": "Termin in 30 Sekunden online wählen."},
+        {"id": "a2-online", "stil": "d", "foto": "foto-2", "kicker": "Ohne Anruf, ohne Warteschleife",
+         "h1": "Termin in <em>30 Sekunden</em> online buchen.",
+         "sub": "Alle freien Zeiten sehen, Termin wählen, per E-Mail bestätigen.",
+         "fine": "{{angebot}} bei {{betrieb}}, {{ort}}.",
+         "cta": "Freie Termine ansehen",
+         "primaer": "Keine Lust auf Telefon? Bei {{betrieb}} sehen Sie alle freien Termine für {{angebot}} online und buchen in 30 Sekunden.\n👉 Freie Termine ansehen.",
+         "headline": "Freie Termine online ansehen", "beschreibung": "{{angebot}} in {{ort}}."},
+        {"id": "a3-preis", "stil": "c", "foto": "foto-3", "kicker": "Klarer Preis",
+         "h1": "{{leistung_1}} <em>{{preis_1}}</em>",
+         "sub": "Bei {{betrieb}} in {{ort}}. Termin direkt online wählen.",
+         "fine": "Preis laut Preisliste von {{betrieb}}. Ergebnisse sind individuell.",
+         "cta": "Termin online wählen",
+         "primaer": "Was kostet {{angebot}}? Bei {{betrieb}} zum Beispiel {{leistung_1}} für {{preis_1}}. Alles Weitere besprechen wir vorab.\n👉 Termin online wählen.",
+         "headline": "{{leistung_1}} {{preis_1}}", "beschreibung": "Termin direkt online wählen."},
+        {"id": "a4-person", "stil": "e", "foto": "foto-3", "kicker": "Persönlich behandelt",
+         "h1": "Bei uns behandelt <em>{{behandler_name_kurz}}.</em>",
+         "sub": "Mit Zeit für Ihre Fragen, vor und nach der Behandlung.",
+         "fine": "{{angebot}} bei {{betrieb}}, {{ort}}.",
+         "cta": "Termin wählen",
+         "primaer": "{{angebot}} ist Vertrauenssache. Bei {{betrieb}} behandelt {{behandler_name_kurz}} persönlich und nimmt sich Zeit für Ihre Fragen.\n👉 Freien Termin online wählen.",
+         "headline": "Persönlich behandelt", "beschreibung": "{{angebot}} in {{ort}}."},
+        {"id": "a5-studio", "stil": "b", "foto": "foto-2", "kicker": "{{betrieb}}",
+         "h1": "{{angebot}} <em>in {{ort}}.</em>",
+         "sub": "Freie Termine diese Woche, direkt online buchbar.",
+         "fine": "Bestätigung per E-Mail, Erinnerung vor dem Termin.",
+         "cta": "Freie Termine ansehen",
+         "primaer": "{{angebot}} in {{ort}}: Bei {{betrieb}} sehen Sie alle freien Termine online und buchen direkt. Die Bestätigung kommt per E-Mail.\n👉 Freie Termine ansehen.",
+         "headline": "{{angebot}} in {{ort}}", "beschreibung": "Freie Termine online ansehen."},
+    ],
+    "zielgruppe": {"alter": "25 bis 60", "geschlecht": "alle (Advantage+ findet die Richtigen)"},
+}

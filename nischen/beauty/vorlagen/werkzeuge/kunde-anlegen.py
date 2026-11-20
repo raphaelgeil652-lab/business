@@ -106,16 +106,23 @@ def preis_text(p):
 def felder(d):
     """Alle Platzhalter für Seite, Anzeigen und Kampagnen aus dem „Text für Claude“. Gibt (f, modul, hinweise) zurück."""
     hinweise = []
-    mod = M.MODULE.get(d.get("behandlung") or "")
-    if mod is None:
-        sys.exit("Unbekannte Behandlung „%s“. Erlaubt: %s" % (d.get("behandlung"), ", ".join(M.MODULE)))
+    angebot = str(d.get("behandlung") or "").strip()
+    if not angebot:
+        sys.exit("Im Text fehlt das Angebot („behandlung“).")
+    regel = M.MODULE.get(M.REGELN_VON_BEHANDLER.get(d.get("behandler_art") or "", ""))
+    mod = M.MODULE.get(angebot)
+    if mod is None:  # eigenes Angebot: allgemeine Texte, Regeln nach dem Behandler
+        regel = regel or M.MODULE["Permanent Make-up"]
+        mod = {**M.ALLGEMEIN, "name": angebot, "regeln": regel["regeln"], "qualifikation": regel["qualifikation"],
+               "recht_kurz": regel["recht_kurz"], "annahmen": regel["annahmen"], "behandler": regel["behandler"]}
     r, k = mod["regeln"], mod["kuerzel"]
     leer = lambda x, name: x if x not in (None, "") else f"[{name}]"
     f = {"betrieb": d["betrieb"], "betrieb_lang": d.get("firma") or d["betrieb"], "telefon": d.get("telefon", ""), "email": d.get("email", ""),
          "inhaber": d.get("inhaber", ""), "adresse": d.get("adresse", ""), "slug": d["kuerzel"], "modul_name": mod["name"], "modul": k,
          "kampagne_kuerzel": k, "umkreis_km": str(zahl(d.get("umkreis"), 15)), "qualifikation": mod["qualifikation"],
          "impressum_url": leer(d.get("impressum"), "Impressum-Link fehlt"), "datenschutz_url": leer(d.get("datenschutz"), "Datenschutz-Link fehlt"),
-         "behandler_name": d.get("behandler") or "", "zentrale_url": d.get("zentrale") or "", "agentur_name": (d.get("agentur") or {}).get("name", "Clickculture")}
+         "behandler_name": d.get("behandler") or "", "angebot": angebot,
+         "behandler_name_kurz": (str(d.get("behandler") or "").split(",")[0].replace("Dr. med. dent. ", "Dr. ").replace("Dr. med. ", "Dr. ") or "unser Team"), "zentrale_url": d.get("zentrale") or "", "agentur_name": (d.get("agentur") or {}).get("name", "Clickculture")}
     m = re.search(r"\d{5}\s+(.+)$", f["adresse"])
     f["ort"] = m.group(1).strip() if m else "[Ort]"
     f["ort_klein"] = f["ort"].lower()
@@ -167,8 +174,7 @@ def felder(d):
         f"\n- Wer darf behandeln: {mod['qualifikation']}\n- Kurz: {mod['recht_kurz']}" + \
         ("\n- Nie das Wort „Botox“, nie Makel ansprechen („Sie haben Falten?“), keine Garantie, kein „schmerzfrei“." if k == "falten" else "")
     budget = zahl(d.get("budget"), 0)
-    meta = round(budget * mod["annahmen"]["meta_anteil"] / 10) * 10
-    google = budget - meta
+    meta, google = budget, 0  # erstmal nur Meta (Nutzer-Vorgabe 21.11.2026)
     f["budget_meta"], f["budget_google"] = euro(meta), euro(google)
     f["budget_meta_tag"] = euro(round(meta / 30)) if meta else "[Tagesbudget Meta]"
     f["budget_google_tag"] = euro(round(google / 30)) if google else "[Tagesbudget Google]"
@@ -176,18 +182,6 @@ def felder(d):
     f["_verlosung"] = False
     f["zielgruppe_alter"] = mod["zielgruppe"]["alter"]
     f["zielgruppe_geschlecht"] = mod["zielgruppe"]["geschlecht"]
-    g = mod["google"]
-    passt = lambda t: (ber or "{{beratung_" not in t) and (f["_preis"] or "{{preis_1}}" not in t)
-    f["google_keywords"] = "\n".join(f'"{fuellen(x, f)}"' for x in g["keywords"])
-    f["google_negativ"] = "\n".join(g["negativ"])
-    f["google_pfad"] = " / ".join(g["pfad"])
-    f["google_headlines"] = "\n".join(f"    {i}. {kuerzen(fuellen(h, f), 30, f)}" for i, h in enumerate([h for h in g["headlines"] if passt(h)], 1))
-    f["google_descriptions"] = "\n".join(f"    {i}. {kuerzen(fuellen(x, f), 90, f)}" for i, x in enumerate([x for x in g["descriptions"] if passt(x)], 1))
-    f["google_hinweis"] = ("\n**Wichtig bei Faltenbehandlung:** Das Wort „Botox“ (und andere Markennamen) nie in Anzeigen oder Keywords: Google "
-                           "sperrt verschreibungspflichtige Mittel. Kundenlisten, Remarketing und ähnliche Zielgruppen sind bei Schönheitsbehandlungen "
-                           "nicht erlaubt. Lehnt Google eine Anzeige ab, die betroffene Überschrift weglassen, nicht umformulieren und neu einreichen.\n"
-                           if k == "falten" else
-                           "\n**Hinweis:** Kundenlisten und Remarketing für Schönheitsbehandlungen sind bei Google eingeschränkt. Nichts davon einrichten.\n")
     fa = mod["farben"]
     f["farben_css"] = (f"--bg:{fa['bg']};--ink:{fa['ink']};--ink2:{fa['ink']}CC;--muted:#6B665D;--line:{fa['soft']};"
                        f"--accent:{fa['accent']};--soft:{fa['soft']};--dunkel:{fa['dunkel']};--hell:{fa['hell']};")
@@ -245,7 +239,8 @@ def seiten_felder(f, mod, fotos):
         text = {"laser": "Behandelt wird bei uns nur mit Fachkundenachweis nach NiSV.",
                 "pmu": "Jede Form wird gemeinsam mit Ihnen vorgezeichnet, bevor pigmentiert wird.",
                 "falten": "Vor jeder Behandlung steht ein ausführliches Gespräch mit Aufklärung.",
-                "bleaching": "Vor jeder Aufhellung untersuchen wir Zähne und Zahnfleisch."}[k]
+                "bleaching": "Vor jeder Aufhellung untersuchen wir Zähne und Zahnfleisch.",
+                "allgemein": "Vor jeder Behandlung nehmen wir uns Zeit für Ihre Fragen."}[k]
         s["person_html"] = (f'  <section>\n    <h2>Wer Sie behandelt</h2>\n    <div class="person"><div class="bild" style="background-image:url(fotos/foto-3.jpg)"></div>'
                             f'<div><b>{esc(f["behandler_name"])}</b><p>{esc(text)}</p></div></div>\n  </section>\n')
     else:
@@ -454,7 +449,8 @@ def main():
           "regel_hinweis": {"falten": "Für Faltenbehandlung gilt das Heilmittelwerbegesetz: kein „Botox“, kein Vorher/Nachher, keine Rabatte, kein „kostenlos“.",
                             "bleaching": "Für Zahnärzte gilt die Berufsordnung: sachlich, ohne Rabatte und Verlosungen.",
                             "laser": "„Dauerhaft“ steht nie ohne den Hinweis auf mehrere Sitzungen.",
-                            "pmu": "Ergebnisfotos nur echte, mit Zustimmung der Kundin."}[mod["kuerzel"]]}
+                            "pmu": "Ergebnisfotos nur echte, mit Zustimmung der Kundin.",
+                            "allgemein": mod["recht_kurz"]}[mod["kuerzel"]]}
     (an / "anzeigen.html").write_text(fuellen((VORLAGEN / "anzeigen" / "anzeigen.html").read_text(encoding="utf-8"), af), encoding="utf-8")
     (an / "vorschau.html").write_text(fuellen((VORLAGEN / "anzeigen" / "vorschau.html").read_text(encoding="utf-8"), af), encoding="utf-8")
     try:

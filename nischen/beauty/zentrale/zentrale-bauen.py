@@ -78,7 +78,10 @@ def baustein():
     vertrag = md_zu_html((VORLAGEN / "texte" / "vereinbarung.md").read_text(encoding="utf-8"))
     return "\n".join([ANFANG, "var MODULE = " + json.dumps(module, ensure_ascii=False) + ";",
                       "var BEHANDLER = " + json.dumps(M.BEHANDLER, ensure_ascii=False) + ";",
-                      "var VEREINBARUNG = " + json.dumps(vertrag, ensure_ascii=False) + ";", ENDE])
+                      "var VEREINBARUNG = " + json.dumps(vertrag, ensure_ascii=False) + ";",
+                      "var REGELN_VON_BEHANDLER = " + json.dumps(M.REGELN_VON_BEHANDLER, ensure_ascii=False) + ";",
+                      "var PROVISION_STANDARD = " + json.dumps(M.PROVISION_STANDARD) + ";",
+                      "var VORBEREITUNG_ALLGEMEIN = " + json.dumps(M.ALLGEMEIN["vorbereitung"], ensure_ascii=False) + ";", ENDE])
 
 
 def code_aktualisieren():
@@ -114,7 +117,7 @@ KUNDEN = [  # (Name, Breite, Format, Eingabe?) · gleiche Reihenfolge wie KUNDEN
     ("Seiten-Adresse", 30, None, True), ("Behandlung", 16, None, True), ("Behandler-Art", 18, None, True), ("Buchung", 13, None, True), ("Kalender-ID", 26, None, True),
     ("Buchbare Zeiten", 26, None, True), ("Leistungen", 40, None, True), ("Takt Minuten", 8, "0", True), ("Puffer Minuten", 8, "0", True),
     ("Vorlauf Stunden", 8, "0", True), ("Tage im Voraus", 8, "0", True), ("Absagefrist Stunden", 9, "0", True), ("Ausfallregel", 30, None, True),
-    ("Vorbereitung", 40, None, True), ("Onboarding €", 11, EURO, True), ("Monatsgebühr €", 12, EURO, True), ("Werbebudget €", 12, EURO, True),
+    ("Vorbereitung", 40, None, True), ("Onboarding €", 11, EURO, True), ("Monatsgebühr €", 12, EURO, True), ("Provision %", 9, "0.0", True), ("Werbebudget €", 12, EURO, True),
     ("Umkreis km", 8, "0", True), ("Angelegt am", 12, DATUM, True), ("Live seit", 12, DATUM, True), ("Pixel-ID", 18, "@", True), ("Google-Conversion", 26, None, True),
     ("Vertrag angenommen", 14, ZEIT, False), ("Impressum", 24, None, False), ("Datenschutz", 24, None, False), ("Behandler", 28, None, False),
     ("Vorbereitung ok", 14, ZEIT, False), ("Fotos", 7, "0", False), ("Kalender ok", 14, ZEIT, False), ("Meta erledigt", 14, ZEIT, False),
@@ -125,7 +128,8 @@ KUNDEN = [  # (Name, Breite, Format, Eingabe?) · gleiche Reihenfolge wie KUNDEN
     ("Erster Auftrag", 14, DATUM, False), ("Monatsgebühr ab", 14, "MM.YYYY", False), ("Termine gesamt", 10, "0", False),
     ("Notiz", 34, None, True),
 ]
-VERTRAEGE = [("Kürzel", 20, None), ("Vereinbarung", 60, None), ("Angenommen am", 16, ZEIT), ("Angenommen von", 22, None), ("Gesendet an", 26, None)]
+VERTRAEGE = [("Kürzel", 20, None), ("Vereinbarung", 60, None), ("Angenommen am", 16, ZEIT), ("Angenommen von", 22, None), ("Gesendet an", 26, None),
+             ("Prüfsumme SHA-256", 40, None), ("Browser", 40, None), ("Annahme-Link", 24, None)]
 TERMINE = [
     ("ID", 14, None), ("Eingang", 16, ZEIT), ("Kunde", 18, None), ("Art", 11, None), ("Leistung", 18, None),
     ("Termin", 16, ZEIT), ("Dauer", 7, "0"), ("Name", 22, None), ("Telefon", 16, "@"), ("E-Mail", 24, None),
@@ -154,7 +158,7 @@ EINSTELLUNGEN = [  # (Schlüssel, Einstellung, Vorgabe, Hilfe)
     ("agentur_kleinunternehmer", "Kleinunternehmer (§ 19 UStG)?", "", "Ja = keine Umsatzsteuer. Muss genauso sein wie im Gesprächsbogen, Blatt „Eure Daten“"),
     ("agentur_business_id", "Meta Business-ID der Agentur", "", "Meta Business Suite → Einstellungen → Unternehmensinfos (16 Ziffern, mit ' davor). Steht auf der Schritte-Seite der Studios"),
     ("agentur_google_mcc", "Google-Ads-Verwaltungskonto (Kunden-ID)", "", "oben rechts in Google Ads, z. B. 774-518-7262"),
-    ("rechnungen_automatisch", "Rechnungen automatisch als PDF schicken?", "Ja", "Ja = Onboarding-Rechnung, sobald das Studio die Vereinbarung annimmt; Monatsgebühr am 1. Nein = nur Zeile anlegen, du schickst selbst"),
+    ("rechnungen_automatisch", "Rechnungen automatisch als PDF schicken?", "Ja", "Ja = am 1. geht die Provisions-Rechnung für den Vormonat als PDF ans Studio. Nein = nur Zeile anlegen, du schickst selbst"),
     ("§", "Online-Buchung", None, None),
     ("bestaetigung_minuten", "Termin freihalten bis zur Bestätigung (Minuten)", 45, "So lange ist ein Platz reserviert. Nicht bestätigt → wieder frei"),
     ("erinnerung_stunden", "Erinnerung an die Kundin … Stunden vorher", 24, ""),
