@@ -51,7 +51,7 @@
     if (DEMO) { setTimeout(function () { zeigeTage(demoTage()); }, 250); return; }
     fetch(cfg.zentrale + '?a=slots&k=' + encodeURIComponent(cfg.kunde) + '&l=' + encodeURIComponent(wahl.leistung))
       .then(function (r) { return r.json(); })
-      .then(function (d) { if (!d.ok) throw new Error(d.fehler); zeigeTage(d.tage); })
+      .then(function (d) { if (!d.ok) throw new Error(d.fehler); gewinnspiel(d.gewinnspiel); zeigeTage(d.tage); })
       .catch(function () {
         $('lade').innerHTML = 'Die Online-Termine sind gerade nicht erreichbar. Rufen Sie uns an: <a href="tel:' + esc(cfg.telefon_link) + '">' +
           esc(cfg.telefon) + '</a> oder lassen Sie sich zurückrufen.';
@@ -71,6 +71,16 @@
       if (key >= letzter && i >= 6) break;
     }
     return out;
+  }
+  // Gewinnspiel mit Terminbuchung: Banner, wenn die Zentrale eins meldet
+  function gewinnspiel(g) {
+    var alt = $('gewinnspiel');
+    if (alt) alt.remove();
+    if (!g) return;
+    var box = el('div', 'gewinnspiel', '🎁 <b>Gewinnspiel:</b> Unter allen, die bis ' + esc(g.bis) + ' einen Termin buchen und wahrnehmen, verlosen wir ' +
+      esc(g.gewinn) + '. <a href="' + esc(g.bedingungen) + '" target="_blank" rel="noopener">Teilnahmebedingungen</a>');
+    box.id = 'gewinnspiel';
+    $('buchen').insertBefore(box, $('buchen').children[2] || null);
   }
   function zeigeTage(liste) {
     tage = liste || [];

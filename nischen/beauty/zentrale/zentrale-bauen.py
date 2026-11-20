@@ -124,7 +124,7 @@ KUNDEN = [  # (Name, Breite, Format, Eingabe?) · gleiche Reihenfolge wie KUNDEN
     ("Google-Ads-ID", 14, None, False), ("Google verknüpft", 14, ZEIT, False), ("Vorschau gesendet", 14, ZEIT, False), ("Freigabe", 14, ZEIT, False),
     ("Änderungswunsch", 30, None, False), ("Drive-Ordner", 24, None, False),
     ("Erinnert am", 14, ZEIT, False), ("Erinnerungen", 8, "0", False), ("Alles da", 14, ZEIT, False), ("Live-Mail", 14, ZEIT, False),
-    ("Token", 8, None, False), ("Teilnahmeschluss", 12, DATUM, True), ("Ziehung am", 12, DATUM, True),
+    ("Token", 8, None, False), ("Gewinn", 30, None, True), ("Gewinnspiel ab", 12, DATUM, True), ("Teilnahmeschluss", 12, DATUM, True), ("Ziehung am", 12, DATUM, True),
     ("Erster Auftrag", 14, DATUM, False), ("Monatsgebühr ab", 14, "MM.YYYY", False), ("Termine gesamt", 10, "0", False),
     ("Notiz", 34, None, True),
 ]

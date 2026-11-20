@@ -180,12 +180,13 @@ function doGet(e) {
   if (p.a === 'slots') return json_(sicherJson_(function () { return slotsAnfrage_(p); }));
   if (p.a === 'info') return json_(sicherJson_(function () { return infoAnfrage_(p); }));
   if (p.a === 'bestaetigen' || p.a === 'absagen') return kundenSeite_(p);
-  if (p.format === 'json' && (p.a === 'studio' || p.a === 'neu' || p.a === 'team')) {
+  if (p.format === 'json' && (p.a === 'studio' || p.a === 'neu' || p.a === 'team' || p.a === 'tnb')) {
     return json_(sicherJson_(function () {
-      var out = p.a === 'studio' ? studioSeite_(p) : p.a === 'neu' ? formularSeite_(p) : teamSeite_(p);
+      var out = p.a === 'studio' ? studioSeite_(p) : p.a === 'neu' ? formularSeite_(p) : p.a === 'tnb' ? teilnahmeSeite_(p) : teamSeite_(p);
       return { ok: true, html: out.getContent(), titel: out.getTitle ? out.getTitle() : '' };
     }));
   }
+  if (p.a === 'tnb') return teilnahmeSeite_(p);
   if (p.a === 'studio') return studioSeite_(p);
   if (p.a === 'neu') return formularSeite_(p);
   if (p.a === 'team') return teamSeite_(p);
@@ -242,6 +243,8 @@ function slotsAnfrage_(p) {
   var alt = cache.get(schl);
   if (alt) return JSON.parse(alt);
   var r = { ok: true, dauer: l.minuten, modus: k.modus, tage: freieSlots_(k, l.name, s) };
+  var gs = gewinnspiel_(k, new Date());
+  if (gs) r.gewinnspiel = { gewinn: k.gewinn, bis: datumKurz_(k.schluss), bedingungen: portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel) };
   cache.put(schl, JSON.stringify(r), 90);
   return r;
 }
@@ -1119,7 +1122,10 @@ function taeglich() { sicher_('Täglich', function () {
     var t = tabelle_('Termine'), bis = k.schluss ? new Date(k.schluss.getTime() + TAG) : jetzt;
     var teilnehmer = eindeutig_(t.zeilen.filter(function (z) {
       var ein = datum_(t.get(z, 'Eingang'));
-      return t.get(z, 'Kunde') === k.kuerzel && String(t.get(z, 'Art')) === 'Verlosung' && String(t.get(z, 'Stand')) !== 'Fake' && ein && ein < bis;
+      if (t.get(z, 'Kunde') !== k.kuerzel) return false;
+      if (String(t.get(z, 'Art')) === 'Verlosung') return String(t.get(z, 'Stand')) !== 'Fake' && ein && ein < bis;
+      var st = datum_(t.get(z, 'Termin')), stand = String(t.get(z, 'Stand'));
+      return k.gsAb && st && st >= k.gsAb && st < bis && (stand === 'erschienen' || stand === 'Auftrag');
     }).map(function (z) { return { name: t.get(z, 'Name'), telefon: t.get(z, 'Telefon'), email: t.get(z, 'E-Mail') }; }));
     var g = ziehen_(teilnehmer, GEWINNER.Verlosung, Math.random);
     mail_(s, { to: k.email + ',' + s.an, absender: 'Clickculture Zentrale', subject: 'Verlosung ' + k.betrieb + ': die Gewinnerin',
@@ -1288,7 +1294,7 @@ var KUNDEN_SPALTEN = ['Kürzel', 'Status', 'Betreuer', 'Betreuer Telefon', 'Betr
   'Onboarding €', 'Monatsgebühr €', 'Provision %', 'Werbebudget €', 'Umkreis km', 'Angelegt am', 'Live seit', 'Pixel-ID', 'Google-Conversion',
   'Vertrag angenommen', 'Impressum', 'Datenschutz', 'Behandler', 'Vorbereitung ok', 'Fotos', 'Kalender ok', 'Meta erledigt',
   'Google-Ads-ID', 'Google verknüpft', 'Vorschau gesendet', 'Freigabe', 'Änderungswunsch', 'Drive-Ordner', 'Erinnert am', 'Erinnerungen', 'Alles da', 'Live-Mail', 'Token',
-  'Teilnahmeschluss', 'Ziehung am', 'Erster Auftrag', 'Monatsgebühr ab', 'Termine gesamt', 'Notiz'];
+  'Gewinn', 'Gewinnspiel ab', 'Teilnahmeschluss', 'Ziehung am', 'Erster Auftrag', 'Monatsgebühr ab', 'Termine gesamt', 'Notiz'];
 var VERTRAEGE_SPALTEN = ['Kürzel', 'Vereinbarung', 'Angenommen am', 'Angenommen von', 'Gesendet an', 'Prüfsumme SHA-256', 'Browser', 'Annahme-Link'];
 var NEUE_EINSTELLUNGEN = [
   ['agentur_business_id', 'Meta Business-ID der Agentur', '', 'Meta Business Suite → Einstellungen → Unternehmensinfos (16 Ziffern). Steht auf der Schritte-Seite der Studios'],
@@ -2049,6 +2055,30 @@ function liveMails_(s, jetzt) {
   });
 }
 
+/** Läuft gerade ein Gewinnspiel mit Terminbuchung? (Start ≤ heute ≤ Teilnahmeschluss) */
+function gewinnspiel_(k, jetzt) {
+  if (!k.gewinn || !k.gsAb || !k.schluss || !regelModul_(k).regeln.verlosung) return false;
+  return jetzt >= k.gsAb && jetzt < new Date(k.schluss.getTime() + TAG);
+}
+
+/** Teilnahmebedingungen, aus den Daten des Studios erzeugt. */
+function teilnahmeSeite_(p) {
+  var s = einst_(), k = kunde_(p.k);
+  if (!k || !k.gewinn) return seite_('Kein Gewinnspiel', 'Gerade läuft hier kein Gewinnspiel.');
+  var li = function (t) { return '<li style="margin:6px 0;">' + t + '</li>'; };
+  return seite_('Teilnahmebedingungen', '<p><b>Gewinnspiel von ' + esc_(k.firma || k.betrieb) + '</b>, ' + esc_(k.adresse) + '</p><ol style="padding-left:20px;font-size:15px;">' +
+    li('<b>Gewinn:</b> ' + esc_(k.gewinn) + '. Keine Barauszahlung, nicht übertragbar.') +
+    li('<b>Zeitraum:</b> ' + datumKurz_(k.gsAb) + ' bis ' + datumKurz_(k.schluss) + '.') +
+    li('<b>So nehmen Sie teil:</b> Sie buchen im Zeitraum über unsere Terminseite online einen Termin, bestätigen ihn per E-Mail und nehmen ihn bis zum ' +
+      datumKurz_(k.schluss) + ' wahr. Jede Person nimmt einmal teil, egal wie viele Termine. Abgesagte oder nicht wahrgenommene Termine zählen nicht.') +
+    li('<b>Wer darf mitmachen:</b> Personen ab 18 Jahren. Ausgeschlossen sind Mitarbeitende des Studios und ihre Angehörigen.') +
+    li('<b>Ziehung:</b> am ' + datumKurz_(k.ziehung) + ' per Zufall unter allen Teilnehmenden. Die Gewinnerin bzw. der Gewinner wird per E-Mail oder Telefon benachrichtigt und kann den Gewinn innerhalb von 3 Monaten einlösen.') +
+    li('<b>Daten:</b> Für das Gewinnspiel nutzen wir die Angaben aus Ihrer Terminbuchung, nur für die Ziehung und die Benachrichtigung. Mehr in unserer ' +
+      (k.datenschutz ? '<a href="' + esc_(k.datenschutz) + '">Datenschutzerklärung</a>' : 'Datenschutzerklärung') + '.') +
+    li('Dieses Gewinnspiel steht in keiner Verbindung zu Facebook oder Instagram und wird von Meta weder gesponsert, unterstützt noch organisiert.') +
+    li('Der Rechtsweg ist ausgeschlossen. Wir dürfen das Gewinnspiel aus wichtigem Grund vorzeitig beenden.') + '</ol>');
+}
+
 function werktage_(von, bis) {
   var n = 0, d = new Date(von.getFullYear(), von.getMonth(), von.getDate() + 1);
   for (; d <= bis; d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1)) if (d.getDay() !== 0 && d.getDay() !== 6) n++;
@@ -2164,6 +2194,18 @@ function teamStudio_(kz, s) {
           '<label>Was wir von Ihnen brauchen (optional)<input name="brauchen" placeholder="z. B. 3 neue Fotos"></label>', 'Report an das Studio senden')) + '</div>';
     }
   }
+  // Gewinnspiel (nur wo erlaubt)
+  if (regelModul_(k).regeln.verlosung) {
+    var gs = gewinnspiel_(k, new Date());
+    html += '<div class="box"><h2>Gewinnspiel mit Terminbuchung</h2><p class="k">Teilnahme: Wer im Zeitraum online einen Termin bucht, bestätigt und <b>wahrnimmt</b>. ' +
+      'Die Terminseite zeigt dann von selbst ein Banner, die Zentrale zieht am Tag der Ziehung und schickt dem Studio die Gewinnerin.</p>' +
+      (gs ? '<p>✓ Läuft bis ' + datumKurz_(k.schluss) + ': ' + esc_(k.gewinn) + ' · <a href="' + esc_(portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel)) + '" target="_blank">Teilnahmebedingungen</a></p>' : '') +
+      form('gewinnspiel', '<label>Was wird verlost? (konkrete Behandlung mit Wert)<input name="gewinn" required placeholder="1 × Wimpern-Neuset Volumen (Wert 145 €)" value="' + esc_(k.gewinn) + '"></label>' +
+        '<div class="zwei"><label>Start<input type="date" name="ab" required value="' + (k.gsAb ? Utilities.formatDate(k.gsAb, s.tz, 'yyyy-MM-dd') : '') + '"></label>' +
+        '<label>Teilnahmeschluss (letzter Termin)<input type="date" name="bis" required value="' + (k.schluss ? Utilities.formatDate(k.schluss, s.tz, 'yyyy-MM-dd') : '') + '"></label></div>' +
+        '<label>Tag der Ziehung<input type="date" name="ziehung" required value="' + (k.ziehung ? Utilities.formatDate(k.ziehung, s.tz, 'yyyy-MM-dd') : '') + '"></label>', 'Gewinnspiel speichern') +
+      (gs || k.gewinn ? form('gewinnspiel-aus', '', 'Gewinnspiel beenden', 'Gewinnspiel wirklich beenden? Das Banner verschwindet sofort.', true) : '') + '</div>';
+  }
   // 5 · Rechnungen
   var rg = SpreadsheetApp.getActive().getSheetByName('Rechnungen') ? tabelle_('Rechnungen') : null;
   var meine = rg && rg.kopf['Kürzel'] !== undefined ? rg.zeilen.filter(function (x) { return String(rg.get(x, 'Kürzel')) === k.kuerzel && rg.get(x, 'Datum'); }) : [];
@@ -2216,6 +2258,21 @@ function teamAktion_(kz, s, aktion, d) {
         'Bitte einmal ansehen und freigeben, dann starten wir die Werbung. Etwas soll anders sein? Einfach dort hineinschreiben.</p>' +
         grosserKnopf_(studioLink_(s, k2), 'Ansehen und freigeben') + '<p style="font-size:16px;">Fragen? ' + betreuerZeile_(k2, s) + '</p>') });
     return { ok: true, meldung: 'Das Studio hat die Mail bekommen und sieht Seite und Anzeigen auf seiner Schritte-Seite.' };
+  }
+  if (aktion === 'gewinnspiel') {
+    if (!regelModul_(k).regeln.verlosung) return { ok: false, meldung: 'Für dieses Studio sind Gewinnspiele in der Werbung nicht erlaubt.' };
+    var ab = datum_(txt(d.ab)), bis = datum_(txt(d.bis)), zi = datum_(txt(d.ziehung));
+    if (txt(d.gewinn).length < 5 || !ab || !bis || !zi) return { ok: false, meldung: 'Bitte Gewinn, Start, Teilnahmeschluss und Ziehung eintragen.' };
+    if (!(ab <= bis && bis < zi)) return { ok: false, meldung: 'Reihenfolge: Start ≤ Teilnahmeschluss < Ziehung (die Ziehung nach dem letzten Termin).' };
+    if (/botox|kostenlos.*behandlung.*ärzt/i.test(txt(d.gewinn))) return { ok: false, meldung: 'Diesen Gewinn bitte anders formulieren.' };
+    kundeSetzen_(kz, { 'Gewinn': txt(d.gewinn), 'Gewinnspiel ab': ab, 'Teilnahmeschluss': bis, 'Ziehung am': zi });
+    cacheLeeren_(kunde_(kz));
+    return { ok: true, meldung: 'Gespeichert. Das Banner erscheint ab dem Start auf der Terminseite. Für die Anzeigen: Claude schreiben „Gewinnspiel-Kampagne für ' + kz + '“.' };
+  }
+  if (aktion === 'gewinnspiel-aus') {
+    kundeSetzen_(kz, { 'Gewinn': '', 'Gewinnspiel ab': '', 'Teilnahmeschluss': '', 'Ziehung am': '' });
+    cacheLeeren_(kunde_(kz));
+    return { ok: true, meldung: 'Gewinnspiel beendet.' };
   }
   if (aktion === 'erinnern') {
     studiosNachfassen_(s, jetzt, kz);
@@ -2397,7 +2454,7 @@ function kunden_() {
       googleOk: datum_(g('Google verknüpft')), erinnert: datum_(g('Erinnert am')), erinnerungen: Number(g('Erinnerungen')) || 0,
       allesDa: datum_(g('Alles da')), liveMail: datum_(g('Live-Mail')), pixel: String(g('Pixel-ID')).replace(/\D/g, ''),
       conversion: String(g('Google-Conversion')).trim(), vorschau: datum_(g('Vorschau gesendet')), freigabe: datum_(g('Freigabe')),
-      aenderung: String(g('Änderungswunsch')).trim()
+      aenderung: String(g('Änderungswunsch')).trim(), gewinn: String(g('Gewinn')).trim(), gsAb: datum_(g('Gewinnspiel ab'))
     };
   });
 }

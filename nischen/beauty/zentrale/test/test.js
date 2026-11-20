@@ -763,6 +763,22 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   pruefe(rp.slice(1).some(z => z[rk.indexOf('Kürzel')] === 'kate-cosmetics' && z[rk.indexOf('Posten')] === 'Provision' && z[rk.indexOf('Zeitraum')] === 'März 2027' && z[rk.indexOf('Netto €')] === 58.5), 'Provision: 15 % von 390 € = 58,50 € für März');
   pruefe(mails.slice(m0).some(x => x.subject.startsWith('Monatsanfang') && x.htmlBody.includes('Provision März 2027')), 'Monatsanfang meldet die Provisions-Rechnung');
   pruefe(G.nachfragen_(G.einst_(), { s: 'auftrag', id: 'P1', t: 'x' }, 'Pia', G.KNOEPFE.auftrag).html.includes('name="w" required'), 'Kauf-Knopf: Betrag ist Pflicht');
+  // Gewinnspiel mit Terminbuchung
+  pruefe(!T('gewinnspiel', { gewinn: 'Neuset', ab: '2027-04-10', bis: '2027-04-05', ziehung: '2027-04-20' }).ok, 'Gewinnspiel: falsche Reihenfolge der Daten → Hinweis');
+  pruefe(T('gewinnspiel', { gewinn: '1 × Wimpern-Neuset (Wert 145 €)', ab: '2027-04-01', bis: '2027-04-15', ziehung: '2027-04-16' }).ok, 'Gewinnspiel gespeichert');
+  uhr('2027-04-05 10:00');
+  const gsl = get({ a: 'slots', k: 'kate-cosmetics', l: 'Powder Brows' });
+  pruefe(gsl.gewinnspiel && gsl.gewinnspiel.gewinn.includes('Neuset') && gsl.gewinnspiel.bis === '15.04.2027', 'Terminseite bekommt das Gewinnspiel mit (Banner)');
+  pruefe(G.teilnahmeSeite_({ k: 'kate-cosmetics' }).html.includes('wahrnehmen') || G.teilnahmeSeite_({ k: 'kate-cosmetics' }).html.includes('wahr'), 'Teilnahmebedingungen werden erzeugt');
+  const tz = G.tabelle_('Termine');
+  [['G1', 'Gina Gewinn', '0151 11112222', 'erschienen', '2027-04-08 10:00'], ['G2', 'Nora Nichtda', '0151 33334444', 'nicht erschienen', '2027-04-09 10:00'],
+   ['G3', 'Zora Zuspät', '0151 55556666', 'erschienen', '2027-04-20 10:00']].forEach(([id, n, tel, st, t]) =>
+    blaetter.Termine.appendRow(G.zeileNachKopf_(tz, { 'ID': id, 'Eingang': berlin('2027-04-02 09:00'), 'Kunde': 'kate-cosmetics', 'Art': 'Online-Termin', 'Name': n, 'Telefon': tel, 'Stand': st, 'Termin': berlin(t) })));
+  uhr('2027-04-16 08:00'); m0 = mails.length; G.taeglich();
+  const zg = mails.slice(m0).find(x => x.subject.includes('Verlosung'));
+  pruefe(zg && zg.htmlBody.includes('Gina Gewinn') && zg.htmlBody.includes('1 Teilnehmer') && !zg.htmlBody.includes('Nora') && !zg.htmlBody.includes('Zora'), 'Ziehung nur unter denen, die im Zeitraum erschienen sind');
+  G.neuerKunde_(Object.assign({}, basis, { betrieb: 'Praxis Test', behandler: 'Arzt/Ärztin', angebot: 'Faltenbehandlung', leistungen: [{ name: 'Beratung', minuten: '20' }] }), G.einst_());
+  pruefe(!G.teamAktion('praxis-test', G.teamToken_(G.einst_(), 'praxis-test'), 'gewinnspiel', { gewinn: '1 × Behandlung', ab: '2027-04-01', bis: '2027-04-02', ziehung: '2027-04-03' }).ok, 'Ärzte: Gewinnspiel gesperrt (Heilmittelwerbegesetz)');
 }
 console.log(`\n${ok} bestanden, ${fehler} fehlgeschlagen`);
 process.exit(fehler ? 1 : 0);
