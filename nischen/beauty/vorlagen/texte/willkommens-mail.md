@@ -11,9 +11,9 @@
 
 Hallo {{anrede}} {{inhaber_nachname}},
 
-schön, dass wir zusammenarbeiten! Damit Ihre Online-Termine schnell starten, brauche ich bis in 3 Tagen
+schön, dass wir zusammenarbeiten! {{team_vorstellung}} Damit Ihre Online-Termine schnell starten, brauche ich bis in 3 Tagen
 fünf Dinge von Ihnen. **Im Anhang sind zwei Anleitungen, Schritt für Schritt:** „Zugänge einrichten“ und
-„Kalender verbinden“. Rechnen Sie mit 30 bis 45 Minuten. Hängen Sie irgendwo, rufen Sie mich an: {{agentur_telefon}}.
+„Kalender verbinden“. Rechnen Sie mit 30 bis 45 Minuten. Hängen Sie irgendwo, rufen Sie mich an: {{betreuer_telefon}}.
 
 **1. Fotos** (das Wichtigste). Bitte hier hochladen: {{drive_link}}
 
@@ -60,5 +60,5 @@ schreiben Sie mir, was ich ändern soll:
 Sobald alles da ist, gehen wir live. Die ersten Buchungen kommen meist in den ersten Tagen.
 
 Beste Grüße
-{{agentur_inhaber}}
-{{agentur_name}} · {{agentur_telefon}}
+{{betreuer_name}}
+{{agentur_name}} · {{betreuer_telefon}}

@@ -11,7 +11,7 @@ Photovoltaik ist pausiert und liegt unverändert in `../photovoltaik/`.
 | Was | Wo |
 |---|---|
 | **Die Anleitung** ⭐ vom ersten Kontakt bis zum ersten Online-Termin | [`ANLEITUNG.md`](ANLEITUNG.md) |
-| Steckbrief zum Ausfüllen (pro Studio kopieren; Blatt „Deine Daten“ einmal ausfüllen) | [`vorlagen/tabellen/01-steckbrief.xlsx`](vorlagen/tabellen/01-steckbrief.xlsx) |
+| Steckbrief zum Ausfüllen (pro Studio kopieren; Blatt „Eure Daten“ einmal ausfüllen) | [`vorlagen/tabellen/01-steckbrief.xlsx`](vorlagen/tabellen/01-steckbrief.xlsx) |
 | **Die Beauty-Zentrale**: Google-Tabelle mit Online-Buchung, Kalender, Mails, Fake-Schutz, Reports | [`zentrale/EINRICHTEN.md`](zentrale/EINRICHTEN.md) |
 | Hilfe für Schritt 6: Kalender, Messung, Seiten, Zentrale, Kampagnen | [`hilfe-einrichten.md`](hilfe-einrichten.md) |
 | Der Baukasten: vier Behandlungen mit Regeln, Texten, Anzeigen | [`vorlagen/module.py`](vorlagen/module.py) |
@@ -30,6 +30,10 @@ Photovoltaik ist pausiert und liegt unverändert in `../photovoltaik/`.
 (Die Links funktionieren, sobald der Branch `beauty-recherche` in `main` übernommen ist.)
 
 ## Worauf es ankommt
+
+- **Ihr seid zu zweit.** Jedes Studio hat einen festen **Betreuer** (du oder dein Kollege), dessen Name und Nummer
+  in allen Mails und Anleitungen stehen; einer von euch macht die **Technik**. Die Zentrale verteilt Akquise-Liste und
+  Report-Entwürfe an die richtige Person, Hinweise gehen an beide. Zusammen klären: Aufteilung, Auftritt (z. B. GbR), Rechnungen.
 
 - **Eine Behandlung pro Studio**, und nur, wer sie darf: Laser mit NiSV-Fachkunde, Faltenbehandlung nur Ärzte
   (Hyaluron auch Heilpraktiker), Bleaching nur Zahnärzte. Der Steckbrief prüft das.

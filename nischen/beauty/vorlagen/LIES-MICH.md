@@ -62,6 +62,13 @@ lernen die Plattformen echte Termine statt Klicks.
 | `anzeigen/` | 10 Anzeigen ansehen | zum Zeigen |
 | `dokumente/teilnahmebedingungen.md` | 11 Verlosung – Teilnahmebedingungen | nur bei Verlosung |
 
+## Zu zweit
+
+„Eure Daten“ im Steckbrief hat beide Partner (Name, Telefon, E-Mail) und wer die Technik macht. Pro Studio
+„Wer von euch betreut das Studio?“ → Platzhalter `{{betreuer_name}}`, `{{betreuer_telefon}}`, `{{betreuer_email}}`,
+`{{technik_name}}`, `{{agentur_vertreter}}` (beide Namen, Vertrag), `{{team_vorstellung}}` (Willkommens-Mail). Die
+Zentrale-Zeile trägt den Betreuer mit; die Zentrale kennt das Team über die Einstellung „team“ (Name = E-Mail).
+
 ## Regeln, die im System stecken
 
 - **Ein Studio, eine Behandlung.** Der Steckbrief wählt das Modul; Seite, Anzeigen, Mails und Kampagnen folgen ihm.
@@ -73,5 +80,5 @@ lernen die Plattformen echte Termine statt Klicks.
 - **Nichts erfinden.** Leere Felder erscheinen als `[Feldname]` und stehen unter „Noch offen“. Bewertungen nur echte
   (bei Faltenbehandlung gar keine), Vorher/Nachher nur wo erlaubt und mit echten Fotos.
 - Pixel und Google erst nach Zustimmung, Schriften selbst gehostet (Fraunces, Inter Tight), keine Google Fonts.
-- **Ohne Web-App-Adresse der Zentrale** (Steckbrief „Deine Daten“) zeigen die Seiten Beispiel-Termine (Vorführmodus,
+- **Ohne Web-App-Adresse der Zentrale** (Steckbrief „Eure Daten“) zeigen die Seiten Beispiel-Termine (Vorführmodus,
   auch mit `?demo=1`).

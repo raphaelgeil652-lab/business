@@ -1,6 +1,6 @@
 # Vertrag verschicken — {{betrieb}}
 
-## So geht es (für dich)
+## So geht es (für euch; verschickt wird vom Betreuer, {{betreuer_name}})
 
 1. **„2b Vertrag – als PDF schicken“** öffnen → Ablage → Exportieren → PDF (Word: Datei → Speichern unter → PDF).
    Name: `Vereinbarung {{betrieb}}.pdf`.
@@ -34,5 +34,5 @@ Sobald sie da ist, bekommen Sie von mir die Rechnung und eine Mail mit den näch
 geht es los.
 
 Beste Grüße
-{{agentur_inhaber}}
-{{agentur_name}} · {{agentur_telefon}}
+{{betreuer_name}}
+{{agentur_name}} · {{betreuer_telefon}}

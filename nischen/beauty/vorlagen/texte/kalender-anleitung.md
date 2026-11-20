@@ -54,4 +54,4 @@ Abgesprochen ist: **{{buchbare_zeiten}}**, frühestens {{vorlauf_text}} nach der
 {{tage_text}} im Voraus. Eine Beratung dauert {{beratung_minuten}} Minuten{{puffer_text}}. Soll sich etwas ändern,
 sagen Sie uns Bescheid. Das ist in fünf Minuten umgestellt.
 
-{{agentur_inhaber}} · {{agentur_name}} · {{agentur_telefon}} · {{agentur_email}}
+Fragen? {{betreuer_name}} · {{agentur_name}} · {{betreuer_telefon}} · {{betreuer_email}}

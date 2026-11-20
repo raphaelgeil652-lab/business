@@ -9,7 +9,7 @@ Computer, nicht am Handy.
 Alles ist kostenlos. Nur das Werbebudget zahlen Sie später direkt an Meta und Google. Es läuft nicht über uns.
 Die Konten gehören Ihnen. Sie behalten jederzeit die Kontrolle und können uns jederzeit wieder entfernen.
 
-**Sie hängen irgendwo?** Rufen Sie mich einfach an: {{agentur_telefon}}. Das ist normal und in fünf
+**Sie hängen irgendwo?** Rufen Sie mich einfach an: {{betreuer_name}}, {{betreuer_telefon}}. Das ist normal und in fünf
 Minuten gelöst.
 
 ## Ihre Liste: Was wir von Ihnen brauchen
@@ -37,7 +37,7 @@ Am Ende antworten Sie einfach auf meine Willkommens-Mail (Vorlage ganz unten).
 {{fotos_zusatz}}   - Gern kurze Handyvideos (hochkant, 10–30 Sekunden): Sie erklären in zwei Sätzen, wie ein Termin abläuft.
 
 Bitte nicht über WhatsApp schicken: Dort werden Fotos verkleinert. Klappt der Ordner nicht, schicken Sie die
-Fotos kostenlos und ohne Anmeldung über **wetransfer.com** an {{agentur_email}}.
+Fotos kostenlos und ohne Anmeldung über **wetransfer.com** an {{betreuer_email}}.
 
 ## B · Meta (Facebook und Instagram)
 
@@ -176,4 +176,4 @@ Antworten Sie auf meine Willkommens-Mail, zum Beispiel so:
 
 Sobald alles da ist, richten wir Ihre Werbung ein und melden uns zum Start.
 
-{{agentur_inhaber}} · {{agentur_name}} · {{agentur_telefon}} · {{agentur_email}}
+{{betreuer_name}} · {{agentur_name}} · {{betreuer_telefon}} · {{betreuer_email}}

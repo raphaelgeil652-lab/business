@@ -34,7 +34,7 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
 1. **Hochladen:** drive.google.com → „Neu“ → „Datei hochladen“ → „2 Beauty-Zentrale – in Google Drive hochladen.xlsx“.
    Die Datei öffnen → oben „Datei“ → „Als Google Tabellen speichern“. Ab jetzt nur noch diese
    Google-Version benutzen (die .xlsx kannst du löschen).
-2. **Deine Daten:** Blatt „Einstellungen“ → alle gelben Felder ausfüllen. Bei „Hinweise gehen an“
+2. **Eure Daten:** Blatt „Einstellungen“ → alle gelben Felder ausfüllen. Bei „Hinweise gehen an“
    deine E-Mail, gern mit Komma auch die deines Kollegen.
 3. **Code einfügen:** Menü „Erweiterungen“ → „Apps Script“. Im Editor alles löschen. Die Datei
    „3 Beauty-Zentrale-Code – in Apps Script einfügen.txt“ öffnen, alles kopieren, einfügen. Oben auf das Disketten-Symbol (Speichern).
@@ -61,7 +61,7 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
    danach nochmal „1 · Einrichten“. Die Meldung sagt „Die Automatik läuft“.
    *Kein Menü?* Steht oben neben dem Dateinamen „.XLSX“, ist es noch nicht die Google-Version (Schritt 1).
 7. **Web-App-Adresse in die Steckbrief-Vorlage:** dieselbe Adresse (endet auf `/exec`) in der Steckbrief-Vorlage,
-   Blatt **„Deine Daten“**, bei „Web-App-Adresse der Beauty-Zentrale“ eintragen, dazu deine Google-E-Mail (die
+   Blatt **„Eure Daten“**, bei „Web-App-Adresse der Beauty-Zentrale“ eintragen, dazu deine Google-E-Mail (die
    Studios geben ihren Kalender für sie frei). Ohne die Adresse zeigen die Terminseiten nur Beispiel-Termine.
 8. **Testen** (10 Minuten, mit dir selbst als Studio):
    - In deinem eigenen Google-Kalender nichts ändern. Blatt **„Kunden“** → eine Zeile: Kürzel `test`, Betrieb `Test`,
@@ -73,6 +73,19 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
      Schritt 7 der Anleitung.
    - Aufräumen: Zeile `test` in „Kunden“ löschen (oder Aktiv `Nein`), TEST-Zeile in „Termine“ löschen, Spalte `test`
      in „Checkliste“ löschen.
+
+9. **Mit deinem Kollegen teilen:** oben rechts „Freigeben“ → seine E-Mail → **Bearbeiter**. Er sieht und bearbeitet
+   alles, die Automatik läuft aber weiter in **deinem** Konto (bzw. dem Agentur-Konto). Das Menü „Clickculture“
+   funktioniert auch bei ihm (beim ersten Mal muss er zulassen).
+10. **Team eintragen:** Blatt „Einstellungen“ → **„Hinweise gehen an“**: eure beiden E-Mails mit Komma →
+   **„Wer ist im Team?“**: `Max = max@mail.de; Tom = tom@mail.de` (eure Namen, Vorname reicht). Dann: Im Blatt
+   „Kunden“ steht bei jedem Studio der **Betreuer**, im Blatt „Akquise“ bei jedem Studio **„Wer“**. Daraus macht die
+   Zentrale: Jeder bekommt morgens seine eigene Akquise-Liste, der Betreuer bekommt den Report-Text seines Studios,
+   und Hinweise an euch beide tragen den Betreuer im Betreff.
+
+**Ein Konto für die Zentrale:** Die Studios geben ihren Kalender für das Google-Konto frei, unter dem die Zentrale
+läuft. Am besten ein eigenes Agentur-Konto (z. B. Google Workspace mit eurer Domain), auf das ihr beide zugreifen
+könnt. Läuft sie unter einem privaten Konto, kann nur dessen Inhaber Apps Script und Gmail-Entwürfe sehen.
 
 Fertig. Ab jetzt läuft alles von selbst.
 

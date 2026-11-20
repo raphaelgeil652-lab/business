@@ -102,7 +102,10 @@ nie „Botox“, kein Vorher/Nachher, keine Verlosung/Rabatte, kein „kostenlos
 Bleaching nur Zahnarztpraxen, sachlich; Laser nur mit NiSV-Fachkunde, „dauerhaft“ nie ohne Hinweis auf Sitzungen;
 alle: Meta 18+, Häkchen „mindestens 18“, Art.-9-Einwilligung, keine Gesundheitsfragen im Formular. Vorbereitungs-
 Hinweise sind Vorschläge bis zur Freigabe durch das Studio. Keine Kaltanrufe bei Praxen (BVerwG). Vier erfundene
-Beispielstudios (`beispiele-bauen.py`) liegen im Repo, echte nie (`.gitignore`). Mail-Grenze: kostenloses Google-Konto
+Beispielstudios (`beispiele-bauen.py`) liegen im Repo, echte nie (`.gitignore`). **Zu zweit (Nutzer-Vorgabe 20.11.2026):** Der Nutzer arbeitet mit einem Kollegen. Steckbrief-Blatt „Eure Daten“
+(beide Partner, wer die Technik macht), pro Studio ein fester **Betreuer** (Name/Telefon/E-Mail in allen Texten ans
+Studio, Vertrag nennt beide), Rollen Betreuer/Technik/Studio in Anleitung und Checkliste; Zentrale: Einstellung „team“,
+Spalte „Betreuer“ (Kunden), „Wer“ (Akquise) → eigene Akquise-Liste je Person, Report-Text an den Betreuer, Hinweise an beide. Mail-Grenze: kostenloses Google-Konto
 ~100 Mails/Tag (~20 Buchungen), ab 4–5 Studios Workspace. Offene Prüfung: Meta-Werbebibliothek von Hand, Vorlagen
 anwaltlich prüfen. Recherche: `research_notes/Beauty …/`, Bericht `reports/Beauty Nischen Profitabilität Deutschland.md`.
 

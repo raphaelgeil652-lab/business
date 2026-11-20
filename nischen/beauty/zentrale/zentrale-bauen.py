@@ -39,7 +39,7 @@ STAND = ["unbestätigt", "angefragt", "neu", "nicht erreicht", "erreicht", "Term
 STAND_AKQ = ["neu", "nicht erreicht", "Termin vereinbart", "Vereinbarung geschickt", "Kunde", "kein Interesse"]
 
 # ---------------------------------------------------------------- Spalten (Zeile 1), die Code.gs liest
-KUNDEN = [  # (Name, Breite, Format, Eingabe?) · die ersten Spalten bis „Ziehung am“ kommen aus „Zeile für die Zentrale“
+KUNDEN = [  # (Name, Breite, Format, Eingabe?) · die ersten Spalten bis „Betreuer“ kommen aus „Zeile für die Zentrale“
     ("Kürzel", 22, None, True), ("Betrieb", 26, None, True), ("Anrede für Mails", 18, None, True),
     ("E-Mail für Termine", 28, None, True), ("Telefon", 16, "@", True), ("Adresse", 30, None, True),
     ("Seiten-Adresse", 30, None, True), ("Drive-Ordner", 24, None, True),
@@ -48,7 +48,7 @@ KUNDEN = [  # (Name, Breite, Format, Eingabe?) · die ersten Spalten bis „Zieh
     ("Buchbare Zeiten", 26, None, True), ("Beratung Minuten", 10, "0", True), ("Leistungen", 40, None, True),
     ("Puffer Minuten", 9, "0", True), ("Vorlauf Stunden", 9, "0", True), ("Tage im Voraus", 9, "0", True),
     ("Absagefrist Stunden", 10, "0", True), ("Ausfallregel", 30, None, True), ("Vorbereitung", 40, None, True),
-    ("Teilnahmeschluss", 14, DATUM, True), ("Ziehung am", 12, DATUM, True),
+    ("Teilnahmeschluss", 14, DATUM, True), ("Ziehung am", 12, DATUM, True), ("Betreuer", 14, None, True),
     ("Erster Auftrag", 14, DATUM, False), ("Monatsgebühr ab", 14, "MM.YYYY", False), ("Termine gesamt", 10, "0", False),
     ("Notiz", 34, None, True),
 ]
@@ -69,45 +69,45 @@ RECHNUNGEN = [("Nr.", 10, None), ("Datum", 11, DATUM), ("Kunde (Firma)", 26, Non
               ("Fällig am", 11, DATUM), ("Bezahlt am", 11, DATUM), ("Status", 11, None)]
 
 CHECKLISTE = [  # gleiche Schritte wie nischen/beauty/ANLEITUNG.md (4 bis 7)
-    ("4 · Abschluss", "Vereinbarung als PDF geschickt, unterschrieben zurück", "Du"),
-    ("4 · Abschluss", "Rechnung Onboarding (Blatt Rechnungen) als PDF mit Mail 1 geschickt", "Du"),
-    ("4 · Abschluss", "Google-Ads-Konto für das Studio unter deinem Verwaltungskonto angelegt, als Administrator eingeladen", "Du"),
-    ("4 · Abschluss", "Willkommens-Mail geschickt: Zugänge-Anleitung, Kalender-Anleitung und Termin-Leitfaden als PDF angehängt", "Du"),
-    ("4 · Abschluss", "Zeile für die Zentrale im Blatt „Kunden“ eingefügt", "Du"),
-    ("5 · Vom Kunden", "Fotos im Drive-Ordner: Studio, Behandlung, Behandler/in (Ergebnisfotos nur wo erlaubt)", "Kunde"),
-    ("5 · Vom Kunden", "Kalender für dich freigegeben („Änderungen an Terminen vornehmen“) oder Modus Wunschtermin vereinbart", "Kunde"),
-    ("5 · Vom Kunden", "Meta: Partnerzugriff auf Seite und Werbekonto, Zahlungsmethode im Werbekonto", "Kunde"),
-    ("5 · Vom Kunden", "Bei Meta dich seinem Werbekonto und seiner Seite zugewiesen", "Du"),
-    ("5 · Vom Kunden", "Google Ads: Einladung angenommen, Zahlungsart hinterlegt", "Kunde"),
-    ("5 · Vom Kunden", "Links zu Impressum und Datenschutz, 2 echte Google-Bewertungen", "Kunde"),
-    ("5 · Vom Kunden", "Vorbereitungs-Hinweise und Absageregel vom Studio gelesen und freigegeben", "Kunde"),
-    ("5 · Vom Kunden", "Nachweis Qualifikation: Laser = NiSV-Fachkunde, Faltenbehandlung = Arzt/Heilpraktiker, Bleaching = Zahnarzt", "Kunde"),
-    ("6 · Einrichten", "Meta-Pixel und Google-Conversion angelegt, IDs im Steckbrief (Teil 5)", "Du"),
-    ("6 · Einrichten", "Steckbrief und die besten Fotos an Claude, Kundenordner neu erzeugt", "Du"),
-    ("6 · Einrichten", "Seiten auf Netlify, Name = Kürzel, Formular-Erkennung an, nochmal hochgeladen", "Du"),
-    ("6 · Einrichten", "Netlify: Webhook zur Zentrale und Mail-Kopie an dich eingetragen (für Rückruf-Wünsche)", "Du"),
-    ("6 · Einrichten", "Zentrale: Menü „2 · Kalender der Kunden prüfen“ zeigt ✓ und freie Zeiten", "Du"),
-    ("6 · Einrichten", "Meta-Kampagne mit den Anzeigen als Entwurf angelegt", "Du"),
-    ("6 · Einrichten", "Google-Kampagne angelegt (pausiert)", "Du"),
-    ("7 · Live", "„0 Übersicht“: nichts mehr offen, Impressum- und Datenschutz-Link sind drin (Pflicht)", "Du"),
-    ("7 · Live", "Test-Buchung über die Seite mit deiner E-Mail: bestätigt, im Kalender, Mails da, wieder abgesagt", "Du"),
-    ("7 · Live", "„Events testen“: PageView auf der Seite, Lead auf der Bestätigungsseite", "Du"),
-    ("7 · Live", "Am Handy geprüft: Termin wählen, Formular, Anrufen-Knopf, Fotos", "Du"),
-    ("7 · Live", "Meta: Transparenz (Werbetreibender und Zahlender = Kunde) eingetragen, ggf. verifiziert", "Du"),
-    ("7 · Live", "Kampagnen aktiv. Im Blatt „Kunden“ bei „Live seit“ das Datum (Start der 30 Tage)", "Du"),
-    ("7 · Live", "Studio angerufen: Mails „Neuer Termin“, „Fake melden“ und Abend-Mail erklärt", "Du"),
+    ("4 · Abschluss", "Vereinbarung als PDF geschickt, unterschrieben zurück", "Betreuer"),
+    ("4 · Abschluss", "Rechnung Onboarding (Blatt Rechnungen) als PDF mit Mail 1 geschickt", "Betreuer"),
+    ("4 · Abschluss", "Google-Ads-Konto für das Studio unter eurem Verwaltungskonto angelegt, als Administrator eingeladen", "Technik"),
+    ("4 · Abschluss", "Willkommens-Mail geschickt: Zugänge-Anleitung, Kalender-Anleitung und Termin-Leitfaden als PDF angehängt", "Betreuer"),
+    ("4 · Abschluss", "Zeile für die Zentrale im Blatt „Kunden“ eingefügt", "Technik"),
+    ("5 · Vom Studio", "Fotos im Drive-Ordner: Studio, Behandlung, Behandler/in (Ergebnisfotos nur wo erlaubt)", "Studio"),
+    ("5 · Vom Studio", "Kalender für euer Zentrale-Konto freigegeben („Änderungen an Terminen vornehmen“) oder Modus Wunschtermin vereinbart", "Studio"),
+    ("5 · Vom Studio", "Meta: Partnerzugriff auf Seite und Werbekonto, Zahlungsmethode im Werbekonto", "Studio"),
+    ("5 · Vom Studio", "Bei Meta euch seinem Werbekonto und seiner Seite zugewiesen", "Technik"),
+    ("5 · Vom Studio", "Google Ads: Einladung angenommen, Zahlungsart hinterlegt", "Studio"),
+    ("5 · Vom Studio", "Links zu Impressum und Datenschutz, 2 echte Google-Bewertungen", "Studio"),
+    ("5 · Vom Studio", "Vorbereitungs-Hinweise und Absageregel vom Studio gelesen und freigegeben", "Studio"),
+    ("5 · Vom Studio", "Nachweis Qualifikation: Laser = NiSV-Fachkunde, Faltenbehandlung = Arzt/Heilpraktiker, Bleaching = Zahnarzt", "Studio"),
+    ("6 · Einrichten", "Meta-Pixel und Google-Conversion angelegt, IDs im Steckbrief (Teil 5)", "Technik"),
+    ("6 · Einrichten", "Steckbrief und die besten Fotos an Claude, Kundenordner neu erzeugt", "Technik"),
+    ("6 · Einrichten", "Seiten auf Netlify, Name = Kürzel, Formular-Erkennung an, nochmal hochgeladen", "Technik"),
+    ("6 · Einrichten", "Netlify: Webhook zur Zentrale und Mail-Kopie an euch eingetragen (für Rückruf-Wünsche)", "Technik"),
+    ("6 · Einrichten", "Zentrale: Menü „2 · Kalender der Kunden prüfen“ zeigt ✓ und freie Zeiten", "Technik"),
+    ("6 · Einrichten", "Meta-Kampagne mit den Anzeigen als Entwurf angelegt", "Technik"),
+    ("6 · Einrichten", "Google-Kampagne angelegt (pausiert)", "Technik"),
+    ("7 · Live", "„0 Übersicht“: nichts mehr offen, Impressum- und Datenschutz-Link sind drin (Pflicht)", "Technik"),
+    ("7 · Live", "Test-Buchung über die Seite mit eurer E-Mail: bestätigt, im Kalender, Mails da, wieder abgesagt", "Technik"),
+    ("7 · Live", "„Events testen“: PageView auf der Seite, Lead auf der Bestätigungsseite", "Technik"),
+    ("7 · Live", "Am Handy geprüft: Termin wählen, Formular, Anrufen-Knopf, Fotos", "Betreuer"),
+    ("7 · Live", "Meta: Transparenz (Werbetreibender und Zahlender = Kunde) eingetragen, ggf. verifiziert", "Technik"),
+    ("7 · Live", "Kampagnen aktiv. Im Blatt „Kunden“ bei „Live seit“ das Datum (Start der 30 Tage)", "Technik"),
+    ("7 · Live", "Studio angerufen: Mails „Neuer Termin“, „Fake melden“ und Abend-Mail erklärt", "Betreuer"),
 ]
 
 EINSTELLUNGEN = [  # (Schlüssel, Einstellung, Vorgabe, Hilfe)
-    ("§", "Deine Daten (für Rechnungen und Mails)", None, None),
+    ("§", "Eure Daten (für Rechnungen und Mails)", None, None),
     ("agentur_name", "Name der Agentur", "", "steht als Absender in Mails an dich und auf Rechnungen"),
-    ("agentur_inhaber", "Dein Name", "", "Unterschrift unter Monatsreports"),
+    ("agentur_inhaber", "Eure Namen", "", "z. B. „Max Muster und Tom Beispiel“: stehen auf Rechnungen. Unter Reports steht der Betreuer des Studios"),
     ("agentur_anschrift", "Deine Anschrift", "", "Straße, PLZ Ort"),
-    ("agentur_email", "Deine E-Mail", "", "Studios antworten an diese Adresse"),
-    ("agentur_telefon", "Dein Telefon", "", ""),
+    ("agentur_email", "E-Mail der Agentur", "", "gemeinsame Adresse (oder deine). Studios antworten hierhin, wenn kein Betreuer eingetragen ist"),
+    ("agentur_telefon", "Telefon der Agentur", "", "steht auf Rechnungen"),
     ("agentur_steuernr", "Steuernummer", "", "Pflicht auf jeder Rechnung"),
     ("agentur_iban", "IBAN", "", ""),
-    ("agentur_kleinunternehmer", "Kleinunternehmer (§ 19 UStG)?", "", "Ja = keine Umsatzsteuer. Muss genauso sein wie im Steckbrief, Blatt „Deine Daten“"),
+    ("agentur_kleinunternehmer", "Kleinunternehmer (§ 19 UStG)?", "", "Ja = keine Umsatzsteuer. Muss genauso sein wie im Steckbrief, Blatt „Eure Daten“"),
     ("§", "Online-Buchung", None, None),
     ("bestaetigung_minuten", "Termin freihalten bis zur Bestätigung (Minuten)", 45, "So lange ist ein Platz reserviert. Nicht bestätigt → wieder frei"),
     ("erinnerung_stunden", "Erinnerung an die Kundin … Stunden vorher", 24, ""),
@@ -115,14 +115,15 @@ EINSTELLUNGEN = [  # (Schlüssel, Einstellung, Vorgabe, Hilfe)
     ("max_unbestaetigt", "Höchstens … unbestätigte Buchungen in 30 Minuten pro Studio", 6, "Schutz gegen Bots und Termin-Blockierer. Darüber: kurz gesperrt, Mail an dich"),
     ("mail_warnung_ab", "Warnen, wenn morgens weniger als … Mails übrig sind", 25, "Google-Grenze: ca. 100 Mails am Tag (kostenlos), 1.500 (Workspace)"),
     ("§", "Rückruf-Wünsche (Formular auf der Seite)", None, None),
-    ("benachrichtigung_an", "Hinweise gehen an", "", "deine E-Mail; mehrere mit Komma, z. B. auch dein Kollege"),
+    ("benachrichtigung_an", "Hinweise gehen an", "", "eure beiden E-Mails, mit Komma getrennt: Fehler, Warnungen, ⏰, erster Auftrag, Wochen-Übersicht"),
+    ("team", "Wer ist im Team?", "", "Name = E-Mail; Name = E-Mail, z. B. „Max = max@mail.de; Tom = tom@mail.de“. Die Namen in „Betreuer“ (Kunden) und „Wer“ (Akquise) müssen dazu passen; Vorname reicht"),
     ("geschaeftszeiten", "Geschäftszeiten der Studios", "9-18", "nur in dieser Zeit zählen die Minuten bis zum Rückruf"),
     ("arbeitstage", "Arbeitstage", "Mo-Sa", "Mo-Fr oder Mo-Sa"),
     ("rueckruf_minuten", "Erinnern nach … Minuten ohne Rückruf", 60, ""),
     ("kopie_jeder_anfrage", "Jeden Rückruf-Wunsch auch an mich?", "Nein", "Nein reicht: Netlify schickt dir ohnehin eine Kopie"),
     ("akquise_erinnerung", "Morgens Akquise-Liste mailen?", "Ja", "listet die Studios, die heute dran sind"),
     ("§", "Technik (füllt sich bei der Einrichtung)", None, None),
-    ("webapp_url", "Web-App-Adresse", "", "Schritt 5: aus „Bereitstellen“ kopieren (endet auf /exec). Auch in die Steckbrief-Vorlage, Blatt „Deine Daten“"),
+    ("webapp_url", "Web-App-Adresse", "", "Schritt 5: aus „Bereitstellen“ kopieren (endet auf /exec). Auch in die Steckbrief-Vorlage, Blatt „Eure Daten“"),
     ("schluessel", "Schlüssel", "", "setzt „Einrichten“ von selbst. Nicht weitergeben"),
     ("webhook_url", "Webhook-Adresse für Netlify", "FORMEL", "bei jedem Kunden in Netlify eintragen (für Rückruf-Wünsche)"),
 ]
@@ -217,7 +218,7 @@ def bauen():
         "4. In Apps Script links das Zahnrad (Projekteinstellungen): Zeitzone „(GMT+01:00) Berlin“ wählen.",
         "5. Oben rechts „Bereitstellen → Neue Bereitstellung“ → Zahnrad → „Web-App“. Ausführen als: Ich. Zugriff: Jeder. "
         "→ Bereitstellen → Zugriff erlauben (Google warnt: „Erweitert → Weiter zu …“ → Zulassen). Die Web-App-URL kopieren "
-        "und im Blatt „Einstellungen“ bei „Web-App-Adresse“ einfügen. Dieselbe Adresse in die Steckbrief-Vorlage, Blatt „Deine Daten“.",
+        "und im Blatt „Einstellungen“ bei „Web-App-Adresse“ einfügen. Dieselbe Adresse in die Steckbrief-Vorlage, Blatt „Eure Daten“.",
         "6. Zurück zu diesem Browser-Tab (die Tabelle, nicht Apps Script) und neu laden. Oben rechts neben „Hilfe“ erscheint das Menü „Clickculture“ → „1 · Einrichten“ → zulassen → nochmal „1 · Einrichten“.",
         "7. Testen: siehe Anleitung „1 Beauty-Zentrale einrichten“, Punkt 7.",
     ]
@@ -269,7 +270,7 @@ def bauen():
     kopf(ak, AKQUISE)
     formate(ak, AKQUISE, 1000)
     for col, v in enumerate(["BEISPIEL Haut & Licht Laserstudio (Zeile überschreiben)", "Frau Beispiel", "Musterstadt", "0123 456789",
-                             "@beispiel.laser", "Laser", "4,8 · 112", "neu", None, "", "Inhaberin dienstags im Studio"], start=1):
+                             "@beispiel.laser", "Laser", "4,8 · 112", "neu", None, "Max", "Inhaberin dienstags im Studio"], start=1):
         c = ak.cell(row=2, column=col, value=v)
         c.font = Font(name=F, size=10, italic=True, color="7A756B")
     liste(ak, f"{A('Stand')}2:{A('Stand')}1000", STAND_AKQ)
@@ -279,7 +280,7 @@ def bauen():
     ak.conditional_formatting.add(f"A2:{A('Notiz')}1000", FormulaRule(
         formula=[f'AND(ISNUMBER(${n}2),${n}2<=TODAY(),${s_}2<>"Kunde",${s_}2<>"kein Interesse")'], fill=ORANGE))
     ak[f"{n}1"].comment = Comment("Datum eintragen, dann kommt es morgens in der Mail „Heute dran“. Orange = heute dran.", "Zentrale")
-    ak[f"{A('Wer')}1"].comment = Comment("Wer kümmert sich? Z. B. dein Name oder der deines Kollegen.", "Zentrale")
+    ak[f"{A('Wer')}1"].comment = Comment("Wer von euch kümmert sich? Name wie in „Einstellungen → Wer ist im Team?“. Dann kommt das Studio morgens nur in seine Mail.", "Zentrale")
     ak.auto_filter.ref = f"A1:{A('Notiz')}1000"
 
     # ------------------------------------------------ Kunden
@@ -299,18 +300,19 @@ def bauen():
     liste(ku, f"{K('Aktiv')}2:{K('Aktiv')}200", ["Ja", "Nein"])
     liste(ku, f"{K('Buchung')}2:{K('Buchung')}200", ["Kalender", "Wunschtermin"])
     ku["A1"].comment = Comment("Neuer Kunde: die Datei „Zeile für die Zentrale“ aus seinem Kundenordner öffnen, alles kopieren, "
-                               "hier in die erste freie Zeile in Spalte A einfügen. Die Spalten bis „Ziehung am“ füllen sich so.", "Zentrale")
+                               "hier in die erste freie Zeile in Spalte A einfügen. Die Spalten bis „Betreuer“ füllen sich so.", "Zentrale")
     ku[f"{K('Live seit')}1"].comment = Comment("Datum, an dem die Kampagnen live gingen. Ab dann gibt es Monatsreports.", "Zentrale")
     ku[f"{K('Aktiv')}1"].comment = Comment("Nein = keine Online-Buchung, keine Mails, keine Reports mehr (Kunde hat aufgehört).", "Zentrale")
     ku[f"{K('Buchung')}1"].comment = Comment("Kalender = freie Zeiten aus dem Google-Kalender des Studios, Termine werden direkt eingetragen. "
                                              "Wunschtermin = nur buchbare Zeiten, das Studio bestätigt jeden Termin per Knopf.", "Zentrale")
+    ku[f"{K('Betreuer')}1"].comment = Comment("Wer von euch betreut das Studio? Name wie in „Einstellungen → Wer ist im Team?“. Bekommt den Report-Entwurf, steht in Hinweisen.", "Zentrale")
     ku[f"{K('Buchbare Zeiten')}1"].comment = Comment("Wann online gebucht werden darf, z. B. „Mo-Fr 9-18; Sa 10-14“ oder „Di, Do 9:30-13 14-18“.", "Zentrale")
     ku[f"{K('Leistungen')}1"].comment = Comment("Direkt buchbare Behandlungen: Name | Minuten | Preis; Name | Minuten | Preis", "Zentrale")
     ku[f"{K('Vorbereitung')}1"].comment = Comment("Punkte mit • getrennt. Steht in der Bestätigung und der Erinnerung an die Kundin.", "Zentrale")
 
     # ------------------------------------------------ Checkliste
     ck = wb.create_sheet("Checkliste")
-    for i, (h, b) in enumerate((("Schritt", 15), ("Aufgabe", 76), ("Wer", 8)), start=1):
+    for i, (h, b) in enumerate((("Schritt", 15), ("Aufgabe", 76), ("Wer", 10)), start=1):
         c = ck.cell(row=1, column=i, value=h)
         c.font = Font(name=F, bold=True, color="FFFFFF", size=10)
         c.fill = DUNKEL
@@ -331,7 +333,8 @@ def bauen():
     liste(ck, f"D3:AZ{ende}", ["Ja"])
     ck.conditional_formatting.add(f"D3:AZ{ende}", CellIsRule(operator="equal", formula=['"Ja"'], fill=GRUEN))
     ck.freeze_panes = "D3"
-    ck["A1"].comment = Comment("Jeder Kunde im Blatt „Kunden“ bekommt hier von selbst eine Spalte. Erledigt = „Ja“ wählen.", "Zentrale")
+    ck["A1"].comment = Comment("Jeder Kunde im Blatt „Kunden“ bekommt hier von selbst eine Spalte. Erledigt = „Ja“ wählen. "
+                               "Wer: Betreuer = wer das Studio betreut, Technik = wer bei euch einrichtet, Studio = der Kunde.", "Zentrale")
 
     # ------------------------------------------------ Termine
     tm = wb.create_sheet("Termine")

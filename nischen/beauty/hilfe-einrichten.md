@@ -1,6 +1,6 @@
 # Hilfe für Schritt 6 (Beauty): Zugänge, Kalender, Messung, Seiten online, Zentrale verbinden, Kampagnen
 
-Klick für Klick, so wie Meta, Google und Netlify im November 2026 aussehen. Die Reihenfolge ist wichtig:
+Für die **Technik** bei euch (steht im Steckbrief, „Eure Daten“). Klick für Klick, so wie Meta, Google und Netlify im November 2026 aussehen. Die Reihenfolge ist wichtig:
 erst Kalender prüfen und messen, dann erzeugen, dann hochladen, dann verbinden, dann Kampagne.
 Kürzel und Adresse des Studios stehen oben in seiner „0 Übersicht“.
 

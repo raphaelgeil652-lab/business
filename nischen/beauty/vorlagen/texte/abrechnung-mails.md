@@ -1,6 +1,6 @@
 # Abrechnungs-Mails — {{betrieb}}
 
-> **So machst du eine Rechnung:** Beauty-Zentrale → Blatt „Rechnungen“ → eine Zeile (Datum, Kunde, Anschrift,
+> **So macht ihr eine Rechnung** (wer die Rechnungen schreibt, besprecht ihr einmal): Beauty-Zentrale → Blatt „Rechnungen“ → eine Zeile (Datum, Kunde, Anschrift,
 > Posten, Zeitraum, Netto). Nummer, Umsatzsteuer und Fälligkeit rechnen sich. Dann Blatt
 > „Rechnung drucken“ → Nummer oben ins gelbe Feld → die Rechnung markieren (B3 bis E31) →
 > Datei → Herunterladen → PDF → Exportieren: „Ausgewählte Zellen“, A4, Hochformat, „An Breite anpassen“,
@@ -19,11 +19,12 @@ Wie besprochen: Kommen in den ersten 30 Tagen ab Kampagnenstart keine echten, be
 erstatte ich den Betrag vollständig.
 
 Beste Grüße
-{{agentur_inhaber}}
+{{betreuer_name}}
+{{agentur_name}} · {{betreuer_telefon}}
 
 ## 2 · Erste Monatsgebühr
 
-Wann: Die Beauty-Zentrale schickt dir die Mail „Erster Auftrag bei {{betrieb}}“ (das Studio hat „Behandlung gekauft“ getippt). Dann diese Mail schicken.
+Wann: Die Beauty-Zentrale schickt euch beiden die Mail „Erster Auftrag bei {{betrieb}}“ (das Studio hat „Behandlung gekauft“ getippt). Dann diese Mail schicken.
 
 **Betreff:** Glückwunsch zur ersten Online-Kundin — Start der Monatsgebühr
 
@@ -34,9 +35,10 @@ die monatliche Gebühr von {{retainer}}, erstmals zum [Monat]. Die Rechnung komm
 Monatsanfang. Kündigen können Sie weiterhin jederzeit zum Monatsende.
 
 Beste Grüße
-{{agentur_inhaber}}
+{{betreuer_name}}
+{{agentur_name}} · {{betreuer_telefon}}
 
 ## 3 · Jeden Monat danach
 
-Am 1. erinnert dich die Beauty-Zentrale. Rechnung wie oben machen und kurz schicken:
+Am 1. erinnert euch die Beauty-Zentrale. Rechnung wie oben machen und kurz schicken:
 „Anbei die Rechnung für [Monat]. Beste Grüße“

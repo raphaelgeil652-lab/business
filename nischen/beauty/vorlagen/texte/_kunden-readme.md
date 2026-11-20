@@ -14,6 +14,7 @@ schicken: „Erzeuge {{betrieb}} neu.“ Die Checkliste (in der Beauty-Zentrale)
 | | |
 |---|---|
 | Inhaber/in | {{anrede}} {{inhaber}} · {{telefon}} · {{email}} |
+| Betreut von | **{{betreuer_name}}** (Ansprechpartner des Studios) · Technik: {{technik_name}} |
 | Behandlung | {{modul_name}} · behandelt: {{behandler}} · {{behandler_name}} |
 | Werbegebiet | {{umkreis_km}} km um {{ort}} |
 | Online-Buchung | Modus {{buchung_modus}} · {{buchbare_zeiten}} · Beratung {{beratung_minuten}} Min. · {{direkt_kurz}} |
@@ -36,15 +37,15 @@ schicken: „Erzeuge {{betrieb}} neu.“ Die Checkliste (in der Beauty-Zentrale)
 
 ## Welche Datei wann
 
-| Schritt | Datei in diesem Ordner | Was du tust |
+| Schritt | Datei in diesem Ordner | Was ihr tut (B = Betreuer {{betreuer_name}}, T = Technik {{technik_name}}) |
 |---|---|---|
-| 4 · Abschluss | **2a + 2b Vertrag** | 2a sagt wie und hat den Mailtext; 2b als PDF, selbst unterschreiben, schicken, unterschrieben zurück |
-| | **3 Rechnung** | Mailtext. Die Rechnung selbst in der Beauty-Zentrale machen, als PDF an Mail 1 hängen |
-| | **4 Willkommens-Mail** + **4b Zugänge** + **4c Kalender** + **5 Termin-Leitfaden** | vorher sein Google-Ads-Konto anlegen; Mail schicken, 4b, 4c und 5 als PDF anhängen |
-| | **6 Zeile für die Zentrale** | öffnen, alles kopieren, in der Beauty-Zentrale im Blatt „Kunden“ in die erste freie Zeile einfügen |
-| 6 · Einrichten | **7 Kampagnen** | zuerst „Messung einrichten“, dann Meta und Google anlegen (pausiert) |
-| | **8 Seiten für Netlify** | ganzen Ordner auf app.netlify.com/drop ziehen, Seite in `{{slug}}` umbenennen |
-| | **9 Anzeigen-Bilder** | bei Meta hochladen |
+| 4 · Abschluss | B · **2a + 2b Vertrag** | 2a sagt wie und hat den Mailtext; 2b als PDF, selbst unterschreiben, schicken, unterschrieben zurück |
+| | B · **3 Rechnung** | Mailtext. Die Rechnung selbst in der Beauty-Zentrale machen, als PDF an Mail 1 hängen |
+| | B · **4 Willkommens-Mail** + **4b Zugänge** + **4c Kalender** + **5 Termin-Leitfaden** | vorher legt T sein Google-Ads-Konto an; Mail schicken, 4b, 4c und 5 als PDF anhängen |
+| | T · **6 Zeile für die Zentrale** | öffnen, alles kopieren, in der Beauty-Zentrale im Blatt „Kunden“ in die erste freie Zeile einfügen |
+| 6 · Einrichten | T · **7 Kampagnen** | zuerst „Messung einrichten“, dann Meta und Google anlegen (pausiert) |
+| | T · **8 Seiten für Netlify** | ganzen Ordner auf app.netlify.com/drop ziehen, Seite in `{{slug}}` umbenennen |
+| | T · **9 Anzeigen-Bilder** | bei Meta hochladen |
 | Zum Zeigen | **10 Anzeigen ansehen** | `vorschau.html` im Browser öffnen |
 <!--VERLOSUNG-->| Verlosung | **11 Teilnahmebedingungen** | vor dem Start prüfen lassen, stehen auf der Verlosungsseite |
 <!--/VERLOSUNG-->

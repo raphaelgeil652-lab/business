@@ -26,7 +26,7 @@ löscht das System genau diesen einen Online-Termin wieder. Sie können die Frei
    die **drei Punkte** daneben → **„Einstellungen und Freigabe“**.
 3. Etwas nach unten scrollen bis **„Für bestimmte Personen oder Gruppen freigeben“** →
    **„Personen und Gruppen hinzufügen“**.
-4. Diese Adresse eintragen: **[Dein Google-Konto (E-Mail) für die Kalender-Freigabe]**
+4. Diese Adresse eintragen: **[Google-Konto der Beauty-Zentrale (E-Mail)]**
 5. Bei „Berechtigungen“ wählen: **„Änderungen an Terminen vornehmen“** → **„Senden“**.
    (Nur „Alle Termindetails sehen“ reicht nicht: Dann kann das System keine Termine eintragen.)
 6. Noch weiter unten, bei **„Kalender integrieren“**, steht die **Kalender-ID**. Ist es Ihr Hauptkalender,
@@ -54,4 +54,4 @@ Abgesprochen ist: **Mo-Fr 9-12 14-17**, frühestens 12 Stunden nach der Buchung 
 21 Tage im Voraus. Eine Beratung dauert 20 Minuten. Soll sich etwas ändern,
 sagen Sie uns Bescheid. Das ist in fünf Minuten umgestellt.
 
-[Dein Name] · Clickculture · [Dein Telefon] · [Deine E-Mail]
+Fragen? Max Beispiel · Clickculture · 0151 00000001 · max@clickculture.example

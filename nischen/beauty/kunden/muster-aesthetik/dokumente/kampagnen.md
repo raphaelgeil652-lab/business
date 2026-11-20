@@ -1,6 +1,6 @@
 # Kampagnen — Muster Ästhetik · Faltenbehandlung und Hyaluron
 
-> Alles fertig zum Eintragen, Texte 1:1 kopieren. Bilder: Ordner „9 Anzeigen-Bilder“.
+> Für die Technik bei euch (Tom Beispiel). Alles fertig zum Eintragen, Texte 1:1 kopieren. Bilder: Ordner „9 Anzeigen-Bilder“.
 > Die Klickwege sind so, wie Meta und Google sie im November 2026 zeigen. Heißt ein Feld anders, nimm das Nächstliegende.
 > Alles erst als **Entwurf** anlegen. Live geht es in Schritt 7.
 
@@ -25,19 +25,19 @@ So lernen Meta und Google, Menschen zu finden, die wirklich kommen.
 1. business.facebook.com/settings → links **„Datenquellen“ → „Datensätze“** → **„Hinzufügen“**.
 2. Name: `Muster Ästhetik` → **„Erstellen“**.
 3. Frage „Wähle die Werbekonten aus …“: das **Werbekonto des Studios** ankreuzen → **„Weiter“**.
-4. Fragt Meta, wie du einrichten willst: **schließen**. Der Code steckt schon in den Seiten.
+4. Fragt Meta, wie ihr einrichten wollt: **schließen**. Der Code steckt schon in den Seiten.
 5. Die **Datensatz-ID** (15–16 Ziffern) kopieren → Steckbrief Teil 5, mit `'` davor.
 6. **Gesundheit und Schönheit:** Meta schränkt bei manchen Studios und Praxen die Daten ein („eingeschränkte
-   Datennutzung“). Steht im Events Manager ein solcher Hinweis, ist das kein Fehler von dir. Die Seite sendet
+   Datennutzung“). Steht im Events Manager ein solcher Hinweis, ist das kein Fehler von euch. Die Seite sendet
    ohnehin keine Behandlungsnamen. Siehe unten „Wenn Meta ‚Lead‘ nicht anbietet“.
 
 **Google-Ads-Conversion** (so geklickt im Probelauf, November 2026)
 
-Voraussetzung: Das Google-Ads-Konto des Kunden hängt an deinem Verwaltungskonto (Hilfe „Schritt 6“, Punkt 0).
+Voraussetzung: Das Google-Ads-Konto des Kunden hängt an eurem Verwaltungskonto (Hilfe „Schritt 6“, Punkt 0).
 Google Ads am besten in **Chrome, ohne VPN und ohne Werbeblocker**. Sonst bleibt es gern mit „Ein Fehler ist
 aufgetreten“ hängen.
 
-1. ads.google.com → oben auf den Kontonamen → das **Konto des Kunden** wählen (nicht dein Verwaltungskonto).
+1. ads.google.com → oben auf den Kontonamen → das **Konto des Kunden** wählen (nicht euer Verwaltungskonto).
 2. Links **„Zielvorhaben“** (der Pokal) → **„Conversions“** → **„Zusammenfassung“** → **„Conversions erstellen“**
    bzw. „+ Conversion-Aktion“.
 3. Bei **„Conversions auf einer Website“** den Haken setzen → rechts **„URL hinzufügen“** →
@@ -54,7 +54,7 @@ aufgetreten“ hängen.
    rechts **„Verwalten“** → **„Einrichten“**. Es öffnet sich der **Tag Manager** → unten bei „Ausstehende
    Änderungen“ den blauen Link **„Termin bestätigt“** anklicken.
 7. Dort stehen **„Conversion-ID“** (nur Ziffern) und **„Conversion-Label“** (Buchstaben und Zahlen).
-   Die „Conversion-Typ-ID“ brauchst du nicht. Tag Manager mit × schließen, **nicht auf „Senden“ klicken**.
+   Die „Conversion-Typ-ID“ braucht ihr nicht. Tag Manager mit × schließen, **nicht auf „Senden“ klicken**.
 8. Daraus wird: `AW-` + Conversion-ID + `/` + Conversion-Label, z. B. `AW-123456789/AbCdEfGhIj`
    → Steckbrief Teil 4 „Google-Ads-Conversion“, mit `'` davor.
 
@@ -149,7 +149,7 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 ## Google-Kampagne anlegen: Klick für Klick
 
 Voraussetzung: Das Studio hat in seinem Google-Ads-Konto seine **Zahlungsart** hinterlegt. Ohne Zahlungsart fragt
-Google am Ende nach Zahlungsdaten: **dort nie deine eigenen eintragen.** Chrome, kein VPN, kein Werbeblocker.
+Google am Ende nach Zahlungsdaten: **dort nie eure eigenen eintragen.** Chrome, kein VPN, kein Werbeblocker.
 
 ads.google.com → **Konto des Studios** wählen → links **„Kampagnen“** → blauer **„+“** → **„Neue Kampagne“**.
 

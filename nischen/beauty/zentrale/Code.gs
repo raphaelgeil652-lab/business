@@ -19,6 +19,9 @@
  *  9. 1. des Monats: Werbekosten eintragen, Rechnungen · 3. des Monats: Monatsreports als Entwurf in Gmail
  * 10. Täglich 7 Uhr: Verlosung ziehen, Akquise-Liste, Warnung wenn das Mail-Kontingent knapp wird
  *
+ * Zu zweit: Einstellung „team“ (Name = E-Mail), Spalte „Betreuer“ im Blatt „Kunden“ und „Wer“ im Blatt „Akquise“.
+ *   Hinweise gehen an alle in „Hinweise gehen an“; die Akquise-Liste und Report-Entwürfe an die zuständige Person.
+ *
  * Einrichtung: Blatt „Start“ in der Tabelle oder nischen/beauty/zentrale/EINRICHTEN.md. An diesem Code nichts ändern.
  */
 
@@ -96,7 +99,7 @@ function einrichten() {
   if (!s.agentur_steuernr) hinweise.push('Im Blatt „Einstellungen“ fehlt die Steuernummer (Pflicht auf jeder Rechnung).');
   ui.alert('Clickculture Beauty-Zentrale',
     'Die Automatik läuft. 6 Zeitpläne sind aktiv.\n\n' +
-    (url ? 'Die Web-App-Adresse (für die Steckbrief-Vorlage, Blatt „Deine Daten“) und die Webhook-Adresse für Netlify stehen im Blatt „Einstellungen“.\n\n' : '') +
+    (url ? 'Die Web-App-Adresse (für die Steckbrief-Vorlage, Blatt „Eure Daten“) und die Webhook-Adresse für Netlify stehen im Blatt „Einstellungen“.\n\n' : '') +
     (hinweise.length ? 'Noch zu tun:\n- ' + hinweise.join('\n- ') : 'Alles bereit. Zur Sicherheit die Web-App-Adresse einmal in einem privaten Browserfenster öffnen: Es muss „Diese Adresse ist in Ordnung“ erscheinen. Danach: „3 · Test-Buchung durchspielen“.'),
     ui.ButtonSet.OK);
 }
@@ -377,7 +380,7 @@ function buchen_(d, s) {
     return String(t.get(z, 'Kunde')) === k.kuerzel && String(t.get(z, 'Stand')) === 'unbestätigt' && ein && jetzt - ein < 30 * MIN;
   }).length;
   if (flut >= (Number(s.max_unbestaetigt) || 6)) {
-    warnungEinmal_(s, 'flut_' + k.kuerzel, '⚠ Viele unbestätigte Buchungen bei ' + k.betrieb,
+    warnungEinmal_(s, 'flut_' + k.kuerzel, '⚠ Viele unbestätigte Buchungen bei ' + k.betrieb + (k.betreuer ? ' (' + k.betreuer + ')' : ''),
       'In den letzten 30 Minuten kamen ' + flut + ' Buchungen, die noch niemand bestätigt hat. Neue Buchungen sind kurz gesperrt. Möglicherweise ein Bot oder jemand, der Termine blockieren will. Blatt „Termine“ ansehen.');
     return { ok: false, fehler: 'Gerade sind sehr viele Anfragen gleichzeitig. Bitte rufen Sie uns kurz an: ' + k.telefon };
   }
@@ -739,7 +742,7 @@ function ersterAuftragPruefen_(t, z, s) {
   var k = kunde_(kuerzel) || { betrieb: kuerzel, gebuehr: '' }, ab = ersterNaechsterMonat_(new Date());
   mail_(s, {
     to: s.an,
-    subject: '🎉 Erster Auftrag bei ' + k.betrieb + ' – Monatsgebühr ab ' + monatName_(ab),
+    subject: '🎉 Erster Auftrag bei ' + k.betrieb + (k.betreuer ? ' (' + k.betreuer + ')' : '') + ' – Monatsgebühr ab ' + monatName_(ab),
     html: rahmen_('<h1 style="font-size:22px;">Erster Auftrag bei ' + esc_(k.betrieb) + '</h1>' +
       '<p>' + esc_(t.get(z, 'Name')) + (zahl_(t.get(z, 'Auftragswert €')) ? ', Wert ' + euro_(t.get(z, 'Auftragswert €')) : '') + '.</p>' +
       '<p><b>Ab ' + monatName_(ab) + ' ist die Monatsgebühr fällig' + (k.gebuehr ? ' (' + euro_(k.gebuehr) + ')' : '') + '.</b></p>' +
@@ -881,7 +884,7 @@ function pruefeRueckrufe_(s, t, jetzt) {
         subject: 'Erinnerung: ' + a.name + ' wartet seit ' + min + ' Minuten auf Ihren Rückruf',
         html: anfrageHtml_(a, s, schl, k) });
     }
-    mail_(s, { to: s.an, subject: '⏰ ' + (k ? k.betrieb : t.get(z, 'Kunde')) + ': ' + a.name + ' seit ' + min + ' Min. ohne Rückruf',
+    mail_(s, { to: s.an, subject: '⏰ ' + (k ? k.betrieb + (k.betreuer ? ' (' + k.betreuer + ')' : '') : t.get(z, 'Kunde')) + ': ' + a.name + ' seit ' + min + ' Min. ohne Rückruf',
       html: rahmen_('<p><b>' + esc_(k ? k.betrieb : t.get(z, 'Kunde')) + '</b> hat ' + esc_(a.name) + ' (' + esc_(a.telefon) +
         ') noch nicht zurückgerufen. Der Kunde ist erinnert. Am besten kurz anrufen.</p>') });
     t.set(z, 'Erinnert', jetzt);
@@ -940,7 +943,7 @@ function wochenMail() { sicher_('Wochen-Mail', function () {
         'Das dauert eine Minute und macht Ihren Monatsreport genau.</p><table style="width:100%;border-collapse:collapse;">' + liste + '</table>' +
         '<p style="font-size:13px;color:#6B665D;">Fragen? Antworten Sie einfach auf diese Mail.</p>') });
     var nieAngerufen = offen.filter(function (z) { return String(t.get(z, 'Stand')) === 'neu'; }).length;
-    uebersicht.push('<li><b>' + esc_(k.betrieb) + '</b>: ' + offen.length + ' offen' + (nieAngerufen ? ', davon <b>' + nieAngerufen + ' Rückruf-Wünsche noch nie angerufen</b>' : '') + '</li>');
+    uebersicht.push('<li><b>' + esc_(k.betrieb) + '</b>' + (k.betreuer ? ' (' + esc_(k.betreuer) + ')' : '') + ': ' + offen.length + ' offen' + (nieAngerufen ? ', davon <b>' + nieAngerufen + ' Rückruf-Wünsche noch nie angerufen</b>' : '') + '</li>');
   });
   if (uebersicht.length) {
     mail_(s, { to: s.an, subject: 'Wochen-Mails sind raus (' + uebersicht.length + ' Kunden)',
@@ -979,14 +982,21 @@ function monatsReportEntwuerfe() { sicher_('Monatsreport', function () {
   var s = einst_(), vm = vormonat_(new Date()), t = tabelle_('Termine'), wk = tabelle_('Werbekosten'), fertig = [];
   kunden_().filter(function (k) { return k.aktiv && k.live && k.live < vm.ende; }).forEach(function (k) {
     var z = zahlen_(t, wk, k.kuerzel, vm);
-    GmailApp.createDraft(k.email, 'Ihr Monatsreport ' + monatName_(vm.start), reportText_(k, z, vm, s), { name: s.agentur_name || 'Clickculture', replyTo: s.agentur_email || '' });
-    fertig.push('<li>' + esc_(k.betrieb) + ': ' + z.gebucht + ' Online-Termine, ' + z.erschienen + ' erschienen, ' + z.auftraege + ' gekauft' +
+    var text = reportText_(k, z, vm, s), bm = teamMail_(s, k.betreuer);
+    GmailApp.createDraft(k.email, 'Ihr Monatsreport ' + monatName_(vm.start), text, { name: s.agentur_name || 'Clickculture', replyTo: bm || s.agentur_email || '' });
+    if (bm && bm.toLowerCase() !== String(Session.getEffectiveUser().getEmail() || '').toLowerCase()) {
+      /* Der Betreuer hat keinen Zugriff auf die Gmail-Entwürfe des Zentrale-Kontos: er bekommt den Text zum Ergänzen und Weiterleiten */
+      mail_(s, { to: bm, subject: 'Report-Entwurf ' + monatName_(vm.start) + ' für ' + k.betrieb + ': ergänzen und an ' + k.email + ' schicken',
+        html: rahmen_('<p>Die drei [eckigen Klammern] ergänzen, dann von deiner Adresse an <b>' + esc_(k.email) + '</b> schicken und kurz anrufen.</p>' +
+          '<pre style="white-space:pre-wrap;font-family:inherit;background:#F6F3EE;padding:14px;border-radius:8px;">' + esc_(text) + '</pre>') });
+    }
+    fertig.push('<li>' + esc_(k.betrieb) + (k.betreuer ? ' (' + esc_(k.betreuer) + ')' : '') + ': ' + z.gebucht + ' Online-Termine, ' + z.erschienen + ' erschienen, ' + z.auftraege + ' gekauft' +
       (z.kosten === null ? ' · <b>Werbekosten fehlen</b>' : '') + '</li>');
   });
   if (fertig.length) {
     mail_(s, { to: s.an, subject: fertig.length + ' Monatsreports liegen als Entwurf in Gmail',
       html: rahmen_('<p>Für ' + monatName_(vm.start) + ':</p><ul>' + fertig.join('') + '</ul>' +
-        '<p>So geht es: Gmail → Entwürfe → je Report die drei [eckigen Klammern] ersetzen → senden → 10 Minuten anrufen.</p>' +
+        '<p>So geht es: Gmail → Entwürfe → je Report die drei [eckigen Klammern] ersetzen → senden → 10 Minuten anrufen. Wer ein Studio betreut, hat den Text zusätzlich per Mail bekommen und schickt ihn selbst.</p>' +
         '<p>Fehlen Werbekosten: erst eintragen, dann in der Zentrale Menü „Clickculture → Monatsreport-Entwürfe jetzt erstellen“ und den alten Entwurf löschen.</p>') });
   }
 }); }
@@ -1026,13 +1036,22 @@ function taeglich() { sicher_('Täglich', function () {
     return ak.get(z, 'Studio') && d && d < ende && st !== 'Kunde' && st !== 'kein Interesse';
   });
   if (!dran.length) return;
-  mail_(s, { to: s.an, subject: 'Heute dran: ' + dran.length + ' Studio' + (dran.length > 1 ? 's' : ''),
-    html: rahmen_('<ul>' + dran.map(function (z) {
-      var tel = String(ak.get(z, 'Telefon')).replace(/[^\d+]/g, '');
-      return '<li style="margin-bottom:8px;"><b>' + esc_(ak.get(z, 'Studio')) + '</b>' + (ak.get(z, 'Ort') ? ', ' + esc_(ak.get(z, 'Ort')) : '') +
-        ' · <a href="tel:' + esc_(tel) + '">' + esc_(ak.get(z, 'Telefon')) + '</a>' + (ak.get(z, 'Wer') ? ' · ' + esc_(ak.get(z, 'Wer')) : '') +
-        '<br><span style="color:#6B665D;">' + esc_(ak.get(z, 'Behandlung')) + ' · ' + esc_(ak.get(z, 'Stand')) + (ak.get(z, 'Notiz') ? ' · ' + esc_(ak.get(z, 'Notiz')) : '') + '</span></li>';
-    }).join('') + '</ul><p>Danach im Blatt „Akquise“ Stand und nächsten Kontakt eintragen.</p>') });
+  // Jede Person im Team bekommt ihre eigenen Studios (Spalte „Wer“), Zeilen ohne bekannte Person gehen an alle
+  var gruppen = {};
+  dran.forEach(function (z) {
+    var an = teamMail_(s, ak.get(z, 'Wer')) || s.an;
+    (gruppen[an] = gruppen[an] || []).push(z);
+  });
+  Object.keys(gruppen).forEach(function (an) {
+    var liste = gruppen[an];
+    mail_(s, { to: an, subject: 'Heute dran: ' + liste.length + ' Studio' + (liste.length > 1 ? 's' : ''),
+      html: rahmen_('<ul>' + liste.map(function (z) {
+        var tel = String(ak.get(z, 'Telefon')).replace(/[^\d+]/g, '');
+        return '<li style="margin-bottom:8px;"><b>' + esc_(ak.get(z, 'Studio')) + '</b>' + (ak.get(z, 'Ort') ? ', ' + esc_(ak.get(z, 'Ort')) : '') +
+          ' · <a href="tel:' + esc_(tel) + '">' + esc_(ak.get(z, 'Telefon')) + '</a>' + (ak.get(z, 'Wer') ? ' · ' + esc_(ak.get(z, 'Wer')) : ' · <b>noch niemand zugeteilt</b>') +
+          '<br><span style="color:#6B665D;">' + esc_(ak.get(z, 'Behandlung')) + ' · ' + esc_(ak.get(z, 'Stand')) + (ak.get(z, 'Notiz') ? ' · ' + esc_(ak.get(z, 'Notiz')) : '') + '</span></li>';
+      }).join('') + '</ul><p>Danach im Blatt „Akquise“ Stand und nächsten Kontakt eintragen.</p>') });
+  });
 }); }
 
 
@@ -1080,7 +1099,7 @@ function reportText_(k, z, vm, s) {
     'Was wir geändert haben: [eine Sache]\n' +
     'Was wir als Nächstes tun: [eine Sache]\n' +
     'Was wir von Ihnen brauchen: [z. B. neue Fotos in Ihren Ordner, Rückmeldung zu offenen Terminen]\n\n' +
-    'Beste Grüße\n' + (s.agentur_inhaber || '') + (s.agentur_name ? '\n' + s.agentur_name : '');
+    'Beste Grüße\n' + (k.betreuer || s.agentur_inhaber || '') + (s.agentur_name ? '\n' + s.agentur_name : '');
 }
 
 function gebuehrAb_(kuerzel, t) {
@@ -1228,7 +1247,7 @@ function kunden_() {
       puffer: Number(g('Puffer Minuten')) || 0, vorlauf: g('Vorlauf Stunden') === '' ? 12 : Number(g('Vorlauf Stunden')) || 0,
       tage: Number(g('Tage im Voraus')) || 21, absagefrist: Number(g('Absagefrist Stunden')) || 0, ausfall: String(g('Ausfallregel')),
       vorbereitung: String(g('Vorbereitung')),
-      schluss: datum_(g('Teilnahmeschluss')), ziehung: datum_(g('Ziehung am'))
+      schluss: datum_(g('Teilnahmeschluss')), ziehung: datum_(g('Ziehung am')), betreuer: String(g('Betreuer')).trim()
     };
   });
 }
@@ -1246,6 +1265,12 @@ function einst_() {
   s.zeiten = { von: m ? Number(m[1]) : 9, bis: m ? Number(m[2]) : 18, tage: /sa/i.test(String(s.arbeitstage)) ? 6 : 5 };
   s.tz = Session.getScriptTimeZone();
   s.an = String(s.benachrichtigung_an || s.agentur_email || '').trim() || Session.getEffectiveUser().getEmail();
+  var teamText = String(s.team || '');
+  s.team = {};
+  teamText.split(/[;\n]/).forEach(function (x) {
+    var m = x.match(/^\s*(.+?)\s*[=:]\s*(\S+@\S+)\s*$/);
+    if (m) s.team[m[1].toLowerCase()] = m[2];
+  });
   return s;
 }
 
@@ -1253,6 +1278,15 @@ function einstSetzen_(schluessel, wert) {
   var sh = blatt_('Einstellungen'), werte = sh.getDataRange().getValues();
   for (var i = 0; i < werte.length; i++) if (String(werte[i][0]).trim() === schluessel) { sh.getRange(i + 1, 3).setValue(wert); return; }
   throw new Error('In „Einstellungen“ fehlt die Zeile ' + schluessel);
+}
+
+/** E-Mail einer Person aus dem Team (Einstellung „team“, z. B. „Max = max@x.de; Tom = tom@y.de“). Vorname reicht. */
+function teamMail_(s, name) {
+  var n = String(name || '').trim().toLowerCase();
+  if (!n) return '';
+  if (s.team[n]) return s.team[n];
+  var treffer = Object.keys(s.team).filter(function (k) { return k.split(' ')[0] === n.split(' ')[0]; });
+  return treffer.length === 1 ? s.team[treffer[0]] : '';
 }
 
 function cacheLeeren_(k) {

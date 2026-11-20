@@ -11,9 +11,9 @@
 
 Hallo Frau Muster,
 
-schön, dass wir zusammenarbeiten! Damit Ihre Online-Termine schnell starten, brauche ich bis in 3 Tagen
+schön, dass wir zusammenarbeiten! Wir sind zu zweit: Tom Beispiel und Max Beispiel. Ihr fester Ansprechpartner bin ich, Tom. Erreichen Sie mich einmal nicht, hilft Ihnen Max genauso weiter. Damit Ihre Online-Termine schnell starten, brauche ich bis in 3 Tagen
 fünf Dinge von Ihnen. **Im Anhang sind zwei Anleitungen, Schritt für Schritt:** „Zugänge einrichten“ und
-„Kalender verbinden“. Rechnen Sie mit 30 bis 45 Minuten. Hängen Sie irgendwo, rufen Sie mich an: [Dein Telefon].
+„Kalender verbinden“. Rechnen Sie mit 30 bis 45 Minuten. Hängen Sie irgendwo, rufen Sie mich an: 0151 00000002.
 
 **1. Fotos** (das Wichtigste). Bitte hier hochladen: https://drive.google.com/drive/folders/BEISPIEL
 
@@ -34,7 +34,7 @@ Bitte in den Ordner laden, nicht über WhatsApp: Dort werden Fotos verkleinert.
 
 **3. Kalender** (Anleitung „Kalender verbinden“)
 
-- Ihren Google-Kalender für [Dein Google-Konto (E-Mail) für die Kalender-Freigabe] freigeben, Berechtigung „Änderungen an Terminen vornehmen“,
+- Ihren Google-Kalender für [Google-Konto der Beauty-Zentrale (E-Mail)] freigeben, Berechtigung „Änderungen an Terminen vornehmen“,
   und mir die Kalender-ID schicken. Dauert 3 Minuten.
 
 **4. Zwei Links** (und, wenn Sie mögen, zwei Bewertungen)
@@ -65,5 +65,5 @@ schreiben Sie mir, was ich ändern soll:
 Sobald alles da ist, gehen wir live. Die ersten Buchungen kommen meist in den ersten Tagen.
 
 Beste Grüße
-[Dein Name]
-Clickculture · [Dein Telefon]
+Tom Beispiel
+Clickculture · 0151 00000002

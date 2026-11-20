@@ -4,7 +4,7 @@
 Aufruf: python3 nischen/beauty/vorlagen/werkzeuge/tabellen-bauen.py
 
 Blätter: „Steckbrief“ (prüft selbst, ob das Studio passt, schlägt das Budget vor), „Rechnung intern“,
-„Deine Daten“ (einmal in der Vorlage ausfüllen, dann trägt jede Kopie sie mit), „Annahmen“ (aus module.py).
+„Eure Daten“ (einmal in der Vorlage ausfüllen, dann trägt jede Kopie sie mit), „Annahmen“ (aus module.py).
 Die versteckte Spalte A (Schlüssel) liest kunde-anlegen.py. Nicht umbenennen.
 """
 import importlib.util
@@ -36,19 +36,24 @@ EURO = '#,##0 "€"'
 
 AGENTUR = [
     ("agentur_name", "Name der Agentur", "steht im Vertrag und in den Mails", "text"),
-    ("agentur_inhaber", "Dein Name", "Unterschrift im Vertrag, Absender der Mails", "text"),
-    ("agentur_anschrift", "Deine Anschrift", "Straße, PLZ Ort (für den Vertrag)", "text"),
-    ("agentur_email", "Deine E-Mail", "", "text"),
+    ("agentur_inhaber", "Dein Name (Partner 1)", "Vor- und Nachname. Im Vertrag als Auftragnehmer, in Mails wenn du betreust", "text"),
     ("agentur_telefon", "Dein Telefon", "mit ' davor eintippen, damit die 0 bleibt", "text"),
+    ("agentur_email", "Deine E-Mail", "Studios, die du betreust, antworten hierhin", "text"),
+    ("agentur_partner", "Name deines Kollegen (Partner 2)", "Vor- und Nachname · leer = du arbeitest allein", "text"),
+    ("agentur_partner_telefon", "Telefon deines Kollegen", "mit ' davor", "text"),
+    ("agentur_partner_email", "E-Mail deines Kollegen", "Studios, die er betreut, antworten hierhin", "text"),
+    ("agentur_technik", "Wer von euch macht die Technik?", "Seiten, Kampagnen, Zentrale · Name · leer = Partner 1", "text"),
+    ("agentur_anschrift", "Anschrift der Agentur", "Straße, PLZ Ort (für den Vertrag)", "text"),
     ("agentur_kleinunternehmer", "Kleinunternehmer (§ 19 UStG)?", "Ja = im Vertrag steht: keine Umsatzsteuer", "janein"),
     ("agentur_business_id", "Meta Business-ID", "Einstellungen → Unternehmensinfos · mit ' davor eintippen", "text"),
     ("agentur_google_mcc", "Google-Ads-Verwaltungskonto (Kunden-ID)", "oben rechts in Google Ads, z. B. 123-456-7890", "text"),
-    ("agentur_google_email", "Dein Google-Konto (E-Mail) für die Kalender-Freigabe", "die Adresse, unter der die Beauty-Zentrale läuft", "text"),
+    ("agentur_google_email", "Google-Konto der Beauty-Zentrale (E-Mail)", "unter diesem Konto läuft die Zentrale; dafür geben die Studios ihren Kalender frei. Eins für euch beide", "text"),
     ("agentur_zentrale_url", "Web-App-Adresse der Beauty-Zentrale", "aus der Zentrale, Blatt „Einstellungen“ (endet auf /exec). Ohne sie zeigen die Seiten nur Beispiel-Termine", "text"),
 ]
 
 STECKBRIEF = [
     ("§", "1 · Im Gespräch: Passt das Studio?", None, None),
+    ("betreuer", "Wer von euch betreut das Studio?", "Vorname reicht · fester Ansprechpartner in allen Mails und Anleitungen · leer = Partner 1", "text"),
     ("betrieb", "Studio / Praxis (so heißt es in den Anzeigen)", "z. B. Haut & Licht Laserstudio", "text"),
     ("anrede", "Anrede der Inhaberin / des Inhabers", "Herr / Frau", "anrede"),
     ("inhaber", "Inhaber/in (Vor- und Nachname)", "z. B. Sabine Muster", "text"),
@@ -201,7 +206,7 @@ def steckbrief():
     ws.title = "Steckbrief"
     z = schluesselblatt(ws, STECKBRIEF, "Steckbrief: neues Beauty-Studio",
                         "Für jeden Kunden eine Kopie. Teil 1 im Gespräch, Teil 2 und 3 bis zur Unterschrift, dann an Claude: "
-                        "„Lege den Kunden aus diesem Steckbrief an.“ Einmalig vorher: Blatt „Deine Daten“ ausfüllen.")
+                        "„Lege den Kunden aus diesem Steckbrief an.“ Einmalig vorher: Blatt „Eure Daten“ ausfüllen.")
     S = lambda k: f"$C${z[k]}"
     RI = "'Rechnung intern'!"
 
@@ -286,9 +291,9 @@ def steckbrief():
         ri.cell(row=i, column=3, value=h).font = HILFE
     ri["B21"].alignment = Alignment(wrap_text=False)
 
-    dd = wb.create_sheet("Deine Daten")
-    schluesselblatt(dd, AGENTUR, "Deine Daten (einmal ausfüllen)",
-                    "Einmal in der leeren Vorlage ausfüllen und speichern. Jede Kopie für ein Studio trägt sie dann mit.")
+    dd = wb.create_sheet("Eure Daten")
+    schluesselblatt(dd, AGENTUR, "Eure Daten (einmal ausfüllen)",
+                    "Einmal in der leeren Vorlage ausfüllen und speichern, am besten zusammen. Jede Kopie für ein Studio trägt sie dann mit.")
     wb.move_sheet("Annahmen", offset=1)
     wb.save(ZIEL / "01-steckbrief.xlsx")
     print("✓ 01-steckbrief.xlsx")

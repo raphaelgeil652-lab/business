@@ -37,6 +37,7 @@ Alle Knöpfe öffnen eine Seite „Noch nicht gespeichert“. **Dort den großen
 ## Wenn eine Kundin anruft und fragt
 
 - **„Ich habe keine Mail bekommen.“** Spam-Ordner prüfen lassen. Sonst einfach telefonisch einen Termin machen.
+- **Fragen zum System?** Ihr Ansprechpartner bei Clickculture: Tom Beispiel, 0151 00000002.
 - **„Ich will verschieben.“** Über den Link in der Mail absagen und neu buchen. Oder Sie tragen es selbst um:
   Termin in Ihrem Kalender verschieben genügt.
 - **„Ich habe zwei Termine gebucht.“** Kann nicht passieren: Pro Person ist nur ein offener Termin möglich.

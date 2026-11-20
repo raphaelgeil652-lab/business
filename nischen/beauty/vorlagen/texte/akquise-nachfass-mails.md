@@ -29,13 +29,13 @@ Kurz zusammengefasst:
 - 24 Stunden vorher automatische Erinnerung mit Ihren Vorbereitungs-Hinweisen.
 - Onboarding [Betrag] mit Geld-zurück-Garantie, Monatsgebühr [Betrag] erst ab der ersten Kundin, die kauft.
 
-Ich melde mich am [Tag] kurz telefonisch, wie Sie sich entschieden haben.
+Ich (oder mein Kollege [Name]) melde mich am [Tag] kurz telefonisch, wie Sie sich entschieden haben.
 
 Beste Grüße
 [Dein Name]
 
 ## 3 · Instagram-Nachricht (nach zwei echten Kommentaren)
 
-Hallo [Vorname], ich bin [Name] aus [Ort] 👋 Ich baue für Studios wie Ihres Online-Terminbuchung über
+Hallo [Vorname], ich bin [Name] aus [Ort] 👋 Mein Kollege [Name] und ich bauen für Studios wie Ihres Online-Terminbuchung über
 Instagram-Werbung: Kundinnen wählen direkt einen freien Termin, bestätigen per Mail, kein Telefon, keine
 Fake-Anfragen. Darf ich Ihnen in 20 Minuten zeigen, wie das mit Ihrem Studio aussieht? Gern auch vor Ort.

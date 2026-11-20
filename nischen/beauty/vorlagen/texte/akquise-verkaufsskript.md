@@ -1,7 +1,15 @@
 # Verkaufsskript: Beauty-Studios und Praxen gewinnen
 
-> Allgemein, nicht pro Kunde. Liste der Studios: in der Beauty-Zentrale, Blatt „Akquise“. Morgens kommt eine
-> Mail, wer heute dran ist.
+> Allgemein, nicht pro Kunde. Ihr seid zu zweit: Liste der Studios in der Beauty-Zentrale, Blatt „Akquise“.
+> Bei jedem Studio in Spalte „Wer“ eintragen, wer von euch sich kümmert. Morgens bekommt jeder seine eigene Liste.
+
+## Zu zweit: wer macht was
+
+- **Wer ein Studio anspricht, betreut es auch** (bleibt Ansprechpartner bis zum Ende). Im Steckbrief: „Wer von euch
+  betreut das Studio?“. Dieser Name steht in allen Mails und Anleitungen an das Studio.
+- **Die Technik** (Kundenordner, Seiten, Kampagnen, Zentrale) macht, wer von euch das besser kann. Kann derselbe sein.
+- **Zum Gespräch gern zu zweit**, vor allem bei Praxen: einer redet, einer zeigt am Tablet und füllt den Steckbrief aus.
+- Nie dasselbe Studio doppelt ansprechen: vorher in „Akquise“ nachsehen.
 
 ## Wen wir ansprechen
 
@@ -27,18 +35,18 @@ Deshalb so:
    Nachricht (Vorlage unten). Kein Massenversand.
 3. **Empfehlung:** Jeder zufriedene Kunde kennt andere Studios. Fragen!
 
-> „Hallo, ich bin [Name] von Clickculture aus [Ort]. Ich mache für Studios wie Ihres Online-Terminbuchung über
+> „Hallo, ich bin [Name] von Clickculture aus [Ort]. Mein Kollege [Name] und ich machen für Studios wie Ihres Online-Terminbuchung über
 > Facebook, Instagram und Google: Die Kundin sieht Ihre Anzeige, wählt direkt einen freien Termin in Ihrem
 > Kalender und bestätigt per E-Mail. Kein Telefonieren, keine Fake-Anfragen. Darf ich Ihnen in 20 Minuten zeigen,
 > wie das mit Ihrem Namen aussieht?“
 
-**Danach in der Zentrale, Blatt „Akquise“:** Stand, „Nächster Kontakt am“, Behandlung.
+**Danach in der Zentrale, Blatt „Akquise“:** Stand, „Nächster Kontakt am“, Behandlung, **Wer**.
 
 ## Das Gespräch (20 Minuten, vor Ort oder per Video)
 
 **Am Tag davor (20 Minuten):** Webseite, Impressum, Google Maps und Instagram ansehen. In der
 Facebook-Werbebibliothek (facebook.com/ads/library, Land Deutschland) nachsehen, ob das Studio schon wirbt. Eine
-Steckbrief-Kopie anlegen, öffentliche Angaben eintragen, an Claude: **„Erzeuge eine Vorschau für [Studio].“**
+Steckbrief-Kopie anlegen, öffentliche Angaben und den Betreuer eintragen, an Claude: **„Erzeuge eine Vorschau für [Studio].“**
 Du bekommst seine Terminseite und seine Anzeigen mit seinem Namen.
 
 **Die zwei Fragen, die alles entscheiden:**
@@ -73,6 +81,7 @@ steht im Blatt „Rechnung intern“, du entscheidest.
 | „Wir sind ausgelastet.“ | „Dann starten wir klein, mit wenigen buchbaren Zeiten. Sie bestimmen, wann online gebucht werden darf.“ |
 | „Werbung für Ästhetik ist doch heikel.“ (Ärzte) | „Genau. Unsere Vorlagen halten das Heilmittelwerbegesetz ein: kein Vorher/Nachher, keine Rabatte, kein ‚Botox‘ in der Anzeige. Sie geben alles vor dem Start frei.“ |
 | „Zu teuer.“ | „Was bringt eine neue Kundin im ersten Jahr?“ → „Dann trägt sich das mit zwei Kundinnen im Monat. Und die Gebühr läuft erst ab der ersten.“ |
+| „Sie sind ja nur zu zweit.“ | „Genau deshalb haben Sie einen festen Ansprechpartner, der Ihr Studio kennt. Und das System läuft rund um die Uhr: Buchung, Bestätigung, Erinnerung.“ |
 | „Schicken Sie mir Infos.“ | „Mache ich. Aber 20 Minuten zeigen mehr: Sie sehen Ihre eigene Seite mit Ihrem Namen.“ |
 
 ## Abschluss

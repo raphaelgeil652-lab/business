@@ -1,6 +1,6 @@
 # Vertrag verschicken — Muster Laserstudio
 
-## So geht es (für dich)
+## So geht es (für euch; verschickt wird vom Betreuer, Max Beispiel)
 
 1. **„2b Vertrag – als PDF schicken“** öffnen → Ablage → Exportieren → PDF (Word: Datei → Speichern unter → PDF).
    Name: `Vereinbarung Muster Laserstudio.pdf`.
@@ -34,5 +34,5 @@ Sobald sie da ist, bekommen Sie von mir die Rechnung und eine Mail mit den näch
 geht es los.
 
 Beste Grüße
-[Dein Name]
-Clickculture · [Dein Telefon]
+Max Beispiel
+Clickculture · 0151 00000001

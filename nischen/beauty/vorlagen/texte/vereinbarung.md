@@ -2,7 +2,8 @@
 
 zwischen
 
-**Auftragnehmer:** {{agentur_name}}, {{agentur_inhaber}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}}
+**Auftragnehmer:** {{agentur_name}}, {{agentur_vertreter}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}}
+Ansprechpartner für den Auftraggeber: {{betreuer_name}} · {{betreuer_telefon}} · {{betreuer_email}}
 
 und
 
@@ -90,4 +91,4 @@ die Onboarding-Gebühr vollständig erstattet. Voraussetzung: Die Pflichten aus 
 {{ort}}, {{vertragsbeginn}}
 
 Auftragnehmer: ________________________   Auftraggeber: ________________________
-{{agentur_inhaber}}                       {{inhaber}}, {{betrieb_lang}}
+{{agentur_vertreter}}                       {{inhaber}}, {{betrieb_lang}}

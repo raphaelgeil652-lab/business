@@ -4,7 +4,7 @@
 Aufruf (aus dem Repo-Hauptordner):
     python3 nischen/beauty/vorlagen/werkzeuge/kunde-anlegen.py <steckbrief.xlsx> [fotos ...]
 
-Liest:     den Steckbrief (Blätter „Steckbrief“ und „Deine Daten“) und das Modul der Behandlung aus module.py
+Liest:     den Steckbrief (Blätter „Steckbrief“ und „Eure Daten“; alte Vorlagen: „Deine Daten“) und das Modul der Behandlung aus module.py
            optional Fotos: werden nach Namen zugeordnet (foto-1 = Behandlung, foto-2 = Studio, foto-3 = Behandler/in,
            vorher, nachher); jpg, png, heic, webp
 Schreibt:  nischen/beauty/kunden/<kürzel>/
@@ -98,7 +98,7 @@ def aufbereiten(d):
               "vorbereitung_ok", "agentur_kleinunternehmer"):
         if isinstance(d.get(k), str):
             d[k] = d[k].strip().capitalize()
-    for k in ("telefon", "agentur_telefon"):
+    for k in ("telefon", "agentur_telefon", "agentur_partner_telefon"):
         v = d.get(k)
         if isinstance(v, (int, float)):
             s = str(int(v))
@@ -171,6 +171,37 @@ def bloecke(text, schalter):
     return text
 
 
+def team(f, stb, agentur, hinweise):
+    """Ihr seid zu zweit: wer betreut dieses Studio (Ansprechpartner), wer macht die Technik, wie steht ihr im Vertrag."""
+    p1, p2 = agentur.get("agentur_inhaber"), agentur.get("agentur_partner")
+    personen = [(p1, agentur.get("agentur_telefon"), agentur.get("agentur_email"))]
+    if p2:
+        personen.append((p2, agentur.get("agentur_partner_telefon"), agentur.get("agentur_partner_email")))
+    vorname = lambda n: str(n or "").split()[0].lower() if n else ""
+    def finde(name):
+        n = str(name or "").strip().lower()
+        for p in personen:
+            if p[0] and (n == str(p[0]).lower() or (n and vorname(n) == vorname(p[0]))):
+                return p
+        return None
+    b = finde(stb.get("betreuer")) if stb.get("betreuer") else personen[0]
+    if b is None:
+        hinweise.append(f"Betreuer „{stb.get('betreuer')}“ steht nicht in „Eure Daten“. Ich nehme {p1 or 'Partner 1'}.")
+        b = personen[0]
+    f["betreuer_name"] = str(b[0]) if b[0] else "[Name des Betreuers]"
+    f["betreuer_vorname"] = f["betreuer_name"].split()[0]
+    f["betreuer_telefon"] = str(b[1]) if b[1] else "[Telefon des Betreuers]"
+    f["betreuer_email"] = str(b[2]) if b[2] else "[E-Mail des Betreuers]"
+    t = finde(agentur.get("agentur_technik")) if agentur.get("agentur_technik") else personen[0]
+    f["technik_name"] = str((t or personen[0])[0] or "[Technik]")
+    namen = [str(p[0]) for p in personen if p[0]]
+    f["agentur_vertreter"] = " und ".join(namen) if namen else "[eure Namen]"
+    andere = [n for n in namen if n != f["betreuer_name"]]
+    f["team_vorstellung"] = (f"Wir sind zu zweit: {f['betreuer_name']} und {andere[0]}. Ihr fester Ansprechpartner bin ich, "
+                             f"{f['betreuer_vorname']}. Erreichen Sie mich einmal nicht, hilft Ihnen {andere[0].split()[0]} genauso weiter."
+                             if andere else "")
+
+
 def felder(stb, agentur, namen):
     """Alle Platzhalter für Texte und Seiten. Gibt (f, modul, hinweise) zurück."""
     hinweise = []
@@ -192,6 +223,7 @@ def felder(stb, agentur, namen):
         else:
             f[k] = str(v)
     k = mod["kuerzel"]
+    team(f, stb, agentur, hinweise)
     f["modul_name"] = mod["name"]
     f["modul"] = k
     f["slug"] = slug(stb["betrieb"])
@@ -502,7 +534,9 @@ def main():
         sys.exit(__doc__)
     quelle = pathlib.Path(sys.argv[1]).resolve()
     stb, namen = lese_schluessel(quelle, "Steckbrief")
-    agentur, anamen = lese_schluessel(quelle, "Deine Daten")
+    agentur, anamen = lese_schluessel(quelle, "Eure Daten")
+    if not agentur:
+        agentur, anamen = lese_schluessel(quelle, "Deine Daten")
     namen.update(anamen)
     warnungen = aufbereiten(stb) + aufbereiten(agentur)
     if not stb.get("betrieb"):
@@ -594,7 +628,7 @@ def main():
              "", "Ja", stb.get("behandlung") or "", f["buchung_modus"], roh("kalender_id"), roh("buchbare_zeiten"), f["beratung_minuten"],
              leist, str(zahl(stb.get("puffer_minuten"), 0)), str(zahl(stb.get("vorlauf_stunden"), 12)), str(zahl(stb.get("tage_voraus"), 21)),
              str(zahl(stb.get("absagefrist_stunden"), 24)), f["ausfall_regel"], " • ".join(f["_vorbereitung"]),
-             roh("aktion_ende") if f["_verlosung"] else "", roh("ziehung") if f["_verlosung"] else ""]
+             roh("aktion_ende") if f["_verlosung"] else "", roh("ziehung") if f["_verlosung"] else "", f["betreuer_name"]]
     (ziel / "zentrale-zeile.txt").write_text("\t".join(x.replace("\t", " ").replace("\n", " ") for x in zeile) + "\n", encoding="utf-8")
     print("✓ zentrale-zeile.txt")
 
@@ -613,13 +647,13 @@ def main():
     if platzhalter:
         gruppen.setdefault("Vom Studio (Schritt 5)", []).append(f"Echte Fotos (noch Platzhalter: {', '.join(platzhalter)})")
     if not f["_zentrale"] and agentur.get("agentur_zentrale_url"):
-        gruppen.setdefault("Deine Daten (im Steckbrief, Blatt „Deine Daten“)", []).append(
+        gruppen.setdefault("Eure Daten (im Steckbrief, Blatt „Eure Daten“)", []).append(
             "Web-App-Adresse der Beauty-Zentrale: ohne sie zeigt die Seite nur Beispiel-Termine")
     if warnungen:
         gruppen = {"Bitte prüfen": warnungen, **gruppen}
     fehlt_agentur = [anamen.get(k, k) for k in AGENTUR_PFLICHT if not agentur.get(k)]
     if fehlt_agentur:
-        gruppen = {"Deine Daten (im Steckbrief, Blatt „Deine Daten“)": fehlt_agentur + gruppen.pop("Deine Daten (im Steckbrief, Blatt „Deine Daten“)", []), **gruppen}
+        gruppen = {"Eure Daten (im Steckbrief, Blatt „Eure Daten“)": fehlt_agentur + gruppen.pop("Eure Daten (im Steckbrief, Blatt „Eure Daten“)", []), **gruppen}
     offen = [(t_, l) for t_, l in gruppen.items() if l]
     f["offen_liste"] = "\n\n".join(f"**{t_}**\n" + "\n".join(f"- [ ] {n}" for n in l) for t_, l in offen) or "Nichts, alles ausgefüllt."
     f["erzeugt_am"] = dt.date.today().strftime("%d.%m.%Y")

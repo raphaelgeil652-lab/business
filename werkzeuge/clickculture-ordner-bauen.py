@@ -259,7 +259,7 @@ def startseite(ziel):
          [(f"{O1}/1 Beauty-Zentrale einrichten – Anleitung.docx", "Beauty-Zentrale einrichten"),
           (f"{O3}/1 Steckbrief-Vorlage – für jedes Studio kopieren.xlsx", "Steckbrief-Vorlage"),
           (f"{O1}/4 Vorbereiten – Meta, Google, Netlify, deine Daten.docx", "Meta, Google, Netlify")]),
-        ("1 · Studios finden", "Persönlich vorbeigehen oder über Instagram anschreiben, keine Kaltanrufe bei Praxen. Liste in der Zentrale, Blatt „Akquise“.",
+        ("1 · Studios finden", "Persönlich vorbeigehen oder über Instagram anschreiben, keine Kaltanrufe bei Praxen. Liste in der Zentrale, Blatt „Akquise“, Spalte „Wer“ = wer von euch dran ist.",
          [(f"{O2}/1 Verkaufsskript – Ansprache und Gespräch.docx", "Verkaufsskript"),
           (f"{O2}/2 Nachfass-Nachrichten.docx", "Nachfass-Nachrichten")]),
         ("2 · Gespräch", "Steckbrief Teil 1: Behandlung, wer behandelt, Kundenwert, Termine pro Woche. Beispiel zeigen, Budget nennen, bei Ja Teil 2 und 3.",
@@ -308,7 +308,7 @@ li{{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bot
 a{{color:#1A1917;text-decoration:none;font-weight:600;}} a:hover{{color:#B4461F;}} li span{{color:#8A857B;font-size:13px;text-align:right;}}
 .tipp{{font-size:13px;color:#6B665D;margin-top:14px;}}
 </style></head><body><div class="w"><h1>Clickculture</h1>
-<p class="lead">Werbung → Online-Termine → Kundinnen für Beauty-Studios und Praxen: Laser, Permanent Make-up, Faltenbehandlung, Bleaching. Alles in der Reihenfolge, wie du an ein Studio rangehst. Photovoltaik liegt pausiert unter „07“.</p>
+<p class="lead">Werbung → Online-Termine → Kundinnen für Beauty-Studios und Praxen: Laser, Permanent Make-up, Faltenbehandlung, Bleaching. Ihr seid zu zweit: jedes Studio hat einen festen Betreuer, einer von euch macht die Technik. Alles in der Reihenfolge, wie ihr an ein Studio rangeht. Photovoltaik liegt pausiert unter „07“.</p>
 <div class="start"><h2>So geht es</h2><p>Einmal die {link(ANLEITUNG, "Anleitung")} lesen. Dann Schritt für Schritt:</p>{karten}
 <p class="tipp">Word-Dateien öffnen sich in Pages oder Word, Tabellen in Numbers oder Excel, Seiten im Browser.
 Die Beauty-Zentrale läuft in deinem Google-Konto. Diesen Ordner baut <code>werkzeuge/clickculture-ordner-bauen.py</code> jederzeit neu.</p></div>

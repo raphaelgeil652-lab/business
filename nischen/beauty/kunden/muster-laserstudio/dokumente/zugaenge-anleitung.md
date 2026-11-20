@@ -9,7 +9,7 @@ Computer, nicht am Handy.
 Alles ist kostenlos. Nur das Werbebudget zahlen Sie später direkt an Meta und Google. Es läuft nicht über uns.
 Die Konten gehören Ihnen. Sie behalten jederzeit die Kontrolle und können uns jederzeit wieder entfernen.
 
-**Sie hängen irgendwo?** Rufen Sie mich einfach an: [Dein Telefon]. Das ist normal und in fünf
+**Sie hängen irgendwo?** Rufen Sie mich einfach an: Max Beispiel, 0151 00000001. Das ist normal und in fünf
 Minuten gelöst.
 
 ## Ihre Liste: Was wir von Ihnen brauchen
@@ -38,7 +38,7 @@ Am Ende antworten Sie einfach auf meine Willkommens-Mail (Vorlage ganz unten).
    - Gern kurze Handyvideos (hochkant, 10–30 Sekunden): Sie erklären in zwei Sätzen, wie ein Termin abläuft.
 
 Bitte nicht über WhatsApp schicken: Dort werden Fotos verkleinert. Klappt der Ordner nicht, schicken Sie die
-Fotos kostenlos und ohne Anmeldung über **wetransfer.com** an [Deine E-Mail].
+Fotos kostenlos und ohne Anmeldung über **wetransfer.com** an max@clickculture.example.
 
 ## B · Meta (Facebook und Instagram)
 
@@ -181,4 +181,4 @@ Antworten Sie auf meine Willkommens-Mail, zum Beispiel so:
 
 Sobald alles da ist, richten wir Ihre Werbung ein und melden uns zum Start.
 
-[Dein Name] · Clickculture · [Dein Telefon] · [Deine E-Mail]
+Max Beispiel · Clickculture · 0151 00000001 · max@clickculture.example

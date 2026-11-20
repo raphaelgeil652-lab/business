@@ -148,7 +148,7 @@ function neu() {
   const werte = {
     agentur_name: 'Clickculture', agentur_inhaber: 'Max Beispiel', agentur_email: 'ich@agentur.de', agentur_steuernr: '12/345/67890', agentur_kleinunternehmer: 'Nein',
     bestaetigung_minuten: 45, erinnerung_stunden: 24, raster_minuten: 30, max_unbestaetigt: 6, mail_warnung_ab: 25,
-    benachrichtigung_an: 'ich@agentur.de', geschaeftszeiten: '9-18', arbeitstage: 'Mo-Sa', rueckruf_minuten: 60,
+    benachrichtigung_an: 'ich@agentur.de,tom@agentur.de', team: 'Max = ich@agentur.de; Tom Beispiel = tom@agentur.de', geschaeftszeiten: '9-18', arbeitstage: 'Mo-Sa', rueckruf_minuten: 60,
     kopie_jeder_anfrage: 'Nein', akquise_erinnerung: 'Ja', webapp_url: 'https://script.google.com/macros/s/ABC/exec', schluessel: ''
   };
   blaetter.Einstellungen = new Blatt('Einstellungen', [['Schlüssel', 'Einstellung', 'Eintrag', 'Hilfe'], ['', 'Abschnitt', '', '']]
@@ -164,7 +164,7 @@ function neu() {
     'Kalender-ID': 'studio@laser.de', 'Buchbare Zeiten': 'Mo-Fr 9-18; Sa 10-14', 'Beratung Minuten': 20,
     'Leistungen': 'Achseln | 20 | 89 €; Beine komplett | 60 | 249 €', 'Puffer Minuten': 0, 'Vorlauf Stunden': 12, 'Tage im Voraus': 14,
     'Absagefrist Stunden': 24, 'Ausfallregel': 'Bei späterer Absage berechnen wir 30 €.', 'Vorbereitung': 'Am Vortag rasieren • 2 Wochen vorher keine Sonne',
-    'Teilnahmeschluss': berlin('2027-01-15 00:00'), 'Ziehung am': berlin('2027-01-20 00:00') });
+    'Teilnahmeschluss': berlin('2027-01-15 00:00'), 'Ziehung am': berlin('2027-01-20 00:00'), 'Betreuer': 'Tom' });
   kunde({ 'Kürzel': 'muster-pmu', 'Betrieb': 'Muster Brows', 'Anrede für Mails': 'Frau Brow', 'E-Mail für Termine': 'brows@pmu.de', 'Telefon': '0151 99999999',
     'Adresse': 'Weg 2, 12345 Musterstadt', 'Seiten-Adresse': 'https://muster-pmu.netlify.app', 'Aktiv': 'Ja', 'Behandlung': 'Permanent Make-up',
     'Buchung': 'Wunschtermin', 'Buchbare Zeiten': 'Di, Do 10-16', 'Beratung Minuten': 30, 'Leistungen': 'Powder Brows | 150 | 390 €',
@@ -376,7 +376,7 @@ uhr('2027-01-18 09:00'); vorher = mails.length;
 const frei = get({ a: 'slots', k: 'muster-laser', art: 'beratung' }).tage[1];
 const fl = frei.zeiten.slice(0, 7).map((z, i) => buche({ start: frei.datum + 'T' + z, name: 'Bot Nummer' + 'abcdefg'[i], email: 'b' + i + '@beispiel.de', telefon: '0151 2468' + (1350 + i * 7) }));
 pruefe(fl.slice(0, 6).every(x => x.ok) && !fl[6].ok && /sehr viele/.test(fl[6].fehler), '6 unbestätigte in 30 Min. ok, die 7. wird abgewiesen');
-pruefe(mails.slice(vorher).some(x => x.to === 'ich@agentur.de' && x.subject.includes('Viele unbestätigte')), 'Warnung an dich');
+pruefe(mails.slice(vorher).some(x => x.to === 'ich@agentur.de,tom@agentur.de' && x.subject.includes('Viele unbestätigte')), 'Warnung an dich');
 const warnAnzahl = () => mails.filter(x => x.subject.includes('Viele unbestätigte')).length;
 buche({ start: frei.datum + 'T' + frei.zeiten[8], name: 'Bot Neun', email: 'b9@beispiel.de', telefon: '0151 24689999' });
 pruefe(warnAnzahl() === 1, 'Warnung nicht bei jedem Versuch');
@@ -425,7 +425,7 @@ klick(knopfLink(kauf, 'Behandlung gekauft'), { ok: '1', w: '1.190' });
 t = termin(id1);
 pruefe(t.Stand === 'Auftrag' && t['Auftragswert €'] === 1190 && t['Auftrag am'] instanceof FDate, 'Kauf mit Wert 1.190 €');
 m = mails.slice(vorher).find(x => x.subject.includes('Erster Auftrag'));
-pruefe(m && m.to === 'ich@agentur.de' && m.subject.includes('Februar 2027') && m.htmlBody.includes('899 €'), 'Mail „Erster Auftrag“ an dich: Monatsgebühr ab Februar, 899 €');
+pruefe(m && m.to === 'ich@agentur.de,tom@agentur.de' && m.subject.includes('(Tom)') && m.subject.includes('Februar 2027') && m.htmlBody.includes('899 €'), 'Mail „Erster Auftrag“ an euch beide, mit Betreuer: Monatsgebühr ab Februar, 899 €');
 klick(knopfLink(mails.filter(x => x.subject.includes('Wie waren'))[0].htmlBody.split('<tr>').find(x => x.includes('Clara')), 'Nicht erschienen'), { ok: '1' });
 pruefe(termin(id2).Stand === 'nicht erschienen', 'nicht erschienen');
 
@@ -447,7 +447,7 @@ uhr('2027-01-18 10:40'); G.alle10Minuten();
 pruefe(!mails.slice(vorher).some(x => x.subject.includes('Ida')), 'nach 40 Min. noch keine Erinnerung');
 uhr('2027-01-18 11:05'); G.alle10Minuten();
 pruefe(mails.slice(vorher).some(x => x.to === 'studio@laser.de' && /Ida Rückruf wartet seit 6\d Minuten/.test(x.subject)) &&
-  mails.slice(vorher).some(x => x.to === 'ich@agentur.de' && x.subject.includes('ohne Rückruf')), 'Erinnerung ans Studio und Hinweis an dich');
+  mails.slice(vorher).some(x => x.to === 'ich@agentur.de,tom@agentur.de' && x.subject.includes('(Tom)') && x.subject.includes('ohne Rückruf')), 'Erinnerung ans Studio und Hinweis an dich');
 klick(knopfLink(m.htmlBody, 'Zurückgerufen'), { ok: '1' });
 pruefe(termin('n1').Stand === 'erreicht' && termin('n1')['Minuten bis Rückruf'] === 65, 'Zurückgerufen: Minuten gezählt');
 
@@ -457,7 +457,7 @@ uhr('2027-01-25 08:00'); vorher = mails.length;
 G.wochenMail();
 m = mails.slice(vorher).find(x => x.to === 'studio@laser.de');
 pruefe(m && m.htmlBody.includes('Ida Rückruf') && !m.htmlBody.includes('Anna Beispiel'), 'Wochen-Mail: offene drin, gekaufte nicht');
-pruefe(mails.slice(vorher).some(x => x.to === 'ich@agentur.de' && x.subject.startsWith('Wochen-Mails sind raus')), 'Übersicht an dich');
+pruefe(mails.slice(vorher).some(x => x.to === 'ich@agentur.de,tom@agentur.de' && x.subject.startsWith('Wochen-Mails sind raus')), 'Übersicht an euch beide');
 uhr('2027-02-01 07:00'); vorher = mails.length;
 G.monatsAnfang();
 m = mails.slice(vorher)[0];
@@ -466,7 +466,9 @@ blaetter.Werbekosten.appendRow([berlin('2027-01-01 00:00'), 'muster-laser', 400,
 uhr('2027-02-03 07:00');
 G.monatsReportEntwuerfe();
 const e = entwuerfe.find(x => x.to === 'studio@laser.de');
-pruefe(e && e.subject === 'Ihr Monatsreport Januar 2027', 'Report-Entwurf für das Studio');
+pruefe(e && e.subject === 'Ihr Monatsreport Januar 2027' && e.opt.replyTo === 'tom@agentur.de', 'Report-Entwurf für das Studio, Antwort an den Betreuer');
+pruefe(e.body.trim().endsWith('Tom\nClickculture'), 'Report unterschreibt der Betreuer');
+pruefe(mails.some(x => x.to === 'tom@agentur.de' && x.subject.startsWith('Report-Entwurf Januar 2027 für Muster Laserstudio') && x.htmlBody.includes('Werbeausgaben')), 'Betreuer bekommt den Report-Text per Mail (kein Zugriff auf Gmail-Entwürfe)');
 pruefe(e.body.includes('Werbeausgaben: 500 €') && /bestätigte Termine: 3 \(Werbekosten pro Termin: 167 €\)/.test(e.body), 'Werbekosten und bestätigte Termine (3)');
 pruefe(e.body.includes('Erschienen: 1 · nicht erschienen: 1 · abgesagt: 1') && e.body.includes('Behandlung gekauft: 1 (Wert laut Ihnen: 1.190 €)'), 'erschienen, nicht erschienen, abgesagt, gekauft');
 pruefe(/Herausgefiltert: \d+ \(nicht bestätigt \d+, als Fake gemeldet 2, Bots 2\)/.test(e.body), 'herausgefilterte Fakes und Bots im Report');
@@ -480,12 +482,16 @@ uhr('2027-01-14 11:00'); webhook({ id: 'v9', form_name: 'verlosung', data: { kun
 uhr('2027-01-17 10:00'); webhook({ id: 'vz', form_name: 'verlosung', data: { kunde: 'muster-laser', name: 'Zu Spät', telefon: '0151 99887766' } });
 blaetter.Akquise.appendRow(['Glow Studio', 'Frau Glow', 'Ulm', '0731 123', '@glow', 'Laser', '4,9 · 80', 'neu', berlin('2027-01-20 00:00'), 'Max', 'dienstags']);
 blaetter.Akquise.appendRow(['Fertig Studio', '', '', '1', '', '', '', 'Kunde', berlin('2027-01-19 00:00'), '', '']);
+blaetter.Akquise.appendRow(['Tom Studio', '', 'Ulm', '2', '', 'PMU', '', 'neu', berlin('2027-01-19 00:00'), 'Tom', '']);
+blaetter.Akquise.appendRow(['Offen Studio', '', 'Ulm', '3', '', 'PMU', '', 'neu', berlin('2027-01-19 00:00'), '', '']);
 quota = 20;
 uhr('2027-01-20 07:00'); vorher = mails.length;
 G.taeglich();
 const zieh = mails.slice(vorher).find(x => x.subject.includes('Verlosung'));
-pruefe(zieh && zieh.to === 'studio@laser.de,ich@agentur.de' && zieh.htmlBody.includes('3 Teilnehmer') && (zieh.htmlBody.match(/<li>/g) || []).length === 1 && !zieh.htmlBody.includes('Zu Spät'), 'Verlosung: 1 Gewinnerin aus 3 (doppelt und zu spät zählen nicht)');
-pruefe(mails.slice(vorher).some(x => x.subject === 'Heute dran: 1 Studio' && x.htmlBody.includes('Glow Studio') && !x.htmlBody.includes('Fertig')), 'Akquise: nur wer heute dran ist');
+pruefe(zieh && zieh.to === 'studio@laser.de,ich@agentur.de,tom@agentur.de' && zieh.htmlBody.includes('3 Teilnehmer') && (zieh.htmlBody.match(/<li>/g) || []).length === 1 && !zieh.htmlBody.includes('Zu Spät'), 'Verlosung: 1 Gewinnerin aus 3 (doppelt und zu spät zählen nicht)');
+pruefe(mails.slice(vorher).some(x => x.to === 'ich@agentur.de' && x.subject === 'Heute dran: 1 Studio' && x.htmlBody.includes('Glow Studio') && !x.htmlBody.includes('Fertig')), 'Akquise: Max bekommt seine Studios');
+pruefe(mails.slice(vorher).some(x => x.to === 'tom@agentur.de' && x.subject === 'Heute dran: 1 Studio' && x.htmlBody.includes('Tom Studio')), 'Akquise: Tom (Vorname reicht) bekommt seine Studios');
+pruefe(mails.slice(vorher).some(x => x.to === 'ich@agentur.de,tom@agentur.de' && x.htmlBody.includes('Offen Studio') && x.htmlBody.includes('noch niemand zugeteilt')), 'Akquise: nicht zugeteilte gehen an beide');
 pruefe(mails.slice(vorher).some(x => x.subject.includes('Mail-Kontingent')), 'Warnung: Mail-Kontingent knapp');
 vorher = mails.length; G.taeglich();
 pruefe(!mails.slice(vorher).some(x => x.subject.includes('Verlosung') || x.subject.includes('Kontingent')), 'nicht zweimal ziehen, nicht zweimal warnen');

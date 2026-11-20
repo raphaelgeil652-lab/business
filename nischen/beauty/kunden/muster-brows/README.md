@@ -7,14 +7,11 @@ schicken: „Erzeuge Muster Brows neu.“ Die Checkliste (in der Beauty-Zentrale
 
 ## Noch offen
 
-**Deine Daten (im Steckbrief, Blatt „Deine Daten“)**
-- [ ] Dein Name
-- [ ] Deine Anschrift
-- [ ] Deine E-Mail
-- [ ] Dein Telefon
+**Eure Daten (im Steckbrief, Blatt „Eure Daten“)**
+- [ ] Anschrift der Agentur
 - [ ] Meta Business-ID
 - [ ] Google-Ads-Verwaltungskonto (Kunden-ID)
-- [ ] Dein Google-Konto (E-Mail) für die Kalender-Freigabe
+- [ ] Google-Konto der Beauty-Zentrale (E-Mail)
 - [ ] Web-App-Adresse der Beauty-Zentrale
 
 **Vom Studio (Schritt 5)**
@@ -29,6 +26,7 @@ schicken: „Erzeuge Muster Brows neu.“ Die Checkliste (in der Beauty-Zentrale
 | | |
 |---|---|
 | Inhaber/in | Frau Mia Muster · 0123 4567820 · hallo@muster-brows.example |
+| Betreut von | **Tom Beispiel** (Ansprechpartner des Studios) · Technik: Tom Beispiel |
 | Behandlung | Permanent Make-up · behandelt: Kosmetik/PMU-Studio · Mia Muster, PMU-Artist |
 | Werbegebiet | 15 km um Musterstadt |
 | Online-Buchung | Modus Wunschtermin · Di, Do 10-16; Sa 10-14 · Beratung 30 Min. · direkt buchbar: Powder Brows, Lippen Aquarell |
@@ -60,18 +58,18 @@ schicken: „Erzeuge Muster Brows neu.“ Die Checkliste (in der Beauty-Zentrale
 
 ## Welche Datei wann
 
-| Schritt | Datei in diesem Ordner | Was du tust |
+| Schritt | Datei in diesem Ordner | Was ihr tut (B = Betreuer Tom Beispiel, T = Technik Tom Beispiel) |
 |---|---|---|
-| 4 · Abschluss | **2a + 2b Vertrag** | 2a sagt wie und hat den Mailtext; 2b als PDF, selbst unterschreiben, schicken, unterschrieben zurück |
-| | **3 Rechnung** | Mailtext. Die Rechnung selbst in der Beauty-Zentrale machen, als PDF an Mail 1 hängen |
-| | **4 Willkommens-Mail** + **4b Zugänge** + **4c Kalender** + **5 Termin-Leitfaden** | vorher sein Google-Ads-Konto anlegen; Mail schicken, 4b, 4c und 5 als PDF anhängen |
-| | **6 Zeile für die Zentrale** | öffnen, alles kopieren, in der Beauty-Zentrale im Blatt „Kunden“ in die erste freie Zeile einfügen |
-| 6 · Einrichten | **7 Kampagnen** | zuerst „Messung einrichten“, dann Meta und Google anlegen (pausiert) |
-| | **8 Seiten für Netlify** | ganzen Ordner auf app.netlify.com/drop ziehen, Seite in `muster-brows` umbenennen |
-| | **9 Anzeigen-Bilder** | bei Meta hochladen |
+| 4 · Abschluss | B · **2a + 2b Vertrag** | 2a sagt wie und hat den Mailtext; 2b als PDF, selbst unterschreiben, schicken, unterschrieben zurück |
+| | B · **3 Rechnung** | Mailtext. Die Rechnung selbst in der Beauty-Zentrale machen, als PDF an Mail 1 hängen |
+| | B · **4 Willkommens-Mail** + **4b Zugänge** + **4c Kalender** + **5 Termin-Leitfaden** | vorher legt T sein Google-Ads-Konto an; Mail schicken, 4b, 4c und 5 als PDF anhängen |
+| | T · **6 Zeile für die Zentrale** | öffnen, alles kopieren, in der Beauty-Zentrale im Blatt „Kunden“ in die erste freie Zeile einfügen |
+| 6 · Einrichten | T · **7 Kampagnen** | zuerst „Messung einrichten“, dann Meta und Google anlegen (pausiert) |
+| | T · **8 Seiten für Netlify** | ganzen Ordner auf app.netlify.com/drop ziehen, Seite in `muster-brows` umbenennen |
+| | T · **9 Anzeigen-Bilder** | bei Meta hochladen |
 | Zum Zeigen | **10 Anzeigen ansehen** | `vorschau.html` im Browser öffnen |
 Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `muster-brows`.
 
 **Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/anzeigen/vorschau.html?v=202611201354) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/landingpage/termin.html?demo=1&v=202611201354)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/anzeigen/vorschau.html?v=202611201408) ·
+[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/landingpage/termin.html?demo=1&v=202611201408)

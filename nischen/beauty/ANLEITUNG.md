@@ -11,14 +11,26 @@ dafür öffnest. Die Ordner im Finder heißen genauso wie hier.
 > 3. **Die Beauty-Zentrale** (eine Google-Tabelle). Sie zeigt freie Termine, nimmt Buchungen an, lässt sie per
 >    E-Mail bestätigen, trägt sie in den Kalender des Studios ein, erinnert, filtert Fakes und schreibt die Reports.
 
-**Wer macht was**
+**Wer macht was: ihr seid zu zweit**
 
 | Wer | Was |
 |---|---|
-| **Du** (oder dein Kollege) | Studios ansprechen, Gespräch, Abschluss, Zugänge, Kampagnen anklicken, einmal im Monat Werbekosten eintragen |
+| **Betreuer** (wer das Studio gefunden hat, du oder dein Kollege) | Ansprechen, Gespräch, Abschluss, Vertrag, Willkommens-Mail, einsammeln, Live-Anruf, Monatsreport, Wochenanruf. Bleibt der feste Ansprechpartner des Studios. Steht im Steckbrief bei „Wer von euch betreut das Studio?“ |
+| **Technik** (einer von euch, steht in „Eure Daten“) | Kundenordner bei Claude anfordern, Google-Konto anlegen, Zentrale-Zeile, Kalender prüfen, Messung, Seiten, Kampagnen, Test |
+| **Beide** | Hinweise der Zentrale lesen (gehen an euch beide), einmal im Monat Werbekosten und Rechnungen (wer, besprecht ihr einmal) |
 | **Claude** | Kundenordner erzeugen: Vertrag, Mails, Anleitungen, Seite mit Online-Buchung, Anzeigen, Kampagnentexte |
-| **Die Zentrale** | freie Termine, Buchung, Bestätigung, Kalender, Erinnerung, Absage, Fake-Schutz, Reports, Rechnungs-Erinnerungen |
+| **Die Zentrale** | freie Termine, Buchung, Bestätigung, Kalender, Erinnerung, Absage, Fake-Schutz, Reports, Erinnerungen an euch |
 | **Das Studio** | Fotos, Zugänge, Kalender freigeben, Vorbereitung freigeben, abends kurz Knöpfe tippen |
+
+Betreuer und Technik können dieselbe Person sein. Wichtig ist nur: **Jedes Studio hat genau einen Betreuer.** Dessen
+Name, Telefon und E-Mail stehen von selbst in allen Mails und Anleitungen an das Studio, euch beide nennt der Vertrag.
+
+**Einmal zusammen klären** (bevor das erste Studio unterschreibt):
+- Wie teilt ihr die Einnahmen (Onboarding, Monatsgebühren)? Am besten schriftlich, kurz und einfach.
+- Wie tretet ihr auf und wer unterschreibt (z. B. als GbR, beide als Auftragnehmer im Vertrag)? Kurz mit einem
+  Steuerberater sprechen: Rechnungen, Umsatzsteuer, Kleinunternehmer gelten dann für euch zusammen.
+- Wer schreibt die Rechnungen, wer trägt monatlich die Werbekosten ein?
+- Wer von euch macht die Technik? (In „Eure Daten“ eintragen.)
 
 ---
 
@@ -51,15 +63,21 @@ Kein Rechtsrat. Vor dem ersten Kunden einer Behandlung die Vorlagen einmal prüf
 ## Vorbereiten (einmal, vor dem ersten Kunden) · Ordner „01 Vorbereiten“
 
 1. **Meta, Google, Netlify:** wie bei Photovoltaik („4 Vorbereiten – Meta, Google, Netlify, deine Daten“). Hast du
-   das schon gemacht, überspringen.
+   das schon gemacht, überspringen. Dein Kollege bekommt Zugriff: im Meta-Business-Portfolio unter „Personen“
+   hinzufügen (vollständige Kontrolle), im Google-Verwaltungskonto unter „Zugriff und Sicherheit“ (Administrator),
+   bei Netlify als Team-Mitglied (falls euer Tarif das erlaubt, sonst teilt ihr den Zugang).
 2. **Beauty-Zentrale einrichten** (ca. 25 Minuten): „1 Beauty-Zentrale einrichten“. Es ist eine **neue, eigene**
-   Google-Tabelle, nicht die PV-Zentrale.
-3. **Deine Daten** in die Steckbrief-Vorlage (Blatt „Deine Daten“), neu dabei: deine Google-E-Mail (für die
-   Kalender-Freigabe) und die **Web-App-Adresse der Beauty-Zentrale**. Und in die Zentrale (Blatt „Einstellungen“).
+   Google-Tabelle, nicht die PV-Zentrale. Sie läuft in **einem** Google-Konto (am besten ein gemeinsames
+   Agentur-Konto); den anderen von euch als Bearbeiter freigeben. Im Blatt „Einstellungen“: beide E-Mails bei
+   „Hinweise gehen an“ und bei „Wer ist im Team?“.
+3. **Eure Daten** in die Steckbrief-Vorlage (Blatt „Eure Daten“), am besten zusammen: beide Namen, Telefone,
+   E-Mails, wer die Technik macht, das Google-Konto der Zentrale und die **Web-App-Adresse der Beauty-Zentrale**.
+   Dann die Vorlage beiden geben (z. B. im gemeinsamen Drive-Ordner).
 4. **Einmal prüfen lassen** (Anwalt, ggf. Kammer oder Verband): Vereinbarung, Einwilligungstext auf der Seite,
    Vorlagen der Behandlung, mit der du startest, Teilnahmebedingungen.
-5. **Probelauf wie echt** (sehr empfohlen): Ein Kollege spielt das Studio, mit seiner E-Mail, seinem Google-Kalender,
-   seinem Facebook. Er bucht auf seiner eigenen Seite einen Termin, bestätigt, sagt ab. Nur Veröffentlichen entfällt.
+5. **Probelauf wie echt** (sehr empfohlen): Einer von euch spielt das Studio, mit seiner eigenen E-Mail, seinem
+   Google-Kalender und seinem Facebook. Der andere ist Betreuer und Technik. Das „Studio“ bucht auf seiner Seite einen
+   Termin, bestätigt, sagt ab. Nur Veröffentlichen entfällt. Danach tauscht ihr einmal die Rollen, dann kennt ihr beide alles.
 
 ---
 
@@ -69,13 +87,15 @@ Kein Rechtsrat. Vor dem ersten Kunden einer Behandlung die Vorlagen einmal prüf
 |---|---|
 | Studios suchen: Google Maps („Laser Haarentfernung [Stadt]“, „Powder Brows [Stadt]“ …), Instagram | Zentrale, Blatt „Akquise“ |
 | **Persönlich vorbeigehen** oder auf Instagram anschreiben. **Keine Kaltanrufe bei Praxen** | „1 Verkaufsskript“ |
-| Nach jedem Kontakt: Stand und „Nächster Kontakt am“ eintragen | Zentrale, Blatt „Akquise“ |
+| Nach jedem Kontakt: Stand, „Nächster Kontakt am“ und **„Wer“** (wer von euch dran ist) eintragen. Morgens bekommt jeder seine Liste | Zentrale, Blatt „Akquise“ |
+| Vorher nachsehen, ob der andere das Studio schon kennt | Zentrale, Blatt „Akquise“ |
 | Nachfassen (nur wer schon Kontakt hatte) | „2 Nachfass-Nachrichten“ |
 
 ## Schritt 2 · Gespräch: Passt das Studio? · Ordner „03 Gespräch“
 
-1. „1 Steckbrief-Vorlage“ kopieren, nach dem Studio benennen, **Teil 1** ausfüllen. Zuerst **Behandlung** und **wer
-   behandelt**: Passt das nicht zusammen, steht sofort „✗“.
+1. „1 Steckbrief-Vorlage“ kopieren, nach dem Studio benennen, **Teil 1** ausfüllen: zuerst **wer von euch das Studio
+   betreut**, dann **Behandlung** und **wer behandelt**. Passt das nicht zusammen, steht sofort „✗“. Zum Gespräch
+   gern zu zweit: einer redet, einer zeigt und füllt aus.
 2. Die zwei wichtigsten Fragen: **„Was bringt eine neue Kundin im ersten Jahr?“** und **„Wie viele zusätzliche
    Termine mit Neukundinnen schaffen Sie pro Woche?“**
 3. Die vier Ja-Fragen: Entscheider da? Qualifikation passt? Google-Kalender (oder Termine per Knopf bestätigen)?
@@ -96,7 +116,10 @@ Kein Rechtsrat. Vor dem ersten Kunden einer Behandlung die Vorlagen einmal prüf
 
 ## Schritt 4 · Abschluss · am selben Tag · im Kundenordner
 
-| Was du tust | Datei |
+Mails und Vertrag gehen vom **Betreuer** raus, mit seinem Namen und seiner Nummer (steht schon drin). Das
+Google-Konto und die Zentrale-Zeile macht die **Technik**.
+
+| Was ihr tut | Datei |
 |---|---|
 | Vertrag als PDF, selbst unterschreiben, mit dem Mailtext schicken → unterschrieben zurück | „2a“ + „2b Vertrag“ |
 | Rechnung in der **Beauty-Zentrale** (Blatt „Rechnungen“ → „Rechnung drucken“ → PDF), Mail 1 aus „3 Rechnung“ | Zentrale + „3 Rechnung“ |
@@ -104,7 +127,8 @@ Kein Rechtsrat. Vor dem ersten Kunden einer Behandlung die Vorlagen einmal prüf
 | Willkommens-Mail schicken, **drei PDFs anhängen**: Zugänge-Anleitung, Kalender verbinden, Termin-Leitfaden | „4“, „4b“, „4c“, „5“ |
 | **Studio in die Beauty-Zentrale:** Datei öffnen, alles kopieren, im Blatt „Kunden“ in die erste freie Zeile (Spalte A) | „6 Zeile für die Zentrale“ |
 
-Ab jetzt hat das Studio im Blatt **„Checkliste“** eine eigene Spalte. Dort hakst du die Schritte 4 bis 7 ab.
+Ab jetzt hat das Studio im Blatt **„Checkliste“** eine eigene Spalte. Dort hakt ihr die Schritte 4 bis 7 ab; die
+Spalte „Wer“ sagt, ob Betreuer, Technik oder Studio dran ist.
 
 ## Schritt 5 · Vom Studio einsammeln · bis Tag 3
 
@@ -124,7 +148,7 @@ Fehlt nach 3 Tagen etwas? **Anrufen**, nicht mailen.
 
 ## Schritt 6 · Einrichten · Hilfe: Ordner „05 Hilfe beim Einrichten“
 
-Genau in dieser Reihenfolge, jeder Punkt Klick für Klick in der Hilfe:
+Macht die **Technik**. Genau in dieser Reihenfolge, jeder Punkt Klick für Klick in der Hilfe:
 
 0. **Zugriff:** dich bei Meta seinem Werbekonto und seiner Seite zuweisen. Google-Konto (falls noch nicht in Schritt 4).
 1. **Kalender eintragen:** Kalender-ID in den Steckbrief (Teil 3) **und** in die Beauty-Zentrale (Blatt „Kunden“,
@@ -156,25 +180,34 @@ Impressum- und Datenschutz-Link und ohne freigegebene Vorbereitung geht nichts l
 5. Am Handy ansehen: Termin wählen, Formular, Anrufen-Knopf, Fotos. TEST-Zeilen in der Zentrale löschen.
 6. **Meta-Transparenz** (Werbetreibender und Zahlender = Studio), dann Kampagnen **aktiv**. In der Zentrale bei
    **„Live seit“** das Datum. Ab da laufen die 30 Tage Garantie.
-7. Studio anrufen: „Ab jetzt kommen Online-Termine direkt in Ihren Kalender. Ist einer nicht echt: ‚Fake melden‘.
+7. Der **Betreuer** ruft das Studio an: „Ab jetzt kommen Online-Termine direkt in Ihren Kalender. Ist einer nicht echt: ‚Fake melden‘.
    Abends um 19 Uhr kurz tippen, wer da war und wer gekauft hat.“
 
-## Schritt 8 · Laufender Betrieb · die Zentrale meldet sich, du reagierst
+## Schritt 8 · Laufender Betrieb · die Zentrale meldet sich, ihr reagiert
 
-| Die Zentrale schickt dir … | Du tust |
+Hinweise gehen an euch beide, im Betreff steht der Betreuer in Klammern, z. B. „(Tom)“. **Wer betreut, kümmert sich.**
+
+| Die Zentrale schickt euch … | Wer tut was |
 |---|---|
-| **⏰ „… ohne Rückruf“** | Studio kurz anrufen: Rückruf-Wünsche schnell zurückrufen |
+| **⏰ „… ohne Rückruf“** | Betreuer ruft das Studio kurz an: Rückruf-Wünsche schnell zurückrufen |
 | **⚠ „Viele unbestätigte Buchungen“** | Blatt „Termine“ ansehen. Bot oder jemand blockiert Termine: Zahl in „Einstellungen“ ggf. senken, Nummern auf die Sperrliste |
 | **⚠ „Mail-Kontingent knapp“** | Zentrale in ein Google-Workspace-Konto umziehen (EINRICHTEN, „Grenzen von Google“) |
 | **Montag: „Wochen-Mails sind raus“** | kurz lesen, bei „noch nie angerufen“ nachhaken |
 | **1. des Monats** | Werbekosten des Vormonats ins Blatt „Werbekosten“, fällige Rechnungen schreiben |
-| **3. des Monats: Reports als Entwurf** | Gmail → Entwürfe → je Report 3 Sätze ergänzen → senden → 10 Minuten telefonieren |
-| **🎉 „Erster Auftrag bei …“** | gratulieren, „3 Rechnung“ Mail 2. Ab dann Monatsgebühr |
+| **3. des Monats: Reports** | Der Betreuer bekommt den Report-Text per Mail (zusätzlich liegt er als Entwurf im Gmail der Zentrale): 3 Sätze ergänzen → von seiner Adresse ans Studio → 10 Minuten telefonieren |
+| **🎉 „Erster Auftrag bei …“** | Betreuer gratuliert, „3 Rechnung“ Mail 2. Ab dann Monatsgebühr |
 | **„Verlosung: die Gewinnerin“** (nur Laser/PMU) | Studio informieren; alle anderen Teilnehmer bekommen ein Terminangebot |
 | **⚠ „Fehler“** | steht drin, was los ist: meist ein umbenanntes Blatt oder ein Kalender, der nicht mehr freigegeben ist |
 
+**Morgens „Heute dran“:** jeder bekommt seine eigenen Studios aus der Akquise (Spalte „Wer“), nicht zugeteilte bekommt ihr beide.
+
+**Einmal pro Woche 15 Minuten zusammen:** neue Studios in der Akquise verteilen, Monatszahlen und offene Punkte der Checkliste durchgehen.
+
 **Erst nach 20–50 bestätigten Terminen bewerten.** Gute Anzeige = viele bestätigte Termine, wenige „nicht
 erschienen“. Dann nur **eine** Sache ändern.
+
+**Betreuer fällt aus** (Urlaub, krank): Im Blatt „Kunden“ bei „Betreuer“ den anderen Namen eintragen, dem Studio
+kurz Bescheid sagen. Wechselt der Betreuer dauerhaft, auch im Steckbrief ändern und neu erzeugen lassen.
 
 **Studio hört auf:** Zentrale „Aktiv“ = Nein, Kampagnen aus, Seite in Netlify löschen, das Studio beendet die
 Kalender-Freigabe. Seine Konten gehören ihm.
@@ -186,7 +219,7 @@ Kalender-Freigabe. Seine Konten gehören ihm.
 | Problem | Was du tust |
 |---|---|
 | Seite zeigt „Online-Termine gerade nicht erreichbar“ | Zentrale → „2 · Kalender der Kunden prüfen“. Meist ist die Kalender-Freigabe weg oder die Kalender-ID falsch |
-| Seite zeigt Beispiel-Termine | Web-App-Adresse fehlt im Steckbrief („Deine Daten“). Eintragen, neu erzeugen, neu hochladen |
+| Seite zeigt Beispiel-Termine | Web-App-Adresse fehlt im Steckbrief („Eure Daten“). Eintragen, neu erzeugen, neu hochladen |
 | Kundin bekommt keine Mail | Spam-Ordner. Sonst Mail-Kontingent prüfen (Zentrale warnt). Das Studio kann telefonisch einen Termin machen |
 | Viele Reservierungen, wenige Bestätigungen | Normal sind 60–85 % bestätigt. Deutlich weniger: Anzeige zieht Neugierige an → Anzeigentext klarer machen |
 | Viele „nicht erschienen“ | Erinnerung kommt 24 h vorher. Ausfallgebühr mit dem Studio besprechen (nur mit Hinweis bei der Buchung) |

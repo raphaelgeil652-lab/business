@@ -2,7 +2,8 @@
 
 zwischen
 
-**Auftragnehmer:** Clickculture, [Dein Name] · [Deine Anschrift] · [Deine E-Mail] · [Dein Telefon]
+**Auftragnehmer:** Clickculture, Max Beispiel und Tom Beispiel · [Anschrift der Agentur] · max@clickculture.example · 0151 00000001
+Ansprechpartner für den Auftraggeber: Max Beispiel · 0151 00000001 · max@clickculture.example
 
 und
 
@@ -90,4 +91,4 @@ die Onboarding-Gebühr vollständig erstattet. Voraussetzung: Die Pflichten aus 
 Musterstadt, 20.11.2026
 
 Auftragnehmer: ________________________   Auftraggeber: ________________________
-[Dein Name]                       Dr. Lena Muster, Dr. med. Lena Muster
+Max Beispiel und Tom Beispiel                       Dr. Lena Muster, Dr. med. Lena Muster
