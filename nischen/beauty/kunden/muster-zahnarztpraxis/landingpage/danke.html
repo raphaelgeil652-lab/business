@@ -1,0 +1,36 @@
+<!--
+  DANKE-SEITE NACH DER RESERVIERUNG · VORLAGE. Kein Pixel-Ereignis: gezählt wird erst die Bestätigung (bestaetigen.html).
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitte bestätigen · Muster Zahnarztpraxis</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="seite.css">
+<style>:root{--bg:#F2F5F8;--ink:#13243A;--ink2:#13243ACC;--muted:#6B665D;--line:#DDE6EF;--accent:#245E9E;--soft:#DDE6EF;--dunkel:#14243A;--hell:#FAFCFD;}</style>
+<script>window.MESSUNG = { pixel: 'PIXEL_ID', gads: '' };</script>
+<script src="messung.js" defer></script>
+</head>
+<body>
+<div class="mitte"><div class="box">
+  <div class="zeichen">✉</div>
+  <h1>Fast geschafft: <em>bitte bestätigen.</em></h1>
+  <p>Wir haben Ihnen eine E-Mail an <b id="mail">Ihre Adresse</b> geschickt. Tippen Sie dort auf <b>„Termin bestätigen“</b>. Erst dann ist Ihr Termin fest gebucht.</p>
+  <div class="termin"><b>Wir halten den Termin <span id="frist">45</span> Minuten für Sie frei.</b>Keine Mail da? Bitte im Spam- oder Werbung-Ordner nachsehen. Absender ist Muster Zahnarztpraxis.</div>
+  <p class="klein">Etwas falsch eingegeben? <a href="termin.html">Neuen Termin wählen</a> oder anrufen: <a href="tel:+491234567840">0123 4567840</a></p>
+  <p class="klein" id="demo" style="display:none">Vorschau: Es wurde nichts gebucht und keine Mail verschickt.</p>
+</div></div>
+<div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook, Instagram und Google ankommt. Dafür nutzen wir das Meta-Pixel und die Conversion-Messung von Google Ads, die Cookies setzen. Das geht nur mit Ihrer Zustimmung. Mehr im <a href="https://example.com/datenschutz">Datenschutz</a>.</p>
+  <div class="row"><button class="btn ghost" type="button" id="consent-no">Nur notwendige</button><button class="btn" type="button" id="consent-yes">Einverstanden</button></div>
+</div>
+<script>
+  var q = new URLSearchParams(location.search);
+  if (q.get('m')) document.getElementById('mail').textContent = q.get('m');
+  if (/^\d+$/.test(q.get('f') || '')) document.getElementById('frist').textContent = q.get('f');
+  if (q.get('demo')) document.getElementById('demo').style.display = 'block';
+</script>
+</body>
+</html>

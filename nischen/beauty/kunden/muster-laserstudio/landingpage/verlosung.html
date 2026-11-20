@@ -1,0 +1,70 @@
+<!--
+  VERLOSUNGSSEITE · VORLAGE (nur Laser und Permanent Make-up, 2–3 × im Jahr, Steckbrief Teil 6 = Ja).
+  Netlify-Formular „verlosung“ → Zentrale (Webhook) → Zeile „Verlosung“, Ziehung am Tag der Ziehung von selbst.
+  Bei Faltenbehandlung und Bleaching nie (Heilmittelwerbegesetz, Berufsrecht).
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verlosung · Muster Laserstudio</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="seite.css">
+<style>:root{--bg:#EEF1F2;--ink:#14202A;--ink2:#14202ACC;--muted:#6B665D;--line:#DCE4E6;--accent:#1E6B73;--soft:#DCE4E6;--dunkel:#14262B;--hell:#F6F8F8;}</style>
+<script>window.MESSUNG = { pixel: 'PIXEL_ID', gads: '' };</script>
+<script src="messung.js" defer></script>
+</head>
+<body>
+<div class="wrap"><div class="top"><span>Muster Laserstudio</span><a href="tel:+491234567810">0123 4567810</a></div></div>
+<div class="photo" role="img" aria-label="Laser-Haarentfernung bei Muster Laserstudio" style="background-image:url(fotos/foto-2.jpg)"></div>
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Verlosung bis 31. Januar</p>
+    <h1>Wir verlosen <em>ein Laser-Paket Achseln (6 Sitzungen).</em></h1>
+    <p class="sub">Unter allen Teilnehmerinnen und Teilnehmern ab 18 ziehen wir am 02.02.2027 eine Gewinnerin oder einen Gewinner. Mitmachen dauert 30 Sekunden und kostet nichts.</p>
+  </header>
+  <div class="card" id="mitmachen">
+    <h2>Jetzt teilnehmen</h2>
+    <form name="verlosung" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="rueckruf-danke.html?v=1">
+      <input type="hidden" name="form-name" value="verlosung">
+      <input type="hidden" name="kunde" value="muster-laserstudio">
+      <p class="hp"><label>Bitte leer lassen <input name="bot-field"></label></p>
+      <label>Vor- und Nachname <input type="text" name="name" required autocomplete="name"></label>
+      <label>Telefon <input type="tel" name="telefon" required autocomplete="tel" placeholder="Für die Gewinnbenachrichtigung"></label>
+      <label>E-Mail <input type="email" name="email" required autocomplete="email"></label>
+      <label class="check"><input type="checkbox" name="ab18" required> <span>Ich bin mindestens 18 Jahre alt.</span></label>
+      <label class="check"><input type="checkbox" name="bedingungen" required> <span>Ich akzeptiere die Teilnahmebedingungen (unten) und bin einverstanden, dass Muster Laserstudio mich zur Verlosung und zu einem Termin kontaktiert. Details im <a href="https://example.com/datenschutz">Datenschutz</a>.</span></label>
+      <input type="hidden" name="utm_source"><input type="hidden" name="utm_campaign">
+      <button class="btn" type="submit">Kostenlos teilnehmen</button>
+    </form>
+    <p class="note">Die Teilnahme hängt nicht von einer Buchung ab. Lust auf einen Termin? <a href="termin.html">Gleich hier wählen</a>.</p>
+  </div>
+  <section>
+    <h2>Teilnahmebedingungen</h2>
+    <details><summary>Alle Bedingungen lesen</summary>
+      <p>Veranstalter: Muster Laserstudio GmbH, Musterweg 1, 12345 Musterstadt. Teilnahme ab 18 Jahren mit Wohnsitz in Deutschland, einmal pro Person.
+      Teilnahmeschluss: 31.01.2027. Verlost wird ein Laser-Paket Achseln (6 Sitzungen) unter allen gültigen Teilnahmen, gezogen am 02.02.2027 per Zufall.
+      Die Gewinnerin oder der Gewinner wird telefonisch oder per E-Mail benachrichtigt und muss den Gewinn innerhalb von 6 Monaten einlösen.
+      Keine Barauszahlung. Die Behandlung setzt voraus, dass sie nach Beratung für die Person geeignet ist; sonst gibt es einen gleichwertigen Gutschein.
+      Mitarbeitende des Veranstalters sind ausgeschlossen. Die Daten werden nur für die Verlosung und, wenn gewünscht, für einen Termin genutzt
+      und danach gelöscht. Facebook und Instagram stehen in keiner Verbindung zur Verlosung.</p>
+    </details>
+  </section>
+</div>
+<footer><div class="wrap">
+  <b>Muster Laserstudio GmbH</b><br>Musterweg 1, 12345 Musterstadt · <a href="tel:+491234567810">0123 4567810</a><br>
+  <a href="https://example.com/impressum">Impressum</a> · <a href="https://example.com/datenschutz">Datenschutz</a> ·
+  <button class="linkbtn" type="button" id="consent-open">Cookie-Einstellungen</button>
+</div></footer>
+<div class="sticky"><a class="btn" href="#mitmachen">Kostenlos teilnehmen</a></div>
+<div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook, Instagram und Google ankommt. Dafür nutzen wir das Meta-Pixel und die Conversion-Messung von Google Ads, die Cookies setzen. Das geht nur mit Ihrer Zustimmung. Mehr im <a href="https://example.com/datenschutz">Datenschutz</a>.</p>
+  <div class="row"><button class="btn ghost" type="button" id="consent-no">Nur notwendige</button><button class="btn" type="button" id="consent-yes">Einverstanden</button></div>
+</div>
+<script>
+  (function () { var q = new URLSearchParams(location.search);
+    ['utm_source', 'utm_campaign'].forEach(function (k) { var f = document.querySelector('[name="' + k + '"]'); if (f) f.value = q.get(k) || ''; }); })();
+</script>
+</body>
+</html>

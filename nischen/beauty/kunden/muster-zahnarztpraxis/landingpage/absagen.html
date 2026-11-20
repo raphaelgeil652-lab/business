@@ -1,0 +1,58 @@
+<!--
+  ABSAGESEITE · VORLAGE. Hierher führt der Link „Termin absagen“ aus Bestätigung und Erinnerung. Absage per Klick,
+  der Platz wird sofort wieder frei, das Studio bekommt eine Mail.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termin absagen · Muster Zahnarztpraxis</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="seite.css">
+<style>:root{--bg:#F2F5F8;--ink:#13243A;--ink2:#13243ACC;--muted:#6B665D;--line:#DDE6EF;--accent:#245E9E;--soft:#DDE6EF;--dunkel:#14243A;--hell:#FAFCFD;}</style>
+<script>window.MESSUNG = { pixel: 'PIXEL_ID', gads: '' };</script>
+<script src="messung.js" defer></script>
+</head>
+<body>
+<div class="mitte"><div class="box" id="box">
+  <div class="zeichen">…</div>
+  <h1>Einen Moment …</h1>
+  <p>Ihr Termin wird geladen.</p>
+</div></div>
+<div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook, Instagram und Google ankommt. Dafür nutzen wir das Meta-Pixel und die Conversion-Messung von Google Ads, die Cookies setzen. Das geht nur mit Ihrer Zustimmung. Mehr im <a href="https://example.com/datenschutz">Datenschutz</a>.</p>
+  <div class="row"><button class="btn ghost" type="button" id="consent-no">Nur notwendige</button><button class="btn" type="button" id="consent-yes">Einverstanden</button></div>
+</div>
+<script id="seite-cfg" type="application/json">{"zentrale": "", "telefon": "0123 4567840", "telefon_link": "+491234567840", "betrieb": "Muster Zahnarztpraxis", "beratung": "Erstgespräch Zahnaufhellung", "vorbereitung": ["Bringen Sie wenn vorhanden Ihr Bonusheft mit", "Bringen Sie eine Liste Ihrer Medikamente mit", "Vor einer Aufhellung prüfen wir Zähne und Zahnfleisch. Oft gehört eine Zahnreinigung dazu", "Füllungen und Kronen hellen nicht mit auf. Das besprechen wir vorher"], "ausfall": ""}</script>
+<script>
+(function () {
+  var cfg = JSON.parse(document.getElementById('seite-cfg').textContent), q = new URLSearchParams(location.search), box = document.getElementById('box');
+  var esc = function (s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var tel = '<a href="tel:' + esc(cfg.telefon_link) + '">' + esc(cfg.telefon) + '</a>';
+  function zeige(zeichen, titel, text, extra) { box.innerHTML = '<div class="zeichen">' + zeichen + '</div><h1>' + titel + '</h1><p>' + text + '</p>' + (extra || ''); }
+  function fehler(t) { zeige('!', 'Das hat nicht geklappt', esc(t), '<p class="klein">Rufen Sie uns bitte an: ' + tel + '</p>'); }
+  var DEMO = !/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(cfg.zentrale || '') || q.get('demo') === '1';
+  var id = q.get('id'), t = q.get('t'), neu = '<a class="btn" href="termin.html">Neuen Termin wählen</a>';
+  if (DEMO) return zeige('✓', 'Termin <em>abgesagt.</em>', 'Vorschau: So sieht die Seite nach der Absage aus.', neu);
+  if (!id || !t) return fehler('Dieser Link ist nicht vollständig. Bitte nutzen Sie den Link in Ihrer E-Mail.');
+  fetch(cfg.zentrale + '?a=info&id=' + encodeURIComponent(id) + '&t=' + encodeURIComponent(t)).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d.ok) return fehler(d.fehler);
+    if (d.stand === 'abgesagt') return zeige('✓', 'Dieser Termin ist <em>schon abgesagt.</em>', 'Möchten Sie einen neuen Termin?', neu);
+    if (d.vergangen) return fehler('Dieser Termin liegt schon in der Vergangenheit.');
+    zeige('?', 'Termin <em>absagen?</em>', 'Schade! Wenn Sie absagen, wird der Platz sofort für jemand anderen frei.',
+      '<div class="termin"><b>' + esc(d.termin) + '</b>' + esc(d.leistung) + ' bei ' + esc(d.betrieb) + '</div>' +
+      '<button class="btn" id="ok">Ja, Termin absagen</button><p class="klein">Lieber verschieben? Erst absagen, dann neuen Termin wählen. Oder anrufen: ' + tel + '</p>');
+    document.getElementById('ok').onclick = function () {
+      this.disabled = true; this.textContent = 'Wird abgesagt …';
+      fetch(cfg.zentrale, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ a: 'absagen', id: id, t: t }) })
+        .then(function (r) { return r.json(); }).then(function (r) {
+          if (!r.ok) return fehler(r.fehler);
+          zeige('✓', 'Termin <em>abgesagt.</em>', 'Danke, dass Sie Bescheid gesagt haben.' + (r.kurzfristig && cfg.ausfall ? ' Hinweis: ' + esc(cfg.ausfall) : ''), neu);
+        }).catch(function () { fehler('Keine Verbindung. Bitte nochmal versuchen.'); });
+    };
+  }).catch(function () { fehler('Keine Verbindung. Bitte die Seite neu laden.'); });
+})();
+</script>
+</body>
+</html>

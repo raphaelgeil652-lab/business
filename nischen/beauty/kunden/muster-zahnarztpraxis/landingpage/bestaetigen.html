@@ -1,0 +1,66 @@
+<!--
+  BESTÄTIGUNGSSEITE · VORLAGE. Hierher führt der Knopf in der Mail „Bitte bestätigen“. Erst der Klick hier macht den Termin fest
+  (Schutz vor Link-Scannern und Fake-Adressen). Danach meldet die Seite „Lead“ an Meta und die Conversion an Google (nur nach Zustimmung).
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termin bestätigen · Muster Zahnarztpraxis</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="seite.css">
+<style>:root{--bg:#F2F5F8;--ink:#13243A;--ink2:#13243ACC;--muted:#6B665D;--line:#DDE6EF;--accent:#245E9E;--soft:#DDE6EF;--dunkel:#14243A;--hell:#FAFCFD;}</style>
+<script>window.MESSUNG = { pixel: 'PIXEL_ID', gads: '' };</script>
+<script src="messung.js" defer></script>
+</head>
+<body>
+<div class="mitte"><div class="box" id="box">
+  <div class="zeichen">…</div>
+  <h1>Einen Moment …</h1>
+  <p>Ihr Termin wird geladen.</p>
+</div></div>
+<div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook, Instagram und Google ankommt. Dafür nutzen wir das Meta-Pixel und die Conversion-Messung von Google Ads, die Cookies setzen. Das geht nur mit Ihrer Zustimmung. Mehr im <a href="https://example.com/datenschutz">Datenschutz</a>.</p>
+  <div class="row"><button class="btn ghost" type="button" id="consent-no">Nur notwendige</button><button class="btn" type="button" id="consent-yes">Einverstanden</button></div>
+</div>
+<script id="seite-cfg" type="application/json">{"zentrale": "", "telefon": "0123 4567840", "telefon_link": "+491234567840", "betrieb": "Muster Zahnarztpraxis", "beratung": "Erstgespräch Zahnaufhellung", "vorbereitung": ["Bringen Sie wenn vorhanden Ihr Bonusheft mit", "Bringen Sie eine Liste Ihrer Medikamente mit", "Vor einer Aufhellung prüfen wir Zähne und Zahnfleisch. Oft gehört eine Zahnreinigung dazu", "Füllungen und Kronen hellen nicht mit auf. Das besprechen wir vorher"], "ausfall": ""}</script>
+<script>
+(function () {
+  var cfg = JSON.parse(document.getElementById('seite-cfg').textContent), q = new URLSearchParams(location.search), box = document.getElementById('box');
+  var esc = function (s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var tel = '<a href="tel:' + esc(cfg.telefon_link) + '">' + esc(cfg.telefon) + '</a>';
+  var vorb = cfg.vorbereitung.length ? '<div class="vorb"><h2>So bereiten Sie sich vor</h2><ul>' + cfg.vorbereitung.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul></div>' : '';
+  function zeige(zeichen, titel, text, extra) { box.innerHTML = '<div class="zeichen">' + zeichen + '</div><h1>' + titel + '</h1><p>' + text + '</p>' + (extra || ''); }
+  function fehler(t, neu) { zeige('!', 'Das hat nicht geklappt', esc(t), '<p class="klein">' + (neu ? '<a class="btn" href="termin.html">Neuen Termin wählen</a><br>' : '') + 'Oder rufen Sie uns an: ' + tel + '</p>'); }
+  var DEMO = !/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(cfg.zentrale || '') || q.get('demo') === '1';
+  var id = q.get('id'), t = q.get('t');
+  if (DEMO) {
+    zeige('✓', 'Ihr Termin ist <em>bestätigt.</em>', 'Vorschau: So sieht die Seite nach dem Klick in der Mail aus.', '<div class="termin"><b>Di, 12.01., 10:00 Uhr</b>' + esc(cfg.beratung) + ' bei ' + esc(cfg.betrieb) + '</div>' + vorb);
+    return;
+  }
+  if (!id || !t) return fehler('Dieser Link ist nicht vollständig. Bitte nutzen Sie den Knopf in Ihrer E-Mail.', true);
+  fetch(cfg.zentrale + '?a=info&id=' + encodeURIComponent(id) + '&t=' + encodeURIComponent(t)).then(function (r) { return r.json(); }).then(function (d) {
+    if (!d.ok) return fehler(d.fehler, true);
+    var termin = '<div class="termin"><b>' + esc(d.termin) + '</b>' + esc(d.leistung) + ' bei ' + esc(d.betrieb) + '</div>';
+    if (d.stand === 'Termin' || d.stand === 'erschienen' || d.stand === 'Auftrag') return zeige('✓', 'Ihr Termin ist <em>schon bestätigt.</em>', 'Alles erledigt. Die Bestätigung mit allen Infos haben Sie per E-Mail bekommen.', termin + vorb);
+    if (d.stand === 'angefragt') return zeige('✓', 'Danke, Ihr Wunschtermin <em>ist angekommen.</em>', 'Das Studio bestätigt ihn in Kürze per E-Mail.', termin);
+    if (d.stand === 'abgesagt' || d.stand === 'Fake') return fehler('Dieser Termin wurde abgesagt.', true);
+    zeige('?', 'Termin <em>bestätigen</em>', 'Bitte tippen Sie auf den Knopf. Erst dann ist der Termin fest für Sie gebucht.',
+      termin + '<button class="btn" id="ok">Termin verbindlich bestätigen</button>');
+    document.getElementById('ok').onclick = function () {
+      this.disabled = true; this.textContent = 'Wird bestätigt …';
+      fetch(cfg.zentrale, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ a: 'bestaetigen', id: id, t: t }) })
+        .then(function (r) { return r.json(); }).then(function (r) {
+          if (!r.ok) return fehler(r.fehler, r.neu);
+          if (!r.schon && window.messungMelden) window.messungMelden();
+          if (r.stand === 'angefragt') return zeige('✓', 'Danke, Ihr Wunschtermin <em>ist angekommen.</em>', 'Das Studio prüft den Termin und bestätigt ihn in Kürze per E-Mail. Dann bekommen Sie auch alle Infos zur Vorbereitung.', termin);
+          zeige('✓', 'Ihr Termin ist <em>bestätigt.</em>', 'Wir freuen uns auf Sie! Die Bestätigung mit allen Infos und einer Kalenderdatei kommt gleich per E-Mail.',
+            termin + vorb + '<p class="klein">Sie können doch nicht? Den Link zum Absagen finden Sie in der E-Mail. Fragen? ' + tel + '</p>');
+        }).catch(function () { fehler('Keine Verbindung. Bitte nochmal versuchen.', false); });
+    };
+  }).catch(function () { fehler('Keine Verbindung. Bitte die Seite neu laden.', false); });
+})();
+</script>
+</body>
+</html>

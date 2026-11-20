@@ -1,0 +1,147 @@
+<!--
+  LANDINGPAGE MIT ONLINE-BUCHUNG · VORLAGE für alle Beauty-Module. kunde-anlegen.py füllt {{…}} aus Steckbrief und module.py.
+  Ziel aller Anzeigen. Freie Zeiten und Buchung über die Beauty-Zentrale (buchung.js). Rückruf-Formular (Netlify) als Ausweg.
+  Pixel und Google erst nach Zustimmung (messung.js). Keine Gesundheitsfragen im Formular.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laser-Haarentfernung in Musterstadt · Muster Laserstudio</title>
+<meta name="description" content="Starten Sie mit einer kostenlosen Haut- und Haaranalyse inklusive Probeschuss. Termin direkt hier wählen.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="seite.css">
+<style>:root{--bg:#EEF1F2;--ink:#14202A;--ink2:#14202ACC;--muted:#6B665D;--line:#DCE4E6;--accent:#1E6B73;--soft:#DCE4E6;--dunkel:#14262B;--hell:#F6F8F8;}</style>
+<script>window.MESSUNG = { pixel: 'PIXEL_ID', gads: '' };</script>
+<script src="messung.js" defer></script>
+</head>
+<body>
+
+<div class="wrap"><div class="top"><span>Muster Laserstudio</span><a href="tel:+491234567810">0123 4567810</a></div></div>
+<div class="photo" role="img" aria-label="Laser-Haarentfernung bei Muster Laserstudio" style="background-image:url(fotos/foto-1.jpg)"></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Laser-Haarentfernung in Musterstadt</p>
+    <h1>Glatte Haut, <em>ohne ständig zu rasieren.</em></h1>
+    <p class="sub">Starten Sie mit einer kostenlosen Haut- und Haaranalyse inklusive Probeschuss. Termin direkt hier wählen.</p>
+    <div class="steps"><div><b>1</b>Termin online wählen</div><div><b>2</b>Analyse und Probeschuss, Preis für alle Sitzungen vorab</div><div><b>3</b>Sie entscheiden in Ruhe</div></div>
+  </header>
+
+  <div class="card" id="buchen">
+    <h2>Termin wählen</h2>
+    <p class="hint">Freie Zeiten sehen, Termin wählen, per E-Mail bestätigen.</p>
+
+    <div class="schritt" id="schritt-art">
+      <p class="label">1 · Was möchten Sie buchen?</p>
+      <div class="arten" id="arten"></div>
+    </div>
+
+    <div class="schritt">
+      <p class="label">Tag und Uhrzeit</p>
+      <div class="tage" id="tage" aria-label="Tag wählen"></div>
+      <div class="zeiten" id="zeiten" aria-label="Uhrzeit wählen"></div>
+      <p class="lade" id="lade">Freie Termine werden geladen …</p>
+    </div>
+
+    <div class="wahl" id="wahl" aria-live="polite"></div>
+
+    <div class="schritt" id="schritt-daten" style="display:none">
+      <p class="label">Ihre Angaben</p>
+      <form id="buchung-form" novalidate>
+        <p class="hp" aria-hidden="true"><label>Bitte leer lassen <input name="website" tabindex="-1" autocomplete="off"></label></p>
+        <label>Vor- und Nachname <input type="text" name="name" required autocomplete="name" placeholder="Ihr Name"></label>
+        <p class="feldfehler" id="fehler-name"></p>
+        <label>Telefon <input type="tel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="Für Rückfragen"></label>
+        <p class="feldfehler" id="fehler-telefon"></p>
+        <label>E-Mail <input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="Dorthin kommt die Bestätigung"></label>
+        <p class="feldfehler" id="fehler-email"></p>
+        <label class="check"><input type="checkbox" name="ab18" required> <span>Ich bin mindestens 18 Jahre alt.</span></label>
+        <label class="check"><input type="checkbox" name="einwilligung" required> <span>Ich willige ausdrücklich ein, dass Muster Laserstudio meine Angaben einschließlich der gewünschten Behandlung verarbeitet, um den Termin zu vereinbaren und mich daran zu erinnern (Art. 9 Abs. 2 lit. a DSGVO). Ich kann die Einwilligung jederzeit widerrufen. Details im <a href="https://example.com/datenschutz">Datenschutz</a>.</span></label>
+        <label class="check"><input type="checkbox" name="ausfall" required> <span>Bei einer Absage später als 24 Stunden vorher oder wenn Sie nicht kommen, berechnen wir 30 €. Das gilt nicht, wenn Sie nachweisen, dass Sie das Versäumnis nicht zu vertreten haben oder uns kein oder ein geringerer Schaden entstanden ist.</span></label>
+        <p class="note" style="text-align:left;margin:0;">Bitte keine Gesundheitsangaben eintragen. Fragen zu Medikamenten, Allergien oder Schwangerschaft klären wir persönlich.</p>
+        <div class="fehler" id="fehler" role="alert"></div>
+        <button class="btn" type="submit" id="senden" disabled>Termin reservieren</button>
+      </form>
+      <p class="note">Danach kommt eine E-Mail. Erst mit Ihrem Klick dort ist der Termin fest gebucht.</p>
+    </div>
+
+    <div class="demo" id="demo" style="display:none">Vorschau: Diese Termine sind Beispiele. Gebucht wird nichts.</div>
+
+    <div class="alt">Kein passender Termin dabei? <button class="linkbtn" type="button" id="rueckruf-link">Rückruf anfordern</button> oder anrufen: <a href="tel:+491234567810">0123 4567810</a></div>
+
+    <div id="rueckruf-box" style="display:none">
+      <form name="rueckruf" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="rueckruf-danke.html">
+        <input type="hidden" name="form-name" value="rueckruf">
+        <input type="hidden" name="kunde" value="muster-laserstudio">
+        <p class="hp"><label>Bitte leer lassen <input name="bot-field"></label></p>
+        <label>Vor- und Nachname <input type="text" name="name" required autocomplete="name"></label>
+        <label>Telefon <input type="tel" name="telefon" required autocomplete="tel"></label>
+        <label>Wann passt ein Rückruf? <span style="font-weight:500;color:var(--muted)">(optional)</span> <input type="text" name="wunsch" placeholder="z. B. nachmittags"></label>
+        <label class="check"><input type="checkbox" name="ab18" required> <span>Ich bin mindestens 18 Jahre alt.</span></label>
+        <label class="check"><input type="checkbox" name="einwilligung" required> <span>Ich willige ausdrücklich ein, dass Muster Laserstudio meine Angaben einschließlich meines Interesses an Laser-Haarentfernung verarbeitet, um mich zurückzurufen (Art. 9 Abs. 2 lit. a DSGVO). Widerruf jederzeit möglich. Details im <a href="https://example.com/datenschutz">Datenschutz</a>.</span></label>
+        <input type="hidden" name="utm_source"><input type="hidden" name="utm_campaign"><input type="hidden" name="fbclid"><input type="hidden" name="gclid">
+        <button class="btn ghost" type="submit">Rückruf anfordern</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <h2>Leistungen und Preise</h2>
+    <table class="preise"><tr><td>Achseln<small>20 Min.</small></td><td>ab 59 €</td></tr><tr><td>Bikinizone<small>30 Min.</small></td><td>ab 79 €</td></tr><tr><td>Beine komplett<small>60 Min.</small></td><td>ab 199 €</td></tr></table>
+    <p class="hinweis">Preise pro Sitzung. Meist sind 6–8 Sitzungen nötig; den Gesamtpreis nennen wir Ihnen vorab. Alle Preise inklusive Mehrwertsteuer.</p>
+  </section>
+
+  <section>
+    <h2>Was Sie erwartet</h2>
+    <ul class="list"><li>Moderner Diodenlaser, behandelt von Fachkräften mit NiSV-Fachkunde</li><li>Den Gesamtpreis für alle Sitzungen kennen Sie vor dem Start</li><li>Probeschuss an einer kleinen Stelle, damit Sie wissen, wie es sich anfühlt</li><li>Termine online buchen und absagen, ohne Warteschleife</li></ul>
+    <p class="hinweis">Dauerhafte Haarreduktion braucht meist 6 bis 8 Sitzungen im Abstand von einigen Wochen. Wie viele es bei Ihnen sind, hängt von Haut und Haar ab. Ein bestimmtes Ergebnis können wir nicht garantieren.</p>
+  </section>
+  <section>
+    <h2>Wer Sie behandelt</h2>
+    <div class="person"><div class="bild" style="background-image:url(fotos/foto-3.jpg)"></div><div><b>Sabine Muster, Fachkunde nach NiSV</b><p>Behandelt wird bei uns nur mit Fachkundenachweis nach NiSV.</p></div></div>
+  </section>
+  <section>
+    <h2>Das sagen Kundinnen und Kunden</h2>
+    <blockquote class="review">„Super nette Beratung, der Probeschuss hat mir die Angst genommen.“ — Lea</blockquote>
+    <blockquote class="review">„Nach der vierten Sitzung kaum noch Haare an den Beinen. Klare Empfehlung.“ — Nina</blockquote>
+    <p class="hinweis">Echte Bewertungen von Google.</p>
+  </section>
+
+  <section>
+    <h2>Häufige Fragen</h2>
+    <details><summary>Wie viele Sitzungen brauche ich?</summary><p>Meist 6 bis 8, je nach Körperstelle, Haut und Haar. Haare wachsen in Phasen nach, deshalb liegen zwischen den Sitzungen einige Wochen.</p></details>
+    <details><summary>Tut das weh?</summary><p>Die meisten beschreiben es als kurzes Wärmegefühl oder leichtes Zwicken. Beim Probeschuss in der Analyse merken Sie selbst, wie es sich anfühlt.</p></details>
+    <details><summary>Ist die Haarentfernung dauerhaft?</summary><p>Ziel ist eine dauerhafte Reduktion der Haare. Einzelne Haare können nachwachsen, eine Garantie für ein bestimmtes Ergebnis gibt es nicht.</p></details>
+    <details><summary>Wann ist die beste Zeit zu starten?</summary><p>Herbst und Winter: Vor und nach den Sitzungen sollte die Haut nicht gebräunt sein. Wer jetzt startet, ist bis zum Sommer meist durch.</p></details>
+    <details><summary>Was kostet es?</summary><p>Die Preise pro Sitzung stehen oben. Den Gesamtpreis für alle Sitzungen nennen wir Ihnen in der Analyse, bevor Sie sich entscheiden.</p></details>
+    <details><summary>Für wen ist es nicht geeignet?</summary><p>Bei sehr hellen, grauen oder roten Haaren wirkt der Laser kaum. In der Schwangerschaft behandeln wir nicht. Das klären wir in der Analyse.</p></details>
+  </section>
+
+  <section class="final">
+    <h2>Ihr erster Schritt: <em>ein Termin.</em></h2>
+    <p>Freie Zeiten sehen, Termin wählen, per E-Mail bestätigen.</p>
+    <a class="btn" href="#buchen">Termin wählen</a>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <b>Muster Laserstudio GmbH</b><br>Musterweg 1, 12345 Musterstadt · <a href="tel:+491234567810">0123 4567810</a><br>Di–Fr 9–19 Uhr, Sa 9–14 Uhr<br>
+  <a href="https://example.com/impressum">Impressum</a> · <a href="https://example.com/datenschutz">Datenschutz</a> ·
+  <button class="linkbtn" type="button" id="consent-open">Cookie-Einstellungen</button> · <a href="verlosung.html">Verlosung</a>
+</div></footer>
+
+<div class="sticky"><a class="btn" href="#buchen">Termin wählen</a></div>
+
+<div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook, Instagram und Google ankommt. Dafür nutzen wir das Meta-Pixel und die Conversion-Messung von Google Ads, die Cookies setzen. Das geht nur mit Ihrer Zustimmung. Die Online-Buchung funktioniert auch ohne. Mehr im <a href="https://example.com/datenschutz">Datenschutz</a>.</p>
+  <div class="row"><button class="btn ghost" type="button" id="consent-no">Nur notwendige</button><button class="btn" type="button" id="consent-yes">Einverstanden</button></div>
+</div>
+
+<script id="buchung-cfg" type="application/json">{"zentrale": "", "kunde": "muster-laserstudio", "telefon": "0123 4567810", "telefon_link": "+491234567810", "beratung": {"name": "Haut- und Haaranalyse mit Probeschuss", "minuten": 20, "wort": "kostenlos"}, "leistungen": [{"name": "Achseln", "minuten": 20, "preis": "ab 59 €"}, {"name": "Bikinizone", "minuten": 30, "preis": "ab 79 €"}, {"name": "Beine komplett", "minuten": 60, "preis": "ab 199 €"}], "direkt": true}</script>
+<script src="buchung.js"></script>
+</body>
+</html>
