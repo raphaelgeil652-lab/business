@@ -142,9 +142,13 @@ def zahl(v, vorgabe):
 
 
 def leistungen_lesen(text):
+    """„Name | Minuten | Preis; …“. Auch mit „/“ statt „|“ (häufiger Tippfehler), wenn kein „|“ vorkommt."""
     out = []
+    trenner = "|" if "|" in str(text or "") else "/"
     for teil in str(text or "").split(";"):
-        t = [x.strip() for x in teil.split("|")]
+        t = [x.strip() for x in teil.split(trenner)]
+        if trenner == "/" and len(t) > 3:  # „/“ im Namen: die letzten zwei Teile sind Minuten und Preis
+            t = [" / ".join(t[:-2]), t[-2], t[-1]]
         if t and t[0] and len(t) > 1 and zahl(t[1], 0) > 0:
             out.append({"name": t[0], "minuten": zahl(t[1], 0), "preis": t[2] if len(t) > 2 else ""})
     return out
