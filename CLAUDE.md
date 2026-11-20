@@ -79,7 +79,8 @@ muss die Routine mitgeändert werden.
 |---|---|---|
 | **Kfz-Betriebe** | **aktiver Fokus** (seit Juli 2026) | `nischen/autowerkstaetten/` |
 | Küchenstudios | zurückgestellt, vollständig erhalten | `nischen/kuechenstudios/` |
-| Photovoltaik | **Probelauf** mit erfundenem Kunden (Nov. 2026), geplant mit Kollegen aus dem PV-Vertrieb | `nischen/photovoltaik/` |
+| Photovoltaik | **pausiert seit 20.11.2026**, vollständig erhalten, nicht löschen. Grund: ein Kontakt aus der PV-Branche berichtet, dass Meta- und Google-Ads dort schwach laufen | `nischen/photovoltaik/` |
+| Beauty & Körper (Ästhetik, Zahnästhetik, Heilpraktiker, Massage, Breathwork …) | **in Prüfung** (Recherche Nov. 2026), noch nichts gebaut | `reports/`, `research_notes/` |
 
 **Photovoltaik:** Grundlage ist das nischenneutrale Betriebshandbuch (Claude-Doc,
 https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) und `modul-photovoltaik.md`.
