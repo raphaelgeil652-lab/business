@@ -8,7 +8,10 @@
   var DEMO = !/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(cfg.zentrale || '') || q.get('demo') === '1';
   var start = Date.now(), tage = [];
   var optionen = cfg.leistungen || [];
-  var wahl = { leistung: optionen.length ? optionen[0].name : '', minuten: optionen.length ? optionen[0].minuten : 30, tag: null, zeit: null };
+  // Vorauswahl über den Link der Anzeige: termin.html?l=Gelnägel (Anfang des Namens reicht, Groß/klein egal)
+  var gewuenscht = String(q.get('l') || '').trim().toLowerCase(), vorab = 0;
+  if (gewuenscht) optionen.forEach(function (o, i) { if (!vorab && o.name.toLowerCase().indexOf(gewuenscht) === 0) vorab = i; });
+  var wahl = { leistung: optionen.length ? optionen[vorab].name : '', minuten: optionen.length ? optionen[vorab].minuten : 30, tag: null, zeit: null };
   var $ = function (id) { return document.getElementById(id); };
   var el = function (tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -29,7 +32,7 @@
   optionen.forEach(function (o, i) {
     var b = el('button', 'art', '<span><b>' + esc(o.name) + '</b><small>' + o.minuten + ' Min.</small></span>' + (o.preis ? '<span class="preis">' + esc(o.preis) + '</span>' : ''));
     b.type = 'button';
-    b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    b.setAttribute('aria-pressed', i === vorab ? 'true' : 'false');
     b.onclick = function () {
       [].forEach.call(arten.children, function (x) { x.setAttribute('aria-pressed', 'false'); });
       b.setAttribute('aria-pressed', 'true');

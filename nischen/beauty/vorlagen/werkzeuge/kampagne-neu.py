@@ -7,7 +7,9 @@ Aufruf (aus dem Repo-Hauptordner):
 kampagne.json (schreibt Claude aus eurem Wunsch, z. B. „Neue Kampagne für kate-cosmetics: Wimpern-Winteraktion“):
     {"name": "Wimpern Winter", "ziel": "Wimpernverlängerung im Winter", "budget": 300, "zielgruppe": "25 bis 50",
      "anzeigen": [{"kicker": "...", "h1": "... <em>...</em>", "sub": "...", "fine": "...", "cta": "Termin online wählen",
-                   "primaer": "...", "headline": "...", "beschreibung": "...", "foto": "foto-1"}, ...]}
+                   "primaer": "...", "headline": "...", "beschreibung": "...", "foto": "foto-1",
+                   "leistung": "Gelnägel"}, ...]}
+„leistung“ (optional): Die Anzeige führt auf die Terminseite, auf der genau diese Leistung schon ausgewählt ist.
 Platzhalter wie {{betrieb}}, {{ort}}, {{angebot}} gehen. Das Studio muss schon gebaut sein (kunde-anlegen.py).
 
 Schreibt nach nischen/beauty/kunden/<kürzel>/kampagnen/<name>/:

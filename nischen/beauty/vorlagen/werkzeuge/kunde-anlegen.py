@@ -29,6 +29,7 @@ import subprocess
 import sys
 import tempfile
 import zipfile
+from urllib.parse import quote
 
 HIER = pathlib.Path(__file__).resolve().parent
 VORLAGEN = HIER.parent
@@ -289,7 +290,7 @@ def meta_md(f, alle):
     zeilen = []
     for i, a in enumerate(alle, 1):
         t = a["_t"]
-        ziel = "verlosung.html" if a["id"].startswith("v") else "termin.html"
+        ziel = "verlosung.html" if a["id"].startswith("v") else "termin.html" + ("?l=" + quote(a["leistung"]) if a.get("leistung") else "")
         zeilen.append(f"**{i} · {a['id']}** · Bild `{a['id']}.png` · Quell-URL `{f['landingpage_url']}/{ziel}` · "
                       f"URL-Parameter `utm_source=meta&utm_campaign={f['kampagne_kuerzel']}-{a['id'].split('-')[0]}`\n"
                       f"- Primärtext: {t['primaer'].replace(chr(10), chr(10) + '  ')}\n- Überschrift: {t['headline']}\n- Beschreibung: {t['beschreibung']}\n")
