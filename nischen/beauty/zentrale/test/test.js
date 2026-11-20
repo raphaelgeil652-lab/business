@@ -513,6 +513,23 @@ pruefe(!r.ok && /Gerade hat etwas nicht geklappt/.test(r.fehler) && mails.slice(
 neu(); uhr('2027-01-11 10:00'); G.einrichten(); vorher = mails.length;
 G.testBuchung();
 pruefe(termine().some(x => x.Name === 'TEST Anna Beispiel' && x.Stand === 'unbestätigt') && mails.slice(vorher).some(x => x.to === 'ich@agentur.de' && x.subject.startsWith('Bitte bestätigen')), 'Test-Buchung aus dem Menü: Mail an dich');
+{
+  // Test-Studio ohne eigene Seite: Knopf in der Mail führt auf eine Seite der Zentrale
+  blaetter.Kunden.z[1][KOPF.Kunden.indexOf('Seiten-Adresse')] = '';
+  const tb = termine().find(x => x.Name === 'TEST Anna Beispiel');
+  const ks = tb['Kunden-Schlüssel'];
+  const lk = G.kundenLink_(G.einst_(), G.kunde_('muster-laser'), 'bestaetigen', tb.ID, ks);
+  pruefe(lk === 'https://script.google.com/macros/s/ABC/exec?a=bestaetigen&id=' + tb.ID + '&t=' + ks, 'ohne Seite: Bestätigungs-Link zeigt auf die Zentrale');
+  let sz = klick(lk);
+  pruefe(sz.html.includes('Termin verbindlich bestätigen') && termin(tb.ID).Stand === 'unbestätigt', 'Zentrale-Seite fragt erst nach (Schutz vor Link-Scannern)');
+  sz = klick(lk, { ok: '1' });
+  pruefe(sz.html.includes('Termin bestätigt') && termin(tb.ID).Stand === 'Termin', 'Klick → Termin bestätigt');
+  const best = mails.find(x => x.to === 'ich@agentur.de' && x.subject.startsWith('Bestätigt:'));
+  const ab = linkMit(best.htmlBody, 'a=absagen');
+  pruefe(!!ab && ab.startsWith('https://script.google.com/macros/s/ABC/exec?a=absagen'), 'Absage-Link zeigt ebenfalls auf die Zentrale');
+  klick(ab, { ok: '1' });
+  pruefe(termin(tb.ID).Stand === 'abgesagt', 'Absage über die Zentrale-Seite');
+}
 blaetter.Termine.z[0][blaetter.Termine.z[0].indexOf('Stand')] = 'Status';
 vorher = mails.length; G.alle10Minuten();
 pruefe(mails.slice(vorher).some(x => x.subject.includes('Fehler') && /Spalte „Stand“/.test(x.body)), 'umbenannte Spalte → Fehler-Mail an dich');

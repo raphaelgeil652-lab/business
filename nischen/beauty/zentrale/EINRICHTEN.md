@@ -61,16 +61,19 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
    danach nochmal „1 · Einrichten“. Die Meldung sagt „Die Automatik läuft“.
    *Kein Menü?* Steht oben neben dem Dateinamen „.XLSX“, ist es noch nicht die Google-Version (Schritt 1).
 7. **Web-App-Adresse in die Steckbrief-Vorlage:** dieselbe Adresse (endet auf `/exec`) in der Steckbrief-Vorlage,
-   Blatt **„Eure Daten“**, bei „Web-App-Adresse der Beauty-Zentrale“ eintragen, dazu deine Google-E-Mail (die
-   Studios geben ihren Kalender für sie frei). Ohne die Adresse zeigen die Terminseiten nur Beispiel-Termine.
+   Blatt **„Eure Daten“**, bei „Web-App-Adresse der Beauty-Zentrale“ eintragen, dazu bei „Google-Konto der
+   Beauty-Zentrale“ die E-Mail des Kontos, unter dem die Zentrale läuft (dafür geben die Studios ihren Kalender frei). Ohne die Adresse zeigen die Terminseiten nur Beispiel-Termine.
 8. **Testen** (10 Minuten, mit dir selbst als Studio):
    - In deinem eigenen Google-Kalender nichts ändern. Blatt **„Kunden“** → eine Zeile: Kürzel `test`, Betrieb `Test`,
      deine E-Mail bei „E-Mail für Termine“, Adresse, Aktiv `Ja`, Buchung `Kalender`, Kalender-ID = **deine E-Mail**,
      Buchbare Zeiten `Mo-Sa 9-18`, Beratung Minuten `20`, Vorlauf Stunden `1`, Absagefrist Stunden `24`.
    - Menü „Clickculture“ → **„2 · Kalender der Kunden prüfen“**: Es muss „✓ Kalender verbunden“ stehen.
-   - Menü → **„3 · Test-Buchung durchspielen“**: Du bekommst „Bitte bestätigen“. Den Knopf in der Mail kannst du
-     beim Test nicht nutzen (die Seite zeigt auf eine Testadresse). Stattdessen: echter Test über eine Kundenseite in
-     Schritt 7 der Anleitung.
+   - Menü → **„3 · Test-Buchung durchspielen“**: Du bekommst die Mail „Bitte bestätigen“. Auf den Knopf tippen →
+     es öffnet sich eine Seite der Zentrale → dort nochmal **„Termin verbindlich bestätigen“**. Jetzt muss passieren:
+     Termin in deinem Kalender, Mail „Bestätigt“ (mit Kalenderdatei), Mail „Neuer Online-Termin“. In der Bestätigung
+     unten auf **„Termin absagen“** → bestätigen → der Kalendereintrag verschwindet wieder.
+     (Ein Test-Studio ohne eigene Webseite bekommt diese einfachen Seiten der Zentrale. Echte Studios haben ihre
+     eigene Terminseite, die testest du in Schritt 7 der Anleitung.)
    - Aufräumen: Zeile `test` in „Kunden“ löschen (oder Aktiv `Nein`), TEST-Zeile in „Termine“ löschen, Spalte `test`
      in „Checkliste“ löschen.
 

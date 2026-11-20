@@ -126,7 +126,7 @@ function testBuchung() {
   var r = buchen_({ kunde: k.kuerzel, art: 'beratung', start: tage[0].datum + 'T' + tage[0].zeiten[0], name: 'TEST Anna Beispiel',
     telefon: '0151 23456781', email: s.an.split(',')[0], ms: 60000, quelle: 'test', test: true }, s);
   ui.alert(r.ok ? 'Test-Buchung angelegt (' + tage[0].label + ', ' + tage[0].zeiten[0] + ' Uhr).\n\nDie Mail „Bitte bestätigen“ ging an ' + s.an.split(',')[0] +
-    '. Dort auf den Knopf tippen und auf der Seite bestätigen. Dann: Termin im Kalender des Studios, Bestätigung an dich, Mail an das Studio.\n\nDanach im Blatt „Termine“ die TEST-Zeile auf „abgesagt“ und den Kalendereintrag löschen.'
+    '. Dort auf den Knopf tippen und auf der Seite, die sich öffnet, nochmal bestätigen. Dann: Termin im Kalender des Studios, Bestätigung an dich (mit Absage-Link), Mail an das Studio.\n\nZum Schluss in der Bestätigung auf „Termin absagen“: Der Kalendereintrag verschwindet wieder.'
     : 'Das hat nicht geklappt: ' + r.fehler);
 }
 
@@ -175,6 +175,7 @@ function doGet(e) {
   var p = (e && e.parameter) || {};
   if (p.a === 'slots') return json_(sicherJson_(function () { return slotsAnfrage_(p); }));
   if (p.a === 'info') return json_(sicherJson_(function () { return infoAnfrage_(p); }));
+  if (p.a === 'bestaetigen' || p.a === 'absagen') return kundenSeite_(p);
   if (!p.id) return seite_('Clickculture Zentrale', 'Diese Adresse ist in Ordnung. Sie wird für die Online-Buchung und die Knöpfe in den Mails gebraucht.');
   return knopfSeite_(p);
 }
@@ -400,7 +401,7 @@ function buchen_(d, s) {
     'Quelle': quelle, 'Stand': 'unbestätigt', 'Details': details.join(' · '), 'Schlüssel': neuerSchluessel_(), 'Kunden-Schlüssel': ks
   });
   cacheLeeren_(k);
-  var link = k.seite + '/bestaetigen.html?id=' + encodeURIComponent(id) + '&t=' + ks;
+  var link = kundenLink_(s, k, 'bestaetigen', id, ks);
   mail_(s, {
     to: email, absender: k.betrieb, antwortAn: k.email,
     subject: 'Bitte bestätigen: Ihr Termin am ' + terminText_(start),
@@ -411,6 +412,35 @@ function buchen_(d, s) {
       '<p style="font-size:13px;color:#6B665D;">Sie haben nichts gebucht? Dann ignorieren Sie diese Mail einfach, der Platz wird wieder frei.</p>')
   });
   return { ok: true, id: id, frist: haltMinuten_(s) };
+}
+
+/** Link für die Kundin: auf die Seite des Studios. Hat das Studio (noch) keine Seite, z. B. beim Test aus dem Menü,
+ * zeigt die Zentrale selbst eine einfache Bestätigungs- bzw. Absageseite. */
+function kundenLink_(s, k, was, id, token) {
+  if (/^https?:\/\//.test(k.seite)) return k.seite + '/' + was + '.html?id=' + encodeURIComponent(id) + '&t=' + token;
+  return basis_(s) + '?a=' + was + '&id=' + encodeURIComponent(id) + '&t=' + token;
+}
+
+function kundenSeite_(p) {
+  var s = einst_(), was = p.a === 'absagen' ? 'absagen' : 'bestaetigen';
+  var info = sicherJson_(function () { return infoAnfrage_(p); });
+  if (!info.ok) return seite_('Nicht gefunden', esc_(info.fehler));
+  if (p.ok !== '1') {
+    return seite_(was === 'absagen' ? 'Termin absagen?' : 'Termin bestätigen',
+      '<p><b>' + esc_(info.termin) + '</b><br>' + esc_(info.leistung) + ' bei ' + esc_(info.betrieb) + '</p>' +
+      '<p>Bitte unten tippen. Erst dann ist es ' + (was === 'absagen' ? 'abgesagt' : 'fest gebucht') + '.</p>' +
+      '<form method="get" action="' + esc_(basis_(s)) + '" target="_top">' +
+      '<input type="hidden" name="a" value="' + was + '"><input type="hidden" name="id" value="' + esc_(p.id) + '">' +
+      '<input type="hidden" name="t" value="' + esc_(p.t) + '"><input type="hidden" name="ok" value="1">' +
+      '<button style="font-size:20px;padding:16px;width:100%;border:0;border-radius:6px;background:' + (was === 'absagen' ? '#9A3B2E' : '#1F7A3F') +
+      ';color:#fff;font-weight:700;">' + (was === 'absagen' ? 'Ja, Termin absagen' : 'Termin verbindlich bestätigen') + '</button></form>');
+  }
+  var r = gesperrt_(function () { return was === 'absagen' ? absagen_(p.id, p.t, s) : bestaetigen_(p.id, p.t, s); });
+  if (!r.ok) return seite_('Das hat nicht geklappt', esc_(r.fehler));
+  if (was === 'absagen') return seite_('Termin abgesagt ✓', 'Danke für Ihre Nachricht. Der Platz ist wieder frei.');
+  return seite_(r.stand === 'angefragt' ? 'Wunschtermin angekommen ✓' : 'Termin bestätigt ✓',
+    '<p><b>' + esc_(r.termin) + '</b><br>' + esc_(r.leistung) + ' bei ' + esc_(r.betrieb) + '</p>' +
+    (r.stand === 'angefragt' ? '<p>Das Studio bestätigt den Termin in Kürze per E-Mail.</p>' : '<p>Die Bestätigung mit allen Infos kommt gleich per E-Mail.</p>'));
 }
 
 function bestaetigen_(id, token, s) {
@@ -570,7 +600,7 @@ function sperren_(t, z, grund) {
 
 function bestaetigungAnKunde_(t, z, k, s) {
   var start = datum_(t.get(z, 'Termin')), dauer = Number(t.get(z, 'Dauer')) || 30, id = t.get(z, 'ID');
-  var absagen = k.seite + '/absagen.html?id=' + encodeURIComponent(id) + '&t=' + t.get(z, 'Kunden-Schlüssel');
+  var absagen = kundenLink_(s, k, 'absagen', id, t.get(z, 'Kunden-Schlüssel'));
   mail_(s, {
     to: t.get(z, 'E-Mail'), absender: k.betrieb, antwortAn: k.email,
     subject: 'Bestätigt: Ihr Termin am ' + terminText_(start),
@@ -606,7 +636,7 @@ function neuerTerminAnStudio_(t, z, k, s, wunsch) {
 
 function erinnerungAnKunde_(t, z, k, s) {
   var start = datum_(t.get(z, 'Termin')), id = t.get(z, 'ID');
-  var absagen = k.seite + '/absagen.html?id=' + encodeURIComponent(id) + '&t=' + t.get(z, 'Kunden-Schlüssel');
+  var absagen = kundenLink_(s, k, 'absagen', id, t.get(z, 'Kunden-Schlüssel'));
   mail_(s, {
     to: t.get(z, 'E-Mail'), absender: k.betrieb, antwortAn: k.email,
     subject: 'Erinnerung: Ihr Termin ' + (gleicherTag_(start, new Date(new Date().getTime() + TAG)) ? 'morgen' : 'am ' + WOCHENTAG_LANG[start.getDay()]) +
