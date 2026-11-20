@@ -48,9 +48,9 @@ Werbebudget: **{{budget}} pro Monat** für Werbung auf Meta (Facebook und Instag
 ### §4 Vergütung
 
 - **Keine Grundgebühr, kein Onboarding.**
-- **Provision: {{provision}} %** vom Umsatz, den eine Neukundin, die über die Terminseite gebucht und ihren Termin per
-  E-Mail bestätigt hat, bei ihrem ersten Besuch beim Auftraggeber macht (Behandlung oder bei diesem Besuch gekauftes
-  Paket). Spätere Besuche derselben Kundin sind provisionsfrei.
+- **Provision: {{provision}} %** vom ersten Kauf einer Neukundin, die über die Terminseite gebucht und ihren Termin per
+  E-Mail bestätigt hat (Behandlung oder Paket). Erfasst wird der erste Kauf innerhalb von 3 Monaten nach ihrem ersten
+  Online-Termin, auch wenn dieser Termin eine Beratung war. Weitere Käufe derselben Kundin sind provisionsfrei.
 - Abrechnung monatlich zum Monatsanfang für den Vormonat, auf Grundlage der Beträge, die der Auftraggeber über die
   Knöpfe „Behandlung gekauft“ meldet.
 - **Werbebudget:** zahlt der Auftraggeber separat und direkt an Meta.

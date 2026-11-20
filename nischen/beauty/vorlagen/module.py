@@ -437,7 +437,7 @@ REGELN_VON_BEHANDLER = {
     "Heilpraktiker/in": "Faltenbehandlung",           # Heilmittelwerbegesetz
     "Zahnarztpraxis": "Bleaching",                    # Berufsordnung Zahnärzte
 }
-PROVISION_STANDARD = 15  # % vom Umsatz, den eine Neukundin aus einem Online-Termin beim ersten Besuch macht
+PROVISION_STANDARD = 15  # % vom ersten Kauf einer Neukundin aus einem Online-Termin (innerhalb von 3 Monaten)
 
 ALLGEMEIN = {
     "kuerzel": "allgemein",

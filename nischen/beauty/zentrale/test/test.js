@@ -609,6 +609,12 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   pruefe(!f({ behandler: 'Arzt/Ärztin', leistungen: [{ name: 'Botox Stirn', minuten: '30' }] }).ok && !f({ angebot: 'Botox' }).ok, '„Botox“ → abgelehnt');
   pruefe(!f({ zeiten: '' }).ok, 'ohne buchbare Zeiten → Hinweis');
   pruefe(blaetter.Kunden.letzte() === 4, 'abgelehnte Versuche legen nichts an');
+  {
+    const rb = G.neuerKunde_(Object.assign({}, basis, { betrieb: 'Beratung Test', leistungen: [{ name: 'haarpigmentierung', minuten: '30', preis: '1800', beratung: true }] }), G.einst_());
+    const kb = G.kunde_('beratung-test');
+    pruefe(rb.ok && kb.leistungen[0].name === 'Beratung Haarpigmentierung' && kb.leistungen[0].minuten === 30 && kb.leistungen[0].preis === 'ab 1800 €', '„erst Beratung“: online buchbar ist die Beratung, Preis als „ab …“');
+    blaetter.Kunden.z = blaetter.Kunden.z.filter(r => r[0] !== 'beratung-test');
+  }
   const vorher = mails.length, r = f({});
   const k = G.kunde_('kate-cosmetics');
   pruefe(r.ok && k && k.status === 'Angelegt' && k.token.length === 32, 'Kunde angelegt: Kürzel aus dem Namen, Status Angelegt, Schlüssel');
