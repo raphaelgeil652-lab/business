@@ -36,7 +36,8 @@ Wer zuerst anruft, bekommt fast immer den Termin.
 ## Nach dem Anruf: ein Tipp in der Mail
 
 - Jede Anfrage kommt als Mail. Nach dem Anruf dort auf **„Zurückgerufen“** tippen, bei
-  niemandem erreicht auf **„Nicht erreicht“**, dann bestätigen. Fertig.
+  niemandem erreicht auf **„Nicht erreicht“**. Es öffnet sich eine Seite „Noch nicht gespeichert“:
+  dort **den großen Knopf nochmal antippen**. Erst wenn „Gespeichert ✓“ erscheint, ist es eingetragen.
 - Ohne Tipp erinnert das System nach einer Stunde. Das ist Absicht: Schnell sein bringt Termine.
 - **Montags** kommt eine Mail mit allen offenen Anfragen. Bei jeder antippen, wie weit sie ist:
   **Termin · Angebot · Auftrag · kein Interesse**. Bei „Auftrag“ gern den Auftragswert eintragen.

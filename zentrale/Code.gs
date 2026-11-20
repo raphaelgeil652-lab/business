@@ -244,7 +244,7 @@ function doGet(e) {
     var name = an.get(z, 'Name');
     if (p.ok !== '1') return bestaetigen_(s, p, name, knopf);
     var neu = standSetzen_(an, z, p.s, p.w, s);
-    return seite_('Gespeichert ✓', esc_(name) + ': <b>' + esc_(knopf.text) + '</b>.<br>Stand jetzt: ' + esc_(neu) + '.<br><br>Sie können dieses Fenster schließen.');
+    return seite_('Gespeichert ✓', esc_(name) + ': <b>' + esc_(knopf.text) + '</b>.<br>Stand jetzt: ' + esc_(neu) + '.<br><br>Fertig. Sie können dieses Fenster schließen.');
   } catch (err) {
     fehler_('Knopf in einer Mail', err);
     return seite_('Das hat nicht geklappt', 'Bitte später nochmal versuchen.');
@@ -258,7 +258,9 @@ function bestaetigen_(s, p, name, knopf) {
   var wert = p.s === 'auftrag'
     ? '<label style="display:block;margin:0 0 16px;font-size:16px;">Auftragswert in € (wenn bekannt)<br>' +
       '<input name="w" inputmode="numeric" style="font-size:20px;padding:10px;width:100%;box-sizing:border-box;margin-top:6px;"></label>' : '';
-  return seite_(esc_(name),
+  return seite_('Noch nicht gespeichert',
+    '<p style="margin:0 0 6px;"><b>' + esc_(name) + '</b></p>' +
+    '<p style="margin:0 0 20px;">Bitte unten auf den Knopf tippen. <b>Erst dann ist es eingetragen.</b></p>' +
     '<form method="get" action="' + esc_(basis_(s)) + '" target="_top">' +
     '<input type="hidden" name="id" value="' + esc_(p.id) + '"><input type="hidden" name="t" value="' + esc_(p.t) + '">' +
     '<input type="hidden" name="s" value="' + esc_(p.s) + '"><input type="hidden" name="ok" value="1">' + wert +

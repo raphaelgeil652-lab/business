@@ -163,7 +163,8 @@ Genau in dieser Reihenfolge. Jeder Punkt ist in der Hilfe Klick für Klick besch
 4. Kampagnen auf **aktiv**: Meta „Veröffentlichen“, Google Status „Aktiviert“. In der Zentrale, Blatt „Kunden“, bei **„Live seit“** das Datum eintragen.
    Ab da laufen die 30 Tage Garantie, und ab da gibt es Monatsreports.
 5. Kunden anrufen: „Ab jetzt kommen Anfragen per Mail. Bitte innerhalb einer Stunde zurückrufen und
-   danach auf ‚Zurückgerufen‘ tippen. Montags kommt eine kurze Mail mit Knöpfen.“
+   danach auf ‚Zurückgerufen‘ tippen und auf der nächsten Seite nochmal, bis ‚Gespeichert‘ kommt. Montags
+   kommt eine kurze Mail mit Knöpfen: Termin, Angebot, Auftrag oder kein Interesse.“
 
 ## Schritt 8 · Laufender Betrieb · die Zentrale meldet sich, du reagierst
 

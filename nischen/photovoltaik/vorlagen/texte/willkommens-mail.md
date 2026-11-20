@@ -55,7 +55,8 @@ Alles läuft über Ihre eigenen Konten. Sie behalten jederzeit die Kontrolle.
 
 - Jede Anfrage kommt sofort per Mail an {{email}}, mit Telefonnummer zum Antippen.
 - Rufen Sie bitte **innerhalb einer Stunde** zurück und tippen Sie danach in der Mail auf
-  **„Zurückgerufen“** (oder „Nicht erreicht“). Ohne Rückruf erinnert Sie das System nach einer Stunde.
+  **„Zurückgerufen“** (oder „Nicht erreicht“). Auf der Seite, die sich dann öffnet, den Knopf noch einmal
+  antippen, bis „Gespeichert ✓“ erscheint. Ohne Rückruf erinnert Sie das System nach einer Stunde.
 - Montags kommt eine kurze Mail mit Ihren offenen Anfragen. Tippen Sie bei jeder an, wie weit sie
   ist: Termin, Angebot, Auftrag oder kein Interesse. Das dauert eine Minute und macht Ihren
   Monatsreport genau.
