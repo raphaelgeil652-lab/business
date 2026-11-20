@@ -1399,7 +1399,10 @@ function formularHtml_(s, k) {
     '<div class="box"><h2>3 · Seine Leistungen <span class="k">(alle sind online buchbar)</span></h2>' +
     '<p class="k">So, wie das Studio sie nennt, mit Dauer in Minuten. Mindestens eine. Preis darf leer bleiben.</p>' +
     '<div class="drei k"><span>Leistung</span><span>Minuten</span><span>Preis €</span></div><div id="leistungen"></div>' +
-    '<button type="button" class="klein" id="mehr">+ Zeile</button></div>' +
+    '<button type="button" class="klein" id="mehr">+ Zeile</button> <button type="button" class="klein" id="liste">Liste einfügen</button>' +
+    '<div id="listebox" style="display:none;"><p class="k">Eine Leistung pro Zeile: <b>Name | Minuten | Preis</b>, z. B. „Wimpernlifting ohne Färben | 60 | 45“. Vorbereitete Liste von Claude hier hineinkopieren.</p>' +
+    '<textarea id="listetext" rows="8" style="width:100%;box-sizing:border-box;font-size:14px;"></textarea>' +
+    '<button type="button" class="klein" id="listeok">Übernehmen</button></div></div>' +
     '<div class="box"><h2>4 · Kalender</h2><div class="zwei">' +
     '<label>Google-Kalender? *<select name="kalender" required>' + opt(['Kalender', 'Wunschtermin'], w.kalender) + '</select>' +
     '<span class="k">Kalender = freie Zeiten kommen aus seinem Google-Kalender, Termine landen direkt dort. Wunschtermin = kein Google-Kalender, das Studio bestätigt jeden Termin per Knopf.</span></label>' +
@@ -1429,6 +1432,8 @@ var FORMULAR_JS = [
   // Leistungen
   'function zeile(l){l=l||{};var n=L.children.length,d=document.createElement("div");d.className="drei";d.innerHTML=\'<input name="l_name" placeholder="\'+(n?"Leistung "+(n+1):"z. B. Powder Brows")+\'"\'+(n?"":" required")+\'><input name="l_min" inputmode="numeric" placeholder="Min."\'+(n?"":" required")+\'><input name="l_preis" inputmode="decimal" placeholder="€">\';var i=d.querySelectorAll("input");i[0].value=l.name||"";i[1].value=l.minuten||"";i[2].value=(l.preis||"").replace(/\\s*€/,"");L.appendChild(d);}',
   'D.leistungen.forEach(zeile);while(L.children.length<4)zeile();document.getElementById("mehr").onclick=function(){zeile();};',
+  'document.getElementById("liste").onclick=function(){var b=document.getElementById("listebox");b.style.display=b.style.display==="none"?"block":"none";};',
+  'document.getElementById("listeok").onclick=function(){var z=document.getElementById("listetext").value.split(/\\n/).map(function(x){var t=x.split(/\\s*[|\\t;]\\s*/);return{name:(t[0]||"").replace(/^[-•*\\s]+/,"").trim(),minuten:(t[1]||"").replace(/\\D/g,""),preis:(t[2]||"").replace(/[^\\d,.]/g,"")};}).filter(function(l){return l.name;});if(!z.length)return;L.innerHTML="";z.forEach(zeile);zeile();document.getElementById("listebox").style.display="none";};',
   // Wochen-Kalender zum Antippen (30-Minuten-Felder, 6 bis 22 Uhr)
   'var TAGE=["Mo","Di","Mi","Do","Fr","Sa","So"],VON=6*60,BIS=22*60,SCHR=30,Z=[];',
   'for(var t=0;t<7;t++){Z[t]=[];for(var m=VON;m<BIS;m+=SCHR){var a=(D.zeiten[t+1]||[]).some(function(r){return m>=r[0]&&m+SCHR<=r[1];});Z[t].push(a);}}',
