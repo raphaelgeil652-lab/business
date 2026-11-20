@@ -11,7 +11,8 @@ Schreibt:  nischen/beauty/kunden/<kürzel>/
              LIES-MICH.md       die drei Schritte danach
              seite/             der Ordner für Netlify (termin.html, danke, bestaetigen, absagen, rueckruf-danke, Fotos)
              anzeigen/          creatives/*.png zum Hochladen bei Meta, vorschau.html zum Ansehen
-             kampagnen.md       Meta und Google Klick für Klick mit allen Texten
+             kampagnen.html     Kampagnen-Assistent: Meta und Google Schritt für Schritt, Häkchen, Knöpfe „Kopieren“
+             kampagnen.md       dieselbe Anleitung als Text
              fotos/, daten.json
 
 Kein Steckbrief, keine Excel mehr: Alles kommt aus dem Formular „Neuer Kunde“ und der Schritte-Seite des Studios.
@@ -462,12 +463,24 @@ def main():
     except Exception as e:
         print("! Anzeigen nicht gerendert (Node/Playwright fehlt?):", e)
 
+    # Anzeigen auch auf die Seite (Unterordner „anzeigen“): Dort sieht das Studio sie vor dem Start und gibt sie frei
+    va = lp / "anzeigen"
+    va.mkdir(exist_ok=True)
+    if (an / "creatives").exists():
+        kopiere_ordner(an / "creatives", va / "creatives")
+    (va / "vorschau.html").write_text((an / "vorschau.html").read_text(encoding="utf-8").replace("../seite/termin.html", "../termin.html")
+                                      .replace("<head>", '<head><meta name="robots" content="noindex">', 1), encoding="utf-8")
+
     # Kampagnen-Anleitung und LIES-MICH
-    (ziel / "kampagnen.md").write_text(fuellen((VORLAGEN / "texte" / "kampagnen.md").read_text(encoding="utf-8"), f), encoding="utf-8")
+    kampagnen = fuellen((VORLAGEN / "texte" / "kampagnen.md").read_text(encoding="utf-8"), f)
+    (ziel / "kampagnen.md").write_text(kampagnen, encoding="utf-8")
+    sys.path.insert(0, str(HIER))
+    import kampagnen_assistent
+    (ziel / "kampagnen.html").write_text(kampagnen_assistent.bauen(kampagnen, f["betrieb"], f["slug"]), encoding="utf-8")
     f["warnungen"] = "\n".join(f"- ⚠ {w}" for w in warnungen) or "- Nichts. Alles da."
     f["v"] = dt.datetime.now().strftime("%Y%m%d%H%M")
     (ziel / "LIES-MICH.md").write_text(fuellen((VORLAGEN / "texte" / "_kunden-readme.md").read_text(encoding="utf-8"), f), encoding="utf-8")
-    print("✓ kampagnen.md, LIES-MICH.md")
+    print("✓ kampagnen.html (Assistent), kampagnen.md, LIES-MICH.md")
     if offen:
         warnungen.append("Auf der Seite stehen noch Lücken: " + ", ".join(sorted(set(offen))))
     for w in warnungen:

@@ -17,8 +17,13 @@ Schritte-Seite des Studios). Claude baut daraus nur noch Terminseite, Anzeigen u
 python3 nischen/beauty/zentrale/zentrale-bauen.py          # Baustein in Code.gs (module.py + Vereinbarung) und die Tabelle neu
 python3 nischen/beauty/vorlagen/werkzeuge/kunde-anlegen.py <text-fuer-claude.json> [fotos | ordner | fotos.zip]
 python3 nischen/beauty/vorlagen/werkzeuge/beispiele-bauen.py   # die vier erfundenen Beispielstudios neu
+python3 nischen/beauty/vorlagen/werkzeuge/netlify-hochladen.py <kürzel>     # Seite selbst auf Netlify online (Zugangsschlüssel liegt im Proxy der Umgebung „business“)
 python3 werkzeuge/clickculture-ordner-bauen.py --kunde <kürzel> <ausgabeordner>
 ```
+
+**Claude-Ablauf bei „Baue die Seite für <kürzel>“:** Text als JSON speichern → `kunde-anlegen.py` mit den Fotos →
+Seite ansehen (Platzhalter? Lücken?) → `netlify-hochladen.py <kürzel>` → `clickculture-ordner-bauen.py --kunde <kürzel>` →
+ZIP schicken und sagen: „Team-Seite → Studio um Freigabe bitten“. Jede Fassung kostet 15 Netlify-Credits.
 
 Tests: `node nischen/beauty/zentrale/test/test.js` (Zentrale, 211 Prüfungen) und
 `node nischen/beauty/zentrale/test/seiten-test.js` (echte Seite im Browser + Zentrale, Ende zu Ende).
@@ -33,6 +38,9 @@ Schritte-Seite (Studio) ──► Vereinbarung annehmen (Name, Zeit) → Kopie p
                            Links, Behandler, Vorbereitung freigeben, Fotos hochladen, Kalender prüfen, Meta, Google-ID
                            → Mails an den Betreuer, wenn er etwas tun muss
 täglich 8 Uhr ───────────► Erinnerung alle 2 Werktage (höchstens 3), dann „bitte anrufen“ · alles da → Mail mit „Text für Claude“
+Team-Seite „Freigabe“ ───► Studio sieht Seite (seite/termin.html?demo=1) und Anzeigen (seite/anzeigen/vorschau.html), tippt
+                           „Passt so“ oder schreibt einen Änderungswunsch → Mail an den Betreuer
+montags 8 Uhr ───────────► Wochenbericht ans Studio (neue Termine, erschienen, gekauft, diese Woche) + offene Stände
 Team-Seite (ihr) ────────► Pixel-ID, Google-Conversion, Seitenadresse · „Jetzt live schalten“ → Mail „Ihre Werbung läuft“
                            Monatsreport mit Werbekosten senden · Rechnung „Bezahlt“ · Pausieren
 ```
@@ -69,7 +77,8 @@ Google führen nicht verlässlich JavaScript aus, und eine geteilte Domain teilt
 |---|---|
 | `LIES-MICH.md` | 0 Lies mich – drei Schritte |
 | `seite/` | 1 Seite für Netlify – Ordner hineinziehen |
-| `kampagnen.md` | 2 Kampagnen – Meta und Google |
+| `kampagnen.html` | 2 Kampagnen-Assistent (Häkchen, Knöpfe „Kopieren“, gespeichert im Browser) |
+| `kampagnen.md` | 2b Kampagnen als Text |
 | `anzeigen/creatives/` | 3 Anzeigen-Bilder – bei Meta hochladen |
 | `anzeigen/` | 4 Anzeigen ansehen |
 | `fotos/`, `daten.json` | Fotos – Originale (daten.json bleibt im Repo-Ordner) |

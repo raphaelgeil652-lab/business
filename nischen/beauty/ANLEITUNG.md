@@ -9,7 +9,7 @@ das Studio auf seiner eigenen Seite und Claude.
 | **Ihr** | Gespräch führen und dabei das Formular ausfüllen · auf Mails der Zentrale reagieren (meist ein Klick) · Seite hochladen und Kampagnen anlegen |
 | **Das Studio** | arbeitet seine **Schritte-Seite** ab (Link kommt per Mail): Vereinbarung annehmen, Fotos hochladen, Kalender freigeben, Meta und Google verbinden |
 | **Die Zentrale** | schickt alle Mails von selbst: Willkommen, Vereinbarung, Erinnerungen, Rechnungen, Termine, Reports. Sie meldet euch, wenn etwas zu tun ist |
-| **Claude** | baut aus dem „Text für Claude“ und den Fotos die Terminseite, die Anzeigen und die Kampagnen-Anleitung |
+| **Claude** | baut aus dem „Text für Claude“ und den Fotos die Terminseite, die Anzeigen und den Kampagnen-Assistenten und **stellt die Seite selbst auf Netlify online** |
 
 Ihr braucht zwei Lesezeichen (Handy und Laptop). Beide stehen in der Zentrale im Menü
 **„Clickculture → Übersicht und Formular als Lesezeichen“**:
@@ -107,23 +107,28 @@ Die Mail kommt von selbst, sobald alle Schritte erledigt sind. Dann:
 
 1. In der Mail auf **Fotos-Ordner** → oben auf den Ordnernamen → **Herunterladen**. Die Fotos kommen als ZIP.
 2. Claude schicken: das ZIP und den **„Text für Claude“** aus der Mail, dazu „Baue die Seite für *kürzel*“.
-3. Claude schickt einen Ordner zurück: **Seite für Netlify**, **Kampagnen-Anleitung**, **Anzeigen-Bilder**.
+3. Claude **stellt die Seite selbst online** (`https://kürzel.netlify.app`) und schickt euch den Kundenordner mit dem
+   **Kampagnen-Assistenten** und den **Anzeigen-Bildern**.
 
-## Schritt 5 · Online stellen und Kampagnen
+## Schritt 5 · Freigabe durch das Studio und Kampagnen
 
-1. **Seite:** app.netlify.com → **Add new project → Deploy manually** → den Ordner **„1 Seite für Netlify“** hineinziehen →
-   **Project configuration → Change project name** → das Kürzel des Studios.
-2. **Kampagnen:** die Kampagnen-Anleitung von oben nach unten. Sie fängt mit der Messung an.
-   Pixel-ID und Google-Conversion tragt ihr auf der **Team-Seite** des Studios ein (Lesezeichen „Übersicht“ → Studio).
-   Sie wirken sofort. Die Seite muss dafür nicht neu hochgeladen werden.
+1. Team-Seite des Studios → **„Studio um Freigabe bitten“**. Das Studio bekommt eine Mail und sieht auf seiner
+   Schritte-Seite seine Terminseite und seine Anzeigen. Es tippt **„Passt so“** oder schreibt, was anders sein soll.
+   Ein Änderungswunsch kommt per Mail zu euch: an Claude weitergeben, Claude stellt die neue Fassung online, dann wieder
+   „Studio um Freigabe bitten“.
+2. **Kampagnen:** den **Kampagnen-Assistenten** öffnen („2 Kampagnen-Assistent“ im Kundenordner). Jeder Schritt hat ein
+   Häkchen, jeder Text einen Knopf „Kopieren“. Er fängt mit der Messung an: Pixel-ID und Google-Conversion tragt ihr auf der
+   **Team-Seite** ein. Sie wirken sofort.
 3. Anzeigen erst als **Entwurf** anlegen.
+4. Ohne Claude geht das Hochladen auch von Hand: app.netlify.com → **Add new project → Deploy manually** → Ordner
+   „1 Seite für Netlify“ hineinziehen → **Project configuration → Change project name** → Kürzel.
 
 ## Schritt 6 · Testen und live
 
 1. Auf der Seite des Studios einen Termin mit eurer E-Mail buchen → in der Mail bestätigen → steht er im Kalender
    des Studios? → über den Link in der Bestätigung wieder absagen.
 2. Kampagnen aktivieren.
-3. Team-Seite → **„Jetzt live schalten“**. Das Studio bekommt von selbst die Mail „Ihre Werbung läuft“.
+3. Team-Seite → **„Jetzt live schalten“** (erst nach der Freigabe durch das Studio). Das Studio bekommt von selbst die Mail „Ihre Werbung läuft“.
 
 ## Schritt 7 · Laufend: was von selbst passiert und was ihr tut
 
@@ -131,6 +136,7 @@ Die Mail kommt von selbst, sobald alle Schritte erledigt sind. Dann:
 |---|---|---|
 | Buchung, Bestätigung, Kalendereintrag, Erinnerung 24 h vorher, Absage | Zentrale | nichts |
 | Abends 19 Uhr meldet das Studio per Knopf: erschienen · nicht erschienen · gekauft | Studio | nichts |
+| Montags: Wochenbericht ans Studio (neue Termine, erschienen, gekauft, was diese Woche ansteht) plus offene Termine zum Antippen | Zentrale | nichts |
 | Erster Kauf → Monatsgebühr ab dem nächsten Monat | Zentrale | nichts |
 | 1. des Monats: Rechnungen Monatsgebühr als PDF ans Studio | Zentrale | Geld da → Team-Seite „Bezahlt“ |
 | 1. des Monats: Mail „Monatsreports: je Studio ein Klick“ | Zentrale | Link → Werbekosten aus Meta und Google eintragen, zwei Sätze → „Report senden“ → kurz anrufen |
@@ -149,7 +155,9 @@ Ab 4–5 Studios die Zentrale in Google Workspace umziehen. Die Zentrale warnt v
 - Keine Willkommens-Mail, Zugänge-Anleitung oder Kalender-Anleitung von Hand. Alles steht auf der Schritte-Seite.
 - Keine Rechnungen von Hand. Ausnahme: IBAN oder Steuernummer fehlen in den Einstellungen. Dann sagt euch die Zentrale Bescheid.
 - Keine Netlify-Formulare und keinen Webhook. Rückruf-Wünsche gehen direkt an die Zentrale.
-- Die Seite nicht neu hochladen, nur weil Pixel-ID oder Conversion dazukommen.
+- Die Seite nicht selbst hochladen: Das macht Claude. Und nicht neu hochladen, nur weil Pixel-ID oder Conversion dazukommen.
+- Seite und Anzeigen nicht per Mail zur Freigabe schicken: Das Studio gibt sie auf seiner Schritte-Seite frei.
+- Keine Anleitung lesen und abtippen: Der Kampagnen-Assistent hat für jeden Text einen Knopf „Kopieren“.
 - Keine Gmail-Entwürfe für Reports suchen.
 
 ## Vor dem ersten echten Studio

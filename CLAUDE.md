@@ -101,7 +101,12 @@ und Annahme. Erinnerungen alle 2 Werktage (max. 3, dann „bitte anrufen“ an d
 Werbekosten senden, Rechnung „Bezahlt“, Pausieren. Rechnungen Monatsgebühr am 1. automatisch als PDF (wenn IBAN,
 Steuernr., Anschrift in den Einstellungen). Rückruf-Wünsche gehen direkt an die Zentrale (keine Netlify-Formulare).
 **Claude-Schritt:** `vorlagen/werkzeuge/kunde-anlegen.py <text-fuer-claude.json> [fotos|ordner|zip]` → `kunden/<kürzel>/`
-(`seite/` für Netlify, `anzeigen/`, `kampagnen.md`, `LIES-MICH.md`) → `werkzeuge/clickculture-ordner-bauen.py --kunde <kürzel>`.
+(`seite/` inkl. `seite/anzeigen/vorschau.html` für die Freigabe, `anzeigen/`, **`kampagnen.html` = Kampagnen-Assistent** mit
+Häkchen und Kopieren-Knöpfen, `kampagnen.md`, `LIES-MICH.md`) → **`netlify-hochladen.py <kürzel>`** stellt die Seite selbst
+online (Netlify-Zugangsschlüssel liegt im Proxy der Cloud-Umgebung „business“, nie im Repo; 15 Credits pro Fassung) →
+`werkzeuge/clickculture-ordner-bauen.py --kunde <kürzel>`. Danach: Team-Seite „Studio um Freigabe bitten“ → das Studio
+sieht Seite und Anzeigen auf seiner Schritte-Seite, „Passt so“ oder Änderungswunsch (Mail an den Betreuer).
+Montags bekommt jedes Studio, das live ist, einen **Wochenbericht** (neue Termine, erschienen, gekauft, diese Woche).
 Pro Studio eine eigene statische Seite (Anzeigen-Prüfer, geteilter Domain-Ruf; Recherche `research_notes/Beauty Ablauf neu gedacht/`).
 **`zentrale-bauen.py` schreibt den Baustein in `Code.gs`** (MODULE aus module.py, VEREINBARUNG aus `texte/vereinbarung.md`)
 und baut die Tabelle; nach Änderungen an module.py/Vereinbarung immer ausführen. **Nach jeder Änderung beide Tests:**

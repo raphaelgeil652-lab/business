@@ -8,13 +8,13 @@ Kürzel `{{slug}}` · Seite {{landingpage_url}}
 
 ## Jetzt: drei Schritte
 
-1. **Seite online stellen:** app.netlify.com → **Add new project → Deploy manually** → den Ordner **`seite`**
-   hineinziehen → **Project configuration → Change project name** → `{{slug}}`.
-   Schon online? Dann im Projekt **Deploys** → den Ordner `seite` in das Feld unten ziehen.
-2. **Kampagnen anlegen:** `kampagnen.md` von oben nach unten. Bilder liegen in `anzeigen/creatives`.
-   Pixel-ID und Google-Conversion trägst du auf der **Team-Seite** des Studios ein. Sie wirken sofort.
-3. **Testen und live:** auf der Seite einen Termin mit deiner E-Mail buchen, in der Mail bestätigen, wieder absagen.
-   Dann auf der Team-Seite **„Jetzt live schalten“**. Die Mail an das Studio geht von selbst raus.
+1. **Freigabe:** Die Seite stellt Claude selbst online. Team-Seite des Studios → **„Studio um Freigabe bitten“**.
+   (Ohne Claude: app.netlify.com → **Add new project → Deploy manually** → Ordner **`seite`** hineinziehen →
+   **Project configuration → Change project name** → `{{slug}}`.)
+2. **Kampagnen anlegen:** den **Kampagnen-Assistenten** (`kampagnen.html`) öffnen und von oben nach unten abhaken.
+   Bilder liegen in `anzeigen/creatives`. Pixel-ID und Google-Conversion trägst du auf der **Team-Seite** ein.
+3. **Testen und live:** Termin mit deiner E-Mail buchen, in der Mail bestätigen, wieder absagen. Hat das Studio
+   freigegeben: Team-Seite **„Jetzt live schalten“**. Die Mail an das Studio geht von selbst raus.
 
 Nichts in diesem Ordner von Hand ändern. Neue Fotos oder geänderte Daten: Claude den neuen „Text für Claude“
 (Team-Seite) und die Fotos schicken, dann diesen Ordner neu hochladen.

@@ -109,7 +109,8 @@ PLAN = [
 KUNDE_BEAUTY = [
     ("LIES-MICH.md", "0 Lies mich – drei Schritte.docx"),
     ("seite", "1 Seite für Netlify – Ordner hineinziehen"),
-    ("kampagnen.md", "2 Kampagnen – Meta und Google Klick für Klick.docx"),
+    ("kampagnen.html", "2 Kampagnen-Assistent – im Browser öffnen, abhaken, kopieren.html"),
+    ("kampagnen.md", "2b Kampagnen als Text.docx"),
     ("anzeigen/creatives", "3 Anzeigen-Bilder – bei Meta hochladen"),
     ("anzeigen", "4 Anzeigen ansehen – vorschau.html öffnen"),
     ("fotos", "Fotos – Originale"),
@@ -255,10 +256,10 @@ def startseite(ziel):
           (f"{bsp}/Seite (termin.html öffnen)/termin.html", "Beispiel-Terminseite")]),
         ("3 · Das Studio erledigt seine Schritte", "Vereinbarung, Fotos, Kalender, Meta, Google. Die Zentrale erinnert. Ihr reagiert nur auf Mails. Meta und Google am besten zusammen am Telefon.",
          [(f"{O5}/1 Hilfe – Meta und Google mit dem Studio einrichten, Netlify.docx", "Meta und Google Klick für Klick")]),
-        ("4 · Mail „alles vom Studio da“", "Fotos-Ordner herunterladen, mit dem „Text für Claude“ an Claude. Claude schickt den Kundenordner.",
+        ("4 · Mail „alles vom Studio da“", "Fotos-Ordner herunterladen, mit dem „Text für Claude“ an Claude. Claude stellt die Seite online und schickt den Kundenordner.",
          [(f"{m}/0 Lies mich – drei Schritte.docx", "So sieht ein Kundenordner aus")]),
-        ("5 · Online und Kampagnen", "Seite auf Netlify ziehen, Kampagnen nach Anleitung, Pixel-ID und Conversion auf der Team-Seite.",
-         [(f"{m}/2 Kampagnen – Meta und Google Klick für Klick.docx", "Kampagnen")]),
+        ("5 · Freigabe und Kampagnen", "Team-Seite: „Studio um Freigabe bitten“. Kampagnen mit dem Assistenten (Häkchen, Kopieren-Knöpfe). Pixel-ID und Conversion auf der Team-Seite.",
+         [(f"{m}/2 Kampagnen-Assistent – im Browser öffnen, abhaken, kopieren.html", "Kampagnen-Assistent")]),
         ("6 · Testen und live", "Test-Termin buchen, bestätigen, absagen. Kampagnen an. Team-Seite „Jetzt live schalten“.", []),
         ("7 · Laufend", "Rechnungen, Erinnerungen und Termine laufen von selbst. Am 1. je Studio ein Klick für den Monatsreport.", []),
     ]

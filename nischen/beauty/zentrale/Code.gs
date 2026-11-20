@@ -975,7 +975,9 @@ function abendMail() { sicher_('Abend-Mail', function () {
 }); }
 
 function wochenMail() { sicher_('Wochen-Mail', function () {
-  var s = einst_(), t = tabelle_('Termine'), jetzt = new Date(), uebersicht = [];
+  var s = einst_(), t = tabelle_('Termine'), wk = tabelle_('Werbekosten'), jetzt = new Date(), uebersicht = [];
+  var heute = new Date(jetzt.getFullYear(), jetzt.getMonth(), jetzt.getDate());
+  var woche = { start: new Date(heute.getTime() - 7 * TAG), ende: heute };
   kunden_().filter(function (k) { return k.aktiv; }).forEach(function (k) {
     var offen = t.zeilen.filter(function (z) {
       var ein = datum_(t.get(z, 'Eingang')), st = String(t.get(z, 'Stand')), start = datum_(t.get(z, 'Termin'));
@@ -984,7 +986,12 @@ function wochenMail() { sicher_('Wochen-Mail', function () {
       if (st === 'Termin') return start && start < jetzt;
       return (st === 'neu' || st === 'nicht erreicht' || st === 'erreicht') && jetzt - ein > TAG;
     });
-    if (!offen.length) return;
+    var w = zahlen_(t, wk, k.kuerzel, woche), live = !!(k.live && k.live < heute);
+    var kommend = t.zeilen.filter(function (z) {
+      var st = datum_(t.get(z, 'Termin'));
+      return t.get(z, 'Kunde') === k.kuerzel && String(t.get(z, 'Stand')) === 'Termin' && st && st >= jetzt && st < new Date(heute.getTime() + 7 * TAG);
+    }).length;
+    if (!offen.length && !live) return;
     var liste = offen.map(function (z) {
       var id = t.get(z, 'ID'), schl = t.get(z, 'Schlüssel'), st = String(t.get(z, 'Stand'));
       var knoepfe = st === 'Termin' ? ['erschienen', 'nicht-erschienen', 'auftrag']
@@ -997,17 +1004,24 @@ function wochenMail() { sicher_('Wochen-Mail', function () {
         ' · ' + esc_(t.get(z, 'Leistung') || t.get(z, 'Art')) + ' · Stand: ' + esc_(st) + '</span><br>' +
         knoepfe.map(function (x) { return knopf_(s, id, schl, x, true); }).join(' ') + '</td></tr>';
     }).join('');
-    mail_(s, { to: k.email, absender: k.betrieb + ' · Termine',
-      subject: 'Noch offen (' + offen.length + '): bitte kurz den Stand antippen',
-      html: rahmen_('<p>Guten Morgen ' + esc_(k.anrede) + ',</p><p>hier ist noch offen, wie es weiterging. Ein Tipp pro Zeile genügt. ' +
-        'Das dauert eine Minute und macht Ihren Monatsreport genau.</p><table style="width:100%;border-collapse:collapse;">' + liste + '</table>' +
-        '<p style="font-size:13px;color:#6B665D;">Fragen? Antworten Sie einfach auf diese Mail.</p>') });
+    var zahl = function (n, text) { return '<td style="padding:10px 6px;text-align:center;background:#F7F4EE;border-radius:8px;"><b style="font-size:24px;display:block;">' + n + '</b><span style="font-size:12px;color:#6B665D;">' + text + '</span></td>'; };
+    var bericht = live ? '<p style="font-size:16px;"><b>Ihre letzte Woche:</b></p><table style="width:100%;border-collapse:separate;border-spacing:6px;"><tr>' +
+      zahl(w.gebucht, 'neue Termine online') + zahl(w.erschienen, 'erschienen') + zahl(w.auftraege, 'gekauft') + zahl(w.rueckruf, 'Rückruf-Wünsche') + '</tr></table>' +
+      '<p style="font-size:15px;">Diese Woche stehen <b>' + kommend + ' bestätigte Online-Termine</b> an.' +
+      (w.verfallen + w.fake ? ' Herausgefiltert (nie bestätigt oder Fake): ' + (w.verfallen + w.fake) + '. Die haben Sie gar nicht erst erreicht.' : '') + '</p>' : '';
+    mail_(s, { to: k.email, absender: k.betrieb + ' · Termine', antwortAn: betreuerMail_(k, s),
+      subject: live ? 'Ihre Woche: ' + w.gebucht + ' neue Online-Termine' + (offen.length ? ' · ' + offen.length + '× bitte Stand antippen' : '')
+        : 'Noch offen (' + offen.length + '): bitte kurz den Stand antippen',
+      html: rahmen_('<p>Guten Morgen ' + esc_(k.anrede) + ',</p>' + bericht +
+        (offen.length ? '<p>Hier ist noch offen, wie es weiterging. Ein Tipp pro Zeile genügt. Das dauert eine Minute und macht Ihren Monatsreport genau.</p>' +
+          '<table style="width:100%;border-collapse:collapse;">' + liste + '</table>' : '<p>Alles ist eingetragen, danke!</p>') +
+        '<p style="font-size:13px;color:#6B665D;">Fragen? Antworten Sie einfach auf diese Mail. Ihr Ansprechpartner: ' + betreuerZeile_(k, s) + '</p>') });
     var nieAngerufen = offen.filter(function (z) { return String(t.get(z, 'Stand')) === 'neu'; }).length;
-    uebersicht.push('<li><b>' + esc_(k.betrieb) + '</b>' + (k.betreuer ? ' (' + esc_(k.betreuer) + ')' : '') + ': ' + offen.length + ' offen' + (nieAngerufen ? ', davon <b>' + nieAngerufen + ' Rückruf-Wünsche noch nie angerufen</b>' : '') + '</li>');
+    uebersicht.push('<li><b>' + esc_(k.betrieb) + '</b>' + (k.betreuer ? ' (' + esc_(k.betreuer) + ')' : '') + ': ' + (live ? w.gebucht + ' neue Termine, ' + w.auftraege + ' gekauft, ' : '') + offen.length + ' offen' + (nieAngerufen ? ', davon <b>' + nieAngerufen + ' Rückruf-Wünsche noch nie angerufen</b>' : '') + '</li>');
   });
   if (uebersicht.length) {
     mail_(s, { to: s.an, subject: 'Wochen-Mails sind raus (' + uebersicht.length + ' Kunden)',
-      html: rahmen_('<p>Jeder Kunde hat seine offenen Termine und Anfragen mit Knöpfen bekommen:</p><ul>' + uebersicht.join('') + '</ul>' +
+      html: rahmen_('<p>Jedes Studio hat seinen Wochenbericht und seine offenen Termine mit Knöpfen bekommen:</p><ul>' + uebersicht.join('') + '</ul>' +
         '<p>Steht irgendwo „noch nie angerufen“: kurz beim Kunden nachhaken.</p>') });
   }
 }); }
@@ -1239,7 +1253,7 @@ var KUNDEN_SPALTEN = ['Kürzel', 'Status', 'Betreuer', 'Betreuer Telefon', 'Betr
   'Takt Minuten', 'Puffer Minuten', 'Vorlauf Stunden', 'Tage im Voraus', 'Absagefrist Stunden', 'Ausfallregel', 'Vorbereitung',
   'Onboarding €', 'Monatsgebühr €', 'Werbebudget €', 'Umkreis km', 'Angelegt am', 'Live seit', 'Pixel-ID', 'Google-Conversion',
   'Vertrag angenommen', 'Impressum', 'Datenschutz', 'Behandler', 'Vorbereitung ok', 'Fotos', 'Kalender ok', 'Meta erledigt',
-  'Google-Ads-ID', 'Google verknüpft', 'Drive-Ordner', 'Erinnert am', 'Erinnerungen', 'Alles da', 'Live-Mail', 'Token',
+  'Google-Ads-ID', 'Google verknüpft', 'Vorschau gesendet', 'Freigabe', 'Änderungswunsch', 'Drive-Ordner', 'Erinnert am', 'Erinnerungen', 'Alles da', 'Live-Mail', 'Token',
   'Teilnahmeschluss', 'Ziehung am', 'Erster Auftrag', 'Monatsgebühr ab', 'Termine gesamt', 'Notiz'];
 var VERTRAEGE_SPALTEN = ['Kürzel', 'Vereinbarung', 'Angenommen am', 'Angenommen von', 'Gesendet an'];
 var NEUE_EINSTELLUNGEN = [
@@ -1551,6 +1565,7 @@ function studioAufgaben_(k, s) {
   if (k.modus === 'Kalender') a.push({ id: 'kalender', titel: 'Google-Kalender freigeben', fertig: !!k.kalenderOk });
   a.push({ id: 'meta', titel: 'Facebook und Instagram (Meta) verbinden', fertig: !!k.metaOk });
   a.push({ id: 'google', titel: 'Google Ads verbinden', fertig: !!(k.googleId && k.googleOk) });
+  if (k.vorschau) a.push({ id: 'freigabe', titel: 'Ihre Seite und Ihre Anzeigen ansehen und freigeben', fertig: !!k.freigabe });
   return a;
 }
 
@@ -1600,7 +1615,8 @@ function erledigtText_(id, k) {
     fotos: k.fotos + ' Fotos sind da.',
     kalender: 'Verbunden. Neue Termine stehen direkt in Ihrem Kalender.',
     meta: 'Erledigt. Wir prüfen den Zugriff.',
-    google: 'Konto ' + esc_(k.googleId) + ' ist verbunden.'
+    google: 'Konto ' + esc_(k.googleId) + ' ist verbunden.',
+    freigabe: 'Freigegeben am ' + datumKurz_(k.freigabe) + '. Danke! Wir starten jetzt die Werbung.'
   }[id] || 'Erledigt.';
   var mehr = id === 'fotos' ? aufgabeHtml_({ id: 'fotos' }, k, einst_()) : '';
   return '<p class="k">' + t + '</p>' + mehr;
@@ -1659,6 +1675,17 @@ function aufgabeHtml_(a, k, s) {
       'Dann Ihre Seite und Ihr Werbekonto auswählen, jeweils mit vollem Zugriff.</li></ol>' +
       '<p class="k">Die Namen der Knöpfe ändert Meta ab und zu. Wenn etwas anders aussieht: kurz anrufen.</p></details>' +
       form('meta', '', 'Erledigt, Partnerzugriff ist freigegeben');
+  }
+  if (a.id === 'freigabe') {
+    var knopf = function (url, text) {
+      return '<p><a href="' + esc_(url) + '" target="_blank" style="display:block;text-align:center;padding:13px;border:2px solid #1F7A3F;border-radius:7px;color:#1F7A3F;font-weight:700;text-decoration:none;">' + esc_(text) + '</a></p>';
+    };
+    return '<p>So sieht es aus, bevor die Werbung startet. Bitte beides einmal ansehen, am besten am Handy. Die Termine auf der Seite sind dabei nur Beispiele.</p>' +
+      knopf(k.seite + '/termin.html?demo=1', 'Ihre Terminseite ansehen') + knopf(k.seite + '/anzeigen/vorschau.html', 'Ihre Anzeigen ansehen') +
+      (k.aenderung ? '<p class="k">Ihr letzter Änderungswunsch: „' + esc_(k.aenderung) + '“. Wir haben ihn umgesetzt. Bitte nochmal ansehen.</p>' : '') +
+      form('freigabe-ok', '', 'Passt so, freigeben') +
+      '<details><summary>Etwas soll anders sein?</summary>' +
+      form('freigabe-aendern', '<textarea name="text" rows="4" placeholder="z. B. anderes Foto oben, Preis für Powder Brows ist 420 €"></textarea>', 'Änderung schicken') + '</details>';
   }
   if (a.id === 'google') {
     if (k.googleId) {
@@ -1762,6 +1789,22 @@ function studioAktion_(k, s, aktion, d) {
       '<li>Kunden-ID ' + gid + ' eintragen → <b>Anfrage senden</b>. Das Studio nimmt sie auf seiner Schritte-Seite an.</li></ol>');
     return { ok: true, meldung: 'Gespeichert. Wir schicken Ihnen jetzt die Verknüpfungs-Anfrage.' };
   }
+  if (aktion === 'freigabe-ok') {
+    if (!k.vorschau) return { ok: false, meldung: 'Noch nichts zum Freigeben da.' };
+    kundeSetzen_(kz, { 'Freigabe': jetzt });
+    betreuerHinweis_(k, s, '✓ ' + k.betrieb + ' hat Seite und Anzeigen freigegeben',
+      '<p>' + esc_(k.betrieb) + ' hat Terminseite und Anzeigen freigegeben.</p><p>Wenn die Kampagnen fertig sind und der Test-Termin geklappt hat: auf der Team-Seite <b>„Jetzt live schalten“</b>.</p>');
+    return { ok: true, meldung: 'Danke! Wir starten jetzt die Werbung und melden uns, sobald sie läuft.' };
+  }
+  if (aktion === 'freigabe-aendern') {
+    if (txt(d.text).length < 3) return { ok: false, meldung: 'Bitte kurz schreiben, was anders sein soll.' };
+    kundeSetzen_(kz, { 'Änderungswunsch': txt(d.text).slice(0, 1000) + ' (' + datumKurz_(jetzt) + ')', 'Vorschau gesendet': '' });
+    betreuerHinweis_(k, s, '✎ ' + k.betrieb + ' möchte etwas ändern',
+      '<p>' + esc_(k.betrieb) + ' schreibt zu Seite und Anzeigen:</p><blockquote style="border-left:3px solid #E4DED3;padding-left:12px;">' + esc_(txt(d.text)) + '</blockquote>' +
+      '<ol><li>Den Wunsch an Claude schicken: „Ändere für ' + esc_(k.kuerzel) + ': …“ (Fotos dazu, falls es um Fotos geht).</li>' +
+      '<li>Claude stellt die neue Fassung online.</li><li>Auf der Team-Seite <b>„Studio um Freigabe bitten“</b>. Das Studio sieht dann wieder die Seite und die Knöpfe.</li></ol>');
+    return { ok: true, meldung: 'Danke, ist angekommen. Wir ändern das und schicken Ihnen die neue Fassung.' };
+  }
   if (aktion === 'google-ok') {
     kundeSetzen_(kz, { 'Google verknüpft': jetzt });
     return { ok: true, meldung: 'Danke!' };
@@ -1800,13 +1843,15 @@ function betreuerHinweis_(k, s, betreff, html) {
 
 function studiosNachfassen_(s, jetzt, nurKz) {
   var tage = Number(s.erinnerung_studio_tage) || 2;
-  kunden_().filter(function (k) { return (!nurKz || k.kuerzel === nurKz) && k.aktiv && /angelegt/i.test(k.status) && k.token && !k.allesDa; }).forEach(function (k) {
+  kunden_().filter(function (k) {
+    return (!nurKz || k.kuerzel === nurKz) && k.aktiv && /angelegt/i.test(k.status) && k.token && (!k.allesDa || (k.vorschau && !k.freigabe));
+  }).forEach(function (k) {
     var offen = studioAufgaben_(k, s).filter(function (a) { return !a.fertig; });
     if (!offen.length) {
-      kundeSetzen_(k.kuerzel, { 'Alles da': jetzt });
-      allesDaMail_(k, s);
+      if (!k.allesDa) { kundeSetzen_(k.kuerzel, { 'Alles da': jetzt }); allesDaMail_(k, s); }
       return;
     }
+    if (!k.allesDa && offen.length === 1 && offen[0].id === 'freigabe') return;
     var seit = k.erinnert || k.angelegt;
     if (!nurKz && (!seit || werktage_(seit, jetzt) < tage)) return;
     if (k.erinnerungen >= 3 && !nurKz) {
@@ -1947,9 +1992,18 @@ function teamStudio_(kz, s) {
       '<label>Google-Conversion (AW-…/…)<input name="conversion" value="' + esc_(k.conversion) + '"></label></div>' +
       '<label>Adresse der Seite<input name="seite" value="' + esc_(k.seite) + '"></label>', 'Speichern') +
     (k.seite ? '<p class="k"><a href="' + esc_(k.seite) + '" target="_blank">Seite öffnen und Test-Termin buchen</a></p>' : '') + '</div>';
-  // 3 · Status
+  // 3 · Freigabe durch das Studio
+  if (k.status === 'Angelegt') {
+    html += '<div class="box"><h2>Freigabe durch das Studio</h2>' + (k.freigabe ? '<p>✓ Seite und Anzeigen freigegeben am ' + datumKurz_(k.freigabe) + '.</p>' :
+      k.vorschau ? '<p>Gesendet am ' + datumKurz_(k.vorschau) + '. Das Studio sieht Seite und Anzeigen auf seiner Schritte-Seite und tippt „Passt so“ oder schreibt eine Änderung.</p>' :
+      (k.aenderung ? '<p><b>Änderungswunsch:</b> ' + esc_(k.aenderung) + '</p><p class="k">Umgesetzt und neu hochgeladen? Dann wieder um Freigabe bitten.</p>' :
+        '<p>Sobald die Seite online ist (Claude hat sie hochgeladen oder ihr habt sie auf Netlify gezogen): Das Studio bekommt eine Mail und sieht Seite und Anzeigen auf seiner Schritte-Seite.</p>') +
+      form('vorschau', '', 'Studio um Freigabe bitten')) + '</div>';
+  }
+  // 4 · Status
   if (k.status === 'Angelegt') {
     var fehlt = [];
+    if (!k.freigabe) fehlt.push('Freigabe des Studios');
     if (!k.pixel) fehlt.push('Pixel-ID');
     if (!k.vertrag) fehlt.push('Vereinbarung');
     if (!k.impressum || !k.datenschutz) fehlt.push('Impressum/Datenschutz');
@@ -2016,6 +2070,17 @@ function teamAktion_(kz, s, aktion, d) {
     if (seite && !/^https:\/\/\S+\.\S+$/.test(seite)) return { ok: false, meldung: 'Die Adresse der Seite beginnt mit https://' };
     kundeSetzen_(kz, { 'Pixel-ID': px, 'Google-Conversion': cv, 'Seiten-Adresse': seite });
     return { ok: true, meldung: 'Gespeichert. Wirkt sofort.' };
+  }
+  if (aktion === 'vorschau') {
+    if (!/^https:\/\//.test(k.seite)) return { ok: false, meldung: 'Erst die Adresse der Seite eintragen (Kasten „Einrichten“).' };
+    kundeSetzen_(kz, { 'Vorschau gesendet': jetzt, 'Freigabe': '', 'Erinnert am': jetzt, 'Erinnerungen': 0 });
+    var k2 = kunde_(kz);
+    mail_(s, { to: k2.email, antwortAn: betreuerMail_(k2, s), absender: (k2.betreuer ? k2.betreuer + ' · ' : '') + (s.agentur_name || 'Clickculture'),
+      subject: 'Bitte ansehen: Ihre Terminseite und Ihre Anzeigen',
+      html: rahmen_('<p style="font-size:16px;">Hallo ' + esc_(k2.anrede) + ',</p><p style="font-size:16px;">Ihre Terminseite und Ihre Anzeigen sind fertig. ' +
+        'Bitte einmal ansehen und freigeben, dann starten wir die Werbung. Etwas soll anders sein? Einfach dort hineinschreiben.</p>' +
+        grosserKnopf_(studioLink_(s, k2), 'Ansehen und freigeben') + '<p style="font-size:16px;">Fragen? ' + betreuerZeile_(k2, s) + '</p>') });
+    return { ok: true, meldung: 'Das Studio hat die Mail bekommen und sieht Seite und Anzeigen auf seiner Schritte-Seite.' };
   }
   if (aktion === 'erinnern') {
     studiosNachfassen_(s, jetzt, kz);
@@ -2192,7 +2257,8 @@ function kunden_() {
       kalenderOk: datum_(g('Kalender ok')), metaOk: datum_(g('Meta erledigt')), googleId: String(g('Google-Ads-ID')).trim(),
       googleOk: datum_(g('Google verknüpft')), erinnert: datum_(g('Erinnert am')), erinnerungen: Number(g('Erinnerungen')) || 0,
       allesDa: datum_(g('Alles da')), liveMail: datum_(g('Live-Mail')), pixel: String(g('Pixel-ID')).replace(/\D/g, ''),
-      conversion: String(g('Google-Conversion')).trim()
+      conversion: String(g('Google-Conversion')).trim(), vorschau: datum_(g('Vorschau gesendet')), freigabe: datum_(g('Freigabe')),
+      aenderung: String(g('Änderungswunsch')).trim()
     };
   });
 }
