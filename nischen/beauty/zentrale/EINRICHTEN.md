@@ -10,6 +10,11 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
 
 | Wann | Was passiert |
 |---|---|
+| Ihr füllt das Formular „Neuer Kunde“ aus | Studio angelegt, Vereinbarung ausgefüllt, Fotos-Ordner in Drive, Willkommens-Mail mit Link zur Schritte-Seite ans Studio |
+| Studio arbeitet seine Schritte-Seite ab | Vereinbarung angenommen (Name und Zeit gespeichert, Kopie per Mail), Onboarding-Rechnung als PDF, Fotos, Kalender-Prüfung, Meta und Google. Mail an den Betreuer, wenn er etwas tun muss |
+| Studio kommt nicht weiter | Alle 2 Werktage Erinnerung mit den offenen Schritten, nach 3 Erinnerungen Mail an den Betreuer: anrufen |
+| Alle Schritte erledigt | Mail an den Betreuer „alles da“ mit Fotos-Ordner und „Text für Claude“ |
+| Team-Seite: „Jetzt live schalten“ | Mail „Ihre Werbung läuft“ ans Studio, „Live seit“ eingetragen |
 | Jemand öffnet eine Terminseite | Die Seite fragt die freien Zeiten ab (Google-Kalender des Studios, buchbare Zeiten, schon reservierte Plätze) |
 | Termin reserviert | Prüfung gegen Fakes (Bot-Falle, Zeit-Falle, Name, Telefon, E-Mail, Sperrliste, ein offener Termin pro Person). Zeile „unbestätigt“, Platz 45 Minuten frei gehalten, Mail „Bitte bestätigen“ an die Kundin |
 | Kundin bestätigt | Termin im Kalender des Studios (oder Knöpfe „bestätigen / ich rufe an“ im Modus Wunschtermin), Bestätigung mit Vorbereitung und Kalenderdatei an die Kundin, Mail ans Studio mit „Fake melden“ |
@@ -17,11 +22,12 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
 | 24 Stunden vorher | Erinnerung mit Vorbereitung und Absage-Link an die Kundin |
 | Kundin sagt ab | Kalendereintrag weg, Mail ans Studio, Platz wieder frei |
 | Täglich 19 Uhr | Jedes Studio: „Wie waren die Termine heute?“ mit Knöpfen erschienen · nicht erschienen · gekauft |
-| Rückruf-Wunsch (Formular) | Mail ans Studio mit „Zurückgerufen“, Erinnerung nach 60 Minuten |
+| Rückruf-Wunsch (Formular auf der Seite, direkt an die Zentrale) | Mail ans Studio mit „Zurückgerufen“, Erinnerung nach 60 Minuten |
 | Montag 8 Uhr | Offene Termine und Anfragen an jedes Studio, Übersicht an dich |
 | Erster Kauf eines Studios | Mail an dich: ab nächstem Monat Monatsgebühr |
-| 1. / 3. des Monats | Werbekosten und Rechnungen · Monatsreports als Entwurf in deinem Gmail |
-| Täglich 7 Uhr | Verlosung ziehen · Akquise-Liste · Warnung, wenn das Mail-Kontingent knapp wird |
+| 1. des Monats | Rechnungen Monatsgebühr als PDF an die Studios · Mail an jeden Betreuer: je Studio ein Link zum Monatsreport (Werbekosten eintragen, senden) |
+| 3. des Monats | Erinnerung an Reports, die noch nicht gesendet sind |
+| Täglich 8 Uhr | Verlosung ziehen · Akquise-Liste · Warnung, wenn das Mail-Kontingent knapp wird |
 | Viele unbestätigte Buchungen auf einmal | Buchung kurz gesperrt, Warnung an dich (Bot oder jemand, der Termine blockieren will) |
 
 ## Die Dateien
@@ -60,31 +66,24 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
    „1 · Einrichten“ → beim ersten Mal „Weiter“ und zulassen (Google fragt jetzt auch nach **Kalender**: zulassen) →
    danach nochmal „1 · Einrichten“. Die Meldung sagt „Die Automatik läuft“.
    *Kein Menü?* Steht oben neben dem Dateinamen „.XLSX“, ist es noch nicht die Google-Version (Schritt 1).
-7. **Web-App-Adresse in die Steckbrief-Vorlage:** dieselbe Adresse (endet auf `/exec`) in der Steckbrief-Vorlage,
-   Blatt **„Eure Daten“**, bei „Web-App-Adresse der Beauty-Zentrale“ eintragen, dazu bei „Google-Konto der
-   Beauty-Zentrale“ die E-Mail des Kontos, unter dem die Zentrale läuft (dafür geben die Studios ihren Kalender frei). Ohne die Adresse zeigen die Terminseiten nur Beispiel-Termine.
+7. **Eure Daten:** Blatt „Einstellungen“ → Meta Business-ID, Google-Ads-Verwaltungskonto, Anschrift, Steuernummer, IBAN.
+   Dann Menü „Clickculture“ → **„Übersicht und Formular als Lesezeichen“** → beide Links als Lesezeichen speichern.
 8. **Testen** (10 Minuten, mit dir selbst als Studio):
-   - In deinem eigenen Google-Kalender nichts ändern. Blatt **„Kunden“** → eine Zeile: Kürzel `test`, Betrieb `Test`,
-     deine E-Mail bei „E-Mail für Termine“, Adresse, Aktiv `Ja`, Buchung `Kalender`, Kalender-ID = **deine E-Mail**,
-     Buchbare Zeiten `Mo-Sa 9-18`, Beratung Minuten `20`, Vorlauf Stunden `1`, Absagefrist Stunden `24`.
-   - Menü „Clickculture“ → **„2 · Kalender der Kunden prüfen“**: Es muss „✓ Kalender verbunden“ stehen.
-   - Menü → **„3 · Test-Buchung durchspielen“**: Du bekommst die Mail „Bitte bestätigen“. Auf den Knopf tippen →
-     es öffnet sich eine Seite der Zentrale → dort nochmal **„Termin verbindlich bestätigen“**. Jetzt muss passieren:
-     Termin in deinem Kalender, Mail „Bestätigt“ (mit Kalenderdatei), Mail „Neuer Online-Termin“. In der Bestätigung
-     unten auf **„Termin absagen“** → bestätigen → der Kalendereintrag verschwindet wieder.
-     (Ein Test-Studio ohne eigene Webseite bekommt diese einfachen Seiten der Zentrale. Echte Studios haben ihre
-     eigene Terminseite, die testest du in Schritt 7 der Anleitung.)
-   - Aufräumen: Zeile `test` in „Kunden“ löschen (oder Aktiv `Nein`), TEST-Zeile in „Termine“ löschen, Spalte `test`
-     in „Checkliste“ löschen.
+   - Lesezeichen **„Neuer Kunde“** → als Studio dich selbst eintragen (deine E-Mail, eine Leistung, z. B. `Test | 30`,
+     Zeiten `9-18` an ein paar Tagen, Kalender „Hat Google-Kalender“) → **„Kunde anlegen“**.
+   - Du bekommst die Willkommens-Mail. Schritte-Seite öffnen, Vereinbarung annehmen, Kalender: deine Gmail-Adresse →
+     „Freigabe prüfen“ zeigt ✓ (es ist ja dein eigener Kalender).
+   - Menü → **„4 · Test-Buchung durchspielen“**: Mail „Bitte bestätigen“ → Knopf → **„Termin verbindlich bestätigen“**.
+     Jetzt: Termin in deinem Kalender, Mail „Bestätigt“, Mail „Neuer Online-Termin“. In der Bestätigung
+     **„Termin absagen“** → der Kalendereintrag verschwindet.
+   - Aufräumen: im Blatt „Kunden“ beim Test-Studio Status **Beendet**, TEST-Zeilen in „Termine“ und „Rechnungen“ löschen.
 
 9. **Mit deinem Kollegen teilen:** oben rechts „Freigeben“ → seine E-Mail → **Bearbeiter**. Er sieht und bearbeitet
    alles, die Automatik läuft aber weiter in **deinem** Konto (bzw. dem Agentur-Konto). Das Menü „Clickculture“
    funktioniert auch bei ihm (beim ersten Mal muss er zulassen).
 10. **Team eintragen:** Blatt „Einstellungen“ → **„Hinweise gehen an“**: eure beiden E-Mails mit Komma →
-   **„Wer ist im Team?“**: `Max = max@mail.de; Tom = tom@mail.de` (eure Namen, Vorname reicht). Dann: Im Blatt
-   „Kunden“ steht bei jedem Studio der **Betreuer**, im Blatt „Akquise“ bei jedem Studio **„Wer“**. Daraus macht die
-   Zentrale: Jeder bekommt morgens seine eigene Akquise-Liste, der Betreuer bekommt den Report-Text seines Studios,
-   und Hinweise an euch beide tragen den Betreuer im Betreff.
+   **„Wer ist im Team?“**: `Max = max@mail.de; Tom = tom@mail.de` (eure Namen, Vorname reicht). Im Formular
+   „Neuer Kunde“ wählt ihr dann den Betreuer aus, und alle Mails zu diesem Studio gehen an ihn.
 
 **Ein Konto für die Zentrale:** Die Studios geben ihren Kalender für das Google-Konto frei, unter dem die Zentrale
 läuft. Am besten ein eigenes Agentur-Konto (z. B. Google Workspace mit eurer Domain), auf das ihr beide zugreifen

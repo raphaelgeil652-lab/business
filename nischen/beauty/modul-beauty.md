@@ -51,7 +51,7 @@ ausdrückliche Einwilligung nach Art. 9 DSGVO als Pflicht-Häkchen, dazu „mind
 **Ausfallgebühr:** nur mit Hinweis bei der Buchung, Absagefrist, und dem Recht nachzuweisen, dass kein Schaden
 entstand (LG Berlin 55 S 310/04). Ist so eingebaut (Häkchen erscheint nur, wenn das Studio eine Gebühr will).
 
-## Annahmen für die Planung (Blatt „Annahmen“ im Steckbrief)
+## Annahmen für die Planung (daraus schlägt das Formular „Neuer Kunde“ das Budget vor)
 
 | Behandlung | Kosten pro bestätigtem Termin | Erscheinen | Kauf danach | Meta-Anteil |
 |---|---|---|---|---|

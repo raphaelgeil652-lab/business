@@ -3,6 +3,10 @@
  * Läuft als Google Apps Script in der Google-Tabelle „Clickculture Beauty-Zentrale“. Kostenlos.
  *
  * Was sie von selbst macht:
+ *  0. Neue Kunden (Version 2): Formular „Neuer Kunde“ (Menü 2 oder Lesezeichen) → Kunde, Vereinbarung, Fotos-Ordner,
+ *     Willkommens-Mail. Das Studio arbeitet seine Schritte-Seite ab (?a=studio), die Zentrale erinnert und meldet
+ *     „alles da“. Die Team-Seite (?a=team) hat alle Knöpfe für euch: Pixel/Conversion, live schalten, Report, bezahlt.
+ *     Rechnungen gehen als PDF raus (Onboarding nach Annahme, Monatsgebühr am 1.).
  *  1. Freie Termine: Die Seite des Kunden fragt hier nach freien Zeiten. Die Zentrale schaut in den
  *     Google-Kalender des Studios (oder nur auf die buchbaren Zeiten im Modus „Wunschtermin“).
  *  2. Buchung: Der Termin wird reserviert (noch nicht fest). Der Besucher bekommt eine Mail
@@ -13,7 +17,7 @@
  *     Besucher, Mail an das Studio mit Knopf „Fake melden“.
  *  4. 24 Stunden vorher: Erinnerung mit Vorbereitung und Absage-Link an den Besucher.
  *  5. Abends 19 Uhr: Mail an jedes Studio „Wie waren die Termine heute?“ (erschienen · nicht erschienen · gekauft)
- *  6. Rückruf-Wünsche und Verlosungen (Netlify-Formulare) wie gewohnt: Mail mit „Zurückgerufen“, Erinnerung nach 60 Min.
+ *  6. Rückruf-Wünsche (direkt von der Seite, alte Netlify-Webhooks gehen weiter): Mail mit „Zurückgerufen“, Erinnerung nach 60 Min.
  *  7. Montags 8 Uhr: offene Termine und Anfragen an jedes Studio, Übersicht an dich
  *  8. Erster Auftrag → Mail an dich: ab nächstem Monat Monatsgebühr
  *  9. 1. des Monats: Werbekosten eintragen, Rechnungen · 3. des Monats: Monatsreports als Entwurf in Gmail
@@ -107,7 +111,7 @@ function einrichten() {
   if (!url) hinweise.push('Die Web-App-Adresse fehlt. Bitte Schritt 5 der Einrichtung machen und danach hier nochmal „Einrichten“ wählen.');
   if (s.tz !== 'Europe/Berlin') hinweise.push('Zeitzone ist „' + s.tz + '“. Bitte in Apps Script unter Projekteinstellungen (Zahnrad) auf „Berlin“ stellen.');
   if (!s.agentur_email) hinweise.push('Im Blatt „Einstellungen“ fehlt deine E-Mail.');
-  if (!/^(ja|nein)$/i.test(String(s.agentur_kleinunternehmer || '').trim())) hinweise.push('Im Blatt „Einstellungen“ bei „Kleinunternehmer“ Ja oder Nein wählen, genauso wie im Steckbrief.');
+  if (!/^(ja|nein)$/i.test(String(s.agentur_kleinunternehmer || '').trim())) hinweise.push('Im Blatt „Einstellungen“ bei „Kleinunternehmer“ Ja oder Nein wählen.');
   if (!s.agentur_steuernr) hinweise.push('Im Blatt „Einstellungen“ fehlt die Steuernummer (Pflicht auf jeder Rechnung).');
   if (!s.agentur_business_id) hinweise.push('Im Blatt „Einstellungen“ fehlt die Meta Business-ID (steht auf der Schritte-Seite der Studios).');
   ui.alert('Clickculture Beauty-Zentrale',
@@ -1305,7 +1309,7 @@ function formularHtml_(s) {
     'button{font-size:17px;padding:13px 18px;border:0;border-radius:7px;background:#1F7A3F;color:#fff;font-weight:700;width:100%;}' +
     '.klein{background:#EFEAE0;color:#1A1917;font-size:14px;padding:8px 12px;width:auto;font-weight:600;}' +
     '#hinweis{padding:10px;border-radius:8px;background:#F9EEDA;display:none;margin:8px 0;}#m{white-space:pre-wrap;padding:12px;border-radius:8px;display:none;margin-top:10px;}' +
-    '.empf{color:#1F7A3F;font-weight:700;}@media(max-width:560px){.zwei,.drei{grid-template-columns:1fr;}}</style>' +
+    '.empf{color:#1F7A3F;font-weight:700;}.drei input{margin:3px 0;}@media(max-width:560px){.zwei{grid-template-columns:1fr;}.drei{grid-template-columns:3fr 1fr 1fr;gap:0 6px;}}</style>' +
     '<div class="w"><h1>Neuer Kunde</h1><p class="k">Im Gespräch ausfüllen. Pflicht ist, was du für den Start brauchst. Am Ende ein Klick: Der Kunde ist angelegt, ' +
     'die Vereinbarung und die Willkommens-Mail mit seinen Schritten gehen von selbst raus.</p><form id="f">' +
     '<div class="box"><h2>1 · Das Studio</h2><div class="zwei">' +
@@ -1345,7 +1349,7 @@ function formularHtml_(s) {
 
 var FORMULAR_JS = [
   'var f=document.getElementById("f"),L=document.getElementById("leistungen");',
-  'function zeile(){var d=document.createElement("div");d.className="drei";d.innerHTML=\'<input name="l_name" placeholder="z. B. Powder Brows"><input name="l_min" inputmode="numeric" placeholder="120"><input name="l_preis" inputmode="decimal" placeholder="390">\';L.appendChild(d);}',
+  'function zeile(){var n=L.children.length,d=document.createElement("div");d.className="drei";d.innerHTML=\'<input name="l_name" placeholder="\'+(n?"Leistung "+(n+1):"z. B. Powder Brows")+\'"><input name="l_min" inputmode="numeric" placeholder="Min."><input name="l_preis" inputmode="decimal" placeholder="€">\';L.appendChild(d);}',
   'for(var i=0;i<4;i++)zeile();document.getElementById("mehr").onclick=zeile;',
   'function pruef(){var b=f.behandlung.value,m=D.module[b],h=document.getElementById("hinweis"),t=[];',
   ' document.getElementById("quali").textContent=m?"("+m.qualifikation+")":"";',
@@ -1568,7 +1572,7 @@ function studioSeite_(p) {
     '<style>body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A1917;margin:0;background:#F7F4EE;}' +
     '.w{max-width:620px;margin:0 auto;padding:22px 16px 60px;}h1{font-size:25px;margin:0 0 4px;}h2{font-size:19px;margin:0;}' +
     '.box{background:#fff;border:1px solid #E4DED3;border-radius:10px;padding:16px;margin:14px 0;}.ok{border-color:#9CCB9A;background:#F3FAF2;}' +
-    'ol{padding-left:20px;}li{margin:6px 0;}input[type=text],input[type=url],textarea{width:100%;box-sizing:border-box;font-size:16px;padding:10px;border:1px solid #CFC8BB;border-radius:6px;margin:6px 0;}' +
+    'ol{padding-left:20px;}li{margin:6px 0;}input[type=text],input[type=url],textarea{font-family:inherit;width:100%;box-sizing:border-box;font-size:16px;padding:10px;border:1px solid #CFC8BB;border-radius:6px;margin:6px 0;}' +
     'button{font-size:17px;padding:13px 18px;border:0;border-radius:7px;background:#1F7A3F;color:#fff;font-weight:700;margin-top:6px;}' +
     '.k{color:#6B665D;font-size:14px;}code{background:#F1ECE2;padding:2px 6px;border-radius:4px;font-size:15px;}#meldung{display:none;padding:12px;border-radius:8px;font-weight:700;margin:12px 0;}' +
     'details summary{cursor:pointer;color:#1F5FA8;margin:8px 0;}.haken{font-size:20px;margin-right:6px;}</style>' +

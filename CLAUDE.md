@@ -82,32 +82,47 @@ muss die Routine mitgeändert werden.
 | Küchenstudios | zurückgestellt, vollständig erhalten | `nischen/kuechenstudios/` |
 | Photovoltaik | **pausiert seit 20.11.2026**, vollständig erhalten, nicht löschen. Grund: ein Kontakt aus der PV-Branche berichtet, dass Meta- und Google-Ads dort schwach laufen | `nischen/photovoltaik/` |
 
-**Beauty (aktiv):** Online-Terminbuchung statt Rückruf. **Ein Studio, eine Behandlung** aus dem Baukasten
-`nischen/beauty/vorlagen/module.py` (Laser · Permanent Make-up · Faltenbehandlung · Bleaching): die eine Quelle für
-Werberegeln (Schalter `regeln`), Seitentexte, Anzeigen, Vorbereitung, Google-Texte und Planungs-Annahmen.
-**Der Ablauf steht in `nischen/beauty/ANLEITUNG.md`** (wie bei PV: Vorbereiten + 8 Schritte, einfache Sprache).
-Steckbrief `vorlagen/tabellen/01-steckbrief.xlsx` (prüft auch, ob der Behandler die Behandlung darf; Budget =
-Termine/Woche × Kosten pro Termin je Modul, 300–2.000 €) → `kunde-anlegen.py` → `kunden/<kürzel>/` →
-`werkzeuge/clickculture-ordner-bauen.py --kunde <kürzel>`. **Eigene Beauty-Zentrale** `nischen/beauty/zentrale/`
-(getrennt von der PV-Zentrale, die unverändert bleibt): Web-App liefert freie Zeiten (Google-Kalender des Studios über
-Freigabe „Änderungen an Terminen vornehmen“, oder Modus Wunschtermin mit Bestätigungsknöpfen), nimmt Buchungen an,
-**Termin erst nach Bestätigung per E-Mail fest** (Platz 45 Min. reserviert), dann Kalendereintrag, Bestätigung mit
-Vorbereitung + .ics, Erinnerung 24 h vorher, Absage-Link, Abend-Mail 19 Uhr (erschienen · nicht erschienen ·
-gekauft), Rückruf-Formular (Netlify-Webhook) wie bei PV. **Fake-Schutz:** Bot- und Zeit-Falle, Name/Telefon/E-Mail
-(Wegwerf, DNS), Sperrliste + Knopf „Fake melden“, ein offener Termin pro Person, Flut-Schutz. Meta „Lead“ und
-Google-Conversion feuern **nur auf `bestaetigen.html`**. **Nach jeder Änderung beide Tests:**
-`node nischen/beauty/zentrale/test/test.js` und `node nischen/beauty/zentrale/test/seiten-test.js`.
+**Beauty (aktiv), Version 2 seit 20.11.2026:** Online-Terminbuchung statt Rückruf. **Ein Studio, eine Behandlung** aus dem
+Baukasten `nischen/beauty/vorlagen/module.py` (Laser · Permanent Make-up · Faltenbehandlung · Bleaching): Werberegeln
+(Schalter `regeln`), Seitentexte, Anzeigen, Vorschläge zur Vorbereitung, Google-Texte, Annahmen.
+**Nutzer-Vorgaben (20.11.2026, nach gescheitertem Probelauf 1):** einfach, automatisch, keine Handarbeit in Tabellen,
+kein Hin-und-her zwischen Dateien, richtige Reihenfolge ohne Blocker. **Leistungen nie vorgeben:** Das Studio nennt
+seine eigenen Leistungen im Gespräch (Name | Minuten | Preis), **jede ist online buchbar** (keine Unterscheidung
+Beratung/Behandlung mehr). **Der Ablauf steht in `nischen/beauty/ANLEITUNG.md`.**
+**Kein Steckbrief/Excel mehr.** Alles läuft über die **Beauty-Zentrale** `nischen/beauty/zentrale/` (Google-Tabelle +
+`Code.gs`, getrennt von der PV-Zentrale): (1) **Formular „Neuer Kunde“** (Lesezeichen, im Gespräch ausfüllen) prüft
+Behandler/Qualifikation, schlägt das Budget vor, legt den Kunden an, füllt die Vereinbarung aus, legt einen
+Fotos-Ordner in Drive an, schickt die Willkommens-Mail. (2) **Schritte-Seite des Studios** (Link per Mail): Vereinbarung
+per Klick annehmen (Name+Zeit im Blatt „Verträge“, Kopie per Mail, Onboarding-Rechnung als PDF), Impressum/Datenschutz,
+Behandler, Vorbereitung freigeben, Fotos-Upload, Kalender-Freigabe mit Live-Prüfung, Meta-Partnerzugriff, Google-Kunden-ID
+und Annahme. Erinnerungen alle 2 Werktage (max. 3, dann „bitte anrufen“ an den Betreuer), Mail „alles da“ mit
+**„Text für Claude“** (JSON). (3) **Team-Seite** je Studio + Übersicht (Lesezeichen): Pixel-ID und Google-Conversion
+(wirken sofort, Seite holt sie per `?a=mess`), „Jetzt live schalten“ (Mail „Ihre Werbung läuft“), Monatsreport mit
+Werbekosten senden, Rechnung „Bezahlt“, Pausieren. Rechnungen Monatsgebühr am 1. automatisch als PDF (wenn IBAN,
+Steuernr., Anschrift in den Einstellungen). Rückruf-Wünsche gehen direkt an die Zentrale (keine Netlify-Formulare).
+**Claude-Schritt:** `vorlagen/werkzeuge/kunde-anlegen.py <text-fuer-claude.json> [fotos|ordner|zip]` → `kunden/<kürzel>/`
+(`seite/` für Netlify, `anzeigen/`, `kampagnen.md`, `LIES-MICH.md`) → `werkzeuge/clickculture-ordner-bauen.py --kunde <kürzel>`.
+Pro Studio eine eigene statische Seite (Anzeigen-Prüfer, geteilter Domain-Ruf; Recherche `research_notes/Beauty Ablauf neu gedacht/`).
+**`zentrale-bauen.py` schreibt den Baustein in `Code.gs`** (MODULE aus module.py, VEREINBARUNG aus `texte/vereinbarung.md`)
+und baut die Tabelle; nach Änderungen an module.py/Vereinbarung immer ausführen. **Nach jeder Änderung beide Tests:**
+`node nischen/beauty/zentrale/test/test.js` (211) und `node nischen/beauty/zentrale/test/seiten-test.js` (20).
+Neuer Code in einer laufenden Zentrale: ersetzen, **„Neue Version“ bereitstellen**, dann „1 · Einrichten“ (ergänzt
+Spalten/Blätter selbst). **Google Ads (Recherche 20.11.):** Studio legt sein Konto selbst an („Zum Expertenmodus
+wechseln“ → „Konto ohne Kampagne erstellen“), Agentur verknüpft vom Verwaltungskonto, Studio nimmt an; nie im
+Verwaltungskonto anlegen (Assistent-Falle, „ohne Kampagne“ erst ab 1.000 $ Ausgaben). Passkey gilt erst nach 48 h.
+**Meta:** Studio braucht ein echtes Facebook-Profil, eigenes Portfolio, eigenes Werbekonto (Berlin/EUR, eigene Karte,
+Werbetreibender und Zahler = Studio), Partnerzugriff mit Business-ID; Agentur „Personen zuweisen“. Klickwege: `hilfe-einrichten.md`.
+**Fake-Schutz:** Bot- und Zeit-Falle, Name/Telefon/E-Mail (Wegwerf, DNS), Sperrliste + „Fake melden“, ein offener Termin
+pro Person, Flut-Schutz. Meta „Lead“ und Google-Conversion **nur auf `bestaetigen.html`**.
 **Harte Regeln (Recherche Nov. 2026, `modul-beauty.md`):** Faltenbehandlung nur Ärzte (Hyaluron auch Heilpraktiker),
-nie „Botox“, kein Vorher/Nachher, keine Verlosung/Rabatte, kein „kostenlos“ (OLG Frankfurt 6 U 60/26), erst Beratung;
-Bleaching nur Zahnarztpraxen, sachlich; Laser nur mit NiSV-Fachkunde, „dauerhaft“ nie ohne Hinweis auf Sitzungen;
-alle: Meta 18+, Häkchen „mindestens 18“, Art.-9-Einwilligung, keine Gesundheitsfragen im Formular. Vorbereitungs-
-Hinweise sind Vorschläge bis zur Freigabe durch das Studio. Keine Kaltanrufe bei Praxen (BVerwG). Vier erfundene
-Beispielstudios (`beispiele-bauen.py`) liegen im Repo, echte nie (`.gitignore`). **Zu zweit (Nutzer-Vorgabe 20.11.2026):** Der Nutzer arbeitet mit einem Kollegen. Steckbrief-Blatt „Eure Daten“
-(beide Partner, wer die Technik macht), pro Studio ein fester **Betreuer** (Name/Telefon/E-Mail in allen Texten ans
-Studio, Vertrag nennt beide), Rollen Betreuer/Technik/Studio in Anleitung und Checkliste; Zentrale: Einstellung „team“,
-Spalte „Betreuer“ (Kunden), „Wer“ (Akquise) → eigene Akquise-Liste je Person, Report-Text an den Betreuer, Hinweise an beide. Mail-Grenze: kostenloses Google-Konto
-~100 Mails/Tag (~20 Buchungen), ab 4–5 Studios Workspace. Offene Prüfung: Meta-Werbebibliothek von Hand, Vorlagen
-anwaltlich prüfen. Recherche: `research_notes/Beauty …/`, Bericht `reports/Beauty Nischen Profitabilität Deutschland.md`.
+nie „Botox“ (Formular lehnt es ab), kein Vorher/Nachher, keine Verlosung/Rabatte, kein „kostenlos“ (OLG Frankfurt 6 U 60/26),
+erst Beratung; Bleaching nur Zahnarztpraxen, sachlich; Laser nur mit NiSV-Fachkunde, „dauerhaft“ nie ohne Hinweis auf
+Sitzungen; alle: Meta 18+, Häkchen „mindestens 18“, Art.-9-Einwilligung, keine Gesundheitsfragen im Formular. Keine
+Kaltanrufe bei Praxen (BVerwG). Vier erfundene Beispielstudios (`beispiele-bauen.py`, aus `daten.json`) liegen im Repo,
+echte nie (`.gitignore`). **Zu zweit:** Betreuer je Studio (Formular), „Wer ist im Team?“ in den Einstellungen,
+Akquise-Liste je Person. Mail-Grenze: kostenloses Google-Konto ~100 Mails/Tag, ab 4–5 Studios Workspace. Offen:
+Vereinbarung anwaltlich prüfen, Meta-Werbebibliothek von Hand, Meta „Gesundheit und Wellness“ beim ersten Studio prüfen.
+Recherche: `research_notes/Beauty …/`, Bericht `reports/Beauty Nischen Profitabilität Deutschland.md`.
 
 **Photovoltaik (pausiert seit 20.11.2026, Grund: laut Kontakt aus der PV-Branche laufen Meta/Google dort schwach):** Grundlage ist das nischenneutrale Betriebshandbuch (Claude-Doc,
 https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) und `modul-photovoltaik.md`.
@@ -236,15 +251,15 @@ Region: Pfullendorf / Landkreis Sigmaringen + Umland. Zielradius je Kampagne **m
 - `CLAUDE.md` — diese Übersicht. Bei jeder größeren Entscheidung aktuell halten.
 - `werkzeuge/clickculture-ordner-bauen.py` — baut den **Finder-Ordner „Clickculture“** (Texte als
   Word, Tabellen, Seiten) samt ZIP für den Nutzer; `--kunde <kürzel>` exportiert einen Kunden einzeln
-  (Beauty, sonst PV). **Beauty vorne:** 00 START HIER + 00 Anleitung · 01 Vorbereiten (Beauty-Zentrale) ·
-  02 Studios finden · 03 Gespräch (Steckbrief + 4 Beispiele) · 04 Kundenordner · 05 Hilfe · 06 Hintergrund ·
+  (Beauty, sonst PV). **Beauty vorne:** 00 START HIER + 00 Anleitung · 01 Einmal vorbereiten (Beauty-Zentrale) ·
+  02 Studios finden · 03 Beispiele zum Zeigen · 04 Kundenordner von Claude · 05 Hilfe (Meta, Google, Netlify) · 06 Hintergrund ·
   07 Andere Nischen (darin **Photovoltaik (pausiert)** vollständig, Kfz, Küchen, Chinatown). Nach Änderungen neu bauen und dem Nutzer schicken.
 - `zentrale/` — die Zentrale (siehe Photovoltaik): `Code.gs`, `zentrale-bauen.py`, `EINRICHTEN.md`, `test/`.
 
 ### `nischen/beauty/` — aktiver Fokus
-- `README.md` (Übersicht mit Öffnen-Links) · `ANLEITUNG.md` (der Ablauf) · `modul-beauty.md` (Regeln, Zahlen, Quellen) · `hilfe-einrichten.md`
-- `vorlagen/` — `module.py` (Baukasten), `tabellen/`, `texte/`, `landingpage/` (termin, danke, bestaetigen, absagen, rueckruf-danke, verlosung + seite.css, buchung.js, messung.js), `anzeigen/`, `assets/` (Fonts, Platzhalterfotos je Modul), `werkzeuge/` (kunde-anlegen, tabellen-bauen, beispiele-bauen, creatives-rendern), `LIES-MICH.md`
-- `zentrale/` — `Code.gs`, `zentrale-bauen.py`, `EINRICHTEN.md`, `test/test.js`, `test/seiten-test.js`
+- `README.md` (Übersicht mit Öffnen-Links) · `ANLEITUNG.md` (der Ablauf) · `modul-beauty.md` (Regeln, Zahlen, Quellen) · `hilfe-einrichten.md` (Meta, Google, Netlify mit dem Studio)
+- `vorlagen/` — `module.py` (Baukasten), `texte/` (vereinbarung, kampagnen, Akquise, `_kunden-readme`), `landingpage/` (termin, danke, bestaetigen, absagen, rueckruf-danke, verlosung + seite.css, buchung.js, messung.js), `anzeigen/`, `assets/` (Fonts, Platzhalterfotos je Modul), `werkzeuge/` (kunde-anlegen, beispiele-bauen, creatives-rendern), `LIES-MICH.md`
+- `zentrale/` — `Code.gs` (mit Baustein), `zentrale-bauen.py`, `EINRICHTEN.md`, `test/test.js`, `test/seiten-test.js`
 - `kunden/` — vier erfundene Beispielstudios (echte Kunden gitignored)
 
 ### `nischen/autowerkstaetten/` — zurückgestellt
@@ -384,11 +399,12 @@ und **`10k-websites`** (unverändert, maßgeblich für den Webseitenbau, siehe o
 
 ## Aktueller Stand
 
-**Beauty ist aktiver Fokus (seit 20.11.2026) und fertig gebaut:** Baukasten mit vier Behandlungen, Steckbrief,
-Terminseite mit Online-Buchung, Beauty-Zentrale (133 Tests) und Ende-zu-Ende-Test (Seite im Browser + Zentrale),
-Anzeigen, alle Texte, Finder-Ordner. **Beauty-Zentrale ist eingerichtet (Nutzer, 20.11.2026; läuft unter dem gemeinsamen Geschäftskonto, „Wer ist im
-Team?“ bleibt leer, alles geht an die Geschäfts-E-Mail).** **Nächster Schritt:** Steckbrief-Vorlage „Eure Daten“
-ausfüllen, dann Probelauf wie echt (Kollege spielt das Studio, eigener Google-Kalender). Vorher Meta-Werbebibliothek
+**Beauty ist aktiver Fokus (seit 20.11.2026), Version 2 fertig gebaut (20.11.2026):** Formular „Neuer Kunde“,
+Schritte-Seite fürs Studio, Team-Seite, automatische Mails/Erinnerungen/Rechnungen/Reports, Terminseite mit Online-Buchung
+(211 + 20 Tests), Anzeigen, Finder-Ordner. **Beauty-Zentrale ist eingerichtet (Nutzer, 20.11.2026; läuft unter dem gemeinsamen Geschäftskonto, „Wer ist im
+Team?“ bleibt leer, alles geht an die Geschäfts-E-Mail).** **Nächster Schritt:** neuen Code in die Zentrale
+(„Neue Version“ bereitstellen, „1 · Einrichten“), Einstellungen ausfüllen, Lesezeichen, dann Probelauf 2 wie echt
+(Kollege spielt das Studio, Kate Cosmetics über das Formular neu anlegen). Vorher Meta-Werbebibliothek
 von Hand ansehen und Vorlagen der ersten Behandlung anwaltlich prüfen lassen.
 
 Photovoltaik ist pausiert, Kfz und Küchen sind zurückgestellt. Alles bleibt vollständig erhalten, nichts löschen.

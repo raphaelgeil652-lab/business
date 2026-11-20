@@ -1,84 +1,89 @@
 # Vorlagen-System Beauty (Technik)
 
 Wie das System gebaut ist. **Für den Ablauf mit dem Studio gilt die [Anleitung](../ANLEITUNG.md).**
-Gleiches Prinzip wie bei Photovoltaik, mit zwei großen Unterschieden: **ein Baukasten mit vier Behandlungen**
-und **Online-Buchung statt Rückruf**.
+Version 2 (20.11.2026): kein Steckbrief mehr. Alles pro Studio entsteht in der Zentrale (Formular „Neuer Kunde“ und
+Schritte-Seite des Studios). Claude baut daraus nur noch Terminseite, Anzeigen und Kampagnen-Anleitung.
 
-## Die vier Teile
+## Die Teile
 
 | Teil | Wo | Was |
 |---|---|---|
-| **Baukasten** | [`module.py`](module.py) | Die vier Behandlungen (Laser, Permanent Make-up, Faltenbehandlung, Bleaching): Regeln, Seitentexte, Anzeigen, Vorbereitung, Google-Texte, Annahmen. Die eine Quelle für alles Behandlungsspezifische |
-| **Steckbrief** | [`tabellen/01-steckbrief.xlsx`](tabellen/01-steckbrief.xlsx) | Quelle für alles pro Studio. Prüft selbst, ob das Studio passt (auch: darf es diese Behandlung?), schlägt das Budget vor |
-| **Kunde-anlegen** | [`werkzeuge/kunde-anlegen.py`](werkzeuge/kunde-anlegen.py) | Steckbrief (+ Fotos) → kompletter Kundenordner |
-| **Beauty-Zentrale** | [`../zentrale/`](../zentrale/) | Google-Tabelle + Apps Script: freie Zeiten, Buchung, Bestätigung, Kalender, Erinnerung, Absage, Fake-Schutz, Reports, Rechnungen, Akquise |
+| **Baukasten** | [`module.py`](module.py) | Die vier Behandlungen: Regeln, Seitentexte, Anzeigen, Vorschläge für die Vorbereitung, Google-Texte, Annahmen. Die eine Quelle für alles Behandlungsspezifische |
+| **Beauty-Zentrale** | [`../zentrale/`](../zentrale/) | Google-Tabelle + Apps Script: Formular „Neuer Kunde“, Schritte-Seite fürs Studio, Team-Seite, Online-Buchung, alle Mails, Rechnungen, Reports |
+| **Kunde-anlegen** | [`werkzeuge/kunde-anlegen.py`](werkzeuge/kunde-anlegen.py) | „Text für Claude“ (+ Fotos, Ordner oder ZIP) → Seite für Netlify, Anzeigen, Kampagnen-Anleitung |
+| **Vereinbarung** | [`texte/vereinbarung.md`](texte/vereinbarung.md) | Wird von `zentrale-bauen.py` in `Code.gs` übernommen (Baustein), die Zentrale füllt sie aus |
 
 ```
-python3 nischen/beauty/vorlagen/werkzeuge/kunde-anlegen.py <steckbrief.xlsx> [fotos ...]
-python3 werkzeuge/clickculture-ordner-bauen.py --beauty <kürzel> <ausgabeordner>
+python3 nischen/beauty/zentrale/zentrale-bauen.py          # Baustein in Code.gs (module.py + Vereinbarung) und die Tabelle neu
+python3 nischen/beauty/vorlagen/werkzeuge/kunde-anlegen.py <text-fuer-claude.json> [fotos | ordner | fotos.zip]
+python3 nischen/beauty/vorlagen/werkzeuge/beispiele-bauen.py   # die vier erfundenen Beispielstudios neu
+python3 werkzeuge/clickculture-ordner-bauen.py --kunde <kürzel> <ausgabeordner>
 ```
 
-Weitere Werkzeuge: `tabellen-bauen.py` (leerer Steckbrief neu), `beispiele-bauen.py` (die vier erfundenen
-Beispielkunden neu), `creatives-rendern.js` (Anzeigen-PNGs). Tests: `node nischen/beauty/zentrale/test/test.js`
-(Zentrale, 133 Prüfungen) und `node nischen/beauty/zentrale/test/seiten-test.js` (echte Seite im Browser +
-Zentrale, Ende zu Ende). **Nach jeder Änderung an Code.gs, buchung.js oder den Seiten beide laufen lassen.**
+Tests: `node nischen/beauty/zentrale/test/test.js` (Zentrale, 211 Prüfungen) und
+`node nischen/beauty/zentrale/test/seiten-test.js` (echte Seite im Browser + Zentrale, Ende zu Ende).
+**Nach jeder Änderung an module.py, vereinbarung.md, Code.gs, buchung.js oder den Seiten: `zentrale-bauen.py`, dann beide Tests.**
+
+## Der Ablauf in der Zentrale
+
+```
+Formular „Neuer Kunde“ ──► Zeile im Blatt „Kunden“ (Status Angelegt), Vereinbarung ausgefüllt (Blatt „Verträge“),
+                           Fotos-Ordner in Drive, Willkommens-Mail mit Link zur Schritte-Seite
+Schritte-Seite (Studio) ──► Vereinbarung annehmen (Name, Zeit) → Kopie per Mail, Onboarding-Rechnung als PDF
+                           Links, Behandler, Vorbereitung freigeben, Fotos hochladen, Kalender prüfen, Meta, Google-ID
+                           → Mails an den Betreuer, wenn er etwas tun muss
+täglich 8 Uhr ───────────► Erinnerung alle 2 Werktage (höchstens 3), dann „bitte anrufen“ · alles da → Mail mit „Text für Claude“
+Team-Seite (ihr) ────────► Pixel-ID, Google-Conversion, Seitenadresse · „Jetzt live schalten“ → Mail „Ihre Werbung läuft“
+                           Monatsreport mit Werbekosten senden · Rechnung „Bezahlt“ · Pausieren
+```
 
 ## So läuft eine Buchung
 
 ```
-Anzeige → termin.html ──(fragt freie Zeiten)──► Zentrale ──► Google-Kalender des Studios (oder buchbare Zeiten)
-          Termin wählen, Name/Telefon/E-Mail
+Anzeige → termin.html ──(fragt freie Zeiten je Leistung)──► Zentrale ──► Google-Kalender des Studios (oder buchbare Zeiten)
+          Leistung, Termin, Name/Telefon/E-Mail
           „Termin reservieren“ ──(POST)──────► Zentrale prüft: Bot-Falle, Zeit-Falle, Name, Telefon, E-Mail (Wegwerf,
                                                 Postfach), Sperrliste, ein offener Termin pro Person, Flut-Schutz
                                                 → Zeile „unbestätigt“, Platz 45 Min. reserviert
           danke.html  ◄──────────────────────── Mail „Bitte bestätigen“ an die Kundin
-bestaetigen.html (aus der Mail, Klick nötig) ─► Zentrale: Kalender (Modus Kalender) bzw. Studio bestätigt (Wunschtermin)
+bestaetigen.html (aus der Mail, Klick nötig) ─► Zentrale: Kalender bzw. Studio bestätigt per Knopf (ohne Google-Kalender)
           meldet „Lead“ an Meta/Google        → Bestätigung mit Vorbereitung + .ics an die Kundin, Mail ans Studio
-                                                24 h vorher Erinnerung · abends „Wie waren die Termine?“ ans Studio
 absagen.html (Link in den Mails) ────────────► Zentrale: Kalender frei, Mail ans Studio
+Rückruf-Wunsch ──(POST a=anfrage)────────────► Zentrale: Mail ans Studio mit „Zurückgerufen“, Erinnerung nach 60 Min.
 ```
 
-Rückruf-Wünsche und Verlosung laufen wie bei Photovoltaik über Netlify-Formulare → Webhook → Zentrale.
+**Jede Leistung des Studios ist buchbar.** Es gibt keine Unterscheidung Beratung/Behandlung mehr. Erkennt
+kunde-anlegen eine Beratung am Namen (Beratung, Analyse, Erstgespräch, Vorzeichnen …), nutzen Seite und Anzeigen sie
+als Einstieg; ohne Beratung fallen Anzeigen weg, die eine versprechen, ohne Preis die Preis-Anzeige.
 
-**Gezählt wird nur die Bestätigung.** Meta „Lead“ und Google-Conversion feuern erst auf `bestaetigen.html`. So
-lernen die Plattformen echte Termine statt Klicks.
+**Pixel-ID und Google-Conversion** holt die Seite zur Laufzeit aus der Zentrale (`?a=mess`), erst nach Zustimmung.
+Neue IDs wirken sofort, ohne neues Hochladen. **Gezählt wird nur die Bestätigung** (`bestaetigen.html`).
+
+**Warum pro Studio eine eigene statische Seite** (und nicht eine Seite für alle): Die Anzeigen-Prüfer von Meta und
+Google führen nicht verlässlich JavaScript aus, und eine geteilte Domain teilt sich auch den Ruf und Sperren
+(Recherche: `research_notes/Beauty Ablauf neu gedacht/technik_machbarkeit.md`).
 
 ## Der Kundenordner
 
-| Im Repo | Im Finder (ZIP) | Wann |
-|---|---|---|
-| `README.md` | 0 Übersicht – was noch fehlt | immer zuerst |
-| `steckbrief.xlsx` | 1 Steckbrief | |
-| `dokumente/vertrag-mail.md`, `vereinbarung.md` | 2a, 2b Vertrag | Schritt 4 |
-| `dokumente/abrechnung-mails.md` | 3 Rechnung – Mailtext | Schritt 4, 8 |
-| `dokumente/willkommens-mail.md` | 4 Willkommens-Mail | Schritt 4 |
-| `dokumente/zugaenge-anleitung.md` | 4b Zugänge-Anleitung – als PDF anhängen | Schritt 4 |
-| `dokumente/kalender-anleitung.md` | 4c Kalender verbinden – als PDF anhängen | Schritt 4 |
-| `dokumente/termin-leitfaden.md` | 5 Termin-Leitfaden – als PDF anhängen | Schritt 4 |
-| `zentrale-zeile.txt` | 6 Zeile für die Zentrale | Schritt 4 |
-| `dokumente/kampagnen.md` | 7 Kampagnen | Schritt 6 |
-| `landingpage/` | 8 Seiten für Netlify | Schritt 6 |
-| `anzeigen/creatives/` | 9 Anzeigen-Bilder | Schritt 6 |
-| `anzeigen/` | 10 Anzeigen ansehen | zum Zeigen |
-| `dokumente/teilnahmebedingungen.md` | 11 Verlosung – Teilnahmebedingungen | nur bei Verlosung |
-
-## Zu zweit
-
-„Eure Daten“ im Steckbrief hat beide Partner (Name, Telefon, E-Mail) und wer die Technik macht. Pro Studio
-„Wer von euch betreut das Studio?“ → Platzhalter `{{betreuer_name}}`, `{{betreuer_telefon}}`, `{{betreuer_email}}`,
-`{{technik_name}}`, `{{agentur_vertreter}}` (beide Namen, Vertrag), `{{team_vorstellung}}` (Willkommens-Mail). Die
-Zentrale-Zeile trägt den Betreuer mit; die Zentrale kennt das Team über die Einstellung „team“ (Name = E-Mail).
+| Im Repo | Im Finder (ZIP) |
+|---|---|
+| `LIES-MICH.md` | 0 Lies mich – drei Schritte |
+| `seite/` | 1 Seite für Netlify – Ordner hineinziehen |
+| `kampagnen.md` | 2 Kampagnen – Meta und Google |
+| `anzeigen/creatives/` | 3 Anzeigen-Bilder – bei Meta hochladen |
+| `anzeigen/` | 4 Anzeigen ansehen |
+| `fotos/`, `daten.json` | Fotos – Originale (daten.json bleibt im Repo-Ordner) |
 
 ## Regeln, die im System stecken
 
-- **Ein Studio, eine Behandlung.** Der Steckbrief wählt das Modul; Seite, Anzeigen, Mails und Kampagnen folgen ihm.
+- **Ein Studio, eine Behandlung.** Das Formular prüft, ob der Behandler sie anbieten darf.
 - **Werberecht je Behandlung als Schalter** in `module.py` (`regeln`): Verlosung, Vorher/Nachher, Rabatte,
-  „kostenlos“, Preise, direkte Buchung. Was nicht erlaubt ist, wird gar nicht erst erzeugt. Kunde-anlegen warnt,
-  wenn der Steckbrief etwas will, das nicht geht (z. B. Verlosung bei Faltenbehandlung, Kosmetikstudio mit Faltenbehandlung).
+  „kostenlos“, Preise. Was nicht erlaubt ist, wird gar nicht erst erzeugt. „Botox“ lehnt das Formular ab.
 - **Keine Gesundheitsfragen im Formular.** Ausdrückliche Einwilligung (Art. 9 DSGVO) und Häkchen „mindestens 18“.
-- **Vorbereitungs-Hinweise sind Vorschläge**, bis das Studio sie freigibt (Steckbrief „Vorbereitung freigegeben“).
-- **Nichts erfinden.** Leere Felder erscheinen als `[Feldname]` und stehen unter „Noch offen“. Bewertungen nur echte
-  (bei Faltenbehandlung gar keine), Vorher/Nachher nur wo erlaubt und mit echten Fotos.
+- **Vorbereitungs-Hinweise sind Vorschläge**, bis das Studio sie auf seiner Schritte-Seite freigibt.
+- **Nichts erfinden.** Fehlt etwas, steht `[…]` auf der Seite und kunde-anlegen warnt. Bewertungen nur echte,
+  Vorher/Nachher nur wo erlaubt und mit echten Fotos. Platzhalter-Fotos werden gemeldet.
 - Pixel und Google erst nach Zustimmung, Schriften selbst gehostet (Fraunces, Inter Tight), keine Google Fonts.
-- **Ohne Web-App-Adresse der Zentrale** (Steckbrief „Eure Daten“) zeigen die Seiten Beispiel-Termine (Vorführmodus,
-  auch mit `?demo=1`).
+- **Ohne Adresse der Zentrale** zeigen die Seiten Beispiel-Termine (Vorführmodus, auch mit `?demo=1`).
+- **Verlosungen** sind in Version 2 nicht im Formular (2–3 × im Jahr, bei Bedarf Claude fragen). Code und Vorlage
+  (`verlosung.html`, Ziehung in der Zentrale) sind erhalten.

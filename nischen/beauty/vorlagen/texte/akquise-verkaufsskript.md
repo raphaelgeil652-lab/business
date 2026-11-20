@@ -5,10 +5,10 @@
 
 ## Zu zweit: wer macht was
 
-- **Wer ein Studio anspricht, betreut es auch** (bleibt Ansprechpartner bis zum Ende). Im Steckbrief: „Wer von euch
+- **Wer ein Studio anspricht, betreut es auch** (bleibt Ansprechpartner bis zum Ende). Im Formular „Neuer Kunde“: „Wer
   betreut das Studio?“. Dieser Name steht in allen Mails und Anleitungen an das Studio.
 - **Die Technik** (Kundenordner, Seiten, Kampagnen, Zentrale) macht, wer von euch das besser kann. Kann derselbe sein.
-- **Zum Gespräch gern zu zweit**, vor allem bei Praxen: einer redet, einer zeigt am Tablet und füllt den Steckbrief aus.
+- **Zum Gespräch gern zu zweit**, vor allem bei Praxen: einer redet, einer zeigt am Tablet und füllt das Formular „Neuer Kunde“ aus.
 - Nie dasselbe Studio doppelt ansprechen: vorher in „Akquise“ nachsehen.
 
 ## Wen wir ansprechen
@@ -45,16 +45,16 @@ Deshalb so:
 ## Das Gespräch (20 Minuten, vor Ort oder per Video)
 
 **Am Tag davor (20 Minuten):** Webseite, Impressum, Google Maps und Instagram ansehen. In der
-Facebook-Werbebibliothek (facebook.com/ads/library, Land Deutschland) nachsehen, ob das Studio schon wirbt. Eine
-Steckbrief-Kopie anlegen, öffentliche Angaben und den Betreuer eintragen, an Claude: **„Erzeuge eine Vorschau für [Studio].“**
-Du bekommst seine Terminseite und seine Anzeigen mit seinem Namen.
+Facebook-Werbebibliothek (facebook.com/ads/library, Land Deutschland) nachsehen, ob das Studio schon wirbt.
+Zum Zeigen: das Beispiel der passenden Behandlung (Ordner „03 Beispiele zum Zeigen“).
 
 **Die zwei Fragen, die alles entscheiden:**
 1. „Was bringt Ihnen eine neue Kundin im ersten Jahr im Schnitt?“ (Paket, Kur, Wiederkommen) → Kundenwert
 2. „Wie viele zusätzliche Termine mit Neukundinnen schaffen Sie pro Woche?“ → Kapazität und Budget
 
-Dazu die vier Ja-Fragen im Steckbrief (Entscheider, Qualifikation, Kalender, Fotos) und: „Wie tragen Sie Termine
-heute ein?“ (Google-Kalender → Modus Kalender; Papier oder Programm ohne Abgleich → Modus Wunschtermin).
+Dazu: Ist die Entscheiderin dabei? Ist die Qualifikation da? Gibt es Fotos (oder werden welche gemacht)? Und:
+„Wie tragen Sie Termine heute ein?“ (Google-Kalender → Termine direkt rein; Papier oder Programm ohne Abgleich →
+das Studio bestätigt jeden Termin per Knopf). Alles das fragt das Formular „Neuer Kunde“ der Reihe nach ab.
 
 **Zeigen** (Bildschirm teilen oder Tablet): seine Anzeigen → seine Terminseite → einen Termin durchklicken →
 die Bestätigungsseite. Dabei die drei Stärken nennen:
@@ -68,8 +68,8 @@ die Bestätigungsseite. Dabei die drei Stärken nennen:
 > gekauft hat. Kommen in 30 Tagen keine echten, bestätigten Termine, bekommen Sie das Onboarding zurück. Jederzeit
 > zum Monatsende kündbar. Das Werbebudget zahlen Sie direkt an Meta und Google, nicht an mich.“
 
-Das Budget nennen: Empfehlung aus dem Steckbrief (neben den Budgetfeldern). Die Preis-Empfehlung je Behandlung
-steht im Blatt „Rechnung intern“, du entscheidest.
+Das Budget nennen: Das Formular schlägt es vor, sobald die Kundinnen pro Woche eingetragen sind. Darunter steht die
+Preis-Empfehlung für Onboarding und Monatsgebühr. Du entscheidest.
 
 ## Einwände
 
@@ -86,8 +86,9 @@ steht im Blatt „Rechnung intern“, du entscheidest.
 
 ## Abschluss
 
-1. Steckbrief Teil 1–3 ausgefüllt, oben steht „✓ Studio passt“.
-2. Steckbrief an Claude: „Lege den Kunden aus diesem Steckbrief an.“
-3. Vereinbarung als PDF schicken, unterschrieben zurück. Am selben Tag Rechnung, Google-Konto, Willkommens-Mail.
+1. Formular „Neuer Kunde“ fertig ausfüllen → **„Kunde anlegen“**.
+2. Das Studio öffnet die Willkommens-Mail noch im Gespräch und nimmt die Vereinbarung auf seiner Schritte-Seite an.
+   Die Rechnung geht von selbst raus.
+3. Einen Termin für Meta und Google ausmachen (30 Minuten, Bildschirm teilen), wenn das Studio das nicht allein schafft.
 
 Versprochen werden bestätigte Termine, nie eine Zahl von Käufen oder ein Umsatz.

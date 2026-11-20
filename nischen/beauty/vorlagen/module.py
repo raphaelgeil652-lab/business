@@ -3,7 +3,7 @@ Google-Texte und Planungs-Annahmen. kunde-anlegen.py und tabellen-bauen.py lesen
 
 Wie beim Kfz-Baukasten gilt: Skelett von Seite und Anzeigen ist für alle Kunden gleich, getauscht wird nur das Modul.
 
-Platzhalter {{feld}} füllt kunde-anlegen.py aus dem Steckbrief (z. B. {{betrieb}}, {{ort}}, {{behandler_name}},
+Platzhalter {{feld}} füllt kunde-anlegen.py aus den Daten der Zentrale (z. B. {{betrieb}}, {{ort}}, {{behandler_name}},
 {{beratung_name}}, {{beratung_minuten}}, {{beratung_wort}}, {{leistung_1}}, {{preis_1}}, {{gewinn}}, {{aktion_ende_kurz}}).
 
 Rechtliche Leitplanken (Recherche Nov. 2026, research_notes/Beauty Tool Abläufe und Anzeigen/, keine Rechtsberatung):
@@ -20,7 +20,7 @@ Rechtliche Leitplanken (Recherche Nov. 2026, research_notes/Beauty Tool Abläufe
   keine Rabatte/Gutscheine, keine Verlosung, kein „kostenlos“. „ab“-Preis auf der Seite erlaubt (VG Münster), nicht als Blickfang.
 - Alle: Meta-Zielgruppe ab 18, im Formular Häkchen „mindestens 18“, keine Gesundheitsfragen im Formular.
 
-Vorbereitungs-Hinweise sind VORSCHLÄGE. Das Studio prüft und gibt sie frei (Steckbrief „Vorbereitung freigegeben“).
+Vorbereitungs-Hinweise sind VORSCHLÄGE. Das Studio prüft und gibt sie frei (Schritte-Seite „Hinweise vor dem Termin prüfen“).
 """
 
 BEHANDLER = ["Arzt/Ärztin", "Heilpraktiker/in", "Kosmetik mit NiSV-Fachkunde", "Kosmetik/PMU-Studio", "Zahnarztpraxis"]
@@ -423,4 +423,4 @@ MODULE = {
     },
 }
 
-BEHANDLUNGEN = list(MODULE)  # Reihenfolge im Steckbrief: Laser, Permanent Make-up, Faltenbehandlung, Bleaching
+BEHANDLUNGEN = list(MODULE)  # Reihenfolge im Formular „Neuer Kunde“: Laser, Permanent Make-up, Faltenbehandlung, Bleaching

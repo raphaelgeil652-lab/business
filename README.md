@@ -7,7 +7,7 @@ Diese Startseite ist deine Übersicht.
 
 | Nische | Status | Ordner |
 |---|---|---|
-| 💆 **Beauty** (Laser, Permanent Make-up, Faltenbehandlung, Bleaching) | **aktiver Fokus** seit 20.11.2026: Online-Terminbuchung, fertig gebaut, Probelauf steht an | [`nischen/beauty/`](nischen/beauty/) · Start: [`ANLEITUNG.md`](nischen/beauty/ANLEITUNG.md) |
+| 💆 **Beauty** (Laser, Permanent Make-up, Faltenbehandlung, Bleaching) | **aktiver Fokus** seit 20.11.2026: Online-Terminbuchung, Version 2 (Formular + Schritte-Seite + Automatik), Probelauf 2 steht an | [`nischen/beauty/`](nischen/beauty/) · Start: [`ANLEITUNG.md`](nischen/beauty/ANLEITUNG.md) |
 | 🚗 Kfz-Betriebe (Werkstätten, Aufbereiter, Folierer) | zurückgestellt (vollständig erhalten) | [`nischen/autowerkstaetten/`](nischen/autowerkstaetten/) |
 | 🍳 Küchenstudios | zurückgestellt (vollständig erhalten) | [`nischen/kuechenstudios/`](nischen/kuechenstudios/) |
 | ☀️ Photovoltaik | pausiert seit 20.11.2026, vollständig erhalten (System und Zentrale fertig) | [`nischen/photovoltaik/`](nischen/photovoltaik/) |

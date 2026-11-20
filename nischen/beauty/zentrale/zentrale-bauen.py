@@ -267,7 +267,7 @@ def bauen():
         "4. In Apps Script links das Zahnrad (Projekteinstellungen): Zeitzone „(GMT+01:00) Berlin“ wählen.",
         "5. Oben rechts „Bereitstellen → Neue Bereitstellung“ → Zahnrad → „Web-App“. Ausführen als: Ich. Zugriff: Jeder. "
         "→ Bereitstellen → Zugriff erlauben (Google warnt: „Erweitert → Weiter zu …“ → Zulassen). Die Web-App-URL kopieren "
-        "und im Blatt „Einstellungen“ bei „Web-App-Adresse“ einfügen. Dieselbe Adresse in die Steckbrief-Vorlage, Blatt „Eure Daten“.",
+        "und im Blatt „Einstellungen“ bei „Web-App-Adresse“ einfügen. ",
         "6. Zurück zu diesem Browser-Tab (die Tabelle, nicht Apps Script) und neu laden. Oben rechts neben „Hilfe“ erscheint das Menü „Clickculture“ → „1 · Einrichten“ → zulassen → nochmal „1 · Einrichten“.",
         "7. Testen: siehe Anleitung „1 Beauty-Zentrale einrichten“, Punkt 7.",
     ]
