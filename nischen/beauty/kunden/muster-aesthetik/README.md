@@ -73,5 +73,5 @@ schicken: „Erzeuge Muster Ästhetik neu.“ Die Checkliste (in der Beauty-Zent
 Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `muster-aesthetik`.
 
 **Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-aesthetik/anzeigen/vorschau.html?v=202611201345) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-aesthetik/landingpage/termin.html?demo=1&v=202611201345)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-aesthetik/anzeigen/vorschau.html?v=202611201354) ·
+[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-aesthetik/landingpage/termin.html?demo=1&v=202611201354)

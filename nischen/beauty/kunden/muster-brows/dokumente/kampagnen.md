@@ -177,7 +177,7 @@ ads.google.com → **Konto des Studios** wählen → links **„Kampagnen“** �
     5. Nachstechtermin inklusive
     6. Muster Brows
     7. Freie Termine ansehen
-    8. Powder Brows 390 € inkl. Nachstechen
+    8. Powder Brows 390 €
     9. Weich schattierte Brauen
     10. Erst sehen, dann entscheiden
     11. Ohne Warteschleife buchen
@@ -187,7 +187,7 @@ ads.google.com → **Konto des Studios** wählen → links **„Kampagnen“** �
     15. Handarbeit mit Erfahrung
    Überschrift 1 an **Position 1 anheften**.
 10. Beschreibungen (4, je höchstens 90 Zeichen):
-    1. Beratung mit Vorzeichnen: Sie sehen die Form, bevor pigmentiert wird. Termin online wählen.
+    1. Beratung mit Vorzeichnen: Sie sehen die Form vorab. Termin online wählen.
     2. Powder Brows, Lippen und Lidstrich. Nachstechtermin im Preis enthalten.
     3. Freie Termine sehen und in 30 Sekunden buchen. Bestätigung per E-Mail.
     4. Muster Brows in Musterstadt. Jede Braue einzeln geplant.

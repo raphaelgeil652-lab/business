@@ -217,7 +217,7 @@ MODULE = {
                           "Nachstechtermin inklusive", "{{betrieb}}", "Freie Termine ansehen", "{{leistung_1}} {{preis_1}}",
                           "Weich schattierte Brauen", "Erst sehen, dann entscheiden", "Ohne Warteschleife buchen",
                           "Brauen morgens schon fertig", "Beratung {{beratung_wort}}", "Ihr Termin in 30 Sekunden", "Handarbeit mit Erfahrung"],
-            "descriptions": ["Beratung mit Vorzeichnen: Sie sehen die Form, bevor pigmentiert wird. Termin online wählen.",
+            "descriptions": ["Beratung mit Vorzeichnen: Sie sehen die Form vorab. Termin online wählen.",
                              "Powder Brows, Lippen und Lidstrich. Nachstechtermin im Preis enthalten.",
                              "Freie Termine sehen und in 30 Sekunden buchen. Bestätigung per E-Mail.",
                              "{{betrieb}} in {{ort}}. Jede Braue einzeln geplant."],

@@ -73,5 +73,5 @@ schicken: „Erzeuge Muster Brows neu.“ Die Checkliste (in der Beauty-Zentrale
 Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `muster-brows`.
 
 **Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/anzeigen/vorschau.html?v=202611201345) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/landingpage/termin.html?demo=1&v=202611201345)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/anzeigen/vorschau.html?v=202611201354) ·
+[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-brows/landingpage/termin.html?demo=1&v=202611201354)

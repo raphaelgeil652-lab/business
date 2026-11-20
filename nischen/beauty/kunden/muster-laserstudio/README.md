@@ -75,5 +75,5 @@ schicken: „Erzeuge Muster Laserstudio neu.“ Die Checkliste (in der Beauty-Ze
 Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `muster-laserstudio`.
 
 **Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-laserstudio/anzeigen/vorschau.html?v=202611201345) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-laserstudio/landingpage/termin.html?demo=1&v=202611201345)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-laserstudio/anzeigen/vorschau.html?v=202611201354) ·
+[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-laserstudio/landingpage/termin.html?demo=1&v=202611201354)

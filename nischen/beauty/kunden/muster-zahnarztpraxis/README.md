@@ -72,5 +72,5 @@ schicken: „Erzeuge Muster Zahnarztpraxis neu.“ Die Checkliste (in der Beauty
 Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `muster-zahnarztpraxis`.
 
 **Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/anzeigen/vorschau.html?v=202611201345) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/landingpage/termin.html?demo=1&v=202611201345)
+[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/anzeigen/vorschau.html?v=202611201354) ·
+[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/landingpage/termin.html?demo=1&v=202611201354)

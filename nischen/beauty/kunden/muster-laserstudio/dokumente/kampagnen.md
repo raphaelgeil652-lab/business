@@ -178,7 +178,7 @@ ads.google.com → **Konto des Studios** wählen → links **„Kampagnen“** �
 ```
 8. Finale URL: `https://muster-laserstudio.netlify.app/termin.html` · Pfad: `Laser / Termin`.
 9. Überschriften (15, je höchstens 30 Zeichen; zeigt Google rot, kürzen):
-    1. Laser-Haarentfernung Musterstadt
+    1. Laser-Haarentfernung
     2. Analyse mit Probeschuss
     3. Termin online buchen
     4. Gesamtpreis vorab

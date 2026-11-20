@@ -171,7 +171,7 @@ ads.google.com → **Konto des Studios** wählen → links **„Kampagnen“** �
 ```
 8. Finale URL: `https://muster-aesthetik.netlify.app/termin.html` · Pfad: `Beratung / Termin`.
 9. Überschriften (15, je höchstens 30 Zeichen; zeigt Google rot, kürzen):
-    1. Faltenbehandlung in Musterstadt
+    1. Faltenbehandlung
     2. Beratung zu Hyaluron
     3. Erst beraten, dann entscheiden
     4. Termin online buchen

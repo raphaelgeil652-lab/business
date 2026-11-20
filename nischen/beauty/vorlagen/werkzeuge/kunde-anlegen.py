@@ -315,8 +315,8 @@ def felder(stb, agentur, namen):
     f["google_keywords"] = "\n".join(f'"{fuellen(x, f)}"' for x in g["keywords"])
     f["google_negativ"] = "\n".join(g["negativ"])
     f["google_pfad"] = " / ".join(g["pfad"])
-    f["google_headlines"] = "\n".join(f"    {i}. {fuellen(h, f)}" for i, h in enumerate(g["headlines"], 1))
-    f["google_descriptions"] = "\n".join(f"    {i}. {fuellen(d, f)}" for i, d in enumerate(g["descriptions"], 1))
+    f["google_headlines"] = "\n".join(f"    {i}. {kuerzen(fuellen(h, f), 30, f)}" for i, h in enumerate(g["headlines"], 1))
+    f["google_descriptions"] = "\n".join(f"    {i}. {kuerzen(fuellen(d, f), 90, f)}" for i, d in enumerate(g["descriptions"], 1))
     f["google_titel"] = " | ".join(fuellen(h, f) for h in g["headlines"][:3])
     f["google_text"] = fuellen(g["descriptions"][0], f)
     f["google_hinweis"] = ("\n**Wichtig bei Faltenbehandlung:** Das Wort „Botox“ (und andere Markennamen) nie in Anzeigen oder Keywords: Google "
@@ -329,6 +329,17 @@ def felder(stb, agentur, namen):
     f["farben_css"] = (f"--bg:{fa['bg']};--ink:{fa['ink']};--ink2:{fa['ink']}CC;--muted:#6B665D;--line:{fa['soft']};"
                        f"--accent:{fa['accent']};--soft:{fa['soft']};--dunkel:{fa['dunkel']};--hell:{fa['hell']};")
     return f, mod, hinweise
+
+
+def kuerzen(text, n, f):
+    """Google erlaubt 30 Zeichen je Überschrift, 90 je Beschreibung. Erst Zusätze und Ort weglassen, dann an einer Wortgrenze kürzen."""
+    if len(text) <= n:
+        return text
+    for versuch in (text.split(" inkl.")[0], text.replace(" in " + f.get("ort", ""), ""), text.replace(" " + f.get("ort", ""), "")):
+        if len(versuch) <= n:
+            return versuch.strip()
+    kurz = text[:n + 1].rsplit(" ", 1)[0].rstrip(",:;–-")
+    return kurz
 
 
 def seiten_felder(f, mod, stb, fotos):
