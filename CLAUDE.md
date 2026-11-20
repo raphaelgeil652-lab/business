@@ -386,7 +386,8 @@ und **`10k-websites`** (unverändert, maßgeblich für den Webseitenbau, siehe o
 
 **Beauty ist aktiver Fokus (seit 20.11.2026) und fertig gebaut:** Baukasten mit vier Behandlungen, Steckbrief,
 Terminseite mit Online-Buchung, Beauty-Zentrale (133 Tests) und Ende-zu-Ende-Test (Seite im Browser + Zentrale),
-Anzeigen, alle Texte, Finder-Ordner. **Nächster Schritt:** Beauty-Zentrale einrichten, Steckbrief-Vorlage „Deine Daten“
+Anzeigen, alle Texte, Finder-Ordner. **Beauty-Zentrale ist eingerichtet (Nutzer, 20.11.2026; läuft unter dem gemeinsamen Geschäftskonto, „Wer ist im
+Team?“ bleibt leer, alles geht an die Geschäfts-E-Mail).** **Nächster Schritt:** Steckbrief-Vorlage „Eure Daten“
 ausfüllen, dann Probelauf wie echt (Kollege spielt das Studio, eigener Google-Kalender). Vorher Meta-Werbebibliothek
 von Hand ansehen und Vorlagen der ersten Behandlung anwaltlich prüfen lassen.
 
