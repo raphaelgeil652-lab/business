@@ -173,6 +173,7 @@ EINSTELLUNGEN = [  # (Schlüssel, Einstellung, Vorgabe, Hilfe)
     ("§", "Technik (füllt sich bei der Einrichtung)", None, None),
     ("webapp_url", "Web-App-Adresse", "", "Schritt 5: aus „Bereitstellen“ kopieren (endet auf /exec). Auch in den Gesprächsbogen, Blatt „Eure Daten“"),
     ("schluessel", "Schlüssel", "", "setzt „Einrichten“ von selbst. Nicht weitergeben"),
+    ("portal_url", "Adresse des Portals", "https://clickculture-portal.netlify.app", "Schritte-Seite, Team-Seite und Formular laufen dort (ohne Google-Anmeldung). Leer = direkt über die Zentrale"),
     ("uebersicht_url", "Übersicht (Lesezeichen)", "", "setzt „Einrichten“ von selbst: alle Studios, alles per Knopf. Als Lesezeichen am Handy und Laptop speichern"),
     ("formular_url", "Formular „Neuer Kunde“ (Lesezeichen)", "", "setzt „Einrichten“ von selbst: im Gespräch ausfüllen"),
 ]

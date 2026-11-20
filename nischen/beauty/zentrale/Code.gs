@@ -177,6 +177,12 @@ function doGet(e) {
   if (p.a === 'slots') return json_(sicherJson_(function () { return slotsAnfrage_(p); }));
   if (p.a === 'info') return json_(sicherJson_(function () { return infoAnfrage_(p); }));
   if (p.a === 'bestaetigen' || p.a === 'absagen') return kundenSeite_(p);
+  if (p.format === 'json' && (p.a === 'studio' || p.a === 'neu' || p.a === 'team')) {
+    return json_(sicherJson_(function () {
+      var out = p.a === 'studio' ? studioSeite_(p) : p.a === 'neu' ? formularSeite_(p) : teamSeite_(p);
+      return { ok: true, html: out.getContent(), titel: out.getTitle ? out.getTitle() : '' };
+    }));
+  }
   if (p.a === 'studio') return studioSeite_(p);
   if (p.a === 'neu') return formularSeite_(p);
   if (p.a === 'team') return teamSeite_(p);
@@ -195,7 +201,20 @@ function doPost(e) {
   if (d.a === 'bestaetigen') return json_(gesperrt_(function () { return bestaetigen_(d.id, d.t, s); }));
   if (d.a === 'absagen') return json_(gesperrt_(function () { return absagen_(d.id, d.t, s); }));
   if (d.a === 'anfrage') return json_(gesperrt_(function () { return anfrageDirekt_(d, s); }));
+  if (d.a === 'run') return json_(portalAufruf_(d, s));
   return json_({ ok: false, fehler: 'Unbekannte Aktion.' });
+}
+
+/** Knöpfe aus dem Portal (statt google.script.run). Nur diese Funktionen, jede prüft ihren Schlüssel selbst. */
+function portalAufruf_(d, s) {
+  var erlaubt = { studioAktion: studioAktion, studioFoto: studioFoto, teamAktion: teamAktion, neuerKunde: neuerKunde };
+  var fn = erlaubt[d.fn];
+  if (!fn) return { ok: false, fehler: 'Unbekannte Aktion.' };
+  if (d.fn === 'neuerKunde' && (!s.schluessel || String(d.t) !== String(s.schluessel))) return { ok: false, fehler: 'Link ungültig.' };
+  try { return { ok: true, r: fn.apply(null, d.args || []) }; } catch (err) {
+    fehler_('Portal ' + d.fn, err);
+    return { ok: false, fehler: err.message };
+  }
 }
 
 function gesperrt_(fn) {
@@ -1261,6 +1280,7 @@ var NEUE_EINSTELLUNGEN = [
   ['agentur_google_mcc', 'Google-Ads-Verwaltungskonto (Kunden-ID)', '', 'oben rechts in Google Ads, z. B. 774-518-7262'],
   ['rechnungen_automatisch', 'Rechnungen automatisch als PDF schicken?', 'Ja', 'Ja = Onboarding-Rechnung nach dem Annehmen der Vereinbarung, Monatsgebühr am 1. Nein = nur Zeile anlegen, du schickst selbst'],
   ['erinnerung_studio_tage', 'Studio erinnern nach … Werktagen ohne Fortschritt', 2, 'höchstens 3 Erinnerungen, danach Mail an den Betreuer: anrufen'],
+  ['portal_url', 'Adresse des Portals', 'https://clickculture-portal.netlify.app', 'Schritte-Seite, Team-Seite und Formular laufen dort (ohne Google-Anmeldung). Leer = direkt über die Zentrale'],
   ['uebersicht_url', 'Übersicht (Lesezeichen)', '', 'setzt „Einrichten“ von selbst: alle Studios, alles per Knopf. Als Lesezeichen am Handy und Laptop speichern'],
   ['formular_url', 'Formular „Neuer Kunde“ (Lesezeichen)', '', 'setzt „Einrichten“ von selbst: im Gespräch ausfüllen']
 ];
@@ -1296,7 +1316,7 @@ function neuerKundeFenster() {
   SpreadsheetApp.getUi().showModalDialog(HtmlService.createHtmlOutput(formularHtml_(s)).setWidth(760).setHeight(640), 'Neuer Kunde');
 }
 
-function formularLink_(s) { return basis_(s) + '?a=neu&t=' + encodeURIComponent(s.schluessel || ''); }
+function formularLink_(s) { return portal_(s) + 'a=neu&t=' + encodeURIComponent(s.schluessel || ''); }
 
 function formularSeite_(p) {
   var s = einst_();
@@ -1494,9 +1514,6 @@ function kundeAnlegen_(kunde, vertrag, s, mailSenden) {
     else if (!vt.get(vz, 'Angenommen am')) vt.set(vz, 'Vereinbarung', vertrag);
   }
   var k = kunde_(kz), zeilen = [neu ? '✓ ' + k.betrieb + ' ist angelegt.' : '✓ ' + k.betrieb + ' ist aktualisiert.'];
-  try {
-    if (!k.drive) { fotoOrdner_(k); zeilen.push('✓ Fotos-Ordner in eurem Google Drive angelegt (Clickculture Studios).'); k = kunde_(kz); }
-  } catch (e) { zeilen.push('⚠ Fotos-Ordner ging nicht: ' + e.message); }
   if (mailSenden && neu) {
     willkommensMail_(k, s);
     zeilen.push('✓ Willkommens-Mail mit Vereinbarung und Schritten an ' + k.email + ' geschickt (Kopie an ' + betreuerMail_(k, s) + ').');
@@ -1505,25 +1522,18 @@ function kundeAnlegen_(kunde, vertrag, s, mailSenden) {
   return zeilen.join('\n');
 }
 
-function fotoOrdner_(k) {
-  var it = DriveApp.getFoldersByName('Clickculture Studios'), haupt = it.hasNext() ? it.next() : DriveApp.createFolder('Clickculture Studios');
-  var ordner = haupt.createFolder(k.betrieb + ' (' + k.kuerzel + ') · Fotos');
-  kundeSetzen_(k.kuerzel, { 'Drive-Ordner': ordner.getUrl() });
-  return ordner;
-}
-
-function ordnerAusUrl_(url) {
-  var m = String(url || '').match(/folders\/([\w-]+)/);
-  return m ? DriveApp.getFolderById(m[1]) : null;
-}
-
 function kundeSetzen_(kuerzel, werte) {
   var t = tabelle_('Kunden'), z = t.zeilen.filter(function (x) { return String(t.get(x, 'Kürzel')).trim().toLowerCase() === kuerzel; })[0];
   if (!z) return;
   Object.keys(werte).forEach(function (h) { t.set(z, h, werte[h]); });
 }
 
-function studioLink_(s, k) { return basis_(s) + '?a=studio&k=' + encodeURIComponent(k.kuerzel) + '&t=' + encodeURIComponent(k.token); }
+function portal_(s) {
+  var p = String(s.portal_url || '').trim().replace(/\/+$/, '');
+  return p ? p + '/?z=' + encodeURIComponent(basis_(s)) + '&' : basis_(s) + '?';
+}
+
+function studioLink_(s, k) { return portal_(s) + 'a=studio&k=' + encodeURIComponent(k.kuerzel) + '&t=' + encodeURIComponent(k.token); }
 
 /** E-Mail des Betreuers: aus der Kundenzeile, sonst aus „Wer ist im Team?“, sonst an alle in „Hinweise gehen an“. */
 function betreuerMail_(k, s) { return k.betreuerMail || teamMail_(s, k.betreuer) || s.an; }
@@ -1817,11 +1827,10 @@ function studioFoto(kuerzel, token, name, mime, b64) {
   var s = einst_(), k = kunde_(kuerzel);
   if (!k || !k.token || String(token) !== k.token) throw new Error('Link ungültig');
   if (!/^image\//.test(String(mime)) && !/\.(heic|heif|jpe?g|png|webp)$/i.test(String(name))) throw new Error('Bitte nur Fotos hochladen.');
-  var ordner = ordnerAusUrl_(k.drive) || fotoOrdner_(k);
   var datei = Utilities.newBlob(Utilities.base64Decode(b64), mime || 'image/jpeg', String(name || 'foto.jpg').replace(/[^\w.\- ]/g, '_'));
-  ordner.createFile(datei);
-  var n = 0, it = ordner.getFiles();
-  while (it.hasNext()) { it.next(); n++; }
+  var n = k.fotos + 1;
+  mail_(s, { to: betreuerMail_(k, s), absender: 'Clickculture Zentrale', subject: 'Foto ' + n + ' von ' + k.betrieb + ' (' + k.kuerzel + ')',
+    html: rahmen_('<p>' + esc_(k.betrieb) + ' hat ein Foto hochgeladen. Wenn „alles da“ kommt: alle Fotos dieses Studios an Claude schicken.</p>'), anhang: [datei] });
   kundeSetzen_(kuerzel, { 'Fotos': n });
   return n;
 }
@@ -1875,8 +1884,8 @@ function studiosNachfassen_(s, jetzt, nurKz) {
 function allesDaMail_(k, s) {
   betreuerHinweis_(k, s, '✓ ' + k.betrieb + ': alles vom Studio da. Jetzt Seite und Kampagnen',
     '<p>' + esc_(k.betrieb) + ' hat alle Schritte erledigt. Jetzt ihr, in dieser Reihenfolge:</p><ol>' +
-    '<li><b>Fotos holen:</b> <a href="' + esc_(k.drive) + '">Fotos-Ordner</a> öffnen → oben auf den Ordnernamen → <b>Herunterladen</b> (kommt als ZIP).</li>' +
-    '<li><b>An Claude:</b> das ZIP und den Text unten schicken mit „Baue die Seite für ' + esc_(k.kuerzel) + '“. Du bekommst den Ordner für Netlify und die Anzeigen.</li>' +
+    '<li><b>Fotos:</b> Sie kamen als Mails „Foto … von ' + esc_(k.betrieb) + '“. Die Anhänge speichern.</li>' +
+    '<li><b>An Claude:</b> die Fotos und den Text unten schicken mit „Baue die Seite für ' + esc_(k.kuerzel) + '“. Claude stellt sie online.</li>' +
     '<li><b>Netlify:</b> app.netlify.com → <b>Add new project → Deploy manually</b> → den Ordner „seite“ hineinziehen → Projekt-Einstellungen → Name: <b>' + esc_(k.kuerzel) + '</b>.</li>' +
     '<li><b>Meta:</b> Datensatz (Pixel) anlegen, die ID auf der <a href="' + esc_(teamLink_(s, k.kuerzel)) + '">Team-Seite</a> eintragen. Kampagne nach der Kampagnen-Anleitung von Claude.</li>' +
     '<li><b>Google:</b> Conversion anlegen, „AW-…/…“ auf der Team-Seite eintragen. Kampagne.</li>' +
@@ -1931,7 +1940,7 @@ function teamToken_(s, kz) {
   return Utilities.base64EncodeWebSafe(sig).replace(/=+$/, '').slice(0, 22);
 }
 
-function teamLink_(s, kz) { return basis_(s) + '?a=team' + (kz ? '&k=' + encodeURIComponent(kz) : '') + '&t=' + teamToken_(s, kz); }
+function teamLink_(s, kz) { return portal_(s) + 'a=team' + (kz ? '&k=' + encodeURIComponent(kz) : '') + '&t=' + teamToken_(s, kz); }
 
 function teamOk_(s, kz, t) { return !!s.schluessel && String(t) === teamToken_(s, kz); }
 
@@ -1982,10 +1991,10 @@ function teamStudio_(kz, s) {
   html += '<div class="box"><h2>Schritte des Studios</h2><table>' + auf.map(function (a) {
     return '<tr><td>' + (a.fertig ? '✓' : '○') + ' ' + esc_(a.titel) + '</td></tr>';
   }).join('') + '</table><p class="k">So sieht das Studio seine Seite: <a href="' + esc_(studioLink_(s, k)) + '" target="_blank">Schritte-Seite öffnen</a>' +
-    (k.drive ? ' · <a href="' + esc_(k.drive) + '" target="_blank">Fotos-Ordner</a>' : '') + '</p>' +
+    ' · Fotos: ' + k.fotos + ' (kamen per Mail)</p>' +
     (k.status === 'Angelegt' ? form('erinnern', '', 'Studio jetzt erinnern', '', true) : '') + '</div>';
   // 2 · Einrichten
-  html += '<details class="box"><summary><b>Text für Claude</b> (Seite und Anzeigen bauen lassen)</summary><p class="k">Alles markieren, kopieren und Claude schicken, zusammen mit den Fotos (Fotos-Ordner → Herunterladen).</p>' +
+  html += '<details class="box"><summary><b>Text für Claude</b> (Seite und Anzeigen bauen lassen)</summary><p class="k">Alles markieren, kopieren und Claude schicken, zusammen mit den Fotos aus euren Mails.</p>' +
     '<textarea rows="5" readonly onclick="this.select()" style="font-size:11px;font-family:monospace;">' + esc_(JSON.stringify(studioDaten_(k, s))) + '</textarea></details>';
   html += '<div class="box"><h2>Einrichten</h2><p class="k">Wirkt sofort, die Seite muss dafür nicht neu hochgeladen werden.</p>' +
     form('einrichten', '<div class="zwei"><label>Meta-Pixel (Datensatz-ID)<input name="pixel" value="' + esc_(k.pixel) + '" inputmode="numeric"></label>' +

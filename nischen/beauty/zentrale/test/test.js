@@ -148,7 +148,7 @@ const ctx = {
   Session: { getScriptTimeZone: () => TZ, getEffectiveUser: () => ({ getEmail: () => 'besitzer@gmail.com' }) },
   LockService: { getScriptLock: () => ({ waitLock: () => {}, releaseLock: () => {} }) },
   PropertiesService: { getScriptProperties: () => ({ getProperty: k => props[k] || null, setProperty: (k, v) => { props[k] = v; } }) },
-  HtmlService: { createHtmlOutput: h => { const o = { html: h, setTitle: () => o, addMetaTag: () => o, setWidth: () => o, setHeight: () => o }; return o; } },
+  HtmlService: { createHtmlOutput: h => { const o = { html: h, getContent: () => h, getTitle: () => 'T', setTitle: () => o, addMetaTag: () => o, setWidth: () => o, setHeight: () => o }; return o; } },
   ContentService: { MimeType: { JSON: 'json' }, createTextOutput: t => { const o = { text: t, setMimeType: () => o }; return o; } },
   UrlFetchApp: {
     fetch: (url, opt) => {
@@ -611,7 +611,7 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   pruefe(k.zeiten === 'Di 9-18; Mi 9:30-12 14-18; Sa 10-14' && k.raster === 30 && k.modus === 'Kalender' && k.kalender === 'kate@studio.de', 'Zeiten, Takt und Kalender aus dem Formular');
   pruefe(k.leistungen.length === 2 && k.leistungen[1].name === 'Lippen / Aquarell' && k.leistungen[1].minuten === 150, 'Leistungen: leere Zeile weg, „|“ im Namen entschärft');
   pruefe(/40 €/.test(k.ausfall) && /Augenbrauen|Brauen|Tag/.test(k.vorbereitung) && k.seite === 'https://kate-cosmetics.netlify.app', 'Ausfallregel, Vorschlag Vorbereitung, Seitenadresse');
-  pruefe(k.betreuerMail === 'tom@agentur.de' && k.betreuerTelefon === '0151 1111111' && k.drive.includes('drive.google.com'), 'Betreuer-Mail aus dem Team, Fotos-Ordner angelegt');
+  pruefe(k.betreuerMail === 'tom@agentur.de' && k.betreuerTelefon === '0151 1111111', 'Betreuer-Mail aus dem Team');
   const v = G.vertrag_('kate-cosmetics');
   pruefe(v.includes('Kate Cosmetics, Inh. Katleen Miner') && v.includes('Powder Brows (120 Min., 390 €)') && v.includes('800 €') && v.includes('20 km um Lindau') && !/\{\{/.test(v), 'Vereinbarung ist ausgefüllt, keine {{Platzhalter}}');
   const w = mails.slice(vorher).find(x => x.to === 'kate@studio.de');
@@ -635,7 +635,15 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   pruefe(A('behandler', { behandler: 'Katleen Miner, PMU Artist' }).ok, 'Behandler gespeichert');
   pruefe(A('vorbereitung', { text: '- Kein Alkohol am Vortag\n\n• Keine Blutverdünner' }).ok && G.kunde_('kate-cosmetics').vorbereitung === 'Kein Alkohol am Vortag • Keine Blutverdünner', 'Vorbereitung: Zeilen → Punkte, freigegeben');
   for (let i = 0; i < 3; i++) G.studioFoto(sp.k, sp.t, 'foto' + i + '.jpg', 'image/jpeg', Buffer.from('bild').toString('base64'));
-  pruefe(G.kunde_('kate-cosmetics').fotos === 3, '3 Fotos hochgeladen und gezählt');
+  pruefe(G.kunde_('kate-cosmetics').fotos === 3 && mails.filter(m => m.subject.startsWith('Foto ') && m.attachments && m.attachments.length).length === 3, '3 Fotos hochgeladen, gezählt, als Anhang an den Betreuer');
+  // Portal: Seite als JSON, Knöpfe per POST
+  const pj = get({ a: 'studio', k: sp.k, t: sp.t, format: 'json' });
+  pruefe(pj.ok && pj.html.includes('Ihre Schritte'), 'Portal holt die Schritte-Seite als JSON');
+  pruefe(post({ a: 'run', fn: 'studioAktion', args: [sp.k, sp.t, 'behandler', { behandler: 'Katleen Miner, PMU Artist' }] }).ok, 'Portal: Knopf per POST');
+  pruefe(!post({ a: 'run', fn: 'neuerKunde', args: [{}], t: 'falsch' }).ok && !post({ a: 'run', fn: 'einrichten', args: [] }).ok, 'Portal: Formular nur mit Schlüssel, andere Funktionen gesperrt');
+  G.einstSetzen_('portal_url', 'https://clickculture-portal.netlify.app');
+  pruefe(G.studioLink_(G.einst_(), G.kunde_('kate-cosmetics')).startsWith('https://clickculture-portal.netlify.app/?z=https%3A%2F%2Fscript.google.com'), 'Links zeigen aufs Portal');
+  G.einstSetzen_('portal_url', '');
   let x2 = A('kalender', { kalender: 'kate@studio.de' });
   pruefe(!x2.ok && /Noch keine Freigabe/.test(x2.meldung), 'Kalender noch nicht freigegeben → klarer Hinweis');
   kalender['kate@studio.de'] = [];
@@ -665,7 +673,7 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   A('google-ok', {});
   uhr('2027-03-12 08:00'); G.taeglich();
   const da = mails.slice(m0).find(x => x.to === 'tom@agentur.de' && x.subject.includes('alles vom Studio da'));
-  pruefe(da && da.htmlBody.includes('clickculture-beauty-studio') && da.htmlBody.includes('https://kate.de/impressum') && da.htmlBody.includes('Herunterladen'), '„Alles da“: Mail an den Betreuer mit Text für Claude und nächsten Schritten');
+  pruefe(da && da.htmlBody.includes('clickculture-beauty-studio') && da.htmlBody.includes('https://kate.de/impressum') && da.htmlBody.includes('Anhänge'), '„Alles da“: Mail an den Betreuer mit Text für Claude und nächsten Schritten');
   m0 = mails.length; G.taeglich();
   pruefe(!mails.slice(m0).some(x => x.subject.includes('alles vom Studio da')), '„Alles da“ nur einmal');
 

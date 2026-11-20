@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>Clickculture</title>
+<style>body{margin:0;background:#F7F4EE;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A1917;}#lade{max-width:560px;margin:60px auto;padding:0 16px;font-size:17px;}</style>
+</head><body><div id="lade">Wird geladen …</div>
+<script>
+/* Portal: zeigt Schritte-Seite (a=studio), Team-Seite (a=team) und Formular „Neuer Kunde“ (a=neu) aus der Beauty-Zentrale.
+   Holt die Seite als JSON (ohne Google-Anmeldung, daher kein Problem mit mehreren Google-Konten) und leitet die Knöpfe
+   per POST an die Zentrale weiter. Adresse der Zentrale steht im Link (?z=…). */
+(function () {
+  var q = new URLSearchParams(location.search), Z = q.get('z') || '';
+  var lade = document.getElementById('lade');
+  if (!/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(Z)) { lade.textContent = 'Dieser Link ist nicht vollständig.'; return; }
+  function post(d) {
+    return fetch(Z, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d) }).then(function (r) { return r.json(); });
+  }
+  // Ersatz für google.script.run: dieselben Aufrufe, nur über die Zentrale
+  function lauf(ok, fehl) {
+    return new Proxy({}, { get: function (_, fn) {
+      if (fn === 'withSuccessHandler') return function (f) { return lauf(f, fehl); };
+      if (fn === 'withFailureHandler') return function (f) { return lauf(ok, f); };
+      return function () {
+        post({ a: 'run', fn: fn, args: Array.prototype.slice.call(arguments), t: q.get('t') || '' }).then(function (r) {
+          if (r.ok) { if (ok) ok(r.r); } else if (fehl) fehl(new Error(r.fehler || 'Fehler'));
+        }).catch(function (e) { if (fehl) fehl(new Error('Keine Verbindung. Bitte nochmal versuchen.')); });
+      };
+    } });
+  }
+  window.google = { script: { run: lauf() } };
+  var p = new URLSearchParams(q); p.delete('z'); p.set('format', 'json');
+  fetch(Z + '?' + p.toString()).then(function (r) { return r.json(); }).then(function (r) {
+    if (!r.ok) { lade.textContent = r.fehler || 'Nicht gefunden.'; return; }
+    if (r.titel) document.title = r.titel;
+    var box = document.createElement('div'); box.innerHTML = r.html;
+    lade.remove(); document.body.appendChild(box);
+    Array.prototype.forEach.call(box.querySelectorAll('script'), function (alt) {
+      var s = document.createElement('script'); s.textContent = alt.textContent; alt.replaceWith(s);
+    });
+    // Links auf andere Seiten der Zentrale (Übersicht ↔ Studio) im Portal öffnen
+    Array.prototype.forEach.call(box.querySelectorAll('a[href^="' + Z + '"]'), function (a) {
+      a.href = location.pathname + '?z=' + encodeURIComponent(Z) + '&' + a.href.split('?')[1];
+    });
+  }).catch(function () { lade.textContent = 'Die Seite ist gerade nicht erreichbar. Bitte in einer Minute nochmal öffnen.'; });
+})();
+</script></body></html>

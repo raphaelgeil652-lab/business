@@ -107,7 +107,10 @@ def main():
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,62}", name):
         sys.exit(f"✗ „{name}“ geht nicht als Projektname (nur kleine Buchstaben, Ziffern, Bindestrich).")
     seite = KUNDEN / kuerzel / "seite"
-    if not (seite / "termin.html").exists():
+    if kuerzel == "portal":  # das Portal (Schritte-Seite, Team-Seite, Formular) liegt im eigenen Ordner
+        seite = HIER.parent.parent / "portal"
+        name = args[args.index("--name") + 1] if "--name" in args else "clickculture-portal"
+    if not ((seite / "termin.html").exists() or (seite / "index.html").exists()):
         sys.exit(f"✗ {seite} fehlt. Erst kunde-anlegen.py laufen lassen.")
     daten = json.loads((KUNDEN / kuerzel / "daten.json").read_text(encoding="utf-8")) if (KUNDEN / kuerzel / "daten.json").exists() else {}
     projekt = projekt_finden(name) or projekt_anlegen(name)
