@@ -115,11 +115,19 @@ def main():
     daten = json.loads((KUNDEN / kuerzel / "daten.json").read_text(encoding="utf-8")) if (KUNDEN / kuerzel / "daten.json").exists() else {}
     projekt = projekt_finden(name) or projekt_anlegen(name)
     adresse = (projekt.get("ssl_url") or projekt.get("url") or f"https://{name}.netlify.app").rstrip("/")
-    inhalt = zip_bauen(seite)
-    print(f"… lade {len(inhalt) // 1024} KB hoch")
-    status, deploy = anfrage("POST", f"/sites/{projekt['id']}/deploys", inhalt, "application/zip")
+    import hashlib
+    dateien = {"/" + q.relative_to(seite).as_posix(): q for q in sorted(seite.rglob("*")) if q.is_file() and not q.name.startswith(".")}
+    sha = {pfad: hashlib.sha1(q.read_bytes()).hexdigest() for pfad, q in dateien.items()}
+    print(f"… lade {len(dateien)} Dateien hoch")
+    status, deploy = anfrage("POST", f"/sites/{projekt['id']}/deploys", {"files": sha})
     if status not in (200, 201):
         sys.exit(f"✗ Hochladen ging nicht ({status}): {deploy}")
+    fehlend = set(deploy.get("required") or [])
+    for pfad, q in dateien.items():
+        if sha[pfad] in fehlend:
+            st, antwort = anfrage("PUT", f"/deploys/{deploy['id']}/files{pfad}", q.read_bytes(), "application/octet-stream")
+            if st not in (200, 201):
+                sys.exit(f"✗ {pfad} ging nicht ({st}): {antwort}")
     for _ in range(60):
         if deploy.get("state") in ("ready", "error"):
             break
@@ -127,7 +135,7 @@ def main():
         _, deploy = anfrage("GET", f"/deploys/{deploy['id']}")
     if deploy.get("state") != "ready":
         sys.exit(f"✗ Netlify meldet „{deploy.get('state')}“: {deploy.get('error_message') or ''}")
-    print(f"✓ Online (Netlify meldet „bereit“): {adresse}/termin.html  · einmal im Browser öffnen und ansehen")
+    print(f"✓ Online (Netlify meldet „bereit“): {adresse}  · einmal im Browser öffnen und ansehen")
     soll = str(daten.get("seite") or "").rstrip("/")
     if soll and soll != adresse:
         print(f"! Die Zentrale kennt die Adresse {soll}. Auf der Team-Seite des Studios bei „Adresse der Seite“ {adresse} eintragen"
