@@ -14,7 +14,7 @@ Direkte Anweisungen des Nutzers im Chat haben Vorrang.
 
 ## Zwei getrennte Geschäfte in diesem Repo
 
-1. **Agentur Clickculture** (alles Weitere in dieser Datei: Kfz, Küchenstudios, Chinatown,
+1. **Agentur Clickculture** (alles Weitere in dieser Datei: Beauty, Kfz, Küchenstudios, Photovoltaik, Chinatown,
    `anleitungen/`, `grundlagen/`). Bleibt unverändert.
 2. **Webseitenbau** als eigenes Geschäft: Webseiten für beliebige Unternehmen, egal ob Restaurant,
    Café, Werkstatt oder Küchenstudio. Es sind einfach Webseiten, kein Agenturkunde.
@@ -73,16 +73,40 @@ muss die Routine mitgeändert werden.
 
 ---
 
-## Zwei Nischen, zwei Ordner
+## Nischen der Agentur
 
 | Nische | Status | Ordner |
 |---|---|---|
-| **Kfz-Betriebe** | **aktiver Fokus** (seit Juli 2026) | `nischen/autowerkstaetten/` |
+| **Beauty** (Laser, Permanent Make-up, Faltenbehandlung, Bleaching) | **aktiver Fokus** (seit 20.11.2026), fertig gebaut, Probelauf steht an | `nischen/beauty/` |
+| Kfz-Betriebe | zurückgestellt, vollständig erhalten | `nischen/autowerkstaetten/` |
 | Küchenstudios | zurückgestellt, vollständig erhalten | `nischen/kuechenstudios/` |
 | Photovoltaik | **pausiert seit 20.11.2026**, vollständig erhalten, nicht löschen. Grund: ein Kontakt aus der PV-Branche berichtet, dass Meta- und Google-Ads dort schwach laufen | `nischen/photovoltaik/` |
-| Beauty & Körper (Ästhetik, Zahnästhetik, Heilpraktiker, Massage, Breathwork …) | **in Prüfung** (Recherche Nov. 2026), noch nichts gebaut | `reports/`, `research_notes/` |
 
-**Photovoltaik:** Grundlage ist das nischenneutrale Betriebshandbuch (Claude-Doc,
+**Beauty (aktiv):** Online-Terminbuchung statt Rückruf. **Ein Studio, eine Behandlung** aus dem Baukasten
+`nischen/beauty/vorlagen/module.py` (Laser · Permanent Make-up · Faltenbehandlung · Bleaching): die eine Quelle für
+Werberegeln (Schalter `regeln`), Seitentexte, Anzeigen, Vorbereitung, Google-Texte und Planungs-Annahmen.
+**Der Ablauf steht in `nischen/beauty/ANLEITUNG.md`** (wie bei PV: Vorbereiten + 8 Schritte, einfache Sprache).
+Steckbrief `vorlagen/tabellen/01-steckbrief.xlsx` (prüft auch, ob der Behandler die Behandlung darf; Budget =
+Termine/Woche × Kosten pro Termin je Modul, 300–2.000 €) → `kunde-anlegen.py` → `kunden/<kürzel>/` →
+`werkzeuge/clickculture-ordner-bauen.py --kunde <kürzel>`. **Eigene Beauty-Zentrale** `nischen/beauty/zentrale/`
+(getrennt von der PV-Zentrale, die unverändert bleibt): Web-App liefert freie Zeiten (Google-Kalender des Studios über
+Freigabe „Änderungen an Terminen vornehmen“, oder Modus Wunschtermin mit Bestätigungsknöpfen), nimmt Buchungen an,
+**Termin erst nach Bestätigung per E-Mail fest** (Platz 45 Min. reserviert), dann Kalendereintrag, Bestätigung mit
+Vorbereitung + .ics, Erinnerung 24 h vorher, Absage-Link, Abend-Mail 19 Uhr (erschienen · nicht erschienen ·
+gekauft), Rückruf-Formular (Netlify-Webhook) wie bei PV. **Fake-Schutz:** Bot- und Zeit-Falle, Name/Telefon/E-Mail
+(Wegwerf, DNS), Sperrliste + Knopf „Fake melden“, ein offener Termin pro Person, Flut-Schutz. Meta „Lead“ und
+Google-Conversion feuern **nur auf `bestaetigen.html`**. **Nach jeder Änderung beide Tests:**
+`node nischen/beauty/zentrale/test/test.js` und `node nischen/beauty/zentrale/test/seiten-test.js`.
+**Harte Regeln (Recherche Nov. 2026, `modul-beauty.md`):** Faltenbehandlung nur Ärzte (Hyaluron auch Heilpraktiker),
+nie „Botox“, kein Vorher/Nachher, keine Verlosung/Rabatte, kein „kostenlos“ (OLG Frankfurt 6 U 60/26), erst Beratung;
+Bleaching nur Zahnarztpraxen, sachlich; Laser nur mit NiSV-Fachkunde, „dauerhaft“ nie ohne Hinweis auf Sitzungen;
+alle: Meta 18+, Häkchen „mindestens 18“, Art.-9-Einwilligung, keine Gesundheitsfragen im Formular. Vorbereitungs-
+Hinweise sind Vorschläge bis zur Freigabe durch das Studio. Keine Kaltanrufe bei Praxen (BVerwG). Vier erfundene
+Beispielstudios (`beispiele-bauen.py`) liegen im Repo, echte nie (`.gitignore`). Mail-Grenze: kostenloses Google-Konto
+~100 Mails/Tag (~20 Buchungen), ab 4–5 Studios Workspace. Offene Prüfung: Meta-Werbebibliothek von Hand, Vorlagen
+anwaltlich prüfen. Recherche: `research_notes/Beauty …/`, Bericht `reports/Beauty Nischen Profitabilität Deutschland.md`.
+
+**Photovoltaik (pausiert seit 20.11.2026, Grund: laut Kontakt aus der PV-Branche laufen Meta/Google dort schwach):** Grundlage ist das nischenneutrale Betriebshandbuch (Claude-Doc,
 https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN) und `modul-photovoltaik.md`.
 **Der Ablauf steht in `nischen/photovoltaik/ANLEITUNG.md`** (Vorbereiten + 8 Schritte in der
 Reihenfolge, wie man an den Kunden rangeht; einfache Sprache, auch für den Kollegen). Sie ist die eine
@@ -158,7 +182,7 @@ und damit die kleinere Fee. Details: `nischen/autowerkstaetten/businessplan.md`.
 
 ---
 
-## Aktive Nische: Kfz-Betriebe
+## Kfz-Betriebe (zurückgestellt seit 20.11.2026, vollständig erhalten)
 
 **Zielgruppe:** Autowerkstätten, Aufbereiter/Detailer, Folierer, Karosseriebauer, Reifenhändler.
 Inhabergeführt, 1–8 Mitarbeiter, schwacher Digitalauftritt bei gutem Google-Profil.
@@ -208,13 +232,19 @@ Region: Pfullendorf / Landkreis Sigmaringen + Umland. Zielradius je Kampagne **m
 - `README.md` — **Start-/Übersichtsseite** mit klickbaren Links zu den fertigen Seiten. Erste Anlaufstelle.
 - `CLAUDE.md` — diese Übersicht. Bei jeder größeren Entscheidung aktuell halten.
 - `werkzeuge/clickculture-ordner-bauen.py` — baut den **Finder-Ordner „Clickculture“** (Texte als
-  Word, Tabellen, Seiten) samt ZIP für den Nutzer; `--kunde <kürzel>` exportiert einen PV-Kunden
-  einzeln. Reihenfolge = Weg zum Kunden: 00 START HIER + 00 Anleitung · 01 Vorbereiten · 02 Kunden
-  finden · 03 Videocall · 04 Kundenordner · 05 Hilfe beim Einrichten · 06 Hintergrund und Wissen ·
-  07 Andere Nischen und Aufträge. Nach Änderungen neu bauen und dem Nutzer schicken.
+  Word, Tabellen, Seiten) samt ZIP für den Nutzer; `--kunde <kürzel>` exportiert einen Kunden einzeln
+  (Beauty, sonst PV). **Beauty vorne:** 00 START HIER + 00 Anleitung · 01 Vorbereiten (Beauty-Zentrale) ·
+  02 Studios finden · 03 Gespräch (Steckbrief + 4 Beispiele) · 04 Kundenordner · 05 Hilfe · 06 Hintergrund ·
+  07 Andere Nischen (darin **Photovoltaik (pausiert)** vollständig, Kfz, Küchen, Chinatown). Nach Änderungen neu bauen und dem Nutzer schicken.
 - `zentrale/` — die Zentrale (siehe Photovoltaik): `Code.gs`, `zentrale-bauen.py`, `EINRICHTEN.md`, `test/`.
 
-### `nischen/autowerkstaetten/` — aktiver Fokus
+### `nischen/beauty/` — aktiver Fokus
+- `README.md` (Übersicht mit Öffnen-Links) · `ANLEITUNG.md` (der Ablauf) · `modul-beauty.md` (Regeln, Zahlen, Quellen) · `hilfe-einrichten.md`
+- `vorlagen/` — `module.py` (Baukasten), `tabellen/`, `texte/`, `landingpage/` (termin, danke, bestaetigen, absagen, rueckruf-danke, verlosung + seite.css, buchung.js, messung.js), `anzeigen/`, `assets/` (Fonts, Platzhalterfotos je Modul), `werkzeuge/` (kunde-anlegen, tabellen-bauen, beispiele-bauen, creatives-rendern), `LIES-MICH.md`
+- `zentrale/` — `Code.gs`, `zentrale-bauen.py`, `EINRICHTEN.md`, `test/test.js`, `test/seiten-test.js`
+- `kunden/` — vier erfundene Beispielstudios (echte Kunden gitignored)
+
+### `nischen/autowerkstaetten/` — zurückgestellt
 - `README.md` — Einstieg in die Nische
 - `businessplan.md` — der komplette Plan (Positionierung, Angebot, Zahlen, Zeitplan, Risiken)
 - `geschaeftsmodell.md` — Preise, 7k-Rückrechnung, Weg zu 10k/Monat
@@ -351,15 +381,11 @@ und **`10k-websites`** (unverändert, maßgeblich für den Webseitenbau, siehe o
 
 ## Aktueller Stand
 
-Kfz-Nische ist **vollständig aufgesetzt**: Businessplan, Service-Baukasten, Landingpage, Pitch-Seite,
-Verkaufsskript, Vertrag, Onboarding-Mail, Fahrplan. **Noch keine Klienten, Lead-Liste noch zu füllen.**
+**Beauty ist aktiver Fokus (seit 20.11.2026) und fertig gebaut:** Baukasten mit vier Behandlungen, Steckbrief,
+Terminseite mit Online-Buchung, Beauty-Zentrale (133 Tests) und Ende-zu-Ende-Test (Seite im Browser + Zentrale),
+Anzeigen, alle Texte, Finder-Ordner. **Nächster Schritt:** Beauty-Zentrale einrichten, Steckbrief-Vorlage „Deine Daten“
+ausfüllen, dann Probelauf wie echt (Kollege spielt das Studio, eigener Google-Kalender). Vorher Meta-Werbebibliothek
+von Hand ansehen und Vorlagen der ersten Behandlung anwaltlich prüfen lassen.
 
-**Ziel: 7.000 € bis 01.10.2026** → **3–4 Abschlüsse im August**, davon mindestens 2 in der ersten
-Monatshälfte (je früher die Unterschrift, desto mehr Retainer-Monate zählen noch vor dem Stichtag).
-
-Hebel = **jetzt akquirieren**: Kfz-Betriebe vor Ort abklappern, 15–25 Kontakte pro Woche
-(`nischen/autowerkstaetten/akquise/verkaufsskript.md`). Nächster Schritt:
-`nischen/autowerkstaetten/akquise/fahrplan-erster-umsatz.md`.
-
-Der große Automatik-Überbau (GHL/n8n/CAPI) kommt erst ab ~10 Kunden. Für PV läuft ab Kunde 1 die
-schlanke Zentrale (Google-Tabelle + Apps Script, kostenlos), auf Wunsch des Nutzers.
+Photovoltaik ist pausiert, Kfz und Küchen sind zurückgestellt. Alles bleibt vollständig erhalten, nichts löschen.
+Der große Automatik-Überbau (GHL/n8n/CAPI) kommt erst ab ~10 Kunden.

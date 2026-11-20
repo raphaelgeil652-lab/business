@@ -3,13 +3,14 @@
 Lokale Werbe-Agentur: Werbung (Meta + Google) → Anfragen → Termine für den Kunden.
 Diese Startseite ist deine Übersicht.
 
-**Zwei Nischen, zwei Ordner:**
+**Nischen und Aufträge:**
 
 | Nische | Status | Ordner |
 |---|---|---|
-| 🚗 **Kfz-Betriebe** (Werkstätten, Aufbereiter, Folierer) | **aktiver Fokus** | [`nischen/autowerkstaetten/`](nischen/autowerkstaetten/) |
+| 💆 **Beauty** (Laser, Permanent Make-up, Faltenbehandlung, Bleaching) | **aktiver Fokus** seit 20.11.2026: Online-Terminbuchung, fertig gebaut, Probelauf steht an | [`nischen/beauty/`](nischen/beauty/) · Start: [`ANLEITUNG.md`](nischen/beauty/ANLEITUNG.md) |
+| 🚗 Kfz-Betriebe (Werkstätten, Aufbereiter, Folierer) | zurückgestellt (vollständig erhalten) | [`nischen/autowerkstaetten/`](nischen/autowerkstaetten/) |
 | 🍳 Küchenstudios | zurückgestellt (vollständig erhalten) | [`nischen/kuechenstudios/`](nischen/kuechenstudios/) |
-| ☀️ Photovoltaik | System mit Zentrale (Automatik) fertig, Probelauf mit erfundenem Kunden | [`nischen/photovoltaik/`](nischen/photovoltaik/) |
+| ☀️ Photovoltaik | pausiert seit 20.11.2026, vollständig erhalten (System und Zentrale fertig) | [`nischen/photovoltaik/`](nischen/photovoltaik/) |
 | ☕ **Tagwerk** (Demo-Webseite, erfundene Kaffeemarke) | Vorzeige-Stück für Webseitenbau | [`nischen/tagwerk/`](nischen/tagwerk/) |
 | 🌿 **Alex Außenanlagen** (Pfullendorf) | Webseiten-Kunde: Garten, Erdarbeiten, Pflaster | [`nischen/alex-aussenanlagen/`](nischen/alex-aussenanlagen/) |
 | 🏄 **Wakepark Pfullendorf** | Webseiten-Entwurf: Wasserskianlage am Seepark Linzgau | [`nischen/wakepark-pfullendorf/`](nischen/wakepark-pfullendorf/) |

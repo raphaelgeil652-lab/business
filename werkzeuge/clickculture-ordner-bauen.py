@@ -5,9 +5,10 @@ Aufruf (aus dem Repo-Hauptordner):
     python3 werkzeuge/clickculture-ordner-bauen.py [Zielordner]
         → <Zielordner>/Clickculture/ und <Zielordner>/Clickculture.zip   (Standard: ./clickculture-build)
     python3 werkzeuge/clickculture-ordner-bauen.py --kunde <kürzel> [Zielordner]
-        → nur dieser PV-Kunde als eigener Ordner + ZIP, zum Ablegen in „04 Kundenordner“
+        → nur dieser Kunde (Beauty, sonst Photovoltaik) als eigener Ordner + ZIP, zum Ablegen in „04 Kundenordner“
 
-Die Ordner stehen in der Reihenfolge, wie man an einen Kunden rangeht (wie nischen/photovoltaik/ANLEITUNG.md).
+Aktive Nische ist Beauty (seit 20.11.2026). Die Ordner stehen in der Reihenfolge, wie man an ein Studio rangeht
+(wie nischen/beauty/ANLEITUNG.md). Photovoltaik liegt vollständig unter „07 Andere Nischen › Photovoltaik (pausiert)“.
 Jeder Name sagt, was man damit tut. Braucht pandoc. Webseitenbau, persönliche Entwicklung und
 Videoschnitt gehören nicht hinein.
 """
@@ -25,45 +26,64 @@ PV = N / "photovoltaik"
 V = PV / "vorlagen"
 Z = REPO / "zentrale"
 MUSTER = PV / "kunden" / "muster-solartechnik"
+B = N / "beauty"
+BV = B / "vorlagen"
+BZ = B / "zentrale"
+BEISPIELE = [("muster-laserstudio", "Laser-Haarentfernung"), ("muster-brows", "Permanent Make-up"),
+             ("muster-aesthetik", "Faltenbehandlung (Ärztin)"), ("muster-zahnarztpraxis", "Bleaching (Zahnarztpraxis)")]
+PVO = "07 Andere Nischen und Aufträge/Photovoltaik (pausiert)"
 
-ANLEITUNG = "00 Anleitung – vom ersten Anruf bis zur laufenden Kampagne.docx"
-O1, O2, O3, O4 = "01 Vorbereiten (einmal)", "02 Kunden finden (Schritt 1)", "03 Videocall (Schritt 2)", "04 Kundenordner (Schritt 3 bis 8)"
+ANLEITUNG = "00 Anleitung – vom ersten Kontakt bis zum ersten Online-Termin.docx"
+O1, O2, O3, O4 = "01 Vorbereiten (einmal)", "02 Studios finden (Schritt 1)", "03 Gespräch (Schritt 2)", "04 Kundenordner (Schritt 3 bis 8)"
 O5, O6, O7 = "05 Hilfe beim Einrichten (Schritt 6)", "06 Hintergrund und Wissen", "07 Andere Nischen und Aufträge"
 
 PLAN = [
-    (PV / "ANLEITUNG.md", ANLEITUNG),
+    (B / "ANLEITUNG.md", ANLEITUNG),
     # 01 Vorbereiten
-    (Z / "EINRICHTEN.md", f"{O1}/1 Zentrale einrichten – Anleitung.docx"),
-    (Z / "Clickculture Zentrale.xlsx", f"{O1}/2 Clickculture Zentrale – in Google Drive hochladen.xlsx"),
-    (Z / "Code.gs", f"{O1}/3 Zentrale-Code – in Apps Script einfügen.txt"),
+    (BZ / "EINRICHTEN.md", f"{O1}/1 Beauty-Zentrale einrichten – Anleitung.docx"),
+    (BZ / "Clickculture Beauty-Zentrale.xlsx", f"{O1}/2 Beauty-Zentrale – in Google Drive hochladen.xlsx"),
+    (BZ / "Code.gs", f"{O1}/3 Beauty-Zentrale-Code – in Apps Script einfügen.txt"),
     (PV / "hilfe-vorbereiten.md", f"{O1}/4 Vorbereiten – Meta, Google, Netlify, deine Daten.docx"),
-    # 02 Kunden finden
-    (V / "texte/akquise-verkaufsskript.md", f"{O2}/1 Verkaufsskript – Anruf und Videocall.docx"),
-    (V / "texte/akquise-nachfass-mails.md", f"{O2}/2 Nachfass-Mails – Termin, nicht erreicht, nach dem Call.docx"),
-    # 03 Videocall
-    (V / "tabellen/01-steckbrief.xlsx", f"{O3}/1 Steckbrief-Vorlage – für jeden Kunden kopieren.xlsx"),
-    (MUSTER / "anzeigen", f"{O3}/2 Beispiel – Anzeigen (vorschau.html öffnen)"),
-    (MUSTER / "landingpage", f"{O3}/3 Beispiel – Seiten (wirtschaftlichkeit.html öffnen)"),
-    # 04 Kundenordner: aus nischen/photovoltaik/kunden/ (siehe kunden())
+    # 02 Studios finden
+    (BV / "texte/akquise-verkaufsskript.md", f"{O2}/1 Verkaufsskript – Ansprache und Gespräch.docx"),
+    (BV / "texte/akquise-nachfass-mails.md", f"{O2}/2 Nachfass-Nachrichten.docx"),
+    # 03 Gespräch
+    (BV / "tabellen/01-steckbrief.xlsx", f"{O3}/1 Steckbrief-Vorlage – für jedes Studio kopieren.xlsx"),
+    # 03 Gespräch › Beispiele: siehe beispiele(); 04 Kundenordner: aus nischen/beauty/kunden/ (siehe kunden())
     # 05 Hilfe beim Einrichten
-    (PV / "hilfe-einrichten.md", f"{O5}/1 Hilfe Schritt 6 – Zugänge, Messung, Seiten, Zentrale, Kampagnen.docx"),
-        # 06 Hintergrund und Wissen
-    (V / "LIES-MICH.md", f"{O6}/Photovoltaik/So ist das System gebaut.docx"),
-    (PV / "README.md", f"{O6}/Photovoltaik/Übersicht Photovoltaik.docx"),
-    (PV / "modul-photovoltaik.md", f"{O6}/Photovoltaik/Modul Photovoltaik – Regeln, Zahlen, Quellen.docx"),
-    (V / "anzeigen/recherche.md", f"{O6}/Photovoltaik/Recherche Anzeigen.docx"),
+    (B / "hilfe-einrichten.md", f"{O5}/1 Hilfe Schritt 6 – Kalender, Messung, Seiten, Zentrale, Kampagnen.docx"),
+    # 06 Hintergrund und Wissen
+    (BV / "LIES-MICH.md", f"{O6}/Beauty/So ist das System gebaut.docx"),
+    (B / "README.md", f"{O6}/Beauty/Übersicht Beauty.docx"),
+    (B / "modul-beauty.md", f"{O6}/Beauty/Regeln, Zahlen, Quellen.docx"),
+    (REPO / "reports/Beauty Nischen Profitabilität Deutschland.md", f"{O6}/Beauty/Bericht – welche Beauty-Nische sich lohnt.docx"),
     (REPO / "grundlagen/agentur-playbook.md", f"{O6}/Agentur-Playbook.docx"),
     (REPO / "grundlagen/so-funktioniert-alles.md", f"{O6}/So funktioniert alles (Einsteiger).docx"),
     (REPO / "grundlagen/wissen/creatives.md", f"{O6}/Learnings/Creatives.docx"),
     (REPO / "grundlagen/wissen/onboarding.md", f"{O6}/Learnings/Onboarding.docx"),
     (REPO / "grundlagen/wissen/tech.md", f"{O6}/Learnings/Technik.docx"),
-    (REPO / "anleitungen/tech-stack.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen, nicht für Photovoltaik)/Technik-Regeln.docx"),
-    (REPO / "anleitungen/meta-konto-einrichten.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen, nicht für Photovoltaik)/Meta-Konto einrichten.docx"),
-    (REPO / "anleitungen/meta-anzeige-einrichten.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen, nicht für Photovoltaik)/Meta-Anzeige einrichten.docx"),
-    (REPO / "anleitungen/klienten-journey.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen, nicht für Photovoltaik)/Kunden-Ablauf.docx"),
-    (REPO / "anleitungen/landingpage-hosten.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen, nicht für Photovoltaik)/Landingpage online stellen.docx"),
-    (REPO / "anleitungen/ghl-n8n-aufbau.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen, nicht für Photovoltaik)/Später ab ca. 10 Kunden – CRM und Automatik (GoHighLevel, n8n).docx"),
-    (REPO / "anleitungen/n8n", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen, nicht für Photovoltaik)/n8n-Workflows"),
+    # 07 · Photovoltaik (pausiert, vollständig)
+    (PV / "ANLEITUNG.md", f"{PVO}/00 Anleitung Photovoltaik.docx"),
+    (Z / "EINRICHTEN.md", f"{PVO}/01 Vorbereiten/1 PV-Zentrale einrichten – Anleitung.docx"),
+    (Z / "Clickculture Zentrale.xlsx", f"{PVO}/01 Vorbereiten/2 PV-Zentrale – in Google Drive hochladen.xlsx"),
+    (Z / "Code.gs", f"{PVO}/01 Vorbereiten/3 PV-Zentrale-Code – in Apps Script einfügen.txt"),
+    (V / "texte/akquise-verkaufsskript.md", f"{PVO}/02 Kunden finden/1 Verkaufsskript.docx"),
+    (V / "texte/akquise-nachfass-mails.md", f"{PVO}/02 Kunden finden/2 Nachfass-Mails.docx"),
+    (V / "tabellen/01-steckbrief.xlsx", f"{PVO}/03 Videocall/1 Steckbrief-Vorlage PV.xlsx"),
+    (MUSTER / "anzeigen", f"{PVO}/03 Videocall/2 Beispiel – Anzeigen (vorschau.html öffnen)"),
+    (MUSTER / "landingpage", f"{PVO}/03 Videocall/3 Beispiel – Seiten (wirtschaftlichkeit.html öffnen)"),
+    (PV / "hilfe-einrichten.md", f"{PVO}/05 Hilfe beim Einrichten.docx"),
+    (V / "LIES-MICH.md", f"{PVO}/06 Hintergrund/So ist das System gebaut.docx"),
+    (PV / "README.md", f"{PVO}/06 Hintergrund/Übersicht Photovoltaik.docx"),
+    (PV / "modul-photovoltaik.md", f"{PVO}/06 Hintergrund/Modul Photovoltaik – Regeln, Zahlen, Quellen.docx"),
+    (V / "anzeigen/recherche.md", f"{PVO}/06 Hintergrund/Recherche Anzeigen.docx"),
+    (REPO / "anleitungen/tech-stack.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen)/Technik-Regeln.docx"),
+    (REPO / "anleitungen/meta-konto-einrichten.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen)/Meta-Konto einrichten.docx"),
+    (REPO / "anleitungen/meta-anzeige-einrichten.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen)/Meta-Anzeige einrichten.docx"),
+    (REPO / "anleitungen/klienten-journey.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen)/Kunden-Ablauf.docx"),
+    (REPO / "anleitungen/landingpage-hosten.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen)/Landingpage online stellen.docx"),
+    (REPO / "anleitungen/ghl-n8n-aufbau.md", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen)/Später ab ca. 10 Kunden – CRM und Automatik (GoHighLevel, n8n).docx"),
+    (REPO / "anleitungen/n8n", f"{O7}/Kfz-Betriebe/Technik (ältere Anleitungen)/n8n-Workflows"),
     # 07 Andere Nischen und Aufträge
     (N / "autowerkstaetten/README.md", f"{O7}/Kfz-Betriebe/0 Übersicht.docx"),
     (N / "autowerkstaetten/businessplan.md", f"{O7}/Kfz-Betriebe/1 Businessplan.docx"),
@@ -87,7 +107,25 @@ PLAN = [
     (N / "chinatown/webseite", f"{O7}/China Restaurant Chinatown/Webseite (Dateien für Vercel)"),
 ]
 
-# Ein PV-Kundenordner im Finder: in der Reihenfolge, in der man die Dateien braucht
+# Ein Kundenordner im Finder: in der Reihenfolge, in der man die Dateien braucht
+KUNDE_BEAUTY = [
+    ("README.md", "0 Übersicht – was noch fehlt.docx"),
+    ("steckbrief.xlsx", "1 Steckbrief.xlsx"),
+    ("dokumente/vertrag-mail.md", "2a Vertrag – so verschickst du ihn (Mailtext).docx"),
+    ("dokumente/vereinbarung.md", "2b Vertrag – als PDF schicken.docx"),
+    ("dokumente/abrechnung-mails.md", "3 Rechnung – Mailtext (die Rechnung selbst machst du in der Zentrale).docx"),
+    ("dokumente/willkommens-mail.md", "4 Willkommens-Mail – am Tag der Unterschrift.docx"),
+    ("dokumente/zugaenge-anleitung.md", "4b Zugänge-Anleitung für das Studio – als PDF anhängen.docx"),
+    ("dokumente/kalender-anleitung.md", "4c Kalender verbinden – als PDF anhängen.docx"),
+    ("dokumente/termin-leitfaden.md", "5 Termin-Leitfaden – als PDF anhängen.docx"),
+    ("zentrale-zeile.txt", "6 Zeile für die Zentrale – kopieren, im Blatt Kunden einfügen.txt"),
+    ("dokumente/kampagnen.md", "7 Kampagnen – Messung, Meta und Google.docx"),
+    ("landingpage", "8 Seiten für Netlify – ganzen Ordner hochziehen"),
+    ("anzeigen/creatives", "9 Anzeigen-Bilder – bei Meta hochladen"),
+    ("anzeigen", "10 Anzeigen ansehen – vorschau.html öffnen"),
+    ("dokumente/teilnahmebedingungen.md", "11 Verlosung – Teilnahmebedingungen prüfen lassen.docx"),
+    ("fotos", "Fotos – Originale"),
+]
 KUNDE = [
     ("README.md", "0 Übersicht – was noch fehlt.docx"),
     ("steckbrief.xlsx", "1 Steckbrief.xlsx"),
@@ -105,15 +143,18 @@ KUNDE = [
     ("dokumente/teilnahmebedingungen.md", "11 Verlosung – Teilnahmebedingungen prüfen lassen.docx"),
     ("fotos", "Fotos – Originale"),
 ]
+# Die Vorschau der Anzeigen verlinkt die Terminseite: Pfad an die Finder-Namen anpassen
+VORSCHAU_LINK = {"kunde": ("../landingpage/", "../8 Seiten für Netlify – ganzen Ordner hochziehen/"),
+                 "beispiel": ("../landingpage/", "../Seite (termin.html öffnen)/")}
 
 TOP = {
     O1: "Einmal vor dem ersten Kunden: die Zentrale (Google-Tabelle mit Automatik) einrichten, Konten anlegen.",
-    O2: "Betriebe anrufen und einen Videocall vereinbaren. Die Liste der Betriebe ist in der Zentrale, Blatt „Akquise“.",
-    O3: "Im Videocall den Steckbrief ausfüllen und das Beispiel zeigen.",
-    O4: "Ein Ordner pro Kunde, von Claude erzeugt. Die Dateien sind in der Reihenfolge nummeriert, in der du sie brauchst.",
-    O5: "Klick für Klick: Zugänge (Meta, Google), Messung, Seiten online, Zentrale verbinden, Kampagnen anlegen, testen.",
-    O6: "Zum Nachlesen: wie das System gebaut ist, das Playbook, Recherche, Learnings.",
-    O7: "Kfz-Betriebe, Küchenstudios (zurückgestellt) und Einzelaufträge.",
+    O2: "Studios persönlich oder über Instagram ansprechen. Die Liste ist in der Beauty-Zentrale, Blatt „Akquise“.",
+    O3: "Im Gespräch den Steckbrief ausfüllen und das Beispiel der passenden Behandlung zeigen.",
+    O4: "Ein Ordner pro Studio, von Claude erzeugt. Die Dateien sind in der Reihenfolge nummeriert, in der du sie brauchst.",
+    O5: "Klick für Klick: Kalender, Messung, Seiten online, Zentrale verbinden, Kampagnen anlegen, testen.",
+    O6: "Zum Nachlesen: wie das System gebaut ist, Regeln und Quellen, der Bericht zur Nischenwahl, das Playbook.",
+    O7: "Photovoltaik (pausiert, vollständig erhalten), Kfz-Betriebe, Küchenstudios und Einzelaufträge.",
 }
 NAMEN_MD = {"readme": "Übersicht", "ad-copy": "Anzeigentexte", "offer-und-ads": "Angebot und Anzeigen",
             "geschaeftsmodell": "Geschäftsmodell", "nische": "Nische und Kundenfilter",
@@ -151,9 +192,19 @@ def ordner(quelle, ziel, umbenennen=True):
             shutil.copy2(p, ziel / unter / p.name)
 
 
+def ist_beauty(quelle):
+    return (quelle / "dokumente" / "termin-leitfaden.md").exists()
+
+
+def vorschau_umschreiben(ordner_pfad, art):
+    alt, neu = VORSCHAU_LINK[art]
+    for v in ordner_pfad.rglob("vorschau.html"):
+        v.write_text(v.read_text(encoding="utf-8").replace(alt, urllib.parse.quote(neu, safe="/.")), encoding="utf-8")
+
+
 def kunde(quelle, ziel):
-    """Ein PV-Kundenordner in Finder-Form, Dateien nummeriert in der Reihenfolge der Anleitung."""
-    for rel, name in KUNDE:
+    """Ein Kundenordner in Finder-Form, Dateien nummeriert in der Reihenfolge der Anleitung."""
+    for rel, name in (KUNDE_BEAUTY if ist_beauty(quelle) else KUNDE):
         q = quelle / rel
         if not q.exists():
             continue
@@ -164,6 +215,7 @@ def kunde(quelle, ziel):
         else:
             ziel.mkdir(parents=True, exist_ok=True)
             shutil.copy2(q, ziel / name)
+    vorschau_umschreiben(ziel, "kunde")
 
 
 def betriebsname(ordner_pv):
@@ -171,9 +223,28 @@ def betriebsname(ordner_pv):
 
 
 def kunden(ziel_root):
+    # Beauty: nur ein Beispiel als Muster (alle vier stehen unter „03 Gespräch › Beispiele“); echte Kunden liegen nicht im Repo
+    beispiele = {k for k, _ in BEISPIELE}
+    for k in sorted(p for p in (B / "kunden").iterdir() if p.is_dir() and (p / "README.md").exists()):
+        if k.name in beispiele and k.name != "muster-laserstudio":
+            continue
+        name = betriebsname(k) + (" (Beispiel, erfunden)" if k.name in beispiele else "")
+        kunde(k, ziel_root / O4 / name)
     for k in sorted(p for p in (PV / "kunden").iterdir() if p.is_dir() and (p / "README.md").exists()):
         name = betriebsname(k) + (" (Beispiel, erfunden)" if k.name == "muster-solartechnik" else "")
-        kunde(k, ziel_root / O4 / name)
+        kunde(k, ziel_root / PVO / "04 Kundenordner" / name)
+
+
+def beispiele(ziel_root):
+    """Die vier Beispielstudios zum Zeigen im Gespräch: je Anzeigen und Seite."""
+    for kuerzel, titel in BEISPIELE:
+        q = B / "kunden" / kuerzel
+        if not q.exists():
+            continue
+        z = ziel_root / O3 / "2 Beispiele zum Zeigen" / titel
+        ordner(q / "anzeigen", z / "Anzeigen (vorschau.html öffnen)", umbenennen=False)
+        ordner(q / "landingpage", z / "Seite (termin.html öffnen)", umbenennen=False)
+        vorschau_umschreiben(z, "beispiel")
 
 
 def link(rel, text, klasse=""):
@@ -181,31 +252,32 @@ def link(rel, text, klasse=""):
 
 
 def startseite(ziel):
-    m = f"{O4}/Muster Solartechnik (Beispiel, erfunden)"
+    m = f"{O4}/Muster Laserstudio (Beispiel, erfunden)"
+    bsp = f"{O3}/2 Beispiele zum Zeigen/Laser-Haarentfernung"
     schritte = [
-        ("Vorbereiten (einmal)", "Zentrale einrichten, Steckbrief-Vorlage: Blatt „Deine Daten“, Konten anlegen.",
-         [(f"{O1}/1 Zentrale einrichten – Anleitung.docx", "Zentrale einrichten"),
-          (f"{O3}/1 Steckbrief-Vorlage – für jeden Kunden kopieren.xlsx", "Steckbrief-Vorlage"),
+        ("Vorbereiten (einmal)", "Beauty-Zentrale einrichten, Steckbrief-Vorlage: Blatt „Deine Daten“ (mit Web-App-Adresse), Konten anlegen.",
+         [(f"{O1}/1 Beauty-Zentrale einrichten – Anleitung.docx", "Beauty-Zentrale einrichten"),
+          (f"{O3}/1 Steckbrief-Vorlage – für jedes Studio kopieren.xlsx", "Steckbrief-Vorlage"),
           (f"{O1}/4 Vorbereiten – Meta, Google, Netlify, deine Daten.docx", "Meta, Google, Netlify")]),
-        ("1 · Kunden finden", "Betriebe anrufen, Ziel: Videocall. Liste in der Zentrale, Blatt „Akquise“.",
-         [(f"{O2}/1 Verkaufsskript – Anruf und Videocall.docx", "Verkaufsskript"),
-          (f"{O2}/2 Nachfass-Mails – Termin, nicht erreicht, nach dem Call.docx", "Nachfass-Mails")]),
-        ("2 · Videocall", "Steckbrief Teil 1 ausfüllen, Beispiel zeigen, Budget nennen, bei Ja Teil 2.",
-         [(f"{O3}/1 Steckbrief-Vorlage – für jeden Kunden kopieren.xlsx", "Steckbrief"),
-          (f"{O3}/2 Beispiel – Anzeigen (vorschau.html öffnen)/vorschau.html", "Beispiel-Anzeigen"),
-          (f"{O3}/3 Beispiel – Seiten (wirtschaftlichkeit.html öffnen)/wirtschaftlichkeit.html", "Beispiel-Seite")]),
+        ("1 · Studios finden", "Persönlich vorbeigehen oder über Instagram anschreiben, keine Kaltanrufe bei Praxen. Liste in der Zentrale, Blatt „Akquise“.",
+         [(f"{O2}/1 Verkaufsskript – Ansprache und Gespräch.docx", "Verkaufsskript"),
+          (f"{O2}/2 Nachfass-Nachrichten.docx", "Nachfass-Nachrichten")]),
+        ("2 · Gespräch", "Steckbrief Teil 1: Behandlung, wer behandelt, Kundenwert, Termine pro Woche. Beispiel zeigen, Budget nennen, bei Ja Teil 2 und 3.",
+         [(f"{O3}/1 Steckbrief-Vorlage – für jedes Studio kopieren.xlsx", "Steckbrief"),
+          (f"{bsp}/Anzeigen (vorschau.html öffnen)/vorschau.html", "Beispiel-Anzeigen"),
+          (f"{bsp}/Seite (termin.html öffnen)/termin.html", "Beispiel-Terminseite")]),
         ("3 · Kundenordner erzeugen lassen", "Drive-Ordner anlegen, Link in den Steckbrief, Steckbrief an Claude. ZIP in „04 Kundenordner“.",
          [(f"{m}/0 Übersicht – was noch fehlt.docx", "So sieht ein Kundenordner aus")]),
-        ("4 · Abschluss (am selben Tag)", "Vertrag, Rechnung, Google-Konto für ihn anlegen, Willkommens-Mail mit Zugänge-Anleitung und Rückruf-Leitfaden, Kunde in die Zentrale.",
-         [(f"{m}/2a Vertrag – so verschickst du ihn (Mailtext).docx", "2 Vertrag"), (f"{m}/3 Rechnung – Mailtext (die Rechnung selbst machst du in der Zentrale).docx", "3 Rechnung"),
+        ("4 · Abschluss (am selben Tag)", "Vertrag, Rechnung, Google-Konto anlegen, Willkommens-Mail mit Zugänge-Anleitung, Kalender-Anleitung und Termin-Leitfaden, Studio in die Zentrale.",
+         [(f"{m}/2a Vertrag – so verschickst du ihn (Mailtext).docx", "2 Vertrag"),
           (f"{m}/4 Willkommens-Mail – am Tag der Unterschrift.docx", "4 Willkommens-Mail"),
-          (f"{m}/4b Zugänge-Anleitung für den Kunden – als PDF an die Willkommens-Mail.docx", "4b Zugänge-Anleitung"),
+          (f"{m}/4c Kalender verbinden – als PDF anhängen.docx", "4c Kalender"),
           (f"{m}/6 Zeile für die Zentrale – kopieren, im Blatt Kunden einfügen.txt", "6 Zeile für die Zentrale")]),
-        ("5 · Vom Kunden einsammeln (bis Tag 3)", "Fotos im Drive-Ordner, Zugänge (Meta-Partner, Google angenommen, Zahlungsarten), Links, Bewertungen, ein Name. Fehlt etwas: anrufen.", []),
-        ("6 · Einrichten", "Messung, neu erzeugen, Seiten online, Zentrale verbinden, Kampagnen pausiert anlegen.",
-         [(f"{O5}/1 Hilfe Schritt 6 – Zugänge, Messung, Seiten, Zentrale, Kampagnen.docx", "Klick für Klick"),
+        ("5 · Vom Studio einsammeln (bis Tag 3)", "Fotos, Zugänge, Kalender-Freigabe, Links, Freigabe der Vorbereitung. Fehlt etwas: anrufen.", []),
+        ("6 · Einrichten", "Kalender prüfen, Messung, neu erzeugen, Seiten online, Rückruf-Formular verbinden, Kampagnen pausiert anlegen.",
+         [(f"{O5}/1 Hilfe Schritt 6 – Kalender, Messung, Seiten, Zentrale, Kampagnen.docx", "Klick für Klick"),
           (f"{m}/7 Kampagnen – Messung, Meta und Google.docx", "7 Kampagnen")]),
-        ("7 · Testen und live", "Test-Anfrage über jede Seite, Kampagnen aktiv, „Live seit“ in der Zentrale.", []),
+        ("7 · Testen und live", "Echte Test-Buchung mit deiner E-Mail: bestätigen, Kalender, Mails, absagen. Dann Kampagnen aktiv, „Live seit“ eintragen.", []),
         ("8 · Laufend", "Die Zentrale meldet sich per Mail. Was du dann tust, steht in der Anleitung, Schritt 8.", []),
     ]
     karten = "".join(
@@ -217,7 +289,7 @@ def startseite(ziel):
         dateien = sorted(p for p in (ziel / top).rglob("*") if p.is_file()
                          and not any(s in p.parts for s in ("fonts", "fotos", "Fotos – Originale", "n8n-Workflows", "creatives"))
                          and p.suffix not in (".json", ".jpg", ".png", ".woff2", ".svg", ".js", ".css")
-                         and not any("Seiten für Netlify" in s or "Anzeigen ansehen" in s or "Beispiel – " in s for s in p.parts))
+                         and not any("Seiten für Netlify" in s or "Anzeigen ansehen" in s or "Beispiel – " in s or "Beispiele zum Zeigen" in s for s in p.parts))
         zeilen = "".join(f'<li>{link(p.relative_to(ziel), p.stem)}<span>{html.escape(" › ".join(p.relative_to(ziel).parts[1:-1]))}</span></li>'
                          for p in dateien)
         teile.append(f'<section><h2>{html.escape(top)}</h2><p>{html.escape(TOP[top])}</p><ul>{zeilen}</ul></section>')
@@ -236,10 +308,10 @@ li{{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bot
 a{{color:#1A1917;text-decoration:none;font-weight:600;}} a:hover{{color:#B4461F;}} li span{{color:#8A857B;font-size:13px;text-align:right;}}
 .tipp{{font-size:13px;color:#6B665D;margin-top:14px;}}
 </style></head><body><div class="w"><h1>Clickculture</h1>
-<p class="lead">Werbung → Anfragen → Aufträge für Solarbetriebe in ganz Deutschland. Alles in der Reihenfolge, wie du an einen Kunden rangehst.</p>
+<p class="lead">Werbung → Online-Termine → Kundinnen für Beauty-Studios und Praxen: Laser, Permanent Make-up, Faltenbehandlung, Bleaching. Alles in der Reihenfolge, wie du an ein Studio rangehst. Photovoltaik liegt pausiert unter „07“.</p>
 <div class="start"><h2>So geht es</h2><p>Einmal die {link(ANLEITUNG, "Anleitung")} lesen. Dann Schritt für Schritt:</p>{karten}
 <p class="tipp">Word-Dateien öffnen sich in Pages oder Word, Tabellen in Numbers oder Excel, Seiten im Browser.
-Die Zentrale läuft in deinem Google-Konto. Diesen Ordner baut <code>werkzeuge/clickculture-ordner-bauen.py</code> jederzeit neu.</p></div>
+Die Beauty-Zentrale läuft in deinem Google-Konto. Diesen Ordner baut <code>werkzeuge/clickculture-ordner-bauen.py</code> jederzeit neu.</p></div>
 {''.join(teile)}</div></body></html>""", encoding="utf-8")
 
 
@@ -258,7 +330,9 @@ def main():
     if args[:1] == ["--kunde"]:
         if len(args) < 2:
             sys.exit(__doc__)
-        k = PV / "kunden" / args[1]
+        k = B / "kunden" / args[1]
+        if not k.exists():
+            k = PV / "kunden" / args[1]
         out = pathlib.Path(args[2] if len(args) > 2 else "clickculture-build").resolve()
         ziel = out / betriebsname(k)
         shutil.rmtree(ziel, ignore_errors=True)
@@ -272,13 +346,14 @@ def main():
     for quelle, rel in PLAN:
         zz = ziel / rel
         if quelle.is_dir():
-            ordner(quelle, zz, umbenennen=not str(rel).startswith(O3))
+            ordner(quelle, zz, umbenennen=not (str(rel).startswith(O3) or "Videocall" in str(rel)))
         elif quelle.suffix == ".md" and zz.suffix == ".docx":
             docx(quelle, zz)
         else:
             zz.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(quelle, zz)
     kunden(ziel)
+    beispiele(ziel)
     (ziel / O6 / "Betriebshandbuch (online öffnen).html").write_text(
         '<meta charset="utf-8"><meta http-equiv="refresh" content="0; url=https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN">'
         '<a href="https://claude.ai/artifact/7DSh95Hfrp17kLRnNLXftN">Betriebshandbuch öffnen</a>', encoding="utf-8")
