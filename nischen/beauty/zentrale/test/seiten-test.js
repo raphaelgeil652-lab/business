@@ -30,13 +30,15 @@ function pruefe(bed, was) { if (bed) ok++; else { fehler++; console.log('  ✗ '
   N.G.einrichten();
   const URL_Z = 'https://script.google.com/macros/s/TEST/exec';
   // Kundenseite in einen Testordner kopieren, auf die Test-Zentrale und den Testkunden umstellen
-  const lpQuelle = path.join(REPO, 'nischen/beauty/kunden/muster-laserstudio/landingpage');
+  const lpQuelle = path.join(REPO, 'nischen/beauty/kunden/muster-laserstudio/seite');
   const lp = fs.mkdtempSync(path.join(os.tmpdir(), 'beauty-lp-'));
   fs.cpSync(lpQuelle, lp, { recursive: true });
-  for (const f of ['termin.html', 'bestaetigen.html', 'absagen.html']) {
+  for (const f of ['termin.html', 'bestaetigen.html', 'absagen.html', 'danke.html', 'rueckruf-danke.html']) {
     const p = path.join(lp, f);
-    fs.writeFileSync(p, fs.readFileSync(p, 'utf8').replace(/"zentrale": ""/g, `"zentrale": "${URL_Z}"`).replace(/"kunde": "muster-laserstudio"/, '"kunde": "muster-laser"'));
+    fs.writeFileSync(p, fs.readFileSync(p, 'utf8').replace(/"zentrale": ""/g, `"zentrale": "${URL_Z}"`).replace(/"kunde": "muster-laserstudio"/, '"kunde": "muster-laser"')
+      .replace(/zentrale: '', kunde: 'muster-laserstudio'/, `zentrale: '${URL_Z}', kunde: 'muster-laser'`));
   }
+  N.G.kundeSetzen_('muster-laser', { 'Pixel-ID': '1234567890123456', 'Leistungen': 'Haut- und Haaranalyse mit Probeschuss | 20 | ; Achseln | 20 | ab 59; Bikinizone | 30 | ab 79; Beine komplett | 60 | ab 199' });
   const datei = n => 'file://' + path.join(lp, n);
 
   const b = await chromium.launch();
@@ -58,7 +60,8 @@ function pruefe(bed, was) { if (bed) ok++; else { fehler++; console.log('  ✗ '
   await page.waitForSelector('.zeit');
   pruefe(await page.$eval('#demo', e => e.style.display) === 'none', 'kein Vorschau-Hinweis (echte Zentrale)');
   const arten = await page.$$eval('.art b', l => l.map(x => x.textContent));
-  pruefe(arten.length === 4 && arten[1] === 'Achseln', 'Auswahl: Beratung + direkt buchbare Leistungen aus dem Steckbrief (' + arten.join(', ') + ')');
+  pruefe(arten.length === 4 && arten[1] === 'Achseln', 'Auswahl: alle Leistungen des Studios, alle buchbar (' + arten.join(', ') + ')');
+  pruefe(await page.evaluate(() => window.fbq ? 'ja' : 'nein') === 'ja', 'Pixel-ID kommt aus der Zentrale, Pixel lädt nach Zustimmung');
   await (await page.$$('.art'))[1].click();
   await page.waitForSelector('.zeit');
   const tag = await page.$eval('.tag[aria-pressed="true"]', e => e.textContent);
@@ -118,7 +121,14 @@ function pruefe(bed, was) { if (bed) ok++; else { fehler++; console.log('  ✗ '
   console.log('6 Rückruf-Ausweg');
   await page.click('#rueckruf-link');
   pruefe(await page.isVisible('form[name=rueckruf]'), 'Rückruf-Formular klappt auf');
-  pruefe(await page.$eval('form[name=rueckruf]', f => f.getAttribute('data-netlify')) === 'true', 'Rückruf-Formular ist ein Netlify-Formular');
+  await page.fill('form[name=rueckruf] input[name=name]', 'Rita Ruf');
+  await page.fill('form[name=rueckruf] input[name=telefon]', '0151 7778889');
+  for (const c of await page.$$('form[name=rueckruf] input[type=checkbox]')) await c.check();
+  await page.waitForTimeout(3100); // Zeit-Falle wie beim Buchen
+  await page.click('form[name=rueckruf] button');
+  await page.waitForURL(/rueckruf-danke\.html/);
+  pruefe(N.termine().some(z => z.Name === 'Rita Ruf' && z.Art === 'Rückruf') && N.mails.some(m => m.to === 'studio@laser.de' && m.subject.startsWith('Rückruf-Wunsch: Rita Ruf')),
+    'Rückruf-Wunsch geht direkt an die Zentrale (ohne Netlify-Formulare), Mail an das Studio');
 
   pruefe(jsFehler.length === 0, 'keine JavaScript-Fehler: ' + jsFehler.join(' | '));
   await b.close();

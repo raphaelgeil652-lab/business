@@ -1,56 +1,24 @@
-# {{betrieb}}
+# {{betrieb}} · {{modul_name}}
 
-**{{modul_name}}** · **Kürzel:** `{{slug}}` · **Adresse der Seiten:** {{landingpage_url}} · erzeugt am {{erzeugt_am}}
+Kürzel `{{slug}}` · Seite {{landingpage_url}}
 
-Nichts in diesem Ordner von Hand ändern. Etwas falsch oder neu? Im Steckbrief ändern und Claude
-schicken: „Erzeuge {{betrieb}} neu.“ Die Checkliste (in der Beauty-Zentrale) und die Fotos bleiben erhalten.
+## Bitte prüfen
 
-## Noch offen
+{{warnungen}}
 
-{{offen_liste}}
+## Jetzt: drei Schritte
 
-## Eckdaten
+1. **Seite online stellen:** app.netlify.com → **Add new project → Deploy manually** → den Ordner **`seite`**
+   hineinziehen → **Project configuration → Change project name** → `{{slug}}`.
+   Schon online? Dann im Projekt **Deploys** → den Ordner `seite` in das Feld unten ziehen.
+2. **Kampagnen anlegen:** `kampagnen.md` von oben nach unten. Bilder liegen in `anzeigen/creatives`.
+   Pixel-ID und Google-Conversion trägst du auf der **Team-Seite** des Studios ein. Sie wirken sofort.
+3. **Testen und live:** auf der Seite einen Termin mit deiner E-Mail buchen, in der Mail bestätigen, wieder absagen.
+   Dann auf der Team-Seite **„Jetzt live schalten“**. Die Mail an das Studio geht von selbst raus.
 
-| | |
-|---|---|
-| Inhaber/in | {{anrede}} {{inhaber}} · {{telefon}} · {{email}} |
-| Betreut von | **{{betreuer_name}}** (Ansprechpartner des Studios) · Technik: {{technik_name}} |
-| Behandlung | {{modul_name}} · behandelt: {{behandler}} · {{behandler_name}} |
-| Werbegebiet | {{umkreis_km}} km um {{ort}} |
-| Online-Buchung | Modus {{buchung_modus}} · {{buchbare_zeiten}} · Beginn {{raster_text}} · Beratung {{beratung_minuten}} Min. · {{direkt_kurz}} |
-| Absage | bis {{absagefrist_text}} · {{ausfall_kurz}} |
-| Preise | Onboarding {{onboarding_preis}} · Monatsgebühr {{retainer}} ab dem ersten Kauf |
-| Werbebudget | {{budget_gesamt}} pro Monat (Meta {{budget_meta}}, Google {{budget_google}}) |
-| Fotos vom Studio | {{drive_link}} |
-<!--VERLOSUNG-->| Verlosung läuft | {{gewinn}} · Teilnahmeschluss {{aktion_ende}}, Ziehung {{ziehung}} |
-<!--/VERLOSUNG-->
+Nichts in diesem Ordner von Hand ändern. Neue Fotos oder geänderte Daten: Claude den neuen „Text für Claude“
+(Team-Seite) und die Fotos schicken, dann diesen Ordner neu hochladen.
 
-## Was in dieser Behandlung erlaubt ist (steckt schon in Anzeigen und Seite)
-
-{{regeln_liste}}
-
-## Vorbereitungs-Hinweise, die die Kundschaft bekommt
-
-{{vorbereitung_liste}}
-
-{{vorbereitung_status}}
-
-## Welche Datei wann
-
-| Schritt | Datei in diesem Ordner | Was ihr tut (B = Betreuer {{betreuer_name}}, T = Technik {{technik_name}}) |
-|---|---|---|
-| 4 · Abschluss | B · **2a + 2b Vertrag** | 2a sagt wie und hat den Mailtext; 2b als PDF, selbst unterschreiben, schicken, unterschrieben zurück |
-| | B · **3 Rechnung** | Mailtext. Die Rechnung selbst in der Beauty-Zentrale machen, als PDF an Mail 1 hängen |
-| | B · **4 Willkommens-Mail** + **4b Zugänge** + **4c Kalender** + **5 Termin-Leitfaden** | vorher legt T sein Google-Ads-Konto an; Mail schicken, 4b, 4c und 5 als PDF anhängen |
-| | T · **6 Zeile für die Zentrale** | öffnen, alles kopieren, in der Beauty-Zentrale im Blatt „Kunden“ in die erste freie Zeile einfügen |
-| 6 · Einrichten | T · **7 Kampagnen** | zuerst „Messung einrichten“, dann Meta und Google anlegen (pausiert) |
-| | T · **8 Seiten für Netlify** | ganzen Ordner auf app.netlify.com/drop ziehen, Seite in `{{slug}}` umbenennen |
-| | T · **9 Anzeigen-Bilder** | bei Meta hochladen |
-| Zum Zeigen | **10 Anzeigen ansehen** | `vorschau.html` im Browser öffnen |
-<!--VERLOSUNG-->| Verlosung | **11 Teilnahmebedingungen** | vor dem Start prüfen lassen, stehen auf der Verlosungsseite |
-<!--/VERLOSUNG-->
-Abhaken: in der Beauty-Zentrale, Blatt „Checkliste“, Spalte `{{slug}}`.
-
-**Im Browser ansehen** (nur bei den erfundenen Beispielkunden, echte Kunden liegen nicht im Repo):
-[Anzeigen-Vorschau](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/{{slug}}/anzeigen/vorschau.html?v={{v}}) ·
-[Terminseite (Beispiel-Termine)](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/{{slug}}/landingpage/termin.html?demo=1&v={{v}})
+**Ansehen** (nur bei den erfundenen Beispielstudios, echte liegen nicht im Repo):
+[Anzeigen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/{{slug}}/anzeigen/vorschau.html?v={{v}}) ·
+[Terminseite mit Beispiel-Terminen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/{{slug}}/seite/termin.html?demo=1&v={{v}})

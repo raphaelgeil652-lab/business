@@ -8,8 +8,11 @@ Aufruf:  python3 nischen/beauty/zentrale/zentrale-bauen.py          → nischen/
 Die Spaltennamen in Zeile 1 der Blätter Kunden, Termine, Sperrliste, Werbekosten und Akquise liest Code.gs.
 Wer sie ändert, muss Code.gs mitändern. Die Schlüssel in Spalte A von „Einstellungen“ ebenso.
 """
+import html
+import importlib.util
 import json
 import pathlib
+import re
 import sys
 
 from openpyxl import Workbook
@@ -20,6 +23,71 @@ from openpyxl.worksheet.datavalidation import DataValidation
 
 HIER = pathlib.Path(__file__).resolve().parent
 ZIEL = HIER / "Clickculture Beauty-Zentrale.xlsx"
+CODE = HIER / "Code.gs"
+VORLAGEN = HIER.parent / "vorlagen"
+_spec = importlib.util.spec_from_file_location("module", VORLAGEN / "module.py")
+M = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(M)
+ANFANG = "/* ======== BAUSTEIN-ANFANG: erzeugt von zentrale-bauen.py aus vorlagen/module.py und vorlagen/texte/vereinbarung.md. Nicht von Hand ändern. */"
+ENDE = "/* ======== BAUSTEIN-ENDE */"
+
+
+def md_zu_html(text):
+    """Das kleine Markdown der Vereinbarung (###, **fett**, - Liste, Absätze) als HTML."""
+    out, absatz, liste = [], [], []
+    def fett(t):
+        return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", html.escape(t, quote=False))
+    def leeren():
+        if absatz:
+            out.append("<p>" + "<br>".join(fett(z) for z in absatz) + "</p>")
+            absatz.clear()
+        if liste:
+            out.append("<ul>" + "".join("<li>" + fett(z) + "</li>" for z in liste) + "</ul>")
+            liste.clear()
+    for zeile in text.splitlines():
+        z = zeile.rstrip()
+        if not z.strip():
+            leeren()
+        elif z.startswith("# "):
+            leeren(); out.append("<h2>" + fett(z[2:]) + "</h2>")
+        elif z.startswith("### "):
+            leeren(); out.append("<h3>" + fett(z[4:]) + "</h3>")
+        elif z.startswith("- "):
+            if absatz:
+                leeren()
+            liste.append(z[2:])
+        elif z.startswith("  ") and liste:
+            liste[-1] += " " + z.strip()
+        else:
+            if liste:
+                leeren()
+            absatz.append(z.strip())
+    leeren()
+    return "".join(out)
+
+
+def baustein():
+    """Was die Zentrale aus module.py braucht (Formular „Neuer Kunde“, Regeln, Vorschläge) und den Vertragstext."""
+    module = {}
+    for name, m in M.MODULE.items():
+        a = m["annahmen"]
+        module[name] = {"kurz": m["kuerzel"], "name": m["name"], "behandler": m["behandler"], "qualifikation": m["qualifikation"],
+                        "regeln": m["regeln"], "vorbereitung": m["vorbereitung"], "recht": m["recht_kurz"],
+                        "kosten_pro_termin": a["kosten_pro_termin"], "meta_anteil": a["meta_anteil"],
+                        "preis": m["preis_empfehlung"]}
+    vertrag = md_zu_html((VORLAGEN / "texte" / "vereinbarung.md").read_text(encoding="utf-8"))
+    return "\n".join([ANFANG, "var MODULE = " + json.dumps(module, ensure_ascii=False) + ";",
+                      "var BEHANDLER = " + json.dumps(M.BEHANDLER, ensure_ascii=False) + ";",
+                      "var VEREINBARUNG = " + json.dumps(vertrag, ensure_ascii=False) + ";", ENDE])
+
+
+def code_aktualisieren():
+    code = CODE.read_text(encoding="utf-8")
+    a, b = code.index(ANFANG), code.index(ENDE) + len(ENDE)
+    neu = code[:a] + baustein() + code[b:]
+    if neu != code:
+        CODE.write_text(neu, encoding="utf-8")
+        print("✓ Code.gs: Baustein aktualisiert")
 F = "Arial"
 DUNKEL = PatternFill("solid", start_color="1A1917")
 GELB = PatternFill("solid", start_color="FFF6CC")
@@ -39,19 +107,24 @@ STAND = ["unbestätigt", "angefragt", "neu", "nicht erreicht", "erreicht", "Term
 STAND_AKQ = ["neu", "nicht erreicht", "Termin vereinbart", "Vereinbarung geschickt", "Kunde", "kein Interesse"]
 
 # ---------------------------------------------------------------- Spalten (Zeile 1), die Code.gs liest
-KUNDEN = [  # (Name, Breite, Format, Eingabe?) · die ersten Spalten bis „Betreuer“ kommen aus „Zeile für die Zentrale“
-    ("Kürzel", 22, None, True), ("Betrieb", 26, None, True), ("Anrede für Mails", 18, None, True),
-    ("E-Mail für Termine", 28, None, True), ("Telefon", 16, "@", True), ("Adresse", 30, None, True),
-    ("Seiten-Adresse", 30, None, True), ("Drive-Ordner", 24, None, True),
-    ("Onboarding €", 12, EURO, True), ("Monatsgebühr €", 13, EURO, True), ("Live seit", 12, DATUM, True), ("Aktiv", 8, None, True),
-    ("Behandlung", 18, None, True), ("Buchung", 13, None, True), ("Kalender-ID", 28, None, True),
-    ("Buchbare Zeiten", 26, None, True), ("Beratung Minuten", 10, "0", True), ("Leistungen", 40, None, True),
-    ("Puffer Minuten", 9, "0", True), ("Vorlauf Stunden", 9, "0", True), ("Tage im Voraus", 9, "0", True), ("Raster Minuten", 9, "0", True),
-    ("Absagefrist Stunden", 10, "0", True), ("Ausfallregel", 30, None, True), ("Vorbereitung", 40, None, True),
-    ("Teilnahmeschluss", 14, DATUM, True), ("Ziehung am", 12, DATUM, True), ("Betreuer", 14, None, True),
+KUNDEN = [  # (Name, Breite, Format, Eingabe?) · gleiche Reihenfolge wie KUNDEN_SPALTEN in Code.gs. „Neuen Kunden einfügen“ füllt sie
+    ("Kürzel", 20, None, True), ("Status", 11, None, True), ("Betreuer", 12, None, True), ("Betreuer Telefon", 15, "@", True),
+    ("Betreuer E-Mail", 24, None, True), ("Betrieb", 26, None, True), ("Firma", 26, None, True), ("Anrede für Mails", 18, None, True),
+    ("Inhaber", 20, None, True), ("E-Mail für Termine", 28, None, True), ("Telefon", 16, "@", True), ("Adresse", 30, None, True),
+    ("Seiten-Adresse", 30, None, True), ("Behandlung", 16, None, True), ("Behandler-Art", 18, None, True), ("Buchung", 13, None, True), ("Kalender-ID", 26, None, True),
+    ("Buchbare Zeiten", 26, None, True), ("Leistungen", 40, None, True), ("Takt Minuten", 8, "0", True), ("Puffer Minuten", 8, "0", True),
+    ("Vorlauf Stunden", 8, "0", True), ("Tage im Voraus", 8, "0", True), ("Absagefrist Stunden", 9, "0", True), ("Ausfallregel", 30, None, True),
+    ("Vorbereitung", 40, None, True), ("Onboarding €", 11, EURO, True), ("Monatsgebühr €", 12, EURO, True), ("Werbebudget €", 12, EURO, True),
+    ("Umkreis km", 8, "0", True), ("Angelegt am", 12, DATUM, True), ("Live seit", 12, DATUM, True), ("Pixel-ID", 18, "@", True), ("Google-Conversion", 26, None, True),
+    ("Vertrag angenommen", 14, ZEIT, False), ("Impressum", 24, None, False), ("Datenschutz", 24, None, False), ("Behandler", 28, None, False),
+    ("Vorbereitung ok", 14, ZEIT, False), ("Fotos", 7, "0", False), ("Kalender ok", 14, ZEIT, False), ("Meta erledigt", 14, ZEIT, False),
+    ("Google-Ads-ID", 14, None, False), ("Google verknüpft", 14, ZEIT, False), ("Drive-Ordner", 24, None, False),
+    ("Erinnert am", 14, ZEIT, False), ("Erinnerungen", 8, "0", False), ("Alles da", 14, ZEIT, False), ("Live-Mail", 14, ZEIT, False),
+    ("Token", 8, None, False), ("Teilnahmeschluss", 12, DATUM, True), ("Ziehung am", 12, DATUM, True),
     ("Erster Auftrag", 14, DATUM, False), ("Monatsgebühr ab", 14, "MM.YYYY", False), ("Termine gesamt", 10, "0", False),
     ("Notiz", 34, None, True),
 ]
+VERTRAEGE = [("Kürzel", 20, None), ("Vereinbarung", 60, None), ("Angenommen am", 16, ZEIT), ("Angenommen von", 22, None), ("Gesendet an", 26, None)]
 TERMINE = [
     ("ID", 14, None), ("Eingang", 16, ZEIT), ("Kunde", 18, None), ("Art", 11, None), ("Leistung", 18, None),
     ("Termin", 16, ZEIT), ("Dauer", 7, "0"), ("Name", 22, None), ("Telefon", 16, "@"), ("E-Mail", 24, None),
@@ -66,37 +139,7 @@ AKQUISE = [("Studio", 28, None), ("Ansprechpartner", 20, None), ("Ort", 16, None
            ("Stand", 18, None), ("Nächster Kontakt am", 13, DATUM), ("Wer", 10, None), ("Notiz", 40, None)]
 RECHNUNGEN = [("Nr.", 10, None), ("Datum", 11, DATUM), ("Kunde (Firma)", 26, None), ("Anschrift Kunde", 32, None),
               ("Posten", 14, None), ("Zeitraum", 16, None), ("Netto €", 11, EURO2), ("USt.", 6, "0%"), ("Brutto €", 11, EURO2),
-              ("Fällig am", 11, DATUM), ("Bezahlt am", 11, DATUM), ("Status", 11, None)]
-
-CHECKLISTE = [  # gleiche Schritte wie nischen/beauty/ANLEITUNG.md (4 bis 7)
-    ("4 · Abschluss", "Vereinbarung als PDF geschickt, unterschrieben zurück", "Betreuer"),
-    ("4 · Abschluss", "Rechnung Onboarding (Blatt Rechnungen) als PDF mit Mail 1 geschickt", "Betreuer"),
-    ("4 · Abschluss", "Google-Ads-Konto für das Studio unter eurem Verwaltungskonto angelegt, als Administrator eingeladen", "Technik"),
-    ("4 · Abschluss", "Willkommens-Mail geschickt: Zugänge-Anleitung, Kalender-Anleitung und Termin-Leitfaden als PDF angehängt", "Betreuer"),
-    ("4 · Abschluss", "Zeile für die Zentrale im Blatt „Kunden“ eingefügt", "Technik"),
-    ("5 · Vom Studio", "Fotos im Drive-Ordner: Studio, Behandlung, Behandler/in (Ergebnisfotos nur wo erlaubt)", "Studio"),
-    ("5 · Vom Studio", "Kalender für euer Zentrale-Konto freigegeben („Änderungen an Terminen vornehmen“) oder Modus Wunschtermin vereinbart", "Studio"),
-    ("5 · Vom Studio", "Meta: Partnerzugriff auf Seite und Werbekonto, Zahlungsmethode im Werbekonto", "Studio"),
-    ("5 · Vom Studio", "Bei Meta euch seinem Werbekonto und seiner Seite zugewiesen", "Technik"),
-    ("5 · Vom Studio", "Google Ads: Einladung angenommen, Zahlungsart hinterlegt", "Studio"),
-    ("5 · Vom Studio", "Links zu Impressum und Datenschutz, 2 echte Google-Bewertungen", "Studio"),
-    ("5 · Vom Studio", "Vorbereitungs-Hinweise und Absageregel vom Studio gelesen und freigegeben", "Studio"),
-    ("5 · Vom Studio", "Nachweis Qualifikation: Laser = NiSV-Fachkunde, Faltenbehandlung = Arzt/Heilpraktiker, Bleaching = Zahnarzt", "Studio"),
-    ("6 · Einrichten", "Meta-Pixel und Google-Conversion angelegt, IDs im Steckbrief (Teil 5)", "Technik"),
-    ("6 · Einrichten", "Steckbrief und die besten Fotos an Claude, Kundenordner neu erzeugt", "Technik"),
-    ("6 · Einrichten", "Seiten auf Netlify, Name = Kürzel, Formular-Erkennung an, nochmal hochgeladen", "Technik"),
-    ("6 · Einrichten", "Netlify: Webhook zur Zentrale und Mail-Kopie an euch eingetragen (für Rückruf-Wünsche)", "Technik"),
-    ("6 · Einrichten", "Zentrale: Menü „2 · Kalender der Kunden prüfen“ zeigt ✓ und freie Zeiten", "Technik"),
-    ("6 · Einrichten", "Meta-Kampagne mit den Anzeigen als Entwurf angelegt", "Technik"),
-    ("6 · Einrichten", "Google-Kampagne angelegt (pausiert)", "Technik"),
-    ("7 · Live", "„0 Übersicht“: nichts mehr offen, Impressum- und Datenschutz-Link sind drin (Pflicht)", "Technik"),
-    ("7 · Live", "Test-Buchung über die Seite mit eurer E-Mail: bestätigt, im Kalender, Mails da, wieder abgesagt", "Technik"),
-    ("7 · Live", "„Events testen“: PageView auf der Seite, Lead auf der Bestätigungsseite", "Technik"),
-    ("7 · Live", "Am Handy geprüft: Termin wählen, Formular, Anrufen-Knopf, Fotos", "Betreuer"),
-    ("7 · Live", "Meta: Transparenz (Werbetreibender und Zahlender = Kunde) eingetragen, ggf. verifiziert", "Technik"),
-    ("7 · Live", "Kampagnen aktiv. Im Blatt „Kunden“ bei „Live seit“ das Datum (Start der 30 Tage)", "Technik"),
-    ("7 · Live", "Studio angerufen: Mails „Neuer Termin“, „Fake melden“ und Abend-Mail erklärt", "Betreuer"),
-]
+              ("Fällig am", 11, DATUM), ("Bezahlt am", 11, DATUM), ("Status", 11, None), ("Kürzel", 16, None)]
 
 EINSTELLUNGEN = [  # (Schlüssel, Einstellung, Vorgabe, Hilfe)
     ("§", "Eure Daten (für Rechnungen und Mails)", None, None),
@@ -107,25 +150,30 @@ EINSTELLUNGEN = [  # (Schlüssel, Einstellung, Vorgabe, Hilfe)
     ("agentur_telefon", "Telefon der Agentur", "", "steht auf Rechnungen"),
     ("agentur_steuernr", "Steuernummer", "", "Pflicht auf jeder Rechnung"),
     ("agentur_iban", "IBAN", "", ""),
-    ("agentur_kleinunternehmer", "Kleinunternehmer (§ 19 UStG)?", "", "Ja = keine Umsatzsteuer. Muss genauso sein wie im Steckbrief, Blatt „Eure Daten“"),
+    ("agentur_kleinunternehmer", "Kleinunternehmer (§ 19 UStG)?", "", "Ja = keine Umsatzsteuer. Muss genauso sein wie im Gesprächsbogen, Blatt „Eure Daten“"),
+    ("agentur_business_id", "Meta Business-ID der Agentur", "", "Meta Business Suite → Einstellungen → Unternehmensinfos (16 Ziffern, mit ' davor). Steht auf der Schritte-Seite der Studios"),
+    ("agentur_google_mcc", "Google-Ads-Verwaltungskonto (Kunden-ID)", "", "oben rechts in Google Ads, z. B. 774-518-7262"),
+    ("rechnungen_automatisch", "Rechnungen automatisch als PDF schicken?", "Ja", "Ja = Onboarding-Rechnung, sobald das Studio die Vereinbarung annimmt; Monatsgebühr am 1. Nein = nur Zeile anlegen, du schickst selbst"),
     ("§", "Online-Buchung", None, None),
     ("bestaetigung_minuten", "Termin freihalten bis zur Bestätigung (Minuten)", 45, "So lange ist ein Platz reserviert. Nicht bestätigt → wieder frei"),
     ("erinnerung_stunden", "Erinnerung an die Kundin … Stunden vorher", 24, ""),
-    ("raster_minuten", "Termine beginnen alle … Minuten (Vorgabe)", 30, "gilt nur, wenn beim Studio im Blatt „Kunden“ bei „Raster Minuten“ nichts steht"),
+    ("raster_minuten", "Termine beginnen alle … Minuten (Vorgabe)", 30, "gilt nur, wenn beim Studio im Blatt „Kunden“ bei „Takt Minuten“ nichts steht"),
     ("max_unbestaetigt", "Höchstens … unbestätigte Buchungen in 30 Minuten pro Studio", 6, "Schutz gegen Bots und Termin-Blockierer. Darüber: kurz gesperrt, Mail an dich"),
     ("mail_warnung_ab", "Warnen, wenn morgens weniger als … Mails übrig sind", 25, "Google-Grenze: ca. 100 Mails am Tag (kostenlos), 1.500 (Workspace)"),
+    ("erinnerung_studio_tage", "Neues Studio erinnern nach … Werktagen ohne Fortschritt", 2, "höchstens 3 Erinnerungen, danach Mail an den Betreuer: anrufen"),
     ("§", "Rückruf-Wünsche (Formular auf der Seite)", None, None),
     ("benachrichtigung_an", "Hinweise gehen an", "", "eure beiden E-Mails, mit Komma getrennt: Fehler, Warnungen, ⏰, erster Auftrag, Wochen-Übersicht"),
     ("team", "Wer ist im Team?", "", "Name = E-Mail; Name = E-Mail, z. B. „Max = max@mail.de; Tom = tom@mail.de“. Die Namen in „Betreuer“ (Kunden) und „Wer“ (Akquise) müssen dazu passen; Vorname reicht"),
     ("geschaeftszeiten", "Geschäftszeiten der Studios", "9-18", "nur in dieser Zeit zählen die Minuten bis zum Rückruf"),
     ("arbeitstage", "Arbeitstage", "Mo-Sa", "Mo-Fr oder Mo-Sa"),
     ("rueckruf_minuten", "Erinnern nach … Minuten ohne Rückruf", 60, ""),
-    ("kopie_jeder_anfrage", "Jeden Rückruf-Wunsch auch an mich?", "Nein", "Nein reicht: Netlify schickt dir ohnehin eine Kopie"),
+    ("kopie_jeder_anfrage", "Jeden Rückruf-Wunsch auch an mich?", "Nein", "Ja = du bekommst eine Kopie jeder Anfrage"),
     ("akquise_erinnerung", "Morgens Akquise-Liste mailen?", "Ja", "listet die Studios, die heute dran sind"),
     ("§", "Technik (füllt sich bei der Einrichtung)", None, None),
-    ("webapp_url", "Web-App-Adresse", "", "Schritt 5: aus „Bereitstellen“ kopieren (endet auf /exec). Auch in die Steckbrief-Vorlage, Blatt „Eure Daten“"),
+    ("webapp_url", "Web-App-Adresse", "", "Schritt 5: aus „Bereitstellen“ kopieren (endet auf /exec). Auch in den Gesprächsbogen, Blatt „Eure Daten“"),
     ("schluessel", "Schlüssel", "", "setzt „Einrichten“ von selbst. Nicht weitergeben"),
-    ("webhook_url", "Webhook-Adresse für Netlify", "FORMEL", "bei jedem Kunden in Netlify eintragen (für Rückruf-Wünsche)"),
+    ("uebersicht_url", "Übersicht (Lesezeichen)", "", "setzt „Einrichten“ von selbst: alle Studios, alles per Knopf. Als Lesezeichen am Handy und Laptop speichern"),
+    ("formular_url", "Formular „Neuer Kunde“ (Lesezeichen)", "", "setzt „Einrichten“ von selbst: im Gespräch ausfüllen"),
 ]
 
 
@@ -186,7 +234,8 @@ def bauen():
         ("Bestätigte Termine ab heute", f'=COUNTIFS({stand},"Termin",{start},">="&TODAY())', "0"),
         ("Termine diesen Monat gebucht", f'=COUNTIFS({ein},">="&DATE(YEAR(TODAY()),MONTH(TODAY()),1),Termine!{T("Bestätigt am")}:{T("Bestätigt am")},"<>")', "0"),
         ("Rückruf-Wünsche, die warten", f'=COUNTIF({stand},"neu")', "0"),
-        ("Aktive Kunden", f'=COUNTIFS(Kunden!A2:A200,"?*",Kunden!{K("Aktiv")}2:{K("Aktiv")}200,"<>Nein")', "0"),
+        ("Studios live", f'=COUNTIFS(Kunden!A2:A200,"?*",Kunden!{K("Status")}2:{K("Status")}200,"Live")', "0"),
+        ("Neue Studios im Aufbau", f'=COUNTIFS(Kunden!A2:A200,"?*",Kunden!{K("Status")}2:{K("Status")}200,"Angelegt")', "0"),
         ("Offene Rechnungen", '=SUMIFS(Rechnungen!I:I,Rechnungen!L:L,"<>bezahlt",Rechnungen!I:I,">0")', EURO2),
         ("Heute dran (Akquise)", f'=COUNTIFS(Akquise!{A("Nächster Kontakt am")}:{A("Nächster Kontakt am")},"<="&TODAY(),Akquise!{A("Stand")}:{A("Stand")},"<>Kunde",Akquise!{A("Stand")}:{A("Stand")},"<>kein Interesse")', "0"),
     ]
@@ -250,13 +299,11 @@ def bauen():
         c = es.cell(row=r, column=3, value=vorgabe if vorgabe != "FORMEL" else None)
         c.font = Font(name=F, size=10, color="0000FF")
         c.border = BOX
-        if key not in ("schluessel", "webhook_url"):
+        if key not in ("schluessel", "uebersicht_url", "formular_url"):
             c.fill = GELB
         es.cell(row=r, column=4, value=hilfe).font = HILFE
         r += 1
-    w, k = zeile_von["webapp_url"], zeile_von["schluessel"]
-    es.cell(row=zeile_von["webhook_url"], column=3,
-            value=f'=IF(OR(C{w}="",C{k}=""),"erscheint nach Schritt 6 der Einrichtung",C{w}&"?key="&C{k})').font = Font(name=F, size=10, bold=True)
+    liste(es, f"C{zeile_von['rechnungen_automatisch']}", ["Ja", "Nein"])
     liste(es, f"C{zeile_von['agentur_kleinunternehmer']}", ["Ja", "Nein"])
     liste(es, f"C{zeile_von['kopie_jeder_anfrage']}", ["Ja", "Nein"])
     liste(es, f"C{zeile_von['akquise_erinnerung']}", ["Ja", "Nein"])
@@ -297,45 +344,29 @@ def bauen():
                           f'_xlfn.MINIFS({au},{kd},$A{r},{st_},"Auftrag")))')
         ku[f"{mab}{r}"] = f'=IF(OR($A{r}="",${ea}{r}="",${ea}{r}="noch keiner"),"",DATE(YEAR(${ea}{r}),MONTH(${ea}{r})+1,1))'
         ku[f"{K('Termine gesamt')}{r}"] = f'=IF($A{r}="","",COUNTIFS({kd},$A{r},Termine!${T("Bestätigt am")}:${T("Bestätigt am")},"<>"))'
-    liste(ku, f"{K('Aktiv')}2:{K('Aktiv')}200", ["Ja", "Nein"])
+    liste(ku, f"{K('Status')}2:{K('Status')}200", ["Angelegt", "Live", "Pausiert", "Beendet"])
     liste(ku, f"{K('Buchung')}2:{K('Buchung')}200", ["Kalender", "Wunschtermin"])
-    ku["A1"].comment = Comment("Neuer Kunde: die Datei „Zeile für die Zentrale“ aus seinem Kundenordner öffnen, alles kopieren, "
-                               "hier in die erste freie Zeile in Spalte A einfügen. Die Spalten bis „Betreuer“ füllen sich so.", "Zentrale")
-    ku[f"{K('Live seit')}1"].comment = Comment("Datum, an dem die Kampagnen live gingen. Ab dann gibt es Monatsreports.", "Zentrale")
-    ku[f"{K('Aktiv')}1"].comment = Comment("Nein = keine Online-Buchung, keine Mails, keine Reports mehr (Kunde hat aufgehört).", "Zentrale")
+    for wert, farbe in (("Live", GRUEN), ("Angelegt", GELB), ("Pausiert", ORANGE), ("Beendet", GRAU)):
+        ku.conditional_formatting.add(f"{K('Status')}2:{K('Status')}200", CellIsRule(operator="equal", formula=[f'"{wert}"'], fill=farbe))
+    ku["A1"].comment = Comment("Neuer Kunde: Menü „Clickculture → 2 · Neuen Kunden einfügen“ und den Code aus seinem Kundenordner einfügen. "
+                               "Die Zeile füllt sich von selbst. Grau hinterlegt = trägt das Studio über seine Schritte-Seite ein.", "Zentrale")
+    ku[f"{K('Status')}1"].comment = Comment("Angelegt = Studio erledigt seine Schritte (Online-Buchung zum Testen geht schon). "
+                                            "Live = Werbung läuft: beim Umstellen geht die Mail „Ihre Werbung läuft“ von selbst raus. "
+                                            "Pausiert/Beendet = keine Buchung, keine Mails.", "Zentrale")
     ku[f"{K('Buchung')}1"].comment = Comment("Kalender = freie Zeiten aus dem Google-Kalender des Studios, Termine werden direkt eingetragen. "
                                              "Wunschtermin = nur buchbare Zeiten, das Studio bestätigt jeden Termin per Knopf.", "Zentrale")
-    ku[f"{K('Betreuer')}1"].comment = Comment("Wer von euch betreut das Studio? Name wie in „Einstellungen → Wer ist im Team?“. Bekommt den Report-Entwurf, steht in Hinweisen.", "Zentrale")
-    ku[f"{K('Buchbare Zeiten')}1"].comment = Comment("Wann online gebucht werden darf, z. B. „Mo-Fr 9-18; Sa 10-14“ oder „Di, Do 9:30-13 14-18“.", "Zentrale")
-    ku[f"{K('Raster Minuten')}1"].comment = Comment("Alle wie viele Minuten ein Termin beginnen kann, z. B. 15, 30 oder 60. Leer = Vorgabe aus „Einstellungen“.", "Zentrale")
-    ku[f"{K('Leistungen')}1"].comment = Comment("Direkt buchbare Behandlungen: Name | Minuten | Preis; Name | Minuten | Preis", "Zentrale")
-    ku[f"{K('Vorbereitung')}1"].comment = Comment("Punkte mit • getrennt. Steht in der Bestätigung und der Erinnerung an die Kundin.", "Zentrale")
+    ku[f"{K('Buchbare Zeiten')}1"].comment = Comment("Wann online gebucht werden darf, z. B. „Mo 9-18; Di 9-12 14-18; Sa 10-14“.", "Zentrale")
+    ku[f"{K('Takt Minuten')}1"].comment = Comment("Alle wie viele Minuten ein Termin beginnen kann, z. B. 15, 30 oder 60.", "Zentrale")
+    ku[f"{K('Leistungen')}1"].comment = Comment("Alle online buchbaren Leistungen: Name | Minuten | Preis; Name | Minuten | Preis", "Zentrale")
+    ku[f"{K('Pixel-ID')}1"].comment = Comment("Datensatz-ID aus dem Meta-Werbekonto des Studios. Wirkt sofort, die Seite muss nicht neu hochgeladen werden.", "Zentrale")
+    ku[f"{K('Google-Conversion')}1"].comment = Comment("z. B. AW-123456789/AbCdEf. Wirkt sofort, die Seite muss nicht neu hochgeladen werden.", "Zentrale")
+    ku.freeze_panes = "B2"
 
-    # ------------------------------------------------ Checkliste
-    ck = wb.create_sheet("Checkliste")
-    for i, (h, b) in enumerate((("Schritt", 15), ("Aufgabe", 76), ("Wer", 10)), start=1):
-        c = ck.cell(row=1, column=i, value=h)
-        c.font = Font(name=F, bold=True, color="FFFFFF", size=10)
-        c.fill = DUNKEL
-        ck.column_dimensions[c.column_letter].width = b
-    for col in range(4, 53):
-        c = ck.cell(row=1, column=col)
-        c.fill = DUNKEL
-        c.font = Font(name=F, bold=True, color="FFFFFF", size=10)
-        ck.column_dimensions[c.column_letter].width = 16
-    ck["B2"] = "Fortschritt"
-    ck["B2"].font = Font(name=F, bold=True, size=10)
-    ende = 2 + len(CHECKLISTE)
-    for i, (schritt, aufgabe, wer) in enumerate(CHECKLISTE, start=3):
-        for col, v in enumerate((schritt, aufgabe, wer), start=1):
-            c = ck.cell(row=i, column=col, value=v)
-            c.font = Font(name=F, size=10)
-            c.alignment = Alignment(wrap_text=True, vertical="top")
-    liste(ck, f"D3:AZ{ende}", ["Ja"])
-    ck.conditional_formatting.add(f"D3:AZ{ende}", CellIsRule(operator="equal", formula=['"Ja"'], fill=GRUEN))
-    ck.freeze_panes = "D3"
-    ck["A1"].comment = Comment("Jeder Kunde im Blatt „Kunden“ bekommt hier von selbst eine Spalte. Erledigt = „Ja“ wählen. "
-                               "Wer: Betreuer = wer das Studio betreut, Technik = wer bei euch einrichtet, Studio = der Kunde.", "Zentrale")
+    # ------------------------------------------------ Verträge
+    vt = wb.create_sheet("Verträge")
+    kopf(vt, VERTRAEGE)
+    formate(vt, VERTRAEGE, 200)
+    vt["A1"].comment = Comment("Füllt sich von selbst: Text der Vereinbarung und wann/wer sie auf der Schritte-Seite angenommen hat (Nachweis).", "Zentrale")
 
     # ------------------------------------------------ Termine
     tm = wb.create_sheet("Termine")
@@ -476,9 +507,13 @@ def bauen():
 
 if __name__ == "__main__":
     if "--kopf" in sys.argv:
-        print(json.dumps({"Checkliste": len(CHECKLISTE), "Kunden": [s[0] for s in KUNDEN], "Termine": [s[0] for s in TERMINE],
+        print(json.dumps({"Verträge": [s[0] for s in VERTRAEGE], "Kunden": [s[0] for s in KUNDEN], "Termine": [s[0] for s in TERMINE],
                           "Sperrliste": [s[0] for s in SPERRLISTE], "Werbekosten": [s[0] for s in WERBEKOSTEN],
-                          "Akquise": [s[0] for s in AKQUISE], "Einstellungen": [e[0] for e in EINSTELLUNGEN if e[0] != "§"]},
+                          "Akquise": [s[0] for s in AKQUISE], "Rechnungen": [s[0] for s in RECHNUNGEN], "Einstellungen": [e[0] for e in EINSTELLUNGEN if e[0] != "§"]},
                          ensure_ascii=False))
+    elif "--pruefen" in sys.argv:
+        code = CODE.read_text(encoding="utf-8")
+        sys.exit(0 if baustein() in code else 1)
     else:
+        code_aktualisieren()
         bauen()

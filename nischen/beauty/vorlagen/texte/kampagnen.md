@@ -1,8 +1,9 @@
 # Kampagnen — {{betrieb}} · {{modul_name}}
 
-> Für die Technik bei euch ({{technik_name}}). Alles fertig zum Eintragen, Texte 1:1 kopieren. Bilder: Ordner „9 Anzeigen-Bilder“.
+> Alles fertig zum Eintragen, Texte 1:1 kopieren. Bilder: Ordner `anzeigen/creatives`.
 > Die Klickwege sind so, wie Meta und Google sie im November 2026 zeigen. Heißt ein Feld anders, nimm das Nächstliegende.
-> Alles erst als **Entwurf** anlegen. Live geht es in Schritt 7.
+> Pixel-ID und Google-Conversion trägst du auf der **Team-Seite** des Studios ein (Link in jeder Mail der Zentrale).
+> Sie wirken sofort, die Seite muss dafür **nicht** neu hochgeladen werden.
 
 **Was gezählt wird:** Meta bekommt „Lead“ und Google eine Conversion erst, wenn die Kundin ihren Termin **in der Mail
 bestätigt** hat (Seite `bestaetigen.html`). Reservierungen, die nie bestätigt werden, und Fake-Buchungen zählen nicht.
@@ -11,21 +12,21 @@ So lernen Meta und Google, Menschen zu finden, die wirklich kommen.
 **Regeln für diese Behandlung** (stecken schon in den Texten, nichts dazu erfinden):
 {{regeln_liste}}
 
-## Vorher: Messung einrichten (einmal pro Kunde, vor dem Hochladen der Seiten)
+## Vorher: Messung einrichten (einmal pro Kunde)
 
 **Meta-Pixel (Meta nennt es „Datensatz“)**
 1. business.facebook.com/settings → links **„Datenquellen“ → „Datensätze“** → **„Hinzufügen“**.
 2. Name: `{{betrieb}}` → **„Erstellen“**.
 3. Frage „Wähle die Werbekonten aus …“: das **Werbekonto des Studios** ankreuzen → **„Weiter“**.
 4. Fragt Meta, wie ihr einrichten wollt: **schließen**. Der Code steckt schon in den Seiten.
-5. Die **Datensatz-ID** (15–16 Ziffern) kopieren → Steckbrief Teil 5, mit `'` davor.
+5. Die **Datensatz-ID** (15–16 Ziffern) kopieren → Team-Seite des Studios → „Meta-Pixel“ → Speichern.
 6. **Gesundheit und Schönheit:** Meta schränkt bei manchen Studios und Praxen die Daten ein („eingeschränkte
    Datennutzung“). Steht im Events Manager ein solcher Hinweis, ist das kein Fehler von euch. Die Seite sendet
    ohnehin keine Behandlungsnamen. Siehe unten „Wenn Meta ‚Lead‘ nicht anbietet“.
 
 **Google-Ads-Conversion** (so geklickt im Probelauf, November 2026)
 
-Voraussetzung: Das Google-Ads-Konto des Kunden hängt an eurem Verwaltungskonto (Hilfe „Schritt 6“, Punkt 0).
+Voraussetzung: Das Studio hat die Verknüpfung mit eurem Verwaltungskonto angenommen (steht auf der Team-Seite als ✓ bei „Google Ads verbinden“).
 Google Ads am besten in **Chrome, ohne VPN und ohne Werbeblocker**. Sonst bleibt es gern mit „Ein Fehler ist
 aufgetreten“ hängen.
 
@@ -48,14 +49,13 @@ aufgetreten“ hängen.
 7. Dort stehen **„Conversion-ID“** (nur Ziffern) und **„Conversion-Label“** (Buchstaben und Zahlen).
    Die „Conversion-Typ-ID“ braucht ihr nicht. Tag Manager mit × schließen, **nicht auf „Senden“ klicken**.
 8. Daraus wird: `AW-` + Conversion-ID + `/` + Conversion-Label, z. B. `AW-123456789/AbCdEfGhIj`
-   → Steckbrief Teil 4 „Google-Ads-Conversion“, mit `'` davor.
+   → Team-Seite des Studios → „Google-Conversion“ → Speichern.
 
 Einmal prüfen: links „Verwaltung“ (Zahnrad) → „Kontoeinstellungen“ → **„Automatische Tagkennzeichnung“
 muss an sein** (ist es normalerweise). Ohne sie kann Google die Anfragen keiner Anzeige zuordnen.
 
 Status „Warten auf Conversions“ ist normal. Er bleibt, bis die erste Kundin nach einem Klick auf eine Google-Anzeige ihren Termin bestätigt.
 
-Dann Steckbrief an Claude: „Erzeuge {{betrieb}} neu.“ Erst danach die Seiten hochladen.
 
 ## Meta-Kampagne anlegen: Klick für Klick
 

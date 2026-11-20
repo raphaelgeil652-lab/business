@@ -11,7 +11,7 @@
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="seite.css">
 <style>:root{{{farben_css}}}</style>
-<script>window.MESSUNG = { pixel: '{{pixel_id}}', gads: '{{google_conversion}}' };</script>
+<script>window.MESSUNG = { zentrale: '{{zentrale_url}}', kunde: '{{slug}}' };</script>
 <script src="messung.js" defer></script>
 </head>
 <body>
@@ -36,7 +36,7 @@
   var DEMO = !/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(cfg.zentrale || '') || q.get('demo') === '1';
   var id = q.get('id'), t = q.get('t');
   if (DEMO) {
-    zeige('✓', 'Ihr Termin ist <em>bestätigt.</em>', 'Vorschau: So sieht die Seite nach dem Klick in der Mail aus.', '<div class="termin"><b>Di, 12.01., 10:00 Uhr</b>' + esc(cfg.beratung) + ' bei ' + esc(cfg.betrieb) + '</div>' + vorb);
+    zeige('✓', 'Ihr Termin ist <em>bestätigt.</em>', 'Vorschau: So sieht die Seite nach dem Klick in der Mail aus.', '<div class="termin"><b>Di, 12.01., 10:00 Uhr</b>' + 'Ihr Termin bei ' + esc(cfg.betrieb) + '</div>' + vorb);
     return;
   }
   if (!id || !t) return fehler('Dieser Link ist nicht vollständig. Bitte nutzen Sie den Knopf in Ihrer E-Mail.', true);

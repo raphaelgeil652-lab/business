@@ -1,5 +1,7 @@
 /* Messung für Meta und Google, nur nach Zustimmung. Jede Seite setzt vorher:
-   window.MESSUNG = { pixel: 'PIXEL_ID oder Ziffern', gads: 'AW-…/… oder leer' }
+   window.MESSUNG = { zentrale: 'https://script.google.com/…/exec', kunde: 'kuerzel' }
+   Pixel-ID und Google-Conversion holt die Seite aus der Zentrale (a=mess). So wirken neue IDs sofort, ohne neues Hochladen.
+   Feste IDs gehen auch: { pixel: '…', gads: 'AW-…/…' }.
    Die Seite „bestaetigen.html“ ruft nach einer echten Bestätigung window.messungMelden() auf:
    Meta bekommt „Lead“, Google die Conversion. Ohne Behandlungsnamen (Datenschutz, Meta-Regeln für Gesundheit). */
 (function () {
@@ -23,13 +25,23 @@
     gtag('consent', 'default', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
     gtag('js', new Date()); gtag('config', gid);
   }
-  function laden() { loadPixel(); loadGoogle(); if (offen) melden(); }
+  var geholt = false;
+  function ids(cb) {
+    if (geholt || pixelOk() || gadsOk() || !/^https:\/\/script\.google\.com\//.test(String(M.zentrale || '')) || !M.kunde) { geholt = true; return cb(); }
+    try { var c = JSON.parse(sessionStorage.getItem('lp-mess') || 'null'); if (c) { M.pixel = c.pixel; M.gads = c.conversion; geholt = true; return cb(); } } catch (e) {}
+    fetch(M.zentrale + '?a=mess&k=' + encodeURIComponent(M.kunde)).then(function (r) { return r.json(); }).then(function (d) {
+      if (d && d.ok) { M.pixel = d.pixel; M.gads = d.conversion; try { sessionStorage.setItem('lp-mess', JSON.stringify(d)); } catch (e) {} }
+    }).catch(function () {}).then(function () { geholt = true; cb(); });
+  }
+  function laden() { ids(function () { loadPixel(); loadGoogle(); if (offen) melden(); }); }
   function melden() {
     if (getC() !== 'ja') { offen = true; return; }
     offen = false;
-    loadPixel(); loadGoogle();
-    if (window.fbq) fbq('track', 'Lead');
-    if (window.gtag && gadsOk()) gtag('event', 'conversion', { send_to: M.gads });
+    ids(function () {
+      loadPixel(); loadGoogle();
+      if (window.fbq) fbq('track', 'Lead');
+      if (window.gtag && gadsOk()) gtag('event', 'conversion', { send_to: M.gads });
+    });
   }
   window.messungMelden = melden;
   document.addEventListener('DOMContentLoaded', function () {

@@ -1,0 +1,53 @@
+{
+ "typ": "clickculture-beauty-studio",
+ "anrede": "Frau Muster",
+ "adresse": "Musterweg 1, 12345 Musterstadt",
+ "takt": 30,
+ "absagefrist": 24,
+ "umkreis": 15,
+ "impressum": "https://example.com/impressum",
+ "datenschutz": "https://example.com/datenschutz",
+ "zentrale": "",
+ "agentur": {
+  "name": "Clickculture",
+  "email": "hallo@clickculture.example",
+  "telefon": "0151 00000001"
+ },
+ "betrieb": "Muster Laserstudio",
+ "firma": "Muster Laserstudio GmbH",
+ "inhaber": "Sabine Muster",
+ "telefon": "0123 4567810",
+ "email": "termine@muster-laserstudio.example",
+ "behandlung": "Laser",
+ "behandler_art": "Kosmetik mit NiSV-Fachkunde",
+ "behandler": "Sabine Muster, Fachkunde nach NiSV",
+ "modus": "Kalender",
+ "zeiten": "Di 9-18; Mi 9-18; Do 9-18; Fr 9-18; Sa 10-14",
+ "leistungen": [
+  {
+   "name": "Haut- und Haaranalyse mit Probeschuss",
+   "minuten": 20,
+   "preis": ""
+  },
+  {
+   "name": "Achseln",
+   "minuten": 20,
+   "preis": "ab 59"
+  },
+  {
+   "name": "Bikinizone",
+   "minuten": 30,
+   "preis": "ab 79"
+  },
+  {
+   "name": "Beine komplett",
+   "minuten": 60,
+   "preis": "ab 199"
+  }
+ ],
+ "ausfall": "Bei einer Absage später als 24 Stunden vorher oder wenn Sie nicht kommen, berechnen wir 30 €. Das gilt nicht, wenn Sie nachweisen, dass Sie das Versäumnis nicht zu vertreten haben oder uns kein oder ein geringerer Schaden entstanden ist.",
+ "budget": 600,
+ "betreuer": "Max",
+ "kuerzel": "muster-laserstudio",
+ "seite": "https://muster-laserstudio.netlify.app"
+}

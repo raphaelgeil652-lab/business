@@ -1,0 +1,138 @@
+<!--
+  LANDINGPAGE MIT ONLINE-BUCHUNG · VORLAGE für alle Beauty-Module. kunde-anlegen.py füllt {{…}} aus Steckbrief und module.py.
+  Ziel aller Anzeigen. Freie Zeiten und Buchung über die Beauty-Zentrale (buchung.js). Rückruf-Wunsch geht ebenfalls an die Zentrale.
+  Pixel und Google erst nach Zustimmung (messung.js). Keine Gesundheitsfragen im Formular.
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahnaufhellung in Musterstadt · Muster Zahnarztpraxis</title>
+<meta name="description" content="Erst prüfen wir Zähne und Zahnfleisch, dann hellen wir schonend auf. Erstgespräch direkt hier wählen.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="seite.css">
+<style>:root{--bg:#F2F5F8;--ink:#13243A;--ink2:#13243ACC;--muted:#6B665D;--line:#DDE6EF;--accent:#245E9E;--soft:#DDE6EF;--dunkel:#14243A;--hell:#FAFCFD;}</style>
+<script>window.MESSUNG = { zentrale: '', kunde: 'muster-zahnarztpraxis' };</script>
+<script src="messung.js" defer></script>
+</head>
+<body>
+
+<div class="wrap"><div class="top"><span>Muster Zahnarztpraxis</span><a href="tel:+491234567840">0123 4567840</a></div></div>
+<div class="photo" role="img" aria-label="Zahnaufhellung (Bleaching) bei Muster Zahnarztpraxis" style="background-image:url(fotos/foto-1.jpg)"></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Zahnaufhellung in der Zahnarztpraxis</p>
+    <h1>Hellere Zähne, <em>zahnärztlich begleitet.</em></h1>
+    <p class="sub">Erst prüfen wir Zähne und Zahnfleisch, dann hellen wir schonend auf. Erstgespräch direkt hier wählen.</p>
+    <div class="steps"><div><b>1</b>Erstgespräch online wählen</div><div><b>2</b>Untersuchung und Beratung</div><div><b>3</b>Aufhellung in der Praxis</div></div>
+  </header>
+
+  <div class="card" id="buchen">
+    <h2>Termin wählen</h2>
+    <p class="hint">Freie Zeiten sehen, Termin wählen, per E-Mail bestätigen.</p>
+
+    <div class="schritt" id="schritt-art">
+      <p class="label">Was möchten Sie buchen?</p>
+      <div class="arten" id="arten"></div>
+    </div>
+
+    <div class="schritt">
+      <p class="label">Tag und Uhrzeit</p>
+      <div class="tage" id="tage" aria-label="Tag wählen"></div>
+      <div class="zeiten" id="zeiten" aria-label="Uhrzeit wählen"></div>
+      <p class="lade" id="lade">Freie Termine werden geladen …</p>
+    </div>
+
+    <div class="wahl" id="wahl" aria-live="polite"></div>
+
+    <div class="schritt" id="schritt-daten" style="display:none">
+      <p class="label">Ihre Angaben</p>
+      <form id="buchung-form" novalidate>
+        <p class="hp" aria-hidden="true"><label>Bitte leer lassen <input name="website" tabindex="-1" autocomplete="off"></label></p>
+        <label>Vor- und Nachname <input type="text" name="name" required autocomplete="name" placeholder="Ihr Name"></label>
+        <p class="feldfehler" id="fehler-name"></p>
+        <label>Telefon <input type="tel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="Für Rückfragen"></label>
+        <p class="feldfehler" id="fehler-telefon"></p>
+        <label>E-Mail <input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="Dorthin kommt die Bestätigung"></label>
+        <p class="feldfehler" id="fehler-email"></p>
+        <label class="check"><input type="checkbox" name="ab18" required> <span>Ich bin mindestens 18 Jahre alt.</span></label>
+        <label class="check"><input type="checkbox" name="einwilligung" required> <span>Ich willige ausdrücklich ein, dass Muster Zahnarztpraxis meine Angaben einschließlich der gewünschten Behandlung verarbeitet, um den Termin zu vereinbaren und mich daran zu erinnern (Art. 9 Abs. 2 lit. a DSGVO). Ich kann die Einwilligung jederzeit widerrufen. Details im <a href="https://example.com/datenschutz">Datenschutz</a>.</span></label>
+        <p class="note" style="text-align:left;margin:0;">Bitte keine Gesundheitsangaben eintragen. Fragen zu Medikamenten, Allergien oder Schwangerschaft klären wir persönlich.</p>
+        <div class="fehler" id="fehler" role="alert"></div>
+        <button class="btn" type="submit" id="senden" disabled>Termin reservieren</button>
+      </form>
+      <p class="note">Danach kommt eine E-Mail. Erst mit Ihrem Klick dort ist der Termin fest gebucht.</p>
+    </div>
+
+    <div class="demo" id="demo" style="display:none">Vorschau: Diese Termine sind Beispiele. Gebucht wird nichts.</div>
+
+    <div class="alt">Kein passender Termin dabei? <button class="linkbtn" type="button" id="rueckruf-link">Rückruf anfordern</button> oder anrufen: <a href="tel:+491234567840">0123 4567840</a></div>
+
+    <div id="rueckruf-box" style="display:none">
+      <form name="rueckruf" novalidate>
+        <p class="hp"><label>Bitte leer lassen <input name="bot-field"></label></p>
+        <label>Vor- und Nachname <input type="text" name="name" required autocomplete="name"></label>
+        <label>Telefon <input type="tel" name="telefon" required autocomplete="tel"></label>
+        <label>Wann passt ein Rückruf? <span style="font-weight:500;color:var(--muted)">(optional)</span> <input type="text" name="wunsch" placeholder="z. B. nachmittags"></label>
+        <label class="check"><input type="checkbox" name="ab18" required> <span>Ich bin mindestens 18 Jahre alt.</span></label>
+        <label class="check"><input type="checkbox" name="einwilligung" required> <span>Ich willige ausdrücklich ein, dass Muster Zahnarztpraxis meine Angaben einschließlich meines Interesses an Zahnaufhellung (Bleaching) verarbeitet, um mich zurückzurufen (Art. 9 Abs. 2 lit. a DSGVO). Widerruf jederzeit möglich. Details im <a href="https://example.com/datenschutz">Datenschutz</a>.</span></label>
+        <input type="hidden" name="utm_source"><input type="hidden" name="utm_campaign"><input type="hidden" name="fbclid"><input type="hidden" name="gclid">
+        <div class="fehler" id="rueckruf-fehler" role="alert"></div>
+        <button class="btn ghost" type="submit">Rückruf anfordern</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <h2>Leistungen und Preise</h2>
+    <table class="preise"><tr><td>Erstgespräch Zahnaufhellung<small>20 Min.</small></td><td></td></tr><tr><td>Bleaching in der Praxis<small>90 Min.</small></td><td>ab 350 €</td></tr></table>
+    <p class="hinweis">Ob vorher eine Zahnreinigung nötig ist, klären wir im Erstgespräch. Alle Preise inklusive Mehrwertsteuer.</p>
+  </section>
+
+  <section>
+    <h2>Was Sie erwartet</h2>
+    <ul class="list"><li>Zahnaufhellung in der Zahnarztpraxis, mit Untersuchung vorab</li><li>Ehrliche Einschätzung, was bei Ihren Zähnen möglich ist</li><li>Termine online buchen und absagen, ohne Warteschleife</li></ul>
+    <p class="hinweis">Wie hell die Zähne werden und wie lange es hält, ist individuell. Füllungen und Kronen hellen nicht mit auf. Manche spüren für kurze Zeit empfindliche Zähne.</p>
+  </section>
+  <section>
+    <h2>Wer Sie behandelt</h2>
+    <div class="person"><div class="bild" style="background-image:url(fotos/foto-3.jpg)"></div><div><b>Dr. med. dent. Paul Muster, Zahnarzt</b><p>Vor jeder Aufhellung untersuchen wir Zähne und Zahnfleisch.</p></div></div>
+  </section>
+
+  <section>
+    <h2>Häufige Fragen</h2>
+    <details><summary>Warum Bleaching beim Zahnarzt?</summary><p>Wirksame Aufhellungsmittel dürfen nur in der Zahnarztpraxis angewendet werden. Vorher prüfen wir Zähne und Zahnfleisch.</p></details>
+    <details><summary>Wie hell werden die Zähne?</summary><p>Das ist individuell und hängt von Ihrer Ausgangsfarbe ab. Im Erstgespräch sagen wir Ihnen ehrlich, was möglich ist.</p></details>
+    <details><summary>Tut das weh?</summary><p>Die Aufhellung selbst ist nicht schmerzhaft. Manche spüren danach für kurze Zeit empfindliche Zähne.</p></details>
+    <details><summary>Wie lange hält es?</summary><p>Meist einige Jahre, je nach Ernährung und Pflege. Kaffee, Tee, Rotwein und Rauchen dunkeln wieder nach.</p></details>
+    <details><summary>Was kostet es?</summary><p>Die Preise stehen oben. Ob vorher eine Zahnreinigung nötig ist, klären wir im Erstgespräch.</p></details>
+  </section>
+
+  <section class="final">
+    <h2>Ihr erster Schritt: <em>ein Termin.</em></h2>
+    <p>Freie Zeiten sehen, Termin wählen, per E-Mail bestätigen.</p>
+    <a class="btn" href="#buchen">Termin wählen</a>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <b>Zahnarztpraxis Dr. Paul Muster</b><br>Musterweg 1, 12345 Musterstadt · <a href="tel:+491234567840">0123 4567840</a><br>Online-Termine: Mo 8-17 · Di 8-17 · Mi 8-17 · Do 8-17 · Fr 8-12<br>
+  <a href="https://example.com/impressum">Impressum</a> · <a href="https://example.com/datenschutz">Datenschutz</a> ·
+  <button class="linkbtn" type="button" id="consent-open">Cookie-Einstellungen</button>
+</div></footer>
+
+<div class="sticky"><a class="btn" href="#buchen">Termin wählen</a></div>
+
+<div class="consent" id="consent" role="dialog" aria-label="Cookie-Einstellungen">
+  <p>Wir möchten messen, ob unsere Werbung auf Facebook, Instagram und Google ankommt. Dafür nutzen wir das Meta-Pixel und die Conversion-Messung von Google Ads, die Cookies setzen. Das geht nur mit Ihrer Zustimmung. Die Online-Buchung funktioniert auch ohne. Mehr im <a href="https://example.com/datenschutz">Datenschutz</a>.</p>
+  <div class="row"><button class="btn ghost" type="button" id="consent-no">Nur notwendige</button><button class="btn" type="button" id="consent-yes">Einverstanden</button></div>
+</div>
+
+<script id="buchung-cfg" type="application/json">{"zentrale": "", "kunde": "muster-zahnarztpraxis", "telefon": "0123 4567840", "telefon_link": "+491234567840", "leistungen": [{"name": "Erstgespräch Zahnaufhellung", "minuten": 20, "preis": ""}, {"name": "Bleaching in der Praxis", "minuten": 90, "preis": "ab 350 €"}]}</script>
+<script src="buchung.js"></script>
+</body>
+</html>

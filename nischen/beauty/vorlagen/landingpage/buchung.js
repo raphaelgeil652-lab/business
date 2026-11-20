@@ -6,7 +6,9 @@
   var cfg = JSON.parse(document.getElementById('buchung-cfg').textContent);
   var q = new URLSearchParams(location.search);
   var DEMO = !/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(cfg.zentrale || '') || q.get('demo') === '1';
-  var start = Date.now(), wahl = { art: 'beratung', leistung: '', minuten: cfg.beratung.minuten, tag: null, zeit: null }, tage = [];
+  var start = Date.now(), tage = [];
+  var optionen = cfg.leistungen || [];
+  var wahl = { leistung: optionen.length ? optionen[0].name : '', minuten: optionen.length ? optionen[0].minuten : 30, tag: null, zeit: null };
   var $ = function (id) { return document.getElementById(id); };
   var el = function (tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -22,19 +24,16 @@
   });
 
   // 1 · Was buchen?
-  var optionen = [{ art: 'beratung', name: cfg.beratung.name, minuten: cfg.beratung.minuten, zusatz: cfg.beratung.wort }]
-    .concat((cfg.direkt ? cfg.leistungen : []).map(function (l) { return { art: 'behandlung', name: l.name, minuten: l.minuten, zusatz: l.preis }; }));
   var arten = $('arten');
   if (optionen.length < 2) { $('schritt-art').style.display = 'none'; }
   optionen.forEach(function (o, i) {
-    var b = el('button', 'art', '<span><b>' + esc(o.name) + '</b><small>' + (o.art === 'beratung' ? 'Beratung · ' : 'Direkt buchen · ') +
-      o.minuten + ' Min.</small></span>' + (o.zusatz ? '<span class="preis">' + esc(o.zusatz) + '</span>' : ''));
+    var b = el('button', 'art', '<span><b>' + esc(o.name) + '</b><small>' + o.minuten + ' Min.</small></span>' + (o.preis ? '<span class="preis">' + esc(o.preis) + '</span>' : ''));
     b.type = 'button';
     b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
     b.onclick = function () {
       [].forEach.call(arten.children, function (x) { x.setAttribute('aria-pressed', 'false'); });
       b.setAttribute('aria-pressed', 'true');
-      wahl.art = o.art; wahl.leistung = o.art === 'behandlung' ? o.name : ''; wahl.minuten = o.minuten;
+      wahl.leistung = o.name; wahl.minuten = o.minuten;
       ladeZeiten();
     };
     arten.appendChild(b);
@@ -47,7 +46,7 @@
     $('lade').textContent = hinweis || 'Freie Termine werden geladen …';
     $('lade').style.display = 'block';
     if (DEMO) { setTimeout(function () { zeigeTage(demoTage()); }, 250); return; }
-    fetch(cfg.zentrale + '?a=slots&k=' + encodeURIComponent(cfg.kunde) + '&art=' + wahl.art + '&l=' + encodeURIComponent(wahl.leistung))
+    fetch(cfg.zentrale + '?a=slots&k=' + encodeURIComponent(cfg.kunde) + '&l=' + encodeURIComponent(wahl.leistung))
       .then(function (r) { return r.json(); })
       .then(function (d) { if (!d.ok) throw new Error(d.fehler); zeigeTage(d.tage); })
       .catch(function () {
@@ -96,7 +95,7 @@
   function zeigeWahl() {
     var w = $('wahl');
     if (wahl.tag && wahl.zeit) {
-      w.innerHTML = '<b>' + esc(wahl.tag.label) + ' um ' + wahl.zeit + ' Uhr</b> · ' + esc(wahl.leistung || cfg.beratung.name) + ' (' + wahl.minuten + ' Min.)';
+      w.innerHTML = '<b>' + esc(wahl.tag.label) + ' um ' + wahl.zeit + ' Uhr</b> · ' + esc(wahl.leistung) + ' (' + wahl.minuten + ' Min.)';
       w.classList.add('show');
       $('senden').disabled = false;
     } else {
@@ -129,7 +128,7 @@
     $('fehler').classList.remove('show');
     if (!wahl.zeit) return;
     var d = {
-      a: 'buchen', kunde: cfg.kunde, art: wahl.art, leistung: wahl.leistung, start: wahl.tag.datum + 'T' + wahl.zeit,
+      a: 'buchen', kunde: cfg.kunde, leistung: wahl.leistung, start: wahl.tag.datum + 'T' + wahl.zeit,
       name: form.elements.name.value, telefon: form.elements.telefon.value, email: form.elements.email.value,
       hp: form.elements.website.value, ms: Date.now() - start
     };
@@ -158,8 +157,24 @@
       });
   });
 
-  // Rückruf statt Online-Termin
+  // Rückruf statt Online-Termin: geht direkt an die Zentrale (keine Netlify-Formulare nötig)
   function rueckruf(an) { $('rueckruf-box').style.display = an ? 'block' : 'none'; }
+  var rf = document.querySelector('form[name="rueckruf"]');
+  if (rf) rf.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (!rf.checkValidity()) { rf.reportValidity(); return; }
+    var d = { a: 'anfrage', form: 'rueckruf', kunde: cfg.kunde, name: rf.elements.name.value, telefon: rf.elements.telefon.value,
+      wunsch: rf.elements.wunsch ? rf.elements.wunsch.value : '', hp: rf.elements['bot-field'].value, ms: Date.now() - start };
+    Object.keys(UTM).forEach(function (k) { d[k] = UTM[k]; });
+    var b = rf.querySelector('button'), f = $('rueckruf-fehler');
+    var fertig = function () { location.href = 'rueckruf-danke.html' + (DEMO ? '?demo=1' : ''); };
+    if (DEMO) { fertig(); return; }
+    b.disabled = true;
+    fetch(cfg.zentrale, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d) })
+      .then(function (r) { return r.json(); })
+      .then(function (r) { if (r.ok) return fertig(); b.disabled = false; f.textContent = r.fehler; f.classList.add('show'); })
+      .catch(function () { b.disabled = false; f.innerHTML = 'Das hat gerade nicht geklappt. Bitte rufen Sie uns an: <a href="tel:' + esc(cfg.telefon_link) + '">' + esc(cfg.telefon) + '</a>'; f.classList.add('show'); });
+  });
   $('rueckruf-link').onclick = function () { rueckruf(true); $('rueckruf-box').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
   if (DEMO) $('demo').style.display = 'block';
   ladeZeiten();

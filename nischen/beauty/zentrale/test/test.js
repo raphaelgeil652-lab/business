@@ -41,6 +41,8 @@ class Blatt {
     return { getValues: () => this.z.slice(0, n).map(r => { const c = r.slice(); while (c.length < b) c.push(''); return c; }) };
   }
   getName() { return this.name; }
+  getSheetId() { return 7; }
+  setFrozenRows() {}
   appendRow(a) { const r = this.letzte() + 1; this.z.splice(r - 1, 0, a.map((v, i) => this.wert(r, i + 1, v))); }
   getRange(r, c, nr = 1, nc = 1) {
     return {
@@ -53,7 +55,7 @@ class Blatt {
       setFormula: f => { while (this.z.length < r) this.z.push([]); const row = this.z[r - 1]; while (row.length < c) row.push(''); row[c - 1] = f; },
       getDisplayValue: () => { const f = String((this.z[r - 1] || [])[c - 1] || ''); return DEUTSCH && /^=.*,/.test(f) ? '#ERROR!' : f; },
       setNumberFormat: f => { for (let i = 0; i < nr; i++) for (let j = 0; j < nc; j++) { const k = (r + i) + ',' + (c + j); if (f === '@') this.text.add(k); else this.text.delete(k); } },
-      getSheet: () => this,
+      getSheet: () => this, setFontWeight: () => ({}), getDisplayValue2: null,
       getValue: () => (this.z[r - 1] || [])[c - 1]
     };
   }
@@ -77,6 +79,16 @@ function kalObjekt(id) {
   }
 }
 const abonniert = new Set();
+const ordner = [];
+function neuerOrdner(name) {
+  const o = { id: 'F' + (ordner.length + 1), name, dateien: [],
+    getUrl: () => 'https://drive.google.com/drive/folders/' + o.id, createFolder: n => neuerOrdner(n),
+    createFile: b => { o.dateien.push(b); return b; },
+    getFiles: () => { const l = o.dateien.slice(); return { hasNext: () => l.length > 0, next: () => l.shift() }; } };
+  ordner.push(o);
+  return o;
+}
+const exporte = [];
 
 const blaetter = {};
 const mails = [], entwuerfe = [], alerts = [];
@@ -95,9 +107,10 @@ const ctx = {
   Date: FDate, Math, JSON, String, Number, Object, Array, RegExp, Error, isNaN, encodeURIComponent, console,
   SpreadsheetApp: {
     flush: () => {},
-    getActive: () => ({ getSheetByName: n => blaetter[n] || null, getUrl: () => 'https://docs.google.com/spreadsheets/d/ZENTRALE' }),
+    getActive: () => ({ getSheetByName: n => blaetter[n] || null, getUrl: () => 'https://docs.google.com/spreadsheets/d/ZENTRALE', getId: () => 'ZENTRALE',
+      insertSheet: n => (blaetter[n] = new Blatt(n, [])) }),
     getUi: () => ({
-      alert: (...a) => alerts.push(a.join(' | ')), ButtonSet: { OK: 'OK' },
+      alert: (...a) => alerts.push(a.join(' | ')), ButtonSet: { OK: 'OK' }, showModalDialog: (h, t) => alerts.push('DIALOG ' + t + ' ' + h.html),
       createMenu: () => { const m = { addItem: () => m, addSeparator: () => m, addToUi: () => m }; return m; }
     })
   },
@@ -109,7 +122,7 @@ const ctx = {
   },
   CacheService: { getScriptCache: () => ({ get: k => cache[k] || null, put: (k, v) => { cache[k] = v; }, removeAll: ks => ks.forEach(k => delete cache[k]) }) },
   ScriptApp: {
-    WeekDay: { MONDAY: 'MONDAY' },
+    WeekDay: { MONDAY: 'MONDAY' }, getOAuthToken: () => 'TOKEN',
     getProjectTriggers: () => trigger.slice(),
     deleteTrigger: t => { trigger = trigger.filter(x => x !== t); },
     newTrigger: fn => {
@@ -121,14 +134,28 @@ const ctx = {
       return b;
     }
   },
-  Utilities: { getUuid: () => crypto.randomUUID(), formatDate, newBlob: (inhalt, typ, name) => ({ inhalt, typ, name }) },
+  Utilities: {
+    getUuid: () => crypto.randomUUID(), formatDate, newBlob: (inhalt, typ, name) => ({ inhalt, typ, name, setName: n => ({ inhalt, typ, name: n }) }),
+    computeHmacSha256Signature: (v, k) => Array.from(crypto.createHmac('sha256', k).update(v).digest()),
+    base64EncodeWebSafe: b => Buffer.from(b).toString('base64').replace(/\+/g, '-').replace(/\//g, '_'),
+    base64Decode: b => Array.from(Buffer.from(b, 'base64'))
+  },
+  DriveApp: {
+    getFoldersByName: n => { const f = ordner.filter(o => o.name === n); return { hasNext: () => f.length > 0, next: () => f.shift() }; },
+    createFolder: n => neuerOrdner(n),
+    getFolderById: id => ordner.find(o => o.id === id) || null
+  },
   Session: { getScriptTimeZone: () => TZ, getEffectiveUser: () => ({ getEmail: () => 'besitzer@gmail.com' }) },
   LockService: { getScriptLock: () => ({ waitLock: () => {}, releaseLock: () => {} }) },
   PropertiesService: { getScriptProperties: () => ({ getProperty: k => props[k] || null, setProperty: (k, v) => { props[k] = v; } }) },
-  HtmlService: { createHtmlOutput: h => { const o = { html: h, setTitle: () => o, addMetaTag: () => o }; return o; } },
+  HtmlService: { createHtmlOutput: h => { const o = { html: h, setTitle: () => o, addMetaTag: () => o, setWidth: () => o, setHeight: () => o }; return o; } },
   ContentService: { MimeType: { JSON: 'json' }, createTextOutput: t => { const o = { text: t, setMimeType: () => o }; return o; } },
   UrlFetchApp: {
-    fetch: url => {
+    fetch: (url, opt) => {
+      if (url.startsWith('https://docs.google.com/spreadsheets/d/ZENTRALE/export')) {
+        exporte.push({ url, nr: blaetter['Rechnung drucken'].getRange(1, 3).getValue() });
+        return { getResponseCode: () => 200, getBlob: () => ({ setName: n => ({ name: n, typ: 'application/pdf' }) }) };
+      }
       const name = decodeURIComponent((url.match(/name=([^&]+)/) || [])[1] || '');
       const antwort = name === 'nichtda-xyz.de' ? { Status: 3 } : name === 'ohnepost.de' ? { Status: 0 } : { Status: 0, Answer: [{ data: 'mx' }] };
       return { getResponseCode: () => 200, getContentText: () => JSON.stringify(antwort) };
@@ -143,10 +170,10 @@ const G = ctx;
 function neu() {
   for (const k of Object.keys(blaetter)) delete blaetter[k];
   for (const k of Object.keys(kalender)) delete kalender[k];
-  abonniert.clear();
+  abonniert.clear(); ordner.length = 0; exporte.length = 0;
   mails.length = 0; entwuerfe.length = 0; alerts.length = 0; trigger = []; props = {}; cache = {}; quota = 90;
   const werte = {
-    agentur_name: 'Clickculture', agentur_inhaber: 'Max Beispiel', agentur_email: 'ich@agentur.de', agentur_steuernr: '12/345/67890', agentur_kleinunternehmer: 'Nein',
+    agentur_name: 'Clickculture', agentur_inhaber: 'Max Beispiel', agentur_email: 'ich@agentur.de', agentur_steuernr: '12/345/67890', agentur_kleinunternehmer: 'Nein', agentur_business_id: '1234567890123456',
     bestaetigung_minuten: 45, erinnerung_stunden: 24, raster_minuten: 30, max_unbestaetigt: 6, mail_warnung_ab: 25,
     benachrichtigung_an: 'ich@agentur.de,tom@agentur.de', team: 'Max = ich@agentur.de; Tom Beispiel = tom@agentur.de', geschaeftszeiten: '9-18', arbeitstage: 'Mo-Sa', rueckruf_minuten: 60,
     kopie_jeder_anfrage: 'Nein', akquise_erinnerung: 'Ja', webapp_url: 'https://script.google.com/macros/s/ABC/exec', schluessel: ''
@@ -154,22 +181,23 @@ function neu() {
   blaetter.Einstellungen = new Blatt('Einstellungen', [['Schlüssel', 'Einstellung', 'Eintrag', 'Hilfe'], ['', 'Abschnitt', '', '']]
     .concat(KOPF.Einstellungen.map(k => [k, k, k in werte ? werte[k] : '', ''])));
   for (const n of ['Kunden', 'Termine', 'Sperrliste', 'Werbekosten', 'Akquise']) blaetter[n] = new Blatt(n, [KOPF[n].slice()]);
-  blaetter.Checkliste = new Blatt('Checkliste', [['Schritt', 'Aufgabe', 'Wer'], ['', 'Fortschritt', '']]
-    .concat(Array.from({ length: KOPF.Checkliste }, (_, i) => ['4', 'Aufgabe ' + (i + 1), 'Du'])));
+  blaetter['Verträge'] = new Blatt('Verträge', [KOPF['Verträge'].slice()]);
+  blaetter.Rechnungen = new Blatt('Rechnungen', [KOPF.Rechnungen.slice()]);
+  blaetter['Rechnung drucken'] = new Blatt('Rechnung drucken', [[]]);
   const kunde = o => blaetter.Kunden.appendRow(KOPF.Kunden.map(h => (h in o ? o[h] : '')));
   kalender['studio@laser.de'] = [];
   kunde({ 'Kürzel': 'muster-laser', 'Betrieb': 'Muster Laserstudio', 'Anrede für Mails': 'Frau Muster', 'E-Mail für Termine': 'studio@laser.de',
     'Telefon': '07552 12345', 'Adresse': 'Hauptstraße 1, 88630 Pfullendorf', 'Seiten-Adresse': 'https://muster-laser.netlify.app/',
-    'Monatsgebühr €': 899, 'Live seit': berlin('2026-12-01 00:00'), 'Aktiv': 'Ja', 'Behandlung': 'Laser', 'Buchung': 'Kalender',
-    'Kalender-ID': 'studio@laser.de', 'Buchbare Zeiten': 'Mo-Fr 9-18; Sa 10-14', 'Beratung Minuten': 20,
-    'Leistungen': 'Achseln | 20 | 89 €; Beine komplett | 60 | 249 €', 'Puffer Minuten': 0, 'Vorlauf Stunden': 12, 'Tage im Voraus': 14,
+    'Monatsgebühr €': 899, 'Live seit': berlin('2026-12-01 00:00'), 'Status': 'Live', 'Behandlung': 'Laser', 'Buchung': 'Kalender',
+    'Kalender-ID': 'studio@laser.de', 'Buchbare Zeiten': 'Mo-Fr 9-18; Sa 10-14',
+    'Leistungen': 'Beratung | 20 | ; Achseln | 20 | 89 €; Beine komplett | 60 | 249 €', 'Puffer Minuten': 0, 'Vorlauf Stunden': 12, 'Tage im Voraus': 14,
     'Absagefrist Stunden': 24, 'Ausfallregel': 'Bei späterer Absage berechnen wir 30 €.', 'Vorbereitung': 'Am Vortag rasieren • 2 Wochen vorher keine Sonne',
     'Teilnahmeschluss': berlin('2027-01-15 00:00'), 'Ziehung am': berlin('2027-01-20 00:00'), 'Betreuer': 'Tom' });
   kunde({ 'Kürzel': 'muster-pmu', 'Betrieb': 'Muster Brows', 'Anrede für Mails': 'Frau Brow', 'E-Mail für Termine': 'brows@pmu.de', 'Telefon': '0151 99999999',
-    'Adresse': 'Weg 2, 12345 Musterstadt', 'Seiten-Adresse': 'https://muster-pmu.netlify.app', 'Aktiv': 'Ja', 'Behandlung': 'Permanent Make-up',
-    'Buchung': 'Wunschtermin', 'Buchbare Zeiten': 'Di, Do 10-16', 'Beratung Minuten': 30, 'Leistungen': 'Powder Brows | 150 | 390 €',
+    'Adresse': 'Weg 2, 12345 Musterstadt', 'Seiten-Adresse': 'https://muster-pmu.netlify.app', 'Status': 'Live', 'Behandlung': 'Permanent Make-up',
+    'Buchung': 'Wunschtermin', 'Buchbare Zeiten': 'Di, Do 10-16', 'Leistungen': 'Beratung | 30 | ; Powder Brows | 150 | 390 €',
     'Vorlauf Stunden': 24, 'Tage im Voraus': 21, 'Absagefrist Stunden': 48, 'Vorbereitung': '' });
-  kunde({ 'Kürzel': 'alt-gmbh', 'Betrieb': 'Alt GmbH', 'E-Mail für Termine': 'alt@x.de', 'Aktiv': 'Nein' });
+  kunde({ 'Kürzel': 'alt-gmbh', 'Betrieb': 'Alt GmbH', 'E-Mail für Termine': 'alt@x.de', 'Status': 'Beendet' });
 }
 const termine = () => { const v = blaetter.Termine.getDataRange().getValues(), k = v[0]; return v.slice(1).map(r => Object.fromEntries(k.map((h, i) => [h, r[i]]))); };
 const termin = id => termine().find(x => x.ID === id);
@@ -195,13 +223,7 @@ G.einrichten();
 pruefe(trigger.length === 6, 'zweimal Einrichten → trotzdem 6');
 pruefe(/^[0-9a-f]{24}$/.test(G.einst_().schluessel), 'Schlüssel erzeugt');
 pruefe(alerts[alerts.length - 1].includes('Alles bereit'), 'Hinweis „Alles bereit“');
-const ckKopf = () => blaetter.Checkliste.z[0].filter(x => x !== '');
-pruefe(ckKopf().join() === 'Schritt,Aufgabe,Wer,muster-laser,muster-pmu,alt-gmbh', 'Checkliste: Spalte je Kunde');
-DEUTSCH = true;
-blaetter.Kunden.appendRow(KOPF.Kunden.map(h => (h === 'Kürzel' ? 'de-kunde' : h === 'E-Mail für Termine' ? 'd@x.de' : h === 'Aktiv' ? 'Nein' : '')));
-G.onEdit({ range: blaetter.Kunden.getRange(5, 1) });
-pruefe(/;"Ja"\)\/\d+;0\)$/.test(blaetter.Checkliste.z[1][blaetter.Checkliste.z[0].indexOf('de-kunde')]), 'deutsche Tabelle: Formel mit „;“');
-DEUTSCH = false;
+pruefe(JSON.stringify(G.KUNDEN_SPALTEN) === JSON.stringify(KOPF.Kunden), 'Spalten in Code.gs und zentrale-bauen.py gleich');
 
 // ================================================================ 2 Buchbare Zeiten und freie Termine
 console.log('2 Freie Termine');
@@ -229,11 +251,11 @@ pruefe(r.tage[r.tage.length - 1].datum <= '2027-01-25', 'höchstens 14 Tage im V
 r = get({ a: 'slots', k: 'muster-laser', art: 'behandlung', l: 'Beine komplett' });
 pruefe(r.ok && r.dauer === 60 && !r.tage[0].zeiten.includes('09:30') && r.tage[0].zeiten.includes('09:00'), 'Behandlung 60 Min.: 9:30 passt nicht vor 10 Uhr');
 const k60 = G.kunde_('muster-laser'); k60.raster = 60;
-const t60 = G.freieSlots_(k60, 'beratung', '', G.einst_())[0].zeiten;
+const t60 = G.freieSlots_(k60, '', G.einst_())[0].zeiten;
 pruefe(t60[0] === '09:00' && t60[1] === '11:00' && !t60.includes('09:30'), 'Takt pro Studio: alle 60 Min. (9:00, 11:00 …; 10 Uhr belegt)');
 pruefe(!get({ a: 'slots', k: 'muster-laser', art: 'behandlung', l: 'Gibts nicht' }).ok, 'unbekannte Leistung → nicht buchbar');
 pruefe(!get({ a: 'slots', k: 'alt-gmbh' }).ok && !get({ a: 'slots', k: 'quatsch' }).ok, 'inaktiver/unbekannter Kunde → keine Termine');
-pruefe(cache['slots_muster-laser_beratung_20'], 'Slots kurz zwischengespeichert');
+pruefe(cache['slots_muster-laser_20'], 'Slots kurz zwischengespeichert');
 
 // ================================================================ 3 Buchen und Prüfungen
 console.log('3 Buchen');
@@ -256,7 +278,7 @@ vorher = mails.length;
 r = buche({ start: '2027-01-12T09:00' });
 let t = termin(r.id);
 pruefe(r.ok && r.frist === 45 && t && t.Stand === 'unbestätigt', 'gültige Buchung → Zeile „unbestätigt“, Frist 45 Min.');
-pruefe(t.Telefon === '+4915123456781' && t.Quelle === 'Meta' && t.Art === 'Beratung' && t.Leistung === 'Beratung' && t.Dauer === 20, 'Telefon vereinheitlicht, Quelle Meta, Art, Dauer');
+pruefe(t.Telefon === '+4915123456781' && t.Quelle === 'Meta' && t.Art === 'Online-Termin' && t.Leistung === 'Beratung' && t.Dauer === 20, 'Telefon vereinheitlicht, Quelle Meta, Art, Dauer');
 pruefe(t.Termin instanceof FDate && t.Termin.getTime() === berlin('2027-01-12 09:00').getTime(), 'Termin-Zeit richtig gespeichert');
 pruefe(kalender['studio@laser.de'].length === 3, 'noch NICHT im Kalender des Studios');
 let m = letzte();
@@ -463,19 +485,44 @@ pruefe(m && m.htmlBody.includes('Ida Rückruf') && !m.htmlBody.includes('Anna Be
 pruefe(mails.slice(vorher).some(x => x.to === 'ich@agentur.de,tom@agentur.de' && x.subject.startsWith('Wochen-Mails sind raus')), 'Übersicht an euch beide');
 uhr('2027-02-01 07:00'); vorher = mails.length;
 G.monatsAnfang();
-m = mails.slice(vorher)[0];
-pruefe(m && m.subject.includes('Werbekosten') && m.subject.includes('Rechnung') && m.htmlBody.includes('Monatsgebühr 899 €'), 'Monatsanfang: Werbekosten + Rechnung');
-blaetter.Werbekosten.appendRow([berlin('2027-01-01 00:00'), 'muster-laser', 400, 100, '']);
-uhr('2027-02-03 07:00');
-G.monatsReportEntwuerfe();
-const e = entwuerfe.find(x => x.to === 'studio@laser.de');
-pruefe(e && e.subject === 'Ihr Monatsreport Januar 2027' && e.opt.replyTo === 'tom@agentur.de', 'Report-Entwurf für das Studio, Antwort an den Betreuer');
+m = mails.slice(vorher).find(x => x.subject.startsWith('Monatsanfang'));
+pruefe(m && m.subject.includes('1 Rechnung angelegt') && m.htmlBody.includes('Monatsgebühr 899 €'), 'Monatsanfang: Rechnung Monatsgebühr gemeldet');
+const rl = mails.slice(vorher).find(x => x.to === 'tom@agentur.de' && x.subject.startsWith('Monatsreports Januar 2027'));
+pruefe(rl && rl.htmlBody.includes('Muster Laserstudio') && !rl.htmlBody.includes('Muster Brows'), 'Betreuer bekommt seine Studios für den Report (nur die, die vor Monatsende live waren)');
+{
+  const rg = blaetter.Rechnungen.getDataRange().getValues(), kk = rg[0];
+  const zeile = rg.slice(1).find(x => x[kk.indexOf('Kürzel')] === 'muster-laser');
+  pruefe(zeile && zeile[kk.indexOf('Posten')] === 'Monatsgebühr' && zeile[kk.indexOf('Zeitraum')] === 'Februar 2027' && zeile[kk.indexOf('Netto €')] === 899, 'Rechnung Monatsgebühr von selbst angelegt');
+  pruefe(mails.slice(vorher).some(x => x.to === 'tom@agentur.de' && /Rechnung .* angelegt/.test(x.subject) && x.htmlBody.includes('agentur_iban')), 'ohne IBAN: kein Versand, Hinweis an den Betreuer');
+  const n = blaetter.Rechnungen.letzte(); G.monatsAnfang();
+  pruefe(blaetter.Rechnungen.letzte() === n, 'zweimal Monatsanfang → keine doppelte Rechnung');
+}
+// Report über die Team-Seite: Werbekosten eintragen, zwei Sätze, senden
+const tl = linkMit(rl.htmlBody, 'a=team');
+const ts = klick(tl);
+pruefe(ts.html.includes('Monatsreport Januar 2027') && ts.html.includes('Meta € im Januar'), 'Team-Seite zeigt den Report mit Feldern für Werbekosten');
+const tp = parameter(tl);
+pruefe(!G.teamAktion(tp.k, 'falsch', 'report', {}).ok, 'Team-Seite: falscher Schlüssel → nichts');
+pruefe(!G.teamAktion(tp.k, tp.t, 'report', { meta: '400' }).ok, 'Report ohne Google-Kosten → Hinweis');
+uhr('2027-02-03 07:00'); vorher = mails.length;
+let tr = G.teamAktion(tp.k, tp.t, 'report', { meta: '400', google: '100', geaendert: 'Zwei neue Anzeigen', naechstes: 'Gebiet auf 20 km', brauchen: '' });
+const e = mails.slice(vorher).find(x => x.to === 'studio@laser.de');
+pruefe(tr.ok && e && e.subject === 'Ihr Monatsreport Januar 2027' && e.cc === 'tom@agentur.de', 'Report geht an das Studio, Kopie an den Betreuer');
+pruefe(blaetter.Werbekosten.getDataRange().getValues().some(r => r[1] === 'muster-laser' && r[2] === 400 && r[3] === 100), 'Werbekosten von der Team-Seite im Blatt');
 pruefe(e.body.trim().endsWith('Tom\nClickculture'), 'Report unterschreibt der Betreuer');
-pruefe(mails.some(x => x.to === 'tom@agentur.de' && x.subject.startsWith('Report-Entwurf Januar 2027 für Muster Laserstudio') && x.htmlBody.includes('Werbeausgaben')), 'Betreuer bekommt den Report-Text per Mail (kein Zugriff auf Gmail-Entwürfe)');
 pruefe(e.body.includes('Werbeausgaben: 500 €') && /bestätigte Termine: 3 \(Werbekosten pro Termin: 167 €\)/.test(e.body), 'Werbekosten und bestätigte Termine (3)');
 pruefe(e.body.includes('Erschienen: 1 · nicht erschienen: 1 · abgesagt: 1') && e.body.includes('Behandlung gekauft: 1 (Wert laut Ihnen: 1.190 €)'), 'erschienen, nicht erschienen, abgesagt, gekauft');
 pruefe(/Herausgefiltert: \d+ \(nicht bestätigt \d+, als Fake gemeldet 2, Bots 2\)/.test(e.body), 'herausgefilterte Fakes und Bots im Report');
+pruefe(e.body.includes('Was wir geändert haben: Zwei neue Anzeigen') && !e.body.includes('[') && !e.body.includes('brauchen'), 'eigene Sätze drin, leere weggelassen, keine [Klammern]');
 ohneUndefined(e.body, 'Report');
+vorher = mails.length; G.monatsReportEntwuerfe();
+pruefe(!mails.slice(vorher).some(x => x.to === 'tom@agentur.de' && x.subject.includes('Erinnerung: Monatsreports')), 'am 3.: gesendeter Report → keine Erinnerung');
+pruefe(G.teamAktion(tp.k, tp.t, 'report', { meta: '1', google: '1' }).meldung === 'Schon gesendet.', 'nicht doppelt senden');
+{
+  const rg = blaetter.Rechnungen.getDataRange().getValues(), kk = rg[0], nr = rg.slice(1).find(x => x[kk.indexOf('Kürzel')] === 'muster-laser')[0];
+  tr = G.teamAktion(tp.k, tp.t, 'bezahlt', { nr: String(nr) });
+  pruefe(tr.ok && blaetter.Rechnungen.getDataRange().getValues().slice(1).find(x => x[kk.indexOf('Kürzel')] === 'muster-laser')[kk.indexOf('Bezahlt am')] instanceof Date, 'Knopf „Bezahlt“ trägt das Datum ein');
+}
 
 // ================================================================ 14 Verlosung, Akquise, Kontingent
 console.log('14 Täglich');
@@ -503,7 +550,7 @@ pruefe(!mails.slice(vorher).some(x => x.subject.includes('Verlosung') || x.subje
 console.log('15 Menü und Fehlerfall');
 neu(); uhr('2027-01-11 10:00'); G.einrichten();
 G.kalenderPruefen();
-pruefe(/Muster Laserstudio: ✓ Kalender verbunden, \d+ freie Beratungszeiten/.test(alerts[alerts.length - 1]) && alerts[alerts.length - 1].includes('Muster Brows: Modus „Wunschtermin“'), 'Kalender prüfen: ✓ und Wunschtermin');
+pruefe(/Muster Laserstudio: ✓ Kalender verbunden, \d+ freie Zeiten/.test(alerts[alerts.length - 1]) && alerts[alerts.length - 1].includes('Muster Brows: Modus „Wunschtermin“'), 'Kalender prüfen: ✓ und Wunschtermin');
 delete kalender['studio@laser.de']; abonniert.clear();
 G.kalenderPruefen();
 pruefe(alerts[alerts.length - 1].includes('✗ Kalender „studio@laser.de“ nicht erreichbar'), 'Kalender nicht freigegeben → ✗ mit Hinweis');
@@ -535,5 +582,129 @@ vorher = mails.length; G.alle10Minuten();
 pruefe(mails.slice(vorher).some(x => x.subject.includes('Fehler') && /Spalte „Stand“/.test(x.body)), 'umbenannte Spalte → Fehler-Mail an dich');
 pruefe(G.doGet({ parameter: {} }).html.includes('in Ordnung'), 'Adresse ohne Parameter → freundliche Seite');
 
+
+// ================================================================ 16 Neuer Kunde: Formular → Mails → Schritte → Erinnerungen → Live
+console.log('16 Neuer Kunde');
+neu(); uhr('2027-03-01 10:00'); G.einrichten();
+{
+  const s = G.einst_();
+  pruefe(s.uebersicht_url.includes('a=team') && s.formular_url.includes('a=neu&t='), 'Einrichten schreibt die zwei Lesezeichen in die Einstellungen');
+  pruefe(klick(s.formular_url).html.includes('Neuer Kunde') && klick(s.formular_url.replace(/t=\w+/, 't=falsch')).html.includes('nicht gültig'), 'Formular nur mit Schlüssel');
+  const basis = { betreuer: 'Tom', betreuer_telefon: '0151 1111111', betrieb: 'Kate Cosmetics', firma: 'Kate Cosmetics, Inh. Katleen Miner', anrede: 'Frau', inhaber: 'Katleen Miner',
+    telefon: '08382 12345', email: 'Kate@Studio.de', strasse: 'Am Bahnhof 4', plz: '88131', ort: 'Lindau', behandlung: 'Permanent Make-up', behandler: 'Kosmetik/PMU-Studio',
+    quali: true, leistungen: [{ name: 'Powder Brows', minuten: '120', preis: '390' }, { name: 'Lippen | Aquarell', minuten: '150', preis: '' }, { name: '', minuten: '', preis: '' }],
+    z_Mo_1: '', z_Di_1: '9-18', z_Mi_1: '9:30-12', z_Mi_2: '14-18', z_Sa_1: '10 - 14', takt: '30', kalender: 'Kalender', absage: '24', ausfall: '40',
+    termine: '4', umkreis: '20', onboarding: '700', gebuehr: '899', budget: '800', mail: true };
+  const f = o => G.neuerKunde_(Object.assign({}, basis, o), G.einst_());
+  pruefe(!f({ betrieb: '' }).ok && /Name des Studios/.test(f({ betrieb: '' }).text), 'Pflichtfeld fehlt → Hinweis');
+  pruefe(!f({ behandlung: 'Faltenbehandlung', behandler: 'Kosmetik/PMU-Studio' }).ok, 'Faltenbehandlung durch Kosmetik → abgelehnt');
+  pruefe(!f({ quali: false }).ok, 'ohne Qualifikation → kein Abschluss');
+  pruefe(!f({ leistungen: [] }).ok && !f({ leistungen: [{ name: 'Brows', minuten: '', preis: '' }] }).ok, 'ohne Leistung oder ohne Minuten → Hinweis');
+  pruefe(!f({ behandlung: 'Faltenbehandlung', behandler: 'Arzt/Ärztin', leistungen: [{ name: 'Botox Stirn', minuten: '30' }] }).ok, '„Botox“ in einer Leistung → abgelehnt');
+  pruefe(!f({ z_Di_1: '', z_Mi_1: '', z_Mi_2: '', z_Sa_1: '' }).ok && !f({ z_Di_1: 'abends' }).ok, 'ohne oder mit unverständlicher Zeit → Hinweis');
+  pruefe(blaetter.Kunden.letzte() === 4, 'abgelehnte Versuche legen nichts an');
+  const vorher = mails.length, r = f({});
+  const k = G.kunde_('kate-cosmetics');
+  pruefe(r.ok && k && k.status === 'Angelegt' && k.token.length === 32, 'Kunde angelegt: Kürzel aus dem Namen, Status Angelegt, Schlüssel');
+  pruefe(k.zeiten === 'Di 9-18; Mi 9:30-12 14-18; Sa 10-14' && k.raster === 30 && k.modus === 'Kalender' && k.kalender === 'kate@studio.de', 'Zeiten, Takt und Kalender aus dem Formular');
+  pruefe(k.leistungen.length === 2 && k.leistungen[1].name === 'Lippen / Aquarell' && k.leistungen[1].minuten === 150, 'Leistungen: leere Zeile weg, „|“ im Namen entschärft');
+  pruefe(/40 €/.test(k.ausfall) && /Augenbrauen|Brauen|Tag/.test(k.vorbereitung) && k.seite === 'https://kate-cosmetics.netlify.app', 'Ausfallregel, Vorschlag Vorbereitung, Seitenadresse');
+  pruefe(k.betreuerMail === 'tom@agentur.de' && k.betreuerTelefon === '0151 1111111' && k.drive.includes('drive.google.com'), 'Betreuer-Mail aus dem Team, Fotos-Ordner angelegt');
+  const v = G.vertrag_('kate-cosmetics');
+  pruefe(v.includes('Kate Cosmetics, Inh. Katleen Miner') && v.includes('Powder Brows (120 Min., 390 €)') && v.includes('800 €') && v.includes('20 km um Lindau') && !/\{\{/.test(v), 'Vereinbarung ist ausgefüllt, keine {{Platzhalter}}');
+  const w = mails.slice(vorher).find(x => x.to === 'kate@studio.de');
+  pruefe(w && w.cc === 'tom@agentur.de' && w.subject.startsWith('Willkommen') && linkMit(w.htmlBody, 'a=studio'), 'Willkommens-Mail an das Studio mit Link, Kopie an den Betreuer');
+  pruefe(f({}).ok && G.kunde_('kate-cosmetics-2'), 'gleicher Name nochmal → eigenes Kürzel (-2)');
+
+  // Schritte-Seite
+  const sl = linkMit(w.htmlBody, 'a=studio'), sp = parameter(sl);
+  let seite = klick(sl).html;
+  pruefe(seite.includes('0 von 8 erledigt') && seite.includes('Google-Kalender freigeben') && seite.includes('1234567890123456') && seite.includes('besitzer@gmail.com'), 'Schritte-Seite: 8 Schritte, Business-ID und Zentrale-Adresse stehen drin');
+  pruefe(klick(sl.replace(/t=\w+/, 't=falsch')).html.includes('nicht (mehr) gültig'), 'falscher Link → nichts');
+  const A = (a, d) => G.studioAktion(sp.k, sp.t, a, d || {});
+  pruefe(!A('vertrag', { name: 'Kate', ok: true }).ok && !A('vertrag', { name: 'Katleen Miner', ok: false }).ok, 'Vertrag: Vor- und Nachname und Häkchen nötig');
+  let m0 = mails.length, x1 = A('vertrag', { name: 'Katleen Miner', ok: true });
+  pruefe(x1.ok && G.kunde_('kate-cosmetics').vertrag && x1.html.includes('1 von 8'), 'Vertrag angenommen, Seite zeigt 1 von 8');
+  const kopie = mails.slice(m0).find(x => x.to === 'kate@studio.de' && x.subject.startsWith('Ihre Vereinbarung'));
+  pruefe(kopie && kopie.htmlBody.includes('Powder Brows') && kopie.htmlBody.includes('Katleen Miner'), 'Kopie der Vereinbarung per Mail (Nachweis)');
+  pruefe(blaetter['Verträge'].getDataRange().getValues().some(z => z[0] === 'kate-cosmetics' && z[3] === 'Katleen Miner' && z[2] instanceof Date), 'Annahme mit Name und Zeit im Blatt „Verträge“');
+  pruefe(mails.slice(m0).some(x => /Rechnung .* angelegt/.test(x.subject)) && exporte.length === 0, 'ohne IBAN: Onboarding-Rechnung angelegt, Hinweis statt Versand');
+  pruefe(!A('links', { impressum: 'kate.de/impressum', datenschutz: '' }).ok && A('links', { impressum: 'https://kate.de/impressum', datenschutz: 'https://kate.de/datenschutz' }).ok, 'Links: nur vollständige Adressen');
+  pruefe(A('behandler', { behandler: 'Katleen Miner, PMU Artist' }).ok, 'Behandler gespeichert');
+  pruefe(A('vorbereitung', { text: '- Kein Alkohol am Vortag\n\n• Keine Blutverdünner' }).ok && G.kunde_('kate-cosmetics').vorbereitung === 'Kein Alkohol am Vortag • Keine Blutverdünner', 'Vorbereitung: Zeilen → Punkte, freigegeben');
+  for (let i = 0; i < 3; i++) G.studioFoto(sp.k, sp.t, 'foto' + i + '.jpg', 'image/jpeg', Buffer.from('bild').toString('base64'));
+  pruefe(G.kunde_('kate-cosmetics').fotos === 3, '3 Fotos hochgeladen und gezählt');
+  let x2 = A('kalender', { kalender: 'kate@studio.de' });
+  pruefe(!x2.ok && /Noch keine Freigabe/.test(x2.meldung), 'Kalender noch nicht freigegeben → klarer Hinweis');
+  kalender['kate@studio.de'] = [];
+  pruefe(A('kalender', { kalender: 'kate@studio.de' }).ok && G.kunde_('kate-cosmetics').kalenderOk, 'Kalender freigegeben → verbunden');
+  m0 = mails.length;
+  pruefe(A('meta', {}).ok && mails.slice(m0).some(x => x.to === 'tom@agentur.de' && x.subject.includes('Meta') && x.htmlBody.includes('Personen zuweisen') && x.htmlBody.includes('a=team')), 'Meta erledigt → Betreuer bekommt die nächsten Klicks und den Team-Link');
+  pruefe(!A('google', { id: '123-45' }).ok, 'Google: falsche Kunden-ID → Hinweis');
+  m0 = mails.length;
+  pruefe(A('google', { id: '9182284150' }).ok && G.kunde_('kate-cosmetics').googleId === '918-228-4150', 'Google-Kunden-ID gespeichert und formatiert');
+  pruefe(mails.slice(m0).some(x => x.subject.includes('918-228-4150') && x.htmlBody.includes('Vorhandenes Konto verknüpfen')), 'Betreuer: Verknüpfung senden (Klickweg)');
+  seite = klick(sl).html;
+  pruefe(seite.includes('Annehmen') && seite.includes('7 von 8'), 'Studio sieht jetzt: Anfrage annehmen');
+
+  // Erinnerungen
+  uhr('2027-03-02 08:00'); m0 = mails.length; G.taeglich();
+  pruefe(!mails.slice(m0).some(x => x.subject.includes('Schritt')), 'nach 1 Werktag: noch keine Erinnerung');
+  uhr('2027-03-03 08:00'); m0 = mails.length; G.taeglich();
+  const er = mails.slice(m0).find(x => x.to === 'kate@studio.de' && x.subject.includes('Noch 1 Schritt'));
+  pruefe(er && er.htmlBody.includes('Google Ads verbinden') && !er.htmlBody.includes('Vereinbarung'), 'nach 2 Werktagen: Erinnerung nur mit dem, was fehlt');
+  uhr('2027-03-04 08:00'); m0 = mails.length; G.taeglich();
+  pruefe(!mails.slice(m0).some(x => x.to === 'kate@studio.de'), 'nicht jeden Tag erinnern');
+  // zweites Studio reagiert nie → nach 3 Erinnerungen Mail an den Betreuer
+  ['2027-03-03', '2027-03-05', '2027-03-09', '2027-03-11'].forEach(d => { uhr(d + ' 08:00'); G.taeglich(); });
+  pruefe(mails.filter(x => x.to === 'kate@studio.de' && x.subject.includes('bis zum Start von Kate Cosmetics') && x.htmlBody.includes('Vereinbarung')).length === 3, 'Studio ohne Fortschritt: genau 3 Erinnerungen');
+  pruefe(mails.some(x => x.to === 'tom@agentur.de' && x.subject.includes('kommt nicht weiter')), 'danach: Betreuer soll anrufen');
+  m0 = mails.length;
+  A('google-ok', {});
+  uhr('2027-03-12 08:00'); G.taeglich();
+  const da = mails.slice(m0).find(x => x.to === 'tom@agentur.de' && x.subject.includes('alles vom Studio da'));
+  pruefe(da && da.htmlBody.includes('clickculture-beauty-studio') && da.htmlBody.includes('https://kate.de/impressum') && da.htmlBody.includes('Herunterladen'), '„Alles da“: Mail an den Betreuer mit Text für Claude und nächsten Schritten');
+  m0 = mails.length; G.taeglich();
+  pruefe(!mails.slice(m0).some(x => x.subject.includes('alles vom Studio da')), '„Alles da“ nur einmal');
+
+  // Team-Seite: Pixel, Conversion, live schalten
+  const tl = linkMit(da.htmlBody, 'a=team'), tp = parameter(tl);
+  pruefe(klick(tl).html.includes('Jetzt live schalten') && klick(tl).html.includes('Schritte des Studios'), 'Team-Seite: Schritte und Live-Knopf');
+  pruefe(G.doGet({ parameter: { a: 'team', t: G.teamToken_(G.einst_(), '') } }).html.includes('Kate Cosmetics'), 'Übersicht listet die Studios');
+  const T = (a, d) => G.teamAktion(tp.k, tp.t, a, d || {});
+  pruefe(!T('einrichten', { pixel: '123', conversion: '', seite: k.seite }).ok && !T('einrichten', { pixel: '', conversion: 'AW-123', seite: k.seite }).ok, 'Pixel/Conversion falsch → Hinweis');
+  pruefe(T('einrichten', { pixel: '1234567890123456', conversion: 'AW-123456789/AbC-d', seite: k.seite }).ok, 'Pixel und Conversion gespeichert');
+  const mess = get({ a: 'mess', k: 'kate-cosmetics' });
+  pruefe(mess.pixel === '1234567890123456' && mess.conversion === 'AW-123456789/AbC-d', 'Seite holt Pixel und Conversion aus der Zentrale (kein neues Hochladen)');
+  m0 = mails.length;
+  pruefe(T('live', {}).ok && G.kunde_('kate-cosmetics').status === 'Live' && G.kunde_('kate-cosmetics').live, 'Live schalten: Status und „Live seit“');
+  const lm = mails.slice(m0).find(x => x.to === 'kate@studio.de' && x.subject.startsWith('Es geht los'));
+  pruefe(lm && lm.htmlBody.includes('Fake melden') && lm.htmlBody.includes('19 Uhr'), '„Ihre Werbung läuft“ an das Studio');
+  m0 = mails.length; G.alle10Minuten();
+  pruefe(!mails.slice(m0).some(x => x.subject.startsWith('Es geht los')), 'Live-Mail nur einmal');
+  pruefe(T('pausieren', {}).ok && !G.kunde_('kate-cosmetics').aktiv && !get({ a: 'slots', k: 'kate-cosmetics' }).ok, 'Pausieren: keine Buchungen mehr');
+  T('fortsetzen', {});
+
+  // Buchung beim neuen Studio mit gewählter Leistung
+  let sl2 = get({ a: 'slots', k: 'kate-cosmetics', l: 'Lippen / Aquarell' });
+  const sa = sl2.tage.find(t => t.label.startsWith('Sa'));
+  pruefe(sl2.ok && sl2.dauer === 150 && sa && sa.zeiten[sa.zeiten.length - 1] === '11:30' && !sl2.tage.some(t => t.label.startsWith('Mo')), 'freie Zeiten für die gewählte Leistung (150 Min.: Sa letzter Start 11:30, montags keine)');
+  const r2 = post({ a: 'buchen', kunde: 'kate-cosmetics', leistung: 'Powder Brows', start: sl2.tage[0].datum + 'T' + sl2.tage[0].zeiten[0], name: 'Lena Braue', telefon: '0151 23456781', email: 'lena@beispiel.de', ms: 20000 });
+  pruefe(r2.ok && termin(r2.id).Leistung === 'Powder Brows' && termin(r2.id).Dauer === 120, 'Buchung mit Leistung und Dauer');
+  pruefe(!post({ a: 'buchen', kunde: 'kate-cosmetics', leistung: 'Gibts nicht', start: sl2.tage[0].datum + 'T10:00', name: 'X Y', telefon: '0151 23456782', email: 'x@beispiel.de', ms: 20000 }).ok, 'unbekannte Leistung → abgelehnt');
+
+  // Rückruf direkt von der Seite (ohne Netlify)
+  pruefe(post({ a: 'anfrage', kunde: 'kate-cosmetics', form: 'rueckruf', name: 'Ria Ruf', telefon: '0151 7778889', ms: 9000 }).ok &&
+    termine().some(z => z.Name === 'Ria Ruf' && z.Art === 'Rückruf') && mails.some(x => x.to === 'kate@studio.de' && x.subject.startsWith('Rückruf-Wunsch: Ria Ruf')), 'Rückruf-Wunsch direkt an die Zentrale, Mail an das Studio');
+  pruefe(post({ a: 'anfrage', kunde: 'kate-cosmetics', form: 'rueckruf', name: 'Bot', telefon: '1', ms: 500 }).ok && !termine().some(z => z.Name === 'Bot'), 'Rückruf: Bot-Falle legt nichts an');
+
+  // Rechnung automatisch als PDF, sobald IBAN & Co. da sind
+  G.einstSetzen_('agentur_iban', 'DE00 1234'); G.einstSetzen_('agentur_anschrift', 'Weg 1, 88630 Pfullendorf');
+  m0 = mails.length;
+  const nr = G.rechnungAnlegen_(G.kunde_('kate-cosmetics-2'), G.einst_(), 'Onboarding', 'einmalig', 700);
+  const rm = mails.slice(m0).find(x => x.to === 'kate@studio.de' && x.subject.startsWith('Rechnung ' + nr));
+  pruefe(rm && rm.attachments && rm.attachments[0].name === 'Rechnung ' + nr + '.pdf' && exporte.some(e => e.nr === nr && e.url.includes('range=B3:E31')), 'Rechnung als PDF an das Studio');
+  ohneUndefined(lm.htmlBody + er.htmlBody + w.htmlBody + da.htmlBody + seite, 'neue Mails und Seiten');
+}
 console.log(`\n${ok} bestanden, ${fehler} fehlgeschlagen`);
 process.exit(fehler ? 1 : 0);

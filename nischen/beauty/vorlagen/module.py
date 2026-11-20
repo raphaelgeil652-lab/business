@@ -29,6 +29,7 @@ MODULE = {
     # ------------------------------------------------------------------------------------------------ Laser
     "Laser": {
         "kuerzel": "laser",
+        "recht_kurz": "Wettbewerbsrecht und Preisangaben; „dauerhaft“ nur mit Hinweis auf mehrere Sitzungen und ohne Garantie",
         "name": "Laser-Haarentfernung",
         "behandler": ["Kosmetik mit NiSV-Fachkunde", "Arzt/Ärztin"],
         "qualifikation": "NiSV-Fachkunde (Zertifikat) für jede Person, die lasert. Ohne Nachweis kein Kunde.",
@@ -130,6 +131,7 @@ MODULE = {
     # ------------------------------------------------------------------------------------------------ Permanent Make-up
     "Permanent Make-up": {
         "kuerzel": "pmu",
+        "recht_kurz": "Wettbewerbsrecht und Preisangaben; Ergebnisfotos nur echte, Vorher/Nachher-Collagen nicht in Anzeigen",
         "name": "Permanent Make-up",
         "behandler": ["Kosmetik/PMU-Studio", "Kosmetik mit NiSV-Fachkunde", "Arzt/Ärztin"],
         "qualifikation": "Hygieneschulung und Nachweis der PMU-Ausbildung; Arbeitsproben (echte Ergebnisfotos).",
@@ -231,6 +233,7 @@ MODULE = {
     # ------------------------------------------------------------------------------------------------ Faltenbehandlung
     "Faltenbehandlung": {
         "kuerzel": "falten",
+        "recht_kurz": "Heilmittelwerbegesetz: kein „Botox“, kein Vorher/Nachher, keine Verlosung, keine Rabatte, kein „kostenlos“",
         "name": "Faltenbehandlung und Hyaluron",
         "behandler": ["Arzt/Ärztin", "Heilpraktiker/in"],
         "qualifikation": "Arzt/Ärztin (Muskelrelaxans und Hyaluron) oder Heilpraktiker/in (nur Hyaluron). Kosmetikstudios: nein.",
@@ -327,6 +330,7 @@ MODULE = {
     # ------------------------------------------------------------------------------------------------ Bleaching
     "Bleaching": {
         "kuerzel": "bleaching",
+        "recht_kurz": "Berufsordnung der Zahnärzte und Heilmittelwerbegesetz: sachlich, keine Rabatte, keine Verlosung, kein „kostenlos“",
         "name": "Zahnaufhellung (Bleaching)",
         "behandler": ["Zahnarztpraxis"],
         "qualifikation": "Nur Zahnarztpraxen. Bleaching-Studios ohne Zahnarzt sind rechtlich unsicher und kein Kunde.",

@@ -1,0 +1,47 @@
+{
+ "typ": "clickculture-beauty-studio",
+ "anrede": "Frau Muster",
+ "adresse": "Musterweg 1, 12345 Musterstadt",
+ "takt": 30,
+ "absagefrist": 48,
+ "umkreis": 15,
+ "impressum": "https://example.com/impressum",
+ "datenschutz": "https://example.com/datenschutz",
+ "zentrale": "",
+ "agentur": {
+  "name": "Clickculture",
+  "email": "hallo@clickculture.example",
+  "telefon": "0151 00000001"
+ },
+ "betrieb": "Muster Brows",
+ "firma": "Mia Muster",
+ "inhaber": "Mia Muster",
+ "telefon": "0123 4567820",
+ "email": "hallo@muster-brows.example",
+ "behandlung": "Permanent Make-up",
+ "behandler_art": "Kosmetik/PMU-Studio",
+ "behandler": "Mia Muster, PMU-Artist",
+ "modus": "Wunschtermin",
+ "zeiten": "Di 10-16; Do 10-16; Sa 10-14",
+ "leistungen": [
+  {
+   "name": "Beratung mit Vorzeichnen",
+   "minuten": 30,
+   "preis": ""
+  },
+  {
+   "name": "Powder Brows inkl. Nachstechen",
+   "minuten": 150,
+   "preis": "390"
+  },
+  {
+   "name": "Lippen Aquarell inkl. Nachstechen",
+   "minuten": 150,
+   "preis": "450"
+  }
+ ],
+ "budget": 400,
+ "betreuer": "Tom",
+ "kuerzel": "muster-brows",
+ "seite": "https://muster-brows.netlify.app"
+}

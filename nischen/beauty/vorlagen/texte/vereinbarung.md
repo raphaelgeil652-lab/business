@@ -2,24 +2,20 @@
 
 zwischen
 
-**Auftragnehmer:** {{agentur_name}}, {{agentur_vertreter}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}}
+**Auftragnehmer:** {{agentur_name}}, {{agentur_inhaber}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}}
 Ansprechpartner für den Auftraggeber: {{betreuer_name}} · {{betreuer_telefon}} · {{betreuer_email}}
 
 und
 
-**Auftraggeber:** {{betrieb_lang}} · {{strasse}}, {{plz}} {{ort}} · vertreten durch {{inhaber}}
-
-Datum: {{vertragsbeginn}}
+**Auftraggeber:** {{firma}} · {{adresse}} · vertreten durch {{inhaber}}
 
 ### §1 Gegenstand
 
 Beworben wird: **{{modul_name}}** bei {{betrieb}}.
-Interessentinnen und Interessenten buchen über eine Terminseite online einen Termin ({{beratung_name}},
-{{direkt_satz}}) im Kalender des Auftraggebers. Ein Termin gilt erst als gebucht, wenn die Person ihn per
-E-Mail bestätigt hat. Wer keinen passenden Termin findet, kann einen Rückruf anfordern.
-{{aktionen_text}}
-Werbebudget: **{{budget_gesamt}} pro Monat** (Meta {{budget_meta}}, Google {{budget_google}}).
-Werbegebiet: {{umkreis_km}} km um {{ort}}.
+Interessentinnen und Interessenten buchen über eine Terminseite online einen Termin für eine dieser Leistungen:
+{{leistungen_text}}. Ein Termin gilt erst als gebucht, wenn die Person ihn per E-Mail bestätigt hat.
+Wer keinen passenden Termin findet, kann einen Rückruf anfordern.
+Werbebudget: **{{budget}} pro Monat**, aufgeteilt auf Meta und Google. Werbegebiet: {{umkreis_km}} km um {{ort}}.
 
 ### §2 Leistungen des Auftragnehmers
 
@@ -47,13 +43,12 @@ Werbegebiet: {{umkreis_km}} km um {{ort}}.
   Meta-Pixel und die Conversion-Messung von Google Ads.
 - Rückruf auf Rückruf-Wünsche innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.
 - Rückmeldung zu jedem Termin über die Knöpfe in den Mails: erschienen, nicht erschienen, Behandlung gekauft.
-- Bei Verlosungen: Ziehung zum genannten Datum, Benachrichtigung, Einlösung des Gewinns.
 - Ausreichende freie Termine für die vermittelten Buchungen.
 
 ### §4 Vergütung
 
-- **Onboarding: {{onboarding_preis}}** einmalig, fällig bei Vertragsbeginn.
-- **Monatsgebühr: {{retainer}} pro Monat.** Die Betreuung läuft ab Vertragsbeginn. Die Gebühr wird erst
+- **Onboarding: {{onboarding}}** einmalig, fällig mit Annahme dieser Vereinbarung.
+- **Monatsgebühr: {{monatsgebuehr}} pro Monat.** Die Betreuung läuft ab Vertragsbeginn. Die Gebühr wird erst
   fällig, sobald eine über die Terminseite gebuchte Person beim Auftraggeber eine Behandlung **gekauft** hat,
   danach jeweils zum Monatsanfang.
 - **Werbebudget:** zahlt der Auftraggeber separat und direkt an Meta und Google.
@@ -61,10 +56,10 @@ Werbegebiet: {{umkreis_km}} km um {{ort}}.
 
 ### §5 Laufzeit
 
-Beginn: {{vertragsbeginn}}. Keine Mindestlaufzeit, jederzeit zum Monatsende in Textform kündbar.
-Facebook-Seite, Werbekonten und deren Daten gehören dem Auftraggeber und bleiben bei ihm. Bei Vertragsende
-beendet der Auftragnehmer seinen Zugang, schaltet die Terminseite ab und löscht die Termindaten der Kundschaft,
-soweit keine Aufbewahrungspflicht besteht.
+Beginn: mit Annahme dieser Vereinbarung. Keine Mindestlaufzeit, jederzeit zum Monatsende in Textform (z. B. per
+E-Mail) kündbar. Facebook-Seite, Werbekonten und deren Daten gehören dem Auftraggeber und bleiben bei ihm. Bei
+Vertragsende beendet der Auftragnehmer seinen Zugang, schaltet die Terminseite ab und löscht die Termindaten der
+Kundschaft, soweit keine Aufbewahrungspflicht besteht.
 
 ### §6 Datenschutz
 
@@ -78,17 +73,15 @@ Parteien schließen dazu einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO. 
 Ergebnisse hängen auch von Erreichbarkeit, Beratung und Kapazität des Auftraggebers ab. Eine bestimmte Zahl
 von Terminen, Käufen oder ein bestimmter Umsatz wird nicht garantiert. Der Auftragnehmer erstellt die Werbung
 nach bestem Wissen so, dass sie die für diese Behandlung geltenden Werberegeln einhält ({{recht_kurz}}).
-Der Auftraggeber gibt Anzeigen und Terminseite vor dem Start frei. Der Auftragnehmer darf das Projekt mit
-Zustimmung als Referenz nennen.
+Der Auftraggeber kann Anzeigen und Terminseite vor dem Start ansehen und Änderungen verlangen. Der Auftragnehmer
+darf das Projekt mit Zustimmung als Referenz nennen.
 
 ### §8 Garantie
 
 Kommen in den ersten 30 Tagen ab Kampagnenstart keine echten, per E-Mail bestätigten Termine zustande, wird
 die Onboarding-Gebühr vollständig erstattet. Voraussetzung: Die Pflichten aus §3 sind erfüllt.
 
----
+### §9 Zustandekommen
 
-{{ort}}, {{vertragsbeginn}}
-
-Auftragnehmer: ________________________   Auftraggeber: ________________________
-{{agentur_vertreter}}                       {{inhaber}}, {{betrieb_lang}}
+Diese Vereinbarung kommt zustande, wenn der Auftraggeber sie auf seiner Schritte-Seite online annimmt. Name,
+Datum und Uhrzeit der Annahme werden gespeichert; der Auftraggeber erhält den Text danach per E-Mail.
