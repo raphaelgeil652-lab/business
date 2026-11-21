@@ -1418,7 +1418,7 @@ function formularHtml_(s, k) {
     '<div class="box"><h2>4 · Kalender</h2><div class="zwei">' +
     '<label>Google-Kalender? *<select name="kalender" required>' + opt(['Kalender', 'Wunschtermin'], w.kalender) + '</select>' +
     '<span class="k">Kalender = freie Zeiten kommen aus seinem Google-Kalender, Termine landen direkt dort. Wunschtermin = kein Google-Kalender, das Studio bestätigt jeden Termin per Knopf.</span></label>' +
-    feld('kalender_id', 'Adresse seines Google-Kalenders <span class="k">(meist seine Gmail)</span>', 'type="email" class="klein-mail"') + '</div>' +
+    feld('kalender_id', 'Mit welcher Google-Adresse meldet sich das Studio bei Google Kalender an? <span class="k">(fragen, meist seine Gmail; leer = E-Mail für Termine)</span>', 'type="email" class="klein-mail"') + '</div>' +
     '<p style="margin:10px 0 2px;font-weight:600;">Wann darf online gebucht werden? * <span class="k">Felder antippen oder mit dem Finger darüberziehen. Grün = buchbar.</span></p>' +
     '<p class="k">Alles, was in seinem Google-Kalender steht (auch Kundinnen, die anders gebucht haben, Pausen, Urlaub), ist automatisch belegt.</p>' +
     '<button type="button" class="klein" data-vorlage="mofr">Mo–Fr 9–18</button><button type="button" class="klein" data-vorlage="disa">Di–Sa 9–18</button><button type="button" class="klein" data-vorlage="leer">Alles leeren</button>' +
@@ -1790,9 +1790,9 @@ function aufgabeHtml_(a, k, s) {
       '<span class="k">Damit sehen wir, wann Sie belegt sind, und können Online-Termine eintragen und bei Absage wieder löschen. ' +
       'Die ersten drei reichen dafür nicht sicher aus, die fünfte („… Freigabe verwalten“) brauchen wir nicht.</span></li>' +
       '<li>Auf <b>„Senden“</b> klicken. Fertig.</li></ol>' +
-      '<p>Jetzt hier unten auf <b>„Freigabe prüfen“</b> tippen. Ihre Gmail-Adresse steht schon drin. ' +
-      '<span class="k">Nur ändern, wenn Ihr Kalender zu einer anderen Gmail-Adresse gehört.</span></p>' +
-      form('kalender', '<label>Ihre Gmail-Adresse<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen') +
+      '<p><b>Zum Schluss:</b> Im Feld unten muss die Adresse stehen, <b>mit der Sie sich eben bei calendar.google.com angemeldet haben</b> ' +
+      '(oben rechts im Kalender auf Ihr Bild tippen, dort steht sie). Steht dort schon die richtige: einfach auf <b>„Freigabe prüfen“</b> tippen. Sonst vorher ändern.</p>' +
+      form('kalender', '<label>Ihre Google-Adresse für den Kalender<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen') +
       '<p class="k">„Freigabe prüfen“ sagt sofort, ob es geklappt hat. Kommt „Noch keine Freigabe“: 1–2 Minuten warten und nochmal tippen.</p>';
   }
   if (a.id === 'meta') {
@@ -1912,7 +1912,7 @@ function studioAktion_(k, s, aktion, d) {
     kundeSetzen_(kz, { 'Kalender-ID': id });
     var cal = null;
     try { cal = kalender_(kunde_(kz)); } catch (e) { cal = null; }
-    if (!cal) return { ok: false, meldung: 'Noch keine Freigabe da. Bitte die Schritte oben machen (Berechtigung „Änderungen an Terminen vornehmen“) und dann nochmal auf „Freigabe prüfen“ tippen. Manchmal dauert es 1–2 Minuten.' };
+    if (!cal) return { ok: false, meldung: 'Noch keine Freigabe da. Bitte prüfen: 1. Steht im Feld die Adresse, mit der Sie bei Google Kalender angemeldet sind? 2. Haben Sie die Adresse von uns mit „Änderungen vornehmen und alle Details des Termins ansehen“ hinzugefügt und auf „Senden“ getippt? Dann 1–2 Minuten warten und nochmal prüfen. Klappt es nicht: kurz anrufen.' };
     kundeSetzen_(kz, { 'Kalender ok': jetzt });
     return { ok: true, meldung: 'Verbunden! Ihr Kalender ist freigegeben.' };
   }
