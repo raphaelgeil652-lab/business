@@ -660,6 +660,7 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   G.einstSetzen_('portal_url', '');
   let x2 = A('kalender', { kalender: 'kate@studio.de' });
   pruefe(!x2.ok && /Noch keine Freigabe/.test(x2.meldung), 'Kalender noch nicht freigegeben → klarer Hinweis');
+  pruefe(!A('kalender', { kalender: 'besitzer@gmail.com' }).ok && /unsere Adresse/.test(A('kalender', { kalender: 'besitzer@gmail.com' }).meldung), 'Kalender: unsere eigene Adresse wird abgelehnt');
   kalender['kate@studio.de'] = [];
   pruefe(A('kalender', { kalender: 'kate@studio.de' }).ok && G.kunde_('kate-cosmetics').kalenderOk, 'Kalender freigegeben → verbunden');
   seite = klick(sl).html;

@@ -1790,8 +1790,9 @@ function aufgabeHtml_(a, k, s) {
       '<span class="k">Damit sehen wir, wann Sie belegt sind, und können Online-Termine eintragen und bei Absage wieder löschen. ' +
       'Die ersten drei reichen dafür nicht sicher aus, die fünfte („… Freigabe verwalten“) brauchen wir nicht.</span></li>' +
       '<li>Auf <b>„Senden“</b> klicken. Fertig.</li></ol>' +
-      '<p><b>Zum Schluss:</b> Im Feld unten muss die Adresse stehen, <b>mit der Sie sich eben bei calendar.google.com angemeldet haben</b> ' +
-      '(oben rechts im Kalender auf Ihr Bild tippen, dort steht sie). Steht dort schon die richtige: einfach auf <b>„Freigabe prüfen“</b> tippen. Sonst vorher ändern.</p>' +
+      '<p><b>Zum Schluss:</b> Unter „Für bestimmte Personen oder Gruppen freigeben“ stehen jetzt zwei Einträge: ' +
+      '<b>oben Sie selbst mit dem Zusatz „Inhaber“</b>, darunter unsere Adresse. ' +
+      'Ins Feld hier unten gehört <b>Ihre eigene Adresse, die mit „Inhaber“</b>. Steht sie schon drin: einfach auf <b>„Freigabe prüfen“</b> tippen.</p>' +
       form('kalender', '<label>Ihre Google-Adresse für den Kalender<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen') +
       '<p class="k">„Freigabe prüfen“ sagt sofort, ob es geklappt hat. Kommt „Noch keine Freigabe“: 1–2 Minuten warten und nochmal tippen.</p>';
   }
@@ -1909,6 +1910,7 @@ function studioAktion_(k, s, aktion, d) {
   if (aktion === 'kalender') {
     var id = txt(d.kalender).toLowerCase();
     if (!/\S+@\S+\.\S+/.test(id)) return { ok: false, meldung: 'Bitte die Adresse Ihres Kalenders eintragen (z. B. studio@gmail.com).' };
+    if (id === String(Session.getEffectiveUser().getEmail()).toLowerCase()) return { ok: false, meldung: 'Das ist unsere Adresse. Bitte Ihre eigene eintragen: die, bei der in Google Kalender „Inhaber“ steht.' };
     kundeSetzen_(kz, { 'Kalender-ID': id });
     var cal = null;
     try { cal = kalender_(kunde_(kz)); } catch (e) { cal = null; }
