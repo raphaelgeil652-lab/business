@@ -1,40 +1,41 @@
 <!--
   META-ANZEIGEN · VORLAGE für alle Beauty-Module (1080 × 1350, Feed 4:5). kunde-anlegen.py setzt die Anzeigen des Moduls
-  aus module.py ein (<div class="ad a" data-creative="f1-beratung">
+  aus module.py ein (<div class="ad c" data-creative="n1-angebot">
+ <div class="photo" style="background-image:url(fotos/foto-1.jpg)"></div>
+ <div class="band"><p class="kicker">Neukundinnen</p><h1>Persönliche Beratung, 20 Minuten</h1><p class="sub">Beratungsgespräch Faltenbehandlung</p></div>
+ <div class="cta">Termin buchen <span>→</span></div>
+</div>
+
+<div class="ad a" data-creative="f1-beratung">
  <div class="photo" style="background-image:url(fotos/foto-1.jpg)"></div>
  <div class="band"><p class="kicker">Ästhetische Behandlung in Musterstadt</p><h1>Erst beraten, <em>dann in Ruhe entscheiden.</em></h1><p class="sub">Ärztliche Beratung zur Faltenbehandlung und zu Hyaluron. Termin online wählen.</p></div>
  <div class="cta">Beratungstermin wählen <span>→</span></div>
- <p class="fine">Behandlung nur nach Aufklärung. Ergebnisse sind individuell.</p>
 </div>
 
 <div class="ad b" data-creative="f2-person">
  <div class="photo" style="background-image:url(fotos/foto-3.jpg)"></div>
  <div class="band"><p class="kicker">Persönlich und ohne Druck</p><h1>Dr. Lena Muster <em>nimmt sich Zeit.</em></h1><p class="sub">Für Ihre Fragen, Ihre Wünsche und eine ehrliche Einschätzung.</p></div>
  <div class="cta">Beratungstermin wählen <span>→</span></div>
- <p class="fine">Muster Ästhetik, Musterstadt. Behandlung nur nach Aufklärung.</p>
 </div>
 
 <div class="ad c" data-creative="f3-ablauf">
  <div class="photo" style="background-image:url(fotos/foto-2.jpg)"></div>
  <div class="band"><p class="kicker">So einfach geht es</p><h1>In 3 Schritten <em>zu Ihrer Beratung.</em></h1><p class="sub">Termin wählen, per E-Mail bestätigen, vorbeikommen.</p></div>
  <div class="cta">Freie Termine ansehen <span>→</span></div>
- <p class="fine">Muster Ästhetik, Musterstadt. Behandlung nur nach Aufklärung.</p>
 </div>
 
 <div class="ad d" data-creative="f4-hyaluron">
  <div class="photo" style="background-image:url(fotos/foto-1.jpg)"></div>
  <div class="band"><p class="kicker">Lippen und Konturen</p><h1>Beratung zu <em>Hyaluron.</em></h1><p class="sub">Was möglich ist, was dazugehört, was es kostet: alles im persönlichen Gespräch.</p></div>
  <div class="cta">Beratungstermin wählen <span>→</span></div>
- <p class="fine">Muster Ästhetik, Musterstadt. Behandlung nur nach Aufklärung. Ergebnisse sind individuell.</p>
 </div>
 
 <div class="ad e" data-creative="f5-online">
  <div class="photo" style="background-image:url(fotos/foto-2.jpg)"></div>
  <div class="band"><p class="kicker">Ohne Anruf, ohne Warteschleife</p><h1>Ihr Beratungstermin, <em>online gebucht.</em></h1><p class="sub">Freie Zeiten sehen, Termin wählen, per E-Mail bestätigen.</p></div>
  <div class="cta">Freie Termine ansehen <span>→</span></div>
- <p class="fine">Muster Ästhetik, Musterstadt. Behandlung nur nach Aufklärung.</p>
 </div>) und füllt die Farben. creatives-rendern.js macht daraus PNGs.
-  Standard: Foto aus dem Studio oben, darunter Kicker, große Überschrift, ein Satz, Hinweiszeile, Handlungszeile.
+  Standard (Fassung 2): großes Foto, darunter Kicker, Überschrift = Angebot, EINE Unterzeile, Knopf. Kein Kleingedrucktes auf dem Bild.
   Eine Schriftfamilie für Überschriften (Fraunces), eine für Text (Inter Tight). Keine Verläufe, keine Icons.
 -->
 <!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><title>Anzeigen · Muster Ästhetik</title><style>
@@ -47,53 +48,55 @@
 :root{--bg:#F3EEE8;--ink:#25201C;--ink2:#25201CCC;--muted:#6B665D;--line:#E5DBD2;--accent:#7D4A47;--soft:#E5DBD2;--dunkel:#28211E;--hell:#FAF7F3;}
 body{background:#888;display:flex;flex-direction:column;gap:40px;padding:40px;align-items:flex-start;-webkit-font-smoothing:antialiased;}
 .ad{width:1080px;height:1350px;position:relative;overflow:hidden;flex:0 0 auto;font-family:"Inter Tight",sans-serif;}
-.photo{position:absolute;left:0;top:0;width:1080px;height:600px;background-size:cover;background-position:center;background-repeat:no-repeat;}
-.band{position:absolute;left:0;right:0;top:600px;bottom:0;padding:56px 84px 0;}
-.kicker{font-size:25px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
-h1{font-family:"Fraunces",serif;font-weight:400;font-size:94px;line-height:1.0;letter-spacing:-.02em;margin-top:22px;}
+.photo{position:absolute;left:0;top:0;width:1080px;height:830px;background-size:cover;background-position:center;background-repeat:no-repeat;}
+.band{position:absolute;left:0;right:0;top:830px;bottom:0;padding:44px 72px 0;}
+.kicker{font-size:26px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+h1{font-family:"Fraunces",serif;font-weight:400;font-size:84px;line-height:1.02;letter-spacing:-.02em;margin-top:16px;max-width:940px;}
 h1 em{font-style:italic;}
-.sub{font-size:34px;font-weight:500;line-height:1.32;margin-top:26px;letter-spacing:-.005em;max-width:880px;}
-.cta{position:absolute;left:84px;right:84px;bottom:112px;padding-top:24px;border-top:2px solid;font-size:34px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
-.cta span{font-size:46px;line-height:1;}
-.fine{position:absolute;left:84px;right:84px;bottom:46px;font-size:19px;line-height:1.35;}
-.a{background:var(--bg);color:var(--ink)}.a .kicker,.a em,.a .cta span{color:var(--accent)}.a .sub{color:var(--ink2)}.a .fine{color:var(--muted)}.a .cta{border-color:var(--ink)}
-.b{background:var(--dunkel);color:#F6F1EC}.b .kicker,.b em,.b .cta span{color:var(--soft)}.b .sub{color:#DCD5CE}.b .fine{color:#A39A92}.b .cta{border-color:var(--soft)}
-.c{background:var(--soft);color:var(--ink)}.c .kicker,.c em,.c .cta span{color:var(--accent)}.c .sub{color:var(--ink2)}.c .fine{color:var(--muted)}.c .cta{border-color:var(--ink)}
-.d{background:#FFFFFF;color:var(--ink)}.d .kicker,.d em,.d .cta span{color:var(--accent)}.d .sub{color:var(--ink2)}.d .fine{color:var(--muted)}.d .cta{border-color:var(--ink)}
-.e{background:var(--accent);color:#FFFFFF}.e .kicker,.e .cta span{color:#FFFFFF;opacity:.85}.e em{color:#FFFFFF}.e .sub{color:#F2EEEA}.e .fine{color:#E6DED8;opacity:.85}.e .cta{border-color:#FFFFFF}
+.sub{font-size:33px;font-weight:600;line-height:1.3;margin-top:18px;letter-spacing:-.005em;max-width:630px;}
+h1.lang{font-size:68px;}
+.cta{position:absolute;right:72px;bottom:56px;padding:22px 34px;border-radius:999px;font-size:31px;font-weight:700;display:flex;gap:14px;align-items:center;}
+.cta span{font-size:36px;line-height:1;}
+.fine{display:none;}
+.a{background:var(--bg);color:var(--ink)}.a .kicker,.a em,.a .cta span{color:var(--accent)}.a .sub{color:var(--ink2)}.a .fine{color:var(--muted)}.a .cta{background:var(--ink);color:#fff}.a .cta span{color:#fff}
+.b{background:var(--dunkel);color:#F6F1EC}.b .kicker,.b em,.b .cta span{color:var(--soft)}.b .sub{color:#DCD5CE}.b .fine{color:#A39A92}.b .cta{background:#F6F1EC;color:var(--dunkel)}.b .cta span{color:var(--accent)}
+.c{background:var(--soft);color:var(--ink)}.c .kicker,.c em,.c .cta span{color:var(--accent)}.c .sub{color:var(--ink2)}.c .fine{color:var(--muted)}.c .cta{background:var(--accent);color:#fff}.c .cta span{color:#fff}
+.d{background:#FFFFFF;color:var(--ink)}.d .kicker,.d em,.d .cta span{color:var(--accent)}.d .sub{color:var(--ink2)}.d .fine{color:var(--muted)}.d .cta{background:var(--accent);color:#fff}.d .cta span{color:#fff}
+.e{background:var(--accent);color:#FFFFFF}.e .kicker,.e .cta span{color:#FFFFFF;opacity:.85}.e em{color:#FFFFFF}.e .sub{color:#F2EEEA}.e .fine{color:#E6DED8;opacity:.85}.e .cta{background:#fff;color:var(--accent)}.e .cta span{color:var(--accent);opacity:1}
 </style></head><body>
+<div class="ad c" data-creative="n1-angebot">
+ <div class="photo" style="background-image:url(fotos/foto-1.jpg)"></div>
+ <div class="band"><p class="kicker">Neukundinnen</p><h1>Persönliche Beratung, 20 Minuten</h1><p class="sub">Beratungsgespräch Faltenbehandlung</p></div>
+ <div class="cta">Termin buchen <span>→</span></div>
+</div>
+
 <div class="ad a" data-creative="f1-beratung">
  <div class="photo" style="background-image:url(fotos/foto-1.jpg)"></div>
  <div class="band"><p class="kicker">Ästhetische Behandlung in Musterstadt</p><h1>Erst beraten, <em>dann in Ruhe entscheiden.</em></h1><p class="sub">Ärztliche Beratung zur Faltenbehandlung und zu Hyaluron. Termin online wählen.</p></div>
  <div class="cta">Beratungstermin wählen <span>→</span></div>
- <p class="fine">Behandlung nur nach Aufklärung. Ergebnisse sind individuell.</p>
 </div>
 
 <div class="ad b" data-creative="f2-person">
  <div class="photo" style="background-image:url(fotos/foto-3.jpg)"></div>
  <div class="band"><p class="kicker">Persönlich und ohne Druck</p><h1>Dr. Lena Muster <em>nimmt sich Zeit.</em></h1><p class="sub">Für Ihre Fragen, Ihre Wünsche und eine ehrliche Einschätzung.</p></div>
  <div class="cta">Beratungstermin wählen <span>→</span></div>
- <p class="fine">Muster Ästhetik, Musterstadt. Behandlung nur nach Aufklärung.</p>
 </div>
 
 <div class="ad c" data-creative="f3-ablauf">
  <div class="photo" style="background-image:url(fotos/foto-2.jpg)"></div>
  <div class="band"><p class="kicker">So einfach geht es</p><h1>In 3 Schritten <em>zu Ihrer Beratung.</em></h1><p class="sub">Termin wählen, per E-Mail bestätigen, vorbeikommen.</p></div>
  <div class="cta">Freie Termine ansehen <span>→</span></div>
- <p class="fine">Muster Ästhetik, Musterstadt. Behandlung nur nach Aufklärung.</p>
 </div>
 
 <div class="ad d" data-creative="f4-hyaluron">
  <div class="photo" style="background-image:url(fotos/foto-1.jpg)"></div>
  <div class="band"><p class="kicker">Lippen und Konturen</p><h1>Beratung zu <em>Hyaluron.</em></h1><p class="sub">Was möglich ist, was dazugehört, was es kostet: alles im persönlichen Gespräch.</p></div>
  <div class="cta">Beratungstermin wählen <span>→</span></div>
- <p class="fine">Muster Ästhetik, Musterstadt. Behandlung nur nach Aufklärung. Ergebnisse sind individuell.</p>
 </div>
 
 <div class="ad e" data-creative="f5-online">
  <div class="photo" style="background-image:url(fotos/foto-2.jpg)"></div>
  <div class="band"><p class="kicker">Ohne Anruf, ohne Warteschleife</p><h1>Ihr Beratungstermin, <em>online gebucht.</em></h1><p class="sub">Freie Zeiten sehen, Termin wählen, per E-Mail bestätigen.</p></div>
  <div class="cta">Freie Termine ansehen <span>→</span></div>
- <p class="fine">Muster Ästhetik, Musterstadt. Behandlung nur nach Aufklärung.</p>
 </div>
 </body></html>

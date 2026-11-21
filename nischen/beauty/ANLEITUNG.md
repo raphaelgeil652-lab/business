@@ -63,6 +63,9 @@ von selbst die Mail „Heute dran“. Texte: „1 Verkaufsskript“ und „2 Nac
    - **Kalender:** Adresse seines Google-Kalenders. Dann im Wochenraster antippen, wann online gebucht werden darf
      (Knöpfe „Mo–Fr 9–18“ helfen). Alles, was in seinem Google-Kalender steht, ist automatisch belegt, auch Kundinnen,
      die anders gebucht haben. Takt und Pausen müsst ihr nicht festlegen.
+   - **Neukundenangebot** (Pflicht): kurz, wie es groß auf der Anzeige stehen soll, z. B. „Neuset gratis + 1. Auffüllen 49 €“,
+     dazu die Leistung, die die Kundin dafür bucht. Vergleichspreis nur, wenn er echt ist. Später jederzeit über
+     „Kundendaten ändern“ anpassbar (danach Claude die Anzeigen neu bauen lassen). Bei Ärzten und Zahnärzten sachlich, ohne gratis und Rabatt.
    - Absagefrist, Ausfallgebühr nur, wenn das Studio sie wirklich verlangt.
    - **Provision** (Vorschlag 15 %) und wie viele neue Kundinnen pro Woche möglich sind. Das Formular schlägt daraus das
      **Werbebudget** vor (geht komplett an Meta). Alles mit * ist Pflicht.
@@ -133,6 +136,14 @@ Die Mail kommt von selbst, sobald das Studio alles für Seite und Anzeigen erled
    des Studios? → über den Link in der Bestätigung wieder absagen.
 2. Kampagnen aktivieren.
 3. Team-Seite → **„Jetzt live schalten“** (erst nach der Freigabe durch das Studio). Das Studio bekommt von selbst die Mail „Ihre Werbung läuft“.
+
+## Gewinnspiel (nur wo erlaubt, nicht bei Ärzten und Zahnärzten)
+
+Team-Seite → Kasten **„Gewinnspiel“**: ein Gewinn pro Zeile, der Hauptgewinn zuerst (eine Behandlung mit Wert), danach z. B.
+„2 × 30 % Rabatt auf eine Behandlung“ und „3 × 20 % Rabatt auf eine Behandlung“. Dazu Start, Teilnahmeschluss, Ziehung.
+Im Lostopf ist nur, wer im Zeitraum einen Termin bucht **und hinkommt**. Das steht auf jeder Gewinnspiel-Anzeige als Unterzeile.
+Die Terminseite zeigt das Banner, die Teilnahmebedingungen entstehen von selbst, am Tag der Ziehung kommt die Mail mit allen
+Gewinnerinnen. Danach den neuen „Text für Claude“ schicken: Claude baut die Gewinnspiel-Kampagne (3 Anzeigen) von selbst.
 
 ## Neue Kampagnen, jederzeit
 

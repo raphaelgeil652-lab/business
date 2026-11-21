@@ -184,6 +184,26 @@ def felder(d):
     f["budget_google_tag"] = euro(round(google / 30)) if google else "[Tagesbudget Google]"
     f["cpc_limit"] = "2,50 €" if k in ("laser", "pmu") else "4,00 €"
     f["_verlosung"] = False
+    # Neukundenangebot (Pflichtfeld im Formular) und Gewinnspiel (aus der Zentrale)
+    nk = d.get("angebot") or {}
+    f["_nk"] = bool(str(nk.get("text") or "").strip())
+    f["nk_text"] = str(nk.get("text") or "").strip()
+    f["nk_leistung"] = str(nk.get("leistung") or "").strip()
+    f["nk_normal_satz"] = f" Regulär {nk['normal']}." if nk.get("normal") else ""
+    f["nk_bis_satz"] = f", nur bis {nk['bis']}" if nk.get("bis") else ""
+    f["nk_bis_kurz"] = f" · bis {nk['bis'][:6]}" if nk.get("bis") else ""
+    gs = d.get("gewinnspiel") or {}
+    gw = [str(x).strip() for x in (gs.get("gewinne") or []) if str(x).strip()]
+    f["_gs"] = bool(gw) and r["verlosung"]
+    anzahl = lambda x: int(m.group(1)) if (m := re.match(r"^(\d+)\s*[x×]", x)) else 1
+    f["gs_haupt"] = re.sub(r"^\d+\s*[x×]\s*", "", gw[0]) if gw else ""
+    f["gs_haupt_kurz"] = re.sub(r"\s*\(.*?\)", "", f["gs_haupt"]).strip()
+    f["gs_weitere_satz"] = (" und " + ", ".join(gw[1:])) if len(gw) > 1 else ""
+    f["gs_anzahl"] = str(sum(anzahl(x) for x in gw)) if gw else ""
+    f["gs_bis"] = gs.get("bis") or ""
+    f["gs_bis_kurz"] = (gs.get("bis") or "")[:6]
+    f["gs_ziehung"] = gs.get("ziehung") or ""
+    f["gs_tnb"] = gs.get("bedingungen") or "[Link zu den Teilnahmebedingungen]"
     f["zielgruppe_alter"] = mod["zielgruppe"]["alter"]
     f["zielgruppe_geschlecht"] = mod["zielgruppe"]["geschlecht"]
     fa = mod["farben"]
@@ -212,6 +232,8 @@ def seiten_felder(f, mod, fotos):
     s["lp_kicker"] = fuellen(lp["kicker"], f)
     s["lp_h1"] = fuellen(lp["h1"], f)
     s["lp_sub"] = esc(fuellen(lp["sub"], f) if f["_beratung"] else "Freie Termine sehen und direkt online buchen. Die Bestätigung kommt per E-Mail.")
+    if f.get("_nk"):
+        s["lp_sub"] = "<b>Neukundinnen: " + esc(f["nk_text"]) + "</b>" + esc(f["nk_bis_satz"]) + ". Freien Termin wählen und direkt hier buchen."
     s["foto_alt"] = esc(f"{mod['name']} bei {f['betrieb']}")
     s["schritte_html"] = "".join(f"<div><b>{i}</b>{esc(fuellen(t, f))}</div>" for i, t in enumerate(lp["schritte"], 1))
     s["vorteile_titel"] = "Was Sie erwartet"
@@ -272,17 +294,26 @@ def seiten_felder(f, mod, fotos):
 
 def anzeigen_html(f, mod):
     alle = list(mod["anzeigen"])
+    if f.get("_nk") and not f.get("_kampagne") and not any(a["id"] == "n1-angebot" for a in alle):
+        alle = [M.ANGEBOT_ANZEIGE] + alle
     # Nur versprechen, was das Studio anbietet: Preis-Anzeige braucht einen Preis, Beratungs-Anzeigen eine Beratung
     text = lambda a: " ".join(str(a.get(x, "")) for x in ("kicker", "h1", "sub", "fine", "primaer", "headline", "beschreibung"))
-    alle = [a for a in alle if (f["_preis"] or "{{preis_1}}" not in text(a)) and (f["_beratung"] or "{{beratung_" not in text(a))]
+    alle = [a for a in alle if (f["_preis"] or "{{preis_1}}" not in text(a)) and (f["_beratung"] or "{{beratung_" not in text(a))
+            and (f.get("_nk") or "{{nk_" not in text(a)) and (f.get("_gs") or "{{gs_" not in text(a))]
+    alle = [{**a, "leistung": fuellen(a["leistung"], f)} if a.get("leistung") else a for a in alle]
     teile, vorschau = [], []
     for a in alle:
-        t = {x: fuellen(a[x], f) for x in ("kicker", "h1", "sub", "fine", "cta", "primaer", "headline", "beschreibung")}
+        t = {x: fuellen(a.get(x, ""), f) for x in ("kicker", "h1", "sub", "fine", "cta", "primaer", "headline", "beschreibung")}
+        # Überschrift: zusammengehörige Teile nicht trennen („+ 1. Auffüllen“), lange Überschriften etwas kleiner
+        t["h1"] = re.sub(r"(\+|\d\.) ", "\\1\u00a0", t["h1"])
+        t["h1"] = re.sub(r" (€|%)", "\u00a0\\1", t["h1"])
+        t["sub"] = re.sub(r" (€|%)", "\u00a0\\1", re.sub(r"(\+|\d\.) ", "\\1\u00a0", t["sub"]))
+        lang = len(re.sub(r"<[^>]+>", "", t["h1"])) > 40
         fd = f.get("_fotos_da") or {}
         foto = a["foto"] if fd.get(a["foto"], True) else FOTO_ERSATZ.get(a["foto"], "foto-1")
         teile.append(f'<div class="ad {a["stil"]}" data-creative="{a["id"]}">\n <div class="photo" style="background-image:url(fotos/{foto}.jpg)"></div>\n'
-                     f' <div class="band"><p class="kicker">{esc(t["kicker"])}</p><h1>{t["h1"]}</h1><p class="sub">{esc(t["sub"])}</p></div>\n'
-                     f' <div class="cta">{esc(t["cta"])} <span>→</span></div>\n <p class="fine">{esc(t["fine"])}</p>\n</div>')
+                     f' <div class="band"><p class="kicker">{esc(t["kicker"])}</p><h1{' class="lang"' if lang else ''}>{t["h1"]}</h1><p class="sub">{esc(t["sub"])}</p></div>\n'
+                     f' <div class="cta">{esc(t["cta"])} <span>→</span></div>\n</div>')
         vorschau.append(f'  <div class="ad"><div class="top"><div class="pic"></div><div class="who"><b>{esc(f["betrieb"])}</b><span>Gesponsert · 🌐</span></div></div>\n'
                         f'    <div class="txt">{esc(t["primaer"])}</div>\n    <img src="creatives/{a["id"]}.png" alt="{esc(a["id"])}">\n'
                         f'    <div class="card"><div><span class="u">{esc(f["landingpage_domain"])}</span><b>{esc(t["headline"])}</b><small>{esc(t["beschreibung"])}</small></div>'
@@ -472,6 +503,16 @@ def main():
         kopiere_ordner(an / "creatives", va / "creatives")
     (va / "vorschau.html").write_text((an / "vorschau.html").read_text(encoding="utf-8").replace("../seite/termin.html", "../termin.html")
                                       .replace("<head>", '<head><meta name="robots" content="noindex">', 1), encoding="utf-8")
+
+    # Gewinnspiel-Kampagne von selbst, wenn in der Zentrale eins eingetragen ist (nur wo erlaubt)
+    if f.get("_gs"):
+        gsk = {"name": "Gewinnspiel", "ziel": f"Gewinnspiel bis {f['gs_bis']}: Hauptgewinn {f['gs_haupt']}{f['gs_weitere_satz']}. Teilnahme = ersten Termin buchen und wahrnehmen.",
+               "budget": round(zahl(d.get("budget"), 0) / 2), "zielgruppe": "18 bis 55",
+               "anzeigen": [a for a in M.GEWINNSPIEL if f.get("_nk") or "{{nk_" not in json.dumps(a)]}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as tf:
+            json.dump(gsk, tf, ensure_ascii=False)
+        erg = subprocess.run([sys.executable, str(HIER / "kampagne-neu.py"), f["slug"], tf.name], capture_output=True, text=True)
+        print((erg.stdout or erg.stderr).strip().splitlines()[-1] if (erg.stdout or erg.stderr).strip() else "! Gewinnspiel-Kampagne: keine Ausgabe")
 
     # Kampagnen-Anleitung und LIES-MICH
     kampagnen = fuellen((VORLAGEN / "texte" / "kampagnen.md").read_text(encoding="utf-8"), f)

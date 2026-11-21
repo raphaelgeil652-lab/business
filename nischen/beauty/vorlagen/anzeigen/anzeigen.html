@@ -1,7 +1,7 @@
 <!--
   META-ANZEIGEN · VORLAGE für alle Beauty-Module (1080 × 1350, Feed 4:5). kunde-anlegen.py setzt die Anzeigen des Moduls
   aus module.py ein ({{anzeigen_html}}) und füllt die Farben. creatives-rendern.js macht daraus PNGs.
-  Standard: Foto aus dem Studio oben, darunter Kicker, große Überschrift, ein Satz, Hinweiszeile, Handlungszeile.
+  Standard (Fassung 2): großes Foto, darunter Kicker, Überschrift = Angebot, EINE Unterzeile, Knopf. Kein Kleingedrucktes auf dem Bild.
   Eine Schriftfamilie für Überschriften (Fraunces), eine für Text (Inter Tight). Keine Verläufe, keine Icons.
 -->
 <!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><title>Anzeigen · {{betrieb}}</title><style>
@@ -14,20 +14,21 @@
 :root{{{farben_css}}}
 body{background:#888;display:flex;flex-direction:column;gap:40px;padding:40px;align-items:flex-start;-webkit-font-smoothing:antialiased;}
 .ad{width:1080px;height:1350px;position:relative;overflow:hidden;flex:0 0 auto;font-family:"Inter Tight",sans-serif;}
-.photo{position:absolute;left:0;top:0;width:1080px;height:600px;background-size:cover;background-position:center;background-repeat:no-repeat;}
-.band{position:absolute;left:0;right:0;top:600px;bottom:0;padding:56px 84px 0;}
-.kicker{font-size:25px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
-h1{font-family:"Fraunces",serif;font-weight:400;font-size:94px;line-height:1.0;letter-spacing:-.02em;margin-top:22px;}
+.photo{position:absolute;left:0;top:0;width:1080px;height:830px;background-size:cover;background-position:center;background-repeat:no-repeat;}
+.band{position:absolute;left:0;right:0;top:830px;bottom:0;padding:44px 72px 0;}
+.kicker{font-size:26px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+h1{font-family:"Fraunces",serif;font-weight:400;font-size:84px;line-height:1.02;letter-spacing:-.02em;margin-top:16px;max-width:940px;}
 h1 em{font-style:italic;}
-.sub{font-size:34px;font-weight:500;line-height:1.32;margin-top:26px;letter-spacing:-.005em;max-width:880px;}
-.cta{position:absolute;left:84px;right:84px;bottom:112px;padding-top:24px;border-top:2px solid;font-size:34px;font-weight:700;display:flex;justify-content:space-between;align-items:center;}
-.cta span{font-size:46px;line-height:1;}
-.fine{position:absolute;left:84px;right:84px;bottom:46px;font-size:19px;line-height:1.35;}
-.a{background:var(--bg);color:var(--ink)}.a .kicker,.a em,.a .cta span{color:var(--accent)}.a .sub{color:var(--ink2)}.a .fine{color:var(--muted)}.a .cta{border-color:var(--ink)}
-.b{background:var(--dunkel);color:#F6F1EC}.b .kicker,.b em,.b .cta span{color:var(--soft)}.b .sub{color:#DCD5CE}.b .fine{color:#A39A92}.b .cta{border-color:var(--soft)}
-.c{background:var(--soft);color:var(--ink)}.c .kicker,.c em,.c .cta span{color:var(--accent)}.c .sub{color:var(--ink2)}.c .fine{color:var(--muted)}.c .cta{border-color:var(--ink)}
-.d{background:#FFFFFF;color:var(--ink)}.d .kicker,.d em,.d .cta span{color:var(--accent)}.d .sub{color:var(--ink2)}.d .fine{color:var(--muted)}.d .cta{border-color:var(--ink)}
-.e{background:var(--accent);color:#FFFFFF}.e .kicker,.e .cta span{color:#FFFFFF;opacity:.85}.e em{color:#FFFFFF}.e .sub{color:#F2EEEA}.e .fine{color:#E6DED8;opacity:.85}.e .cta{border-color:#FFFFFF}
+.sub{font-size:33px;font-weight:600;line-height:1.3;margin-top:18px;letter-spacing:-.005em;max-width:630px;}
+h1.lang{font-size:68px;}
+.cta{position:absolute;right:72px;bottom:56px;padding:22px 34px;border-radius:999px;font-size:31px;font-weight:700;display:flex;gap:14px;align-items:center;}
+.cta span{font-size:36px;line-height:1;}
+.fine{display:none;}
+.a{background:var(--bg);color:var(--ink)}.a .kicker,.a em,.a .cta span{color:var(--accent)}.a .sub{color:var(--ink2)}.a .fine{color:var(--muted)}.a .cta{background:var(--ink);color:#fff}.a .cta span{color:#fff}
+.b{background:var(--dunkel);color:#F6F1EC}.b .kicker,.b em,.b .cta span{color:var(--soft)}.b .sub{color:#DCD5CE}.b .fine{color:#A39A92}.b .cta{background:#F6F1EC;color:var(--dunkel)}.b .cta span{color:var(--accent)}
+.c{background:var(--soft);color:var(--ink)}.c .kicker,.c em,.c .cta span{color:var(--accent)}.c .sub{color:var(--ink2)}.c .fine{color:var(--muted)}.c .cta{background:var(--accent);color:#fff}.c .cta span{color:#fff}
+.d{background:#FFFFFF;color:var(--ink)}.d .kicker,.d em,.d .cta span{color:var(--accent)}.d .sub{color:var(--ink2)}.d .fine{color:var(--muted)}.d .cta{background:var(--accent);color:#fff}.d .cta span{color:#fff}
+.e{background:var(--accent);color:#FFFFFF}.e .kicker,.e .cta span{color:#FFFFFF;opacity:.85}.e em{color:#FFFFFF}.e .sub{color:#F2EEEA}.e .fine{color:#E6DED8;opacity:.85}.e .cta{background:#fff;color:var(--accent)}.e .cta span{color:var(--accent);opacity:1}
 </style></head><body>
 {{anzeigen_html}}
 </body></html>

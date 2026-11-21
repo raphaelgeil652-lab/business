@@ -80,7 +80,16 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 
 **Ende: NICHT „Veröffentlichen“.** Oben links schließen. In der Liste steht „Entwurf“.
 
-**1 · p1-vorzeichnen** · Bild `p1-vorzeichnen.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p1`
+**1 · n1-angebot** · Bild `n1-angebot.png` · Quell-URL `https://muster-brows.netlify.app/termin.html?l=Powder%20Brows%20inkl.%20Nachstechen` · URL-Parameter `utm_source=meta&utm_campaign=pmu-n1`
+- Primärtext: Powder Brows 349 € statt 390 €: Ihr Start bei Muster Brows in Musterstadt. Regulär 390 €.
+  ✔ Freie Termine sofort sehen
+  ✔ In 30 Sekunden online gebucht
+  ✔ Nur für Ihren ersten Termin
+  👉 Jetzt Termin buchen.
+- Überschrift: Powder Brows 349 € statt 390 €
+- Beschreibung: Nur für Neukundinnen.
+
+**2 · p1-vorzeichnen** · Bild `p1-vorzeichnen.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p1`
 - Primärtext: Unsicher, welche Form zu Ihnen passt? Sehen Sie es, bevor Sie sich entscheiden.
   ✔ kostenlose Beratung bei Muster Brows
   ✔ Wir zeichnen Ihre Augenbrauen vor, Sie sehen das Ergebnis im Spiegel
@@ -89,7 +98,7 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 - Überschrift: Beratung mit Vorzeichnen: kostenlos
 - Beschreibung: Erst sehen, dann entscheiden.
 
-**2 · p2-morgens** · Bild `p2-morgens.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p2`
+**3 · p2-morgens** · Bild `p2-morgens.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p2`
 - Primärtext: Jeden Morgen Augenbrauen nachzeichnen? Mit Powder Brows sind sie schon fertig, wenn Sie aufstehen.
   ✔ Weich schattiert, passend zu Ihrem Gesicht
   ✔ Beim Sport, im Urlaub, am Morgen: immer gleich
@@ -98,7 +107,7 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 - Überschrift: Powder Brows in Musterstadt
 - Beschreibung: Beratung mit Vorzeichnen.
 
-**3 · p3-preis** · Bild `p3-preis.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p3`
+**4 · p3-preis** · Bild `p3-preis.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p3`
 - Primärtext: Powder Brows inkl. Nachstechen bei Muster Brows für 390 €. Ein Preis, alles drin.
   ✔ Beratung und Vorzeichnen
   ✔ Pigmentieren
@@ -107,14 +116,14 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 - Überschrift: Powder Brows inkl. Nachstechen 390 €
 - Beschreibung: Nachstechtermin inklusive.
 
-**4 · p4-online** · Bild `p4-online.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p4`
+**5 · p4-online** · Bild `p4-online.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p4`
 - Primärtext: Nie wieder hinterhertelefonieren: Bei Muster Brows sehen Sie alle freien Termine online und buchen Ihre kostenlose Beratung mit Vorzeichnen in 30 Sekunden.
   ✔ Termin antippen ✔ per E-Mail bestätigen ✔ Erinnerung kommt von selbst
   👉 Freie Termine ansehen.
 - Überschrift: Freie Termine online ansehen
 - Beschreibung: Permanent Make-up in Musterstadt.
 
-**5 · p5-kuenstlerin** · Bild `p5-kuenstlerin.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p5`
+**6 · p5-kuenstlerin** · Bild `p5-kuenstlerin.png` · Quell-URL `https://muster-brows.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=pmu-p5`
 - Primärtext: Permanent Make-up ist Handarbeit. Bei Muster Brows wird jede Braue einzeln geplant: Form, Farbe, Ihr Typ.
   ✔ kostenlose Beratung mit Vorzeichnen
   ✔ Sie sehen die Form, bevor pigmentiert wird

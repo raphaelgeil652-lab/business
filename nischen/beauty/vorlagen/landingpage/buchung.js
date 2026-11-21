@@ -77,8 +77,9 @@
     var alt = $('gewinnspiel');
     if (alt) alt.remove();
     if (!g) return;
-    var box = el('div', 'gewinnspiel', '🎁 <b>Gewinnspiel:</b> Unter allen, die bis ' + esc(g.bis) + ' einen Termin buchen und wahrnehmen, verlosen wir ' +
-      esc(g.gewinn) + '. <a href="' + esc(g.bedingungen) + '" target="_blank" rel="noopener">Teilnahmebedingungen</a>');
+    var box = el('div', 'gewinnspiel', '🎁 <b>Gewinnspiel: ' + esc(g.gewinn) + (g.weitere ? ' + ' + g.weitere + ' weitere Gewinne' : '') + '</b><br>' +
+      'So sind Sie im Lostopf: bis ' + esc(g.bis) + ' hier einen Termin buchen und hinkommen. Der Termin kostet den normalen Preis. Ab 18. ' +
+      '<a href="' + esc(g.bedingungen) + '" target="_blank" rel="noopener">Teilnahmebedingungen</a>');
     box.id = 'gewinnspiel';
     $('buchen').insertBefore(box, $('buchen').children[2] || null);
   }

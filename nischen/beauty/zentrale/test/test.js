@@ -543,8 +543,8 @@ blaetter.Akquise.appendRow(['Offen Studio', '', 'Ulm', '3', '', 'PMU', '', 'neu'
 quota = 20;
 uhr('2027-01-20 07:00'); vorher = mails.length;
 G.taeglich();
-const zieh = mails.slice(vorher).find(x => x.subject.includes('Verlosung'));
-pruefe(zieh && zieh.to === 'studio@laser.de,ich@agentur.de,tom@agentur.de' && zieh.htmlBody.includes('3 Teilnehmer') && (zieh.htmlBody.match(/<li>/g) || []).length === 1 && !zieh.htmlBody.includes('Zu Spät'), 'Verlosung: 1 Gewinnerin aus 3 (doppelt und zu spät zählen nicht)');
+const zieh = mails.slice(vorher).find(x => x.subject.includes('Gewinnspiel'));
+pruefe(zieh && zieh.to === 'studio@laser.de,ich@agentur.de,tom@agentur.de' && zieh.htmlBody.includes('3 Teilnehmende') && (zieh.htmlBody.match(/<li>/g) || []).length === 1 && !zieh.htmlBody.includes('Zu Spät'), 'Verlosung: 1 Gewinnerin aus 3 (doppelt und zu spät zählen nicht)');
 pruefe(mails.slice(vorher).some(x => x.to === 'ich@agentur.de' && x.subject === 'Heute dran: 1 Studio' && x.htmlBody.includes('Glow Studio') && !x.htmlBody.includes('Fertig')), 'Akquise: Max bekommt seine Studios');
 pruefe(mails.slice(vorher).some(x => x.to === 'tom@agentur.de' && x.subject === 'Heute dran: 1 Studio' && x.htmlBody.includes('Tom Studio')), 'Akquise: Tom (Vorname reicht) bekommt seine Studios');
 pruefe(mails.slice(vorher).some(x => x.to === 'ich@agentur.de,tom@agentur.de' && x.htmlBody.includes('Offen Studio') && x.htmlBody.includes('noch niemand zugeteilt')), 'Akquise: nicht zugeteilte gehen an beide');
@@ -601,7 +601,7 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
     behandler: 'Kosmetik/PMU-Studio', quali: true,
     leistungen: [{ name: 'powder Brows', minuten: '120', preis: '390' }, { name: 'Lippen | Aquarell', minuten: '150', preis: '' }, { name: '', minuten: '', preis: '' }],
     zeiten: 'Di 9:00-18:00; Mi 9:30-12:00 14:00-18:00; Sa 10:00-14:00', kalender: 'Kalender', kalender_id: '', absage: '24', ausfall: '40',
-    termine: '4', umkreis: '20', provision: '15', budget: '800', mail: true };
+    termine: '4', umkreis: '20', provision: '15', budget: '800', mail: true, nk_text: 'Powder Brows für Neukundinnen 349 €', nk_leistung: 'Powder Brows', nk_normal: '390 €', nk_bis: '' };
   const f = o => G.neuerKunde_(Object.assign({}, basis, o), G.einst_());
   pruefe(!f({ betrieb: '' }).ok && /Name des Studios/.test(f({ betrieb: '' }).text), 'Pflichtfeld fehlt → Hinweis');
   pruefe(!f({ behandler: '' }).ok && !f({ hausnummer: '' }).ok && !f({ plz: '8813' }).ok && !f({ provision: '' }).ok, 'Pflichtfelder: Behandler, Hausnummer, PLZ, Provision');
@@ -609,9 +609,12 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   pruefe(!f({ leistungen: [] }).ok && !f({ leistungen: [{ name: 'Brows', minuten: '', preis: '' }] }).ok, 'ohne Leistung oder ohne Minuten → Hinweis');
   pruefe(!f({ behandler: 'Arzt/Ärztin', leistungen: [{ name: 'Botox Stirn', minuten: '30' }] }).ok && !f({ angebot: 'Botox' }).ok, '„Botox“ → abgelehnt');
   pruefe(!f({ zeiten: '' }).ok, 'ohne buchbare Zeiten → Hinweis');
+  pruefe(!f({ nk_text: '' }).ok && /Neukundenangebot/.test(f({ nk_text: '' }).text) && !f({ nk_leistung: 'Gibt es nicht' }).ok, 'Neukundenangebot: Pflicht, Leistung muss aus der Liste sein');
+  pruefe(!f({ nk_text: 'eins zwei drei vier fünf sechs sieben acht neun' }).ok, 'Neukundenangebot: höchstens 8 Wörter');
+  pruefe(!f({ behandler: 'Arzt/Ärztin', nk_text: 'Beratung gratis' }).ok && !f({ behandler: 'Arzt/Ärztin', nk_text: 'Erstberatung 20 % günstiger' }).ok && !f({ behandler: 'Zahnarztpraxis', nk_text: 'Bleaching', nk_normal: '300 €' }).ok, 'Ärzte/Zahnärzte: kein gratis, kein Rabatt, kein Vergleichspreis');
   pruefe(blaetter.Kunden.letzte() === 4, 'abgelehnte Versuche legen nichts an');
   {
-    const rb = G.neuerKunde_(Object.assign({}, basis, { betrieb: 'Beratung Test', leistungen: [{ name: 'haarpigmentierung', minuten: '30', preis: '1800', beratung: true }] }), G.einst_());
+    const rb = G.neuerKunde_(Object.assign({}, basis, { betrieb: 'Beratung Test', nk_leistung: 'Beratung Haarpigmentierung', leistungen: [{ name: 'haarpigmentierung', minuten: '30', preis: '1800', beratung: true }] }), G.einst_());
     const kb = G.kunde_('beratung-test');
     pruefe(rb.ok && kb.leistungen[0].name === 'Beratung Haarpigmentierung' && kb.leistungen[0].minuten === 30 && kb.leistungen[0].preis === 'ab 1800 €', '„erst Beratung“: online buchbar ist die Beratung, Preis als „ab …“');
     blaetter.Kunden.z = blaetter.Kunden.z.filter(r => r[0] !== 'beratung-test');
@@ -619,6 +622,8 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   const vorher = mails.length, r = f({});
   const k = G.kunde_('kate-cosmetics');
   pruefe(r.ok && k && k.status === 'Angelegt' && k.token.length === 32, 'Kunde angelegt: Kürzel aus dem Namen, Status Angelegt, Schlüssel');
+  pruefe(k.nk.text === 'Powder Brows für Neukundinnen 349 €' && k.nk.leistung === 'Powder Brows' && G.studioDaten_(k, G.einst_()).angebot.normal === '390 €', 'Neukundenangebot gespeichert und im Text für Claude');
+  pruefe(G.formularHtml_(G.einst_(), k).includes('Neukundenangebot') && G.formularWerte_(k).nk_text === k.nk.text, 'Neukundenangebot im Formular, beim Ändern vorausgefüllt');
   pruefe(k.zeiten === 'Di 9:00-18:00; Mi 9:30-12:00 14:00-18:00; Sa 10:00-14:00' && k.raster === 15 && k.modus === 'Kalender' && k.kalender === 'kate@studio.de', 'Zeiten aus dem Kalender-Raster, Takt von selbst 15 Min., Kalender = Studio-Mail');
   pruefe(k.betrieb === 'Kate Cosmetics' && k.inhaber === 'Katleen Miner' && k.anrede === 'Frau Miner' && k.adresse === 'Am Bahnhof 4, 88131 Lindau' && k.behandlung === 'Powder Brows und Lippen', 'Groß- und Kleinschreibung von selbst, Adresse aus getrennten Feldern');
   pruefe(k.leistungen.length === 2 && k.leistungen[0].name === 'Powder Brows' && k.leistungen[1].name === 'Lippen / Aquarell' && k.leistungen[1].minuten === 150, 'Leistungen: leere Zeile weg, „|“ entschärft, großer Anfang');
@@ -795,19 +800,21 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   pruefe(G.nachfragen_(G.einst_(), { s: 'auftrag', id: 'P1', t: 'x' }, 'Pia', G.KNOEPFE.auftrag).html.includes('name="w" required'), 'Kauf-Knopf: Betrag ist Pflicht');
   // Gewinnspiel mit Terminbuchung
   pruefe(!T('gewinnspiel', { gewinn: 'Neuset', ab: '2027-04-10', bis: '2027-04-05', ziehung: '2027-04-20' }).ok, 'Gewinnspiel: falsche Reihenfolge der Daten → Hinweis');
-  pruefe(T('gewinnspiel', { gewinn: '1 × Wimpern-Neuset (Wert 145 €)', ab: '2027-04-01', bis: '2027-04-15', ziehung: '2027-04-16' }).ok, 'Gewinnspiel gespeichert');
+  pruefe(T('gewinnspiel', { gewinn: 'Wimpern-Neuset (Wert 145 €)\n- 2 × 30 % Rabatt auf eine Behandlung', ab: '2027-04-01', bis: '2027-04-15', ziehung: '2027-04-16' }).ok && G.gewinneListe_(G.kunde_('kate-cosmetics')).length === 2, 'Gewinnspiel mit Haupt- und Rabattgewinnen gespeichert');
   uhr('2027-04-05 10:00');
   const gsl = get({ a: 'slots', k: 'kate-cosmetics', l: 'Powder Brows' });
-  pruefe(gsl.gewinnspiel && gsl.gewinnspiel.gewinn.includes('Neuset') && gsl.gewinnspiel.bis === '15.04.2027', 'Terminseite bekommt das Gewinnspiel mit (Banner)');
+  pruefe(gsl.gewinnspiel && gsl.gewinnspiel.gewinn.includes('Neuset') && gsl.gewinnspiel.weitere === 2 && gsl.gewinnspiel.bis === '15.04.2027', 'Terminseite bekommt das Gewinnspiel mit (Hauptgewinn + 2 weitere)');
+  const tnb = G.teilnahmeSeite_({ k: 'kate-cosmetics' }).html;
+  pruefe(tnb.includes('Hauptgewinn') && tnb.includes('2 × 30 % Rabatt') && tnb.includes('höchstens einen Gewinn') && G.studioDaten_(G.kunde_('kate-cosmetics'), G.einst_()).gewinnspiel.gewinne.length === 2, 'Teilnahmebedingungen nennen alle Gewinne, Text für Claude auch');
   pruefe(G.teilnahmeSeite_({ k: 'kate-cosmetics' }).html.includes('wahrnehmen') || G.teilnahmeSeite_({ k: 'kate-cosmetics' }).html.includes('wahr'), 'Teilnahmebedingungen werden erzeugt');
   const tz = G.tabelle_('Termine');
   [['G1', 'Gina Gewinn', '0151 11112222', 'erschienen', '2027-04-08 10:00'], ['G2', 'Nora Nichtda', '0151 33334444', 'nicht erschienen', '2027-04-09 10:00'],
    ['G3', 'Zora Zuspät', '0151 55556666', 'erschienen', '2027-04-20 10:00']].forEach(([id, n, tel, st, t]) =>
     blaetter.Termine.appendRow(G.zeileNachKopf_(tz, { 'ID': id, 'Eingang': berlin('2027-04-02 09:00'), 'Kunde': 'kate-cosmetics', 'Art': 'Online-Termin', 'Name': n, 'Telefon': tel, 'Stand': st, 'Termin': berlin(t) })));
   uhr('2027-04-16 08:00'); m0 = mails.length; G.taeglich();
-  const zg = mails.slice(m0).find(x => x.subject.includes('Verlosung'));
-  pruefe(zg && zg.htmlBody.includes('Gina Gewinn') && zg.htmlBody.includes('1 Teilnehmer') && !zg.htmlBody.includes('Nora') && !zg.htmlBody.includes('Zora'), 'Ziehung nur unter denen, die im Zeitraum erschienen sind');
-  G.neuerKunde_(Object.assign({}, basis, { betrieb: 'Praxis Test', behandler: 'Arzt/Ärztin', angebot: 'Faltenbehandlung', leistungen: [{ name: 'Beratung', minuten: '20' }] }), G.einst_());
+  const zg = mails.slice(m0).find(x => x.subject.includes('Gewinnspiel'));
+  pruefe(zg && zg.htmlBody.includes('Gina Gewinn') && zg.htmlBody.includes('Wimpern-Neuset (Wert 145 €):</b> Gina') && zg.htmlBody.includes('weniger Teilnehmende') && zg.htmlBody.includes('1 Teilnehmende') && !zg.htmlBody.includes('Nora') && !zg.htmlBody.includes('Zora'), 'Ziehung nur unter denen, die im Zeitraum erschienen sind');
+  G.neuerKunde_(Object.assign({}, basis, { betrieb: 'Praxis Test', behandler: 'Arzt/Ärztin', angebot: 'Faltenbehandlung', nk_text: 'Beratung 20 Minuten', nk_leistung: 'Beratung', nk_normal: '', leistungen: [{ name: 'Beratung', minuten: '20' }] }), G.einst_());
   pruefe(!G.teamAktion('praxis-test', G.teamToken_(G.einst_(), 'praxis-test'), 'gewinnspiel', { gewinn: '1 × Behandlung', ab: '2027-04-01', bis: '2027-04-02', ziehung: '2027-04-03' }).ok, 'Ärzte: Gewinnspiel gesperrt (Heilmittelwerbegesetz)');
 }
 console.log(`\n${ok} bestanden, ${fehler} fehlgeschlagen`);

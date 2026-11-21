@@ -6,7 +6,13 @@ Wie beim Kfz-Baukasten gilt: Skelett von Seite und Anzeigen ist für alle Kunden
 Platzhalter {{feld}} füllt kunde-anlegen.py aus den Daten der Zentrale (z. B. {{betrieb}}, {{ort}}, {{behandler_name}},
 {{beratung_name}}, {{beratung_minuten}}, {{beratung_wort}}, {{leistung_1}}, {{preis_1}}, {{gewinn}}, {{aktion_ende_kurz}}).
 
-GRUNDBAUSTEIN VERKAUF (Nutzer-Vorgabe 21.11.2026, gilt für jede Anzeige, auch für neue Kampagnen aus kampagne-neu.py):
+GRUNDBAUSTEIN VERKAUF, Fassung 2 (Nutzer-Vorgabe + Recherche reports/Verkaufsstarke Beauty Anzeigen Meta.md, 21.11.2026):
+  AUFS BILD nur: Kicker 1–3 Wörter · Überschrift = Angebot oder Nutzen, höchstens ~6 Wörter · EINE Unterzeile (höchstens ~10 Wörter;
+  beim Gewinnspiel die Bedingung „Im Lostopf: wer bis … bucht und zum Termin kommt“) · Knopf 2–3 Wörter. Zusammen höchstens 15–20 Wörter.
+  Keine Hinweiszeile, kein „Hier behandelt Sie …“. Was die Kundin bekommt, muss in 2 Sekunden klar sein.
+  IN DEN ANZEIGENTEXT: die ersten 125 Zeichen = Haken + Angebot, danach Häkchen, Pflichtangaben, Bedingungen.
+  Jedes Studio hat ein Neukundenangebot (Pflichtfeld im Formular) → immer die Angebots-Anzeige ANGEBOT_ANZEIGE zuerst.
+Bisherige Regeln dazu:
   1. Haken in der ersten Zeile: ein Wunsch oder ein Ärger der Kundin („Nie wieder hinterhertelefonieren“, „Augenbrauen,
      die morgens schon fertig sind“). Keine Makel-Ansprache bei Ärzten.
   2. Konkretes Angebot: Leistung + Preis, wo erlaubt. Kein „Beauty für alle“.
@@ -449,6 +455,32 @@ REGELN_VON_BEHANDLER = {
 }
 PROVISION_STANDARD = 15  # % vom ersten Kauf einer Neukundin aus einem Online-Termin (innerhalb von 3 Monaten)
 
+# Angebots-Anzeige: kommt bei JEDEM Studio als erste Anzeige dazu (Neukundenangebot aus dem Formular „Neuer Kunde“).
+ANGEBOT_ANZEIGE = {"id": "n1-angebot", "stil": "c", "foto": "foto-5", "leistung": "{{nk_leistung}}", "kicker": "Neukundinnen",
+                   "h1": "{{nk_text}}",
+                   "sub": "{{nk_leistung}}{{nk_bis_kurz}}",
+                   "cta": "Termin buchen",
+                   "primaer": "{{nk_text}}: Ihr Start bei {{betrieb}} in {{ort}}.{{nk_normal_satz}}\n✔ Freie Termine sofort sehen\n✔ In 30 Sekunden online gebucht\n✔ Nur für Ihren ersten Termin{{nk_bis_satz}}\n👉 Jetzt Termin buchen.",
+                   "headline": "{{nk_text}}", "beschreibung": "Nur für Neukundinnen."}
+
+# Gewinnspiel-Anzeigen: nur wo regeln.verlosung an ist UND in der Zentrale ein Gewinnspiel eingetragen ist.
+# Die Bedingung (Termin buchen UND hinkommen) steht als Unterzeile auf dem Bild (BGH I ZR 64/07), alle Pflichtangaben im Anzeigentext.
+GEWINNSPIEL_TEXT = ("🎁 Gewinnspiel bei {{betrieb}} in {{ort}}: Hauptgewinn {{gs_haupt}}{{gs_weitere_satz}}.\n"
+                    "So sind Sie im Lostopf: bis {{gs_bis}} Ihren ersten Termin online buchen und hinkommen. Der Termin kostet den normalen Preis.\n"
+                    "Ab 18, ein Los pro Person. Ziehung am {{gs_ziehung}} unter allen, die zu ihrem Termin gekommen sind. Teilnahmebedingungen: {{gs_tnb}}\n"
+                    "Diese Aktion steht in keiner Verbindung zu Meta und wird nicht von Meta gesponsert oder organisiert.\n👉 Jetzt Termin buchen.")
+GEWINNSPIEL = [
+    {"stil": "b", "foto": "foto-8", "kicker": "Gewinnspiel", "h1": "Gewinnen Sie: <em>{{gs_haupt_kurz}}</em>",
+     "sub": "Im Lostopf: wer bis {{gs_bis_kurz}} bucht und zum Termin kommt.", "cta": "Termin buchen",
+     "primaer": GEWINNSPIEL_TEXT, "headline": "Gewinnen: {{gs_haupt_kurz}}", "beschreibung": "Mit Ihrem Termin im Lostopf."},
+    {"stil": "c", "foto": "foto-7", "kicker": "Gewinnspiel", "h1": "{{gs_anzahl}} Gewinne. <em>Jeder Termin zählt.</em>",
+     "sub": "Im Lostopf: wer bis {{gs_bis_kurz}} bucht und zum Termin kommt.", "cta": "Termin buchen",
+     "primaer": GEWINNSPIEL_TEXT, "headline": "{{gs_anzahl}} Gewinne bei {{betrieb}}", "beschreibung": "Teilnahme bis {{gs_bis_kurz}}."},
+    {"stil": "a", "foto": "foto-5", "leistung": "{{nk_leistung}}", "kicker": "Neukundinnen", "h1": "{{nk_text}}",
+     "sub": "Plus Gewinnchance: Termin bis {{gs_bis_kurz}} wahrnehmen.", "cta": "Termin buchen",
+     "primaer": "{{nk_text}} bei {{betrieb}} in {{ort}}.{{nk_normal_satz}}\n" + GEWINNSPIEL_TEXT, "headline": "{{nk_text}}", "beschreibung": "Plus Gewinnchance bis {{gs_bis_kurz}}."},
+]
+
 ALLGEMEIN = {
     "kuerzel": "allgemein",
     "vorbereitung": [
@@ -479,42 +511,33 @@ ALLGEMEIN = {
         ],
     },
     "anzeigen": [
-        # Grundbaustein Verkauf (gilt für jede Anzeige, siehe oben): Haken · konkretes Angebot · Nutzen in Häkchen · Vertrauen · ein klarer Schritt.
-        {"id": "a3-preis", "stil": "c", "foto": "foto-5", "kicker": "{{ort}} · {{betrieb}}",
-         "h1": "{{leistung_1}} <em>für {{preis_1}}.</em>",
-         "sub": "Fester Preis, keine Überraschung. Freien Termin antippen und sichern.",
-         "fine": "Preis laut Preisliste von {{betrieb}}. Ergebnisse sind individuell.",
-         "cta": "Termin jetzt sichern",
-         "primaer": "{{leistung_1}} in {{ort}} für {{preis_1}}. Fester Preis, keine Überraschung.\n✔ Alle freien Termine sofort sehen\n✔ In 30 Sekunden online gebucht, ohne Anruf\n✔ Erinnerung 24 Stunden vorher\nDie Termine sind begrenzt, wer zuerst bucht, hat die Wahl.\n👉 Jetzt freien Termin sichern.",
-         "headline": "{{leistung_1}} für {{preis_1}}", "beschreibung": "Jetzt freien Termin sichern."},
-        {"id": "a1-beratung", "stil": "a", "foto": "foto-6", "kicker": "{{angebot}} in {{ort}}",
-         "h1": "Wissen, was geht. <em>Bevor Sie zahlen.</em>",
-         "sub": "{{beratung_name}} bei {{betrieb}}: {{beratung_wort}}, persönlich, in {{beratung_minuten}} Minuten.",
-         "fine": "{{angebot}} bei {{betrieb}}, {{ort}}. Ergebnisse sind individuell.",
-         "cta": "Beratung sichern",
-         "primaer": "Sie überlegen schon länger wegen {{angebot}}? Holen Sie sich die Antworten, statt weiter zu grübeln.\nIn der {{beratung_name}} bei {{betrieb}} erfahren Sie in Ruhe, was bei Ihnen möglich ist, was es kostet und wie es abläuft: {{beratung_wort}}, persönlich, ohne Druck.\n👉 Jetzt Termin wählen, die freien Zeiten sehen Sie sofort.",
-         "headline": "{{beratung_name}}: {{beratung_wort}}", "beschreibung": "Freie Zeiten sofort sehen."},
-        {"id": "a2-online", "stil": "d", "foto": "foto-4", "kicker": "Kein Anruf, keine Warteschleife",
+        # Grundbaustein Verkauf, Fassung 2 (Recherche 21.11.2026): aufs Bild nur Kicker (1–3 Wörter), Überschrift = Angebot
+        # oder Nutzen (höchstens ~6 Wörter), EINE Unterzeile, Knopf. Alles andere in den Anzeigentext (erste 125 Zeichen: Angebot).
+        ANGEBOT_ANZEIGE,
+        {"id": "n2-angebot-ort", "stil": "b", "foto": "foto-1", "leistung": "{{nk_leistung}}", "kicker": "{{betrieb}}",
+         "h1": "{{angebot}} <em>in {{ort}}.</em>",
+         "sub": "Neukundinnen: {{nk_text}}",
+         "cta": "Termin buchen",
+         "primaer": "Neu bei {{betrieb}}? {{nk_text}}.{{nk_normal_satz}}\n✔ Alle freien Termine sofort sehen\n✔ In 30 Sekunden online gebucht\n✔ Nur für Ihren ersten Termin{{nk_bis_satz}}\n👉 Jetzt Termin buchen.",
+         "headline": "{{nk_text}}", "beschreibung": "{{angebot}} in {{ort}}."},
+        {"id": "a3-preis", "stil": "a", "foto": "foto-2", "kicker": "Fester Preis",
+         "h1": "{{leistung_1}} <em>{{preis_1}}</em>",
+         "sub": "Freie Termine sofort sehen und buchen.",
+         "cta": "Termin buchen",
+         "primaer": "{{leistung_1}} bei {{betrieb}} in {{ort}}: {{preis_1}}, ohne Überraschung.\n✔ Termin in 30 Sekunden online\n✔ Erinnerung 24 Stunden vorher\n👉 Jetzt Termin buchen.",
+         "headline": "{{leistung_1}} {{preis_1}}", "beschreibung": "Jetzt freien Termin sichern."},
+        {"id": "a2-online", "stil": "d", "foto": "foto-4", "kicker": "Ohne Anruf",
          "h1": "Ihr Termin <em>in 30 Sekunden.</em>",
-         "sub": "Alle freien Zeiten bei {{betrieb}} sehen, antippen, fertig.",
-         "fine": "{{angebot}} bei {{betrieb}}, {{ort}}.",
-         "cta": "Freie Termine ansehen",
-         "primaer": "Nie wieder hinterhertelefonieren: Bei {{betrieb}} in {{ort}} sehen Sie alle freien Termine für {{angebot}} online, auch spontan für diese Woche.\n✔ Termin antippen\n✔ Per E-Mail bestätigen\n✔ Erinnerung kommt von selbst\n👉 Jetzt freien Termin sichern.",
+         "sub": "Freie Zeiten sehen, antippen, fertig.",
+         "cta": "Freie Termine",
+         "primaer": "Nie wieder hinterhertelefonieren: Bei {{betrieb}} in {{ort}} sehen Sie alle freien Termine für {{angebot}} online.\n✔ Termin antippen ✔ per E-Mail bestätigen ✔ Erinnerung kommt von selbst\n👉 Freie Termine ansehen.",
          "headline": "Freie Termine in {{ort}}", "beschreibung": "In 30 Sekunden online gebucht."},
-        {"id": "a4-person", "stil": "e", "foto": "foto-3", "kicker": "Persönlich bei {{betrieb}}",
-         "h1": "Hier behandelt Sie <em>{{behandler_name_kurz}}.</em>",
-         "sub": "Mit Erfahrung, Zeit für Ihre Fragen und einem ehrlichen Rat.",
-         "fine": "{{angebot}} bei {{betrieb}}, {{ort}}.",
-         "cta": "Termin wählen",
-         "primaer": "Bei {{angebot}} zählt, wer es macht. Bei {{betrieb}} in {{ort}} behandelt Sie {{behandler_name_kurz}} persönlich, mit Zeit für Ihre Fragen und einem ehrlichen Rat, was zu Ihnen passt.\n👉 Jetzt freien Termin online wählen.",
-         "headline": "Persönlich behandelt in {{ort}}", "beschreibung": "Freie Termine online ansehen."},
-        {"id": "a5-studio", "stil": "b", "foto": "foto-2", "kicker": "{{betrieb}} · {{ort}}",
-         "h1": "{{angebot}}. <em>Jetzt Termin sichern.</em>",
-         "sub": "Freie Zeiten sofort sehen, online buchen, Erinnerung vor dem Termin.",
-         "fine": "Bestätigung per E-Mail, Erinnerung vor dem Termin.",
-         "cta": "Freie Termine ansehen",
-         "primaer": "{{angebot}} in {{ort}}: Bei {{betrieb}} buchen Sie Ihren Termin direkt online.\n✔ Alle freien Zeiten auf einen Blick\n✔ Bestätigung per E-Mail\n✔ Erinnerung 24 Stunden vorher\n👉 Jetzt Termin sichern.",
-         "headline": "{{angebot}} in {{ort}}", "beschreibung": "Jetzt freien Termin sichern."},
+        {"id": "a1-beratung", "stil": "e", "foto": "foto-6", "kicker": "Erst beraten",
+         "h1": "Wissen, was geht. <em>Dann entscheiden.</em>",
+         "sub": "{{beratung_name}}: {{beratung_wort}}, {{beratung_minuten}} Minuten.",
+         "cta": "Beratung buchen",
+         "primaer": "Sie überlegen schon länger wegen {{angebot}}? In der {{beratung_name}} bei {{betrieb}} erfahren Sie in Ruhe, was bei Ihnen möglich ist, was es kostet und wie es abläuft: {{beratung_wort}}, ohne Druck.\n👉 Jetzt Termin wählen.",
+         "headline": "{{beratung_name}}: {{beratung_wort}}", "beschreibung": "Freie Zeiten sofort sehen."},
     ],
     "zielgruppe": {"alter": "25 bis 60", "geschlecht": "alle (Advantage+ findet die Richtigen)"},
 }

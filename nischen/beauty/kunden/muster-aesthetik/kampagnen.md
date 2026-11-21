@@ -81,31 +81,40 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 
 **Ende: NICHT „Veröffentlichen“.** Oben links schließen. In der Liste steht „Entwurf“.
 
-**1 · f1-beratung** · Bild `f1-beratung.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f1`
+**1 · n1-angebot** · Bild `n1-angebot.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html?l=Beratungsgespr%C3%A4ch%20Faltenbehandlung` · URL-Parameter `utm_source=meta&utm_campaign=falten-n1`
+- Primärtext: Persönliche Beratung, 20 Minuten: Ihr Start bei Muster Ästhetik in Musterstadt.
+  ✔ Freie Termine sofort sehen
+  ✔ In 30 Sekunden online gebucht
+  ✔ Nur für Ihren ersten Termin
+  👉 Jetzt Termin buchen.
+- Überschrift: Persönliche Beratung, 20 Minuten
+- Beschreibung: Nur für Neukundinnen.
+
+**2 · f1-beratung** · Bild `f1-beratung.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f1`
 - Primärtext: Sie überlegen, ob eine Faltenbehandlung oder Hyaluron das Richtige für Sie ist? Im persönlichen Gespräch bei Muster Ästhetik klären wir alle Fragen zu Ablauf, Wirkung und Risiken. Danach entscheiden Sie in Ruhe.
   👉 Beratungstermin online wählen.
 - Überschrift: Erst beraten, dann entscheiden
 - Beschreibung: Beratungstermin online wählen.
 
-**2 · f2-person** · Bild `f2-person.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f2`
+**3 · f2-person** · Bild `f2-person.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f2`
 - Primärtext: Ein gutes Ergebnis beginnt mit einem guten Gespräch. Dr. med. Lena Muster, Fachärztin für Dermatologie nimmt sich Zeit für Ihre Fragen und sagt Ihnen ehrlich, was möglich ist und was nicht.
   👉 Beratungstermin online wählen.
 - Überschrift: Ehrliche Beratung in Musterstadt
 - Beschreibung: Dr. med. Lena Muster, Fachärztin für Dermatologie nimmt sich Zeit.
 
-**3 · f3-ablauf** · Bild `f3-ablauf.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f3`
+**4 · f3-ablauf** · Bild `f3-ablauf.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f3`
 - Primärtext: Beratung zur Faltenbehandlung und zu Hyaluron, ganz einfach: Termin online wählen, per E-Mail bestätigen, vorbeikommen. Alle Fragen klären wir im Gespräch.
   👉 Freie Termine ansehen.
 - Überschrift: Beratung in 3 Schritten
 - Beschreibung: Freie Termine online ansehen.
 
-**4 · f4-hyaluron** · Bild `f4-hyaluron.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f4`
+**5 · f4-hyaluron** · Bild `f4-hyaluron.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f4`
 - Primärtext: Sie interessieren sich für eine Behandlung mit Hyaluron, zum Beispiel an den Lippen? Im Beratungsgespräch bei Muster Ästhetik erfahren Sie, was möglich ist, was dazugehört und was es kostet.
   👉 Beratungstermin online wählen.
 - Überschrift: Beratung zu Hyaluron
 - Beschreibung: Persönlich, in Musterstadt.
 
-**5 · f5-online** · Bild `f5-online.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f5`
+**6 · f5-online** · Bild `f5-online.png` · Quell-URL `https://muster-aesthetik.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=falten-f5`
 - Primärtext: Bei Muster Ästhetik sehen Sie alle freien Beratungstermine online und buchen in 30 Sekunden. Die Bestätigung kommt per E-Mail.
   👉 Freie Termine ansehen.
 - Überschrift: Beratungstermin online buchen

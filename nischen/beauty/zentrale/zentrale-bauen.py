@@ -115,7 +115,7 @@ KUNDEN = [  # (Name, Breite, Format, Eingabe?) · gleiche Reihenfolge wie KUNDEN
     ("Betreuer E-Mail", 24, None, True), ("Betrieb", 26, None, True), ("Firma", 26, None, True), ("Anrede für Mails", 18, None, True),
     ("Inhaber", 20, None, True), ("E-Mail für Termine", 28, None, True), ("Telefon", 16, "@", True), ("Adresse", 30, None, True),
     ("Seiten-Adresse", 30, None, True), ("Behandlung", 16, None, True), ("Behandler-Art", 18, None, True), ("Buchung", 13, None, True), ("Kalender-ID", 26, None, True),
-    ("Buchbare Zeiten", 26, None, True), ("Leistungen", 40, None, True), ("Takt Minuten", 8, "0", True), ("Puffer Minuten", 8, "0", True),
+    ("Buchbare Zeiten", 26, None, True), ("Leistungen", 40, None, True), ("Neukundenangebot", 30, None, True), ("Angebot Leistung", 24, None, True), ("Angebot Normalpreis", 12, None, True), ("Angebot bis", 12, DATUM, True), ("Takt Minuten", 8, "0", True), ("Puffer Minuten", 8, "0", True),
     ("Vorlauf Stunden", 8, "0", True), ("Tage im Voraus", 8, "0", True), ("Absagefrist Stunden", 9, "0", True), ("Ausfallregel", 30, None, True),
     ("Vorbereitung", 40, None, True), ("Hinweise je Leistung", 40, None, False), ("Onboarding €", 11, EURO, True), ("Monatsgebühr €", 12, EURO, True), ("Provision %", 9, "0.0", True), ("Werbebudget €", 12, EURO, True),
     ("Umkreis km", 8, "0", True), ("Angelegt am", 12, DATUM, True), ("Live seit", 12, DATUM, True), ("Pixel-ID", 18, "@", True), ("Google-Conversion", 26, None, True),

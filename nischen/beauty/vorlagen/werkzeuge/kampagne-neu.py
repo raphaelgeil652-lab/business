@@ -79,7 +79,7 @@ def main():
     f = {**f, "kampagne_kuerzel": slug}
     mod_k = {**mod, "anzeigen": anzeigen}
     fotos_da = {nm: bool(list((ordner / "fotos").glob(nm + ".*"))) for nm in KA.FOTO_NAMEN}
-    anz_html, vorschau_html, alle = KA.anzeigen_html({**f, "_preis": True, "_beratung": True, "_fotos_da": fotos_da}, mod_k)
+    anz_html, vorschau_html, alle = KA.anzeigen_html({**f, "_preis": True, "_beratung": True, "_kampagne": True, "_fotos_da": fotos_da}, mod_k)
     KA.kopiere_ordner(KA.VORLAGEN / "assets" / "fonts", ziel / "fonts")
     KA.fotos_fuer_web(ordner / "fotos", ziel / "fotos")
     af = {**f, "anzeigen_html": anz_html, "vorschau_html": vorschau_html, "regel_hinweis": mod["recht_kurz"]}

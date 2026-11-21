@@ -23,6 +23,10 @@
  "behandler": "Dr. med. dent. Paul Muster, Zahnarzt",
  "modus": "Kalender",
  "zeiten": "Mo 8-17; Di 8-17; Mi 8-17; Do 8-17; Fr 8-12",
+ "angebot": {
+  "text": "Erstgespräch zur Zahnaufhellung",
+  "leistung": "Erstgespräch Zahnaufhellung"
+ },
  "leistungen": [
   {
    "name": "Erstgespräch Zahnaufhellung",

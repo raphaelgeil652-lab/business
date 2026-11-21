@@ -80,7 +80,16 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 
 **Ende: NICHT „Veröffentlichen“.** Oben links schließen. In der Liste steht „Entwurf“.
 
-**1 · l1-probeschuss** · Bild `l1-probeschuss.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l1`
+**1 · n1-angebot** · Bild `n1-angebot.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html?l=Haut-%20und%20Haaranalyse%20mit%20Probeschuss` · URL-Parameter `utm_source=meta&utm_campaign=laser-n1`
+- Primärtext: Probeschuss + Hautanalyse gratis: Ihr Start bei Muster Laserstudio in Musterstadt.
+  ✔ Freie Termine sofort sehen
+  ✔ In 30 Sekunden online gebucht
+  ✔ Nur für Ihren ersten Termin
+  👉 Jetzt Termin buchen.
+- Überschrift: Probeschuss + Hautanalyse gratis
+- Beschreibung: Nur für Neukundinnen.
+
+**2 · l1-probeschuss** · Bild `l1-probeschuss.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l1`
 - Primärtext: Haarentfernung mit Laser, ohne Rätselraten.
   ✔ kostenlose Analyse von Haut und Haar
   ✔ Probeschuss: Sie spüren vorher, wie es sich anfühlt
@@ -89,7 +98,7 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 - Überschrift: Analyse mit Probeschuss: kostenlos
 - Beschreibung: Termin in 30 Sekunden online wählen.
 
-**2 · l2-saison** · Bild `l2-saison.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l2`
+**3 · l2-saison** · Bild `l2-saison.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l2`
 - Primärtext: Wer jetzt startet, ist bis zum Sommer meist durch. Laser-Haarentfernung braucht ein paar Monate, darum lohnt sich der Start im Herbst oder Winter.
   ✔ kostenlose Analyse mit Probeschuss bei Muster Laserstudio
   ✔ Mehrere Sitzungen, klarer Plan, Gesamtpreis vorab
@@ -97,7 +106,7 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 - Überschrift: Im Winter starten, im Sommer glatt
 - Beschreibung: Laser-Haarentfernung in Musterstadt.
 
-**3 · l3-preis** · Bild `l3-preis.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l3`
+**4 · l3-preis** · Bild `l3-preis.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l3`
 - Primärtext: Laser-Haarentfernung in Musterstadt: Achseln ab 59 € pro Sitzung.
   ✔ Wie viele Sitzungen Sie brauchen, sagen wir Ihnen vorab
   ✔ Gesamtpreis vor der ersten Behandlung
@@ -106,14 +115,14 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 - Überschrift: Achseln ab 59 € pro Sitzung
 - Beschreibung: Gesamtpreis vorab in der Analyse.
 
-**4 · l4-online** · Bild `l4-online.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l4`
+**5 · l4-online** · Bild `l4-online.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l4`
 - Primärtext: Nie wieder hinterhertelefonieren: Bei Muster Laserstudio sehen Sie alle freien Termine online und buchen Ihre kostenlose Analyse mit Probeschuss in 30 Sekunden.
   ✔ Termin antippen ✔ per E-Mail bestätigen ✔ Erinnerung kommt von selbst
   👉 Freie Termine ansehen.
 - Überschrift: Freie Termine online ansehen
 - Beschreibung: Laser-Haarentfernung in Musterstadt.
 
-**5 · l5-fachkunde** · Bild `l5-fachkunde.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l5`
+**6 · l5-fachkunde** · Bild `l5-fachkunde.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l5`
 - Primärtext: Laser gehört in geübte Hände. Bei Muster Laserstudio behandeln ausschließlich Fachkräfte mit Fachkundenachweis nach NiSV.
   ✔ kostenlose Haut- und Haaranalyse vorab
   ✔ Ehrlicher Rat, ob Laser bei Ihnen passt

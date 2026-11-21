@@ -80,31 +80,40 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 
 **Ende: NICHT „Veröffentlichen“.** Oben links schließen. In der Liste steht „Entwurf“.
 
-**1 · b1-praxis** · Bild `b1-praxis.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b1`
+**1 · n1-angebot** · Bild `n1-angebot.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html?l=Erstgespr%C3%A4ch%20Zahnaufhellung` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-n1`
+- Primärtext: Erstgespräch zur Zahnaufhellung: Ihr Start bei Muster Zahnarztpraxis in Musterstadt.
+  ✔ Freie Termine sofort sehen
+  ✔ In 30 Sekunden online gebucht
+  ✔ Nur für Ihren ersten Termin
+  👉 Jetzt Termin buchen.
+- Überschrift: Erstgespräch zur Zahnaufhellung
+- Beschreibung: Nur für Neukundinnen.
+
+**2 · b1-praxis** · Bild `b1-praxis.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b1`
 - Primärtext: Zahnaufhellung gehört in die Zahnarztpraxis. Bei Muster Zahnarztpraxis prüfen wir zuerst Zähne und Zahnfleisch und sagen Ihnen ehrlich, was bei Ihnen möglich ist.
   👉 Erstgespräch online wählen.
 - Überschrift: Zahnaufhellung beim Zahnarzt
 - Beschreibung: Erstgespräch online wählen.
 
-**2 · b2-erst-pruefen** · Bild `b2-erst-pruefen.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b2`
+**3 · b2-erst-pruefen** · Bild `b2-erst-pruefen.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b2`
 - Primärtext: Bevor wir aufhellen, schauen wir genau hin: Sind Zähne und Zahnfleisch gesund? Braucht es vorher eine Reinigung? Danach hellen wir schonend in der Praxis auf.
   👉 Erstgespräch online wählen.
 - Überschrift: Erst prüfen, dann aufhellen
 - Beschreibung: Zahnaufhellung in Musterstadt.
 
-**3 · b3-anlass** · Bild `b3-anlass.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b3`
+**4 · b3-anlass** · Bild `b3-anlass.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b3`
 - Primärtext: Eine Hochzeit, ein Jubiläum oder einfach der Sommer steht an? Planen Sie die Zahnaufhellung ein paar Wochen vorher. Das Erstgespräch bei Muster Zahnarztpraxis buchen Sie online.
   👉 Erstgespräch online wählen.
 - Überschrift: Zahnaufhellung rechtzeitig planen
 - Beschreibung: Erstgespräch online wählen.
 
-**4 · b4-online** · Bild `b4-online.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b4`
+**5 · b4-online** · Bild `b4-online.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b4`
 - Primärtext: Bei Muster Zahnarztpraxis sehen Sie alle freien Termine für ein Erstgespräch zur Zahnaufhellung online und buchen in 30 Sekunden.
   👉 Freie Termine ansehen.
 - Überschrift: Erstgespräch online buchen
 - Beschreibung: Zahnaufhellung in Musterstadt.
 
-**5 · b5-praxis-team** · Bild `b5-praxis-team.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b5`
+**6 · b5-praxis-team** · Bild `b5-praxis-team.png` · Quell-URL `https://muster-zahnarztpraxis.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=bleaching-b5`
 - Primärtext: Dr. med. dent. Paul Muster, Zahnarzt und Team von Muster Zahnarztpraxis beraten Sie zur Zahnaufhellung: ehrlich, mit Untersuchung vorab und in Ruhe.
   👉 Erstgespräch online wählen.
 - Überschrift: Ihre Zahnarztpraxis in Musterstadt

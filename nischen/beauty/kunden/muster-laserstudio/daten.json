@@ -23,6 +23,10 @@
  "behandler": "Sabine Muster, Fachkunde nach NiSV",
  "modus": "Kalender",
  "zeiten": "Di 9-18; Mi 9-18; Do 9-18; Fr 9-18; Sa 10-14",
+ "angebot": {
+  "text": "Probeschuss + Hautanalyse gratis",
+  "leistung": "Haut- und Haaranalyse mit Probeschuss"
+ },
  "leistungen": [
   {
    "name": "Haut- und Haaranalyse mit Probeschuss",

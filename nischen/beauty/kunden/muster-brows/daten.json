@@ -23,6 +23,11 @@
  "behandler": "Mia Muster, PMU-Artist",
  "modus": "Wunschtermin",
  "zeiten": "Di 10-16; Do 10-16; Sa 10-14",
+ "angebot": {
+  "text": "Powder Brows 349 € statt 390 €",
+  "leistung": "Powder Brows inkl. Nachstechen",
+  "normal": "390 €"
+ },
  "leistungen": [
   {
    "name": "Beratung mit Vorzeichnen",

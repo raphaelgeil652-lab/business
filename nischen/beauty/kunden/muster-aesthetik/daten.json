@@ -23,6 +23,10 @@
  "behandler": "Dr. med. Lena Muster, Fachärztin für Dermatologie",
  "modus": "Kalender",
  "zeiten": "Mo 9-12 14-17; Di 9-12 14-17; Mi 9-12; Do 9-12 14-17",
+ "angebot": {
+  "text": "Persönliche Beratung, 20 Minuten",
+  "leistung": "Beratungsgespräch Faltenbehandlung"
+ },
  "leistungen": [
   {
    "name": "Beratungsgespräch Faltenbehandlung",
