@@ -660,7 +660,7 @@ function bestaetigungAnKunde_(t, z, k, s) {
     subject: 'Bestätigt: Ihr Termin am ' + terminText_(start),
     html: rahmen_('<p style="font-size:16px;">Hallo ' + esc_(t.get(z, 'Name')) + ',</p>' +
       '<p style="font-size:16px;">Ihr Termin ist fest gebucht. Wir freuen uns auf Sie!</p>' + terminBox_(k, t.get(z, 'Leistung'), start, dauer) +
-      vorbereitungHtml_(k) + absageHtml_(k, absagen) +
+      vorbereitungHtml_(k, t.get(z, 'Leistung')) + absageHtml_(k, absagen) +
       '<p style="font-size:13px;color:#6B665D;">Im Anhang finden Sie den Termin für Ihren Kalender.</p>'),
     anhang: [Utilities.newBlob(ics_(id, k, t.get(z, 'Leistung'), start, dauer), 'text/calendar', 'termin.ics')]
   });
@@ -697,7 +697,7 @@ function erinnerungAnKunde_(t, z, k, s) {
       ' um ' + uhrzeit_(start) + ' Uhr',
     html: rahmen_('<p style="font-size:16px;">Hallo ' + esc_(t.get(z, 'Name')) + ',</p>' +
       '<p style="font-size:16px;">wir freuen uns auf Sie:</p>' + terminBox_(k, t.get(z, 'Leistung'), start, Number(t.get(z, 'Dauer')) || 30) +
-      vorbereitungHtml_(k) + absageHtml_(k, absagen))
+      vorbereitungHtml_(k, t.get(z, 'Leistung')) + absageHtml_(k, absagen))
   });
 }
 
@@ -711,8 +711,13 @@ function terminBox_(k, leistung, start, dauer) {
     '<tr><td style="padding:4px 16px 14px;color:#6B665D;">Telefon</td><td style="padding:4px 16px 14px;"><a href="tel:' + esc_(ziffernPlus_(k.telefon)) + '" style="color:#1A1917;">' + esc_(k.telefon) + '</a></td></tr></table>';
 }
 
-function vorbereitungHtml_(k) {
+function jsonLesen_(v) { try { var o = JSON.parse(String(v || '{}')); return o && typeof o === 'object' ? o : {}; } catch (e) { return {}; } }
+
+/** Allgemeine Hinweise plus die zur gebuchten Leistung (falls das Studio welche eingetragen hat). */
+function vorbereitungHtml_(k, leistung) {
   var punkte = String(k.vorbereitung || '').split('•').map(function (x) { return x.trim(); }).filter(String);
+  var eigene = String((k.hinweise || {})[String(leistung || '')] || '').split('•').map(function (x) { return x.trim(); }).filter(String);
+  punkte = eigene.concat(punkte.filter(function (p) { return eigene.indexOf(p) < 0; }));
   if (!punkte.length) return '';
   return '<h2 style="font-size:18px;margin:22px 0 8px;">So bereiten Sie sich vor</h2><ul style="font-size:15px;padding-left:20px;margin:0 0 18px;">' +
     punkte.map(function (p) { return '<li style="margin-bottom:6px;">' + esc_(p) + '</li>'; }).join('') + '</ul>' +
@@ -1290,7 +1295,7 @@ function datum_(v) {
 /* Spalten, die „Einrichten“ in einer älteren Zentrale von selbst ergänzt (hinten angehängt, nichts geht verloren). */
 var KUNDEN_SPALTEN = ['Kürzel', 'Status', 'Betreuer', 'Betreuer Telefon', 'Betreuer E-Mail', 'Betrieb', 'Firma', 'Anrede für Mails', 'Inhaber',
   'E-Mail für Termine', 'Telefon', 'Adresse', 'Seiten-Adresse', 'Behandlung', 'Behandler-Art', 'Buchung', 'Kalender-ID', 'Buchbare Zeiten', 'Leistungen',
-  'Takt Minuten', 'Puffer Minuten', 'Vorlauf Stunden', 'Tage im Voraus', 'Absagefrist Stunden', 'Ausfallregel', 'Vorbereitung',
+  'Takt Minuten', 'Puffer Minuten', 'Vorlauf Stunden', 'Tage im Voraus', 'Absagefrist Stunden', 'Ausfallregel', 'Vorbereitung', 'Hinweise je Leistung',
   'Onboarding €', 'Monatsgebühr €', 'Provision %', 'Werbebudget €', 'Umkreis km', 'Angelegt am', 'Live seit', 'Pixel-ID', 'Google-Conversion',
   'Vertrag angenommen', 'Impressum', 'Datenschutz', 'Behandler', 'Vorbereitung ok', 'Fotos', 'Kalender ok', 'Meta erledigt',
   'Google-Ads-ID', 'Google verknüpft', 'Vorschau gesendet', 'Freigabe', 'Änderungswunsch', 'Drive-Ordner', 'Erinnert am', 'Erinnerungen', 'Alles da', 'Live-Mail', 'Token',
@@ -1756,8 +1761,13 @@ function aufgabeHtml_(a, k, s) {
   }
   if (a.id === 'vorbereitung') {
     var punkte = String(k.vorbereitung || '').split('•').map(function (x) { return x.trim(); }).filter(String).join('\n');
-    return '<p>Diese Hinweise bekommen Ihre Kundinnen mit der Terminbestätigung und der Erinnerung. Es ist ein Vorschlag von uns: bitte ändern, was bei Ihnen anders ist. Ein Hinweis pro Zeile.</p>' +
-      form('vorbereitung', '<textarea name="text" rows="7" required>' + esc_(punkte) + '</textarea>', 'So freigeben');
+    var je = k.leistungen.map(function (l, i) {
+      var h = String((k.hinweise || {})[l.name] || '').split('•').map(function (x) { return x.trim(); }).filter(String).join('\n');
+      return '<label style="margin-top:10px;">' + esc_(l.name) + ' <span class="k">(freiwillig)</span><textarea name="h_' + i + '" rows="3" placeholder="z. B. Bitte ungeschminkt kommen">' + esc_(h) + '</textarea></label>';
+    }).join('');
+    return '<p>Diese Hinweise bekommen Ihre Kundinnen mit der Terminbestätigung und der Erinnerung 24 Stunden vorher. Ein Hinweis pro Zeile.</p>' +
+      form('vorbereitung', '<label><b>Für alle Termine</b> <span class="k">(ein Vorschlag von uns, bitte anpassen)</span><textarea name="text" rows="5" required>' + esc_(punkte) + '</textarea></label>' +
+        '<p style="margin:14px 0 0;"><b>Zusätzlich je Leistung</b> <span class="k">Was nur für diese Leistung gilt, z. B. „ungeschminkt kommen“ bei Wimpern. Leer lassen, wenn nichts dazukommt.</span></p>' + je, 'So freigeben');
   }
   if (a.id === 'fotos') {
     var falten = !regelModul_(k).regeln.vorher_nachher;
@@ -1876,7 +1886,12 @@ function studioAktion_(k, s, aktion, d) {
   if (aktion === 'vorbereitung') {
     var punkte = txt(d.text).split(/\n/).map(function (x) { return x.replace(/^[-•*\s]+/, '').trim(); }).filter(String);
     if (!punkte.length) return { ok: false, meldung: 'Bitte mindestens einen Hinweis stehen lassen.' };
-    kundeSetzen_(kz, { 'Vorbereitung': punkte.join(' • '), 'Vorbereitung ok': jetzt });
+    var hinweise = {};
+    k.leistungen.forEach(function (l, i) {
+      var p = txt(d['h_' + i]).split(/\n/).map(function (x) { return x.replace(/^[-•*\s]+/, '').trim(); }).filter(String);
+      if (p.length) hinweise[l.name] = p.join(' • ');
+    });
+    kundeSetzen_(kz, { 'Vorbereitung': punkte.join(' • '), 'Hinweise je Leistung': JSON.stringify(hinweise), 'Vorbereitung ok': jetzt });
     return { ok: true, meldung: 'Freigegeben. Danke!' };
   }
   if (aktion === 'kalender') {
@@ -2454,7 +2469,7 @@ function kunden_() {
       googleOk: datum_(g('Google verknüpft')), erinnert: datum_(g('Erinnert am')), erinnerungen: Number(g('Erinnerungen')) || 0,
       allesDa: datum_(g('Alles da')), liveMail: datum_(g('Live-Mail')), pixel: String(g('Pixel-ID')).replace(/\D/g, ''),
       conversion: String(g('Google-Conversion')).trim(), vorschau: datum_(g('Vorschau gesendet')), freigabe: datum_(g('Freigabe')),
-      aenderung: String(g('Änderungswunsch')).trim(), gewinn: String(g('Gewinn')).trim(), gsAb: datum_(g('Gewinnspiel ab'))
+      aenderung: String(g('Änderungswunsch')).trim(), hinweise: jsonLesen_(g('Hinweise je Leistung')), gewinn: String(g('Gewinn')).trim(), gsAb: datum_(g('Gewinnspiel ab'))
     };
   });
 }

@@ -644,7 +644,10 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   pruefe(!mails.slice(m0).some(x => /Rechnung/.test(x.subject)), 'keine Onboarding-Rechnung (Provision)');
   pruefe(!A('links', { impressum: 'kate.de/impressum', datenschutz: '' }).ok && A('links', { impressum: 'https://kate.de/impressum', datenschutz: 'https://kate.de/datenschutz' }).ok, 'Links: nur vollständige Adressen');
   pruefe(A('behandler', { behandler: 'Katleen Miner, PMU Artist' }).ok, 'Behandler gespeichert');
-  pruefe(A('vorbereitung', { text: '- Kein Alkohol am Vortag\n\n• Keine Blutverdünner' }).ok && G.kunde_('kate-cosmetics').vorbereitung === 'Kein Alkohol am Vortag • Keine Blutverdünner', 'Vorbereitung: Zeilen → Punkte, freigegeben');
+  pruefe(A('vorbereitung', { text: '- Kein Alkohol am Vortag\n\n• Keine Blutverdünner', h_0: 'Bitte ungeschminkt kommen', h_1: '' }).ok && G.kunde_('kate-cosmetics').vorbereitung === 'Kein Alkohol am Vortag • Keine Blutverdünner', 'Vorbereitung: Zeilen → Punkte, freigegeben');
+  pruefe(G.kunde_('kate-cosmetics').hinweise['Powder Brows'] === 'Bitte ungeschminkt kommen' && !G.kunde_('kate-cosmetics').hinweise['Lippen / Aquarell'], 'Hinweise je Leistung gespeichert (leere weggelassen)');
+  const vh = G.vorbereitungHtml_(G.kunde_('kate-cosmetics'), 'Powder Brows'), vh2 = G.vorbereitungHtml_(G.kunde_('kate-cosmetics'), 'Lippen / Aquarell');
+  pruefe(vh.indexOf('ungeschminkt') > 0 && vh.indexOf('ungeschminkt') < vh.indexOf('Kein Alkohol') && !vh2.includes('ungeschminkt') && vh2.includes('Kein Alkohol'), 'Mail-Hinweise: eigene der Leistung zuerst, dann die allgemeinen');
   for (let i = 0; i < 3; i++) G.studioFoto(sp.k, sp.t, 'foto' + i + '.jpg', 'image/jpeg', Buffer.from('bild').toString('base64'));
   pruefe(G.kunde_('kate-cosmetics').fotos === 3 && mails.filter(m => m.subject.startsWith('Foto ') && m.attachments && m.attachments.length).length === 3, '3 Fotos hochgeladen, gezählt, als Anhang an den Betreuer');
   // Portal: Seite als JSON, Knöpfe per POST
