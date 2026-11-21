@@ -1784,15 +1784,15 @@ function aufgabeHtml_(a, k, s) {
       '<li><b>calendar.google.com</b> öffnen und mit dem Google-Konto anmelden, zu dem der Kalender gehört.</li>' +
       '<li>Links unter <b>„Meine Kalender“</b> mit der Maus auf diesen Kalender zeigen → rechts daneben erscheinen drei Punkte <b>⋮</b> → draufklicken → <b>„Einstellungen und Freigabe“</b>.</li>' +
       '<li>Oben stehen <b>„Name“</b> und <b>„Beschreibung“</b>. Die brauchen wir nicht: einfach so lassen, die Beschreibung darf leer bleiben.</li>' +
-      '<li>Nach unten scrollen bis zur Überschrift <b>„Für bestimmte Personen oder Gruppen freigeben“</b>. Direkt darunter steht <b>„+ Personen und Gruppen hinzufügen“</b> → draufklicken.</li>' +
+      '<li>Nach unten scrollen bis zur Überschrift <b>„Geteilt mit“</b>. Dort steht schon ein Eintrag: Ihr Name mit <b>„(Inhaber)“</b> und Ihrer Adresse. ' +
+      'Direkt darunter auf <b>„+ Personen und Gruppen hinzufügen“</b> klicken.</li>' +
       '<li>In das Feld diese Adresse eintragen (zum Kopieren antippen): <code onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent)">' + esc_(zentrale) + '</code></li>' +
-      '<li>Darunter bei <b>„Berechtigungen“</b> aufklappen. Dort stehen fünf Möglichkeiten. Wählen Sie die <b>vierte: „Änderungen vornehmen und alle Details des Termins ansehen“</b>. ' +
+      '<li>Daneben die <b>Berechtigung</b> aufklappen. Dort stehen fünf Möglichkeiten. Wählen Sie die <b>vierte: „Änderungen vornehmen und alle Details des Termins ansehen“</b>. ' +
       '<span class="k">Damit sehen wir, wann Sie belegt sind, und können Online-Termine eintragen und bei Absage wieder löschen. ' +
       'Die ersten drei reichen dafür nicht sicher aus, die fünfte („… Freigabe verwalten“) brauchen wir nicht.</span></li>' +
-      '<li>Auf <b>„Senden“</b> klicken. Fertig.</li></ol>' +
-      '<p><b>Zum Schluss:</b> Unter „Für bestimmte Personen oder Gruppen freigeben“ stehen jetzt zwei Einträge: ' +
-      '<b>oben Sie selbst mit dem Zusatz „Inhaber“</b>, darunter unsere Adresse. ' +
-      'Ins Feld hier unten gehört <b>Ihre eigene Adresse, die mit „Inhaber“</b>. Steht sie schon drin: einfach auf <b>„Freigabe prüfen“</b> tippen.</p>' +
+      '<li>Auf <b>„Senden“</b> klicken. Unter „Geteilt mit“ stehen jetzt zwei Einträge: oben Sie mit <b>„(Inhaber)“</b>, darunter unsere Adresse mit „Änderungen vornehmen und alle Details …“. So ist es richtig.</li></ol>' +
+      '<p><b>Zum Schluss:</b> Ins Feld hier unten gehört <b>Ihre eigene Adresse, die unter „Geteilt mit“ bei „(Inhaber)“ steht</b>. ' +
+      'Steht sie schon drin: einfach auf <b>„Freigabe prüfen“</b> tippen.</p>' +
       form('kalender', '<label>Ihre Google-Adresse für den Kalender<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen') +
       '<p class="k">„Freigabe prüfen“ sagt sofort, ob es geklappt hat. Kommt „Noch keine Freigabe“: 1–2 Minuten warten und nochmal tippen.</p>';
   }
