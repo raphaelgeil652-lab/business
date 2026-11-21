@@ -1792,9 +1792,8 @@ function aufgabeHtml_(a, k, s) {
       '<span class="k">Damit sehen wir, wann Sie belegt sind, und können Online-Termine eintragen und bei Absage wieder löschen. ' +
       'Die ersten drei reichen dafür nicht sicher aus, die fünfte („… Freigabe verwalten“) brauchen wir nicht.</span></li>' +
       '<li>Auf <b>„Senden“</b> klicken. Unter „Geteilt mit“ stehen jetzt zwei Einträge: oben Sie mit <b>„(Inhaber)“</b>, darunter unsere Adresse mit „Änderungen vornehmen und alle Details …“. So ist es richtig.</li></ol>' +
-      '<p><b>Zum Schluss:</b> Ins Feld hier unten gehört <b>Ihre eigene Adresse, die unter „Geteilt mit“ bei „(Inhaber)“ steht</b>. ' +
-      'Steht sie schon drin: einfach auf <b>„Freigabe prüfen“</b> tippen.</p>' +
-      form('kalender', '<label>Ihre Google-Adresse für den Kalender<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen') +
+      '<p><b>Zum Schluss:</b> hier unten auf <b>„Freigabe prüfen“</b> tippen.</p>' +
+      form('kalender', '<label>Ihre Adresse<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen') +
       '<p class="k">„Freigabe prüfen“ sagt sofort, ob es geklappt hat. Kommt „Noch keine Freigabe“: 1–2 Minuten warten und nochmal tippen.</p>';
   }
   if (a.id === 'meta') {
