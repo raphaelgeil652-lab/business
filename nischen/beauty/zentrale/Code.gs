@@ -1786,7 +1786,8 @@ function aufgabeHtml_(a, k, s) {
       '<li>Oben stehen <b>„Name“</b> und <b>„Beschreibung“</b>. Die brauchen wir nicht: einfach so lassen, die Beschreibung darf leer bleiben.</li>' +
       '<li>Nach unten scrollen bis zur Überschrift <b>„Geteilt mit“</b>. Dort steht schon ein Eintrag: Ihr Name mit <b>„(Inhaber)“</b> und Ihrer Adresse. ' +
       'Direkt darunter auf <b>„+ Personen und Gruppen hinzufügen“</b> klicken.</li>' +
-      '<li>In das Feld diese Adresse eintragen (zum Kopieren antippen): <code onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent)">' + esc_(zentrale) + '</code></li>' +
+      '<li>Es öffnet sich ein kleines Fenster. Dort in das Feld <b>unsere Adresse</b> eintragen: <code onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent)">' + esc_(zentrale) + '</code> ' +
+      '<span class="k">(antippen zum Kopieren)</span></li>' +
       '<li>Daneben die <b>Berechtigung</b> aufklappen. Dort stehen fünf Möglichkeiten. Wählen Sie die <b>vierte: „Änderungen vornehmen und alle Details des Termins ansehen“</b>. ' +
       '<span class="k">Damit sehen wir, wann Sie belegt sind, und können Online-Termine eintragen und bei Absage wieder löschen. ' +
       'Die ersten drei reichen dafür nicht sicher aus, die fünfte („… Freigabe verwalten“) brauchen wir nicht.</span></li>' +
