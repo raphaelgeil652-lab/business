@@ -81,32 +81,43 @@ Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, 
 **Ende: NICHT „Veröffentlichen“.** Oben links schließen. In der Liste steht „Entwurf“.
 
 **1 · l1-probeschuss** · Bild `l1-probeschuss.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l1`
-- Primärtext: Haarentfernung mit Laser, ohne Rätselraten: In der kostenlosen Analyse prüfen wir Haut und Haar, Sie spüren beim Probeschuss, wie es sich anfühlt, und Sie bekommen den Preis für alle Sitzungen vorab.
-  👉 Termin direkt online wählen.
+- Primärtext: Haarentfernung mit Laser, ohne Rätselraten.
+  ✔ kostenlose Analyse von Haut und Haar
+  ✔ Probeschuss: Sie spüren vorher, wie es sich anfühlt
+  ✔ Gesamtpreis für alle Sitzungen, bevor Sie sich entscheiden
+  👉 Jetzt Termin sichern, die freien Zeiten sehen Sie sofort.
 - Überschrift: Analyse mit Probeschuss: kostenlos
 - Beschreibung: Termin in 30 Sekunden online wählen.
 
 **2 · l2-saison** · Bild `l2-saison.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l2`
-- Primärtext: Laser-Haarentfernung braucht ein paar Monate. Wer im Herbst oder Winter startet, ist bis zum Sommer meist durch. Starten Sie mit einer kostenlosen Analyse inklusive Probeschuss bei Muster Laserstudio.
-  👉 Termin online wählen.
+- Primärtext: Wer jetzt startet, ist bis zum Sommer meist durch. Laser-Haarentfernung braucht ein paar Monate, darum lohnt sich der Start im Herbst oder Winter.
+  ✔ kostenlose Analyse mit Probeschuss bei Muster Laserstudio
+  ✔ Mehrere Sitzungen, klarer Plan, Gesamtpreis vorab
+  👉 Jetzt Termin sichern.
 - Überschrift: Im Winter starten, im Sommer glatt
 - Beschreibung: Laser-Haarentfernung in Musterstadt.
 
 **3 · l3-preis** · Bild `l3-preis.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l3`
-- Primärtext: Was kostet Laser-Haarentfernung? Bei Muster Laserstudio zum Beispiel Achseln ab 59 € pro Sitzung. Wie viele Sitzungen Sie brauchen und was das zusammen kostet, sagen wir Ihnen in der kostenlosen Analyse, bevor Sie sich entscheiden.
-  👉 Termin online wählen.
+- Primärtext: Laser-Haarentfernung in Musterstadt: Achseln ab 59 € pro Sitzung.
+  ✔ Wie viele Sitzungen Sie brauchen, sagen wir Ihnen vorab
+  ✔ Gesamtpreis vor der ersten Behandlung
+  ✔ Termin in 30 Sekunden online gebucht
+  👉 Jetzt freien Termin sichern.
 - Überschrift: Achseln ab 59 € pro Sitzung
 - Beschreibung: Gesamtpreis vorab in der Analyse.
 
 **4 · l4-online** · Bild `l4-online.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l4`
-- Primärtext: Keine Lust auf Telefon? Bei Muster Laserstudio sehen Sie alle freien Termine online und buchen Ihre kostenlose Analyse mit Probeschuss in 30 Sekunden.
+- Primärtext: Nie wieder hinterhertelefonieren: Bei Muster Laserstudio sehen Sie alle freien Termine online und buchen Ihre kostenlose Analyse mit Probeschuss in 30 Sekunden.
+  ✔ Termin antippen ✔ per E-Mail bestätigen ✔ Erinnerung kommt von selbst
   👉 Freie Termine ansehen.
 - Überschrift: Freie Termine online ansehen
 - Beschreibung: Laser-Haarentfernung in Musterstadt.
 
 **5 · l5-fachkunde** · Bild `l5-fachkunde.png` · Quell-URL `https://muster-laserstudio.netlify.app/termin.html` · URL-Parameter `utm_source=meta&utm_campaign=laser-l5`
-- Primärtext: Laser-Haarentfernung ist Vertrauenssache. Bei Muster Laserstudio behandeln ausschließlich Fachkräfte mit Fachkundenachweis nach NiSV. Starten Sie mit einer kostenlosen Haut- und Haaranalyse.
-  👉 Termin online wählen.
+- Primärtext: Laser gehört in geübte Hände. Bei Muster Laserstudio behandeln ausschließlich Fachkräfte mit Fachkundenachweis nach NiSV.
+  ✔ kostenlose Haut- und Haaranalyse vorab
+  ✔ Ehrlicher Rat, ob Laser bei Ihnen passt
+  👉 Jetzt Analyse sichern.
 - Überschrift: Laser mit geprüfter Fachkunde
 - Beschreibung: Analyse mit Probeschuss: kostenlos.
 

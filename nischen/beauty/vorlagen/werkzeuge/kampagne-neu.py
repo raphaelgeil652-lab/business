@@ -10,7 +10,8 @@ kampagne.json (schreibt Claude aus eurem Wunsch, z. B. „Neue Kampagne für kat
                    "primaer": "...", "headline": "...", "beschreibung": "...", "foto": "foto-1",
                    "leistung": "Gelnägel"}, ...]}
 „leistung“ (optional): Die Anzeige führt auf die Terminseite, auf der genau diese Leistung schon ausgewählt ist.
-Platzhalter wie {{betrieb}}, {{ort}}, {{angebot}} gehen. Das Studio muss schon gebaut sein (kunde-anlegen.py).
+Platzhalter wie {{betrieb}}, {{ort}}, {{angebot}} gehen. Texte immer nach dem GRUNDBAUSTEIN VERKAUF in module.py schreiben.
+„foto“: foto-1 … foto-8 (fehlt eines, nimmt die Anzeige foto-1/2/3). Das Studio muss schon gebaut sein (kunde-anlegen.py).
 
 Schreibt nach nischen/beauty/kunden/<kürzel>/kampagnen/<name>/:
     kampagne.html  Kampagnen-Assistent nur für diese Kampagne (Häkchen, Knöpfe „Kopieren“)
@@ -66,7 +67,7 @@ def main():
     anzeigen = []
     for i, a in enumerate(k["anzeigen"], 1):
         a = {"stil": "abcde"[(i - 1) % 5], "foto": "foto-%d" % ((i - 1) % 3 + 1), "cta": "Termin online wählen", "fine": "", "kicker": "", "sub": "", **a}
-        a["id"] = f"{slug[:12]}-{i}"
+        a["id"] = f"{slug[:12].rstrip('-')}-{i}"
         anzeigen.append(a)
     texte = [KA.fuellen(str(a.get(x, "")), f) for a in anzeigen for x in ("kicker", "h1", "sub", "fine", "primaer", "headline", "beschreibung")]
     funde = pruefen(texte, mod["regeln"])
@@ -77,7 +78,8 @@ def main():
     (ziel / "kampagne.json").write_text(json.dumps(k, ensure_ascii=False, indent=1), encoding="utf-8")
     f = {**f, "kampagne_kuerzel": slug}
     mod_k = {**mod, "anzeigen": anzeigen}
-    anz_html, vorschau_html, alle = KA.anzeigen_html({**f, "_preis": True, "_beratung": True}, mod_k)
+    fotos_da = {nm: bool(list((ordner / "fotos").glob(nm + ".*"))) for nm in KA.FOTO_NAMEN}
+    anz_html, vorschau_html, alle = KA.anzeigen_html({**f, "_preis": True, "_beratung": True, "_fotos_da": fotos_da}, mod_k)
     KA.kopiere_ordner(KA.VORLAGEN / "assets" / "fonts", ziel / "fonts")
     KA.fotos_fuer_web(ordner / "fotos", ziel / "fotos")
     af = {**f, "anzeigen_html": anz_html, "vorschau_html": vorschau_html, "regel_hinweis": mod["recht_kurz"]}

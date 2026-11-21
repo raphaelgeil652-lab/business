@@ -41,7 +41,10 @@ _spec.loader.exec_module(M)
 
 SEITEN = ["termin.html", "danke.html", "bestaetigen.html", "absagen.html", "rueckruf-danke.html"]
 STATISCH = ["seite.css", "messung.js", "buchung.js"]
-FOTO_NAMEN = ["foto-1", "foto-2", "foto-3", "vorher", "nachher"]
+FOTO_NAMEN = ["foto-1", "foto-2", "foto-3", "foto-4", "foto-5", "foto-6", "foto-7", "foto-8", "vorher", "nachher"]
+# Weitere Fotos sind freiwillig: Fehlt eines, nimmt die Anzeige das passende der ersten drei.
+# foto-4 Online buchen · foto-5 erste Leistung mit Preis · foto-6 die Beratung · foto-7/8 frei für weitere Kampagnen.
+FOTO_ERSATZ = {"foto-4": "foto-1", "foto-5": "foto-1", "foto-6": "foto-2", "foto-7": "foto-1", "foto-8": "foto-3"}
 FOTO_MAX = 1600
 BILDER = {".jpg", ".jpeg", ".png", ".heic", ".heif", ".webp"}
 MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
@@ -275,7 +278,9 @@ def anzeigen_html(f, mod):
     teile, vorschau = [], []
     for a in alle:
         t = {x: fuellen(a[x], f) for x in ("kicker", "h1", "sub", "fine", "cta", "primaer", "headline", "beschreibung")}
-        teile.append(f'<div class="ad {a["stil"]}" data-creative="{a["id"]}">\n <div class="photo" style="background-image:url(fotos/{a["foto"]}.jpg)"></div>\n'
+        fd = f.get("_fotos_da") or {}
+        foto = a["foto"] if fd.get(a["foto"], True) else FOTO_ERSATZ.get(a["foto"], "foto-1")
+        teile.append(f'<div class="ad {a["stil"]}" data-creative="{a["id"]}">\n <div class="photo" style="background-image:url(fotos/{foto}.jpg)"></div>\n'
                      f' <div class="band"><p class="kicker">{esc(t["kicker"])}</p><h1>{t["h1"]}</h1><p class="sub">{esc(t["sub"])}</p></div>\n'
                      f' <div class="cta">{esc(t["cta"])} <span>→</span></div>\n <p class="fine">{esc(t["fine"])}</p>\n</div>')
         vorschau.append(f'  <div class="ad"><div class="top"><div class="pic"></div><div class="who"><b>{esc(f["betrieb"])}</b><span>Gesponsert · 🌐</span></div></div>\n'
@@ -302,17 +307,17 @@ def meta_md(f, alle):
 
 def fotos_uebernehmen(dateien, ordner):
     ordner.mkdir(parents=True, exist_ok=True)
-    frei = list(FOTO_NAMEN[:3])
+    frei = list(FOTO_NAMEN[:8])
     for d in dateien:
         d = pathlib.Path(d)
         stamm = d.stem.lower().replace("_", "-").replace(" ", "-")
-        name = next((n for n in ["vorher", "nachher"] + FOTO_NAMEN[:3] if n in stamm), None)
+        name = next((n for n in ["vorher", "nachher"] + FOTO_NAMEN[:8] if n in stamm), None)
         if name is None:
             name = frei.pop(0) if frei else None
         elif name in frei:
             frei.remove(name)
         if name is None:
-            print(f"! {d.name}: kein Platz mehr (höchstens foto-1 … foto-3, vorher, nachher)")
+            print(f"! {d.name}: kein Platz mehr (höchstens foto-1 … foto-8, vorher, nachher)")
             continue
         for alt in ordner.glob(name + ".*"):
             alt.unlink()
@@ -439,7 +444,7 @@ def main():
     print("✓ seite/ (" + ", ".join(sorted(p.name for p in lp.glob("*.html"))) + ")")
 
     # Anzeigen
-    anz_html, vorschau_html, alle = anzeigen_html(f, mod)
+    anz_html, vorschau_html, alle = anzeigen_html({**f, "_fotos_da": fotos}, mod)
     f["meta_anzeigen_md"] = meta_md(f, alle)
     an = ziel / "anzeigen"
     shutil.rmtree(an, ignore_errors=True)
