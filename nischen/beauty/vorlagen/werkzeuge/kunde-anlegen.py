@@ -209,7 +209,8 @@ def felder(d):
     f["gs_bis"] = gs.get("bis") or ""
     f["gs_bis_kurz"] = (gs.get("bis") or "")[:6]
     f["gs_ziehung"] = gs.get("ziehung") or ""
-    f["gs_tnb"] = gs.get("bedingungen") or "[Link zu den Teilnahmebedingungen]"
+    f["gs_tnb_ziel"] = gs.get("bedingungen") or ""
+    f["gs_tnb"] = (d.get("seite") or f"https://{d['kuerzel']}.netlify.app").rstrip("/") + "/teilnahme.html" if f["gs_tnb_ziel"] else "[Link zu den Teilnahmebedingungen]"
     offen = not gs.get("bis")
     f["gs_lostopf"] = ("Im Lostopf: wer einen Termin bucht und hinkommt. Jeden Monat neu verlost. Ab 18." if offen
                        else f"Im Lostopf: wer bis {f['gs_bis_kurz']} einen Termin bucht und hinkommt. Ab 18.")
@@ -486,6 +487,11 @@ def main():
         f'<title>{esc(f["betrieb"])}</title><meta http-equiv="refresh" content="0; url=termin.html">'
         '<script>location.replace("termin.html" + location.search);</script></head>'
         '<body><a href="termin.html">Weiter zur Terminbuchung</a></body></html>', encoding="utf-8")
+    if f.get("gs_tnb_ziel"):  # kurze Adresse für die Teilnahmebedingungen (leitet zur Zentrale weiter)
+        z = esc(f["gs_tnb_ziel"])
+        (lp / "teilnahme.html").write_text('<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><meta name="robots" content="noindex">'
+                                           f'<title>Teilnahmebedingungen</title><meta http-equiv="refresh" content="0; url={z}"></head>'
+                                           f'<body><a href="{z}">Zu den Teilnahmebedingungen</a></body></html>', encoding="utf-8")
     offen = re.findall(r"\[[A-ZÄÖÜ][^\]\n]{2,60}\]", " ".join(p.read_text(encoding="utf-8") for p in lp.glob("*.html")))
     print("✓ seite/ (" + ", ".join(sorted(p.name for p in lp.glob("*.html"))) + ")")
 
