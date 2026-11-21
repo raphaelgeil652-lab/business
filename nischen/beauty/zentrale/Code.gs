@@ -2170,7 +2170,7 @@ function liveMails_(s, jetzt) {
 
 /** Gewinne eines Gewinnspiels: „2 × 30 % Rabatt …“ je Zeile bzw. mit „ • “ getrennt, der Hauptgewinn zuerst. */
 function gewinneListe_(k) {
-  return String(k.gewinn || '').split(/\s*(?:\n|•)\s*/).map(function (x) { return x.trim(); }).filter(String).map(function (x) {
+  return String(k.gewinn || '').split(/\s*(?:\n|•)\s*/).map(function (x) { return x.replace(/[\s\/,;]+$/, '').trim(); }).filter(String).map(function (x) {
     var m = x.match(/^(\d+)\s*[x×]\s*(.+)$/i);
     return m ? { anzahl: Math.max(1, Math.min(20, Number(m[1]))), text: m[2].trim() } : { anzahl: 1, text: x };
   });
@@ -2446,7 +2446,7 @@ function teamAktion_(kz, s, aktion, d) {
     if (!bis) zi = '';
     if (bis && !(ab <= bis && bis < zi)) return { ok: false, meldung: 'Reihenfolge: Start ≤ Teilnahmeschluss < Ziehung (die Ziehung nach dem letzten Termin).' };
     if (/botox|kostenlos.*behandlung.*ärzt/i.test(txt(d.gewinn))) return { ok: false, meldung: 'Diesen Gewinn bitte anders formulieren.' };
-    var gwl = txt(d.gewinn).split(/\n/).map(function (x) { return x.replace(/^[-•*\s]+/, '').trim(); }).filter(String);
+    var gwl = txt(d.gewinn).split(/\n|\s\/\s|\/\s*$/m).map(function (x) { return x.replace(/^[-•*\s]+/, '').replace(/[\s\/,;]+$/, '').trim(); }).filter(String);
     if (!regelModul_(k).regeln.rabatt && gwl.some(function (x) { return /%|rabatt|gutschein/i.test(x); })) return { ok: false, meldung: 'Für dieses Studio sind Rabatte als Gewinn nicht erlaubt.' };
     kundeSetzen_(kz, { 'Gewinn': gwl.join(' • '), 'Gewinnspiel ab': ab, 'Teilnahmeschluss': bis || '', 'Ziehung am': zi || '' });
     cacheLeeren_(kunde_(kz));

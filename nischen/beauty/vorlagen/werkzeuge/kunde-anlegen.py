@@ -193,7 +193,7 @@ def felder(d):
     f["nk_bis_satz"] = f", nur bis {nk['bis']}" if nk.get("bis") else ""
     f["nk_bis_kurz"] = f" · bis {nk['bis'][:6]}" if nk.get("bis") else ""
     gs = d.get("gewinnspiel") or {}
-    gw = [str(x).strip() for x in (gs.get("gewinne") or []) if str(x).strip()]
+    gw = [str(x).strip().strip("/,;").strip() for x in (gs.get("gewinne") or []) if str(x).strip().strip("/,;").strip()]
     f["_gs"] = bool(gw) and r["verlosung"]
     anzahl = lambda x: int(m.group(1)) if (m := re.match(r"^(\d+)\s*[x×]", x)) else 1
     f["gs_haupt"] = re.sub(r"^\d+\s*[x×]\s*", "", gw[0]) if gw else ""

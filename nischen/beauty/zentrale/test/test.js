@@ -815,7 +815,7 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   const zg = mails.slice(m0).find(x => x.subject.includes('Gewinnspiel'));
   pruefe(zg && zg.htmlBody.includes('Gina Gewinn') && zg.htmlBody.includes('Wimpern-Neuset (Wert 145 €):</b> Gina') && zg.htmlBody.includes('weniger Teilnehmende') && zg.htmlBody.includes('1 Teilnehmende') && !zg.htmlBody.includes('Nora') && !zg.htmlBody.includes('Zora'), 'Ziehung nur unter denen, die im Zeitraum erschienen sind');
   // Offenes Gewinnspiel: ohne Schluss, Ziehung jeden 1. für den Vormonat
-  pruefe(T('gewinnspiel', { gewinn: 'eine gratis Wimpernverlängerung (Wert 145 €)\n2 × 20 % auf deinen nächsten Termin', ab: '2027-04-20', bis: '', ziehung: '' }).ok && !G.kunde_('kate-cosmetics').schluss, 'Gewinnspiel ohne Ende gespeichert');
+  pruefe(T('gewinnspiel', { gewinn: 'eine gratis Wimpernverlängerung (Wert 145 €)/\n2 × 20 % auf deinen nächsten Termin /', ab: '2027-04-20', bis: '', ziehung: '' }).ok && !G.kunde_('kate-cosmetics').schluss && G.kunde_('kate-cosmetics').gewinn === 'eine gratis Wimpernverlängerung (Wert 145 €) • 2 × 20 % auf deinen nächsten Termin', 'Gewinnspiel ohne Ende gespeichert, „/“ am Zeilenende entfernt');
   pruefe(!T('gewinnspiel', { gewinn: 'eine gratis Wimpernverlängerung', ab: '2027-04-20', bis: '2027-05-01', ziehung: '' }).ok, 'fester Schluss ohne Ziehungstag → Hinweis');
   uhr('2027-04-25 10:00');
   const og = get({ a: 'slots', k: 'kate-cosmetics', l: 'Powder Brows' }).gewinnspiel;
