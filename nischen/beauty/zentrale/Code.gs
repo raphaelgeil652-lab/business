@@ -1777,11 +1777,21 @@ function aufgabeHtml_(a, k, s) {
   }
   if (a.id === 'kalender') {
     var zentrale = Session.getEffectiveUser().getEmail();
-    return '<p>Damit freie Zeiten aus Ihrem Kalender kommen und neue Termine direkt drinstehen. Am Computer, 2 Minuten:</p><ol>' +
-      '<li><b>calendar.google.com</b> öffnen.</li><li>Links bei „Meine Kalender“ auf Ihren Kalender zeigen → die drei Punkte <b>⋮</b> → <b>Einstellungen und Freigabe</b>.</li>' +
-      '<li>Bei <b>„Für bestimmte Personen oder Gruppen freigeben“</b> auf <b>Personen und Gruppen hinzufügen</b>.</li>' +
-      '<li>Diese Adresse eintragen: <code>' + esc_(zentrale) + '</code></li><li>Berechtigung: <b>Änderungen an Terminen vornehmen</b> → <b>Senden</b>.</li></ol>' +
-      form('kalender', '<label>Die Adresse Ihres Kalenders (meist Ihre Gmail-Adresse)<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen');
+    return '<p>Damit auf Ihrer Terminseite nur Zeiten erscheinen, die in Ihrem Kalender wirklich frei sind, und neue Online-Termine direkt in Ihrem Kalender stehen. ' +
+      '<b>Am Computer</b> (in der Handy-App geht das Freigeben nicht), ca. 2 Minuten.</p>' +
+      '<p><b>Welcher Kalender?</b> Der, in dem Sie heute Ihre Termine eintragen. Meist heißt er wie Sie selbst oder wie Ihre Gmail-Adresse. ' +
+      'Termine, die Sie dort selbst eintragen (Telefon, Instagram, Pause, Urlaub), sind für Online-Buchungen dann automatisch belegt.</p><ol>' +
+      '<li><b>calendar.google.com</b> öffnen und mit dem Google-Konto anmelden, zu dem der Kalender gehört.</li>' +
+      '<li>Links unter <b>„Meine Kalender“</b> mit der Maus auf diesen Kalender zeigen → rechts daneben erscheinen drei Punkte <b>⋮</b> → draufklicken → <b>„Einstellungen und Freigabe“</b>.</li>' +
+      '<li>Auf der Seite, die sich öffnet, nach unten scrollen bis <b>„Für bestimmte Personen oder Gruppen freigeben“</b> → <b>„+ Personen und Gruppen hinzufügen“</b>.</li>' +
+      '<li>In das Feld diese Adresse eintragen (zum Kopieren antippen): <code onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent)">' + esc_(zentrale) + '</code></li>' +
+      '<li>Darunter bei <b>„Berechtigungen“</b> gibt es vier Möglichkeiten. Wählen Sie die <b>dritte: „Änderungen an Terminen vornehmen“</b>. ' +
+      '<span class="k">(Nicht „Nur Verfügbarkeit“ oder „Alle Termindetails anzeigen“: Damit können wir keine Termine eintragen. Und nicht „Änderungen vornehmen und Freigabe verwalten“: Das brauchen wir nicht.)</span></li>' +
+      '<li>Auf <b>„Senden“</b> klicken.</li>' +
+      '<li>Ganz oben auf derselben Seite steht unter <b>„Kalendereinstellungen“</b> der Name des Kalenders. Weiter unten unter <b>„Kalender integrieren“</b> steht die <b>Kalender-ID</b>. ' +
+      'Beim Hauptkalender ist das Ihre Gmail-Adresse. Diese Adresse hier unten eintragen.</li></ol>' +
+      form('kalender', '<label>Kalender-ID (meist Ihre Gmail-Adresse)<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen') +
+      '<p class="k">„Freigabe prüfen“ sagt sofort, ob es geklappt hat. Kommt „Noch keine Freigabe“: 1–2 Minuten warten und nochmal tippen.</p>';
   }
   if (a.id === 'meta') {
     return '<p>Ihre Werbung läuft über Ihr eigenes Werbekonto, mit Ihrer Karte. Wir bekommen nur Zugriff als Partner. ' +
