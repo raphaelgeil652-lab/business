@@ -1783,10 +1783,12 @@ function aufgabeHtml_(a, k, s) {
       'Termine, die Sie dort selbst eintragen (Telefon, Instagram, Pause, Urlaub), sind für Online-Buchungen dann automatisch belegt.</p><ol>' +
       '<li><b>calendar.google.com</b> öffnen und mit dem Google-Konto anmelden, zu dem der Kalender gehört.</li>' +
       '<li>Links unter <b>„Meine Kalender“</b> mit der Maus auf diesen Kalender zeigen → rechts daneben erscheinen drei Punkte <b>⋮</b> → draufklicken → <b>„Einstellungen und Freigabe“</b>.</li>' +
-      '<li>Auf der Seite, die sich öffnet, nach unten scrollen bis <b>„Für bestimmte Personen oder Gruppen freigeben“</b> → <b>„+ Personen und Gruppen hinzufügen“</b>.</li>' +
+      '<li>Oben stehen <b>„Name“</b> und <b>„Beschreibung“</b>. <b>Dort nichts ändern und nichts eintragen</b>, beides ist für uns egal.</li>' +
+      '<li>Nach unten scrollen bis zur Überschrift <b>„Für bestimmte Personen oder Gruppen freigeben“</b>. Direkt darunter steht <b>„+ Personen und Gruppen hinzufügen“</b> → draufklicken.</li>' +
       '<li>In das Feld diese Adresse eintragen (zum Kopieren antippen): <code onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent)">' + esc_(zentrale) + '</code></li>' +
-      '<li>Darunter bei <b>„Berechtigungen“</b> gibt es vier Möglichkeiten. Wählen Sie die <b>dritte: „Änderungen an Terminen vornehmen“</b>. ' +
-      '<span class="k">(Nicht „Nur Verfügbarkeit“ oder „Alle Termindetails anzeigen“: Damit können wir keine Termine eintragen. Und nicht „Änderungen vornehmen und Freigabe verwalten“: Das brauchen wir nicht.)</span></li>' +
+      '<li>Darunter bei <b>„Berechtigungen“</b> aufklappen. Dort stehen fünf Möglichkeiten. Wählen Sie die <b>vierte: „Änderungen vornehmen und alle Details des Termins ansehen“</b>. ' +
+      '<span class="k">Damit sehen wir, wann Sie belegt sind, und können Online-Termine eintragen und bei Absage wieder löschen. ' +
+      'Die ersten drei reichen dafür nicht sicher aus, die fünfte („… Freigabe verwalten“) brauchen wir nicht.</span></li>' +
       '<li>Auf <b>„Senden“</b> klicken.</li>' +
       '<li>Ganz oben auf derselben Seite steht unter <b>„Kalendereinstellungen“</b> der Name des Kalenders. Weiter unten unter <b>„Kalender integrieren“</b> steht die <b>Kalender-ID</b>. ' +
       'Beim Hauptkalender ist das Ihre Gmail-Adresse. Diese Adresse hier unten eintragen.</li></ol>' +
