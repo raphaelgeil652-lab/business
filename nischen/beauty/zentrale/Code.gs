@@ -2527,11 +2527,20 @@ function tabelle_(name) {
 
 var TEXT_SPALTEN = ['Telefon', 'PLZ', 'Telefon oder E-Mail', 'Kalender-Eintrag', 'Betreuer Telefon', 'Pixel-ID', 'Google-Ads-ID'];
 
+/** Schreibt in die erste wirklich leere Zeile. Vorbereitete Zeilen mit Formeln (z. B. „Erster Auftrag“) zählen als leer, ihre Formeln bleiben. */
 function zeileAnhaengen_(tab, werte) {
-  var z = zeileNachKopf_(tab, werte), r = tab.sh.getLastRow() + 1;
+  var z = zeileNachKopf_(tab, werte), r = 0, alt = null;
+  var felder = Object.keys(werte).filter(function (h) { return tab.kopf[h] !== undefined; });
+  for (var i = 0; i < tab.zeilen.length; i++) {
+    var zz = tab.zeilen[i];
+    if ((zz.w[0] === '' || zz.w[0] == null) && felder.every(function (h) { return tab.get(zz, h) === ''; })) { r = zz.nr; alt = zz; break; }
+  }
+  if (!r) r = tab.sh.getLastRow() + 1;
+  var bereich = tab.sh.getRange(r, 1, 1, z.length), formeln = bereich.getFormulas ? bereich.getFormulas()[0] : [];
+  formeln.forEach(function (f, j) { if (f && (z[j] === '' || z[j] == null)) z[j] = f; });
   TEXT_SPALTEN.forEach(function (h) { if (tab.kopf[h] !== undefined) tab.sh.getRange(r, tab.kopf[h] + 1).setNumberFormat('@'); });
-  tab.sh.getRange(r, 1, 1, z.length).setValues([z]);
-  tab.zeilen.push({ nr: r, w: z });
+  bereich.setValues([z]);
+  if (alt) alt.w = z; else tab.zeilen.push({ nr: r, w: z });
   SpreadsheetApp.flush();
 }
 

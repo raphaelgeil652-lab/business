@@ -56,7 +56,8 @@ class Blatt {
       getDisplayValue: () => { const f = String((this.z[r - 1] || [])[c - 1] || ''); return DEUTSCH && /^=.*,/.test(f) ? '#ERROR!' : f; },
       setNumberFormat: f => { for (let i = 0; i < nr; i++) for (let j = 0; j < nc; j++) { const k = (r + i) + ',' + (c + j); if (f === '@') this.text.add(k); else this.text.delete(k); } },
       getSheet: () => this, setFontWeight: () => ({}), getDisplayValue2: null,
-      getValue: () => (this.z[r - 1] || [])[c - 1]
+      getValue: () => (this.z[r - 1] || [])[c - 1],
+      getFormulas: () => { const out = []; for (let i = 0; i < nr; i++) { const row = this.z[r - 1 + i] || []; out.push(Array.from({ length: nc }, (_, j) => /^=/.test(String(row[c - 1 + j] ?? '')) ? row[c - 1 + j] : '')); } return out; }
     };
   }
 }
@@ -628,6 +629,14 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   const w = mails.slice(vorher).find(x => x.to === 'kate@studio.de');
   pruefe(w && w.cc === 'tom@agentur.de' && w.subject.startsWith('Willkommen') && linkMit(w.htmlBody, 'a=studio'), 'Willkommens-Mail an das Studio mit Link, Kopie an den Betreuer');
   pruefe(f({}).ok && G.kunde_('kate-cosmetics-2'), 'gleicher Name nochmal → eigenes Kürzel (-2)');
+  {
+    // Tabelle aus der Vorlage: vorbereitete Zeilen mit Formel „Erster Auftrag“ → neuer Kunde in die erste leere Zeile, Formel bleibt
+    const ku = blaetter.Kunden, kopfK = ku.z[0], ea = kopfK.indexOf('Erster Auftrag'), frei = ku.letzte() + 1;
+    for (let i = 0; i < 5; i++) { const row = kopfK.map(() => ''); row[ea] = '=WENN(A' + (frei + i) + '="";"";1)'; ku.z.push(row); }
+    G.zeileAnhaengen_(G.tabelle_('Kunden'), { 'Kürzel': 'leer-test', 'Betrieb': 'Leer Test' });
+    pruefe(ku.z[frei - 1][0] === 'leer-test' && /^=WENN/.test(ku.z[frei - 1][ea]) && ku.z[frei][0] === '', 'Neuer Kunde landet in der ersten leeren Zeile, nicht hinter den vorbereiteten (Formel bleibt)');
+    ku.z = ku.z.filter(r => r[0] !== 'leer-test' && !(r[0] === '' && /^=WENN/.test(r[ea] || '')));
+  }
 
   // Schritte-Seite
   const sl = linkMit(w.htmlBody, 'a=studio'), sp = parameter(sl);
