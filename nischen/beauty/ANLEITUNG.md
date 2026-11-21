@@ -63,9 +63,13 @@ von selbst die Mail „Heute dran“. Texte: „1 Verkaufsskript“ und „2 Nac
    - **Kalender:** Adresse seines Google-Kalenders. Dann im Wochenraster antippen, wann online gebucht werden darf
      (Knöpfe „Mo–Fr 9–18“ helfen). Alles, was in seinem Google-Kalender steht, ist automatisch belegt, auch Kundinnen,
      die anders gebucht haben. Takt und Pausen müsst ihr nicht festlegen.
-   - **Neukundenangebot** (Pflicht): kurz, wie es groß auf der Anzeige stehen soll, z. B. „Neuset gratis + 1. Auffüllen 49 €“,
-     dazu die Leistung, die die Kundin dafür bucht. Vergleichspreis nur, wenn er echt ist. Später jederzeit über
-     „Kundendaten ändern“ anpassbar (danach Claude die Anzeigen neu bauen lassen). Bei Ärzten und Zahnärzten sachlich, ohne gratis und Rabatt.
+   - **Gewinnspiel, die wichtigste Frage im Gespräch:** „Womit verdienen Sie am meisten?“ Die **3 stärksten Leistungen**
+     auswählen. Jede wird ein Hauptgewinn mit eigener Anzeige („Gewinne eine gratis Wimpernverlängerung“). Den Anzeigentext
+     schlägt das Formular selbst vor, ihr könnt ihn kürzen. Darunter die Zusatzgewinne (Vorschlag: 2 × 20 % und 3 × 40 % auf
+     den nächsten Termin). Das Gewinnspiel startet mit dem Anlegen, offen, Ziehung jeden 1. für den Vormonat. Später rotieren:
+     über „Kundendaten ändern“ andere Leistungen wählen, dann Claude die Anzeigen neu bauen lassen. Bei Ärzten und Zahnärzten
+     gibt es kein Gewinnspiel (das Formular blendet es aus).
+   - **Neukundenangebot** (freiwillig): nur wenn das Studio zusätzlich ein festes Angebot will. Steht dann oben auf der Terminseite.
    - Absagefrist, Ausfallgebühr nur, wenn das Studio sie wirklich verlangt.
    - **Provision** (Vorschlag 15 %) und wie viele neue Kundinnen pro Woche möglich sind. Das Formular schlägt daraus das
      **Werbebudget** vor (geht komplett an Meta). Alles mit * ist Pflicht.
@@ -139,7 +143,7 @@ Die Mail kommt von selbst, sobald das Studio alles für Seite und Anzeigen erled
 
 ## Gewinnspiel (nur wo erlaubt, nicht bei Ärzten und Zahnärzten)
 
-Team-Seite → Kasten **„Gewinnspiel“**: ein Gewinn pro Zeile, der Hauptgewinn zuerst (eine Behandlung mit Wert), danach z. B.
+Das Gewinnspiel entsteht schon im Gespräch (Formular, Kasten 3b). Feinheiten danach auf der Team-Seite → Kasten **„Gewinnspiel“**: ein Gewinn pro Zeile, der Hauptgewinn zuerst (eine Behandlung mit Wert), danach z. B.
 „2 × 20 % auf deinen nächsten Termin“ und „3 × 40 % auf deinen nächsten Termin“. Den Hauptgewinn so schreiben, wie er
 auf der Anzeige stehen soll: „eine gratis Wimpernverlängerung (Wert 145 €)“ → Anzeige „Gewinne eine gratis Wimpernverlängerung“.
 Nur den Start eintragen, Teilnahmeschluss und Ziehung **leer lassen**: Dann läuft das Gewinnspiel **offen**, ohne Enddatum, und die

@@ -601,7 +601,7 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
     behandler: 'Kosmetik/PMU-Studio', quali: true,
     leistungen: [{ name: 'powder Brows', minuten: '120', preis: '390' }, { name: 'Lippen | Aquarell', minuten: '150', preis: '' }, { name: '', minuten: '', preis: '' }],
     zeiten: 'Di 9:00-18:00; Mi 9:30-12:00 14:00-18:00; Sa 10:00-14:00', kalender: 'Kalender', kalender_id: '', absage: '24', ausfall: '40',
-    termine: '4', umkreis: '20', provision: '15', budget: '800', mail: true, nk_text: 'Powder Brows für Neukundinnen 349 €', nk_leistung: 'Powder Brows', nk_normal: '390 €', nk_bis: '' };
+    termine: '4', umkreis: '20', provision: '15', budget: '800', mail: true, nk_text: 'Powder Brows für Neukundinnen 349 €', nk_leistung: 'Powder Brows', nk_normal: '390 €', nk_bis: '', gs_l1: 'Powder Brows', gs_t1: 'Gewinne gratis Powder Brows', gs_l2: 'Lippen / Aquarell', gs_t2: '', gs_l3: '', gs_t3: '', gs_zusatz: '2 × 20 % auf deinen nächsten Termin/\n3 × 40 % auf deinen nächsten Termin' };
   const f = o => G.neuerKunde_(Object.assign({}, basis, o), G.einst_());
   pruefe(!f({ betrieb: '' }).ok && /Name des Studios/.test(f({ betrieb: '' }).text), 'Pflichtfeld fehlt → Hinweis');
   pruefe(!f({ behandler: '' }).ok && !f({ hausnummer: '' }).ok && !f({ plz: '8813' }).ok && !f({ provision: '' }).ok, 'Pflichtfelder: Behandler, Hausnummer, PLZ, Provision');
@@ -609,12 +609,14 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   pruefe(!f({ leistungen: [] }).ok && !f({ leistungen: [{ name: 'Brows', minuten: '', preis: '' }] }).ok, 'ohne Leistung oder ohne Minuten → Hinweis');
   pruefe(!f({ behandler: 'Arzt/Ärztin', leistungen: [{ name: 'Botox Stirn', minuten: '30' }] }).ok && !f({ angebot: 'Botox' }).ok, '„Botox“ → abgelehnt');
   pruefe(!f({ zeiten: '' }).ok, 'ohne buchbare Zeiten → Hinweis');
-  pruefe(!f({ nk_text: '' }).ok && /Neukundenangebot/.test(f({ nk_text: '' }).text) && !f({ nk_leistung: 'Gibt es nicht' }).ok, 'Neukundenangebot: Pflicht, Leistung muss aus der Liste sein');
+  pruefe(!f({ nk_leistung: 'Gibt es nicht' }).ok, 'Neukundenangebot (freiwillig): wenn eingetragen, muss die Leistung aus der Liste sein');
+  pruefe(!f({ gs_l1: '', gs_l2: '' }).ok && /stärkste Leistung/.test(f({ gs_l1: '', gs_l2: '' }).text), 'Gewinnspiel: stärkste Leistung ist Pflicht (wo Gewinnspiele erlaubt sind)');
+  
   pruefe(!f({ nk_text: 'eins zwei drei vier fünf sechs sieben acht neun' }).ok, 'Neukundenangebot: höchstens 8 Wörter');
   pruefe(!f({ behandler: 'Arzt/Ärztin', nk_text: 'Beratung gratis' }).ok && !f({ behandler: 'Arzt/Ärztin', nk_text: 'Erstberatung 20 % günstiger' }).ok && !f({ behandler: 'Zahnarztpraxis', nk_text: 'Bleaching', nk_normal: '300 €' }).ok, 'Ärzte/Zahnärzte: kein gratis, kein Rabatt, kein Vergleichspreis');
   pruefe(blaetter.Kunden.letzte() === 4, 'abgelehnte Versuche legen nichts an');
   {
-    const rb = G.neuerKunde_(Object.assign({}, basis, { betrieb: 'Beratung Test', nk_leistung: 'Beratung Haarpigmentierung', leistungen: [{ name: 'haarpigmentierung', minuten: '30', preis: '1800', beratung: true }] }), G.einst_());
+    const rb = G.neuerKunde_(Object.assign({}, basis, { betrieb: 'Beratung Test', nk_leistung: 'Beratung Haarpigmentierung', gs_l1: 'Beratung Haarpigmentierung', leistungen: [{ name: 'haarpigmentierung', minuten: '30', preis: '1800', beratung: true }] }), G.einst_());
     const kb = G.kunde_('beratung-test');
     pruefe(rb.ok && kb.leistungen[0].name === 'Beratung Haarpigmentierung' && kb.leistungen[0].minuten === 30 && kb.leistungen[0].preis === 'ab 1800 €', '„erst Beratung“: online buchbar ist die Beratung, Preis als „ab …“');
     blaetter.Kunden.z = blaetter.Kunden.z.filter(r => r[0] !== 'beratung-test');
@@ -622,6 +624,8 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   const vorher = mails.length, r = f({});
   const k = G.kunde_('kate-cosmetics');
   pruefe(r.ok && k && k.status === 'Angelegt' && k.token.length === 32, 'Kunde angelegt: Kürzel aus dem Namen, Status Angelegt, Schlüssel');
+  pruefe(k.gsLeistungen.join('|') === 'Powder Brows|Lippen / Aquarell' && k.gewinn === 'gratis Powder Brows (Wert 390 €) • eine gratis Lippen / Aquarell • 2 × 20 % auf deinen nächsten Termin • 3 × 40 % auf deinen nächsten Termin' && k.gsAb && !k.schluss, 'Gewinnspiel aus dem Gespräch: Top-Leistungen als Hauptgewinne (mit Wert), Zusatzgewinne, offen ab heute');
+  pruefe(G.formularWerte_(k).gs_haupt[0] === 'gratis Powder Brows' && /3 × 40/.test(G.formularWerte_(k).gs_zusatz) && G.studioDaten_(k, G.einst_()).gewinnspiel.leistungen.length === 2, 'Gewinnspiel beim Ändern vorausgefüllt und im Text für Claude');
   pruefe(k.nk.text === 'Powder Brows für Neukundinnen 349 €' && k.nk.leistung === 'Powder Brows' && G.studioDaten_(k, G.einst_()).angebot.normal === '390 €', 'Neukundenangebot gespeichert und im Text für Claude');
   pruefe(G.formularHtml_(G.einst_(), k).includes('Neukundenangebot') && G.formularWerte_(k).nk_text === k.nk.text, 'Neukundenangebot im Formular, beim Ändern vorausgefüllt');
   pruefe(k.zeiten === 'Di 9:00-18:00; Mi 9:30-12:00 14:00-18:00; Sa 10:00-14:00' && k.raster === 15 && k.modus === 'Kalender' && k.kalender === 'kate@studio.de', 'Zeiten aus dem Kalender-Raster, Takt von selbst 15 Min., Kalender = Studio-Mail');

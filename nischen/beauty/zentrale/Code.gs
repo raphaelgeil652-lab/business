@@ -1314,7 +1314,7 @@ var KUNDEN_SPALTEN = ['Kürzel', 'Status', 'Betreuer', 'Betreuer Telefon', 'Betr
   'Onboarding €', 'Monatsgebühr €', 'Provision %', 'Werbebudget €', 'Umkreis km', 'Angelegt am', 'Live seit', 'Pixel-ID', 'Google-Conversion',
   'Vertrag angenommen', 'Impressum', 'Datenschutz', 'Behandler', 'Vorbereitung ok', 'Fotos', 'Kalender ok', 'Meta erledigt', 'Werbekonto-ID', 'Meta fertig', 'Seite bestätigen', 'Karte ok',
   'Google-Ads-ID', 'Google verknüpft', 'Vorschau gesendet', 'Freigabe', 'Änderungswunsch', 'Drive-Ordner', 'Erinnert am', 'Erinnerungen', 'Alles da', 'Live-Mail', 'Token',
-  'Gewinn', 'Gewinnspiel ab', 'Teilnahmeschluss', 'Ziehung am', 'Erster Auftrag', 'Monatsgebühr ab', 'Termine gesamt', 'Notiz'];
+  'Gewinn', 'Gewinnspiel Leistungen', 'Gewinnspiel ab', 'Teilnahmeschluss', 'Ziehung am', 'Erster Auftrag', 'Monatsgebühr ab', 'Termine gesamt', 'Notiz'];
 var VERTRAEGE_SPALTEN = ['Kürzel', 'Vereinbarung', 'Angenommen am', 'Angenommen von', 'Gesendet an', 'Prüfsumme SHA-256', 'Browser', 'Annahme-Link'];
 var NEUE_EINSTELLUNGEN = [
   ['agentur_business_id', 'Meta Business-ID der Agentur', '', 'Meta Business Suite → Einstellungen → Unternehmensinfos (16 Ziffern). Steht in eurer Klickliste „Meta einrichten“ auf der Team-Seite'],
@@ -1380,6 +1380,8 @@ function formularWerte_(k) {
     angebot: k.behandlung, behandler: String(g('Behandler-Art')), quali: true, leistungen: k.leistungen, zeiten: k.zeiten,
     kalender: k.modus, kalender_id: k.kalender, absage: k.absagefrist || 24,
     ausfall: (String(k.ausfall).match(/berechnen wir ([\d.,]+)/) || [])[1] || '', termine: (String(g('Notiz')).match(/^(\d+)/) || [])[1] || '',
+    gs_l: k.gsLeistungen, gs_haupt: gewinneListe_(k).filter(function (g) { return !/%/.test(g.text); }).map(function (g) { return g.text.replace(/\s*\(Wert[^)]*\)\s*$/, ''); }),
+    gs_zusatz: gewinneText_(gewinneListe_(k).filter(function (g) { return /%/.test(g.text); })).join('\n'),
     nk_text: k.nk.text, nk_leistung: k.nk.leistung, nk_normal: k.nk.normal, nk_bis: k.nk.bis ? Utilities.formatDate(k.nk.bis, 'Europe/Berlin', 'yyyy-MM-dd') : '',
     umkreis: Number(g('Umkreis km')) || 15, provision: Number(g('Provision %')) || PROVISION_STANDARD, budget: zahl_(g('Werbebudget €')) || '' };
 }
@@ -1392,7 +1394,7 @@ function formularHtml_(s, k) {
     return (leer ? '<option value="">' + leer + '</option>' : '') + liste.map(function (x) { return '<option' + (x === aktiv ? ' selected' : '') + '>' + esc_(x) + '</option>'; }).join('');
   };
   var feld = function (name, label, extra) { return '<label>' + label + '<input name="' + name + '" ' + (extra || '') + wert(name) + '></label>'; };
-  var daten = { regeln: REGELN_VON_BEHANDLER, module: MODULE, leistungen: w.leistungen || [], zeiten: buchbareZeiten_(w.zeiten || ''), nk_leistung: w.nk_leistung || '' };
+  var daten = { regeln: REGELN_VON_BEHANDLER, module: MODULE, leistungen: w.leistungen || [], zeiten: buchbareZeiten_(w.zeiten || ''), nk_leistung: w.nk_leistung || '', gs_l: w.gs_l || [], gs_haupt: w.gs_haupt || [] };
   return '<style>body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A1917;margin:0;background:#F7F4EE;font-size:15px;}' +
     '.w{max-width:760px;margin:0 auto;padding:16px;}h1{font-size:22px;margin:4px 0 2px;}h2{font-size:17px;margin:0 0 8px;}' +
     '.box{background:#fff;border:1px solid #E4DED3;border-radius:10px;padding:14px;margin:12px 0;}label{display:block;margin:7px 0;font-weight:600;font-size:14px;}' +
@@ -1432,11 +1434,21 @@ function formularHtml_(s, k) {
     '<div id="listebox" style="display:none;"><p class="k">Eine Leistung pro Zeile: <b>Name | Minuten | Preis | Beratung</b> (das Letzte nur, wenn erst eine Beratung nötig ist), z. B. „Haarpigmentierung | 30 | 1800 | Beratung“. Vorbereitete Liste von Claude hier hineinkopieren.</p>' +
     '<textarea id="listetext" rows="8" style="width:100%;box-sizing:border-box;font-size:14px;"></textarea>' +
     '<button type="button" class="klein" id="listeok">Übernehmen</button></div></div>' +
-    '<div class="box"><h2>3b · Neukundenangebot *</h2>' +
-    '<p class="k">Das steht groß auf den Anzeigen. Kurz, so wie es die Kundin lesen soll, höchstens 8 Wörter. Kann jederzeit über „Kundendaten ändern“ angepasst werden (danach Claude die neuen Anzeigen bauen lassen). ' +
+    '<div class="box" id="gsbox"><h2>3b · Gewinnspiel: die 3 stärksten Leistungen *</h2>' +
+    '<p class="k">Fragen: <b>Womit verdient das Studio am meisten?</b> Diese drei Leistungen verlosen wir, je Leistung gibt es eine eigene Anzeige („Gewinne eine gratis …“). ' +
+    'Ein Lostopf für alles: Wer einen Termin bucht und hinkommt, ist drin. Gezogen wird jeden 1. für den Vormonat, ohne Enddatum. Später änderbar über „Kundendaten ändern“.</p>' +
+    [1, 2, 3].map(function (i) {
+      return '<div class="zwei"><label>' + i + '. stärkste Leistung' + (i === 1 ? ' *' : '') + '<select name="gs_l' + i + '" class="gsl"' + (i === 1 ? ' id="gsl1"' : '') + '></select></label>' +
+        '<label>So steht es auf der Anzeige: „Gewinne …“<input name="gs_t' + i + '" class="gst" maxlength="45" placeholder="eine gratis Wimpernverlängerung" value="' + esc_((w.gs_haupt || [])[i - 1] || '') + '"></label></div>';
+    }).join('') +
+    '<label>Zusatzgewinne (einer pro Zeile)<textarea name="gs_zusatz" rows="2" style="width:100%;box-sizing:border-box;font-size:15px;padding:8px;">' +
+    esc_(w.gs_zusatz != null && w.gs_zusatz !== '' ? w.gs_zusatz : '2 × 20 % auf deinen nächsten Termin\n3 × 40 % auf deinen nächsten Termin') + '</textarea></label>' +
+    '<p class="k" id="gsaus" style="display:none;">Bei Ärzten und Zahnärzten ist ein Gewinnspiel in der Werbung nicht erlaubt (Heilmittelwerbegesetz, Berufsordnung). Hier bleibt alles leer.</p></div>' +
+    '<div class="box"><h2>3c · Neukundenangebot <span class="k">(freiwillig)</span></h2>' +
+    '<p class="k">Nur, wenn das Studio zusätzlich ein festes Angebot für Neukundinnen will. Es steht dann oben auf der Terminseite. Kurz, höchstens 8 Wörter. ' +
     'Ein Vergleichspreis nur, wenn das Studio ihn wirklich verlangt.</p>' +
-    feld('nk_text', 'Angebot *', 'required maxlength="70" placeholder="z. B. Neuset gratis + 1. Auffüllen 49 €"') +
-    '<div class="zwei"><label>Welche Leistung bucht die Kundin dafür? *<select name="nk_leistung" id="nkl" required></select></label>' +
+    feld('nk_text', 'Angebot', 'maxlength="70" placeholder="z. B. Neuset gratis + 1. Auffüllen 49 €"') +
+    '<div class="zwei"><label>Welche Leistung bucht die Kundin dafür?<select name="nk_leistung" id="nkl"></select></label>' +
     feld('nk_normal', 'Normalpreis zum Vergleich (freiwillig)', 'placeholder="z. B. 145 €"') + '</div>' +
     feld('nk_bis', 'Gilt bis (freiwillig, leer = ohne Ende)', 'type="date"') + '</div>' +
     '<div class="box"><h2>4 · Kalender</h2><div class="zwei">' +
@@ -1471,6 +1483,12 @@ var FORMULAR_JS = [
   // Neukundenangebot: Auswahl der Leistungen aus der Liste oben
   'var NKL=document.getElementById("nkl");function nkFuellen(){var alt=NKL.value||D.nk_leistung||"",o=\'<option value="">bitte wählen</option>\';Array.prototype.forEach.call(L.children,function(z){var i=z.querySelectorAll("input"),n=i[0].value.trim();if(!n)return;if(i[3].checked)n="Beratung "+n;o+="<option>"+n.replace(/</g,"&lt;")+"</option>";});NKL.innerHTML=o;NKL.value=alt;}',
   'nkFuellen();NKL.addEventListener("focus",nkFuellen);NKL.addEventListener("mousedown",nkFuellen);L.addEventListener("change",nkFuellen);',
+  'var GSL=document.querySelectorAll(".gsl"),GST=document.querySelectorAll(".gst");',
+  'function gsFuellen(){var namen=[];Array.prototype.forEach.call(L.children,function(z){var i=z.querySelectorAll("input"),n=i[0].value.trim();if(n&&!i[3].checked)namen.push(n);});Array.prototype.forEach.call(GSL,function(s,j){var alt=s.value||(D.gs_l[j]||"");s.innerHTML=\'<option value="">\'+(j?"freiwillig":"bitte wählen")+\'</option>\'+namen.map(function(n){return "<option>"+n.replace(/</g,"&lt;")+"</option>";}).join("");s.value=alt;});}',
+  'gsFuellen();Array.prototype.forEach.call(GSL,function(s,j){s.addEventListener("focus",gsFuellen);s.addEventListener("mousedown",gsFuellen);s.addEventListener("change",function(){if(s.value&&(!GST[j].value||GST[j].dataset.auto)){GST[j].value="eine gratis "+s.value;GST[j].dataset.auto="1";}});});',
+  'Array.prototype.forEach.call(GST,function(t){t.addEventListener("input",function(){delete t.dataset.auto;});});',
+  'function gsPruef(){var m=D.module[D.regeln[f.behandler.value]],an=!m||m.regeln.verlosung;document.getElementById("gsaus").style.display=an?"none":"block";document.getElementById("gsl1").required=an;}',
+  'f.behandler.addEventListener("change",gsPruef);gsPruef();L.addEventListener("change",gsFuellen);',
   'document.getElementById("liste").onclick=function(){var b=document.getElementById("listebox");b.style.display=b.style.display==="none"?"block":"none";};',
   'document.getElementById("listeok").onclick=function(){var z=document.getElementById("listetext").value.split(/\\n/).map(function(x){var t=x.split(/\\s*[|\\t;]\\s*/);return{name:(t[0]||"").replace(/^[-•*\\s]+/,"").trim(),minuten:(t[1]||"").replace(/\\D/g,""),preis:(t[2]||"").replace(/[^\\d,.]/g,""),beratung:/^\\s*(b|beratung|ja|x)\\s*$/i.test(t[3]||"")};}).filter(function(l){return l.name;});if(!z.length)return;L.innerHTML="";z.forEach(zeile);zeile();document.getElementById("listebox").style.display="none";};',
   // Wochen-Kalender zum Antippen (30-Minuten-Felder, 6 bis 22 Uhr)
@@ -1532,7 +1550,7 @@ function neuerKunde_(d, s) {
   var m = MODULE[REGELN_VON_BEHANDLER[txt(d.behandler)]];
   [['betreuer', 'Betreuer'], ['betreuer_telefon', 'Telefon des Betreuers'], ['betrieb', 'Name des Studios'], ['firma', 'Firma'],
     ['vorname', 'Vorname'], ['nachname', 'Nachname'], ['telefon', 'Telefon'], ['email', 'E-Mail'], ['strasse', 'Straße'],
-    ['hausnummer', 'Hausnummer'], ['plz', 'PLZ'], ['ort', 'Ort'], ['angebot', 'Angebot'], ['nk_text', 'Neukundenangebot'], ['termine', 'Kundinnen pro Woche'],
+    ['hausnummer', 'Hausnummer'], ['plz', 'PLZ'], ['ort', 'Ort'], ['angebot', 'Angebot'], ['termine', 'Kundinnen pro Woche'],
     ['provision', 'Provision'], ['budget', 'Werbebudget'], ['umkreis', 'Umkreis']]
     .forEach(function (x) { if (!txt(d[x[0]])) fehlt.push(x[1]); });
   if (!m) fehlt.push('Wer behandelt');
@@ -1559,11 +1577,25 @@ function neuerKunde_(d, s) {
     return { ok: false, text: 'Das Wort „Botox“ ist in der Werbung verboten. Bitte z. B. „Faltenbehandlung Stirn“ schreiben.' };
   }
   var nk = txt(d.nk_text).replace(/\s+/g, ' '), nkL = txt(d.nk_leistung), nkN = txt(d.nk_normal), nkBis = datum_(txt(d.nk_bis));
-  if (nk.split(' ').length > 8) return { ok: false, text: 'Das Neukundenangebot bitte kürzer, höchstens 8 Wörter. Es steht groß auf der Anzeige.' };
-  if (!leistungen.some(function (l) { return l.name === nkL; })) return { ok: false, text: 'Beim Neukundenangebot bitte wählen, welche Leistung die Kundin dafür bucht.' };
+  if (nk && nk.split(' ').length > 8) return { ok: false, text: 'Das Neukundenangebot bitte kürzer, höchstens 8 Wörter. Es steht groß auf der Anzeige.' };
+  if (nk && !leistungen.some(function (l) { return l.name === nkL; })) return { ok: false, text: 'Beim Neukundenangebot bitte wählen, welche Leistung die Kundin dafür bucht.' };
   if (!m.regeln.kostenlos && /gratis|kostenlos|umsonst|geschenkt|0\s*€/i.test(nk)) return { ok: false, text: 'Bei ' + m.name + ' ist „gratis/kostenlos“ in der Werbung nicht erlaubt. Bitte ein sachliches Angebot, z. B. „Beratung 30 Minuten“.' };
   if (!m.regeln.rabatt && (/%|rabatt|statt|sparen|gutschein|aktion/i.test(nk) || nkN)) return { ok: false, text: 'Bei ' + m.name + ' sind Rabatte und Vergleichspreise in der Werbung nicht erlaubt. Bitte ein sachliches Angebot.' };
   if (/botox|garantiert|schmerzfrei/i.test(nk)) return { ok: false, text: 'Diese Wörter sind im Angebot nicht erlaubt (Botox, garantiert, schmerzfrei).' };
+  // Gewinnspiel: die 3 stärksten Leistungen als Hauptgewinne, dazu Zusatzgewinne
+  var gsL = [], gsZeilen = [];
+  if (m.regeln.verlosung) {
+    [1, 2, 3].forEach(function (i) {
+      var ln = txt(d['gs_l' + i]); if (!ln || gsL.indexOf(ln) >= 0) return;
+      var l = leistungen.filter(function (x) { return x.name === ln; })[0]; if (!l) return;
+      var anz = txt(d['gs_t' + i]).replace(/^gewinne\s+/i, '') || 'eine gratis ' + ln, wert = /\d/.test(l.preis) && !/^ab/i.test(l.preis) ? ' (Wert ' + l.preis.replace(/\s*€$/, '') + ' €)' : '';
+      gsL.push(ln); gsZeilen.push(anz + wert);
+    });
+    if (!gsL.length) return { ok: false, text: 'Bitte beim Gewinnspiel mindestens die stärkste Leistung wählen.' };
+    var zus = txt(d.gs_zusatz).split(/\n/).map(function (x) { return x.replace(/^[-•*\s]+/, '').replace(/[\s\/,;]+$/, '').trim(); }).filter(String);
+    if (!m.regeln.rabatt && zus.some(function (x) { return /%|rabatt|gutschein/i.test(x); })) return { ok: false, text: 'Für dieses Studio sind Rabatte als Gewinn nicht erlaubt.' };
+    gsZeilen = gsZeilen.concat(zus);
+  }
   var zt = txt(d.zeiten), test = buchbareZeiten_(zt);
   if (!zt || !Object.keys(test).length) return { ok: false, text: 'Bitte im Kalender antippen, wann online gebucht werden darf.' };
   var betrieb = gross_(d.betrieb), alt = d.kuerzel ? kunde_(d.kuerzel) : null;
@@ -1578,7 +1610,8 @@ function neuerKunde_(d, s) {
     'Behandlung': gross_(d.angebot), 'Behandler-Art': txt(d.behandler), 'Umkreis km': zahl_(d.umkreis) || 15, 'Buchung': modus,
     'Kalender-ID': modus === 'Kalender' ? kalId : '', 'Buchbare Zeiten': zt,
     'Leistungen': leistungen.map(function (l) { return l.name + ' | ' + l.minuten + ' | ' + l.preis; }).join('; '),
-    'Neukundenangebot': nk, 'Angebot Leistung': nkL, 'Angebot Normalpreis': nkN, 'Angebot bis': nkBis || '',
+    'Gewinn': gsZeilen.join(' • '), 'Gewinnspiel Leistungen': gsL.join(' • '),
+    'Neukundenangebot': nk, 'Angebot Leistung': nk ? nkL : '', 'Angebot Normalpreis': nkN, 'Angebot bis': nkBis || '',
     'Takt Minuten': 15, 'Puffer Minuten': 0, 'Vorlauf Stunden': 12, 'Tage im Voraus': 28, 'Absagefrist Stunden': absage,
     'Ausfallregel': ausfall > 0 ? 'Bei einer Absage später als ' + absage + ' Stunden vorher oder wenn Sie nicht kommen, berechnen wir ' + euro_(ausfall) +
       '. Das gilt nicht, wenn Sie nachweisen, dass Sie das Versäumnis nicht zu vertreten haben oder uns kein oder ein geringerer Schaden entstanden ist.' : '',
@@ -1586,6 +1619,7 @@ function neuerKunde_(d, s) {
     'Notiz': zahl_(d.termine) + ' Neukundinnen pro Woche möglich'
   };
   if (!alt) { kunde['Seiten-Adresse'] = 'https://' + kz + '.netlify.app'; kunde['Vorbereitung'] = VORBEREITUNG_ALLGEMEIN.join(' • '); }
+  if (gsZeilen.length && !(alt && alt.gsAb)) kunde['Gewinnspiel ab'] = new Date(new Date().setHours(0, 0, 0, 0));
   var vertrag = alt && alt.vertrag ? '' : vertragFuellen_(kunde, leistungen, m, s, gross_(d.ort), zahl_(d.umkreis) || 15);
   var text = kundeAnlegen_(kunde, vertrag, s, !alt && d.mail !== false);
   if (alt) text = '✓ Gespeichert.' + (alt.vertrag ? ' Die Vereinbarung ist schon angenommen und bleibt, wie sie ist.' : ' Die Vereinbarung ist angepasst.');
@@ -2145,7 +2179,7 @@ function studioDaten_(k, s) {
     vorbereitung: k.vorbereitung, modus: k.modus, umkreis: Number(g('Umkreis km')) || 15, budget: zahl_(g('Werbebudget €')),
     impressum: k.impressum, datenschutz: k.datenschutz, betreuer: k.betreuer, zentrale: basis_(s),
     angebot: k.nk.text ? { text: k.nk.text, leistung: k.nk.leistung, normal: k.nk.normal, bis: k.nk.bis ? datumKurz_(k.nk.bis) : '' } : undefined,
-    gewinnspiel: k.gewinn && regelModul_(k).regeln.verlosung ? { gewinne: gewinneText_(gewinneListe_(k)), ab: k.gsAb ? datumKurz_(k.gsAb) : '', bis: k.schluss ? datumKurz_(k.schluss) : '',
+    gewinnspiel: k.gewinn && regelModul_(k).regeln.verlosung ? { gewinne: gewinneText_(gewinneListe_(k)), leistungen: k.gsLeistungen, ab: k.gsAb ? datumKurz_(k.gsAb) : '', bis: k.schluss ? datumKurz_(k.schluss) : '',
       ziehung: k.ziehung ? datumKurz_(k.ziehung) : 'monatlich', offen: !k.schluss, bedingungen: portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel) } : undefined,
     agentur: { name: s.agentur_name || 'Clickculture', email: s.agentur_email || '', telefon: s.agentur_telefon || '' } };
 }
@@ -2648,7 +2682,7 @@ function kunden_() {
       allesDa: datum_(g('Alles da')), liveMail: datum_(g('Live-Mail')), pixel: String(g('Pixel-ID')).replace(/\D/g, ''),
       conversion: String(g('Google-Conversion')).trim(), vorschau: datum_(g('Vorschau gesendet')), freigabe: datum_(g('Freigabe')),
       aenderung: String(g('Änderungswunsch')).trim(), hinweise: jsonLesen_(g('Hinweise je Leistung')), nk: { text: String(g('Neukundenangebot')).trim(), leistung: String(g('Angebot Leistung')).trim(), normal: String(g('Angebot Normalpreis')).trim(), bis: datum_(g('Angebot bis')) },
-      gewinn: String(g('Gewinn')).trim(), gsAb: datum_(g('Gewinnspiel ab'))
+      gewinn: String(g('Gewinn')).trim(), gsLeistungen: String(g('Gewinnspiel Leistungen')).split('•').map(function (x) { return x.trim(); }).filter(String), gsAb: datum_(g('Gewinnspiel ab'))
     };
   });
 }

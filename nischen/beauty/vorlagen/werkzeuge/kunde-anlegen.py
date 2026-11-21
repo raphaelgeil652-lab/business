@@ -43,8 +43,8 @@ SEITEN = ["termin.html", "danke.html", "bestaetigen.html", "absagen.html", "ruec
 STATISCH = ["seite.css", "messung.js", "buchung.js"]
 FOTO_NAMEN = ["foto-1", "foto-2", "foto-3", "foto-4", "foto-5", "foto-6", "foto-7", "foto-8", "vorher", "nachher"]
 # Weitere Fotos sind freiwillig: Fehlt eines, nimmt die Anzeige das passende der ersten drei.
-# foto-4 Online buchen · foto-5 erste Leistung mit Preis · foto-6 die Beratung · foto-7/8 frei für weitere Kampagnen.
-FOTO_ERSATZ = {"foto-4": "foto-1", "foto-5": "foto-1", "foto-6": "foto-2", "foto-7": "foto-1", "foto-8": "foto-3"}
+# foto-5/6/7 = Foto zur 1./2./3. stärksten Leistung (Gewinnspiel-Anzeigen) · foto-4 Online buchen · foto-8 Geschenk/Studio.
+FOTO_ERSATZ = {"foto-4": "foto-1", "foto-5": "foto-1", "foto-6": "foto-1", "foto-7": "foto-1", "foto-8": "foto-2"}
 FOTO_MAX = 1600
 BILDER = {".jpg", ".jpeg", ".png", ".heic", ".heif", ".webp"}
 MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
@@ -196,15 +196,20 @@ def felder(d):
     gw = [str(x).strip().strip("/,;").strip() for x in (gs.get("gewinne") or []) if str(x).strip().strip("/,;").strip()]
     f["_gs"] = bool(gw) and r["verlosung"]
     anzahl = lambda x: int(m.group(1)) if (m := re.match(r"^(\d+)\s*[x×]", x)) else 1
-    f["gs_haupt"] = re.sub(r"^\d+\s*[x×]\s*", "", gw[0]) if gw else ""
+    haupt = [x for x in gw if "%" not in x] or gw[:1]
+    zusatz = [x for x in gw if x not in haupt]
+    f["_gs_haupt"] = [re.sub(r"^\d+\s*[x×]\s*", "", x) for x in haupt]
+    f["_gs_leistungen"] = [str(x) for x in (gs.get("leistungen") or [])]
+    f["_gs_zusatz"] = zusatz
+    f["gs_haupt"] = f["_gs_haupt"][0] if haupt else ""
     f["gs_haupt_kurz"] = re.sub(r"\s*\(.*?\)", "", f["gs_haupt"]).strip()
-    f["gs_weitere_satz"] = (" Dazu: " + ", ".join(gw[1:]) + ".") if len(gw) > 1 else ""
+    f["gs_weitere_satz"] = (" Außerdem verlosen wir: " + ", ".join(gw[1:]) + ".") if len(gw) > 1 else ""
     # Kurzform fürs Bild: „+ 2× 20 % + 3× 40 % auf deinen nächsten Termin“ (gleiche Endung nur einmal)
-    teile = [re.match(r"^(?:(\d+)\s*[x×]\s*)?(\d+\s*%)\s*(.*)$", x) for x in gw[1:]]
+    teile = [re.match(r"^(?:(\d+)\s*[x×]\s*)?(\d+\s*%)\s*(.*)$", x) for x in zusatz]
     if teile and all(teile) and len({t.group(3) for t in teile}) == 1:
         f["gs_weitere_kurz"] = " ".join(f"+ {t.group(1) or 1}×\u00a0{t.group(2)}" for t in teile) + ("\n" + teile[0].group(3) if teile[0].group(3) else "")
     else:
-        f["gs_weitere_kurz"] = " ".join("+ " + x for x in gw[1:])
+        f["gs_weitere_kurz"] = " ".join("+ " + x for x in zusatz)
     f["gs_anzahl"] = str(sum(anzahl(x) for x in gw)) if gw else ""
     f["gs_bis"] = gs.get("bis") or ""
     f["gs_bis_kurz"] = (gs.get("bis") or "")[:6]
@@ -305,6 +310,25 @@ def seiten_felder(f, mod, fotos):
         "vorbereitung": f["_vorbereitung"], "ausfall": f["ausfall_regel"],
     }, ensure_ascii=False).replace("</", "<\\/")
     return s
+
+
+def gewinnspiel_anzeigen(f):
+    """Drei Gewinnspiel-Anzeigen. Mit mehreren Top-Leistungen bekommt jede ihre eigene Anzeige („Gewinne eine gratis …“, eigenes Foto,
+    Terminseite mit dieser Leistung vorausgewählt). Mit nur einem Hauptgewinn: dreimal derselbe Gewinn mit drei Fotos."""
+    haupt, leist = f["_gs_haupt"], f["_gs_leistungen"]
+    alle = []
+    for i, vorlage in enumerate(M.GEWINNSPIEL):
+        h = haupt[i % len(haupt)]
+        andere = [x for x in haupt if x != h] + f["_gs_zusatz"]
+        a = json.loads(json.dumps(vorlage, ensure_ascii=False)
+                       .replace("{{gs_haupt_kurz}}", re.sub(r"\s*\(.*?\)", "", h).strip()).replace("{{gs_haupt}}", h)
+                       .replace("{{gs_weitere_satz}}", (" Außerdem verlosen wir: " + ", ".join(andere) + ".") if andere else ""))
+        if len(haupt) > 1:
+            a["foto"] = f"foto-{5 + i}"
+            if i < len(leist):
+                a["leistung"] = leist[i]
+        alle.append(a)
+    return alle
 
 
 def anzeigen_html(f, mod):
@@ -497,7 +521,7 @@ def main():
 
     # Anzeigen (läuft ein Gewinnspiel, sind die Gewinnspiel-Anzeigen die Hauptkampagne)
     if f.get("_gs"):
-        mod = {**mod, "anzeigen": list(M.GEWINNSPIEL)}
+        mod = {**mod, "anzeigen": gewinnspiel_anzeigen(f)}
     anz_html, vorschau_html, alle = anzeigen_html({**f, "_fotos_da": fotos, "_kampagne": bool(f.get("_gs"))}, mod)
     f["meta_anzeigen_md"] = meta_md(f, alle)
     an = ziel / "anzeigen"
