@@ -814,6 +814,18 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   uhr('2027-04-16 08:00'); m0 = mails.length; G.taeglich();
   const zg = mails.slice(m0).find(x => x.subject.includes('Gewinnspiel'));
   pruefe(zg && zg.htmlBody.includes('Gina Gewinn') && zg.htmlBody.includes('Wimpern-Neuset (Wert 145 €):</b> Gina') && zg.htmlBody.includes('weniger Teilnehmende') && zg.htmlBody.includes('1 Teilnehmende') && !zg.htmlBody.includes('Nora') && !zg.htmlBody.includes('Zora'), 'Ziehung nur unter denen, die im Zeitraum erschienen sind');
+  // Offenes Gewinnspiel: ohne Schluss, Ziehung jeden 1. für den Vormonat
+  pruefe(T('gewinnspiel', { gewinn: 'eine gratis Wimpernverlängerung (Wert 145 €)\n2 × 20 % auf deinen nächsten Termin', ab: '2027-04-20', bis: '', ziehung: '' }).ok && !G.kunde_('kate-cosmetics').schluss, 'Gewinnspiel ohne Ende gespeichert');
+  pruefe(!T('gewinnspiel', { gewinn: 'eine gratis Wimpernverlängerung', ab: '2027-04-20', bis: '2027-05-01', ziehung: '' }).ok, 'fester Schluss ohne Ziehungstag → Hinweis');
+  uhr('2027-04-25 10:00');
+  const og = get({ a: 'slots', k: 'kate-cosmetics', l: 'Powder Brows' }).gewinnspiel;
+  pruefe(og && og.offen && og.bis === '' && G.teilnahmeSeite_({ k: 'kate-cosmetics' }).html.includes('ohne festes Ende'), 'Offen: Banner ohne Enddatum, Teilnahmebedingungen „ohne festes Ende“');
+  blaetter.Termine.appendRow(G.zeileNachKopf_(G.tabelle_('Termine'), { 'ID': 'G4', 'Eingang': berlin('2027-04-21 09:00'), 'Kunde': 'kate-cosmetics', 'Art': 'Online-Termin', 'Name': 'Olga Offen', 'Telefon': '0151 77778888', 'Stand': 'erschienen', 'Termin': berlin('2027-04-28 10:00') }));
+  uhr('2027-04-30 08:00'); m0 = mails.length; G.taeglich();
+  pruefe(!mails.slice(m0).some(x => x.subject.includes('Gewinnspiel KateCosmetics') || x.subject.includes('Gewinnspiel Kate')), 'Offen: keine Ziehung mitten im Monat');
+  uhr('2027-05-01 08:00'); m0 = mails.length; G.taeglich();
+  const om = mails.slice(m0).find(x => x.subject.includes('Gewinnspiel') && x.subject.includes('April'));
+  pruefe(om && om.htmlBody.includes('Olga Offen') && !om.htmlBody.includes('Gina'), 'Offen: am 1. Ziehung für den Vormonat, nur ab Start');
   G.neuerKunde_(Object.assign({}, basis, { betrieb: 'Praxis Test', behandler: 'Arzt/Ärztin', angebot: 'Faltenbehandlung', nk_text: 'Beratung 20 Minuten', nk_leistung: 'Beratung', nk_normal: '', leistungen: [{ name: 'Beratung', minuten: '20' }] }), G.einst_());
   pruefe(!G.teamAktion('praxis-test', G.teamToken_(G.einst_(), 'praxis-test'), 'gewinnspiel', { gewinn: '1 × Behandlung', ab: '2027-04-01', bis: '2027-04-02', ziehung: '2027-04-03' }).ok, 'Ärzte: Gewinnspiel gesperrt (Heilmittelwerbegesetz)');
 }

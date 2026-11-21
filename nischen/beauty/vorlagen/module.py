@@ -465,20 +465,23 @@ ANGEBOT_ANZEIGE = {"id": "n1-angebot", "stil": "c", "foto": "foto-5", "leistung"
 
 # Gewinnspiel-Anzeigen: nur wo regeln.verlosung an ist UND in der Zentrale ein Gewinnspiel eingetragen ist.
 # Die Bedingung (Termin buchen UND hinkommen) steht als Unterzeile auf dem Bild (BGH I ZR 64/07), alle Pflichtangaben im Anzeigentext.
-GEWINNSPIEL_TEXT = ("🎁 Gewinnspiel bei {{betrieb}} in {{ort}}: Hauptgewinn {{gs_haupt}}{{gs_weitere_satz}}.\n"
-                    "So sind Sie im Lostopf: bis {{gs_bis}} Ihren ersten Termin online buchen und hinkommen. Der Termin kostet den normalen Preis.\n"
-                    "Ab 18, ein Los pro Person. Ziehung am {{gs_ziehung}} unter allen, die zu ihrem Termin gekommen sind. Teilnahmebedingungen: {{gs_tnb}}\n"
+GEWINNSPIEL_TEXT = ("🎁 Gewinnspiel bei {{betrieb}} in {{ort}}: Gewinne {{gs_haupt}}!{{gs_weitere_satz}}\n"
+                    "So bist du im Lostopf: {{gs_ablauf}} Der Termin kostet den normalen Preis.\n"
+                    "Ab 18, ein Los pro Person. {{gs_ziehung_satz}} Teilnahmebedingungen: {{gs_tnb}}\n"
                     "Diese Aktion steht in keiner Verbindung zu Meta und wird nicht von Meta gesponsert oder organisiert.\n👉 Jetzt Termin buchen.")
+# Fassung 3 (Nutzer 21.11.2026): Gewinnspiel ist die Hauptschiene. Aufs Bild nur: „Gewinnspiel“, Hauptgewinn GROSS oben,
+# darunter die weiteren Gewinne in einer Zeile, Knopf, und ganz klein die Bedingung (muss rechtlich auf die Anzeige, BGH I ZR 64/07).
+# Drei Anzeigen = drei Bilder, damit Meta sie als verschiedene Motive ausspielt.
 GEWINNSPIEL = [
-    {"stil": "b", "foto": "foto-8", "kicker": "Gewinnspiel", "h1": "Gewinnen Sie: <em>{{gs_haupt_kurz}}</em>",
-     "sub": "Im Lostopf: wer bis {{gs_bis_kurz}} bucht und zum Termin kommt.", "cta": "Termin buchen",
-     "primaer": GEWINNSPIEL_TEXT, "headline": "Gewinnen: {{gs_haupt_kurz}}", "beschreibung": "Mit Ihrem Termin im Lostopf."},
-    {"stil": "c", "foto": "foto-7", "kicker": "Gewinnspiel", "h1": "{{gs_anzahl}} Gewinne. <em>Jeder Termin zählt.</em>",
-     "sub": "Im Lostopf: wer bis {{gs_bis_kurz}} bucht und zum Termin kommt.", "cta": "Termin buchen",
-     "primaer": GEWINNSPIEL_TEXT, "headline": "{{gs_anzahl}} Gewinne bei {{betrieb}}", "beschreibung": "Teilnahme bis {{gs_bis_kurz}}."},
-    {"stil": "a", "foto": "foto-5", "leistung": "{{nk_leistung}}", "kicker": "Neukundinnen", "h1": "{{nk_text}}",
-     "sub": "Plus Gewinnchance: Termin bis {{gs_bis_kurz}} wahrnehmen.", "cta": "Termin buchen",
-     "primaer": "{{nk_text}} bei {{betrieb}} in {{ort}}.{{nk_normal_satz}}\n" + GEWINNSPIEL_TEXT, "headline": "{{nk_text}}", "beschreibung": "Plus Gewinnchance bis {{gs_bis_kurz}}."},
+    {"id": "g1-hauptgewinn", "stil": "g", "foto": "foto-5", "kicker": "Gewinnspiel", "h1": "Gewinne {{gs_haupt_kurz}}",
+     "sub": "{{gs_weitere_kurz}}", "fine": "{{gs_lostopf}}", "cta": "Jetzt Termin buchen",
+     "primaer": GEWINNSPIEL_TEXT, "headline": "Gewinne {{gs_haupt_kurz}}", "beschreibung": "Mit deinem Termin im Lostopf."},
+    {"id": "g2-behandlung", "stil": "g", "foto": "foto-1", "kicker": "{{gs_kicker_zeit}}", "h1": "Gewinne {{gs_haupt_kurz}}",
+     "sub": "{{gs_weitere_kurz}}", "fine": "{{gs_lostopf}}", "cta": "Jetzt Termin buchen",
+     "primaer": GEWINNSPIEL_TEXT, "headline": "Gewinne {{gs_haupt_kurz}}", "beschreibung": "{{gs_kicker_zeit}}."},
+    {"id": "g3-geschenk", "stil": "g", "foto": "foto-8", "kicker": "{{gs_anzahl}} Gewinne", "h1": "Gewinne {{gs_haupt_kurz}}",
+     "sub": "{{gs_weitere_kurz}}", "fine": "{{gs_lostopf}}", "cta": "Jetzt Termin buchen",
+     "primaer": GEWINNSPIEL_TEXT, "headline": "{{gs_anzahl}} Gewinne bei {{betrieb}}", "beschreibung": "Mit deinem Termin im Lostopf."},
 ]
 
 ALLGEMEIN = {

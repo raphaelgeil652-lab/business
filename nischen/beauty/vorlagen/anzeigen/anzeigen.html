@@ -29,6 +29,19 @@ h1.lang{font-size:68px;}
 .c{background:var(--soft);color:var(--ink)}.c .kicker,.c em,.c .cta span{color:var(--accent)}.c .sub{color:var(--ink2)}.c .fine{color:var(--muted)}.c .cta{background:var(--accent);color:#fff}.c .cta span{color:#fff}
 .d{background:#FFFFFF;color:var(--ink)}.d .kicker,.d em,.d .cta span{color:var(--accent)}.d .sub{color:var(--ink2)}.d .fine{color:var(--muted)}.d .cta{background:var(--accent);color:#fff}.d .cta span{color:#fff}
 .e{background:var(--accent);color:#FFFFFF}.e .kicker,.e .cta span{color:#FFFFFF;opacity:.85}.e em{color:#FFFFFF}.e .sub{color:#F2EEEA}.e .fine{color:#E6DED8;opacity:.85}.e .cta{background:#fff;color:var(--accent)}.e .cta span{color:var(--accent);opacity:1}
+/* Stil g: Gewinnspiel. Foto über die ganze Fläche, oben dunkler Schleier mit dem Hauptgewinn, unten Knopf und Bedingung. */
+.g{background:#1C1512;color:#fff}
+.g .photo{height:1350px;}
+.g::before{content:"";position:absolute;left:0;right:0;top:0;height:760px;background:linear-gradient(rgba(18,12,10,.78),rgba(18,12,10,.55) 55%,rgba(18,12,10,0));z-index:1;}
+.g::after{content:"";position:absolute;left:0;right:0;bottom:0;height:380px;background:linear-gradient(rgba(18,12,10,0),rgba(18,12,10,.7));z-index:1;}
+.g .band{top:0;bottom:auto;padding:76px 76px 0;z-index:2;}
+.g .kicker{display:inline-block;background:var(--accent);color:#fff;padding:12px 22px;border-radius:999px;font-size:26px;letter-spacing:.12em;}
+.g h1{color:#fff;font-size:112px;line-height:.98;margin-top:28px;max-width:930px;}
+.g h1.lang{font-size:92px;}
+.g .sub{color:#fff;font-size:46px;font-weight:700;margin-top:30px;max-width:940px;line-height:1.25;white-space:pre-line;}
+.g .cta{z-index:2;left:76px;right:auto;bottom:128px;background:#fff;color:#1C1512;font-size:36px;padding:26px 42px;}
+.g .cta span{color:var(--accent);}
+.g .fine{display:block;position:absolute;line-height:1.35;z-index:2;left:76px;right:76px;bottom:62px;font-size:24px;color:#fff;opacity:.9;}
 </style></head><body>
 {{anzeigen_html}}
 </body></html>

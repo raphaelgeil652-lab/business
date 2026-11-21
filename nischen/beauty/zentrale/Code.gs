@@ -246,7 +246,7 @@ function slotsAnfrage_(p) {
   var gs = gewinnspiel_(k, new Date());
   if (gs) {
     var gl = gewinneListe_(k), weitere = gl.slice(1).reduce(function (n, g) { return n + g.anzahl; }, 0) + (gl[0] ? gl[0].anzahl - 1 : 0);
-    r.gewinnspiel = { gewinn: gl[0] ? gl[0].text : k.gewinn, weitere: weitere, gewinne: gewinneText_(gl), bis: datumKurz_(k.schluss),
+    r.gewinnspiel = { gewinn: gl[0] ? gl[0].text : k.gewinn, weitere: weitere, gewinne: gewinneText_(gl), bis: k.schluss ? datumKurz_(k.schluss) : '', offen: !k.schluss,
       bedingungen: portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel) };
   }
   cache.put(schl, JSON.stringify(r), 90);
@@ -1125,22 +1125,28 @@ function taeglich() { sicher_('Täglich', function () {
   // Neue Studios: erinnern, „alles da“ melden
   sicher_('Studios nachfassen', function () { studiosNachfassen_(s, jetzt); });
   // Verlosungen
-  kunden_().filter(function (k) { return k.aktiv && k.ziehung && Utilities.formatDate(k.ziehung, s.tz, 'yyyy-MM-dd') === heute; }).forEach(function (k) {
+  var monatAnf = new Date(jetzt.getFullYear(), jetzt.getMonth(), 1), vormonat = new Date(jetzt.getFullYear(), jetzt.getMonth() - 1, 1);
+  kunden_().filter(function (k) {
+    if (!k.aktiv) return false;
+    if (k.ziehung) return Utilities.formatDate(k.ziehung, s.tz, 'yyyy-MM-dd') === heute;
+    return k.gewinn && !k.schluss && k.gsAb && jetzt.getDate() === 1 && k.gsAb < monatAnf;  // offen: jeden Monat am 1.
+  }).forEach(function (k) {
     var merk = 'gezogen_' + k.kuerzel + '_' + heute;
     if (props.getProperty(merk)) return;
-    var t = tabelle_('Termine'), bis = k.schluss ? new Date(k.schluss.getTime() + TAG) : jetzt;
+    var offen = !k.ziehung, von = offen ? new Date(Math.max(k.gsAb.getTime(), vormonat.getTime())) : k.gsAb;
+    var t = tabelle_('Termine'), bis = offen ? monatAnf : (k.schluss ? new Date(k.schluss.getTime() + TAG) : jetzt);
     var teilnehmer = eindeutig_(t.zeilen.filter(function (z) {
       var ein = datum_(t.get(z, 'Eingang'));
       if (t.get(z, 'Kunde') !== k.kuerzel) return false;
       if (String(t.get(z, 'Art')) === 'Verlosung') return String(t.get(z, 'Stand')) !== 'Fake' && ein && ein < bis;
       var st = datum_(t.get(z, 'Termin')), stand = String(t.get(z, 'Stand'));
-      return k.gsAb && st && st >= k.gsAb && st < bis && (stand === 'erschienen' || stand === 'Auftrag');
+      return von && st && st >= von && st < bis && (stand === 'erschienen' || stand === 'Auftrag');
     }).map(function (z) { return { name: t.get(z, 'Name'), telefon: t.get(z, 'Telefon'), email: t.get(z, 'E-Mail') }; }));
     var preise = [];
     gewinneListe_(k).forEach(function (gw) { for (var i = 0; i < gw.anzahl; i++) preise.push(gw.text); });
     if (!preise.length) preise = [k.gewinn || 'Gewinn'];
     var g = ziehen_(teilnehmer, preise.length, Math.random);
-    mail_(s, { to: k.email + ',' + s.an, absender: 'Clickculture Zentrale', subject: 'Gewinnspiel ' + k.betrieb + ': die Gewinnerinnen',
+    mail_(s, { to: k.email + ',' + s.an, absender: 'Clickculture Zentrale', subject: 'Gewinnspiel ' + k.betrieb + ': die Gewinnerinnen' + (offen ? ' (' + MONATE[vormonat.getMonth()] + ')' : ''),
       html: rahmen_('<p>Heute ist Ziehung. Das System hat zufällig gezogen (jede Telefonnummer zählt einmal, ' + teilnehmer.length + ' Teilnehmende, alle sind zu ihrem Termin gekommen):</p>' +
         (g.length ? '<ol>' + g.map(function (x, i) { return '<li><b>' + esc_(preise[i]) + ':</b> ' + esc_(x.name) + ' · ' + esc_(x.telefon) + (x.email ? ' · ' + esc_(x.email) : '') + '</li>'; }).join('') + '</ol>' : '<p>Keine Teilnehmenden.</p>') +
         (g.length && g.length < preise.length ? '<p>Es gab weniger Teilnehmende als Gewinne. Die übrigen Gewinne bleiben beim Studio.</p>' : '') +
@@ -2140,7 +2146,7 @@ function studioDaten_(k, s) {
     impressum: k.impressum, datenschutz: k.datenschutz, betreuer: k.betreuer, zentrale: basis_(s),
     angebot: k.nk.text ? { text: k.nk.text, leistung: k.nk.leistung, normal: k.nk.normal, bis: k.nk.bis ? datumKurz_(k.nk.bis) : '' } : undefined,
     gewinnspiel: k.gewinn && regelModul_(k).regeln.verlosung ? { gewinne: gewinneText_(gewinneListe_(k)), ab: k.gsAb ? datumKurz_(k.gsAb) : '', bis: k.schluss ? datumKurz_(k.schluss) : '',
-      ziehung: k.ziehung ? datumKurz_(k.ziehung) : '', bedingungen: portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel) } : undefined,
+      ziehung: k.ziehung ? datumKurz_(k.ziehung) : 'monatlich', offen: !k.schluss, bedingungen: portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel) } : undefined,
     agentur: { name: s.agentur_name || 'Clickculture', email: s.agentur_email || '', telefon: s.agentur_telefon || '' } };
 }
 
@@ -2173,8 +2179,8 @@ function gewinneText_(liste) { return liste.map(function (g) { return (g.anzahl 
 
 /** Läuft gerade ein Gewinnspiel mit Terminbuchung? (Start ≤ heute ≤ Teilnahmeschluss) */
 function gewinnspiel_(k, jetzt) {
-  if (!k.gewinn || !k.gsAb || !k.schluss || !regelModul_(k).regeln.verlosung) return false;
-  return jetzt >= k.gsAb && jetzt < new Date(k.schluss.getTime() + TAG);
+  if (!k.gewinn || !k.gsAb || !regelModul_(k).regeln.verlosung) return false;
+  return jetzt >= k.gsAb && (!k.schluss || jetzt < new Date(k.schluss.getTime() + TAG));
 }
 
 /** Teilnahmebedingungen, aus den Daten des Studios erzeugt. */
@@ -2186,11 +2192,14 @@ function teilnahmeSeite_(p) {
     li('<b>Gewinne:</b><ul style="padding-left:18px;margin:4px 0;">' + gewinneText_(gewinneListe_(k)).map(function (g, i) { return '<li>' + (i === 0 ? '<b>Hauptgewinn:</b> ' : '') + esc_(g) + '</li>'; }).join('') +
       '</ul>Jede Person kann höchstens einen Gewinn erhalten. Gezogen wird zuerst der Hauptgewinn, dann die weiteren Gewinne in dieser Reihenfolge. ' +
       'Rabatte gelten für eine Behandlung nach Wahl in unserem Studio innerhalb von 3 Monaten und lassen sich nicht mit anderen Aktionen kombinieren. Keine Barauszahlung, nicht übertragbar.') +
-    li('<b>Zeitraum:</b> ' + datumKurz_(k.gsAb) + ' bis ' + datumKurz_(k.schluss) + '.') +
-    li('<b>So nehmen Sie teil:</b> Sie buchen im Zeitraum über unsere Terminseite online einen Termin, bestätigen ihn per E-Mail und nehmen ihn bis zum ' +
-      datumKurz_(k.schluss) + ' wahr. Jede Person nimmt einmal teil, egal wie viele Termine. Abgesagte oder nicht wahrgenommene Termine zählen nicht.') +
+    (k.schluss ? li('<b>Zeitraum:</b> ' + datumKurz_(k.gsAb) + ' bis ' + datumKurz_(k.schluss) + '.') :
+      li('<b>Zeitraum:</b> ab ' + datumKurz_(k.gsAb) + ', ohne festes Ende. Wir verlosen jeden Monat neu. Endet das Gewinnspiel, steht das vorher hier; Termine bis dahin nehmen an der letzten Ziehung teil.')) +
+    li('<b>So nehmen Sie teil:</b> Sie buchen über unsere Terminseite online einen Termin, bestätigen ihn per E-Mail und nehmen ihn ' +
+      (k.schluss ? 'bis zum ' + datumKurz_(k.schluss) + ' ' : '') + 'wahr. Jede Person ist ' + (k.schluss ? 'einmal' : 'pro Monat einmal') +
+      ' im Lostopf, egal wie viele Termine. Abgesagte oder nicht wahrgenommene Termine zählen nicht. Der Termin kostet den normalen Preis.') +
     li('<b>Wer darf mitmachen:</b> Personen ab 18 Jahren. Ausgeschlossen sind Mitarbeitende des Studios und ihre Angehörigen.') +
-    li('<b>Ziehung:</b> am ' + datumKurz_(k.ziehung) + ' per Zufall unter allen Teilnehmenden. Die Gewinnerinnen und Gewinner werden per E-Mail oder Telefon benachrichtigt und können den Gewinn innerhalb von 3 Monaten einlösen.') +
+    li('<b>Ziehung:</b> ' + (k.ziehung ? 'am ' + datumKurz_(k.ziehung) + ' per Zufall unter allen Teilnehmenden.' :
+      'jeden Monat am 1. per Zufall unter allen, die im Vormonat ihren Termin wahrgenommen haben. In jeder Ziehung werden alle oben genannten Gewinne verlost.') + ' Die Gewinnerinnen und Gewinner werden per E-Mail oder Telefon benachrichtigt und können den Gewinn innerhalb von 3 Monaten einlösen.') +
     li('<b>Daten:</b> Für das Gewinnspiel nutzen wir die Angaben aus Ihrer Terminbuchung, nur für die Ziehung und die Benachrichtigung. Mehr in unserer ' +
       (k.datenschutz ? '<a href="' + esc_(k.datenschutz) + '">Datenschutzerklärung</a>' : 'Datenschutzerklärung') + '.') +
     li('Dieses Gewinnspiel steht in keiner Verbindung zu Facebook oder Instagram und wird von Meta weder gesponsert, unterstützt noch organisiert.') +
@@ -2321,13 +2330,13 @@ function teamStudio_(kz, s) {
     var gs = gewinnspiel_(k, new Date());
     html += '<div class="box"><h2>Gewinnspiel mit Terminbuchung</h2><p class="k">Teilnahme: Wer im Zeitraum online einen Termin bucht, bestätigt und <b>wahrnimmt</b>. ' +
       'Die Terminseite zeigt dann von selbst ein Banner, die Zentrale zieht am Tag der Ziehung und schickt dem Studio die Gewinnerin.</p>' +
-      (gs ? '<p>✓ Läuft bis ' + datumKurz_(k.schluss) + ': ' + esc_(gewinneText_(gewinneListe_(k)).join(' · ')) + ' · <a href="' + esc_(portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel)) + '" target="_blank">Teilnahmebedingungen</a></p>' : '') +
+      (gs ? '<p>✓ Läuft ' + (k.schluss ? 'bis ' + datumKurz_(k.schluss) : 'offen, Ziehung jeden 1. für den Vormonat') + ': ' + esc_(gewinneText_(gewinneListe_(k)).join(' · ')) + ' · <a href="' + esc_(portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel)) + '" target="_blank">Teilnahmebedingungen</a></p>' : '') +
       form('gewinnspiel', '<label>Was wird verlost? Ein Gewinn pro Zeile, der Hauptgewinn zuerst (eine Behandlung mit Wert, danach z. B. Rabatte)' +
         '<textarea name="gewinn" required rows="4" placeholder="Wimpernverlängerung Volumen Neuset (Wert 145 €)\n2 × 30 % Rabatt auf eine Behandlung\n3 × 20 % Rabatt auf eine Behandlung" style="width:100%;box-sizing:border-box;font-size:16px;padding:9px;">' +
         esc_(gewinneText_(gewinneListe_(k)).join('\n')) + '</textarea></label>' +
         '<div class="zwei"><label>Start<input type="date" name="ab" required value="' + (k.gsAb ? Utilities.formatDate(k.gsAb, s.tz, 'yyyy-MM-dd') : '') + '"></label>' +
-        '<label>Teilnahmeschluss (letzter Termin)<input type="date" name="bis" required value="' + (k.schluss ? Utilities.formatDate(k.schluss, s.tz, 'yyyy-MM-dd') : '') + '"></label></div>' +
-        '<label>Tag der Ziehung<input type="date" name="ziehung" required value="' + (k.ziehung ? Utilities.formatDate(k.ziehung, s.tz, 'yyyy-MM-dd') : '') + '"></label>', 'Gewinnspiel speichern') +
+        '<label>Teilnahmeschluss (leer = offen, jeden Monat neu)<input type="date" name="bis" value="' + (k.schluss ? Utilities.formatDate(k.schluss, s.tz, 'yyyy-MM-dd') : '') + '"></label></div>' +
+        '<label>Tag der Ziehung (nur bei festem Schluss; offen: jeden 1. für den Vormonat)<input type="date" name="ziehung" value="' + (k.ziehung ? Utilities.formatDate(k.ziehung, s.tz, 'yyyy-MM-dd') : '') + '"></label>', 'Gewinnspiel speichern') +
       (gs || k.gewinn ? form('gewinnspiel-aus', '', 'Gewinnspiel beenden', 'Gewinnspiel wirklich beenden? Das Banner verschwindet sofort.', true) : '') + '</div>';
   }
   // 5 · Rechnungen
@@ -2432,12 +2441,14 @@ function teamAktion_(kz, s, aktion, d) {
   if (aktion === 'gewinnspiel') {
     if (!regelModul_(k).regeln.verlosung) return { ok: false, meldung: 'Für dieses Studio sind Gewinnspiele in der Werbung nicht erlaubt.' };
     var ab = datum_(txt(d.ab)), bis = datum_(txt(d.bis)), zi = datum_(txt(d.ziehung));
-    if (txt(d.gewinn).length < 5 || !ab || !bis || !zi) return { ok: false, meldung: 'Bitte Gewinn, Start, Teilnahmeschluss und Ziehung eintragen.' };
-    if (!(ab <= bis && bis < zi)) return { ok: false, meldung: 'Reihenfolge: Start ≤ Teilnahmeschluss < Ziehung (die Ziehung nach dem letzten Termin).' };
+    if (txt(d.gewinn).length < 5 || !ab) return { ok: false, meldung: 'Bitte Gewinne und Start eintragen.' };
+    if (bis && !zi) return { ok: false, meldung: 'Mit festem Teilnahmeschluss bitte auch den Tag der Ziehung eintragen. Oder beides leer lassen: dann offen, jeden Monat neu.' };
+    if (!bis) zi = '';
+    if (bis && !(ab <= bis && bis < zi)) return { ok: false, meldung: 'Reihenfolge: Start ≤ Teilnahmeschluss < Ziehung (die Ziehung nach dem letzten Termin).' };
     if (/botox|kostenlos.*behandlung.*ärzt/i.test(txt(d.gewinn))) return { ok: false, meldung: 'Diesen Gewinn bitte anders formulieren.' };
     var gwl = txt(d.gewinn).split(/\n/).map(function (x) { return x.replace(/^[-•*\s]+/, '').trim(); }).filter(String);
     if (!regelModul_(k).regeln.rabatt && gwl.some(function (x) { return /%|rabatt|gutschein/i.test(x); })) return { ok: false, meldung: 'Für dieses Studio sind Rabatte als Gewinn nicht erlaubt.' };
-    kundeSetzen_(kz, { 'Gewinn': gwl.join(' • '), 'Gewinnspiel ab': ab, 'Teilnahmeschluss': bis, 'Ziehung am': zi });
+    kundeSetzen_(kz, { 'Gewinn': gwl.join(' • '), 'Gewinnspiel ab': ab, 'Teilnahmeschluss': bis || '', 'Ziehung am': zi || '' });
     cacheLeeren_(kunde_(kz));
     return { ok: true, meldung: 'Gespeichert. Das Banner erscheint ab dem Start auf der Terminseite. Für die Anzeigen: Claude schreiben „Gewinnspiel-Kampagne für ' + kz + '“.' };
   }

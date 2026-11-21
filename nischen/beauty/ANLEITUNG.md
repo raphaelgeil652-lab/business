@@ -140,8 +140,11 @@ Die Mail kommt von selbst, sobald das Studio alles für Seite und Anzeigen erled
 ## Gewinnspiel (nur wo erlaubt, nicht bei Ärzten und Zahnärzten)
 
 Team-Seite → Kasten **„Gewinnspiel“**: ein Gewinn pro Zeile, der Hauptgewinn zuerst (eine Behandlung mit Wert), danach z. B.
-„2 × 30 % Rabatt auf eine Behandlung“ und „3 × 20 % Rabatt auf eine Behandlung“. Dazu Start, Teilnahmeschluss, Ziehung.
-Im Lostopf ist nur, wer im Zeitraum einen Termin bucht **und hinkommt**. Das steht auf jeder Gewinnspiel-Anzeige als Unterzeile.
+„2 × 20 % auf deinen nächsten Termin“ und „3 × 40 % auf deinen nächsten Termin“. Den Hauptgewinn so schreiben, wie er
+auf der Anzeige stehen soll: „eine gratis Wimpernverlängerung (Wert 145 €)“ → Anzeige „Gewinne eine gratis Wimpernverlängerung“.
+Nur den Start eintragen, Teilnahmeschluss und Ziehung **leer lassen**: Dann läuft das Gewinnspiel **offen**, ohne Enddatum, und die
+Zentrale zieht **jeden 1. des Monats** unter allen, die im Vormonat gekommen sind. Gewinnspiel ist bei uns die Hauptkampagne.
+Im Lostopf ist nur, wer einen Termin bucht **und hinkommt**. Das steht auf jeder Gewinnspiel-Anzeige als Unterzeile.
 Die Terminseite zeigt das Banner, die Teilnahmebedingungen entstehen von selbst, am Tag der Ziehung kommt die Mail mit allen
 Gewinnerinnen. Danach den neuen „Text für Claude“ schicken: Claude baut die Gewinnspiel-Kampagne (3 Anzeigen) von selbst.
 

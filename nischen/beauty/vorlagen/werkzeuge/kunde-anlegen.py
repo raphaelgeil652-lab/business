@@ -198,12 +198,26 @@ def felder(d):
     anzahl = lambda x: int(m.group(1)) if (m := re.match(r"^(\d+)\s*[x×]", x)) else 1
     f["gs_haupt"] = re.sub(r"^\d+\s*[x×]\s*", "", gw[0]) if gw else ""
     f["gs_haupt_kurz"] = re.sub(r"\s*\(.*?\)", "", f["gs_haupt"]).strip()
-    f["gs_weitere_satz"] = (" und " + ", ".join(gw[1:])) if len(gw) > 1 else ""
+    f["gs_weitere_satz"] = (" Dazu: " + ", ".join(gw[1:]) + ".") if len(gw) > 1 else ""
+    # Kurzform fürs Bild: „+ 2× 20 % + 3× 40 % auf deinen nächsten Termin“ (gleiche Endung nur einmal)
+    teile = [re.match(r"^(?:(\d+)\s*[x×]\s*)?(\d+\s*%)\s*(.*)$", x) for x in gw[1:]]
+    if teile and all(teile) and len({t.group(3) for t in teile}) == 1:
+        f["gs_weitere_kurz"] = " ".join(f"+ {t.group(1) or 1}×\u00a0{t.group(2)}" for t in teile) + ("\n" + teile[0].group(3) if teile[0].group(3) else "")
+    else:
+        f["gs_weitere_kurz"] = " ".join("+ " + x for x in gw[1:])
     f["gs_anzahl"] = str(sum(anzahl(x) for x in gw)) if gw else ""
     f["gs_bis"] = gs.get("bis") or ""
     f["gs_bis_kurz"] = (gs.get("bis") or "")[:6]
     f["gs_ziehung"] = gs.get("ziehung") or ""
     f["gs_tnb"] = gs.get("bedingungen") or "[Link zu den Teilnahmebedingungen]"
+    offen = not gs.get("bis")
+    f["gs_lostopf"] = ("Im Lostopf: wer einen Termin bucht und hinkommt. Jeden Monat neu verlost. Ab 18." if offen
+                       else f"Im Lostopf: wer bis {f['gs_bis_kurz']} einen Termin bucht und hinkommt. Ab 18.")
+    f["gs_kicker_zeit"] = "Jeden Monat neu" if offen else f"Nur bis {f['gs_bis_kurz']}"
+    f["gs_ablauf"] = ("deinen ersten Termin online buchen und hinkommen." if offen
+                      else f"bis {f['gs_bis']} deinen ersten Termin online buchen und hinkommen.")
+    f["gs_ziehung_satz"] = ("Wir verlosen jeden Monat neu, am 1. unter allen, die im Vormonat zu ihrem Termin gekommen sind." if offen
+                            else f"Ziehung am {f['gs_ziehung']} unter allen, die zu ihrem Termin gekommen sind.")
     f["zielgruppe_alter"] = mod["zielgruppe"]["alter"]
     f["zielgruppe_geschlecht"] = mod["zielgruppe"]["geschlecht"]
     fa = mod["farben"]
@@ -308,12 +322,13 @@ def anzeigen_html(f, mod):
         t["h1"] = re.sub(r"(\+|\d\.) ", "\\1\u00a0", t["h1"])
         t["h1"] = re.sub(r" (€|%)", "\u00a0\\1", t["h1"])
         t["sub"] = re.sub(r" (€|%)", "\u00a0\\1", re.sub(r"(\+|\d\.) ", "\\1\u00a0", t["sub"]))
-        lang = len(re.sub(r"<[^>]+>", "", t["h1"])) > 40
+        lang = len(re.sub(r"<[^>]+>", "", t["h1"])) > (34 if a["stil"] == "g" else 40)
         fd = f.get("_fotos_da") or {}
         foto = a["foto"] if fd.get(a["foto"], True) else FOTO_ERSATZ.get(a["foto"], "foto-1")
         teile.append(f'<div class="ad {a["stil"]}" data-creative="{a["id"]}">\n <div class="photo" style="background-image:url(fotos/{foto}.jpg)"></div>\n'
                      f' <div class="band"><p class="kicker">{esc(t["kicker"])}</p><h1{' class="lang"' if lang else ''}>{t["h1"]}</h1><p class="sub">{esc(t["sub"])}</p></div>\n'
-                     f' <div class="cta">{esc(t["cta"])} <span>→</span></div>\n</div>')
+                     f' <div class="cta">{esc(t["cta"])} <span>→</span></div>\n'
+                     + (f' <p class="fine">{esc(t["fine"])}</p>\n' if a["stil"] == "g" and t["fine"] else '') + '</div>')
         vorschau.append(f'  <div class="ad"><div class="top"><div class="pic"></div><div class="who"><b>{esc(f["betrieb"])}</b><span>Gesponsert · 🌐</span></div></div>\n'
                         f'    <div class="txt">{esc(t["primaer"])}</div>\n    <img src="creatives/{a["id"]}.png" alt="{esc(a["id"])}">\n'
                         f'    <div class="card"><div><span class="u">{esc(f["landingpage_domain"])}</span><b>{esc(t["headline"])}</b><small>{esc(t["beschreibung"])}</small></div>'
@@ -474,8 +489,10 @@ def main():
     offen = re.findall(r"\[[A-ZÄÖÜ][^\]\n]{2,60}\]", " ".join(p.read_text(encoding="utf-8") for p in lp.glob("*.html")))
     print("✓ seite/ (" + ", ".join(sorted(p.name for p in lp.glob("*.html"))) + ")")
 
-    # Anzeigen
-    anz_html, vorschau_html, alle = anzeigen_html({**f, "_fotos_da": fotos}, mod)
+    # Anzeigen (läuft ein Gewinnspiel, sind die Gewinnspiel-Anzeigen die Hauptkampagne)
+    if f.get("_gs"):
+        mod = {**mod, "anzeigen": list(M.GEWINNSPIEL)}
+    anz_html, vorschau_html, alle = anzeigen_html({**f, "_fotos_da": fotos, "_kampagne": bool(f.get("_gs"))}, mod)
     f["meta_anzeigen_md"] = meta_md(f, alle)
     an = ziel / "anzeigen"
     shutil.rmtree(an, ignore_errors=True)
@@ -503,16 +520,6 @@ def main():
         kopiere_ordner(an / "creatives", va / "creatives")
     (va / "vorschau.html").write_text((an / "vorschau.html").read_text(encoding="utf-8").replace("../seite/termin.html", "../termin.html")
                                       .replace("<head>", '<head><meta name="robots" content="noindex">', 1), encoding="utf-8")
-
-    # Gewinnspiel-Kampagne von selbst, wenn in der Zentrale eins eingetragen ist (nur wo erlaubt)
-    if f.get("_gs"):
-        gsk = {"name": "Gewinnspiel", "ziel": f"Gewinnspiel bis {f['gs_bis']}: Hauptgewinn {f['gs_haupt']}{f['gs_weitere_satz']}. Teilnahme = ersten Termin buchen und wahrnehmen.",
-               "budget": round(zahl(d.get("budget"), 0) / 2), "zielgruppe": "18 bis 55",
-               "anzeigen": [a for a in M.GEWINNSPIEL if f.get("_nk") or "{{nk_" not in json.dumps(a)]}
-        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as tf:
-            json.dump(gsk, tf, ensure_ascii=False)
-        erg = subprocess.run([sys.executable, str(HIER / "kampagne-neu.py"), f["slug"], tf.name], capture_output=True, text=True)
-        print((erg.stdout or erg.stderr).strip().splitlines()[-1] if (erg.stdout or erg.stderr).strip() else "! Gewinnspiel-Kampagne: keine Ausgabe")
 
     # Kampagnen-Anleitung und LIES-MICH
     kampagnen = fuellen((VORLAGEN / "texte" / "kampagnen.md").read_text(encoding="utf-8"), f)
