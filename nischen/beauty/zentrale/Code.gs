@@ -1783,16 +1783,16 @@ function aufgabeHtml_(a, k, s) {
       'Termine, die Sie dort selbst eintragen (Telefon, Instagram, Pause, Urlaub), sind für Online-Buchungen dann automatisch belegt.</p><ol>' +
       '<li><b>calendar.google.com</b> öffnen und mit dem Google-Konto anmelden, zu dem der Kalender gehört.</li>' +
       '<li>Links unter <b>„Meine Kalender“</b> mit der Maus auf diesen Kalender zeigen → rechts daneben erscheinen drei Punkte <b>⋮</b> → draufklicken → <b>„Einstellungen und Freigabe“</b>.</li>' +
-      '<li>Oben stehen <b>„Name“</b> und <b>„Beschreibung“</b>. <b>Dort nichts ändern und nichts eintragen</b>, beides ist für uns egal.</li>' +
+      '<li>Oben stehen <b>„Name“</b> und <b>„Beschreibung“</b>. Die brauchen wir nicht: einfach so lassen, die Beschreibung darf leer bleiben.</li>' +
       '<li>Nach unten scrollen bis zur Überschrift <b>„Für bestimmte Personen oder Gruppen freigeben“</b>. Direkt darunter steht <b>„+ Personen und Gruppen hinzufügen“</b> → draufklicken.</li>' +
       '<li>In das Feld diese Adresse eintragen (zum Kopieren antippen): <code onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent)">' + esc_(zentrale) + '</code></li>' +
       '<li>Darunter bei <b>„Berechtigungen“</b> aufklappen. Dort stehen fünf Möglichkeiten. Wählen Sie die <b>vierte: „Änderungen vornehmen und alle Details des Termins ansehen“</b>. ' +
       '<span class="k">Damit sehen wir, wann Sie belegt sind, und können Online-Termine eintragen und bei Absage wieder löschen. ' +
       'Die ersten drei reichen dafür nicht sicher aus, die fünfte („… Freigabe verwalten“) brauchen wir nicht.</span></li>' +
-      '<li>Auf <b>„Senden“</b> klicken.</li>' +
-      '<li>Ganz oben auf derselben Seite steht unter <b>„Kalendereinstellungen“</b> der Name des Kalenders. Weiter unten unter <b>„Kalender integrieren“</b> steht die <b>Kalender-ID</b>. ' +
-      'Beim Hauptkalender ist das Ihre Gmail-Adresse. Diese Adresse hier unten eintragen.</li></ol>' +
-      form('kalender', '<label>Kalender-ID (meist Ihre Gmail-Adresse)<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen') +
+      '<li>Auf <b>„Senden“</b> klicken. Fertig.</li></ol>' +
+      '<p>Jetzt hier unten auf <b>„Freigabe prüfen“</b> tippen. Ihre Gmail-Adresse steht schon drin. ' +
+      '<span class="k">Nur ändern, wenn Ihr Kalender zu einer anderen Gmail-Adresse gehört.</span></p>' +
+      form('kalender', '<label>Ihre Gmail-Adresse<input type="email" name="kalender" required value="' + esc_(k.kalender) + '"></label>', 'Freigabe prüfen') +
       '<p class="k">„Freigabe prüfen“ sagt sofort, ob es geklappt hat. Kommt „Noch keine Freigabe“: 1–2 Minuten warten und nochmal tippen.</p>';
   }
   if (a.id === 'meta') {
