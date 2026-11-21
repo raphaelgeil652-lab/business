@@ -1,43 +1,50 @@
 # Hilfe: Meta und Google mit dem Studio einrichten
 
-Zum Mitmachen am Telefon mit Bildschirm-Teilen (ca. 30 Minuten). Das Studio klickt, ihr sagt an.
+Bei Meta macht das Studio nur zwei kurze Dinge selbst (steht auf seiner Schritte-Seite), den Rest richtet ihr ein.
 So sehen Meta und Google im November 2026 aus. Heißt ein Knopf anders, das Nächstliegende nehmen.
-Dieselben Schritte stehen kürzer auf der Schritte-Seite des Studios.
 
-**Vorher klären (im Gespräch):** Wer im Studio hat ein Facebook-Profil? Wer hat die Firmenkarte zur Hand?
-Beides muss beim Termin da sein. Ohne Karte bleibt jede Kampagne im Entwurf.
+**Vorher klären (im Gespräch):** Hat die Inhaberin ein Facebook-Profil? Hat das Studio schon eine Facebook-Seite?
 
 ---
 
 ## Meta (Facebook und Instagram)
 
-**Grundregel:** Seite und Werbekonto gehören dem Studio. Ihr bekommt nur Zugriff als Partner.
-Ein Werbekonto, das in eurem Portfolio angelegt wurde, lässt sich nicht an das Studio übergeben, und eine Sperre
-eures Portfolios würde dann alle Studios treffen.
+**Grundregel:** Seite und Werbekonto gehören dem Studio. Darum legt ihr sie **im Portfolio des Studios** an, nie in
+eurem. Ein Werbekonto aus eurem Portfolio lässt sich nicht an das Studio übergeben, und eine Sperre eures Portfolios
+würde dann alle Studios treffen.
 
-1. **Facebook-Profil.** Die Inhaberin braucht ein echtes, persönliches Profil mit ihrem echten Namen. Hat sie keins:
-   facebook.com → **Neues Konto erstellen**. Keine erfundenen Profile, kein VPN: Meta sperrt so etwas.
-   Danach **Einstellungen → Kontenübersicht → Passwort und Sicherheit → Zweistufige Authentifizierung** einschalten.
-2. **Business-Portfolio.** business.facebook.com → **Portfolio erstellen**. Name des Studios, ihr Name, die geschäftliche E-Mail.
-   Die Angaben wie im Impressum.
-3. **Facebook-Seite.** Hat das Studio noch keine: im Portfolio **Einstellungen → Konten → Seiten → Hinzufügen → Neue
-   Facebook-Seite erstellen**. Kategorie: Laser „Kosmetikstudio“, Permanent Make-up „Permanent Make-up-Studio“,
-   Faltenbehandlung „Arzt“, Bleaching „Zahnarzt“. Ein Instagram-Konto ist nicht nötig: Die Anzeigen laufen auch auf
-   Instagram mit Name und Bild der Facebook-Seite.
-4. **Werbekonto.** **Einstellungen → Konten → Werbekonten → Hinzufügen → Neues Werbekonto erstellen**.
-   Zeitzone **Europe/Berlin**, Währung **EUR**. Beides lässt sich später **nicht** ändern. Wofür: **„Mein Unternehmen“**.
-   Danach im Werbekonto **Zahlungseinstellungen → Zahlungsmethode hinzufügen** → die Karte des Studios.
-5. **Werbetreibender und Zahler** (EU-Pflicht, sonst laufen keine Anzeigen): im Werbekonto bei den Einstellungen zur
-   Transparenz beide Male **das Studio** eintragen, nicht euch.
-6. **Partner hinzufügen.** **Einstellungen → Nutzer → Partner → Hinzufügen → „Gewähre einem Partner Zugriff auf
-   deine Assets“** → Business-ID `2264672317797144` → die **Seite** und das **Werbekonto** auswählen, jeweils
-   **volle Kontrolle**. Hat das Studio schon einen Datensatz (Pixel), den auch.
-7. Auf der Schritte-Seite: **„Erledigt, Partnerzugriff ist freigegeben“**.
+**Das Studio macht nur zwei Dinge** (steht so auf seiner Schritte-Seite, ohne Anruf):
 
-**Euer Teil danach** (die Mail der Zentrale sagt es auch): business.facebook.com → **euer** Portfolio →
-**Einstellungen → Konten → Werbekonten** → Konto des Studios → **Personen zuweisen** (euch beide, volle Kontrolle).
-Dasselbe bei **Seiten**. Ohne diesen Schritt seht ihr das Konto im Werbeanzeigenmanager nicht.
-Dann den Datensatz (Pixel) anlegen, wie in der Kampagnen-Anleitung beschrieben.
+1. **Business-Portfolio anlegen** (falls es noch keins hat): business.facebook.com → „Business-Portfolio erstellen“ →
+   Name des Studios, eigener Name, E-Mail → in der Mail von Facebook „Jetzt bestätigen“.
+2. **Euch einladen:** Einstellungen → Personen → Hinzufügen → eure Facebook-E-Mail (Einstellung „meta_einladung“) →
+   **Volle Kontrolle** → Einladen. Dann auf der Schritte-Seite „Erledigt, ich habe Clickculture eingeladen“.
+
+Ein Facebook-Profil braucht die Inhaberin dafür: ihr echtes, persönliches. Hat sie keins, legt sie es auf facebook.com
+an. Keine erfundenen Profile, kein VPN: Meta sperrt so etwas.
+
+**Euer Teil** (ihr bekommt eine Mail, die Klickliste steht auf der Team-Seite im Kasten „Meta einrichten“):
+
+1. Einladung annehmen (Mail von Facebook an eure Facebook-E-Mail).
+2. Auf business.facebook.com **oben links das Portfolio des Studios wählen**. Ab hier alles dort.
+3. **Seite:** Einstellungen → Konten → Seiten → Hinzufügen → „Neue Facebook-Seite erstellen“. Hat das Studio schon
+   eine Seite: „Vorhandene Seite hinzufügen“. Dann muss das Studio eine Anfrage genehmigen (auf der Team-Seite
+   „schon vorhanden“ wählen, dann steht es in seiner Mail).
+4. **Werbekonto:** Einstellungen → Konten → Werbekonten → Hinzufügen → „Neues Werbekonto erstellen“. Zeitzone
+   **Europe/Berlin**, Währung **EUR** (beides später **nicht** änderbar), „Mein Unternehmen“. Euch volle Kontrolle geben.
+5. **Werbetreibender und Zahler** (EU-Pflicht, sonst laufen keine Anzeigen): im Werbekonto beide Male **das Studio**.
+6. **Pixel:** Events Manager → Datenquellen verbinden → Web → mit dem Werbekonto verbinden.
+7. **Partnerzugriff für euer Portfolio:** Einstellungen → Partner → Hinzufügen → „Gewähre einem Partner Zugriff auf
+   deine Assets“ → eure Business-ID `2264672317797144` → Seite, Werbekonto, Pixel, volle Kontrolle. Dann im
+   Clickculture-Portfolio bei Werbekonten und Seiten **Personen zuweisen** (euch beide).
+8. Team-Seite: Werbekonto-ID und Pixel-ID eintragen → **„Meta fertig“**.
+
+**Zum Schluss das Studio:** Es bekommt die Mail „Karte hinterlegen“. Der Knopf auf der Schritte-Seite öffnet direkt die
+Zahlungsseite seines Werbekontos → „Zahlungsmethode hinzufügen“ → Karte → Speichern → „Erledigt“. Die Karte gibt
+nie ihr ein: Das Studio zahlt Meta selbst.
+
+**Klappt es beim Studio nicht** (kommt nicht weiter, findet den Knopf nicht): anrufen und die zwei Schritte am Telefon
+vorlesen. Mehr muss es nicht tun.
 
 **Vorsicht vor gefälschten Mails** „Ihr Konto wurde eingeschränkt“: nie auf Links klicken, immer direkt in
 business.facebook.com nachsehen.

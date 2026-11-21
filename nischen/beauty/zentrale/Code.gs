@@ -64,7 +64,7 @@ var TAG = 24 * 60 * 60 * 1000, MIN = 60000;
 /* ======== BAUSTEIN-ANFANG: erzeugt von zentrale-bauen.py aus vorlagen/module.py und vorlagen/texte/vereinbarung.md. Nicht von Hand ändern. */
 var MODULE = {"Laser": {"kurz": "laser", "name": "Laser-Haarentfernung", "behandler": ["Kosmetik mit NiSV-Fachkunde", "Arzt/Ärztin"], "qualifikation": "NiSV-Fachkunde (Zertifikat) für jede Person, die lasert. Ohne Nachweis kein Kunde.", "regeln": {"verlosung": true, "vorher_nachher": true, "rabatt": true, "kostenlos": true, "preise": true, "direkt": true}, "vorbereitung": ["Die Stelle 24 Stunden vorher rasieren, nicht epilieren und nicht wachsen", "4 Wochen vorher nicht mehr epilieren, wachsen oder zupfen", "2 Wochen vorher keine Sonne, kein Solarium, kein Selbstbräuner", "Am Tag selbst keine Creme, kein Deo und kein Make-up auf der Stelle", "Nehmen Sie Medikamente ein (z. B. Antibiotika), sagen Sie es uns bitte vorher"], "recht": "Wettbewerbsrecht und Preisangaben; „dauerhaft“ nur mit Hinweis auf mehrere Sitzungen und ohne Garantie", "kosten_pro_termin": 35, "meta_anteil": 0.7, "preis": "Onboarding ca. 700 €, Monatsgebühr ca. 799–999 €, Werbebudget ca. 500–800 €"}, "Permanent Make-up": {"kurz": "pmu", "name": "Permanent Make-up", "behandler": ["Kosmetik/PMU-Studio", "Kosmetik mit NiSV-Fachkunde", "Arzt/Ärztin"], "qualifikation": "Hygieneschulung und Nachweis der PMU-Ausbildung; Arbeitsproben (echte Ergebnisfotos).", "regeln": {"verlosung": true, "vorher_nachher": false, "rabatt": true, "kostenlos": true, "preise": true, "direkt": true}, "vorbereitung": ["Kommen Sie bei Augenbrauen am besten ungeschminkt, bei Lippen ohne Lippenstift", "24 Stunden vorher bitte keinen Alkohol", "Blutverdünnende Mittel nur nach Rücksprache mit Ihrem Arzt weglassen, nie auf eigene Faust", "Hatten Sie schon einmal Lippenherpes? Bei Lippen-Pigmentierung sagen Sie es uns bitte vorher", "Planen Sie den Nachstechtermin ein, meist einige Wochen später"], "recht": "Wettbewerbsrecht und Preisangaben; Ergebnisfotos nur echte, Vorher/Nachher-Collagen nicht in Anzeigen", "kosten_pro_termin": 45, "meta_anteil": 0.75, "preis": "Onboarding ca. 400–500 €, Monatsgebühr ca. 399–599 €, Werbebudget ca. 300–600 €"}, "Faltenbehandlung": {"kurz": "falten", "name": "Faltenbehandlung und Hyaluron", "behandler": ["Arzt/Ärztin", "Heilpraktiker/in"], "qualifikation": "Arzt/Ärztin (Muskelrelaxans und Hyaluron) oder Heilpraktiker/in (nur Hyaluron). Kosmetikstudios: nein.", "regeln": {"verlosung": false, "vorher_nachher": false, "rabatt": false, "kostenlos": false, "preise": false, "direkt": false}, "vorbereitung": ["Kommen Sie wenn möglich ungeschminkt", "Bringen Sie eine Liste Ihrer Medikamente mit", "Planen Sie nach einer Behandlung am selben Tag keinen Sport, keine Sauna und kein Solarium ein", "Für eine Behandlung müssen Sie mindestens 18 Jahre alt sein"], "recht": "Heilmittelwerbegesetz: kein „Botox“, kein Vorher/Nachher, keine Verlosung, keine Rabatte, kein „kostenlos“", "kosten_pro_termin": 60, "meta_anteil": 0.65, "preis": "Onboarding ca. 700 €, Monatsgebühr ca. 799–999 €, Werbebudget ca. 600–1.000 €"}, "Bleaching": {"kurz": "bleaching", "name": "Zahnaufhellung (Bleaching)", "behandler": ["Zahnarztpraxis"], "qualifikation": "Nur Zahnarztpraxen. Bleaching-Studios ohne Zahnarzt sind rechtlich unsicher und kein Kunde.", "regeln": {"verlosung": false, "vorher_nachher": false, "rabatt": false, "kostenlos": false, "preise": true, "direkt": true}, "vorbereitung": ["Bringen Sie wenn vorhanden Ihr Bonusheft mit", "Bringen Sie eine Liste Ihrer Medikamente mit", "Vor einer Aufhellung prüfen wir Zähne und Zahnfleisch. Oft gehört eine Zahnreinigung dazu", "Füllungen und Kronen hellen nicht mit auf. Das besprechen wir vorher"], "recht": "Berufsordnung der Zahnärzte und Heilmittelwerbegesetz: sachlich, keine Rabatte, keine Verlosung, kein „kostenlos“", "kosten_pro_termin": 50, "meta_anteil": 0.6, "preis": "Onboarding ca. 600–700 €, Monatsgebühr ca. 599–799 €, Werbebudget ca. 400–700 €"}};
 var BEHANDLER = ["Arzt/Ärztin", "Heilpraktiker/in", "Kosmetik mit NiSV-Fachkunde", "Kosmetik/PMU-Studio", "Zahnarztpraxis"];
-var VEREINBARUNG = "<h2>Vereinbarung</h2><p>zwischen</p><p><b>Auftragnehmer:</b> {{agentur_name}}, {{agentur_inhaber}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}}<br>Ansprechpartner für den Auftraggeber: {{betreuer_name}} · {{betreuer_telefon}} · {{betreuer_email}}</p><p>und</p><p><b>Auftraggeber:</b> {{firma}} · {{adresse}} · vertreten durch {{inhaber}}</p><h3>§1 Gegenstand</h3><p>Beworben wird: <b>{{modul_name}}</b> bei {{betrieb}}.<br>Interessentinnen und Interessenten buchen über eine Terminseite online einen Termin für eine dieser Leistungen:<br>{{leistungen_text}}. Ein Termin gilt erst als gebucht, wenn die Person ihn per E-Mail bestätigt hat.<br>Wer keinen passenden Termin findet, kann einen Rückruf anfordern.<br>Werbebudget: <b>{{budget}} pro Monat</b> für Werbung auf Meta (Facebook und Instagram). Werbegebiet: {{umkreis_km}} km um {{ort}}.</p><h3>§2 Leistungen des Auftragnehmers</h3><ul><li>Erstellung und Betrieb der Terminseite mit Online-Buchung, Bestätigung per E-Mail, Erinnerung vor dem Termin und Absage-Möglichkeit für die Kundschaft.</li><li>Schutz gegen Fake-Buchungen: Bestätigung per E-Mail, Prüfung der Angaben, Sperrliste.</li><li>Einrichtung und laufende Betreuung der Werbung auf Meta (Facebook und Instagram).</li><li>Benachrichtigung des Auftraggebers über jeden bestätigten Termin, jede Absage und jeden Rückruf-Wunsch.</li><li>Laufende Optimierung der Kampagnen.</li><li>Monatsreport mit Werbeausgaben, bestätigten Terminen, Kosten pro Termin und den vom Auftraggeber gemeldeten Ergebnissen (erschienen, Behandlung gekauft).</li></ul><h3>§3 Pflichten des Auftraggebers</h3><ul><li>Material: echte Fotos aus dem Studio bzw. der Praxis, Links zu Impressum und Datenschutzerklärung.</li><li>Zugang für den Auftragnehmer bei Meta als Partner (Facebook-Seite und Werbekonto). Im Werbekonto hinterlegt der Auftraggeber seine eigene Zahlungsart; das Werbebudget läuft über sein Konto.</li><li>{{kalender_pflicht}}</li><li>Prüfung und Freigabe der Vorbereitungs-Hinweise und der Absageregel, die die Kundschaft erhält. Für deren fachliche Richtigkeit ist der Auftraggeber verantwortlich.</li><li>Der Auftraggeber versichert, dass er und alle Behandelnden die nötige Qualifikation besitzen ({{qualifikation}}), und informiert den Auftragnehmer unverzüglich, wenn sich daran etwas ändert.</li><li>Seine Datenschutzerklärung nennt die Terminseite (Hosting über Netlify), die Online-Terminbuchung, das Meta-Pixel.</li><li>Rückruf auf Rückruf-Wünsche innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.</li><li>Rückmeldung zu jedem Termin über die Knöpfe in den Mails: erschienen, nicht erschienen, Behandlung gekauft. Beim Kauf gibt der Auftraggeber den Betrag an, den die Kundin bezahlt hat. Er ist die Grundlage der Provision.</li><li>Ausreichende freie Termine für die vermittelten Buchungen.</li></ul><h3>§4 Vergütung</h3><ul><li><b>Keine Grundgebühr, kein Onboarding.</b></li><li><b>Provision: {{provision}} %</b> vom ersten Kauf einer Neukundin, die über die Terminseite gebucht und ihren Termin per E-Mail bestätigt hat (Behandlung oder Paket). Erfasst wird der erste Kauf innerhalb von 3 Monaten nach ihrem ersten Online-Termin, auch wenn dieser Termin eine Beratung war. Weitere Käufe derselben Kundin sind provisionsfrei.</li><li>Abrechnung monatlich zum Monatsanfang für den Vormonat, auf Grundlage der Beträge, die der Auftraggeber über die Knöpfe „Behandlung gekauft“ meldet.</li><li><b>Werbebudget:</b> zahlt der Auftraggeber separat und direkt an Meta.</li><li>Zahlungsziel 14 Tage ab Rechnungsdatum. {{ust_hinweis}}</li></ul><h3>§5 Laufzeit</h3><p>Beginn: mit Annahme dieser Vereinbarung. Keine Mindestlaufzeit, jederzeit zum Monatsende in Textform (z. B. per<br>E-Mail) kündbar. Facebook-Seite, Werbekonten und deren Daten gehören dem Auftraggeber und bleiben bei ihm. Bei<br>Vertragsende beendet der Auftragnehmer seinen Zugang, schaltet die Terminseite ab und löscht die Termindaten der<br>Kundschaft, soweit keine Aufbewahrungspflicht besteht.</p><h3>§6 Datenschutz</h3><p>Über die Terminseite werden personenbezogene Daten von Interessentinnen und Interessenten verarbeitet (Name,<br>Telefon, E-Mail, gewünschter Termin). Der Auftragnehmer verarbeitet sie im Auftrag des Auftraggebers. Die<br>Parteien schließen dazu einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO. Gesundheitsangaben werden<br>über die Terminseite nicht abgefragt.</p><h3>§7 Werbung und Recht</h3><p>Ergebnisse hängen auch von Erreichbarkeit, Beratung und Kapazität des Auftraggebers ab. Eine bestimmte Zahl<br>von Terminen, Käufen oder ein bestimmter Umsatz wird nicht garantiert. Der Auftragnehmer erstellt die Werbung<br>nach bestem Wissen so, dass sie die für diese Behandlung geltenden Werberegeln einhält ({{recht_kurz}}).<br>Der Auftraggeber kann Anzeigen und Terminseite vor dem Start ansehen und Änderungen verlangen. Der Auftragnehmer<br>darf das Projekt mit Zustimmung als Referenz nennen.</p><h3>§8 Garantie</h3><p>Der Auftraggeber zahlt nur, wenn Neukundinnen aus der Werbung tatsächlich kaufen. Kommen in den ersten 30 Tagen ab<br>Kampagnenstart keine echten, per E-Mail bestätigten Termine zustande, kann der Auftraggeber sofort kündigen.</p><h3>§9 Zustandekommen</h3><p>Diese Vereinbarung kommt zustande, wenn der Auftraggeber sie auf seiner persönlichen Schritte-Seite verbindlich<br>annimmt. Der Link zu dieser Seite wurde nur an seine E-Mail-Adresse geschickt. Name, Datum, Uhrzeit, verwendeter<br>Browser und eine Prüfsumme des Vertragstextes werden gespeichert. Beide Seiten erhalten die Vereinbarung mit diesem<br>Annahme-Nachweis als PDF per E-Mail (Textform). Eine Unterschrift ist zwischen Unternehmen nicht nötig.</p>";
+var VEREINBARUNG = "<h2>Vereinbarung</h2><p>zwischen</p><p><b>Auftragnehmer:</b> {{agentur_name}}, {{agentur_inhaber}} · {{agentur_anschrift}} · {{agentur_email}} · {{agentur_telefon}}<br>Ansprechpartner für den Auftraggeber: {{betreuer_name}} · {{betreuer_telefon}} · {{betreuer_email}}</p><p>und</p><p><b>Auftraggeber:</b> {{firma}} · {{adresse}} · vertreten durch {{inhaber}}</p><h3>§1 Gegenstand</h3><p>Beworben wird: <b>{{modul_name}}</b> bei {{betrieb}}.<br>Interessentinnen und Interessenten buchen über eine Terminseite online einen Termin für eine dieser Leistungen:<br>{{leistungen_text}}. Ein Termin gilt erst als gebucht, wenn die Person ihn per E-Mail bestätigt hat.<br>Wer keinen passenden Termin findet, kann einen Rückruf anfordern.<br>Werbebudget: <b>{{budget}} pro Monat</b> für Werbung auf Meta (Facebook und Instagram). Werbegebiet: {{umkreis_km}} km um {{ort}}.</p><h3>§2 Leistungen des Auftragnehmers</h3><ul><li>Erstellung und Betrieb der Terminseite mit Online-Buchung, Bestätigung per E-Mail, Erinnerung vor dem Termin und Absage-Möglichkeit für die Kundschaft.</li><li>Schutz gegen Fake-Buchungen: Bestätigung per E-Mail, Prüfung der Angaben, Sperrliste.</li><li>Einrichtung und laufende Betreuung der Werbung auf Meta (Facebook und Instagram).</li><li>Benachrichtigung des Auftraggebers über jeden bestätigten Termin, jede Absage und jeden Rückruf-Wunsch.</li><li>Laufende Optimierung der Kampagnen.</li><li>Monatsreport mit Werbeausgaben, bestätigten Terminen, Kosten pro Termin und den vom Auftraggeber gemeldeten Ergebnissen (erschienen, Behandlung gekauft).</li></ul><h3>§3 Pflichten des Auftraggebers</h3><ul><li>Material: echte Fotos aus dem Studio bzw. der Praxis, Links zu Impressum und Datenschutzerklärung.</li><li>Einladung des Auftragnehmers in das Business-Portfolio des Auftraggebers bei Meta. Der Auftragnehmer legt dort im Namen des Auftraggebers Facebook-Seite, Werbekonto und Pixel an, soweit noch nicht vorhanden. Sie gehören dem Auftraggeber. Im Werbekonto hinterlegt der Auftraggeber seine eigene Zahlungsart; das Werbebudget läuft über sein Konto.</li><li>{{kalender_pflicht}}</li><li>Prüfung und Freigabe der Vorbereitungs-Hinweise und der Absageregel, die die Kundschaft erhält. Für deren fachliche Richtigkeit ist der Auftraggeber verantwortlich.</li><li>Der Auftraggeber versichert, dass er und alle Behandelnden die nötige Qualifikation besitzen ({{qualifikation}}), und informiert den Auftragnehmer unverzüglich, wenn sich daran etwas ändert.</li><li>Seine Datenschutzerklärung nennt die Terminseite (Hosting über Netlify), die Online-Terminbuchung, das Meta-Pixel.</li><li>Rückruf auf Rückruf-Wünsche innerhalb 1 Stunde während der Geschäftszeiten, spätestens am selben Werktag.</li><li>Rückmeldung zu jedem Termin über die Knöpfe in den Mails: erschienen, nicht erschienen, Behandlung gekauft. Beim Kauf gibt der Auftraggeber den Betrag an, den die Kundin bezahlt hat. Er ist die Grundlage der Provision.</li><li>Ausreichende freie Termine für die vermittelten Buchungen.</li></ul><h3>§4 Vergütung</h3><ul><li><b>Keine Grundgebühr, kein Onboarding.</b></li><li><b>Provision: {{provision}} %</b> vom ersten Kauf einer Neukundin, die über die Terminseite gebucht und ihren Termin per E-Mail bestätigt hat (Behandlung oder Paket). Erfasst wird der erste Kauf innerhalb von 3 Monaten nach ihrem ersten Online-Termin, auch wenn dieser Termin eine Beratung war. Weitere Käufe derselben Kundin sind provisionsfrei.</li><li>Abrechnung monatlich zum Monatsanfang für den Vormonat, auf Grundlage der Beträge, die der Auftraggeber über die Knöpfe „Behandlung gekauft“ meldet.</li><li><b>Werbebudget:</b> zahlt der Auftraggeber separat und direkt an Meta.</li><li>Zahlungsziel 14 Tage ab Rechnungsdatum. {{ust_hinweis}}</li></ul><h3>§5 Laufzeit</h3><p>Beginn: mit Annahme dieser Vereinbarung. Keine Mindestlaufzeit, jederzeit zum Monatsende in Textform (z. B. per<br>E-Mail) kündbar. Facebook-Seite, Werbekonten und deren Daten gehören dem Auftraggeber und bleiben bei ihm. Bei<br>Vertragsende beendet der Auftragnehmer seinen Zugang, schaltet die Terminseite ab und löscht die Termindaten der<br>Kundschaft, soweit keine Aufbewahrungspflicht besteht.</p><h3>§6 Datenschutz</h3><p>Über die Terminseite werden personenbezogene Daten von Interessentinnen und Interessenten verarbeitet (Name,<br>Telefon, E-Mail, gewünschter Termin). Der Auftragnehmer verarbeitet sie im Auftrag des Auftraggebers. Die<br>Parteien schließen dazu einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO. Gesundheitsangaben werden<br>über die Terminseite nicht abgefragt.</p><h3>§7 Werbung und Recht</h3><p>Ergebnisse hängen auch von Erreichbarkeit, Beratung und Kapazität des Auftraggebers ab. Eine bestimmte Zahl<br>von Terminen, Käufen oder ein bestimmter Umsatz wird nicht garantiert. Der Auftragnehmer erstellt die Werbung<br>nach bestem Wissen so, dass sie die für diese Behandlung geltenden Werberegeln einhält ({{recht_kurz}}).<br>Der Auftraggeber kann Anzeigen und Terminseite vor dem Start ansehen und Änderungen verlangen. Der Auftragnehmer<br>darf das Projekt mit Zustimmung als Referenz nennen.</p><h3>§8 Garantie</h3><p>Der Auftraggeber zahlt nur, wenn Neukundinnen aus der Werbung tatsächlich kaufen. Kommen in den ersten 30 Tagen ab<br>Kampagnenstart keine echten, per E-Mail bestätigten Termine zustande, kann der Auftraggeber sofort kündigen.</p><h3>§9 Zustandekommen</h3><p>Diese Vereinbarung kommt zustande, wenn der Auftraggeber sie auf seiner persönlichen Schritte-Seite verbindlich<br>annimmt. Der Link zu dieser Seite wurde nur an seine E-Mail-Adresse geschickt. Name, Datum, Uhrzeit, verwendeter<br>Browser und eine Prüfsumme des Vertragstextes werden gespeichert. Beide Seiten erhalten die Vereinbarung mit diesem<br>Annahme-Nachweis als PDF per E-Mail (Textform). Eine Unterschrift ist zwischen Unternehmen nicht nötig.</p>";
 var REGELN_VON_BEHANDLER = {"Kosmetik/PMU-Studio": "Permanent Make-up", "Kosmetik mit NiSV-Fachkunde": "Laser", "Arzt/Ärztin": "Faltenbehandlung", "Heilpraktiker/in": "Faltenbehandlung", "Zahnarztpraxis": "Bleaching"};
 var PROVISION_STANDARD = 15;
 var VORBEREITUNG_ALLGEMEIN = ["Bitte kommen Sie 5 Minuten vor Ihrem Termin", "Hat sich gesundheitlich etwas geändert oder nehmen Sie neue Medikamente? Sagen Sie es uns bitte vor der Behandlung", "Können Sie nicht kommen, sagen Sie bitte rechtzeitig über den Link in Ihrer Bestätigung ab"];
@@ -1297,12 +1297,13 @@ var KUNDEN_SPALTEN = ['Kürzel', 'Status', 'Betreuer', 'Betreuer Telefon', 'Betr
   'E-Mail für Termine', 'Telefon', 'Adresse', 'Seiten-Adresse', 'Behandlung', 'Behandler-Art', 'Buchung', 'Kalender-ID', 'Buchbare Zeiten', 'Leistungen',
   'Takt Minuten', 'Puffer Minuten', 'Vorlauf Stunden', 'Tage im Voraus', 'Absagefrist Stunden', 'Ausfallregel', 'Vorbereitung', 'Hinweise je Leistung',
   'Onboarding €', 'Monatsgebühr €', 'Provision %', 'Werbebudget €', 'Umkreis km', 'Angelegt am', 'Live seit', 'Pixel-ID', 'Google-Conversion',
-  'Vertrag angenommen', 'Impressum', 'Datenschutz', 'Behandler', 'Vorbereitung ok', 'Fotos', 'Kalender ok', 'Meta erledigt',
+  'Vertrag angenommen', 'Impressum', 'Datenschutz', 'Behandler', 'Vorbereitung ok', 'Fotos', 'Kalender ok', 'Meta erledigt', 'Werbekonto-ID', 'Meta fertig', 'Seite bestätigen', 'Karte ok',
   'Google-Ads-ID', 'Google verknüpft', 'Vorschau gesendet', 'Freigabe', 'Änderungswunsch', 'Drive-Ordner', 'Erinnert am', 'Erinnerungen', 'Alles da', 'Live-Mail', 'Token',
   'Gewinn', 'Gewinnspiel ab', 'Teilnahmeschluss', 'Ziehung am', 'Erster Auftrag', 'Monatsgebühr ab', 'Termine gesamt', 'Notiz'];
 var VERTRAEGE_SPALTEN = ['Kürzel', 'Vereinbarung', 'Angenommen am', 'Angenommen von', 'Gesendet an', 'Prüfsumme SHA-256', 'Browser', 'Annahme-Link'];
 var NEUE_EINSTELLUNGEN = [
-  ['agentur_business_id', 'Meta Business-ID der Agentur', '', 'Meta Business Suite → Einstellungen → Unternehmensinfos (16 Ziffern). Steht auf der Schritte-Seite der Studios'],
+  ['agentur_business_id', 'Meta Business-ID der Agentur', '', 'Meta Business Suite → Einstellungen → Unternehmensinfos (16 Ziffern). Steht in eurer Klickliste „Meta einrichten“ auf der Team-Seite'],
+  ['meta_einladung', 'Eure Facebook-E-Mail (für Einladungen)', '', 'Die E-Mail, mit der ihr bei Facebook angemeldet seid. Die Studios laden diese Adresse in ihr Business-Portfolio ein. Leer = E-Mail der Agentur'],
   ['agentur_google_mcc', 'Google-Ads-Verwaltungskonto (Kunden-ID)', '', 'oben rechts in Google Ads, z. B. 774-518-7262'],
   ['rechnungen_automatisch', 'Rechnungen automatisch als PDF schicken?', 'Ja', 'Ja = Onboarding-Rechnung nach dem Annehmen der Vereinbarung, Monatsgebühr am 1. Nein = nur Zeile anlegen, du schickst selbst'],
   ['erinnerung_studio_tage', 'Studio erinnern nach … Werktagen ohne Fortschritt', 2, 'höchstens 3 Erinnerungen, danach Mail an den Betreuer: anrufen'],
@@ -1660,6 +1661,12 @@ function willkommensMail_(k, s) {
 
 // ---------------------------------------------------------------- Die Schritte-Seite für das Studio
 
+function metaEinladung_(s) { return String(s.meta_einladung || s.agentur_email || '').trim(); }
+function zahlungLink_(k) { return 'https://business.facebook.com/billing_hub/payment_settings/?asset_id=' + k.werbekonto; }
+function linkKnopf_(url, text) {
+  return '<a href="' + esc_(url) + '" target="_blank" style="display:block;text-align:center;padding:13px;margin:8px 0;border:2px solid #1F7A3F;border-radius:7px;color:#1F7A3F;font-weight:700;text-decoration:none;">' + esc_(text) + '</a>';
+}
+
 function regelModul_(k) { return MODULE[REGELN_VON_BEHANDLER[k.behandlerArt]] || MODULE[k.behandlung] || MODULE['Permanent Make-up']; }
 
 function studioAufgaben_(k, s) {
@@ -1675,7 +1682,8 @@ function studioAufgaben_(k, s) {
     { id: 'fotos', titel: 'Fotos hochladen', fertig: k.fotos >= 3 },
   ];
   if (k.modus === 'Kalender') a.push({ id: 'kalender', titel: 'Google-Kalender freigeben', fertig: !!k.kalenderOk });
-  a.push({ id: 'meta', titel: 'Facebook und Instagram (Meta) verbinden', fertig: !!k.metaOk });
+  a.push({ id: 'meta', titel: 'Clickculture bei Facebook einladen', fertig: !!k.metaOk });
+  a.push({ id: 'karte', titel: 'Ihre Karte für die Werbung hinterlegen', fertig: !!k.karteOk, wartet: !k.metaFertig });
   if (k.vorschau) a.push({ id: 'freigabe', titel: 'Ihre Seite und Ihre Anzeigen ansehen und freigeben', fertig: !!k.freigabe });
   return a;
 }
@@ -1710,10 +1718,15 @@ function studioSeite_(p) {
 
 function studioInhalt_(k, s) {
   var auf = studioAufgaben_(k, s), fertig = auf.filter(function (x) { return x.fertig; }).length;
+  var nurWarten = fertig < auf.length && !auf.some(function (x) { return !x.fertig && !x.wartet; });
   var kopf = '<h1>' + esc_(k.betrieb) + '</h1><p class="k">Ihre Schritte zum Start · ' + fertig + ' von ' + auf.length + ' erledigt</p>' +
     (fertig === auf.length ? '<div class="box ok"><b>Alles erledigt, vielen Dank!</b> Wir richten jetzt Ihre Seite und die Werbung ein und melden uns, sobald alles läuft.</div>' : '') +
+    (nurWarten ? '<div class="box ok"><b>Danke, Ihr Teil ist im Moment erledigt.</b> Wir richten jetzt Ihr Werbekonto ein. Sobald es weitergeht, bekommen Sie eine E-Mail.</div>' : '') +
     '<p class="k">Fragen? ' + betreuerZeile_(k, s) + '</p>';
   return kopf + auf.map(function (a, i) {
+    if (a.wartet && !a.fertig) return '<div class="box"><h2><span class="haken">' + (i + 1) + '.</span>' + esc_(a.titel) + '</h2>' +
+      '<p class="k">Das kommt später. Sobald wir Ihr Werbekonto eingerichtet haben (meist am selben oder nächsten Werktag), bekommen Sie eine E-Mail. ' +
+      'Dann tragen Sie hier nur noch Ihre Karte ein.</p></div>';
     var inhalt = !a.fertig ? aufgabeHtml_(a, k, s) : erledigtText_(a.id, k) +
       (a.id === 'vertrag' || a.id === 'fotos' ? '' : '<details><summary>Ändern</summary>' + aufgabeHtml_(a, k, s) + '</details>');
     return '<div class="box' + (a.fertig ? ' ok' : '') + '"><h2><span class="haken">' + (a.fertig ? '✓' : (i + 1) + '.') + '</span>' + esc_(a.titel) + '</h2>' + inhalt + '</div>';
@@ -1728,7 +1741,8 @@ function erledigtText_(id, k) {
     vorbereitung: 'Freigegeben. Ihre Kundinnen bekommen diese Hinweise mit der Bestätigung.',
     fotos: k.fotos + ' Fotos sind da.',
     kalender: 'Verbunden. Neue Termine stehen direkt in Ihrem Kalender.',
-    meta: 'Erledigt. Wir prüfen den Zugriff.',
+    meta: 'Einladung ist raus. Wir richten jetzt Ihre Facebook-Seite und Ihr Werbekonto ein.',
+    karte: 'Danke! Ihre Karte ist hinterlegt.',
     google: 'Konto ' + esc_(k.googleId) + ' ist verbunden.',
     freigabe: 'Freigegeben am ' + datumKurz_(k.freigabe) + '. Danke! Wir starten jetzt die Werbung.'
   }[id] || 'Erledigt.';
@@ -1797,17 +1811,40 @@ function aufgabeHtml_(a, k, s) {
       '<p class="k">„Freigabe prüfen“ sagt sofort, ob es geklappt hat. Kommt „Noch keine Freigabe“: 1–2 Minuten warten und nochmal tippen.</p>';
   }
   if (a.id === 'meta') {
-    return '<p>Ihre Werbung läuft über Ihr eigenes Werbekonto, mit Ihrer Karte. Wir bekommen nur Zugriff als Partner. ' +
-      '<b>Am einfachsten machen wir das zusammen am Telefon mit Bildschirm-Teilen (ca. 30 Minuten).</b> Rufen Sie einfach an: ' + esc_(k.betreuerTelefon || s.agentur_telefon || '') + '.</p>' +
-      '<details><summary>Lieber selbst? So geht es</summary><ol>' +
-      '<li>Ein Facebook-Profil mit Ihrem echten Namen (falls Sie keins haben: facebook.com → Neues Konto). Bitte die Anmeldung in zwei Schritten einschalten.</li>' +
-      '<li><b>business.facebook.com</b> → ein Business-Portfolio für Ihr Studio anlegen (Name wie im Impressum).</li>' +
-      '<li>Gibt es noch keine Facebook-Seite für Ihr Studio: im Portfolio <b>Seiten → Hinzufügen → Neue Seite erstellen</b>.</li>' +
-      '<li><b>Einstellungen → Konten → Werbekonten → Hinzufügen → Neues Werbekonto erstellen</b>. Zeitzone <b>Europe/Berlin</b>, Währung <b>EUR</b> (beides lässt sich später nicht ändern). Danach Ihre Karte als Zahlungsmethode hinterlegen.</li>' +
-      '<li><b>Einstellungen → Nutzer → Partner → Hinzufügen → „Gewähre einem Partner Zugriff auf deine Assets“</b>. Diese Business-ID eintragen: <code>' + esc_(s.agentur_business_id || '[Business-ID fehlt in den Einstellungen]') + '</code>. ' +
-      'Dann Ihre Seite und Ihr Werbekonto auswählen, jeweils mit vollem Zugriff.</li></ol>' +
-      '<p class="k">Die Namen der Knöpfe ändert Meta ab und zu. Wenn etwas anders aussieht: kurz anrufen.</p></details>' +
-      form('meta', '', 'Erledigt, Partnerzugriff ist freigegeben');
+    var einladen = metaEinladung_(s), tel = esc_(k.betreuerTelefon || s.agentur_telefon || '');
+    var kopier = function (t) { return '<code onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent)">' + esc_(t) + '</code>'; };
+    return '<p>Ihre Werbung läuft auf Facebook und Instagram, über Ihr eigenes Werbekonto. <b>Einrichten tun wir das für Sie.</b> ' +
+      'Sie laden uns dafür nur einmal ein. Das dauert ca. 5 Minuten, am einfachsten am Computer.</p>' +
+      '<p><b>Sie brauchen:</b> Ihr ganz normales Facebook-Konto. Noch keins? Auf <b>facebook.com</b> ein neues Konto erstellen, mit Ihrem echten Namen.</p>' +
+      '<h3 style="margin:18px 0 4px;">Teil A · Business-Portfolio anlegen</h3>' +
+      '<p class="k" style="margin-top:0;">Haben Sie das schon einmal gemacht? Dann weiter mit Teil B. Wenn Sie nicht sicher sind: einfach Teil A machen.</p><ol>' +
+      '<li>Diesen Knopf antippen:' + linkKnopf_('https://business.facebook.com/overview', 'business.facebook.com öffnen') +
+        'Fragt Facebook nach der Anmeldung: mit Ihrem Facebook-Konto anmelden.</li>' +
+      '<li>Auf <b>„Business-Portfolio erstellen“</b> tippen (manchmal heißt der Knopf <b>„Konto erstellen“</b>).</li>' +
+      '<li>Drei Felder ausfüllen: den Namen Ihres Studios ' + kopier(k.betrieb) + ', Ihren Vor- und Nachnamen und Ihre E-Mail-Adresse. Dann auf <b>„Erstellen“</b> tippen.</li>' +
+      '<li>Facebook schickt Ihnen eine E-Mail. Darin auf <b>„Jetzt bestätigen“</b> tippen.</li></ol>' +
+      '<h3 style="margin:18px 0 4px;">Teil B · Uns einladen</h3><ol>' +
+      '<li>Auf business.facebook.com links unten auf das Zahnrad <b>„Einstellungen“</b> tippen.</li>' +
+      '<li>Auf <b>„Personen“</b> tippen, dann auf den blauen Knopf <b>„Hinzufügen“</b> (oder <b>„Personen einladen“</b>).</li>' +
+      '<li>Diese E-Mail-Adresse eintragen (antippen zum Kopieren): ' + kopier(einladen) + '</li>' +
+      '<li>Darunter <b>„Volle Kontrolle“</b> wählen, nicht „Teilzugriff“. <span class="k">Damit wir Seite und Werbekonto für Sie anlegen können. Alles gehört weiter Ihnen.</span></li>' +
+      '<li>Auf <b>„Weiter“</b> tippen. Auf den nächsten Seiten nichts auswählen, nur weiter tippen bis <b>„Einladen“</b> (oder <b>„Anfrage senden“</b>).</li></ol>' +
+      '<p><b>Zum Schluss:</b> hier unten tippen.</p>' +
+      form('meta', '', 'Erledigt, ich habe Clickculture eingeladen') +
+      '<p class="k">Sieht etwas anders aus oder klappt nicht? Rufen Sie an' + (tel ? ': ' + tel : '') + '. Wir machen es dann zusammen am Telefon.</p>';
+  }
+  if (a.id === 'karte') {
+    var tel2 = esc_(k.betreuerTelefon || s.agentur_telefon || '');
+    return '<p>Ihr Werbekonto ist eingerichtet. Jetzt fehlt nur noch Ihre Karte, damit Facebook die Werbung abrechnen kann. ' +
+      'Das Geld geht direkt von Ihrer Karte an Facebook, nicht an uns. Ca. 2 Minuten.</p><ol>' +
+      '<li>Diesen Knopf antippen:' + linkKnopf_(zahlungLink_(k), 'Zahlungsseite öffnen') + 'Fragt Facebook nach der Anmeldung: mit Ihrem Facebook-Konto anmelden.</li>' +
+      '<li>Auf <b>„Zahlungsmethode hinzufügen“</b> tippen.</li>' +
+      '<li>Ihre Kredit- oder Debitkarte eintragen und auf <b>„Speichern“</b> tippen.</li></ol>' +
+      (k.seiteBestaetigen ? '<p><b>Noch ein Klick:</b> Sie hatten schon eine Facebook-Seite. Facebook hat Ihnen dazu eine Anfrage geschickt ' +
+        '(eine Benachrichtigung bei Facebook oder eine E-Mail). Bitte dort auf <b>„Genehmigen“</b> tippen.</p>' : '') +
+      '<p><b>Zum Schluss:</b> hier unten tippen.</p>' +
+      form('karte', '', 'Erledigt, meine Karte ist hinterlegt') +
+      '<p class="k">Sieht etwas anders aus oder klappt nicht? Rufen Sie an' + (tel2 ? ': ' + tel2 : '') + '.</p>';
   }
   if (a.id === 'freigabe') {
     var knopf = function (url, text) {
@@ -1921,11 +1958,21 @@ function studioAktion_(k, s, aktion, d) {
   if (aktion === 'meta') {
     if (k.metaOk) return { ok: true, meldung: 'Ist schon gemeldet. Danke!' };
     kundeSetzen_(kz, { 'Meta erledigt': jetzt });
-    betreuerHinweis_(k, s, k.betrieb + ': Meta-Partnerzugriff ist freigegeben',
-      '<p>' + esc_(k.betrieb) + ' meldet: Partnerzugriff bei Meta ist freigegeben.</p><ol><li>business.facebook.com → euer Portfolio → <b>Einstellungen → Konten → Werbekonten</b>: das Konto des Studios öffnen → <b>Personen zuweisen</b> (euch beide, volle Kontrolle). Dasselbe bei <b>Seiten</b>.</li>' +
-      '<li>Im Werbekonto prüfen: Zahlungsmethode da, Zeitzone Berlin, EUR.</li><li>Datensatz (Pixel) im Werbekonto des Studios anlegen und die ID in der Zentrale bei „Pixel-ID“ eintragen.</li></ol>' +
-      '<p>Fehlt etwas: Studio anrufen. Erst danach geht es weiter.</p>');
-    return { ok: true, meldung: 'Danke! Wir prüfen den Zugriff und melden uns, falls noch etwas fehlt.' };
+    betreuerHinweis_(k, s, k.betrieb + ': hat euch bei Facebook eingeladen. Jetzt Meta einrichten',
+      '<p>' + esc_(k.betrieb) + ' hat ' + esc_(metaEinladung_(s)) + ' in sein Business-Portfolio eingeladen.</p>' +
+      '<p>Die Einladung kommt per Mail von Facebook. Danach richtet ihr alles im Portfolio des Studios ein: Seite, Werbekonto, Pixel, Partnerzugriff. ' +
+      'Die Klickliste steht auf der Team-Seite im Kasten <b>„Meta einrichten“</b>. Am Ende dort <b>„Meta fertig“</b> tippen, dann bekommt das Studio die Mail zum Hinterlegen der Karte.</p>' +
+      '<p>Keine Einladung da (auch nicht im Spam)? Studio anrufen: ' + esc_(k.telefon) + '.</p>');
+    return { ok: true, meldung: 'Danke! Wir richten jetzt alles ein und schicken Ihnen eine E-Mail, wenn es weitergeht.' };
+  }
+  if (aktion === 'karte') {
+    if (!k.metaFertig) return { ok: false, meldung: 'Ihr Werbekonto ist noch nicht fertig. Sie bekommen eine E-Mail, sobald es so weit ist.' };
+    kundeSetzen_(kz, { 'Karte ok': jetzt });
+    betreuerHinweis_(k, s, k.betrieb + ': Karte ist hinterlegt',
+      '<p>' + esc_(k.betrieb) + ' meldet: Karte ist im Werbekonto ' + esc_(k.werbekonto) + ' hinterlegt.</p>' +
+      '<p>Kurz prüfen: Werbeanzeigenmanager → Abrechnung und Zahlungen → Zahlungsmethode ist da.' +
+      (k.seiteBestaetigen ? ' Und: Ist die Facebook-Seite jetzt im Portfolio des Studios und für euch freigegeben?' : '') + '</p>');
+    return { ok: true, meldung: 'Danke! Damit kann die Werbung starten, sobald alles fertig ist.' };
   }
   if (aktion === 'google') {
     var g = txt(d.id).replace(/\D/g, '');
@@ -2014,14 +2061,15 @@ function betreuerHinweis_(k, s, betreff, html) {
 function studiosNachfassen_(s, jetzt, nurKz) {
   var tage = Number(s.erinnerung_studio_tage) || 2;
   kunden_().filter(function (k) {
-    return (!nurKz || k.kuerzel === nurKz) && k.aktiv && /angelegt/i.test(k.status) && k.token && (!k.allesDa || (k.vorschau && !k.freigabe));
+    return (!nurKz || k.kuerzel === nurKz) && k.aktiv && /angelegt/i.test(k.status) && k.token &&
+      (!k.allesDa || (k.vorschau && !k.freigabe) || (k.metaFertig && !k.karteOk));
   }).forEach(function (k) {
-    var offen = studioAufgaben_(k, s).filter(function (a) { return !a.fertig; });
-    if (!offen.length) {
-      if (!k.allesDa) { kundeSetzen_(k.kuerzel, { 'Alles da': jetzt }); allesDaMail_(k, s); }
-      return;
+    var offen = studioAufgaben_(k, s).filter(function (a) { return !a.fertig && !a.wartet; });
+    // „Alles da“: alles, was Claude für Seite und Anzeigen braucht (Karte und Freigabe kommen später)
+    if (!k.allesDa && !offen.some(function (a) { return a.id !== 'karte' && a.id !== 'freigabe'; })) {
+      kundeSetzen_(k.kuerzel, { 'Alles da': jetzt }); allesDaMail_(k, s);
     }
-    if (!k.allesDa && offen.length === 1 && offen[0].id === 'freigabe') return;
+    if (!offen.length) return;
     var seit = k.erinnert || k.angelegt;
     if (!nurKz && (!seit || werktage_(seit, jetzt) < tage)) return;
     if (k.erinnerungen >= 3 && !nurKz) {
@@ -2047,8 +2095,8 @@ function allesDaMail_(k, s) {
     '<p>' + esc_(k.betrieb) + ' hat alle Schritte erledigt. Jetzt ihr, in dieser Reihenfolge:</p><ol>' +
     '<li><b>Fotos:</b> Sie kamen als Mails „Foto … von ' + esc_(k.betrieb) + '“. Die Anhänge speichern.</li>' +
     '<li><b>An Claude:</b> die Fotos und den Text unten schicken mit „Baue die Seite für ' + esc_(k.kuerzel) + '“. Claude stellt sie online.</li>' +
-    '<li><b>Netlify:</b> app.netlify.com → <b>Add new project → Deploy manually</b> → den Ordner „seite“ hineinziehen → Projekt-Einstellungen → Name: <b>' + esc_(k.kuerzel) + '</b>.</li>' +
-    '<li><b>Meta:</b> Datensatz (Pixel) anlegen, die ID auf der <a href="' + esc_(teamLink_(s, k.kuerzel)) + '">Team-Seite</a> eintragen. Kampagne nach der Kampagnen-Anleitung von Claude.</li>' +
+    '<li><b>Meta:</b> ' + (k.metaFertig ? 'ist eingerichtet ✓.' : 'auf der <a href="' + esc_(teamLink_(s, k.kuerzel)) + '">Team-Seite</a> den Kasten „Meta einrichten“ abarbeiten, falls noch nicht geschehen.') +
+      ' Kampagne mit dem Kampagnen-Assistenten von Claude anlegen.</li>' +
     '<li><b>Test:</b> auf der Seite einen Termin mit deiner E-Mail buchen, bestätigen, wieder absagen.</li>' +
     '<li>Auf der Team-Seite <b>„Jetzt live schalten“</b>. Die Mail „Ihre Werbung läuft“ geht von selbst raus.</li></ol>' +
     '<p><b>Text für Claude</b> (alles markieren und kopieren):</p><pre style="white-space:pre-wrap;background:#F1ECE2;padding:10px;font-size:12px;">' +
@@ -2178,6 +2226,8 @@ function teamStudio_(kz, s) {
   }).join('') + '</table><p class="k">So sieht das Studio seine Seite: <a href="' + esc_(studioLink_(s, k)) + '" target="_blank">Schritte-Seite öffnen</a>' +
     ' · Fotos: ' + k.fotos + ' (kamen per Mail)</p>' +
     (k.status === 'Angelegt' ? form('erinnern', '', 'Studio jetzt erinnern', '', true) : '') + '</div>';
+  // Meta einrichten (nachdem das Studio euch eingeladen hat)
+  if (k.metaOk) html += metaKasten_(k, s, form);
   // 2 · Einrichten
   html += '<details class="box"><summary><b>Text für Claude</b> (Seite und Anzeigen bauen lassen)</summary><p class="k">Alles markieren, kopieren und Claude schicken, zusammen mit den Fotos aus euren Mails.</p>' +
     '<textarea rows="5" readonly onclick="this.select()" style="font-size:11px;font-family:monospace;">' + esc_(JSON.stringify(studioDaten_(k, s))) + '</textarea></details>';
@@ -2198,6 +2248,8 @@ function teamStudio_(kz, s) {
   if (k.status === 'Angelegt') {
     var fehlt = [];
     if (!k.freigabe) fehlt.push('Freigabe des Studios');
+    if (!k.metaFertig) fehlt.push('Meta einrichten');
+    if (!k.karteOk) fehlt.push('Karte des Studios');
     if (!k.pixel) fehlt.push('Pixel-ID');
     if (!k.vertrag) fehlt.push('Vereinbarung');
     if (!k.impressum || !k.datenschutz) fehlt.push('Impressum/Datenschutz');
@@ -2266,6 +2318,32 @@ function teamAktion(kz, t, aktion, d) {
   } finally { lock.releaseLock(); }
 }
 
+/** Klickliste für euch: alles im Portfolio des Studios einrichten, nachdem es euch eingeladen hat. */
+function metaKasten_(k, s, form) {
+  if (k.metaFertig) return '<div class="box"><h2>Meta</h2><p>✓ Eingerichtet am ' + datumKurz_(k.metaFertig) + ' · Werbekonto ' + esc_(k.werbekonto) +
+    ' · Karte ' + (k.karteOk ? '✓ hinterlegt' : '○ fehlt noch (das Studio hat die Mail)') + '</p>' +
+    '<details><summary>Ändern</summary>' + metaFormular_(k, form) + '</details></div>';
+  var p = function (t) { return '<li style="list-style:none;margin:8px 0;"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:normal;margin:0;"><input type="checkbox" style="width:22px;height:22px;flex:none;margin:1px 0 0;"><span>' + t + '</span></label></li>'; }, b = esc_(k.betrieb);
+  return '<div class="box"><h2>Meta einrichten</h2><p class="k">' + b + ' hat ' + esc_(metaEinladung_(s)) + ' eingeladen. Die Häkchen sind nur für euch, sie werden nicht gespeichert.</p><ol style="padding-left:0;">' +
+    p('<b>Einladung annehmen:</b> Mail von Facebook an ' + esc_(metaEinladung_(s)) + ' → „Einladung annehmen“. Nicht da? Spam ansehen, sonst Studio anrufen.') +
+    p('Auf business.facebook.com <b>oben links das Portfolio „' + b + '“ wählen</b>. Ab hier alles in diesem Portfolio, nicht in eurem.') +
+    p('<b>Seite:</b> Einstellungen → Konten → Seiten → Hinzufügen → „Neue Facebook-Seite erstellen“, Name „' + b + '“. Hat das Studio schon eine Seite: „Vorhandene Seite hinzufügen“. Dann muss das Studio genehmigen (unten auswählen).') +
+    p('<b>Werbekonto:</b> Einstellungen → Konten → Werbekonten → Hinzufügen → „Neues Werbekonto erstellen“. Name „' + b + '“, Zeitzone <b>Europe/Berlin</b>, Währung <b>EUR</b> (beides später nicht änderbar), „Mein Unternehmen“. Euch selbst volle Kontrolle geben.') +
+    p('<b>Werbetreibender und Zahler</b> (EU-Pflicht): im Werbeanzeigenmanager → Einstellungen des Werbekontos → beide Male „' + esc_(k.firma || k.betrieb) + '“.') +
+    p('<b>Pixel:</b> Events Manager → Datenquellen verbinden → Web → Name „' + b + '“ → mit dem Werbekonto verbinden. Die ID unten eintragen.') +
+    p('<b>Partnerzugriff für euer Portfolio:</b> Einstellungen → Partner → Hinzufügen → „Gewähre einem Partner Zugriff auf deine Assets“ → Business-ID <code>' + esc_(s.agentur_business_id || '[fehlt in den Einstellungen]') + '</code> → Seite, Werbekonto und Pixel, jeweils volle Kontrolle.') +
+    p('Im <b>Clickculture-Portfolio</b>: Einstellungen → Werbekonten bzw. Seiten → das Konto von ' + b + ' → <b>Personen zuweisen</b> (euch beide).') +
+    p('Unten Werbekonto-ID (Werbeanzeigenmanager oben links, nur Ziffern) und Pixel-ID eintragen → <b>„Meta fertig“</b>. Das Studio bekommt dann die Mail „Karte hinterlegen“.') +
+    '</ol>' + metaFormular_(k, form) + '</div>';
+}
+
+function metaFormular_(k, form) {
+  return form('metafertig', '<div class="zwei"><label>Werbekonto-ID *<input name="werbekonto" required inputmode="numeric" value="' + esc_(k.werbekonto) + '"></label>' +
+    '<label>Pixel-ID<input name="pixel" inputmode="numeric" value="' + esc_(k.pixel) + '"></label></div>' +
+    '<label>Facebook-Seite<select name="seite" style="display:block;width:100%;font-size:16px;padding:9px;margin:6px 0 10px;"><option value="neu">neu angelegt</option><option value="alt"' + (k.seiteBestaetigen ? ' selected' : '') +
+    '>schon vorhanden: das Studio muss die Anfrage genehmigen</option></select></label>', 'Meta fertig: Studio bekommt die Mail „Karte hinterlegen“');
+}
+
 function teamAktion_(kz, s, aktion, d) {
   var k = kunde_(kz), txt = function (v) { return String(v == null ? '' : v).trim(); }, jetzt = new Date();
   if (!k) return { ok: false, meldung: 'Studio nicht gefunden.' };
@@ -2276,6 +2354,26 @@ function teamAktion_(kz, s, aktion, d) {
     if (seite && !/^https:\/\/\S+\.\S+$/.test(seite)) return { ok: false, meldung: 'Die Adresse der Seite beginnt mit https://' };
     kundeSetzen_(kz, { 'Pixel-ID': px, 'Google-Conversion': cv, 'Seiten-Adresse': seite });
     return { ok: true, meldung: 'Gespeichert. Wirkt sofort.' };
+  }
+  if (aktion === 'metafertig') {
+    var wk = txt(d.werbekonto).replace(/^act_/i, '').replace(/\D/g, ''), px2 = txt(d.pixel).replace(/\D/g, '');
+    if (wk.length < 8 || wk.length > 20) return { ok: false, meldung: 'Die Werbekonto-ID besteht nur aus Ziffern, meist 15 oder 16 (oben links im Werbeanzeigenmanager).' };
+    if (px2 && (px2.length < 12 || px2.length > 20)) return { ok: false, meldung: 'Die Pixel-ID hat meist 15 oder 16 Ziffern.' };
+    var erstes = !k.metaFertig, neu = { 'Werbekonto-ID': wk, 'Seite bestätigen': d.seite === 'alt' ? 'Ja' : '', 'Meta fertig': k.metaFertig || jetzt };
+    if (px2) neu['Pixel-ID'] = px2;
+    if (erstes && !k.karteOk) { neu['Erinnert am'] = jetzt; neu['Erinnerungen'] = 0; }
+    kundeSetzen_(kz, neu);
+    if (erstes && !k.karteOk) {
+      var k3 = kunde_(kz);
+      mail_(s, { to: k3.email, antwortAn: betreuerMail_(k3, s), absender: (k3.betreuer ? k3.betreuer + ' · ' : '') + (s.agentur_name || 'Clickculture'),
+        subject: 'Ihr Werbekonto ist fertig: bitte noch Ihre Karte hinterlegen',
+        html: rahmen_('<p style="font-size:16px;">Hallo ' + esc_(k3.anrede) + ',</p><p style="font-size:16px;">danke für die Einladung! Wir haben Ihre Facebook-Seite und Ihr Werbekonto eingerichtet. ' +
+          'Jetzt fehlt nur noch Ihre Karte, damit Facebook die Werbung abrechnen kann. Das dauert ca. 2 Minuten. Die Anleitung steht auf Ihrer Schritte-Seite.</p>' +
+          (k3.seiteBestaetigen ? '<p style="font-size:16px;">Außerdem hat Facebook Ihnen eine Anfrage zu Ihrer Seite geschickt. Bitte dort auf „Genehmigen“ tippen.</p>' : '') +
+          grosserKnopf_(studioLink_(s, k3), 'Karte hinterlegen') + '<p style="font-size:16px;">Fragen? ' + betreuerZeile_(k3, s) + '</p>') });
+      return { ok: true, meldung: 'Gespeichert. Das Studio hat die Mail „Karte hinterlegen“ bekommen.' };
+    }
+    return { ok: true, meldung: 'Gespeichert.' };
   }
   if (aktion === 'vorschau') {
     if (!/^https:\/\//.test(k.seite)) return { ok: false, meldung: 'Erst die Adresse der Seite eintragen (Kasten „Einrichten“).' };
@@ -2479,7 +2577,8 @@ function kunden_() {
       firma: String(g('Firma')).trim(), onboarding: zahl_(g('Onboarding €')), angelegt: datum_(g('Angelegt am')),
       vertrag: datum_(g('Vertrag angenommen')), impressum: String(g('Impressum')).trim(), datenschutz: String(g('Datenschutz')).trim(),
       behandlerName: String(g('Behandler')).trim(), vorbereitungOk: datum_(g('Vorbereitung ok')), fotos: Number(g('Fotos')) || 0,
-      kalenderOk: datum_(g('Kalender ok')), metaOk: datum_(g('Meta erledigt')), googleId: String(g('Google-Ads-ID')).trim(),
+      kalenderOk: datum_(g('Kalender ok')), metaOk: datum_(g('Meta erledigt')), werbekonto: String(g('Werbekonto-ID')).replace(/\D/g, ''), metaFertig: datum_(g('Meta fertig')),
+      seiteBestaetigen: /ja/i.test(String(g('Seite bestätigen'))), karteOk: datum_(g('Karte ok')), googleId: String(g('Google-Ads-ID')).trim(),
       googleOk: datum_(g('Google verknüpft')), erinnert: datum_(g('Erinnert am')), erinnerungen: Number(g('Erinnerungen')) || 0,
       allesDa: datum_(g('Alles da')), liveMail: datum_(g('Live-Mail')), pixel: String(g('Pixel-ID')).replace(/\D/g, ''),
       conversion: String(g('Google-Conversion')).trim(), vorschau: datum_(g('Vorschau gesendet')), freigabe: datum_(g('Freigabe')),

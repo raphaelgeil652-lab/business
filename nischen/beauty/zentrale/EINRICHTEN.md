@@ -66,7 +66,7 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
    „1 · Einrichten“ → beim ersten Mal „Weiter“ und zulassen (Google fragt jetzt auch nach **Kalender**: zulassen) →
    danach nochmal „1 · Einrichten“. Die Meldung sagt „Die Automatik läuft“.
    *Kein Menü?* Steht oben neben dem Dateinamen „.XLSX“, ist es noch nicht die Google-Version (Schritt 1).
-7. **Eure Daten:** Blatt „Einstellungen“ → Meta Business-ID, Google-Ads-Verwaltungskonto, Anschrift, Steuernummer, IBAN.
+7. **Eure Daten:** Blatt „Einstellungen“ → Meta Business-ID, **eure Facebook-E-Mail** (die Adresse, mit der ihr bei Facebook angemeldet seid: Die Studios laden sie ein), Google-Ads-Verwaltungskonto, Anschrift, Steuernummer, IBAN.
    Dann Menü „Clickculture“ → **„Übersicht und Formular als Lesezeichen“** → beide Links als Lesezeichen speichern.
 8. **Testen** (10 Minuten, mit dir selbst als Studio):
    - Lesezeichen **„Neuer Kunde“** → als Studio dich selbst eintragen (deine E-Mail, eine Leistung, z. B. `Test | 30`,

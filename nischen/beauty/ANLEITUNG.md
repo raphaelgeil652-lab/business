@@ -1,4 +1,4 @@
-# Beauty: So läuft es (Stand 20.11.2026)
+# Beauty: So läuft es (Stand 21.11.2026)
 
 Ein Studio gewinnen, starten, betreuen. In der Reihenfolge, wie es passiert. Ihr tippt nichts in Tabellen ab
 und springt nicht zwischen Dateien hin und her. Ihr füllt **ein Formular** aus. Den Rest machen die Zentrale,
@@ -6,8 +6,8 @@ das Studio auf seiner eigenen Seite und Claude.
 
 | Wer | macht was |
 |---|---|
-| **Ihr** | Gespräch führen und dabei das Formular ausfüllen · auf Mails der Zentrale reagieren (meist ein Klick) · Seite hochladen und Kampagnen anlegen |
-| **Das Studio** | arbeitet seine **Schritte-Seite** ab (Link kommt per Mail): Vereinbarung annehmen, Fotos hochladen, Kalender freigeben, Meta und Google verbinden |
+| **Ihr** | Gespräch führen und dabei das Formular ausfüllen · auf Mails der Zentrale reagieren (meist ein Klick) · Meta im Portfolio des Studios einrichten · Kampagnen anlegen |
+| **Das Studio** | arbeitet seine **Schritte-Seite** ab (Link kommt per Mail): Vereinbarung annehmen, Fotos hochladen, Kalender freigeben, euch bei Facebook einladen, Karte hinterlegen |
 | **Die Zentrale** | schickt alle Mails von selbst: Willkommen, Vereinbarung, Erinnerungen, Rechnungen, Termine, Reports. Sie meldet euch, wenn etwas zu tun ist |
 | **Claude** | baut aus dem „Text für Claude“ und den Fotos die Terminseite, die Anzeigen und den Kampagnen-Assistenten und **stellt die Seite selbst auf Netlify online** |
 
@@ -28,11 +28,11 @@ Die Zentrale habt ihr schon eingerichtet. Für die neue Version:
 2. **Wichtig, sonst läuft die alte Version weiter:** oben rechts **Bereitstellen → Bereitstellungen verwalten** →
    Stift (Bearbeiten) → bei Version **„Neue Version“** → **Bereitstellen**. Die Web-App-Adresse bleibt gleich.
 3. Zurück in den Tab mit der Tabelle, neu laden → **Clickculture → 1 · Einrichten**. Google fragt nach neuen Rechten
-   (Drive für die Fotos, Rechnungen als PDF) → **Zulassen** → nochmal **1 · Einrichten**. Neue Spalten und Blätter legt
+   (Kalender, Rechnungen als PDF) → **Zulassen** → nochmal **1 · Einrichten**. Neue Spalten und Blätter legt
    „Einrichten“ von selbst an. Nichts geht verloren.
 4. Blatt **„Einstellungen“**, gelbe Felder:
    - **Meta Business-ID** der Agentur (`2264672317797144`, mit `'` davor eintippen),
-   - **Google-Ads-Verwaltungskonto** (`774-518-7262`),
+   - **Eure Facebook-E-Mail**: die Adresse, mit der ihr bei Facebook angemeldet seid. Die Studios laden genau diese ein,
    - **Anschrift, Steuernummer, IBAN**. Sind die drei da, gehen Rechnungen von selbst als PDF raus,
    - **„Wer ist im Team?“**: `Raphael = geschaeft@…; Volkan = geschaeft@…`. Ihr könnt beide dieselbe Geschäfts-Adresse nehmen.
 5. **Clickculture → Übersicht und Formular als Lesezeichen** → beide Links öffnen → als Lesezeichen speichern
@@ -70,7 +70,6 @@ von selbst die Mail „Heute dran“. Texte: „1 Verkaufsskript“ und „2 Nac
 3. **„Kunde anlegen“** tippen. Ab jetzt läuft es von selbst:
    - Das Studio bekommt die **Willkommens-Mail** mit dem Knopf zu seiner Schritte-Seite. Der Betreuer bekommt eine Kopie.
    - Die Vereinbarung ist ausgefüllt und wartet dort auf den Klick „Annehmen“.
-   - In eurem Google Drive liegt ein Fotos-Ordner für das Studio.
 
 Am besten öffnet das Studio die Schritte-Seite noch im Gespräch und nimmt die Vereinbarung gleich an.
 
@@ -85,31 +84,33 @@ Auf seiner Schritte-Seite steht bei jedem Schritt eine Anleitung und ein Knopf:
 4. Hinweise vor dem Termin prüfen und freigeben (ein Vorschlag steht schon drin).
 5. Fotos hochladen, direkt vom Handy.
 6. Google-Kalender freigeben. Der Knopf „Freigabe prüfen“ zeigt sofort ✓. Nur wenn das Studio einen Google-Kalender hat.
-7. Meta (Facebook und Instagram) verbinden.
+7. **Clickculture bei Facebook einladen.** Das Studio legt ein Business-Portfolio an (ein Formular) und lädt eure
+   Facebook-E-Mail mit „Volle Kontrolle“ ein. Mehr nicht. Die Anleitung steht Klick für Klick auf der Schritte-Seite.
+8. **Karte hinterlegen.** Kommt erst, wenn ihr Meta eingerichtet habt: Das Studio bekommt eine Mail, der Knopf öffnet
+   direkt die Zahlungsseite seines Werbekontos.
 
 Alle Felder sind Pflicht. Jeder erledigte Schritt lässt sich über „Ändern“ korrigieren (außer der angenommenen Vereinbarung).
 
 **Euer Teil, nur wenn eine Mail kommt:**
 
-- **„Meta-Partnerzugriff ist freigegeben“**: Die Mail sagt Klick für Klick, was ihr tut (Personen zuweisen, Pixel anlegen).
+- **„… hat euch bei Facebook eingeladen“**: Team-Seite des Studios → Kasten **„Meta einrichten“**. Die Klickliste führt euch
+  durch alles im Portfolio des Studios: Einladung annehmen, Seite, Werbekonto (Europe/Berlin, EUR), Werbetreibender und
+  Zahler, Pixel, Partnerzugriff für euer Portfolio. Am Ende Werbekonto-ID und Pixel-ID eintragen → **„Meta fertig“**.
+  Das Studio bekommt dann von selbst die Mail „Karte hinterlegen“.
 - **„kommt nicht weiter: bitte anrufen“**: kommt nach drei Erinnerungen ohne Fortschritt. Anrufen und die Schritte zusammen machen.
 
-**Meta macht ihr am besten zusammen mit dem Studio**, am Telefon mit Bildschirm-Teilen (ca. 30 Minuten).
-Klick für Klick steht in „Hilfe – Meta und Google mit dem Studio einrichten“. Die zwei wichtigsten Regeln:
-
-- Das Studio legt **sein eigenes** Werbekonto und **sein eigenes** Google-Ads-Konto an, mit **seiner** Karte. Nie in eurem
-  Portfolio oder unter eurem Verwaltungskonto anlegen: Diese Konten gehören dann euch, und eine Sperre trifft alle Studios.
-- Google: unten klein **„Zum Expertenmodus wechseln“** → **„Konto ohne Kampagne erstellen“**. Dann kommt der
-  Assistent nicht, der nach der Webseite fragt und euch festhält.
+**Wichtigste Regel bei Meta:** Seite und Werbekonto legt ihr **im Portfolio des Studios** an, nie in eurem. Dann gehören
+sie dem Studio, und eine Sperre bei euch trifft nicht alle Studios. Die Karte gibt das Studio selbst ein.
+Klickwege: „Hilfe – Meta mit dem Studio einrichten“.
 
 Die Zentrale erinnert das Studio alle zwei Werktage von selbst. In der Erinnerung stehen genau die Schritte, die noch fehlen.
 
 ## Schritt 4 · Mail „alles vom Studio da“ → Claude
 
-Die Mail kommt von selbst, sobald alle Schritte erledigt sind. Dann:
+Die Mail kommt von selbst, sobald das Studio alles für Seite und Anzeigen erledigt hat (die Karte darf noch fehlen). Dann:
 
-1. In der Mail auf **Fotos-Ordner** → oben auf den Ordnernamen → **Herunterladen**. Die Fotos kommen als ZIP.
-2. Claude schicken: das ZIP und den **„Text für Claude“** aus der Mail, dazu „Baue die Seite für *kürzel*“.
+1. Die Fotos kamen als Mails „Foto … von *Studio*“. Die Anhänge speichern.
+2. Claude schicken: die Fotos und den **„Text für Claude“** aus der Mail, dazu „Baue die Seite für *kürzel*“.
 3. Claude **stellt die Seite selbst online** (`https://kürzel.netlify.app`) und schickt euch den Kundenordner mit dem
    **Kampagnen-Assistenten** und den **Anzeigen-Bildern**.
 
@@ -120,8 +121,8 @@ Die Mail kommt von selbst, sobald alle Schritte erledigt sind. Dann:
    Ein Änderungswunsch kommt per Mail zu euch: an Claude weitergeben, Claude stellt die neue Fassung online, dann wieder
    „Studio um Freigabe bitten“.
 2. **Kampagnen:** den **Kampagnen-Assistenten** öffnen („2 Kampagnen-Assistent“ im Kundenordner). Jeder Schritt hat ein
-   Häkchen, jeder Text einen Knopf „Kopieren“. Er fängt mit der Messung an: Pixel-ID und Google-Conversion tragt ihr auf der
-   **Team-Seite** ein. Sie wirken sofort.
+   Häkchen, jeder Text einen Knopf „Kopieren“. Er fängt mit der Messung an: Die Pixel-ID steht schon auf der **Team-Seite**
+   (von „Meta fertig“). Sie wirkt sofort.
 3. Anzeigen erst als **Entwurf** anlegen.
 4. Ohne Claude geht das Hochladen auch von Hand: app.netlify.com → **Add new project → Deploy manually** → Ordner
    „1 Seite für Netlify“ hineinziehen → **Project configuration → Change project name** → Kürzel.
@@ -147,12 +148,11 @@ Kampagnen-Assistenten. Die Terminseite bleibt dieselbe. Vor dem Start einmal vom
 | Buchung, Bestätigung, Kalendereintrag, Erinnerung 24 h vorher, Absage | Zentrale | nichts |
 | Abends 19 Uhr meldet das Studio per Knopf: erschienen · nicht erschienen · gekauft | Studio | nichts |
 | Montags: Wochenbericht ans Studio (neue Termine, erschienen, gekauft, was diese Woche ansteht) plus offene Termine zum Antippen | Zentrale | nichts |
-| Erster Kauf → Monatsgebühr ab dem nächsten Monat | Zentrale | nichts |
 | Studio tippt „Behandlung gekauft“ und gibt den Betrag ein | Studio | nichts |
 | 1. des Monats: Provisions-Rechnung für den Vormonat als PDF ans Studio | Zentrale | Geld da → Team-Seite „Bezahlt“ |
-| 1. des Monats: Mail „Monatsreports: je Studio ein Klick“ | Zentrale | Link → Werbekosten aus Meta und Google eintragen, zwei Sätze → „Report senden“ → kurz anrufen |
+| 1. des Monats: Mail „Monatsreports: je Studio ein Klick“ | Zentrale | Link → Werbekosten aus Meta eintragen (bei Google 0), zwei Sätze → „Report senden“ → kurz anrufen |
 | Fehler oder Warnung (z. B. Mail-Kontingent knapp) | Zentrale | steht in der Mail |
-| Studio hört auf | ihr | Team-Seite „Pausieren“, Kampagnen in Meta und Google pausieren |
+| Studio hört auf | ihr | Team-Seite „Pausieren“, Kampagnen in Meta pausieren |
 
 **Mail-Grenze:** Ein kostenloses Google-Konto darf ca. 100 Mails am Tag schicken. Das reicht für ca. 20 Buchungen.
 Ab 4–5 Studios die Zentrale in Google Workspace umziehen. Die Zentrale warnt vorher.

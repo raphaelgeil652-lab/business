@@ -94,8 +94,9 @@ Beratung/Behandlung mehr). **Der Ablauf steht in `nischen/beauty/ANLEITUNG.md`.*
 Behandler/Qualifikation, schlägt das Budget vor, legt den Kunden an, füllt die Vereinbarung aus, legt einen
 Fotos-Ordner in Drive an, schickt die Willkommens-Mail. (2) **Schritte-Seite des Studios** (Link per Mail): Vereinbarung
 per Klick annehmen (Name+Zeit im Blatt „Verträge“, Kopie per Mail, Onboarding-Rechnung als PDF), Impressum/Datenschutz,
-Behandler, Vorbereitung freigeben, Fotos-Upload, Kalender-Freigabe mit Live-Prüfung, Meta-Partnerzugriff, Google-Kunden-ID
-und Annahme. Erinnerungen alle 2 Werktage (max. 3, dann „bitte anrufen“ an den Betreuer), Mail „alles da“ mit
+Behandler, Vorbereitung freigeben, Fotos-Upload, Kalender-Freigabe mit Live-Prüfung, **Meta: Studio lädt nur ein** (Portfolio anlegen +
+eure Facebook-E-Mail „Volle Kontrolle“; ihr richtet Seite, Werbekonto, Pixel, Partnerzugriff im Portfolio des Studios ein, Team-Seite
+„Meta einrichten“ → „Meta fertig“ → Studio bekommt Mail „Karte hinterlegen“ mit direktem Link zur Zahlungsseite). Erinnerungen alle 2 Werktage (max. 3, dann „bitte anrufen“ an den Betreuer), Mail „alles da“ mit
 **„Text für Claude“** (JSON). (3) **Team-Seite** je Studio + Übersicht (Lesezeichen): Pixel-ID und Google-Conversion
 (wirken sofort, Seite holt sie per `?a=mess`), „Jetzt live schalten“ (Mail „Ihre Werbung läuft“), Monatsreport mit
 Werbekosten senden, Rechnung „Bezahlt“, Pausieren. Rechnungen Monatsgebühr am 1. automatisch als PDF (wenn IBAN,

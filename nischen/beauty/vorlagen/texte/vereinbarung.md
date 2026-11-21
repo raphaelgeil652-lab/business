@@ -31,8 +31,9 @@ Werbebudget: **{{budget}} pro Monat** für Werbung auf Meta (Facebook und Instag
 ### §3 Pflichten des Auftraggebers
 
 - Material: echte Fotos aus dem Studio bzw. der Praxis, Links zu Impressum und Datenschutzerklärung.
-- Zugang für den Auftragnehmer bei Meta als Partner (Facebook-Seite und Werbekonto). Im Werbekonto hinterlegt der
-  Auftraggeber seine eigene Zahlungsart; das Werbebudget läuft über sein Konto.
+- Einladung des Auftragnehmers in das Business-Portfolio des Auftraggebers bei Meta. Der Auftragnehmer legt dort im
+  Namen des Auftraggebers Facebook-Seite, Werbekonto und Pixel an, soweit noch nicht vorhanden. Sie gehören dem
+  Auftraggeber. Im Werbekonto hinterlegt der Auftraggeber seine eigene Zahlungsart; das Werbebudget läuft über sein Konto.
 - {{kalender_pflicht}}
 - Prüfung und Freigabe der Vorbereitungs-Hinweise und der Absageregel, die die Kundschaft erhält. Für deren
   fachliche Richtigkeit ist der Auftraggeber verantwortlich.
