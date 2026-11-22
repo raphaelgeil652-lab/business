@@ -252,6 +252,8 @@ def seiten_felder(f, mod, fotos):
     s["lp_kicker"] = fuellen(lp["kicker"], f)
     s["lp_h1"] = fuellen(lp["h1"], f)
     s["lp_sub"] = esc(fuellen(lp["sub"], f) if f["_beratung"] else "Freie Termine sehen und direkt online buchen. Die Bestätigung kommt per E-Mail.")
+    if f.get("_gs"):
+        s["lp_sub"] = "Freie Termine sehen und direkt hier buchen. <b>Mit Ihrem Termin sind Sie automatisch im Gewinnspiel.</b>"
     if f.get("_nk"):
         s["lp_sub"] = "<b>Neukundinnen: " + esc(f["nk_text"]) + "</b>" + esc(f["nk_bis_satz"]) + ". Freien Termin wählen und direkt hier buchen."
     s["foto_alt"] = esc(f"{mod['name']} bei {f['betrieb']}")
@@ -312,6 +314,12 @@ def seiten_felder(f, mod, fotos):
     return s
 
 
+def feed_kurz(text, n=125):
+    """Wie im echten Feed: Meta zeigt vom Anzeigentext nur den Anfang, dann „… Mehr“."""
+    text = " ".join(str(text).split())
+    return text if len(text) <= n else text[:n].rsplit(" ", 1)[0].rstrip(",.;:–-") + " … Mehr"
+
+
 def gewinnspiel_anzeigen(f):
     """Drei Gewinnspiel-Anzeigen. Mit mehreren Top-Leistungen bekommt jede ihre eigene Anzeige („Gewinne eine gratis …“, eigenes Foto,
     Terminseite mit dieser Leistung vorausgewählt). Mit nur einem Hauptgewinn: dreimal derselbe Gewinn mit drei Fotos."""
@@ -355,7 +363,7 @@ def anzeigen_html(f, mod):
                      f' <div class="cta">{esc(t["cta"])} <span>→</span></div>\n'
                      + (f' <p class="fine">{esc(t["fine"])}</p>\n' if a["stil"] == "g" and t["fine"] else '') + '</div>')
         vorschau.append(f'  <div class="ad"><div class="top"><div class="pic"></div><div class="who"><b>{esc(f["betrieb"])}</b><span>Gesponsert · 🌐</span></div></div>\n'
-                        f'    <div class="txt">{esc(t["primaer"])}</div>\n    <img src="creatives/{a["id"]}.png" alt="{esc(a["id"])}">\n'
+                        f'    <div class="txt">{esc(feed_kurz(t["primaer"]))}</div>\n    <img src="creatives/{a["id"]}.png" alt="{esc(a["id"])}">\n'
                         f'    <div class="card"><div><span class="u">{esc(f["landingpage_domain"])}</span><b>{esc(t["headline"])}</b><small>{esc(t["beschreibung"])}</small></div>'
                         f'<span class="btn">Jetzt buchen</span></div></div>')
         a["_t"] = t
