@@ -2,8 +2,8 @@
 
 > Alles fertig zum Eintragen, Texte 1:1 kopieren. Bilder: Ordner `anzeigen/creatives`.
 > Die Klickwege sind so, wie Meta und Google sie im November 2026 zeigen. Heißt ein Feld anders, nimm das Nächstliegende.
-> Die Pixel-ID trägst du auf der **Team-Seite** des Studios ein (Link in jeder Mail der Zentrale).
-> Sie wirken sofort, die Seite muss dafür **nicht** neu hochgeladen werden.
+> Pixel-ID und Werbekonto hast du schon bei „Meta einrichten“ eingetragen („Meta fertig“). Sie wirken sofort,
+> die Seite muss dafür **nicht** neu hochgeladen werden.
 
 **Was gezählt wird:** Meta bekommt „Lead“ erst, wenn die Kundin ihren Termin **in der Mail
 bestätigt** hat (Seite `bestaetigen.html`). Reservierungen, die nie bestätigt werden, und Fake-Buchungen zählen nicht.
@@ -12,15 +12,14 @@ So lernt Meta, Menschen zu finden, die wirklich kommen.
 **Regeln für diese Behandlung** (stecken schon in den Texten, nichts dazu erfinden):
 {{regeln_liste}}
 
-## Vorher: Messung einrichten (einmal pro Kunde)
+## Vorher kurz prüfen: der Pixel ist schon da
 
-**Meta-Pixel (Meta nennt es „Datensatz“)**
-1. business.facebook.com/settings → links **„Datenquellen“ → „Datensätze“** → **„Hinzufügen“**.
-2. Name: `{{betrieb}}` → **„Erstellen“**.
-3. Frage „Wähle die Werbekonten aus …“: das **Werbekonto des Studios** ankreuzen → **„Weiter“**.
-4. Fragt Meta, wie ihr einrichten wollt: **schließen**. Der Code steckt schon in den Seiten.
-5. Die **Datensatz-ID** (15–16 Ziffern) kopieren → Team-Seite des Studios → „Meta-Pixel“ → Speichern.
-6. **Gesundheit und Schönheit:** Meta schränkt bei manchen Studios und Praxen die Daten ein („eingeschränkte
+1. Team-Seite des Studios → Kasten **„Einrichten“** → im Feld **„Meta-Pixel (Datensatz-ID)“** steht eine Nummer (15–16 Ziffern).
+   Das hast du bei „Meta einrichten“ erledigt. **Warum:** Bestätigt eine Kundin ihren Termin, meldet die Seite Meta einen „Lead“.
+   So lernt Meta, wer wirklich bucht, und du siehst in Meta, welche Anzeige Termine bringt.
+2. Steht dort nichts: business.facebook.com → Portfolio des Studios → **Einstellungen → Datenquellen → Datensätze** → ID kopieren
+   (gibt es keinen: **„Hinzufügen“**, Name `{{betrieb}}`, mit dem Werbekonto verbinden) → in das Feld eintragen → Speichern.
+3. **Gesundheit und Schönheit:** Meta schränkt bei manchen Studios und Praxen die Daten ein („eingeschränkte
    Datennutzung“). Steht im Events Manager ein solcher Hinweis, ist das kein Fehler von euch. Die Seite sendet
    ohnehin keine Behandlungsnamen. Siehe unten „Wenn Meta ‚Lead‘ nicht anbietet“.
 
