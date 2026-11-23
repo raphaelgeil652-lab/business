@@ -1283,7 +1283,7 @@ function datum_(v) {
 /* Spalten, die „Einrichten“ in einer älteren Zentrale von selbst ergänzt (hinten angehängt, nichts geht verloren). */
 var KUNDEN_SPALTEN = ['Kürzel', 'Status', 'Betreuer', 'Betreuer Telefon', 'Betreuer E-Mail', 'Betrieb', 'Firma', 'Anrede für Mails', 'Inhaber',
   'E-Mail für Termine', 'Telefon', 'Adresse', 'Seiten-Adresse', 'Behandlung', 'Behandler-Art', 'Buchung', 'Kalender-ID', 'Buchbare Zeiten', 'Leistungen',
-  'Neukundenangebot', 'Angebot Leistung', 'Angebot Normalpreis', 'Angebot bis',
+  'Neukundenangebot', 'Angebot Leistung', 'Angebot Normalpreis', 'Angebot bis', 'Bewertungen',
   'Takt Minuten', 'Puffer Minuten', 'Vorlauf Stunden', 'Tage im Voraus', 'Absagefrist Stunden', 'Ausfallregel', 'Vorbereitung', 'Hinweise je Leistung',
   'Onboarding €', 'Monatsgebühr €', 'Provision %', 'Werbebudget €', 'Umkreis km', 'Angelegt am', 'Live seit', 'Pixel-ID', 'Google-Conversion',
   'Vertrag angenommen', 'Impressum', 'Datenschutz', 'Behandler', 'Vorbereitung ok', 'Fotos', 'Kalender ok', 'Meta erledigt', 'Werbekonto-ID', 'Meta fertig', 'Seite bestätigen', 'Karte ok',
@@ -1356,6 +1356,8 @@ function formularWerte_(k) {
     ausfall: (String(k.ausfall).match(/berechnen wir ([\d.,]+)/) || [])[1] || '', termine: (String(g('Notiz')).match(/^(\d+)/) || [])[1] || '',
     gs_l: k.gsLeistungen, gs_haupt: gewinneListe_(k).filter(function (g) { return !/%/.test(g.text); }).map(function (g) { return g.text.replace(/\s*\(Wert[^)]*\)\s*$/, ''); }),
     gs_zusatz: gewinneText_(gewinneListe_(k).filter(function (g) { return /%/.test(g.text); })).join('\n'),
+    bew_sterne: k.bewertungen.sterne || '', bew_anzahl: k.bewertungen.anzahl || '',
+    bew_text: (k.bewertungen.liste || []).map(function (b) { return b.text + ' | ' + b.name; }).join('\n'),
     nk_text: k.nk.text, nk_leistung: k.nk.leistung, nk_normal: k.nk.normal, nk_bis: k.nk.bis ? Utilities.formatDate(k.nk.bis, 'Europe/Berlin', 'yyyy-MM-dd') : '',
     umkreis: Number(g('Umkreis km')) || 15, provision: Number(g('Provision %')) || PROVISION_STANDARD, budget: zahl_(g('Werbebudget €')) || '' };
 }
@@ -1425,6 +1427,13 @@ function formularHtml_(s, k) {
     '<div class="zwei"><label>Welche Leistung bucht die Kundin dafür?<select name="nk_leistung" id="nkl"></select></label>' +
     feld('nk_normal', 'Normalpreis zum Vergleich (freiwillig)', 'placeholder="z. B. 145 €"') + '</div>' +
     feld('nk_bis', 'Gilt bis (freiwillig, leer = ohne Ende)', 'type="date"') + '</div>' +
+    '<div class="box"><h2>3d · Echte Google-Bewertungen <span class="k">(freiwillig, stehen auf der Terminseite)</span></h2>' +
+    '<p class="k">Nur echte Bewertungen aus dem Google-Profil des Studios, Text wörtlich abschreiben, nichts verändern oder erfinden. ' +
+    'Name so, wie er bei Google steht (z. B. „Laura M.“). Leer lassen, wenn es keine gibt, dann erscheint auf der Seite nichts.</p>' +
+    '<div class="zwei">' + feld('bew_sterne', 'Sterne bei Google', 'inputmode="decimal" placeholder="z. B. 4,9"') +
+    feld('bew_anzahl', 'Anzahl Bewertungen', 'inputmode="numeric" placeholder="z. B. 87"') + '</div>' +
+    '<label>Bis zu 3 Bewertungen, eine pro Zeile: Text | Name<textarea name="bew_text" rows="3" style="width:100%;box-sizing:border-box;font-size:15px;padding:8px;" ' +
+    'placeholder="Super lieb und die Wimpern halten ewig! | Laura M.">' + esc_(w.bew_text || '') + '</textarea></label></div>' +
     '<div class="box"><h2>4 · Kalender</h2><div class="zwei">' +
     '<label>Google-Kalender? *<select name="kalender" required>' + opt(['Kalender', 'Wunschtermin'], w.kalender) + '</select>' +
     '<span class="k">Kalender = freie Zeiten kommen aus seinem Google-Kalender, Termine landen direkt dort. Wunschtermin = kein Google-Kalender, das Studio bestätigt jeden Termin per Knopf.</span></label>' +
@@ -1550,6 +1559,14 @@ function neuerKunde_(d, s) {
   if (leistungen.concat([{ name: txt(d.angebot) }]).some(function (l) { return /botox|botulinum/i.test(l.name); })) {
     return { ok: false, text: 'Das Wort „Botox“ ist in der Werbung verboten. Bitte z. B. „Faltenbehandlung Stirn“ schreiben.' };
   }
+  var bewS = txt(d.bew_sterne).replace('.', ','), bewA = txt(d.bew_anzahl).replace(/\D/g, '');
+  var bewL = txt(d.bew_text).split(/\n/).map(function (z) { return z.trim(); }).filter(String).map(function (z) {
+    var t = z.split('|'), name = t.length > 1 ? t.pop().trim() : ''; return { text: t.join('|').trim().replace(/^[„"“]+|[“"”]+$/g, ''), name: name };
+  });
+  if (bewS && !/^[1-5](,\d)?$/.test(bewS)) return { ok: false, text: 'Die Google-Sterne bitte als Zahl von 1 bis 5, z. B. 4,9.' };
+  if (bewL.length > 3) return { ok: false, text: 'Bitte höchstens 3 Bewertungen eintragen.' };
+  if (bewL.some(function (b) { return !b.name || !b.text; })) return { ok: false, text: 'Bei jeder Bewertung bitte Text und Name, getrennt mit „|“, z. B. „Super lieb! | Laura M.“' };
+  if (bewL.some(function (b) { return b.text.length > 280; })) return { ok: false, text: 'Eine Bewertung ist zu lang. Bitte höchstens 280 Zeichen, gern die beste Stelle wörtlich auswählen.' };
   var nk = txt(d.nk_text).replace(/\s+/g, ' '), nkL = txt(d.nk_leistung), nkN = txt(d.nk_normal), nkBis = datum_(txt(d.nk_bis));
   if (nk && nk.split(' ').length > 8) return { ok: false, text: 'Das Neukundenangebot bitte kürzer, höchstens 8 Wörter. Es steht groß auf der Anzeige.' };
   if (nk && !leistungen.some(function (l) { return l.name === nkL; })) return { ok: false, text: 'Beim Neukundenangebot bitte wählen, welche Leistung die Kundin dafür bucht.' };
@@ -1586,6 +1603,7 @@ function neuerKunde_(d, s) {
     'Leistungen': leistungen.map(function (l) { return l.name + ' | ' + l.minuten + ' | ' + l.preis; }).join('; '),
     'Gewinn': gsZeilen.join(' • '), 'Gewinnspiel Leistungen': gsL.join(' • '),
     'Neukundenangebot': nk, 'Angebot Leistung': nk ? nkL : '', 'Angebot Normalpreis': nkN, 'Angebot bis': nkBis || '',
+    'Bewertungen': bewS || bewL.length ? JSON.stringify({ sterne: bewS, anzahl: bewA, liste: bewL }) : '',
     'Takt Minuten': 15, 'Puffer Minuten': 0, 'Vorlauf Stunden': 12, 'Tage im Voraus': 28, 'Absagefrist Stunden': absage,
     'Ausfallregel': ausfall > 0 ? 'Bei einer Absage später als ' + absage + ' Stunden vorher oder wenn Sie nicht kommen, berechnen wir ' + euro_(ausfall) +
       '. Das gilt nicht, wenn Sie nachweisen, dass Sie das Versäumnis nicht zu vertreten haben oder uns kein oder ein geringerer Schaden entstanden ist.' : '',
@@ -2165,6 +2183,7 @@ function studioDaten_(k, s) {
     behandler: k.behandlerName, leistungen: k.leistungen, zeiten: k.zeiten, takt: k.raster || 30, absagefrist: k.absagefrist, ausfall: k.ausfall,
     vorbereitung: k.vorbereitung, modus: k.modus, umkreis: Number(g('Umkreis km')) || 15, budget: zahl_(g('Werbebudget €')),
     impressum: k.impressum, datenschutz: k.datenschutz, betreuer: k.betreuer, zentrale: basis_(s),
+    bewertungen: k.bewertungen.sterne || (k.bewertungen.liste || []).length ? k.bewertungen : undefined,
     angebot: k.nk.text ? { text: k.nk.text, leistung: k.nk.leistung, normal: k.nk.normal, bis: k.nk.bis ? datumKurz_(k.nk.bis) : '' } : undefined,
     gewinnspiel: k.gewinn && regelModul_(k).regeln.verlosung ? { gewinne: gewinneText_(gewinneListe_(k)), leistungen: k.gsLeistungen, bedingungen: portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel) } : undefined,
     agentur: { name: s.agentur_name || 'Clickculture', email: s.agentur_email || '', telefon: s.agentur_telefon || '' } };
@@ -2652,6 +2671,7 @@ function kunden_() {
       allesDa: datum_(g('Alles da')), liveMail: datum_(g('Live-Mail')), pixel: String(g('Pixel-ID')).replace(/\D/g, ''),
       conversion: String(g('Google-Conversion')).trim(), vorschau: datum_(g('Vorschau gesendet')), freigabe: datum_(g('Freigabe')),
       aenderung: String(g('Änderungswunsch')).trim(), hinweise: jsonLesen_(g('Hinweise je Leistung')), nk: { text: String(g('Neukundenangebot')).trim(), leistung: String(g('Angebot Leistung')).trim(), normal: String(g('Angebot Normalpreis')).trim(), bis: datum_(g('Angebot bis')) },
+      bewertungen: jsonLesen_(g('Bewertungen')),
       gewinn: String(g('Gewinn')).trim(), gsLeistungen: String(g('Gewinnspiel Leistungen')).split('•').map(function (x) { return x.trim(); }).filter(String), gsAb: datum_(g('Gewinnspiel ab'))
     };
   });

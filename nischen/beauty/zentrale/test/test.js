@@ -628,7 +628,14 @@ neu(); uhr('2027-03-01 10:00'); G.einrichten();
   pruefe(k.gsLeistungen.join('|') === 'Powder Brows|Lippen / Aquarell' && k.gewinn === 'gratis Powder Brows (Wert 390 €) • eine gratis Lippen / Aquarell • 2 × 20 % auf deinen nächsten Termin • 3 × 40 % auf deinen nächsten Termin' && k.gsAb && !k.schluss, 'Gewinnspiel aus dem Gespräch: Top-Leistungen als Hauptgewinne (mit Wert), Zusatzgewinne, offen ab heute');
   pruefe(G.formularWerte_(k).gs_haupt[0] === 'gratis Powder Brows' && /3 × 40/.test(G.formularWerte_(k).gs_zusatz) && G.studioDaten_(k, G.einst_()).gewinnspiel.leistungen.length === 2, 'Gewinnspiel beim Ändern vorausgefüllt und im Text für Claude');
   pruefe(k.nk.text === 'Powder Brows für Neukundinnen 349 €' && k.nk.leistung === 'Powder Brows' && G.studioDaten_(k, G.einst_()).angebot.normal === '390 €', 'Neukundenangebot gespeichert und im Text für Claude');
+  pruefe(!f({ bew_sterne: '7' }).ok && !f({ bew_text: 'nur Text ohne Name' }).ok && !f({ bew_text: 'a | A\nb | B\nc | C\nd | D' }).ok, 'Bewertungen: Sterne 1–5, Text | Name, höchstens 3');
   pruefe(G.formularHtml_(G.einst_(), k).includes('Neukundenangebot') && G.formularWerte_(k).nk_text === k.nk.text, 'Neukundenangebot im Formular, beim Ändern vorausgefüllt');
+  {
+    const rb = f({ kuerzel: 'kate-cosmetics', bew_sterne: '4.9', bew_anzahl: '87 Bewertungen', bew_text: '„Super lieb und die Wimpern halten ewig!“ | Laura M.\nSehr sauber | Anna K.' });
+    const kb = G.kunde_('kate-cosmetics'), sd = G.studioDaten_(kb, G.einst_());
+    pruefe(rb.ok && sd.bewertungen.sterne === '4,9' && sd.bewertungen.anzahl === '87' && sd.bewertungen.liste.length === 2 && sd.bewertungen.liste[0].text === 'Super lieb und die Wimpern halten ewig!' && sd.bewertungen.liste[0].name === 'Laura M.', 'Bewertungen gespeichert und im Text für Claude');
+    pruefe(G.formularWerte_(kb).bew_text.includes('Anna K.') && G.formularHtml_(G.einst_(), kb).includes('3d · Echte Google-Bewertungen'), 'Bewertungen im Formular, beim Ändern vorausgefüllt');
+  }
   pruefe(k.zeiten === 'Di 9:00-18:00; Mi 9:30-12:00 14:00-18:00; Sa 10:00-14:00' && k.raster === 15 && k.modus === 'Kalender' && k.kalender === 'kate@studio.de', 'Zeiten aus dem Kalender-Raster, Takt von selbst 15 Min., Kalender = Studio-Mail');
   pruefe(k.betrieb === 'Kate Cosmetics' && k.inhaber === 'Katleen Miner' && k.anrede === 'Frau Miner' && k.adresse === 'Am Bahnhof 4, 88131 Lindau' && k.behandlung === 'Powder Brows und Lippen', 'Groß- und Kleinschreibung von selbst, Adresse aus getrennten Feldern');
   pruefe(k.leistungen.length === 2 && k.leistungen[0].name === 'Powder Brows' && k.leistungen[1].name === 'Lippen / Aquarell' && k.leistungen[1].minuten === 150, 'Leistungen: leere Zeile weg, „|“ entschärft, großer Anfang');

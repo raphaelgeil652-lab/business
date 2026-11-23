@@ -202,6 +202,7 @@ def felder(d):
     f["_gs_leistungen"] = [str(x) for x in (gs.get("leistungen") or [])]
     f["_gs_zusatz"] = zusatz
     f["_gs_alle"] = gw
+    f["_bewertungen"] = d.get("bewertungen") or {}
     f["gs_haupt"] = f["_gs_haupt"][0] if haupt else ""
     f["gs_haupt_kurz"] = re.sub(r"\s*\(.*?\)", "", f["gs_haupt"]).strip()
     f["gs_weitere_satz"] = (" Außerdem verlosen wir: " + ", ".join(gw[1:]) + ".") if len(gw) > 1 else ""
@@ -275,18 +276,22 @@ def seiten_felder(f, mod, fotos):
                        "Teilnahme ab 18, Teilnahmeschluss offen. Wer gewinnt, wird persönlich benachrichtigt und löst den Gewinn im Studio ein."))
     s["faq_html"] = "\n    ".join(f"<details><summary>{esc(fuellen(q, f))}</summary><p>{esc(fuellen(a, f))}</p></details>" for q, a in faq)
     s["final_titel"] = "Ihr erster Schritt: <em>ein Termin.</em>" if k != "falten" else "Erst beraten, <em>dann entscheiden.</em>"
-    # Preise (nur wo erlaubt und vorhanden)
+    # Leistungen und Preise stehen schon im Buchungsfeld oben. Hier nur der Zusatzhinweis (z. B. Sitzungen beim Laser).
     leist = f["_leistungen"]
-    if leist:
-        zeilen = "".join(f"<tr><td>{esc(l['name'])}<small>{l['minuten']} Min.</small></td><td>{esc(preis_text(l['preis'])) if r['preise'] else ''}</td></tr>" for l in leist)
-        zusatz = {"laser": "Preise pro Sitzung. Meist sind 6–8 Sitzungen nötig; den Gesamtpreis nennen wir Ihnen vorab.",
-                  "pmu": "Preise inklusive Beratung, Vorzeichnen und Nachstechtermin.",
-                  "bleaching": "Ob vorher eine Zahnreinigung nötig ist, klären wir im Erstgespräch."}.get(k, "")
-        mitp = r["preise"] and any(l["preis"] for l in leist)
-        s["leistungen_html"] = (f'  <section>\n    <h2>{"Leistungen und Preise" if mitp else "Leistungen"}</h2>\n    <table class="preise">{zeilen}</table>\n'
-                                f'    <p class="hinweis">{esc(zusatz) + " Alle Preise inklusive Mehrwertsteuer." if mitp else "Alle Leistungen sind online buchbar."}</p>\n  </section>\n')
+    zusatz = {"laser": "Preise pro Sitzung. Meist sind 6–8 Sitzungen nötig; den Gesamtpreis nennen wir Ihnen vorab.",
+              "pmu": "Preise inklusive Beratung, Vorzeichnen und Nachstechtermin.",
+              "bleaching": "Ob vorher eine Zahnreinigung nötig ist, klären wir im Erstgespräch."}.get(k, "")
+    if zusatz and r["preise"] and any(l["preis"] for l in leist):
+        s["hinweis"] = (s["hinweis"] + " " if s["hinweis"] else "") + esc(zusatz) + " Alle Preise inklusive Mehrwertsteuer."
+    s["leistungen_html"] = ""
+    # Einblicke ins Studio: alle Fotos außer Titelbild und Behandlerfoto, die es gibt (mindestens 2)
+    bilder = [n for n in ("foto-2", "foto-5", "foto-6", "foto-7", "foto-8", "foto-4") if fotos.get(n)]
+    if len(bilder) >= 2:
+        bilder = bilder[:6] if len(bilder) % 2 == 0 else bilder[:5] if len(bilder) >= 5 else bilder[:4] if len(bilder) >= 4 else bilder[:2]
+        kacheln = "".join(f'<img src="fotos/{n}.jpg" alt="Einblick bei {esc(f["betrieb"])}" loading="lazy">' for n in bilder)
+        s["galerie_html"] = f'  <section>\n    <h2>Einblicke ins Studio</h2>\n    <div class="galerie">{kacheln}</div>\n  </section>\n'
     else:
-        s["leistungen_html"] = ""
+        s["galerie_html"] = ""
     # Ergebnisse (Vorher/Nachher) nur wo erlaubt und mit echten Fotos
     if r["vorher_nachher"] and fotos.get("vorher") and fotos.get("nachher"):
         s["ergebnisse_html"] = ('  <section>\n    <h2>Ein Ergebnis aus unserem Studio</h2>\n    <div class="tiles"><figure><img src="fotos/vorher.jpg" alt="Vorher" loading="lazy">'
@@ -305,7 +310,25 @@ def seiten_felder(f, mod, fotos):
                             f'<div><b>{esc(f["behandler_name"])}</b><p>{esc(text)}</p></div></div>\n  </section>\n')
     else:
         s["person_html"] = ""
-    s["bewertungen_html"] = ""  # Bewertungen nur echte; bei Bedarf später ergänzen
+    # Bewertungen: nur echte, wörtlich aus dem Google-Profil (Formular „Neuer Kunde“, Kasten 3d). Ohne Angaben: nichts.
+    bw = f.get("_bewertungen") or {}
+    liste = [b for b in (bw.get("liste") or []) if str(b.get("text") or "").strip()][:3]
+    sterne, anzahl = str(bw.get("sterne") or "").strip(), str(bw.get("anzahl") or "").strip()
+    try:
+        voll = round(float(sterne.replace(",", "."))) if sterne else 5
+    except ValueError:
+        voll = 5
+    st = "★" * voll + "☆" * (5 - voll)
+    kurz = (f"<b>{esc(sterne)}</b> bei Google" + (f" · {esc(anzahl)} Bewertungen" if anzahl else "")) if sterne else ""
+    s["bewertung_kurz_html"] = f'    <p class="sterne-kurz"><span class="st" aria-hidden="true">{st}</span><span>{kurz}</span></p>\n' if sterne else ""
+    if liste:
+        karten = "".join(f'<div class="bewertung"><p>„{esc(str(b["text"]).strip())}“</p>'
+                         f'<span>{esc(str(b.get("name") or "").strip())} · Bewertung bei Google</span></div>' for b in liste)
+        s["bewertungen_html"] = ('  <section>\n    <h2>Das sagen unsere Kundinnen</h2>\n'
+                                 + (f'    <p class="hinweis" style="margin:-6px 0 14px;">{kurz}</p>\n' if kurz else "")
+                                 + f'    <div class="bewertungen">{karten}</div>\n  </section>\n')
+    else:
+        s["bewertungen_html"] = ""
     # Einwilligung (Art. 9 DSGVO ausdrücklich, weil schon der Behandlungswunsch ein Gesundheitsdatum sein kann)
     s["einwilligung_text"] = (f"Ich willige ausdrücklich ein, dass {esc(f['betrieb'])} meine Angaben einschließlich der gewünschten Behandlung "
                               f"verarbeitet, um den Termin zu vereinbaren und mich daran zu erinnern (Art. 9 Abs. 2 lit. a DSGVO). "

@@ -139,3 +139,18 @@ footer{border-top:1px solid var(--line);padding:22px 0 110px;text-align:center;f
 .klein{font-size:.85rem;color:var(--muted);margin-top:14px;}
 @media(min-width:900px){#buchen{position:relative;width:860px;left:50%;transform:translateX(-50%);}}
 .gewinnspiel{background:var(--soft);border-radius:8px;padding:12px 14px;margin:0 0 14px;font-size:.95rem;line-height:1.45;}.gewinnspiel a{color:inherit;}
+
+/* Echte Google-Bewertungen (nur wenn das Studio welche angegeben hat) */
+.sterne-kurz{display:flex;align-items:center;gap:8px;margin:14px 0 0;font-size:.92rem;color:var(--ink2);}
+.sterne-kurz .st{color:#E2A43B;letter-spacing:1px;font-size:1rem;}
+.bewertungen{display:grid;gap:12px;}
+.bewertung{background:var(--soft);border-radius:14px;padding:16px 18px;}
+.bewertung .st{color:#E2A43B;letter-spacing:1px;}
+.bewertung p{margin:6px 0 8px;font-size:.98rem;line-height:1.5;color:var(--ink);}
+.bewertung span{font-size:.85rem;color:var(--muted);}
+
+/* Einblicke ins Studio */
+.galerie{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.galerie img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;background:var(--soft);}
+.galerie img:first-child:nth-last-child(odd){grid-column:1 / -1;aspect-ratio:16/10;}
+@media (min-width:720px){.galerie{grid-template-columns:repeat(3,1fr);}.galerie img:first-child:nth-last-child(odd){grid-column:auto;aspect-ratio:4/5;}}
