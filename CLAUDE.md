@@ -405,6 +405,14 @@ und **`10k-websites`** (unverändert, maßgeblich für den Webseitenbau, siehe o
 
 ## Aktueller Stand
 
+**Strategie (Nutzer, 23.11.2026), in dieser Reihenfolge:**
+1. **Jetzt:** Kosmetikstudios, Wimpern/Brauen/Nägel, PMU, Laser (Kosmetik mit NiSV) mit **Gewinnspiel-Anzeigen** und Provision.
+   Erster Kunde: Kate Cosmetics (Volkan geht hin). Ziel: Ergebnisse messen und **Rezensionen/Fallbeispiele sammeln**.
+2. **Danach:** höherpreisige Nischen (Faltenbehandlung/Hyaluron, Bleaching) mit **sachlichen Anzeigen ohne Gewinnspiel**
+   (HWG/Berufsordnung). Dort voraussichtlich **feste Monatsgebühr statt Provision** (Ärzte dürfen nicht pro Patient zahlen,
+   § 31 MBO-Ä; vorher Medizinrecht-Anwalt fragen).
+3. **Später:** mit den gesammelten Rezensionen zurück zu **Photovoltaik** (höhere Preise durchsetzbar).
+
 **Beauty ist aktiver Fokus (seit 20.11.2026), Version 2 fertig gebaut (20.11.2026):** Formular „Neuer Kunde“,
 Schritte-Seite fürs Studio, Team-Seite, automatische Mails/Erinnerungen/Rechnungen/Reports, Terminseite mit Online-Buchung
 (211 + 20 Tests), Anzeigen, Finder-Ordner. **Beauty-Zentrale ist eingerichtet (Nutzer, 20.11.2026; läuft unter dem gemeinsamen Geschäftskonto, „Wer ist im
