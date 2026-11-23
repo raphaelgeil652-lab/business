@@ -216,14 +216,7 @@ def felder(d):
     f["gs_ziehung"] = gs.get("ziehung") or ""
     f["gs_tnb_ziel"] = gs.get("bedingungen") or ""
     f["gs_tnb"] = (d.get("seite") or f"https://{d['kuerzel']}.netlify.app").rstrip("/") + "/teilnahme.html" if f["gs_tnb_ziel"] else "[Link zu den Teilnahmebedingungen]"
-    offen = not gs.get("bis")
-    f["gs_lostopf"] = ("Im Lostopf: wer einen Termin bucht und hinkommt. Jeden Monat neu verlost. Ab 18." if offen
-                       else f"Im Lostopf: wer bis {f['gs_bis_kurz']} einen Termin bucht und hinkommt. Ab 18.")
-    f["gs_kicker_zeit"] = "Jeden Monat neu" if offen else f"Nur bis {f['gs_bis_kurz']}"
-    f["gs_ablauf"] = ("deinen ersten Termin online buchen und hinkommen." if offen
-                      else f"bis {f['gs_bis']} deinen ersten Termin online buchen und hinkommen.")
-    f["gs_ziehung_satz"] = ("Wir verlosen jeden Monat neu, am 1. unter allen, die im Vormonat zu ihrem Termin gekommen sind." if offen
-                            else f"Ziehung am {f['gs_ziehung']} unter allen, die zu ihrem Termin gekommen sind.")
+    f["gs_lostopf"] = "Teilnahme: einfach einen Termin buchen. Teilnahmeschluss offen. Ab 18."
     f["zielgruppe_alter"] = mod["zielgruppe"]["alter"]
     f["zielgruppe_geschlecht"] = mod["zielgruppe"]["geschlecht"]
     fa = mod["farben"]
@@ -253,7 +246,7 @@ def seiten_felder(f, mod, fotos):
     s["lp_h1"] = fuellen(lp["h1"], f)
     s["lp_sub"] = esc(fuellen(lp["sub"], f) if f["_beratung"] else "Freie Termine sehen und direkt online buchen. Die Bestätigung kommt per E-Mail.")
     if f.get("_gs"):
-        s["lp_sub"] = "Freie Termine sehen und direkt hier buchen. <b>Mit Ihrem Termin sind Sie automatisch im Gewinnspiel.</b>"
+        s["lp_sub"] = "Freie Termine sehen und direkt hier buchen. <b>Mit Ihrem Termin sind Sie im Gewinnspiel.</b>"
     if f.get("_nk"):
         s["lp_sub"] = "<b>Neukundinnen: " + esc(f["nk_text"]) + "</b>" + esc(f["nk_bis_satz"]) + ". Freien Termin wählen und direkt hier buchen."
     s["foto_alt"] = esc(f"{mod['name']} bei {f['betrieb']}")
@@ -328,7 +321,10 @@ def gewinnspiel_anzeigen(f):
     for i, vorlage in enumerate(M.GEWINNSPIEL):
         h = haupt[i % len(haupt)]
         andere = [x for x in haupt if x != h] + f["_gs_zusatz"]
+        bezug = " ".join([leist[i] if i < len(leist) and len(haupt) > 1 else (leist[0] if leist else ""), h])
+        nutzen = next((t for m, t in M.NUTZEN if re.search(m, bezug, re.I)), "")
         a = json.loads(json.dumps(vorlage, ensure_ascii=False)
+                       .replace("{{gs_nutzen}}", nutzen)
                        .replace("{{gs_haupt_kurz}}", re.sub(r"\s*\(.*?\)", "", h).strip()).replace("{{gs_haupt}}", h)
                        .replace("{{gs_weitere_satz}}", (" Außerdem verlosen wir: " + ", ".join(andere) + ".") if andere else ""))
         if len(haupt) > 1:
@@ -350,7 +346,7 @@ def anzeigen_html(f, mod):
     alle = [{**a, "leistung": fuellen(a["leistung"], f)} if a.get("leistung") else a for a in alle]
     teile, vorschau = [], []
     for a in alle:
-        t = {x: fuellen(a.get(x, ""), f) for x in ("kicker", "h1", "sub", "fine", "cta", "primaer", "headline", "beschreibung")}
+        t = {x: fuellen(a.get(x, ""), f) for x in ("kicker", "hook", "h1", "sub", "fine", "cta", "primaer", "headline", "beschreibung")}
         # Überschrift: zusammengehörige Teile nicht trennen („+ 1. Auffüllen“), lange Überschriften etwas kleiner
         t["h1"] = re.sub(r"(\+|\d\.) ", "\\1\u00a0", t["h1"])
         t["h1"] = re.sub(r" (€|%)", "\u00a0\\1", t["h1"])
@@ -359,7 +355,7 @@ def anzeigen_html(f, mod):
         fd = f.get("_fotos_da") or {}
         foto = a["foto"] if fd.get(a["foto"], True) else FOTO_ERSATZ.get(a["foto"], "foto-1")
         teile.append(f'<div class="ad {a["stil"]}" data-creative="{a["id"]}">\n <div class="photo" style="background-image:url(fotos/{foto}.jpg)"></div>\n'
-                     f' <div class="band"><p class="kicker">{esc(t["kicker"])}</p><h1{' class="lang"' if lang else ''}>{t["h1"]}</h1><p class="sub">{esc(t["sub"])}</p></div>\n'
+                     f' <div class="band"><p class="kicker">{esc(t["kicker"])}</p>{('<p class="hook">' + esc(t["hook"]) + '</p>') if t["hook"] else ''}<h1{' class="lang"' if lang else ''}>{t["h1"]}</h1><p class="sub">{esc(t["sub"])}</p></div>\n'
                      f' <div class="cta">{esc(t["cta"])} <span>→</span></div>\n'
                      + (f' <p class="fine">{esc(t["fine"])}</p>\n' if a["stil"] == "g" and t["fine"] else '') + '</div>')
         vorschau.append(f'  <div class="ad"><div class="top"><div class="pic"></div><div class="who"><b>{esc(f["betrieb"])}</b><span>Gesponsert · 🌐</span></div></div>\n'

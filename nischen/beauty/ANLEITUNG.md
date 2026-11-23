@@ -66,7 +66,7 @@ von selbst die Mail „Heute dran“. Texte: „1 Verkaufsskript“ und „2 Nac
    - **Gewinnspiel, die wichtigste Frage im Gespräch:** „Womit verdienen Sie am meisten?“ Die **3 stärksten Leistungen**
      auswählen. Jede wird ein Hauptgewinn mit eigener Anzeige („Gewinne eine gratis Wimpernverlängerung“). Den Anzeigentext
      schlägt das Formular selbst vor, ihr könnt ihn kürzen. Darunter die Zusatzgewinne (Vorschlag: 2 × 20 % und 3 × 40 % auf
-     den nächsten Termin). Das Gewinnspiel startet mit dem Anlegen, offen, Ziehung jeden 1. für den Vormonat. Später rotieren:
+     den nächsten Termin). Das Gewinnspiel startet mit dem Anlegen. Später rotieren:
      über „Kundendaten ändern“ andere Leistungen wählen, dann Claude die Anzeigen neu bauen lassen. Bei Ärzten und Zahnärzten
      gibt es kein Gewinnspiel (das Formular blendet es aus).
    - **Neukundenangebot** (freiwillig): nur wenn das Studio zusätzlich ein festes Angebot will. Steht dann oben auf der Terminseite.
@@ -143,14 +143,13 @@ Die Mail kommt von selbst, sobald das Studio alles für Seite und Anzeigen erled
 
 ## Gewinnspiel (nur wo erlaubt, nicht bei Ärzten und Zahnärzten)
 
-Das Gewinnspiel entsteht schon im Gespräch (Formular, Kasten 3b). Feinheiten danach auf der Team-Seite → Kasten **„Gewinnspiel“**: ein Gewinn pro Zeile, der Hauptgewinn zuerst (eine Behandlung mit Wert), danach z. B.
-„2 × 20 % auf deinen nächsten Termin“ und „3 × 40 % auf deinen nächsten Termin“. Den Hauptgewinn so schreiben, wie er
-auf der Anzeige stehen soll: „eine gratis Wimpernverlängerung (Wert 145 €)“ → Anzeige „Gewinne eine gratis Wimpernverlängerung“.
-Nur den Start eintragen, Teilnahmeschluss und Ziehung **leer lassen**: Dann läuft das Gewinnspiel **offen**, ohne Enddatum, und die
-Zentrale zieht **jeden 1. des Monats** unter allen, die im Vormonat gekommen sind. Gewinnspiel ist bei uns die Hauptkampagne.
-Im Lostopf ist nur, wer einen Termin bucht **und hinkommt**. Das steht auf jeder Gewinnspiel-Anzeige als Unterzeile.
-Die Terminseite zeigt das Banner, die Teilnahmebedingungen entstehen von selbst, am Tag der Ziehung kommt die Mail mit allen
-Gewinnerinnen. Danach den neuen „Text für Claude“ schicken: Claude baut die Gewinnspiel-Kampagne (3 Anzeigen) von selbst.
+Das Gewinnspiel entsteht im Gespräch (Formular, Kasten 3b): die **3 stärksten Leistungen** als Hauptgewinne, darunter die
+**Zusatzgewinne** (z. B. „2 × 20 % auf deinen nächsten Termin“). Mehr wird intern nicht eingetragen.
+Anpassen: Team-Seite → Kasten **„Gewinnspiel“** (ein Gewinn pro Zeile) oder „Kundendaten ändern“ für andere Leistungen,
+danach den neuen „Text für Claude“ schicken, Claude baut die 3 Anzeigen neu.
+
+**Nach außen steht nur:** was man gewinnt, dass man mit einem gebuchten Termin dabei ist, „Teilnahmeschluss offen“, ab 18.
+Kurze Teilnahmebedingungen über einen kleinen Link. Die Zentrale zieht **nicht** selbst, die Ziehung läuft außerhalb.
 
 ## Neue Kampagnen, jederzeit
 
