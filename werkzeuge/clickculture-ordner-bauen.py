@@ -46,6 +46,7 @@ PLAN = [
     # 02 Studios finden
     (BV / "texte/akquise-verkaufsskript.md", f"{O2}/1 Verkaufsskript – Ansprache und Gespräch.docx"),
     (BV / "texte/akquise-nachfass-mails.md", f"{O2}/2 Nachfass-Nachrichten.docx"),
+    (B / "praesentation/Clickculture Beauty – Vorstellung.pptx", f"{O3}/0 Vorstellung – Präsentation für Studios und Praxen.pptx"),
     # 03 Beispiele: siehe beispiele(); 04 Kundenordner: aus nischen/beauty/kunden/ (siehe kunden())
     # 05 Hilfe
     (B / "hilfe-einrichten.md", f"{O5}/1 Hilfe – Meta und Google mit dem Studio einrichten, Netlify.docx"),
