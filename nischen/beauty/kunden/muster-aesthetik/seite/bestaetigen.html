@@ -54,9 +54,10 @@
         .then(function (r) { return r.json(); }).then(function (r) {
           if (!r.ok) return fehler(r.fehler, r.neu);
           if (!r.schon && window.messungMelden) window.messungMelden();
-          if (r.stand === 'angefragt') return zeige('✓', 'Danke, Ihr Wunschtermin <em>ist angekommen.</em>', 'Das Studio prüft den Termin und bestätigt ihn in Kürze per E-Mail. Dann bekommen Sie auch alle Infos zur Vorbereitung.', termin);
+          var los = r.gewinnspiel ? '<p class="klein" style="font-weight:700;">🎁 Sie sind jetzt im Lostopf. Viel Glück!</p>' : '';
+          if (r.stand === 'angefragt') return zeige('✓', 'Danke, Ihr Wunschtermin <em>ist angekommen.</em>', 'Das Studio prüft den Termin und bestätigt ihn in Kürze per E-Mail. Dann bekommen Sie auch alle Infos zur Vorbereitung.', termin + los);
           zeige('✓', 'Ihr Termin ist <em>bestätigt.</em>', 'Wir freuen uns auf Sie! Die Bestätigung mit allen Infos und einer Kalenderdatei kommt gleich per E-Mail.',
-            termin + vorb + '<p class="klein">Sie können doch nicht? Den Link zum Absagen finden Sie in der E-Mail. Fragen? ' + tel + '</p>');
+            termin + los + vorb + '<p class="klein">Sie können doch nicht? Den Link zum Absagen finden Sie in der E-Mail. Fragen? ' + tel + '</p>');
         }).catch(function () { fehler('Keine Verbindung. Bitte nochmal versuchen.', false); });
     };
   }).catch(function () { fehler('Keine Verbindung. Bitte die Seite neu laden.', false); });

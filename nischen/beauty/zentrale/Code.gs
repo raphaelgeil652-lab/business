@@ -506,7 +506,7 @@ function bestaetigen_(id, token, s) {
   if (!z || String(t.get(z, 'Kunden-Schlüssel')) !== String(token)) return { ok: false, fehler: 'Dieser Link ist nicht (mehr) gültig.' };
   var k = kunde_(t.get(z, 'Kunde')), st = String(t.get(z, 'Stand')), start = datum_(t.get(z, 'Termin')), jetzt = new Date();
   if (!k) return { ok: false, fehler: 'Die Online-Buchung ist gerade nicht verfügbar.' };
-  var info = { ok: true, termin: terminText_(start), leistung: String(t.get(z, 'Leistung')), betrieb: k.betrieb, telefon: k.telefon };
+  var info = { ok: true, termin: terminText_(start), leistung: String(t.get(z, 'Leistung')), betrieb: k.betrieb, telefon: k.telefon, gewinnspiel: !!gewinnspiel_(k, jetzt) };
   if (st === 'Termin' || st === 'angefragt' || st === 'erschienen' || st === 'Auftrag') { info.stand = st; info.schon = true; return info; }
   if (st !== 'unbestätigt' && st !== 'verfallen') return { ok: false, fehler: 'Dieser Termin wurde abgesagt. Buchen Sie gern einen neuen.', neu: true };
   if (start < jetzt) return { ok: false, fehler: 'Dieser Termin liegt schon in der Vergangenheit. Buchen Sie gern einen neuen.', neu: true };

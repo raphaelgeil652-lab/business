@@ -206,7 +206,11 @@ def felder(d):
     f["gs_weitere_satz"] = (" Außerdem verlosen wir: " + ", ".join(gw[1:]) + ".") if len(gw) > 1 else ""
     # Kurzform fürs Bild: „+ 2× 20 % + 3× 40 % auf deinen nächsten Termin“ (gleiche Endung nur einmal)
     teile = [re.match(r"^(?:(\d+)\s*[x×]\s*)?(\d+\s*%)\s*(.*)$", x) for x in zusatz]
-    if teile and all(teile) and len({t.group(3) for t in teile}) == 1:
+    if teile and all(teile):
+        anz = sum(int(m.group(1) or 1) for m in teile)
+        hoch = max(int(re.sub(r"\D", "", m.group(2))) for m in teile)
+        f["gs_weitere_kurz"] = f"+ {anz} {'Rabatte' if anz > 1 else 'Rabatt'} bis zu {hoch}\u00a0%"
+    elif False:
         f["gs_weitere_kurz"] = " ".join(f"+ {t.group(1) or 1}×\u00a0{t.group(2)}" for t in teile) + ("\n" + teile[0].group(3) if teile[0].group(3) else "")
     else:
         f["gs_weitere_kurz"] = " ".join("+ " + x for x in zusatz)
@@ -247,10 +251,11 @@ def seiten_felder(f, mod, fotos):
     s["seiten_titel"] = fuellen(lp["titel"], f)
     s["meta_beschreibung"] = esc(re.sub(r"<[^>]+>", "", fuellen(lp["sub"], f) if f["_beratung"] else f"{mod['name']} bei {f['betrieb']} in {f['ort']}: Termin online buchen."))
     s["lp_kicker"] = fuellen(lp["kicker"], f)
+    s["knopf_text"] = "Termin wählen & gewinnen" if f.get("_gs") else "Termin wählen"
     s["lp_h1"] = fuellen(lp["h1"], f)
     s["lp_sub"] = esc(fuellen(lp["sub"], f) if f["_beratung"] else "Freie Termine sehen und direkt online buchen. Die Bestätigung kommt per E-Mail.")
     if f.get("_gs"):
-        s["lp_sub"] = "Freie Termine sehen und direkt hier buchen. <b>Mit Ihrem Termin sind Sie im Gewinnspiel.</b>"
+        s["lp_sub"] = "Freie Termine sehen und direkt hier buchen. <b>Mit Ihrem Termin sind Sie automatisch im Gewinnspiel.</b>"
     if f.get("_nk"):
         s["lp_sub"] = "<b>Neukundinnen: " + esc(f["nk_text"]) + "</b>" + esc(f["nk_bis_satz"]) + ". Freien Termin wählen und direkt hier buchen."
     s["foto_alt"] = esc(f"{mod['name']} bei {f['betrieb']}")
@@ -308,6 +313,8 @@ def seiten_felder(f, mod, fotos):
         "zentrale": f["zentrale_url"], "telefon": f["telefon"], "telefon_link": f["telefon_link"], "betrieb": f["betrieb"],
         "vorbereitung": f["_vorbereitung"], "ausfall": f["ausfall_regel"],
     }, ensure_ascii=False).replace("</", "<\\/")
+    if f.get("_gs"):  # Gewinnspiel: die drei Schritte sagen, wie man in den Lostopf kommt
+        s["schritte_html"] = "".join(f"<div><b>{i}</b>{esc(x)}</div>" for i, x in enumerate(["Termin wählen", "Per E-Mail bestätigen", "Automatisch im Lostopf"], 1))
     return s
 
 
@@ -327,8 +334,11 @@ def gewinnspiel_anzeigen(f):
         andere = [x for x in haupt if x != h] + f["_gs_zusatz"]
         bezug = " ".join([leist[i] if i < len(leist) and len(haupt) > 1 else (leist[0] if leist else ""), h])
         nutzen = next((t for m, t in M.NUTZEN if re.search(m, bezug, re.I)), "")
+        wert = re.search(r"\(Wert\s*([^)]+)\)", h)
+        if i == 2 and len(haupt) >= 3:  # drei Top-Leistungen: auch die dritte Anzeige bekommt ihren eigenen Gewinn
+            vorlage = {**M.GEWINNSPIEL[0], "id": vorlage["id"], "foto": vorlage["foto"]}
         a = json.loads(json.dumps(vorlage, ensure_ascii=False)
-                       .replace("{{gs_nutzen}}", nutzen)
+                       .replace("{{gs_nutzen}}", nutzen).replace("{{gs_wert}}", f"Wert {wert.group(1).strip()}" if wert else "")
                        .replace("{{gs_haupt_kurz}}", re.sub(r"\s*\(.*?\)", "", h).strip()).replace("{{gs_haupt}}", h)
                        .replace("{{gs_weitere_satz}}", (" Außerdem verlosen wir: " + ", ".join(andere) + ".") if andere else ""))
         if len(haupt) > 1:
@@ -350,7 +360,7 @@ def anzeigen_html(f, mod):
     alle = [{**a, "leistung": fuellen(a["leistung"], f)} if a.get("leistung") else a for a in alle]
     teile, vorschau = [], []
     for a in alle:
-        t = {x: fuellen(a.get(x, ""), f) for x in ("kicker", "hook", "h1", "sub", "fine", "cta", "primaer", "headline", "beschreibung")}
+        t = {x: fuellen(a.get(x, ""), f) for x in ("kicker", "badge", "hook", "h1", "sub", "fine", "cta", "primaer", "headline", "beschreibung")}
         # Überschrift: zusammengehörige Teile nicht trennen („+ 1. Auffüllen“), lange Überschriften etwas kleiner
         t["h1"] = re.sub(r"(\+|\d\.) ", "\\1\u00a0", t["h1"])
         t["h1"] = re.sub(r" (€|%)", "\u00a0\\1", t["h1"])
@@ -359,7 +369,7 @@ def anzeigen_html(f, mod):
         fd = f.get("_fotos_da") or {}
         foto = a["foto"] if fd.get(a["foto"], True) else FOTO_ERSATZ.get(a["foto"], "foto-1")
         teile.append(f'<div class="ad {a["stil"]}" data-creative="{a["id"]}">\n <div class="photo" style="background-image:url(fotos/{foto}.jpg)"></div>\n'
-                     f' <div class="band"><p class="kicker">{esc(t["kicker"])}</p>{('<p class="hook">' + esc(t["hook"]) + '</p>') if t["hook"] else ''}<h1{' class="lang"' if lang else ''}>{t["h1"]}</h1><p class="sub">{esc(t["sub"])}</p></div>\n'
+                     f' <div class="band"><p class="kicker">{esc(t["kicker"])}</p>{('<span class="badge">' + esc(t["badge"]) + '</span>') if t["badge"] else ''}{('<p class="hook">' + esc(t["hook"]) + '</p>') if t["hook"] else ''}<h1{' class="lang"' if lang else ''}>{t["h1"]}</h1><p class="sub">{esc(t["sub"])}</p></div>\n'
                      f' <div class="cta">{esc(t["cta"])} <span>→</span></div>\n'
                      + (f' <p class="fine">{esc(t["fine"])}</p>\n' if a["stil"] == "g" and t["fine"] else '') + '</div>')
         vorschau.append(f'  <div class="ad"><div class="top"><div class="pic"></div><div class="who"><b>{esc(f["betrieb"])}</b><span>Gesponsert · 🌐</span></div></div>\n'

@@ -465,13 +465,13 @@ ANGEBOT_ANZEIGE = {"id": "n1-angebot", "stil": "c", "foto": "foto-5", "leistung"
 
 # Gewinnspiel-Anzeigen: nur wo regeln.verlosung an ist UND in der Zentrale ein Gewinnspiel eingetragen ist.
 # Die Bedingung (Termin buchen UND hinkommen) steht als Unterzeile auf dem Bild (BGH I ZR 64/07), alle Pflichtangaben im Anzeigentext.
-GEWINNSPIEL_TEXT = ("🎁 Gewinne {{gs_haupt}}!{{gs_weitere_satz}}\n"
-                    "So bist du dabei: einfach online einen Termin buchen. Teilnahmeschluss offen, ab 18.\n"
-                    "Teilnahmebedingungen: {{gs_tnb}}\n"
-                    "Diese Aktion steht in keiner Verbindung zu Meta.\n👉 Jetzt Termin buchen.")
-# Fassung 4 (Nutzer 23.11.2026): Teilnahme = Termin buchen. Kein Teilnahmeschluss, keine Ziehungstermine nach außen.
-# Aufs Bild: „Gewinnspiel“ · Nutzen-Zeile (spricht an, worum es geht) · „Gewinne …“ groß · Zusatzgewinne · Knopf · Bedingung klein.
-# Die Nutzen-Zeile kommt aus NUTZEN (passend zur Leistung), Du-Form, ohne Makel-Ansprache (Meta-Regel „persönliche Merkmale“).
+GEWINNSPIEL_TEXT = ("🎁 Buch deinen Termin bei {{betrieb}} und gewinne mit etwas Glück {{gs_haupt}}!\n"
+                    "Du bist automatisch im Lostopf, einfach online einen Termin buchen.{{gs_weitere_satz}}\n"
+                    "Teilnahmeschluss offen, ab 18. Teilnahmebedingungen: {{gs_tnb}}\n"
+                    "Diese Aktion steht in keiner Verbindung zu Meta.\n👉 Jetzt Termin buchen und gewinnen.")
+# Fassung 5 (Nutzer 23.11.2026, Lösung A): Das Gewinnspiel ist der Bonus zum Termin. Knopf und Text sagen dasselbe:
+# „Termin buchen & gewinnen“. Aufs Bild nur: „Gewinnspiel“ + Wert · Nutzen-Zeile · „Gewinne …“ groß · Zusatzgewinne kurz ·
+# Knopf · eine kleine Zeile „Mit deinem gebuchten Termin automatisch im Lostopf.“ Ab 18 und Teilnahmeschluss stehen im Anzeigentext.
 NUTZEN = [
     (r"wimpernlift|lash ?lift", "Geschwungene Wimpern, jeden Morgen."),
     (r"wimpern|lash|extension", "Wach aussehen, ganz ohne Mascara."),
@@ -485,15 +485,19 @@ NUTZEN = [
     (r"massage|wellness", "Eine Stunde nur für dich."),
 ]
 GEWINNSPIEL = [
-    {"id": "g1-hauptgewinn", "stil": "g", "foto": "foto-5", "kicker": "Gewinnspiel", "hook": "{{gs_nutzen}}", "h1": "Gewinne {{gs_haupt_kurz}}",
-     "sub": "{{gs_weitere_kurz}}", "fine": "{{gs_lostopf}}", "cta": "Jetzt Termin buchen",
-     "primaer": GEWINNSPIEL_TEXT, "headline": "Gewinne {{gs_haupt_kurz}}", "beschreibung": "Mit deinem Termin im Lostopf."},
-    {"id": "g2-behandlung", "stil": "g", "foto": "foto-1", "kicker": "Gewinnspiel", "hook": "{{gs_nutzen}}", "h1": "Gewinne {{gs_haupt_kurz}}",
-     "sub": "{{gs_weitere_kurz}}", "fine": "{{gs_lostopf}}", "cta": "Jetzt Termin buchen",
-     "primaer": GEWINNSPIEL_TEXT, "headline": "Gewinne {{gs_haupt_kurz}}", "beschreibung": "Mit deinem Termin im Lostopf."},
-    {"id": "g3-geschenk", "stil": "g", "foto": "foto-8", "kicker": "{{gs_anzahl}} Gewinne", "hook": "{{gs_nutzen}}", "h1": "Gewinne {{gs_haupt_kurz}}",
-     "sub": "{{gs_weitere_kurz}}", "fine": "{{gs_lostopf}}", "cta": "Jetzt Termin buchen",
-     "primaer": GEWINNSPIEL_TEXT, "headline": "{{gs_anzahl}} Gewinne bei {{betrieb}}", "beschreibung": "Mit deinem Termin im Lostopf."},
+    {"id": "g1-hauptgewinn", "stil": "g", "foto": "foto-5", "kicker": "Gewinnspiel", "badge": "{{gs_wert}}", "hook": "{{gs_nutzen}}",
+     "h1": "Gewinne {{gs_haupt_kurz}}", "sub": "{{gs_weitere_kurz}}", "fine": "Mit deinem gebuchten Termin automatisch im Lostopf.",
+     "cta": "Termin buchen & gewinnen", "primaer": GEWINNSPIEL_TEXT, "headline": "Termin buchen & gewinnen",
+     "beschreibung": "Zu gewinnen: {{gs_haupt_kurz}}"},
+    {"id": "g2-behandlung", "stil": "g", "foto": "foto-1", "kicker": "Gewinnspiel", "badge": "{{gs_wert}}", "hook": "{{gs_nutzen}}",
+     "h1": "Gewinne {{gs_haupt_kurz}}", "sub": "{{gs_weitere_kurz}}", "fine": "Mit deinem gebuchten Termin automatisch im Lostopf.",
+     "cta": "Termin buchen & gewinnen", "primaer": GEWINNSPIEL_TEXT, "headline": "Termin buchen & gewinnen",
+     "beschreibung": "Zu gewinnen: {{gs_haupt_kurz}}"},
+    {"id": "g3-geschenk", "stil": "g", "foto": "foto-8", "kicker": "Gewinnspiel", "badge": "", "hook": "",
+     "h1": "{{gs_anzahl}} Gewinne. <em>Jeder Termin ist ein Los.</em>", "sub": "Hauptgewinn: {{gs_haupt_kurz}}",
+     "fine": "Mit deinem gebuchten Termin automatisch im Lostopf.",
+     "cta": "Termin buchen & gewinnen", "primaer": GEWINNSPIEL_TEXT, "headline": "{{gs_anzahl}} Gewinne bei {{betrieb}}",
+     "beschreibung": "Jeder Termin ist ein Los."},
 ]
 
 ALLGEMEIN = {
