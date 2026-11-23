@@ -10,8 +10,8 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
 
 | Wann | Was passiert |
 |---|---|
-| Ihr füllt das Formular „Neuer Kunde“ aus | Studio angelegt, Vereinbarung ausgefüllt, Fotos-Ordner in Drive, Willkommens-Mail mit Link zur Schritte-Seite ans Studio |
-| Studio arbeitet seine Schritte-Seite ab | Vereinbarung angenommen (Name und Zeit gespeichert, Kopie per Mail), Onboarding-Rechnung als PDF, Fotos, Kalender-Prüfung, Meta und Google. Mail an den Betreuer, wenn er etwas tun muss |
+| Ihr füllt das Formular „Neuer Kunde“ aus | Studio angelegt, Vereinbarung ausgefüllt (mit Gewinnspiel-Absatz), Willkommens-Mail mit Link zur Schritte-Seite ans Studio |
+| Studio arbeitet seine Schritte-Seite ab | Vereinbarung angenommen (Name und Zeit gespeichert, Kopie als PDF per Mail), Links, Fotos, Kalender-Prüfung, Facebook-Einladung, Karte. Mail an den Betreuer, wenn er etwas tun muss |
 | Studio kommt nicht weiter | Alle 2 Werktage Erinnerung mit den offenen Schritten, nach 3 Erinnerungen Mail an den Betreuer: anrufen |
 | Alle Schritte erledigt | Mail an den Betreuer „alles da“ mit Fotos-Ordner und „Text für Claude“ |
 | Team-Seite: „Jetzt live schalten“ | Mail „Ihre Werbung läuft“ ans Studio, „Live seit“ eingetragen |
@@ -24,10 +24,10 @@ Sie ist **eine eigene Tabelle**, getrennt von der Photovoltaik-Zentrale. Die PV-
 | Täglich 19 Uhr | Jedes Studio: „Wie waren die Termine heute?“ mit Knöpfen erschienen · nicht erschienen · gekauft |
 | Rückruf-Wunsch (Formular auf der Seite, direkt an die Zentrale) | Mail ans Studio mit „Zurückgerufen“, Erinnerung nach 60 Minuten |
 | Montag 8 Uhr | Offene Termine und Anfragen an jedes Studio, Übersicht an dich |
-| Erster Kauf eines Studios | Mail an dich: ab nächstem Monat Monatsgebühr |
-| 1. des Monats | Rechnungen Monatsgebühr als PDF an die Studios · Mail an jeden Betreuer: je Studio ein Link zum Monatsreport (Werbekosten eintragen, senden) |
+| Erster Kauf eines Studios | Mail an dich: gratulieren, nach Bewertung und Zitat fragen |
+| 1. des Monats | Provisions-Rechnungen als PDF an die Studios (aus den gemeldeten Käufen) · Mail an jeden Betreuer: je Studio ein Link zum Monatsreport (Werbekosten eintragen, senden) |
 | 3. des Monats | Erinnerung an Reports, die noch nicht gesendet sind |
-| Täglich 8 Uhr | Verlosung ziehen · Akquise-Liste · Warnung, wenn das Mail-Kontingent knapp wird |
+| Täglich 8 Uhr | Akquise-Liste · Warnung, wenn das Mail-Kontingent knapp wird |
 | Viele unbestätigte Buchungen auf einmal | Buchung kurz gesperrt, Warnung an dich (Bot oder jemand, der Termine blockieren will) |
 
 ## Die Dateien

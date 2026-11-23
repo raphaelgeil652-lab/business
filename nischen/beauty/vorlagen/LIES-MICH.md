@@ -33,9 +33,9 @@ Tests: `node nischen/beauty/zentrale/test/test.js` (Zentrale, 211 Prüfungen) un
 
 ```
 Formular „Neuer Kunde“ ──► Zeile im Blatt „Kunden“ (Status Angelegt), Vereinbarung ausgefüllt (Blatt „Verträge“),
-                           Fotos-Ordner in Drive, Willkommens-Mail mit Link zur Schritte-Seite
-Schritte-Seite (Studio) ──► Vereinbarung annehmen (Name, Zeit) → Kopie per Mail, Onboarding-Rechnung als PDF
-                           Links, Behandler, Vorbereitung freigeben, Fotos hochladen, Kalender prüfen, Meta, Google-ID
+                           Willkommens-Mail mit Link zur Schritte-Seite
+Schritte-Seite (Studio) ──► Vereinbarung annehmen (Name, Zeit) → Kopie als PDF per Mail
+                           Links, Behandler, Vorbereitung freigeben, Fotos hochladen, Kalender prüfen, Facebook einladen, Karte
                            → Mails an den Betreuer, wenn er etwas tun muss
 täglich 8 Uhr ───────────► Erinnerung alle 2 Werktage (höchstens 3), dann „bitte anrufen“ · alles da → Mail mit „Text für Claude“
 Team-Seite „Freigabe“ ───► Studio sieht Seite (seite/termin.html?demo=1) und Anzeigen (seite/anzeigen/vorschau.html), tippt
@@ -94,5 +94,5 @@ Google führen nicht verlässlich JavaScript aus, und eine geteilte Domain teilt
   Vorher/Nachher nur wo erlaubt und mit echten Fotos. Platzhalter-Fotos werden gemeldet.
 - Pixel und Google erst nach Zustimmung, Schriften selbst gehostet (Fraunces, Inter Tight), keine Google Fonts.
 - **Ohne Adresse der Zentrale** zeigen die Seiten Beispiel-Termine (Vorführmodus, auch mit `?demo=1`).
-- **Verlosungen** sind in Version 2 nicht im Formular (2–3 × im Jahr, bei Bedarf Claude fragen). Code und Vorlage
-  (`verlosung.html`, Ziehung in der Zentrale) sind erhalten.
+- **Gewinnspiel** (Version 3): Teilnahme = Termin buchen, Teilnahmeschluss offen, die Zentrale zieht nicht. Die
+  alte Verlosung (`verlosung.html`) ist nur noch für Altkunden erhalten.

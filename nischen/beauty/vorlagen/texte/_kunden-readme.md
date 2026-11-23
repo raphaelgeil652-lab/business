@@ -12,7 +12,7 @@ Kürzel `{{slug}}` · Seite {{landingpage_url}}
    (Ohne Claude: app.netlify.com → **Add new project → Deploy manually** → Ordner **`seite`** hineinziehen →
    **Project configuration → Change project name** → `{{slug}}`.)
 2. **Kampagnen anlegen:** den **Kampagnen-Assistenten** (`kampagnen.html`) öffnen und von oben nach unten abhaken.
-   Bilder liegen in `anzeigen/creatives`. Pixel-ID und Google-Conversion trägst du auf der **Team-Seite** ein.
+   Bilder liegen in `anzeigen/creatives`. Die Pixel-ID trägst du auf der **Team-Seite** ein.
 3. **Testen und live:** Termin mit deiner E-Mail buchen, in der Mail bestätigen, wieder absagen. Hat das Studio
    freigegeben: Team-Seite **„Jetzt live schalten“**. Die Mail an das Studio geht von selbst raus.
 

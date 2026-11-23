@@ -1,6 +1,6 @@
 # Beauty
 
-Online-Terminbuchung über Meta- und Google-Werbung für **ein Studio, eine Behandlung**:
+Online-Terminbuchung über Meta-Werbung (Facebook und Instagram) für **ein Studio, eine Behandlung**:
 **Laser-Haarentfernung** · **Permanent Make-up** · **Faltenbehandlung und Hyaluron** (Ärzte, Heilpraktiker) ·
 **Bleaching** (Zahnarztpraxen). Die Kundin sieht eine Anzeige, wählt auf der Seite des Studios einen freien Termin,
 bestätigt per E-Mail, und der Termin steht im Kalender des Studios. Kein Rückruf nötig, keine Fake-Anfragen.
@@ -14,7 +14,7 @@ Photovoltaik ist pausiert und liegt unverändert in `../photovoltaik/`.
 |---|---|
 | **Die Anleitung** ⭐ vom ersten Kontakt bis zum laufenden Studio | [`ANLEITUNG.md`](ANLEITUNG.md) |
 | **Die Beauty-Zentrale**: Formular „Neuer Kunde“, Schritte-Seite fürs Studio, Team-Seite, Online-Buchung, alle Mails | [`zentrale/EINRICHTEN.md`](zentrale/EINRICHTEN.md) |
-| Hilfe: Meta und Google mit dem Studio einrichten, Netlify | [`hilfe-einrichten.md`](hilfe-einrichten.md) |
+| Hilfe: Meta mit dem Studio einrichten, Netlify (Google Ads: erhalten, zurzeit nicht im Ablauf) | [`hilfe-einrichten.md`](hilfe-einrichten.md) |
 | Der Baukasten: vier Behandlungen mit Regeln, Texten, Anzeigen | [`vorlagen/module.py`](vorlagen/module.py) |
 | Regeln, Zahlen, Quellen | [`modul-beauty.md`](modul-beauty.md) |
 | Das System dahinter (Technik) | [`vorlagen/LIES-MICH.md`](vorlagen/LIES-MICH.md) |
@@ -39,7 +39,7 @@ Photovoltaik ist pausiert und liegt unverändert in `../photovoltaik/`.
   (Hyaluron auch Heilpraktiker), Bleaching nur Zahnärzte. Das Formular „Neuer Kunde“ prüft das.
 - **Termin erst nach Bestätigung per E-Mail fest.** Fakes, Bots und falsche Adressen kommen nie beim Studio an.
 - **Kalender des Studios** (Google) oder **Modus Wunschtermin** (Studio bestätigt per Knopf).
-- **Abends tippt das Studio**: erschienen, nicht erschienen, gekauft. Daran hängen Report und Monatsgebühr.
+- **Abends tippt das Studio**: erschienen, nicht erschienen, gekauft. Daran hängen Report und Provision.
 - **Werberecht steckt im Baukasten.** Bei Ärzten und Zahnärzten: keine Verlosung, keine Rabatte, kein „kostenlos“,
   kein Vorher/Nachher, nie „Botox“.
 - **Mail-Grenze von Google:** ca. 100 Mails am Tag im kostenlosen Konto, reicht für ~20 Buchungen am Tag. Ab dem

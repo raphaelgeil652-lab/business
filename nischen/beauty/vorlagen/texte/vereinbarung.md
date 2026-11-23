@@ -46,6 +46,10 @@ Werbebudget: **{{budget}} pro Monat** für Werbung auf Meta (Facebook und Instag
   Kauf gibt der Auftraggeber den Betrag an, den die Kundin bezahlt hat. Er ist die Grundlage der Provision.
 - Ausreichende freie Termine für die vermittelten Buchungen.
 
+### §3a Gewinnspiel
+
+{{gewinnspiel_klausel}}
+
 ### §4 Vergütung
 
 - **Keine Grundgebühr, kein Onboarding.**

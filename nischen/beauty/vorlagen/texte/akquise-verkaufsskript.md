@@ -36,7 +36,7 @@ Deshalb so:
 3. **Empfehlung:** Jeder zufriedene Kunde kennt andere Studios. Fragen!
 
 > „Hallo, ich bin [Name] von Clickculture aus [Ort]. Mein Kollege [Name] und ich machen für Studios wie Ihres Online-Terminbuchung über
-> Facebook, Instagram und Google: Die Kundin sieht Ihre Anzeige, wählt direkt einen freien Termin in Ihrem
+> Facebook und Instagram: Die Kundin sieht Ihre Anzeige, wählt direkt einen freien Termin in Ihrem
 > Kalender und bestätigt per E-Mail. Kein Telefonieren, keine Fake-Anfragen. Darf ich Ihnen in 20 Minuten zeigen,
 > wie das mit Ihrem Namen aussieht?“
 
@@ -48,28 +48,38 @@ Deshalb so:
 Facebook-Werbebibliothek (facebook.com/ads/library, Land Deutschland) nachsehen, ob das Studio schon wirbt.
 Zum Zeigen: das Beispiel der passenden Behandlung (Ordner „03 Beispiele zum Zeigen“).
 
-**Die zwei Fragen, die alles entscheiden:**
+**Die drei Fragen, die alles entscheiden:**
 1. „Was bringt Ihnen eine neue Kundin im ersten Jahr im Schnitt?“ (Paket, Kur, Wiederkommen) → Kundenwert
 2. „Wie viele zusätzliche Termine mit Neukundinnen schaffen Sie pro Woche?“ → Kapazität und Budget
+3. „Mit welchen drei Leistungen verdienen Sie am meisten?“ → das sind die **3 Hauptgewinne** im Gewinnspiel, jede
+   bekommt eine eigene Anzeige mit eigenem Foto (Formular Kasten 3b). Dazu bleiben immer die Rabattgutscheine
+   (Vorschlag 5 × 20 % und 5 × 40 %). Nur Kosmetik, Wimpern, Brauen, Nägel, PMU, Laser. Bei Ärzten und Zahnärzten
+   **nie ein Gewinnspiel** (Heilmittelwerbegesetz), dort sachliche Anzeigen mit Beratungstermin.
 
 Dazu: Ist die Entscheiderin dabei? Ist die Qualifikation da? Gibt es Fotos (oder werden welche gemacht)? Und:
 „Wie tragen Sie Termine heute ein?“ (Google-Kalender → Termine direkt rein; Papier oder Programm ohne Abgleich →
 das Studio bestätigt jeden Termin per Knopf). Alles das fragt das Formular „Neuer Kunde“ der Reihe nach ab.
 
-**Zeigen** (Bildschirm teilen oder Tablet): seine Anzeigen → seine Terminseite → einen Termin durchklicken →
-die Bestätigungsseite. Dabei die drei Stärken nennen:
+**Zeigen** (Bildschirm teilen oder Tablet): die Vorstellung (Präsentation) → seine Anzeigen → seine Terminseite →
+einen Termin durchklicken → die Bestätigungsseite. Beim Gewinnspiel:
+
+> „Ihre Anzeige sagt: Termin buchen und gewinnen. Wer bucht, ist automatisch im Lostopf. Die Leute kommen also
+> nicht für ein Gratis-Gewinnspiel, sondern buchen einen echten Termin bei Ihnen. Den Gewinn stellen Sie, das sind
+> Ihre eigenen Leistungen, das kostet Sie Material und Zeit, keinen Werbe-Euro.“
+
+Dabei die drei Stärken nennen:
 
 > „Die Kundin bucht selbst, Sie müssen nicht telefonieren. Jeder Termin wird per E-Mail bestätigt, Fake-Anfragen
 > und Scherz-Buchungen kommen gar nicht erst bei Ihnen an. Und 24 Stunden vorher wird die Kundin erinnert, mit
 > Ihren Hinweisen zur Vorbereitung. Das senkt die Ausfälle.“
 
 **Was es kostet, ohne Risiko:**
-> „Die monatliche Gebühr zahlen Sie erst, wenn die erste Kundin über einen Online-Termin bei Ihnen eine Behandlung
-> gekauft hat. Kommen in 30 Tagen keine echten, bestätigten Termine, bekommen Sie das Onboarding zurück. Jederzeit
-> zum Monatsende kündbar. Das Werbebudget zahlen Sie direkt an Meta und Google, nicht an mich.“
+> „Keine Grundgebühr, keine Einrichtungsgebühr. Sie zahlen nur, wenn eine neue Kundin über die Werbung zu Ihnen
+> kommt und etwas kauft: [15] % von ihrem ersten Kauf, einmal. Kauft sie nichts, zahlen Sie nichts. Jederzeit zum
+> Monatsende kündbar. Das Werbebudget zahlen Sie direkt an Meta über Ihre eigene Karte, nicht an mich.“
 
-Das Budget nennen: Das Formular schlägt es vor, sobald die Kundinnen pro Woche eingetragen sind. Darunter steht die
-Preis-Empfehlung für Onboarding und Monatsgebühr. Du entscheidest.
+Das Budget nennen: Das Formular schlägt es vor, sobald die Kundinnen pro Woche eingetragen sind. Die Provision ist
+mit 15 % vorausgefüllt. Du entscheidest.
 
 ## Einwände
 
@@ -80,7 +90,8 @@ Preis-Empfehlung für Onboarding und Monatsgebühr. Du entscheidest.
 | „Die Leute kommen nicht.“ | „Jede Kundin wird 24 Stunden vorher erinnert und kann mit einem Klick absagen. Dann ist der Platz wieder frei, statt leer zu bleiben.“ |
 | „Wir sind ausgelastet.“ | „Dann starten wir klein, mit wenigen buchbaren Zeiten. Sie bestimmen, wann online gebucht werden darf.“ |
 | „Werbung für Ästhetik ist doch heikel.“ (Ärzte) | „Genau. Unsere Vorlagen halten das Heilmittelwerbegesetz ein: kein Vorher/Nachher, keine Rabatte, kein ‚Botox‘ in der Anzeige. Sie geben alles vor dem Start frei.“ |
-| „Zu teuer.“ | „Was bringt eine neue Kundin im ersten Jahr?“ → „Dann trägt sich das mit zwei Kundinnen im Monat. Und die Gebühr läuft erst ab der ersten.“ |
+| „Zu teuer.“ | „Sie zahlen uns nur, wenn eine neue Kundin kauft. Das Einzige, was fest ist, ist Ihr Werbebudget, und das bestimmen Sie.“ |
+| „Ein Gewinnspiel? Dann kommen nur Schnäppchenjäger.“ | „Teilnehmen kann nur, wer einen echten Termin bucht und per E-Mail bestätigt. Gewinnen tun wenige, alle anderen sind ganz normale Neukundinnen.“ |
 | „Sie sind ja nur zu zweit.“ | „Genau deshalb haben Sie einen festen Ansprechpartner, der Ihr Studio kennt. Und das System läuft rund um die Uhr: Buchung, Bestätigung, Erinnerung.“ |
 | „Schicken Sie mir Infos.“ | „Mache ich. Aber 20 Minuten zeigen mehr: Sie sehen Ihre eigene Seite mit Ihrem Namen.“ |
 
@@ -88,7 +99,7 @@ Preis-Empfehlung für Onboarding und Monatsgebühr. Du entscheidest.
 
 1. Formular „Neuer Kunde“ fertig ausfüllen → **„Kunde anlegen“**.
 2. Das Studio öffnet die Willkommens-Mail noch im Gespräch und nimmt die Vereinbarung auf seiner Schritte-Seite an.
-   Die Rechnung geht von selbst raus.
-3. Einen Termin für Meta und Google ausmachen (30 Minuten, Bildschirm teilen), wenn das Studio das nicht allein schafft.
+   Danach arbeitet es seine Schritte-Seite ab (Links, Fotos, Facebook-Einladung, Karte). Alles ist dort erklärt.
+3. Hängt das Studio bei Facebook: kurz anrufen und gemeinsam durchgehen. Ein Video-Termin ist nicht nötig.
 
 Versprochen werden bestätigte Termine, nie eine Zahl von Käufen oder ein Umsatz.

@@ -10,7 +10,7 @@
 Hallo [Anrede] [Name],
 
 danke für Ihre Zeit vorhin! Wie besprochen zeige ich Ihnen am [Tag] um [Uhrzeit] in 20 Minuten, wie Ihre
-Kundinnen über Facebook, Instagram und Google direkt einen Termin bei Ihnen buchen, mit Ihrem Namen und Ihren
+Kundinnen über Facebook und Instagram direkt einen Termin bei Ihnen buchen, mit Ihrem Namen und Ihren
 freien Zeiten. [Bei Video: Den Link schicke ich Ihnen kurz vorher.]
 
 Bis dahin
@@ -27,7 +27,8 @@ danke für das gute Gespräch. Hier noch einmal Ihre Beispielseite und Ihre Anze
 Kurz zusammengefasst:
 - Ihre Kundinnen wählen online einen freien Termin, jeder Termin wird per E-Mail bestätigt.
 - 24 Stunden vorher automatische Erinnerung mit Ihren Vorbereitungs-Hinweisen.
-- Onboarding [Betrag] mit Geld-zurück-Garantie, Monatsgebühr [Betrag] erst ab der ersten Kundin, die kauft.
+- Keine Grundgebühr: [15] % Provision vom ersten Kauf jeder neuen Kundin, sonst nichts. Jederzeit kündbar.
+- Mit Gewinnspiel: Wer einen Termin bucht, ist automatisch im Lostopf. Die Gewinne sind Ihre eigenen Leistungen.
 
 Ich (oder mein Kollege [Name]) melde mich am [Tag] kurz telefonisch, wie Sie sich entschieden haben.
 

@@ -51,7 +51,10 @@ business.facebook.com nachsehen.
 
 ---
 
-## Google Ads
+## Google Ads (zurzeit nicht im Ablauf)
+
+> Version 3 läuft **nur über Meta**. Dieser Abschnitt bleibt für später erhalten. Auf der Schritte-Seite fragt
+> die Zentrale nicht mehr nach Google.
 
 **Grundregel:** Das Studio legt sein Konto selbst an, ihr verknüpft es danach mit eurem Verwaltungskonto.
 Wenn ihr ein Konto im Verwaltungskonto anlegt, zwingt Google euch durch den Assistenten (Unternehmen, Webseite,

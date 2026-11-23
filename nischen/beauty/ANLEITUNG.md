@@ -53,7 +53,8 @@ von selbst die Mail „Heute dran“. Texte: „1 Verkaufsskript“ und „2 Nac
 
 ## Schritt 2 · Das Gespräch (30 Minuten, vor Ort oder Video)
 
-1. Das Beispiel der passenden Behandlung zeigen (Ordner „03 Beispiele zum Zeigen“): Anzeigen und Terminseite.
+1. Die **Vorstellung** zeigen (Präsentation, Folie für Folie, mit Sprechtext) und danach das Beispiel der passenden
+   Behandlung (Ordner „03 Beispiele zum Zeigen“): Anzeigen und Terminseite.
 2. Lesezeichen **„Neuer Kunde“** öffnen und **mit dem Studio zusammen** ausfüllen:
    - Studio, Inhaberin, Telefon, E-Mail, Adresse.
    - Adresse in getrennten Feldern (Straße, Hausnummer, PLZ, Ort). Groß- und Kleinschreibung macht das Formular selbst.
@@ -88,7 +89,8 @@ Auf seiner Schritte-Seite steht bei jedem Schritt eine Anleitung und ein Knopf:
 2. Links zu Impressum und Datenschutz.
 3. Wer behandelt (Name, Qualifikation).
 4. Hinweise vor dem Termin prüfen und freigeben (ein Vorschlag steht schon drin).
-5. Fotos hochladen, direkt vom Handy.
+5. Fotos hochladen, direkt vom Handy. Beim Gewinnspiel fragt die Seite **je ein Foto zu den 3 Gewinnspiel-Leistungen**
+   (kommt groß in die Anzeige), dazu Studio und Team.
 6. Google-Kalender freigeben. Der Knopf „Freigabe prüfen“ zeigt sofort ✓. Nur wenn das Studio einen Google-Kalender hat.
 7. **Clickculture bei Facebook einladen.** Das Studio legt ein Business-Portfolio an (ein Formular) und lädt eure
    Facebook-E-Mail mit „Volle Kontrolle“ ein. Mehr nicht. Die Anleitung steht Klick für Klick auf der Schritte-Seite.
@@ -136,7 +138,7 @@ Die Mail kommt von selbst, sobald das Studio alles für Seite und Anzeigen erled
 ## Schritt 6 · Testen und live
 
 1. Auf der Seite des Studios einen Termin mit eurer E-Mail buchen → in der Mail bestätigen → steht er im Kalender
-   des Studios? → über den Link in der Bestätigung wieder absagen.
+   des Studios? Beim Gewinnspiel steht „Sie sind jetzt im Lostopf“. → über den Link in der Bestätigung wieder absagen.
 2. Kampagnen aktivieren.
 3. Team-Seite → **„Jetzt live schalten“** (erst nach der Freigabe durch das Studio). Das Studio bekommt von selbst die Mail „Ihre Werbung läuft“.
 
@@ -166,8 +168,9 @@ Kampagnen-Assistenten. Die Terminseite bleibt dieselbe. Vor dem Start einmal vom
 | Montags: Wochenbericht ans Studio (neue Termine, erschienen, gekauft, was diese Woche ansteht) plus offene Termine zum Antippen | Zentrale | nichts |
 | Studio tippt „Behandlung gekauft“ und gibt den Betrag ein | Studio | nichts |
 | 1. des Monats: Provisions-Rechnung für den Vormonat als PDF ans Studio | Zentrale | Geld da → Team-Seite „Bezahlt“ |
-| 1. des Monats: Mail „Monatsreports: je Studio ein Klick“ | Zentrale | Link → Werbekosten aus Meta eintragen (bei Google 0), zwei Sätze → „Report senden“ → kurz anrufen |
+| 1. des Monats: Mail „Monatsreports: je Studio ein Klick“ | Zentrale | Link → Werbekosten aus Meta eintragen, zwei Sätze → „Report senden“ → kurz anrufen |
 | Fehler oder Warnung (z. B. Mail-Kontingent knapp) | Zentrale | steht in der Mail |
+| Erster Kauf eines Studios: Mail an euch | Zentrale | Studio anrufen, gratulieren, um eine Google-Bewertung und ein kurzes Zitat für eure Fallbeispiele bitten |
 | Studio hört auf | ihr | Team-Seite „Pausieren“, Kampagnen in Meta pausieren |
 
 **Mail-Grenze:** Ein kostenloses Google-Konto darf ca. 100 Mails am Tag schicken. Das reicht für ca. 20 Buchungen.

@@ -201,6 +201,7 @@ def felder(d):
     f["_gs_haupt"] = [re.sub(r"^\d+\s*[x×]\s*", "", x) for x in haupt]
     f["_gs_leistungen"] = [str(x) for x in (gs.get("leistungen") or [])]
     f["_gs_zusatz"] = zusatz
+    f["_gs_alle"] = gw
     f["gs_haupt"] = f["_gs_haupt"][0] if haupt else ""
     f["gs_haupt_kurz"] = re.sub(r"\s*\(.*?\)", "", f["gs_haupt"]).strip()
     f["gs_weitere_satz"] = (" Außerdem verlosen wir: " + ", ".join(gw[1:]) + ".") if len(gw) > 1 else ""
@@ -265,7 +266,14 @@ def seiten_felder(f, mod, fotos):
     s["vorteile_titel"] = "Was Sie erwartet"
     s["vorteile_html"] = "".join(f"<li>{esc(fuellen(v, f))}</li>" for v in lp["vorteile"])
     s["hinweis"] = esc(fuellen(lp["hinweis"], f))
-    s["faq_html"] = "\n    ".join(f"<details><summary>{esc(fuellen(q, f))}</summary><p>{esc(fuellen(a, f))}</p></details>" for q, a in lp["faq"])
+    faq = list(lp["faq"])
+    if f.get("_gs"):  # Gewinnspiel: Vorteil und Frage ganz oben, damit niemand suchen muss
+        s["vorteile_html"] = "<li>Mit Ihrem gebuchten Termin automatisch im Gewinnspiel</li>" + s["vorteile_html"]
+        faq.insert(0, ("Wie funktioniert das Gewinnspiel?",
+                       "Buchen Sie hier einen Termin und bestätigen Sie ihn per E-Mail. Damit sind Sie automatisch im Lostopf, "
+                       "ohne Formular und ohne Extra-Schritt. Zu gewinnen: " + ", ".join(f["_gs_alle"]) + ". "
+                       "Teilnahme ab 18, Teilnahmeschluss offen. Wer gewinnt, wird persönlich benachrichtigt und löst den Gewinn im Studio ein."))
+    s["faq_html"] = "\n    ".join(f"<details><summary>{esc(fuellen(q, f))}</summary><p>{esc(fuellen(a, f))}</p></details>" for q, a in faq)
     s["final_titel"] = "Ihr erster Schritt: <em>ein Termin.</em>" if k != "falten" else "Erst beraten, <em>dann entscheiden.</em>"
     # Preise (nur wo erlaubt und vorhanden)
     leist = f["_leistungen"]
@@ -306,7 +314,8 @@ def seiten_felder(f, mod, fotos):
                                   f"{esc(mod['name'])} verarbeitet, um mich zurückzurufen (Art. 9 Abs. 2 lit. a DSGVO). Widerruf jederzeit möglich.")
     s["ausfall_html"] = (f'        <label class="check"><input type="checkbox" name="ausfall" required> <span>{esc(f["ausfall_regel"])}</span></label>\n'
                          if f["ausfall_regel"] else "")
-    s["verlosung_link_html"] = ' · <a href="verlosung.html">Verlosung</a>' if f["_verlosung"] else ""
+    s["verlosung_link_html"] = (' · <a href="teilnahme.html">Teilnahmebedingungen Gewinnspiel</a>' if f.get("_gs") and f.get("gs_tnb_ziel")
+                                else ' · <a href="verlosung.html">Verlosung</a>' if f["_verlosung"] else "")
     s["buchung_cfg"] = json.dumps({
         "zentrale": f["zentrale_url"], "kunde": f["slug"], "telefon": f["telefon"], "telefon_link": f["telefon_link"],
         "leistungen": [{"name": l["name"], "minuten": l["minuten"], "preis": preis_text(l["preis"]) if r["preise"] else ""} for l in leist],

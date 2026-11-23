@@ -517,7 +517,7 @@ ALLGEMEIN = {
         "schritte": ["Freien Termin wählen", "Per E-Mail bestätigen", "Persönlich beraten und behandelt werden"],
         "vorteile": [
             "Persönliche Beratung, bevor etwas gemacht wird",
-            "Alle freien Termine auf einen Blick, auch abends und am Wochenende, wenn das Studio dann offen hat",
+            "Alle freien Termine auf einen Blick, Buchung in einer Minute",
             "Online buchen und absagen, ohne Warteschleife",
             "Erinnerung 24 Stunden vor Ihrem Termin",
         ],
