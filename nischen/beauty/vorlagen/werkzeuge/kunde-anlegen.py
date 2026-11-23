@@ -214,6 +214,10 @@ def felder(d):
     f["gs_bis"] = gs.get("bis") or ""
     f["gs_bis_kurz"] = (gs.get("bis") or "")[:6]
     f["gs_ziehung"] = gs.get("ziehung") or ""
+    f["kampagne_name"] = f"Gewinnspiel – {f['betrieb']}" if f["_gs"] else f"Beauty – {mod['name']} – {f['betrieb']}"
+    f["gewinnspiel_hinweis"] = ("**Gewinnspiel bei Meta:** Der Anzeigentext enthält schon alles, was Meta verlangt (Teilnahmebedingungen, "
+                                "„keine Verbindung zu Meta“). Nichts davon kürzen. Kein „Markiere Freundinnen“ oder „Teile den Beitrag“ "
+                                "dazuschreiben, das verbietet Meta.\n\n") if f["_gs"] else ""
     f["gs_tnb_ziel"] = gs.get("bedingungen") or ""
     f["gs_tnb"] = (d.get("seite") or f"https://{d['kuerzel']}.netlify.app").rstrip("/") + "/teilnahme.html" if f["gs_tnb_ziel"] else "[Link zu den Teilnahmebedingungen]"
     f["gs_lostopf"] = "Teilnahme: einfach einen Termin buchen. Teilnahmeschluss offen. Ab 18."

@@ -1,7 +1,8 @@
-# Kampagnen — Muster Brows · Permanent Make-up
+# Kampagne — Muster Brows
 
 > Alles fertig zum Eintragen, Texte 1:1 kopieren. Bilder: Ordner `anzeigen/creatives`.
-> Die Klickwege sind so, wie Meta und Google sie im November 2026 zeigen. Heißt ein Feld anders, nimm das Nächstliegende.
+> Nur Meta (Facebook und Instagram). Die Klickwege sind so, wie Meta sie im November 2026 zeigt. Heißt ein Feld anders, nimm das Nächstliegende
+> und schick Claude einen Screenshot, dann wird der Guide für alle Studios korrigiert.
 > Pixel-ID und Werbekonto hast du schon bei „Meta einrichten“ eingetragen („Meta fertig“). Sie wirken sofort,
 > die Seite muss dafür **nicht** neu hochgeladen werden.
 
@@ -55,6 +56,7 @@ adsmanager.facebook.com → oben links das **Werbekonto des Studios** wählen �
 | Datensatz | **Muster Brows** |
 | Conversion-Event | **Lead** |
 | Budget und Zeitplan | Start heute, **kein Enddatum** |
+| Begünstigte und zahlende Person (EU-Transparenz) | beide Male **Mia Muster** (das Studio, nicht ihr) |
 
 **Zielgruppe** (unter „Einschränkungen“):
 
@@ -72,9 +74,12 @@ versuchen, auf „Leads“ umzustellen.
 
 ### 3 · Anzeigen (für jede der Anzeigen unten)
 
-Wie bei jeder Anzeige: „Anzeigengestaltung konfigurieren“ → **„Image Ad“** → Bild hochladen → **Quell-URL** =
+Wie bei jeder Anzeige: „Anzeigengestaltung konfigurieren“ → **„Image Ad“** → Bild hochladen (Format **4:5**). Fragt Meta nach
+einem Bild für Stories und Reels (9:16): in der Vorschau prüfen, dass oben der Gewinn und unten der Knopf zu sehen sind, sonst
+für Stories/Reels **„Zuschneiden“** und den Ausschnitt so legen, dass der Text ganz drin ist. → **Quell-URL** =
 Zieladresse unten → Texte kopieren → Button **„Jetzt buchen“** (heißt bei Meta „Book now“ bzw. „Jetzt buchen“;
-gibt es ihn nicht: „Mehr dazu“) → bei „Optimierungen“ **alle Schalter aus** → Tracking: Datensatz **Muster Brows**.
+gibt es ihn nicht: „Mehr dazu“) → bei „Optimierungen“ bzw. **„Advantage+ Creative“ alle Schalter aus** (sonst legt Meta
+eigenen Text über das Bild oder schneidet es um) → Tracking: Datensatz **Muster Brows**.
 Weitere Anzeigen: links bei der Anzeige „…“ → **Duplizieren** → Bild, Texte, Parameter austauschen.
 
 **Ende: NICHT „Veröffentlichen“.** Oben links schließen. In der Liste steht „Entwurf“.

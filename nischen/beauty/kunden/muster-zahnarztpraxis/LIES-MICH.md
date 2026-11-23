@@ -21,5 +21,5 @@ Nichts in diesem Ordner von Hand ändern. Neue Fotos oder geänderte Daten: Clau
 (Team-Seite) und die Fotos schicken, dann diesen Ordner neu hochladen.
 
 **Ansehen** (nur bei den erfundenen Beispielstudios, echte liegen nicht im Repo):
-[Anzeigen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/anzeigen/vorschau.html?v=202611230415) ·
-[Terminseite mit Beispiel-Terminen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/seite/termin.html?demo=1&v=202611230415)
+[Anzeigen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/anzeigen/vorschau.html?v=202611230435) ·
+[Terminseite mit Beispiel-Terminen](https://raw.githack.com/raphaelgeil652-lab/business/main/nischen/beauty/kunden/muster-zahnarztpraxis/seite/termin.html?demo=1&v=202611230435)
