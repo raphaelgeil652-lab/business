@@ -209,7 +209,9 @@ def felder(d):
     if teile and all(teile):
         anz = sum(int(m.group(1) or 1) for m in teile)
         hoch = max(int(re.sub(r"\D", "", m.group(2))) for m in teile)
-        f["gs_weitere_kurz"] = f"+ {anz} {'Rabatte' if anz > 1 else 'Rabatt'} bis zu {hoch}\u00a0%"
+        f["gs_weitere_kurz"] = f"+ {anz} {'Rabattgutscheine' if anz > 1 else 'Rabattgutschein'}"
+    elif zusatz and any("[" in x for x in zusatz):  # Vorstellung mit Platzhaltern
+        f["gs_weitere_kurz"] = "+ [Anzahl] Rabattgutscheine"
     elif False:
         f["gs_weitere_kurz"] = " ".join(f"+ {t.group(1) or 1}×\u00a0{t.group(2)}" for t in teile) + ("\n" + teile[0].group(3) if teile[0].group(3) else "")
     else:

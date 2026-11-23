@@ -65,8 +65,7 @@ von selbst die Mail „Heute dran“. Texte: „1 Verkaufsskript“ und „2 Nac
      die anders gebucht haben. Takt und Pausen müsst ihr nicht festlegen.
    - **Gewinnspiel, die wichtigste Frage im Gespräch:** „Womit verdienen Sie am meisten?“ Die **3 stärksten Leistungen**
      auswählen. Jede wird ein Hauptgewinn mit eigener Anzeige („Gewinne eine gratis Wimpernverlängerung“). Den Anzeigentext
-     schlägt das Formular selbst vor, ihr könnt ihn kürzen. Darunter die Zusatzgewinne (Vorschlag: 2 × 20 % und 3 × 40 % auf
-     den nächsten Termin). Das Gewinnspiel startet mit dem Anlegen. Später rotieren:
+     schlägt das Formular selbst vor, ihr könnt ihn kürzen. Darunter die Zusatzgewinne (Vorschlag: 5 × 20 % und 5 × 40 % Rabattgutschein, auf der Anzeige steht dann „+ 10 Rabattgutscheine“). Das Gewinnspiel startet mit dem Anlegen. Später rotieren:
      über „Kundendaten ändern“ andere Leistungen wählen, dann Claude die Anzeigen neu bauen lassen. Bei Ärzten und Zahnärzten
      gibt es kein Gewinnspiel (das Formular blendet es aus).
    - **Neukundenangebot** (freiwillig): nur wenn das Studio zusätzlich ein festes Angebot will. Steht dann oben auf der Terminseite.
@@ -144,7 +143,7 @@ Die Mail kommt von selbst, sobald das Studio alles für Seite und Anzeigen erled
 ## Gewinnspiel (nur wo erlaubt, nicht bei Ärzten und Zahnärzten)
 
 Das Gewinnspiel entsteht im Gespräch (Formular, Kasten 3b): die **3 stärksten Leistungen** als Hauptgewinne, darunter die
-**Zusatzgewinne** (z. B. „2 × 20 % auf deinen nächsten Termin“). Mehr wird intern nicht eingetragen.
+**Zusatzgewinne** (Vorschlag: 5 × 20 % und 5 × 40 % Rabattgutschein, auf der Anzeige „+ 10 Rabattgutscheine“). Mehr wird intern nicht eingetragen.
 Anpassen: Team-Seite → Kasten **„Gewinnspiel“** (ein Gewinn pro Zeile) oder „Kundendaten ändern“ für andere Leistungen,
 danach den neuen „Text für Claude“ schicken, Claude baut die 3 Anzeigen neu.
 

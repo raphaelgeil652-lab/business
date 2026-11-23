@@ -1414,7 +1414,7 @@ function formularHtml_(s, k) {
         '<label>So steht es auf der Anzeige: „Gewinne …“<input name="gs_t' + i + '" class="gst" maxlength="45" placeholder="eine gratis Wimpernverlängerung" value="' + esc_((w.gs_haupt || [])[i - 1] || '') + '"></label></div>';
     }).join('') +
     '<label>Zusatzgewinne (einer pro Zeile)<textarea name="gs_zusatz" rows="2" style="width:100%;box-sizing:border-box;font-size:15px;padding:8px;">' +
-    esc_(w.gs_zusatz != null && w.gs_zusatz !== '' ? w.gs_zusatz : '2 × 20 % auf deinen nächsten Termin\n3 × 40 % auf deinen nächsten Termin') + '</textarea></label>' +
+    esc_(w.gs_zusatz != null && w.gs_zusatz !== '' ? w.gs_zusatz : '5 × 20 % Rabattgutschein auf deinen nächsten Termin\n5 × 40 % Rabattgutschein auf deinen nächsten Termin') + '</textarea></label>' +
     '<p class="k" id="gsaus" style="display:none;">Bei Ärzten und Zahnärzten ist ein Gewinnspiel in der Werbung nicht erlaubt (Heilmittelwerbegesetz, Berufsordnung). Hier bleibt alles leer.</p></div>' +
     '<div class="box"><h2>3c · Neukundenangebot <span class="k">(freiwillig)</span></h2>' +
     '<p class="k">Nur, wenn das Studio zusätzlich ein festes Angebot für Neukundinnen will. Es steht dann oben auf der Terminseite. Kurz, höchstens 8 Wörter. ' +
@@ -2328,7 +2328,7 @@ function teamStudio_(kz, s) {
       'Die stärksten Leistungen wählt ihr über „Kundendaten ändern“, hier könnt ihr die Gewinne direkt anpassen.</p>' +
       (gs ? '<p>✓ Läuft: ' + esc_(gewinneText_(gewinneListe_(k)).join(' · ')) + ' · <a href="' + esc_(portal_(s) + 'a=tnb&k=' + encodeURIComponent(k.kuerzel)) + '" target="_blank">Teilnahmebedingungen</a></p>' : '') +
       form('gewinnspiel', '<label>Gewinne, einer pro Zeile (erst die Hauptgewinne, dann die Zusatzgewinne)' +
-        '<textarea name="gewinn" required rows="5" placeholder="eine gratis Wimpernverlängerung (Wert 100 €)\n2 × 20 % auf deinen nächsten Termin\n3 × 40 % auf deinen nächsten Termin" style="width:100%;box-sizing:border-box;font-size:16px;padding:9px;">' +
+        '<textarea name="gewinn" required rows="5" placeholder="eine gratis Wimpernverlängerung (Wert 100 €)\n5 × 20 % Rabattgutschein auf deinen nächsten Termin\n5 × 40 % Rabattgutschein auf deinen nächsten Termin" style="width:100%;box-sizing:border-box;font-size:16px;padding:9px;">' +
         esc_(gewinneText_(gewinneListe_(k)).join('\n')) + '</textarea></label>', 'Gewinne speichern') +
       (gs || k.gewinn ? form('gewinnspiel-aus', '', 'Gewinnspiel beenden', 'Gewinnspiel wirklich beenden? Das Banner verschwindet sofort.', true) : '') + '</div>';
   }
